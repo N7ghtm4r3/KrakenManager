@@ -5,6 +5,8 @@ import com.tecknobit.apimanager.Tools.Formatters.JsonHelper;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.util.Arrays;
+
 public class KrakenManager {
 
     public static final String BASE_ENDPOINT = "https://api.kraken.com/0";
@@ -63,6 +65,14 @@ public class KrakenManager {
 
         public String[] getErrors() {
             return errors;
+        }
+
+        @Override
+        public String toString() {
+            return "KrakenResponse{" +
+                    "jsonResponse=" + jsonResponse +
+                    ", errors=" + Arrays.toString(errors) +
+                    '}';
         }
 
     }

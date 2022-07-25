@@ -24,7 +24,7 @@ public class ServerTime extends KrakenManager.KrakenResponse {
 
     public ServerTime(JSONObject jsonResponse) {
         super(jsonResponse);
-        JSONObject serverTime = getResult();
+        final JSONObject serverTime = getResult();
         if(serverTime != null){
             unixTime = serverTime.getLong("unixtime");
             rfc1123 = serverTime.getString("rfc1123");
