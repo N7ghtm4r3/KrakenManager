@@ -1,0 +1,34 @@
+plugins {
+    id 'java'
+    id 'maven-publish'
+}
+
+group 'com.tecknobit'
+version '1.0.0'
+
+repositories {
+    mavenCentral()
+    maven { url 'https://jitpack.io' }
+}
+
+dependencies {
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.2'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.2'
+    implementation 'com.github.N7ghtm4r3:APIManager:1.0.5'
+    implementation 'org.json:json:20220320'
+}
+
+publishing {
+    publications {
+        maven(MavenPublication) {
+            groupId = 'com.tecknobit.krakenmanager'
+            artifactId = 'KrakenManager'
+            version = '1.0.0'
+            from components.java
+        }
+    }
+}
+
+test {
+    useJUnitPlatform()
+}
