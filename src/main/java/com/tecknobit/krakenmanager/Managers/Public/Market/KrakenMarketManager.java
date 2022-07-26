@@ -6,10 +6,12 @@ import com.tecknobit.krakenmanager.Managers.Public.Market.Records.*;
 import com.tecknobit.krakenmanager.Managers.Public.Market.Records.Lists.OHLCData;
 import com.tecknobit.krakenmanager.Managers.Public.Market.Records.Lists.Spreads;
 import com.tecknobit.krakenmanager.Managers.Public.Market.Records.Lists.Trades;
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Set;
 
 import static com.tecknobit.krakenmanager.Constants.EndpointsList.*;
 
@@ -21,6 +23,9 @@ import static com.tecknobit.krakenmanager.Constants.EndpointsList.*;
  * **/
 
 public class KrakenMarketManager extends KrakenPublicManager {
+
+    private Set<String> symbols;
+    private long previousLoadSymbols;
 
     /** Constructor to init a {@link KrakenMarketManager}
      * @param defaultErrorMessage: custom error to show when is not a request error
@@ -318,6 +323,69 @@ public class KrakenMarketManager extends KrakenPublicManager {
         return assembleAssetsList(getAssetsJSON(assets, aClass));
     }
 
+    /** Custom request to get a single asset<br>
+     * @param symbol: asset to fetch details es. BTCEUR
+     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getAssetInfo">
+     *     https://docs.kraken.com/rest/#tag/Market-Data/operation/getAssetInfo</a>
+     * @return single assets pair as {@link String}
+     * **/
+    public String getAsset(String symbol) throws IOException {
+        return getAssets(new String[]{symbol});
+    }
+
+    /** Custom request to get a single asset<br>
+     * @param symbol: asset to fetch details es. BTCEUR
+     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getAssetInfo">
+     *     https://docs.kraken.com/rest/#tag/Market-Data/operation/getAssetInfo</a>
+     * @return single assets pair as {@link JSONObject}
+     * **/
+    public JSONObject getAssetJSON(String symbol) throws IOException {
+        return getAssetsJSON(new String[]{symbol});
+    }
+
+    /** Custom request to get a single asset<br>
+     * @param symbol: asset to fetch details es. BTCEUR
+     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getAssetInfo">
+     *     https://docs.kraken.com/rest/#tag/Market-Data/operation/getAssetInfo</a>
+     * @return single assets pair as {@link Asset} custom object
+     * **/
+    public Asset getAssetObject(String symbol) throws IOException {
+        return new Asset(getAssetJSON(symbol));
+    }
+
+    /** Custom request to get a single asset<br>
+     * @param symbol: asset to fetch details es. BTCEUR
+     * @param aClass: class of the assets to fetch
+     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getAssetInfo">
+     *     https://docs.kraken.com/rest/#tag/Market-Data/operation/getAssetInfo</a>
+     * @return single assets pair as {@link String}
+     * **/
+    public String getAsset(String symbol, String aClass) throws IOException {
+        return getAssets(new String[]{symbol}, aClass);
+    }
+
+    /** Custom request to get a single asset<br>
+     * @param symbol: asset to fetch details es. BTCEUR
+     * @param aClass: class of the assets to fetch
+     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getAssetInfo">
+     *     https://docs.kraken.com/rest/#tag/Market-Data/operation/getAssetInfo</a>
+     * @return single assets pair as {@link JSONObject}
+     * **/
+    public JSONObject getAssetJSON(String symbol, String aClass) throws IOException {
+        return getAssetsJSON(new String[]{symbol}, aClass);
+    }
+
+    /** Custom request to get a single asset<br>
+     * @param symbol: asset to fetch details es. BTCEUR
+     * @param aClass: class of the assets to fetch
+     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getAssetInfo">
+     *     https://docs.kraken.com/rest/#tag/Market-Data/operation/getAssetInfo</a>
+     * @return single assets pair as {@link Asset} custom object
+     * **/
+    public Asset getAssetObject(String symbol, String aClass) throws IOException {
+        return new Asset(getAssetJSON(symbol, aClass));
+    }
+
     /** Method to assemble an assets list
      * @param jsonResponse: jsonObject obtained by response request
      * @return assets list as {@link ArrayList} of {@link Asset}
@@ -368,7 +436,7 @@ public class KrakenMarketManager extends KrakenPublicManager {
     }
 
     /** Request to get assets pairs list<br>
-     * @param pairs: pairs to fetch details es. XXBTCZUSD or XETHXXBT in {@link String} array format
+     * @param pairs: pairs to fetch details es. BTCEUR or ETHEUR in {@link String} array format
      * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getTradableAssetPairs">
      *     https://docs.kraken.com/rest/#tag/Market-Data/operation/getTradableAssetPairs</a>
      * @return assets pairs list as {@link String}
@@ -378,7 +446,7 @@ public class KrakenMarketManager extends KrakenPublicManager {
     }
 
     /** Request to get assets pairs list<br>
-     * @param pairs: pairs to fetch details es. XXBTCZUSD or XETHXXBT in {@link String} array format
+     * @param pairs: pairs to fetch details es. BTCEUR or ETHEUR in {@link String} array format
      * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getTradableAssetPairs">
      *     https://docs.kraken.com/rest/#tag/Market-Data/operation/getTradableAssetPairs</a>
      * @return assets pairs list as {@link JSONObject}
@@ -388,7 +456,7 @@ public class KrakenMarketManager extends KrakenPublicManager {
     }
 
     /** Request to get assets pairs list<br>
-     * @param pairs: pairs to fetch details es. XXBTCZUSD or XETHXXBT in {@link String} array format
+     * @param pairs: pairs to fetch details es. BTCEUR or ETHEUR in {@link String} array format
      * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getTradableAssetPairs">
      *     https://docs.kraken.com/rest/#tag/Market-Data/operation/getTradableAssetPairs</a>
      * @return assets pairs list as {@link ArrayList} of {@link AssetPair} custom object
@@ -398,7 +466,7 @@ public class KrakenMarketManager extends KrakenPublicManager {
     }
 
     /** Request to get assets pairs list<br>
-     * @param pairs: pairs to fetch details es. XXBTCZUSD or XETHXXBT in {@link ArrayList} of {@link String} format
+     * @param pairs: pairs to fetch details es. BTCEUR or ETHEUR in {@link ArrayList} of {@link String} format
      * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getTradableAssetPairs">
      *     https://docs.kraken.com/rest/#tag/Market-Data/operation/getTradableAssetPairs</a>
      * @return assets pairs list as {@link String}
@@ -408,7 +476,7 @@ public class KrakenMarketManager extends KrakenPublicManager {
     }
 
     /** Request to get assets pairs list<br>
-     * @param pairs: pairs to fetch details es. XXBTCZUSD or XETHXXBT in {@link ArrayList} of {@link String} format
+     * @param pairs: pairs to fetch details es. BTCEUR or ETHEUR in {@link ArrayList} of {@link String} format
      * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getTradableAssetPairs">
      *     https://docs.kraken.com/rest/#tag/Market-Data/operation/getTradableAssetPairs</a>
      * @return assets pairs list as {@link JSONObject}
@@ -418,7 +486,7 @@ public class KrakenMarketManager extends KrakenPublicManager {
     }
 
     /** Request to get assets pairs list<br>
-     * @param pairs: pairs to fetch details es. XXBTCZUSD or XETHXXBT in {@link ArrayList} of {@link String} format
+     * @param pairs: pairs to fetch details es. BTCEUR or ETHEUR in {@link ArrayList} of {@link String} format
      * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getTradableAssetPairs">
      *     https://docs.kraken.com/rest/#tag/Market-Data/operation/getTradableAssetPairs</a>
      * @return assets pairs list as {@link ArrayList} of {@link AssetPair} custom object
@@ -458,7 +526,7 @@ public class KrakenMarketManager extends KrakenPublicManager {
     }
 
     /** Request to get assets pairs list<br>
-     * @param pairs: pairs to fetch details es. XXBTCZUSD or XETHXXBT in {@link String} array format
+     * @param pairs: pairs to fetch details es. BTCEUR or ETHEUR in {@link String} array format
      * @param info: detail to fetch (info, leverage, fees or margin)
      * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getTradableAssetPairs">
      *     https://docs.kraken.com/rest/#tag/Market-Data/operation/getTradableAssetPairs</a>
@@ -470,7 +538,7 @@ public class KrakenMarketManager extends KrakenPublicManager {
     }
 
     /** Request to get assets pairs list<br>
-     * @param pairs: pairs to fetch details es. XXBTCZUSD or XETHXXBT in {@link String} array format
+     * @param pairs: pairs to fetch details es. BTCEUR or ETHEUR in {@link String} array format
      * @param info: detail to fetch (info, leverage, fees or margin)
      * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getTradableAssetPairs">
      *     https://docs.kraken.com/rest/#tag/Market-Data/operation/getTradableAssetPairs</a>
@@ -481,7 +549,7 @@ public class KrakenMarketManager extends KrakenPublicManager {
     }
 
     /** Request to get assets pairs list<br>
-     * @param pairs: pairs to fetch details es. XXBTCZUSD or XETHXXBT in {@link String} array format
+     * @param pairs: pairs to fetch details es. BTCEUR or ETHEUR in {@link String} array format
      * @param info: detail to fetch (info, leverage, fees or margin)
      * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getTradableAssetPairs">
      *     https://docs.kraken.com/rest/#tag/Market-Data/operation/getTradableAssetPairs</a>
@@ -492,7 +560,7 @@ public class KrakenMarketManager extends KrakenPublicManager {
     }
 
     /** Request to get assets pairs list<br>
-     * @param pairs: pairs to fetch details es. XXBTCZUSD or XETHXXBT in {@link ArrayList} of {@link String} format
+     * @param pairs: pairs to fetch details es. BTCEUR or ETHEUR in {@link ArrayList} of {@link String} format
      * @param info: detail to fetch (info, leverage, fees or margin)
      * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getTradableAssetPairs">
      *     https://docs.kraken.com/rest/#tag/Market-Data/operation/getTradableAssetPairs</a>
@@ -503,7 +571,7 @@ public class KrakenMarketManager extends KrakenPublicManager {
     }
 
     /** Request to get assets pairs list<br>
-     * @param pairs: pairs to fetch details es. XXBTCZUSD or XETHXXBT in {@link ArrayList} of {@link String} format
+     * @param pairs: pairs to fetch details es. BTCEUR or ETHEUR in {@link ArrayList} of {@link String} format
      * @param info: detail to fetch (info, leverage, fees or margin)
      * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getTradableAssetPairs">
      *     https://docs.kraken.com/rest/#tag/Market-Data/operation/getTradableAssetPairs</a>
@@ -514,7 +582,7 @@ public class KrakenMarketManager extends KrakenPublicManager {
     }
 
     /** Request to get assets pairs list<br>
-     * @param pairs: pairs to fetch details es. XXBTCZUSD or XETHXXBT in {@link ArrayList} of {@link String} format
+     * @param pairs: pairs to fetch details es. BTCEUR or ETHEUR in {@link ArrayList} of {@link String} format
      * @param info: detail to fetch (info, leverage, fees or margin)
      * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getTradableAssetPairs">
      *     https://docs.kraken.com/rest/#tag/Market-Data/operation/getTradableAssetPairs</a>
@@ -522,6 +590,69 @@ public class KrakenMarketManager extends KrakenPublicManager {
      * **/
     public ArrayList<AssetPair> getAssetPairsList(ArrayList<String> pairs, String info) throws IOException {
         return assembleAssetPairsList(getAssetPairsJSON(pairs, info));
+    }
+
+    /** Custom request to get a single assets pair<br>
+     * @param pairs: pairs to fetch details es. BTCEUR
+     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getTradableAssetPairs">
+     *     https://docs.kraken.com/rest/#tag/Market-Data/operation/getTradableAssetPairs</a>
+     * @return single assets pair as {@link String}
+     * **/
+    public String getAssetPair(String pairs) throws IOException {
+        return getAssetPairs(new String[]{pairs});
+    }
+
+    /** Custom request to get a single assets pair<br>
+     * @param pairs: pairs to fetch details es. BTCEUR
+     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getTradableAssetPairs">
+     *     https://docs.kraken.com/rest/#tag/Market-Data/operation/getTradableAssetPairs</a>
+     * @return single assets pair as {@link JSONObject}
+     * **/
+    public JSONObject getAssetPairJSON(String pairs) throws IOException {
+        return getAssetPairsJSON(new String[]{pairs});
+    }
+
+    /** Custom request to get a single assets pair<br>
+     * @param pairs: pairs to fetch details es. BTCEUR
+     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getTradableAssetPairs">
+     *     https://docs.kraken.com/rest/#tag/Market-Data/operation/getTradableAssetPairs</a>
+     * @return single assets pair as {@link AssetPair} custom object
+     * **/
+    public AssetPair getAssetPairObject(String pairs) throws IOException {
+        return new AssetPair(getAssetPairsJSON(new String[]{pairs}));
+    }
+
+    /** Custom request to get a single assets pair<br>
+     * @param pairs: pairs to fetch details es. BTCEUR
+     * @param info: detail to fetch (info, leverage, fees or margin)
+     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getTradableAssetPairs">
+     *     https://docs.kraken.com/rest/#tag/Market-Data/operation/getTradableAssetPairs</a>
+     * @return single assets pair as {@link String}
+     * **/
+    public String getAssetPair(String pairs, String info) throws IOException {
+        return getAssetPairs(new String[]{pairs}, info);
+    }
+
+    /** Custom request to get a single assets pair<br>
+     * @param pairs: pairs to fetch details es. BTCEUR
+     * @param info: detail to fetch (info, leverage, fees or margin)
+     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getTradableAssetPairs">
+     *     https://docs.kraken.com/rest/#tag/Market-Data/operation/getTradableAssetPairs</a>
+     * @return single assets pair as {@link JSONObject}
+     * **/
+    public JSONObject getAssetPairJSON(String pairs, String info) throws IOException {
+        return getAssetPairsJSON(new String[]{pairs}, info);
+    }
+
+    /** Custom request to get a single assets pair<br>
+     * @param pairs: pairs to fetch details es. BTCEUR
+     * @param info: detail to fetch (info, leverage, fees or margin)
+     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getTradableAssetPairs">
+     *     https://docs.kraken.com/rest/#tag/Market-Data/operation/getTradableAssetPairs</a>
+     * @return single assets pair as {@link AssetPair} custom object
+     * **/
+    public AssetPair getAssetPairObject(String pairs, String info) throws IOException {
+        return new AssetPair(getAssetPairsJSON(new String[]{pairs}, info));
     }
 
     /** Method to assemble an assets pair list
@@ -555,7 +686,7 @@ public class KrakenMarketManager extends KrakenPublicManager {
     }
 
     /** Request to get ticker information<br>
-     * @param pair: pair to fetch details es. XXBTCZUSD
+     * @param pair: pair to fetch details es. BTCEUR
      * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getTickerInformation">
      *     https://docs.kraken.com/rest/#tag/Market-Data/operation/getTickerInformation</a>
      * @return ticker information as {@link String}
@@ -565,7 +696,7 @@ public class KrakenMarketManager extends KrakenPublicManager {
     }
 
     /** Request to get ticker information<br>
-     * @param pair: pair to fetch details es. XXBTCZUSD
+     * @param pair: pair to fetch details es. BTCEUR
      * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getTickerInformation">
      *     https://docs.kraken.com/rest/#tag/Market-Data/operation/getTickerInformation</a>
      * @return ticker information as {@link JSONObject}
@@ -575,7 +706,7 @@ public class KrakenMarketManager extends KrakenPublicManager {
     }
 
     /** Request to get ticker information<br>
-     * @param pair: pair to fetch details es. XXBTCZUSD
+     * @param pair: pair to fetch details es. BTCEUR
      * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getTickerInformation">
      *     https://docs.kraken.com/rest/#tag/Market-Data/operation/getTickerInformation</a>
      * @return ticker information as {@link TickerInformation} custom object
@@ -584,8 +715,50 @@ public class KrakenMarketManager extends KrakenPublicManager {
         return new TickerInformation(getTickerInformationJSON(pair));
     }
 
+    /** Custom request to get all tickers information <br>
+     * Any params required
+     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getTickerInformation">
+     *     https://docs.kraken.com/rest/#tag/Market-Data/operation/getTickerInformation</a>
+     * @return all tickers' information as {@link String}
+     * **/
+    public String getAllTickers() throws IOException {
+        return getAllTickersJSON().toString();
+    }
+
+    /** Custom request to get all tickers information <br>
+     * Any params required
+     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getTickerInformation">
+     *     https://docs.kraken.com/rest/#tag/Market-Data/operation/getTickerInformation</a>
+     * @return all tickers' information as {@link JSONArray}
+     * **/
+    public JSONArray getAllTickersJSON() throws IOException {
+        JSONArray tickers = new JSONArray();
+        long actualTimestamp = System.currentTimeMillis();
+        if(symbols == null || ((actualTimestamp - previousLoadSymbols) > 3600 * 1000)) {
+            symbols = getAssetPairsJSON().getJSONObject("result").keySet();
+            previousLoadSymbols = actualTimestamp;
+        }
+        for (String symbol : symbols)
+            tickers.put(getTickerInformationJSON(symbol));
+        return tickers;
+    }
+
+    /** Custom request to get all tickers information <br>
+     * Any params required
+     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getTickerInformation">
+     *     https://docs.kraken.com/rest/#tag/Market-Data/operation/getTickerInformation</a>
+     * @return all tickers' information as {@link ArrayList} of {@link TickerInformation} custom object
+     * **/
+    public ArrayList<TickerInformation> getAllTickersList() throws IOException {
+        ArrayList<TickerInformation> tickers = new ArrayList<>();
+        JSONArray jsonTickers = getAllTickersJSON();
+        for (int j = 0; j < jsonTickers.length(); j++)
+            tickers.add(new TickerInformation(jsonTickers.getJSONObject(j)));
+        return tickers;
+    }
+
     /** Request to get OHLC data information<br>
-     * @param pair: pair to fetch details es. XXBTCZUSD
+     * @param pair: pair to fetch details es. BTCEUR
      * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getOHLCData">
      *     https://docs.kraken.com/rest/#tag/Market-Data/operation/getOHLCData</a>
      * @return OHLC data information as {@link String}
@@ -595,7 +768,7 @@ public class KrakenMarketManager extends KrakenPublicManager {
     }
 
     /** Request to get OHLC data information<br>
-     * @param pair: pair to fetch details es. XXBTCZUSD
+     * @param pair: pair to fetch details es. BTCEUR
      * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getOHLCData">
      *     https://docs.kraken.com/rest/#tag/Market-Data/operation/getOHLCData</a>
      * @return OHLC data information as {@link JSONObject}
@@ -605,7 +778,7 @@ public class KrakenMarketManager extends KrakenPublicManager {
     }
 
     /** Request to get OHLC data information<br>
-     * @param pair: pair to fetch details es. XXBTCZUSD
+     * @param pair: pair to fetch details es. BTCEUR
      * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getOHLCData">
      *     https://docs.kraken.com/rest/#tag/Market-Data/operation/getOHLCData</a>
      * @return OHLC data information as {@link OHLCData} custom object
@@ -615,7 +788,7 @@ public class KrakenMarketManager extends KrakenPublicManager {
     }
 
     /** Request to get OHLC data information<br>
-     * @param pair: pair to fetch details es. XXBTCZUSD
+     * @param pair: pair to fetch details es. BTCEUR
      * @param interval: time frame interval in minutes
      * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getOHLCData">
      *     https://docs.kraken.com/rest/#tag/Market-Data/operation/getOHLCData</a>
@@ -626,7 +799,7 @@ public class KrakenMarketManager extends KrakenPublicManager {
     }
 
     /** Request to get OHLC data information<br>
-     * @param pair: pair to fetch details es. XXBTCZUSD
+     * @param pair: pair to fetch details es. BTCEUR
      * @param interval: time frame interval in minutes
      * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getOHLCData">
      *     https://docs.kraken.com/rest/#tag/Market-Data/operation/getOHLCData</a>
@@ -637,7 +810,7 @@ public class KrakenMarketManager extends KrakenPublicManager {
     }
 
     /** Request to get OHLC data information<br>
-     * @param pair: pair to fetch details es. XXBTCZUSD
+     * @param pair: pair to fetch details es. BTCEUR
      * @param interval: time frame interval in minutes
      * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getOHLCData">
      *     https://docs.kraken.com/rest/#tag/Market-Data/operation/getOHLCData</a>
@@ -648,7 +821,7 @@ public class KrakenMarketManager extends KrakenPublicManager {
     }
 
     /** Request to get OHLC data information<br>
-     * @param pair: pair to fetch details es. XXBTCZUSD
+     * @param pair: pair to fetch details es. BTCEUR
      * @param since: since timestamp from fetch data
      * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getOHLCData">
      *     https://docs.kraken.com/rest/#tag/Market-Data/operation/getOHLCData</a>
@@ -659,7 +832,7 @@ public class KrakenMarketManager extends KrakenPublicManager {
     }
 
     /** Request to get OHLC data information<br>
-     * @param pair: pair to fetch details es. XXBTCZUSD
+     * @param pair: pair to fetch details es. BTCEUR
      * @param since: since timestamp from fetch data
      * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getOHLCData">
      *     https://docs.kraken.com/rest/#tag/Market-Data/operation/getOHLCData</a>
@@ -670,7 +843,7 @@ public class KrakenMarketManager extends KrakenPublicManager {
     }
 
     /** Request to get OHLC data information<br>
-     * @param pair: pair to fetch details es. XXBTCZUSD
+     * @param pair: pair to fetch details es. BTCEUR
      * @param since: since timestamp from fetch data
      * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getOHLCData">
      *     https://docs.kraken.com/rest/#tag/Market-Data/operation/getOHLCData</a>
@@ -681,7 +854,7 @@ public class KrakenMarketManager extends KrakenPublicManager {
     }
 
     /** Request to get OHLC data information<br>
-     * @param pair: pair to fetch details es. XXBTCZUSD
+     * @param pair: pair to fetch details es. BTCEUR
      * @param interval: time frame interval in minutes
      * @param since: since timestamp from fetch data
      * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getOHLCData">
@@ -693,7 +866,7 @@ public class KrakenMarketManager extends KrakenPublicManager {
     }
 
     /** Request to get OHLC data information<br>
-     * @param pair: pair to fetch details es. XXBTCZUSD
+     * @param pair: pair to fetch details es. BTCEUR
      * @param interval: time frame interval in minutes
      * @param since: since timestamp from fetch data
      * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getOHLCData">
@@ -705,7 +878,7 @@ public class KrakenMarketManager extends KrakenPublicManager {
     }
 
     /** Request to get OHLC data information<br>
-     * @param pair: pair to fetch details es. XXBTCZUSD
+     * @param pair: pair to fetch details es. BTCEUR
      * @param interval: time frame interval in minutes
      * @param since: since timestamp from fetch data
      * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getOHLCData">
@@ -717,7 +890,7 @@ public class KrakenMarketManager extends KrakenPublicManager {
     }
 
     /** Request to get order book details<br>
-     * @param pair: pair to fetch details es. XXBTCZUSD
+     * @param pair: pair to fetch details es. BTCEUR
      * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getOrderBook">
      *     https://docs.kraken.com/rest/#tag/Market-Data/operation/getOrderBook</a>
      * @return order book details as {@link String}
@@ -727,7 +900,7 @@ public class KrakenMarketManager extends KrakenPublicManager {
     }
 
     /** Request to get order book details<br>
-     * @param pair: pair to fetch details es. XXBTCZUSD
+     * @param pair: pair to fetch details es. BTCEUR
      * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getOrderBook">
      *     https://docs.kraken.com/rest/#tag/Market-Data/operation/getOrderBook</a>
      * @return order book details as {@link JSONObject}
@@ -737,7 +910,7 @@ public class KrakenMarketManager extends KrakenPublicManager {
     }
 
     /** Request to get order book details<br>
-     * @param pair: pair to fetch details es. XXBTCZUSD
+     * @param pair: pair to fetch details es. BTCEUR
      * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getOrderBook">
      *     https://docs.kraken.com/rest/#tag/Market-Data/operation/getOrderBook</a>
      * @return order book details as {@link Book} custom object
@@ -747,7 +920,7 @@ public class KrakenMarketManager extends KrakenPublicManager {
     }
 
     /** Request to get order book details<br>
-     * @param pair: pair to fetch details es. XXBTCZUSD
+     * @param pair: pair to fetch details es. BTCEUR
      * @param count: maximum number of asks and bids
      * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getOrderBook">
      *     https://docs.kraken.com/rest/#tag/Market-Data/operation/getOrderBook</a>
@@ -758,7 +931,7 @@ public class KrakenMarketManager extends KrakenPublicManager {
     }
 
     /** Request to get order book details<br>
-     * @param pair: pair to fetch details es. XXBTCZUSD
+     * @param pair: pair to fetch details es. BTCEUR
      * @param count: maximum number of asks and bids
      * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getOrderBook">
      *     https://docs.kraken.com/rest/#tag/Market-Data/operation/getOrderBook</a>
@@ -769,7 +942,7 @@ public class KrakenMarketManager extends KrakenPublicManager {
     }
 
     /** Request to get order book details<br>
-     * @param pair: pair to fetch details es. XXBTCZUSD
+     * @param pair: pair to fetch details es. BTCEUR
      * @param count: maximum number of asks and bids
      * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getOrderBook">
      *     https://docs.kraken.com/rest/#tag/Market-Data/operation/getOrderBook</a>
@@ -780,7 +953,7 @@ public class KrakenMarketManager extends KrakenPublicManager {
     }
 
     /** Request to get recent trades details<br>
-     * @param pair: pair to fetch details es. XXBTCZUSD
+     * @param pair: pair to fetch details es. BTCEUR
      * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getRecentTrades">
      *     https://docs.kraken.com/rest/#tag/Market-Data/operation/getRecentTrades</a>
      * @return recent trades details as {@link String}
@@ -790,7 +963,7 @@ public class KrakenMarketManager extends KrakenPublicManager {
     }
 
     /** Request to get recent trades details<br>
-     * @param pair: pair to fetch details es. XXBTCZUSD
+     * @param pair: pair to fetch details es. BTCEUR
      * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getRecentTrades">
      *     https://docs.kraken.com/rest/#tag/Market-Data/operation/getRecentTrades</a>
      * @return recent trades details as {@link JSONObject}
@@ -800,7 +973,7 @@ public class KrakenMarketManager extends KrakenPublicManager {
     }
 
     /** Request to get recent trades details<br>
-     * @param pair: pair to fetch details es. XXBTCZUSD
+     * @param pair: pair to fetch details es. BTCEUR
      * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getRecentTrades">
      *     https://docs.kraken.com/rest/#tag/Market-Data/operation/getRecentTrades</a>
      * @return recent trades details as {@link Trades} custom object
@@ -810,7 +983,7 @@ public class KrakenMarketManager extends KrakenPublicManager {
     }
 
     /** Request to get recent trades details<br>
-     * @param pair: pair to fetch details es. XXBTCZUSD
+     * @param pair: pair to fetch details es. BTCEUR
      * @param since: since timestamp from fetch data
      * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getRecentTrades">
      *     https://docs.kraken.com/rest/#tag/Market-Data/operation/getRecentTrades</a>
@@ -821,7 +994,7 @@ public class KrakenMarketManager extends KrakenPublicManager {
     }
 
     /** Request to get recent trades details<br>
-     * @param pair: pair to fetch details es. XXBTCZUSD
+     * @param pair: pair to fetch details es. BTCEUR
      * @param since: since timestamp from fetch data
      * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getRecentTrades">
      *     https://docs.kraken.com/rest/#tag/Market-Data/operation/getRecentTrades</a>
@@ -832,7 +1005,7 @@ public class KrakenMarketManager extends KrakenPublicManager {
     }
 
     /** Request to get recent trades details<br>
-     * @param pair: pair to fetch details es. XXBTCZUSD
+     * @param pair: pair to fetch details es. BTCEUR
      * @param since: since timestamp from fetch data
      * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getRecentTrades">
      *     https://docs.kraken.com/rest/#tag/Market-Data/operation/getRecentTrades</a>
@@ -843,7 +1016,7 @@ public class KrakenMarketManager extends KrakenPublicManager {
     }
 
     /** Request to get recent spreads details<br>
-     * @param pair: pair to fetch details es. XXBTCZUSD
+     * @param pair: pair to fetch details es. BTCEUR
      * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getRecentSpreads">
      *     https://docs.kraken.com/rest/#tag/Market-Data/operation/getRecentSpreads</a>
      * @return recent spreads details as {@link String}
@@ -853,7 +1026,7 @@ public class KrakenMarketManager extends KrakenPublicManager {
     }
 
     /** Request to get recent spreads details<br>
-     * @param pair: pair to fetch details es. XXBTCZUSD
+     * @param pair: pair to fetch details es. BTCEUR
      * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getRecentSpreads">
      *     https://docs.kraken.com/rest/#tag/Market-Data/operation/getRecentSpreads</a>
      * @return recent spreads details as {@link JSONObject}
@@ -863,7 +1036,7 @@ public class KrakenMarketManager extends KrakenPublicManager {
     }
 
     /** Request to get recent spreads details<br>
-     * @param pair: pair to fetch details es. XXBTCZUSD
+     * @param pair: pair to fetch details es. BTCEUR
      * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getRecentSpreads">
      *     https://docs.kraken.com/rest/#tag/Market-Data/operation/getRecentSpreads</a>
      * @return recent spreads details as {@link Spreads} custom object
@@ -873,7 +1046,7 @@ public class KrakenMarketManager extends KrakenPublicManager {
     }
 
     /** Request to get recent spreads details<br>
-     * @param pair: pair to fetch details es. XXBTCZUSD
+     * @param pair: pair to fetch details es. BTCEUR
      * @param since: since timestamp from fetch data
      * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getRecentSpreads">
      *     https://docs.kraken.com/rest/#tag/Market-Data/operation/getRecentSpreads</a>
@@ -884,7 +1057,7 @@ public class KrakenMarketManager extends KrakenPublicManager {
     }
 
     /** Request to get recent spreads details<br>
-     * @param pair: pair to fetch details es. XXBTCZUSD
+     * @param pair: pair to fetch details es. BTCEUR
      * @param since: since timestamp from fetch data
      * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getRecentSpreads">
      *     https://docs.kraken.com/rest/#tag/Market-Data/operation/getRecentSpreads</a>
@@ -895,7 +1068,7 @@ public class KrakenMarketManager extends KrakenPublicManager {
     }
 
     /** Request to get recent spreads details<br>
-     * @param pair: pair to fetch details es. XXBTCZUSD
+     * @param pair: pair to fetch details es. BTCEUR
      * @param since: since timestamp from fetch data
      * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getRecentSpreads">
      *     https://docs.kraken.com/rest/#tag/Market-Data/operation/getRecentSpreads</a>
@@ -906,7 +1079,7 @@ public class KrakenMarketManager extends KrakenPublicManager {
     }
 
     /** Method to get prevision of a cryptocurrency in base of day's gap inserted
-     * @param symbol: symbol to calculate forecast es. XXBTCZUSD
+     * @param symbol: symbol to calculate forecast es. BTCEUR
      * @param OHCLInterval: temporal interval of data for the forecast
      * @param intervalDays: days gap for the prevision range
      * @param toleranceValue: tolerance for select similar value compared to lastValue inserted
@@ -922,7 +1095,7 @@ public class KrakenMarketManager extends KrakenPublicManager {
     }
 
     /** Method to get prevision of a cryptocurrency in base of day's gap inserted
-     * @param symbol: symbol to calculate forecast es. XXBTCZUSD
+     * @param symbol: symbol to calculate forecast es. BTCEUR
      * @param OHCLInterval: temporal interval of data for the forecast
      * @param intervalDays: days gap for the prevision range
      * @param toleranceValue: tolerance for select similar value compared to lastValue inserted

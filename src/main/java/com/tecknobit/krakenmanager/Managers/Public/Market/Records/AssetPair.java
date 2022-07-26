@@ -143,7 +143,7 @@ public class AssetPair extends KrakenManager.KrakenResponse {
      * @param marginCall: margin call value
      * @param marginStop: margin stop value
      * @param minOrder: minimum order value
-     * @param pairIndex: symbol of pairs es. XXBTCZUSD
+     * @param pairIndex: symbol of pairs es. BTCEUR
      * **/
     public AssetPair(JSONObject jsonResponse, String altName, String wsName, String aClassBase, String base,
                      String aClassQuote, String quote, String lot, int pairDecimals, int lotDecimals, int lotMultiplier,
