@@ -5,15 +5,47 @@ import org.json.JSONObject;
 
 import java.util.Arrays;
 
+/**
+ * The {@code Asset} class is useful to format Asset data object
+ * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getAssetInfo">
+ *     https://docs.kraken.com/rest/#tag/Market-Data/operation/getAssetInfo</a>
+ * @author N7ghtm4r3 - Tecknobit
+ * **/
+
 public class Asset extends KrakenManager.KrakenResponse {
 
+    /**
+     * {@code CURRENCY_ASSET_CLASS} is constant for currency asset class type
+     * **/
     public static final String CURRENCY_ASSET_CLASS = "currency";
 
+    /**
+     * {@code aClass} is instance that memorizes asset class
+     * **/
     private final String aClass;
+
+    /**
+     * {@code altName} is instance that memorizes alt name of the asset
+     * **/
     private final String altName;
+
+    /**
+     * {@code decimals} is instance that memorizes number of decimals digits
+     * **/
     private final int decimals;
+
+    /**
+     * {@code displayDecimals} is instance that memorizes number of decimals digits displayed
+     * **/
     private final int displayDecimals;
 
+    /** Constructor to init a {@link Asset}
+     * @param jsonResponse: base json response
+     * @param aClass: asset class
+     * @param altName: alt name of the asset
+     * @param decimals: number of decimals digits
+     * @param displayDecimals: number of decimals digits displayed
+     * **/
     public Asset(JSONObject jsonResponse, String aClass, String altName, int decimals, int displayDecimals) {
         super(jsonResponse);
         this.aClass = aClass;
@@ -22,6 +54,12 @@ public class Asset extends KrakenManager.KrakenResponse {
         this.displayDecimals = displayDecimals;
     }
 
+    /** Constructor to init a {@link Asset}
+     * @param aClass: asset class
+     * @param altName: alt name of the asset
+     * @param decimals: number of decimals digits
+     * @param displayDecimals: number of decimals digits displayed
+     * **/
     public Asset(String aClass, String altName, int decimals, int displayDecimals) {
         super(null);
         this.aClass = aClass;
@@ -30,6 +68,9 @@ public class Asset extends KrakenManager.KrakenResponse {
         this.displayDecimals = displayDecimals;
     }
 
+    /** Constructor to init a {@link Asset}
+     * @param asset: asset data in JSON format
+     * **/
     public Asset(JSONObject asset) {
         super(null);
         aClass = asset.getString("aclass");

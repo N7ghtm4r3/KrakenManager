@@ -7,12 +7,36 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+/**
+ * The {@code Book} class is useful to format Book data object
+ * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getOrderBook">
+ *     https://docs.kraken.com/rest/#tag/Market-Data/operation/getOrderBook</a>
+ * @author N7ghtm4r3 - Tecknobit
+ * **/
+
 public class Book extends KrakenManager.KrakenResponse {
 
+    /**
+     * {@code symbol} is instance that memorizes symbol value
+     * **/
     private final String symbol;
+
+    /**
+     * {@code asks} is instance that memorizes list of {@link BookElement} for asks
+     * **/
     private final ArrayList<BookElement> asks;
+
+    /**
+     * {@code bids} is instance that memorizes list of {@link BookElement} for bids
+     * **/
     private final ArrayList<BookElement> bids;
 
+    /** Constructor to init a {@link Book}
+     * @param jsonResponse: base json response
+     * @param symbol: symbol value
+     * @param asks: list of {@link BookElement} for asks
+     * @param bids: list of {@link BookElement} for bids
+     * **/
     public Book(JSONObject jsonResponse, String symbol, ArrayList<BookElement> asks, ArrayList<BookElement> bids) {
         super(jsonResponse);
         this.symbol = symbol;
@@ -20,6 +44,11 @@ public class Book extends KrakenManager.KrakenResponse {
         this.bids = bids;
     }
 
+    /** Constructor to init a {@link Book}
+     * @param symbol: symbol value
+     * @param asks: list of {@link BookElement} for asks
+     * @param bids: list of {@link BookElement} for bids
+     * **/
     public Book(String symbol, ArrayList<BookElement> asks, ArrayList<BookElement> bids) {
         super(null);
         this.symbol = symbol;
@@ -27,6 +56,9 @@ public class Book extends KrakenManager.KrakenResponse {
         this.bids = bids;
     }
 
+    /** Constructor to init a {@link Book}
+     * @param jsonBook: base json response
+     * **/
     public Book(JSONObject jsonBook) {
         super(jsonBook);
         JSONObject book = getResult();
@@ -36,6 +68,10 @@ public class Book extends KrakenManager.KrakenResponse {
         bids = assembleBookElementsList(lists.getJSONArray("bids"));
     }
 
+    /** Method to assemble a book element list
+     * @param jsonList: jsonObject obtained by response request
+     * @return book element list as {@link ArrayList} of {@link BookElement}
+     * **/
     private ArrayList<BookElement> assembleBookElementsList(JSONArray jsonList){
         ArrayList<BookElement> bookElements = new ArrayList<>();
         for (int j = 0; j < jsonList.length(); j++){
@@ -71,12 +107,33 @@ public class Book extends KrakenManager.KrakenResponse {
                 '}';
     }
 
+    /**
+     * The {@code BookElement} class is useful to format a book element object <br>
+     * This class represents ask and bid.
+     * **/
+
     public static class BookElement {
 
+        /**
+         * {@code price} is instance that memorizes price value
+         * **/
         private final double price;
+
+        /**
+         * {@code volume} is instance that memorizes volume value
+         * **/
         private final double volume;
+
+        /**
+         * {@code timestamp} is instance that memorizes timestamp value
+         * **/
         private final long timestamp;
 
+        /** Constructor to init a {@link BookElement}
+         * @param price: price value
+         * @param volume: volume value
+         * @param timestamp: timestamp value
+         * **/
         public BookElement(double price, double volume, long timestamp) {
             this.price = price;
             this.volume = volume;
