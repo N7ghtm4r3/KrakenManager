@@ -203,13 +203,4 @@ public class KrakenManager {
 
     }
 
-    // TODO: 25/07/2022 IMPORT FROM LIBRARY
-    public String assembleParamsList(String separator, String... assets){
-        StringBuilder params = new StringBuilder();
-        for (String symbol : assets)
-            params.append(symbol).append(separator);
-        params.replace(params.length() - 1, params.length(),"");
-        return params.toString();
-    }
-
 }

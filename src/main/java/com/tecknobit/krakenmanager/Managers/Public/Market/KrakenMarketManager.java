@@ -24,7 +24,14 @@ import static com.tecknobit.krakenmanager.Constants.EndpointsList.*;
 
 public class KrakenMarketManager extends KrakenPublicManager {
 
+    /**
+     * {@code symbols} is instance that memorizes symbols list set
+     * **/
     private Set<String> symbols;
+
+    /**
+     * {@code previousLoadSymbols} is instance that memorizes previous timestamp of load symbols list set
+     * **/
     private long previousLoadSymbols;
 
     /** Constructor to init a {@link KrakenMarketManager}
@@ -173,7 +180,7 @@ public class KrakenMarketManager extends KrakenPublicManager {
      * @return assets list as {@link String}
      * **/
     public String getAssets(String[] assets) throws IOException {
-        return sendGetRequest(GET_ASSETS_ENDPOINT + "?asset=" + assembleParamsList(",", assets));
+        return sendGetRequest(GET_ASSETS_ENDPOINT + "?asset=" + apiRequest.assembleParamsList(",", assets));
     }
 
     /** Request to get assets list<br>
@@ -264,8 +271,8 @@ public class KrakenMarketManager extends KrakenPublicManager {
      * @return assets list as {@link String}
      * **/
     public String getAssets(String[] assets, String aClass) throws IOException {
-        return sendGetRequest(GET_ASSETS_ENDPOINT + "?asset=" + assembleParamsList(",", assets) +
-                "&aclass=" + aClass);
+        return sendGetRequest(GET_ASSETS_ENDPOINT + "?asset=" + apiRequest.assembleParamsList(",", assets)
+                + "&aclass=" + aClass);
     }
 
     /** Request to get assets list<br>
@@ -442,7 +449,7 @@ public class KrakenMarketManager extends KrakenPublicManager {
      * @return assets pairs list as {@link String}
      * **/
     public String getAssetPairs(String[] pairs) throws IOException {
-        return sendGetRequest(GET_ASSET_PAIRS_ENDPOINT + "?pair=" + assembleParamsList(",", pairs));
+        return sendGetRequest(GET_ASSET_PAIRS_ENDPOINT + "?pair=" + apiRequest.assembleParamsList(",", pairs));
     }
 
     /** Request to get assets pairs list<br>
@@ -533,7 +540,7 @@ public class KrakenMarketManager extends KrakenPublicManager {
      * @return assets pairs list as {@link String}
      * **/
     public String getAssetPairs(String[] pairs, String info) throws IOException {
-        return sendGetRequest(GET_ASSET_PAIRS_ENDPOINT + "?pair=" + assembleParamsList(",", pairs) +
+        return sendGetRequest(GET_ASSET_PAIRS_ENDPOINT + "?pair=" + apiRequest.assembleParamsList(",", pairs) +
                 "&info=" + info);
     }
 
