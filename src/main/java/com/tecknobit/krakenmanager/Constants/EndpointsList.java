@@ -54,4 +54,14 @@ public class EndpointsList {
      * **/
     public static final String GET_RECENT_SPREADS_ENDPOINT = "Spread";
 
+    /**
+     * {@code GET_ACCOUNT_BALANCE_ENDPOINT} is constant for GET_ACCOUNT_BALANCE_ENDPOINT's endpoint
+     * **/
+    public static final String GET_ACCOUNT_BALANCE_ENDPOINT = "Balance";
+
+    /**
+     * {@code GET_TRADE_BALANCE_ENDPOINT} is constant for GET_TRADE_BALANCE_ENDPOINT's endpoint
+     * **/
+    public static final String GET_TRADE_BALANCE_ENDPOINT = "TradeBalance";
+
 }

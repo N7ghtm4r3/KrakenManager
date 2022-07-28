@@ -1,9 +1,15 @@
 package com.tecknobit.krakenmanager.Managers.Private;
 
-import com.tecknobit.apimanager.Manager.APIRequest;
 import com.tecknobit.apimanager.Manager.APIRequest.Headers;
 import com.tecknobit.apimanager.Manager.APIRequest.Params;
 import com.tecknobit.krakenmanager.Managers.KrakenManager;
+
+import javax.crypto.Mac;
+import javax.crypto.spec.SecretKeySpec;
+import java.security.MessageDigest;
+import java.util.Base64;
+
+import static com.tecknobit.apimanager.Manager.APIRequest.POST_METHOD;
 
 /**
  *  The {@code KrakenPrivateManager} class is useful to manage all private KrakenManager's endpoints
@@ -15,8 +21,19 @@ import com.tecknobit.krakenmanager.Managers.KrakenManager;
 
 public class KrakenPrivateManager extends KrakenManager {
 
+    /**
+     * {@code API_KEY_HEADER} is constant for API-Key header
+     * **/
     public static final String API_KEY_HEADER = "API-Key";
+
+    /**
+     * {@code API_SIGN_HEADER} is constant for API-Sign header
+     * **/
     public static final String API_SIGN_HEADER = "API-Sign";
+
+    /**
+     * {@code CONTENT_TYPE_HEADER} is constant for Content-Type header
+     * **/
     public static final String CONTENT_TYPE_HEADER = "Content-Type";
 
     /**
@@ -29,7 +46,10 @@ public class KrakenPrivateManager extends KrakenManager {
      * **/
     protected final String apiSign;
 
-    private Headers headers;
+    /**
+     * {@code headers} is the instance that contains headers for private api requests
+     * **/
+    private final Headers headers;
 
     /**
      * Constructor to init a {@link KrakenPrivateManager}
@@ -42,6 +62,8 @@ public class KrakenPrivateManager extends KrakenManager {
         super(defaultErrorMessage, requestTimeout);
         this.apiKey = apiKey;
         this.apiSign = apiSign;
+        headers = new Headers();
+        setHeaders();
     }
 
     /**
@@ -54,6 +76,8 @@ public class KrakenPrivateManager extends KrakenManager {
         super(defaultErrorMessage);
         this.apiKey = apiKey;
         this.apiSign = apiSign;
+        headers = new Headers();
+        setHeaders();
     }
 
     /**
@@ -66,6 +90,8 @@ public class KrakenPrivateManager extends KrakenManager {
         super(requestTimeout);
         this.apiKey = apiKey;
         this.apiSign = apiSign;
+        headers = new Headers();
+        setHeaders();
     }
 
     /** Constructor to init a {@link KrakenPrivateManager} <br>
@@ -76,6 +102,16 @@ public class KrakenPrivateManager extends KrakenManager {
         super();
         this.apiKey = apiKey;
         this.apiSign = apiSign;
+        headers = new Headers();
+        setHeaders();
+    }
+
+    /** Method to set base headers for request<br>
+     * Any params required
+     * **/
+    private void setHeaders(){
+        headers.addHeader(API_KEY_HEADER, apiKey);
+        headers.addHeader(CONTENT_TYPE_HEADER, "application/x-www-form-urlencoded; charset=utf-8'");
     }
 
     /** Method to send a POST request<br>
@@ -84,17 +120,30 @@ public class KrakenPrivateManager extends KrakenManager {
      * @return response as {@link String}
      * **/
     public String sendPostRequest(String endpoint, Params bodyParams) throws Exception {
-        setHeaders();
-        headers.addHeader(API_SIGN_HEADER, apiRequest.getBase64Signature(apiSign, "/0/private/" + endpoint + bodyParams.values()));
-        apiRequest.sendBodyAPIRequest(BASE_ENDPOINT + "/private/" + endpoint, APIRequest.POST_METHOD, headers, bodyParams);
+        if(bodyParams == null)
+            bodyParams = new Params();
+        bodyParams.addParam("nonce", System.currentTimeMillis());
+        headers.addHeader(API_SIGN_HEADER, getSignature(endpoint, bodyParams));
+        apiRequest.sendBodyAPIRequest(BASE_ENDPOINT + "/private/" + endpoint, POST_METHOD, headers, bodyParams);
         return apiRequest.getResponse();
     }
 
-    private void setHeaders(){
-        if(headers == null){
-            headers = new Headers();
-            headers.addHeader(API_KEY_HEADER, apiKey);
-            headers.addHeader(CONTENT_TYPE_HEADER, "application/x-www-form-urlencoded; charset=utf-8'");
+    /** Method to get signature for request<br>
+     * @param path: endpoint of the request es. Balance
+     * @param data: payload of the request
+     * @return signature value as {@link String} es. 4/dpxb3iT4tp/ZCVEwSnEsLxx0bqyhLpdfOpc6fn7OR8+UClSV5n9E6aSS8MPtnRfp32bAb0nmbRn6H8ndwLUQ==
+     * **/
+    private String getSignature(String path, Params data) {
+        try {
+            // TODO: 28/07/2022 IMPORT FROM LIBRARY MESSAGE AND SHA256 METHOD
+            MessageDigest messageDigest = MessageDigest.getInstance("SHA-256");
+            messageDigest.update((data.get("nonce") + apiRequest.assembleBodyParams(data)).getBytes());
+            Mac mac = Mac.getInstance("HmacSHA512");
+            mac.init(new SecretKeySpec(Base64.getDecoder().decode(apiSign.getBytes()), "HmacSHA512"));
+            mac.update(("/0/private/" + path).getBytes());
+            return new String(Base64.getEncoder().encode(mac.doFinal(messageDigest.digest())));
+        } catch (Exception e) {
+            return null;
         }
     }
 
