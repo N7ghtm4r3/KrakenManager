@@ -89,4 +89,24 @@ public class EndpointsList {
      * **/
     public static final String QUERY_TRADES_ENDPOINT = "QueryTrades";
 
+    /**
+     * {@code GET_OPEN_POSITIONS_ENDPOINT} is constant for GET_OPEN_POSITIONS_ENDPOINT's endpoint
+     * **/
+    public static final String GET_OPEN_POSITIONS_ENDPOINT = "OpenPositions";
+
+    /**
+     * {@code GET_LEDGERS_ENDPOINT} is constant for GET_LEDGERS_ENDPOINT's endpoint
+     * **/
+    public static final String GET_LEDGERS_ENDPOINT = "Ledgers";
+
+    /**
+     * {@code QUERY_LEDGERS_ENDPOINT} is constant for QUERY_LEDGERS_ENDPOINT's endpoint
+     * **/
+    public static final String QUERY_LEDGERS_ENDPOINT = "QueryLedgers";
+
+    /**
+     * {@code GET_TRADE_VOLUME_ENDPOINT} is constant for GET_TRADE_VOLUME_ENDPOINT's endpoint
+     * **/
+    public static final String GET_TRADE_VOLUME_ENDPOINT = "TradeVolume";
+
 }

@@ -3,10 +3,13 @@ package com.tecknobit.krakenmanager.Managers.Private.UserData;
 import com.tecknobit.krakenmanager.Managers.Private.KrakenPrivateManager;
 import com.tecknobit.krakenmanager.Managers.Private.UserData.Records.Balance.AccountBalance;
 import com.tecknobit.krakenmanager.Managers.Private.UserData.Records.Balance.TradeBalance;
+import com.tecknobit.krakenmanager.Managers.Private.UserData.Records.Ledger;
+import com.tecknobit.krakenmanager.Managers.Private.UserData.Records.OpenPosition;
 import com.tecknobit.krakenmanager.Managers.Private.UserData.Records.Orders.ClosedOrder;
 import com.tecknobit.krakenmanager.Managers.Private.UserData.Records.Orders.Order;
 import com.tecknobit.krakenmanager.Managers.Private.UserData.Records.Trades.HistoryTrade;
 import com.tecknobit.krakenmanager.Managers.Private.UserData.Records.Trades.QueryTrade;
+import com.tecknobit.krakenmanager.Managers.Private.UserData.Records.Trades.TradeVolume;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
@@ -247,6 +250,137 @@ public class KrakenUserDataManager extends KrakenPrivateManager {
         for (String trade : jsonTrades.keySet())
             trades.add(new QueryTrade(jsonTrades.getJSONObject(trade), trade));
         return trades;
+    }
+
+    public String getOpenPositions(boolean doCalcs) throws Exception {
+        Params params = new Params();
+        if(doCalcs)
+            params.addParam("docalcs", true);
+        return sendPostRequest(GET_OPEN_POSITIONS_ENDPOINT, params);
+    }
+
+    public JSONObject getOpenPositionsJSON(boolean doCalcs) throws Exception {
+        return new JSONObject(getOpenPositions(doCalcs));
+    }
+
+    public ArrayList<OpenPosition> getOpenPositionsList(boolean doCalcs) throws Exception {
+        return assembleOpenPositionsList(getOpenPositionsJSON(doCalcs));
+    }
+
+    public String getOpenPositions(boolean doCalcs, String txId) throws Exception {
+        Params params = new Params();
+        if(doCalcs)
+            params.addParam("docalcs", true);
+        params.addParam("txid", txId);
+        return sendPostRequest(GET_OPEN_POSITIONS_ENDPOINT, params);
+    }
+
+    public JSONObject getOpenPositionsJSON(boolean doCalcs, String txId) throws Exception {
+        return new JSONObject(getOpenPositions(doCalcs, txId));
+    }
+
+    public ArrayList<OpenPosition> getOpenPositionsList(boolean doCalcs, String txId) throws Exception {
+        return assembleOpenPositionsList(getOpenPositionsJSON(doCalcs, txId));
+    }
+
+    private ArrayList<OpenPosition> assembleOpenPositionsList(JSONObject jsonPositions) {
+        ArrayList<OpenPosition> openPositions = new ArrayList<>();
+        jsonPositions = jsonPositions.getJSONObject("result");
+        for (String positionId : jsonPositions.keySet())
+            openPositions.add(new OpenPosition(jsonPositions.getJSONObject(positionId), positionId));
+        return openPositions;
+    }
+
+    // TODO: 29/07/2022 INSERT COUNT CORRESPONDING TO LIST SIZE INTO DOCUSTRING
+    public String getLedgersInfo() throws Exception {
+        return sendPostRequest(GET_LEDGERS_ENDPOINT, null);
+    }
+
+    public JSONObject getLedgersInfoJSON() throws Exception {
+        return new JSONObject(getLedgersInfo());
+    }
+
+    public ArrayList<Ledger> getLedgersInfoList() throws Exception {
+        return assembleLedgersList(getLedgersInfoJSON().getJSONObject("result").getJSONObject("ledger"));
+    }
+
+    public String getLedgersInfo(Params params) throws Exception {
+        return sendPostRequest(GET_LEDGERS_ENDPOINT, params);
+    }
+
+    public JSONObject getLedgersInfoJSON(Params params) throws Exception {
+        return new JSONObject(getLedgersInfo(params));
+    }
+
+    public ArrayList<Ledger> getLedgersInfoList(Params params) throws Exception {
+        return assembleLedgersList(getLedgersInfoJSON(params).getJSONObject("result").getJSONObject("ledger"));
+    }
+
+    public String getQueryLedgers(boolean insertTrades, String... id) throws Exception {
+        Params params = new Params();
+        if(insertTrades)
+            params.addParam("trades", true);
+        params.addParam("id", apiRequest.assembleParamsList(",", id));
+        return sendPostRequest(QUERY_LEDGERS_ENDPOINT, params);
+    }
+
+    public JSONObject getQueryLedgersJSON(boolean insertTrades, String... id) throws Exception {
+        return new JSONObject(getQueryLedgers(insertTrades, id));
+    }
+
+    public ArrayList<Ledger> getQueryLedgersList(boolean insertTrades, String... id) throws Exception {
+        return assembleLedgersList(getQueryLedgersJSON(insertTrades, id).getJSONObject("result"));
+    }
+
+    public String getQueryLedgers(boolean insertTrades, ArrayList<String> id) throws Exception {
+       return getQueryLedgers(insertTrades, id.toArray(new String[id.size()]));
+    }
+
+    public JSONObject getQueryLedgersJSON(boolean insertTrades, ArrayList<String> id) throws Exception {
+        return new JSONObject(getQueryLedgers(insertTrades, id));
+    }
+
+    public ArrayList<Ledger> getQueryLedgersList(boolean insertTrades, ArrayList<String> id) throws Exception {
+        return assembleLedgersList(getQueryLedgersJSON(insertTrades, id).getJSONObject("result"));
+    }
+
+    private ArrayList<Ledger> assembleLedgersList(JSONObject jsonLedgers) {
+        ArrayList<Ledger> ledgers = new ArrayList<>();
+        for (String ledgerId : jsonLedgers.keySet())
+            ledgers.add(new Ledger(jsonLedgers.getJSONObject(ledgerId), ledgerId));
+        return ledgers;
+    }
+
+    public String getTradeVolume(String pair, boolean insertFeeInfo) throws Exception {
+        Params params = new Params();
+        if(insertFeeInfo)
+            params.addParam("fee-info", true);
+        return sendPostRequest(GET_TRADE_VOLUME_ENDPOINT + "?pair=" + pair, params);
+    }
+
+    public JSONObject getTradeVolumeJSON(String pair, boolean insertFeeInfo) throws Exception {
+        return new JSONObject(getTradeVolume(pair, insertFeeInfo));
+    }
+
+    public TradeVolume getTradeVolumeObject(String pair, boolean insertFeeInfo) throws Exception {
+        return new TradeVolume(getTradeVolumeJSON(pair, insertFeeInfo));
+    }
+
+    public String getTradeVolume(String pair, boolean insertFeeInfo, String... pairs) throws Exception {
+        Params params = new Params();
+        if(insertFeeInfo)
+            params.addParam("fee-info", true);
+        params.addParam("pair", apiRequest.assembleParamsList(",", pairs));
+        return sendPostRequest(GET_TRADE_VOLUME_ENDPOINT + "?pair=" + pair, params);
+    }
+
+    public JSONObject getTradeVolumeJSON(String pair, boolean insertFeeInfo, String... pairs) throws Exception {
+        System.out.println(getTradeVolumeJSON(pair, insertFeeInfo));
+        return new JSONObject(getTradeVolume(pair, insertFeeInfo, pairs));
+    }
+
+    public TradeVolume getTradeVolumeObject(String pair, boolean insertFeeInfo, String... pairs) throws Exception {
+        return new TradeVolume(getTradeVolumeJSON(pair, insertFeeInfo, pairs));
     }
 
 }
