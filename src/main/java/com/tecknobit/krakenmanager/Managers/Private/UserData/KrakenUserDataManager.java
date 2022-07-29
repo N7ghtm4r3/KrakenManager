@@ -375,7 +375,6 @@ public class KrakenUserDataManager extends KrakenPrivateManager {
     }
 
     public JSONObject getTradeVolumeJSON(String pair, boolean insertFeeInfo, String... pairs) throws Exception {
-        System.out.println(getTradeVolumeJSON(pair, insertFeeInfo));
         return new JSONObject(getTradeVolume(pair, insertFeeInfo, pairs));
     }
 
