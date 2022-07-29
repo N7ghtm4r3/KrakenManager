@@ -1,4 +1,4 @@
-package com.tecknobit.krakenmanager.Managers.Private.UserData.Records;
+package com.tecknobit.krakenmanager.Managers.Private.UserData.Records.Balance;
 
 import com.tecknobit.apimanager.Tools.Formatters.JsonHelper;
 import com.tecknobit.krakenmanager.Managers.KrakenManager;

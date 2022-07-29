@@ -1,10 +1,12 @@
 package com.tecknobit.krakenmanager.Managers.Public;
 
 import com.tecknobit.krakenmanager.Managers.KrakenManager;
+import org.json.JSONObject;
 
 import java.io.IOException;
 
 import static com.tecknobit.apimanager.Manager.APIRequest.GET_METHOD;
+import static com.tecknobit.apimanager.Tools.Formatters.JsonHelper.getJSONObject;
 
 /**
  *  The {@code KrakenPublicManager} class is useful to manage all public KrakenManager's endpoints
@@ -51,7 +53,12 @@ public class KrakenPublicManager extends KrakenManager {
      * **/
     public String sendGetRequest(String endpoint) throws IOException {
         apiRequest.sendAPIRequest(BASE_ENDPOINT + "/public/" + endpoint, GET_METHOD);
-        return apiRequest.getResponse();
+        JSONObject response = apiRequest.getJSONResponse();
+        if(getJSONObject(response, "result") == null) {
+            errorResponse = response.getJSONArray("error").toString();
+            throw new IOException();
+        }
+        return response.toString();
     }
 
 }

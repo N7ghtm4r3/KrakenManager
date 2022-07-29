@@ -64,4 +64,29 @@ public class EndpointsList {
      * **/
     public static final String GET_TRADE_BALANCE_ENDPOINT = "TradeBalance";
 
+    /**
+     * {@code GET_OPEN_ORDERS_ENDPOINT} is constant for GET_OPEN_ORDERS_ENDPOINT's endpoint
+     * **/
+    public static final String GET_OPEN_ORDERS_ENDPOINT = "OpenOrders";
+
+    /**
+     * {@code GET_CLOSED_ORDERS_ENDPOINT} is constant for GET_CLOSED_ORDERS_ENDPOINT's endpoint
+     * **/
+    public static final String GET_CLOSED_ORDERS_ENDPOINT = "ClosedOrders";
+
+    /**
+     * {@code QUERY_ORDERS_ENDPOINT} is constant for QUERY_ORDERS_ENDPOINT's endpoint
+     * **/
+    public static final String QUERY_ORDERS_ENDPOINT = "QueryOrders";
+
+    /**
+     * {@code GET_TRADES_HISTORY_ENDPOINT} is constant for GET_TRADES_HISTORY_ENDPOINT's endpoint
+     * **/
+    public static final String GET_TRADES_HISTORY_ENDPOINT = "TradesHistory";
+
+    /**
+     * {@code QUERY_TRADES_ENDPOINT} is constant for QUERY_TRADES_ENDPOINT's endpoint
+     * **/
+    public static final String QUERY_TRADES_ENDPOINT = "QueryTrades";
+
 }

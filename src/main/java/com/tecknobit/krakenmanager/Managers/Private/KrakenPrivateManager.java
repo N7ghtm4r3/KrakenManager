@@ -3,13 +3,16 @@ package com.tecknobit.krakenmanager.Managers.Private;
 import com.tecknobit.apimanager.Manager.APIRequest.Headers;
 import com.tecknobit.apimanager.Manager.APIRequest.Params;
 import com.tecknobit.krakenmanager.Managers.KrakenManager;
+import org.json.JSONObject;
 
 import javax.crypto.Mac;
 import javax.crypto.spec.SecretKeySpec;
+import java.io.IOException;
 import java.security.MessageDigest;
 import java.util.Base64;
 
 import static com.tecknobit.apimanager.Manager.APIRequest.POST_METHOD;
+import static com.tecknobit.apimanager.Tools.Formatters.JsonHelper.getJSONObject;
 
 /**
  *  The {@code KrakenPrivateManager} class is useful to manage all private KrakenManager's endpoints
@@ -125,7 +128,12 @@ public class KrakenPrivateManager extends KrakenManager {
         bodyParams.addParam("nonce", System.currentTimeMillis());
         headers.addHeader(API_SIGN_HEADER, getSignature(endpoint, bodyParams));
         apiRequest.sendBodyAPIRequest(BASE_ENDPOINT + "/private/" + endpoint, POST_METHOD, headers, bodyParams);
-        return apiRequest.getResponse();
+        JSONObject response = apiRequest.getJSONResponse();
+        if(getJSONObject(response, "result") == null) {
+            errorResponse = response.getJSONArray("error").toString();
+            throw new IOException();
+        }
+        return response.toString();
     }
 
     /** Method to get signature for request<br>

@@ -33,6 +33,11 @@ public class KrakenManager {
      * **/
     protected final TradingTools tradingTools;
 
+    /**
+     * {@code errorResponse} is instance for responses error
+     * **/
+    protected String errorResponse;
+
     /** Constructor to init a {@link KrakenManager}
      * @param defaultErrorMessage: custom error to show when is not a request error
      * @param requestTimeout: custom timeout for request
@@ -79,14 +84,17 @@ public class KrakenManager {
      * @return error of the response as {@link String}
      * **/
     public String getErrorResponse(){
-        return apiRequest.getErrorResponse();
+        // TODO: 29/07/2022 IMPORT FROM LIBRARY 
+        if(errorResponse == null)
+            return "Error is not in api request, check out your code";
+        return errorResponse;
     }
 
     /** Method to print error response of request <br>
      * Any params required
      * **/
     public void printErrorResponse(){
-        apiRequest.printErrorResponse();
+        System.out.println(getErrorResponse());
     }
 
     /** Method to round a value
