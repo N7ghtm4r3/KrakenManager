@@ -7,9 +7,12 @@ import com.tecknobit.krakenmanager.Managers.Private.UserData.Records.Ledger;
 import com.tecknobit.krakenmanager.Managers.Private.UserData.Records.OpenPosition;
 import com.tecknobit.krakenmanager.Managers.Private.UserData.Records.Orders.ClosedOrder;
 import com.tecknobit.krakenmanager.Managers.Private.UserData.Records.Orders.Order;
+import com.tecknobit.krakenmanager.Managers.Private.UserData.Records.ReportStatus;
 import com.tecknobit.krakenmanager.Managers.Private.UserData.Records.Trades.HistoryTrade;
 import com.tecknobit.krakenmanager.Managers.Private.UserData.Records.Trades.QueryTrade;
 import com.tecknobit.krakenmanager.Managers.Private.UserData.Records.Trades.TradeVolume;
+import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
@@ -380,6 +383,76 @@ public class KrakenUserDataManager extends KrakenPrivateManager {
 
     public TradeVolume getTradeVolumeObject(String pair, boolean insertFeeInfo, String... pairs) throws Exception {
         return new TradeVolume(getTradeVolumeJSON(pair, insertFeeInfo, pairs));
+    }
+
+    public String addExport(String report, String description) throws Exception {
+        Params params = new Params();
+        params.addParam("report", report);
+        params.addParam("description", description);
+        return sendPostRequest(ADD_EXPORT_ENDPOINT, params);
+    }
+
+    public JSONObject addExportJSON(String report, String description) throws Exception {
+        return new JSONObject(addExport(report, description));
+    }
+
+    public String getExportIdAdded(String report, String description) throws Exception {
+        return addExportJSON(report, description).getJSONObject("result").getString("id");
+    }
+
+    public String addExport(String report, String description, Params params) throws Exception {
+        params.addParam("report", report);
+        params.addParam("description", description);
+        return sendPostRequest(ADD_EXPORT_ENDPOINT, params);
+    }
+
+    public JSONObject addExportJSON(String report, String description, Params params) throws Exception {
+        return new JSONObject(addExport(report, description, params));
+    }
+
+    public String getExportIdAdded(String report, String description, Params params) throws Exception {
+        return addExportJSON(report, description, params).getJSONObject("result").getString("id");
+    }
+
+    public String getExportStatus(String report) throws Exception {
+        Params params = new Params();
+        params.addParam("report", report);
+        return sendPostRequest(GET_EXPORT_STATUS_ENDPOINT, params);
+    }
+
+    public JSONObject getExportStatusJSON(String report) throws Exception {
+        return new JSONObject(getExportStatus(report));
+    }
+
+    public ArrayList<ReportStatus> getExportStatusList(String report) throws Exception {
+        ArrayList<ReportStatus> reports = new ArrayList<>();
+        JSONArray jsonReports = getExportStatusJSON(report).getJSONArray("result");
+        for (int j = 0; j < jsonReports.length(); j++)
+            reports.add(new ReportStatus(jsonReports.getJSONObject(j)));
+        return reports;
+    }
+
+    public <T> T retrieveDataExport(String id){
+        return null;
+    }
+
+    public String deleteExportReport(String id, String type) throws Exception {
+        Params params = new Params();
+        params.addParam("id", id);
+        params.addParam("type", type);
+        return sendPostRequest(DELETE_EXPORT_ENDPOINT, params);
+    }
+
+    public JSONObject deleteExportReportJSON(String id, String type) throws Exception {
+        return new JSONObject(deleteExportReport(id, type));
+    }
+
+    public boolean getDeleteExportReportConfirm(String id, String type) throws Exception {
+        try {
+            return deleteExportReportJSON(id, type).getJSONObject("result").getBoolean(type);
+        }catch (JSONException e){
+            return false;
+        }
     }
 
 }

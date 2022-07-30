@@ -109,4 +109,24 @@ public class EndpointsList {
      * **/
     public static final String GET_TRADE_VOLUME_ENDPOINT = "TradeVolume";
 
+    /**
+     * {@code ADD_EXPORT_ENDPOINT} is constant for ADD_EXPORT_ENDPOINT's endpoint
+     * **/
+    public static final String ADD_EXPORT_ENDPOINT = "AddExport";
+
+    /**
+     * {@code GET_EXPORT_STATUS_ENDPOINT} is constant for GET_EXPORT_STATUS_ENDPOINT's endpoint
+     * **/
+    public static final String GET_EXPORT_STATUS_ENDPOINT = "ExportStatus";
+
+    /**
+     * {@code RETRIEVE_EXPORT_ENDPOINT} is constant for RETRIEVE_EXPORT_ENDPOINT's endpoint
+     * **/
+    public static final String RETRIEVE_EXPORT_ENDPOINT = "RetrieveExport";
+
+    /**
+     * {@code DELETE_EXPORT_ENDPOINT} is constant for DELETE_EXPORT_ENDPOINT's endpoint
+     * **/
+    public static final String DELETE_EXPORT_ENDPOINT = "RemoveExport";
+
 }

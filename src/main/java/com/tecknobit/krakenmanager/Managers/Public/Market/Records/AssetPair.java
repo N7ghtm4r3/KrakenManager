@@ -68,11 +68,6 @@ public class AssetPair extends KrakenManager.KrakenResponse {
     private final String quote;
 
     /**
-     * {@code lot} is instance that memorizes lot value
-     * **/
-    private final String lot;
-
-    /**
      * {@code pairDecimals} is instance that memorizes pair decimals value
      * **/
     private final int pairDecimals;
@@ -135,7 +130,6 @@ public class AssetPair extends KrakenManager.KrakenResponse {
      * @param base: base value
      * @param aClassQuote: asset class quote value
      * @param quote: quote value
-     * @param lot: lot value
      * @param pairDecimals: pair decimals value
      * @param lotDecimals: lot decimals value
      * @param lotMultiplier: lot multiplier value
@@ -146,7 +140,7 @@ public class AssetPair extends KrakenManager.KrakenResponse {
      * @param pairIndex: symbol of pairs es. BTCEUR
      * **/
     public AssetPair(JSONObject jsonResponse, String altName, String wsName, String aClassBase, String base,
-                     String aClassQuote, String quote, String lot, int pairDecimals, int lotDecimals, int lotMultiplier,
+                     String aClassQuote, String quote, int pairDecimals, int lotDecimals, int lotMultiplier,
                      String feeVolumeCurrency, double marginCall, double marginStop, double minOrder, String pairIndex) {
         super(jsonResponse);
         this.altName = altName;
@@ -155,7 +149,6 @@ public class AssetPair extends KrakenManager.KrakenResponse {
         this.base = base;
         this.aClassQuote = aClassQuote;
         this.quote = quote;
-        this.lot = lot;
         this.pairDecimals = pairDecimals;
         this.lotDecimals = lotDecimals;
         this.lotMultiplier = lotMultiplier;
@@ -186,7 +179,6 @@ public class AssetPair extends KrakenManager.KrakenResponse {
      * @param base: base value
      * @param aClassQuote: asset class quote value
      * @param quote: quote value
-     * @param lot: lot value
      * @param pairDecimals: pair decimals value
      * @param lotDecimals: lot decimals value
      * @param lotMultiplier: lot multiplier value
@@ -200,7 +192,7 @@ public class AssetPair extends KrakenManager.KrakenResponse {
      * @param minOrder: minimum order value
      * **/
     public AssetPair(String altName, String wsName, String aClassBase, String base, String aClassQuote, String quote,
-                     String lot, int pairDecimals, int lotDecimals, int lotMultiplier, int[] leverageBuy, int[] leverageSell,
+                     int pairDecimals, int lotDecimals, int lotMultiplier, int[] leverageBuy, int[] leverageSell,
                      ArrayList<Fee> fees, ArrayList<Fee> makerFees, String feeVolumeCurrency, double marginCall,
                      double marginStop, double minOrder) {
         super(null);
@@ -210,7 +202,6 @@ public class AssetPair extends KrakenManager.KrakenResponse {
         this.base = base;
         this.aClassQuote = aClassQuote;
         this.quote = quote;
-        this.lot = lot;
         this.pairDecimals = pairDecimals;
         this.lotDecimals = lotDecimals;
         this.lotMultiplier = lotMultiplier;
@@ -236,7 +227,6 @@ public class AssetPair extends KrakenManager.KrakenResponse {
         base = asset.getString("base");
         aClassQuote = asset.getString("aclass_quote");
         quote = asset.getString("quote");
-        lot = asset.getString("lot");
         pairDecimals = asset.getInt("pair_decimals");
         lotDecimals = asset.getInt("lot_decimals");
         lotMultiplier = asset.getInt("lot_multiplier");
@@ -301,11 +291,6 @@ public class AssetPair extends KrakenManager.KrakenResponse {
         return quote;
     }
 
-    @Deprecated
-    public String getLot() {
-        return lot;
-    }
-
     public int getPairDecimals() {
         return pairDecimals;
     }
@@ -359,7 +344,6 @@ public class AssetPair extends KrakenManager.KrakenResponse {
                 ", base='" + base + '\'' +
                 ", aClassQuote='" + aClassQuote + '\'' +
                 ", quote='" + quote + '\'' +
-                ", lot='" + lot + '\'' +
                 ", pairDecimals=" + pairDecimals +
                 ", lotDecimals=" + lotDecimals +
                 ", lotMultiplier=" + lotMultiplier +

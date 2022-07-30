@@ -678,7 +678,6 @@ public class KrakenMarketManager extends KrakenPublicManager {
                     assetPair.getString("base"),
                     assetPair.getString("aclass_quote"),
                     assetPair.getString("quote"),
-                    assetPair.getString("lot"),
                     assetPair.getInt("pair_decimals"),
                     assetPair.getInt("lot_decimals"),
                     assetPair.getInt("lot_multiplier"),

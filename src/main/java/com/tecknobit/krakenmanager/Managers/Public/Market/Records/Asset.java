@@ -20,6 +20,11 @@ public class Asset extends KrakenManager.KrakenResponse {
     public static final String CURRENCY_ASSET_CLASS = "currency";
 
     /**
+     * {@code FOREX_ASSET_CLASS} is constant for forex asset class type
+     * **/
+    public static final String FOREX_ASSET_CLASS = "forex";
+
+    /**
      * {@code aClass} is instance that memorizes asset class
      * **/
     private final String aClass;
