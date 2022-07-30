@@ -122,7 +122,7 @@ public class AssetPair extends KrakenManager.KrakenResponse {
      * **/
     private final double minOrder;
 
-    /** Constructor to init a {@link AssetPair}
+    /** Constructor to init an {@link AssetPair} object
      * @param jsonResponse: base json response
      * @param altName: alt name value
      * @param wsName: ws name value
@@ -172,7 +172,7 @@ public class AssetPair extends KrakenManager.KrakenResponse {
         this.minOrder = minOrder;
     }
 
-    /** Constructor to init a {@link AssetPair}
+    /** Constructor to init an {@link AssetPair} object
      * @param altName: alt name value
      * @param wsName: ws name value
      * @param aClassBase: asset class base value
@@ -215,7 +215,7 @@ public class AssetPair extends KrakenManager.KrakenResponse {
         this.minOrder = minOrder;
     }
 
-    /** Constructor to init a {@link AssetPair}
+    /** Constructor to init an {@link AssetPair} object
      * @param jsonAsset: asset pair value in JSON format
      * **/
     public AssetPair(JSONObject jsonAsset) {

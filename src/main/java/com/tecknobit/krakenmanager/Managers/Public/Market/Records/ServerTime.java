@@ -24,7 +24,7 @@ public class ServerTime extends KrakenManager.KrakenResponse {
      * **/
     private final String rfc1123;
 
-    /** Constructor to init a {@link ServerTime}
+    /** Constructor to init a {@link ServerTime} object
      * @param jsonResponse: base json response
      * @param unixTime: unix time value
      * @param rfc1123: rfc1123 value
@@ -35,7 +35,7 @@ public class ServerTime extends KrakenManager.KrakenResponse {
         this.rfc1123 = rfc1123;
     }
 
-    /** Constructor to init a {@link ServerTime}
+    /** Constructor to init a {@link ServerTime} object
      * @param unixTime: unix time value
      * @param rfc1123: rfc1123 value
      * **/
@@ -45,7 +45,7 @@ public class ServerTime extends KrakenManager.KrakenResponse {
         this.rfc1123 = rfc1123;
     }
 
-    /** Constructor to init a {@link ServerTime}
+    /** Constructor to init a {@link ServerTime} object
      * @param jsonResponse: base json response
      * **/
     public ServerTime(JSONObject jsonResponse) {

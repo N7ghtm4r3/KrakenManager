@@ -44,7 +44,7 @@ public class Asset extends KrakenManager.KrakenResponse {
      * **/
     private final int displayDecimals;
 
-    /** Constructor to init a {@link Asset}
+    /** Constructor to init an {@link Asset} object
      * @param jsonResponse: base json response
      * @param aClass: asset class
      * @param altName: alt name of the asset
@@ -59,7 +59,7 @@ public class Asset extends KrakenManager.KrakenResponse {
         this.displayDecimals = displayDecimals;
     }
 
-    /** Constructor to init a {@link Asset}
+    /** Constructor to init an {@link Asset} object
      * @param aClass: asset class
      * @param altName: alt name of the asset
      * @param decimals: number of decimals digits
@@ -73,7 +73,7 @@ public class Asset extends KrakenManager.KrakenResponse {
         this.displayDecimals = displayDecimals;
     }
 
-    /** Constructor to init a {@link Asset}
+    /** Constructor to init an {@link Asset} object
      * @param asset: asset data in JSON format
      * **/
     public Asset(JSONObject asset) {

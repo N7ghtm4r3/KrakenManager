@@ -24,7 +24,7 @@ public class SystemStatus extends KrakenManager.KrakenResponse {
      * **/
     private final String timestamp;
 
-    /** Constructor to init a {@link SystemStatus}
+    /** Constructor to init a {@link SystemStatus} object
      * @param jsonResponse: base json response
      * @param status: status value
      * @param timestamp: timestamp value
@@ -35,7 +35,7 @@ public class SystemStatus extends KrakenManager.KrakenResponse {
         this.timestamp = timestamp;
     }
 
-    /** Constructor to init a {@link SystemStatus}
+    /** Constructor to init a {@link SystemStatus} object
      * @param status: status value
      * @param timestamp: timestamp value
      * **/
@@ -45,7 +45,7 @@ public class SystemStatus extends KrakenManager.KrakenResponse {
         this.timestamp = timestamp;
     }
 
-    /** Constructor to init a {@link SystemStatus}
+    /** Constructor to init a {@link SystemStatus} object
      * @param jsonResponse: base json response
      * **/
     public SystemStatus(JSONObject jsonResponse) {

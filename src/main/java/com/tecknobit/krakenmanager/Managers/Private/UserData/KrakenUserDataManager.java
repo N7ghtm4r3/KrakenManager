@@ -456,8 +456,8 @@ public class KrakenUserDataManager extends KrakenPrivateManager {
         int binary;
         while ((binary = inputStream.read()) != -1)
             outputStream.write(binary);
-        outputStream.close();
         inputStream.close();
+        outputStream.close();
         return fileToZip;
     }
 

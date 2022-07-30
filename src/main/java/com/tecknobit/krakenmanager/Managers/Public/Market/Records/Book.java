@@ -31,7 +31,7 @@ public class Book extends KrakenManager.KrakenResponse {
      * **/
     private final ArrayList<BookElement> bids;
 
-    /** Constructor to init a {@link Book}
+    /** Constructor to init a {@link Book} object
      * @param jsonResponse: base json response
      * @param symbol: symbol value
      * @param asks: list of {@link BookElement} for asks
@@ -44,7 +44,7 @@ public class Book extends KrakenManager.KrakenResponse {
         this.bids = bids;
     }
 
-    /** Constructor to init a {@link Book}
+    /** Constructor to init a {@link Book} object
      * @param symbol: symbol value
      * @param asks: list of {@link BookElement} for asks
      * @param bids: list of {@link BookElement} for bids
@@ -56,7 +56,7 @@ public class Book extends KrakenManager.KrakenResponse {
         this.bids = bids;
     }
 
-    /** Constructor to init a {@link Book}
+    /** Constructor to init a {@link Book} object
      * @param jsonBook: base json response
      * **/
     public Book(JSONObject jsonBook) {
