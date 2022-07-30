@@ -15,7 +15,13 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.FileWriter;
 import java.util.ArrayList;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipOutputStream;
 
 import static com.tecknobit.apimanager.Manager.APIRequest.Params;
 import static com.tecknobit.krakenmanager.Constants.EndpointsList.*;
@@ -432,8 +438,27 @@ public class KrakenUserDataManager extends KrakenPrivateManager {
         return reports;
     }
 
-    public <T> T retrieveDataExport(String id){
-        return null;
+    // TODO: 30/07/2022 INSERT CREATE TICKET IF DOES NOT WORK INTO DOCU STRING IF THIS METHOD DOES NOT WORK
+    public File retrieveDataExport(long id, String reportName) throws Exception {
+        Params params = new Params();
+        params.addParam("id", id);
+        JSONArray chunks = new JSONArray(sendPostRequest(RETRIEVE_EXPORT_ENDPOINT, params));
+        StringBuilder chunksBuilder = new StringBuilder();
+        for (int j = 0; j < chunks.length(); j++)
+            chunksBuilder.append(chunks.getString(j));
+        if(!reportName.contains(".zip"))
+            reportName += ".zip";
+        File fileToZip = new File(reportName);
+        new FileWriter(fileToZip.getName()).write(chunksBuilder.toString());
+        ZipOutputStream outputStream = new ZipOutputStream(new FileOutputStream(reportName));
+        outputStream.putNextEntry(new ZipEntry(reportName));
+        FileInputStream inputStream = new FileInputStream(fileToZip);
+        int binary;
+        while ((binary = inputStream.read()) != -1)
+            outputStream.write(binary);
+        outputStream.close();
+        inputStream.close();
+        return fileToZip;
     }
 
     public String deleteExportReport(String id, String type) throws Exception {
