@@ -334,12 +334,12 @@ public class KrakenUserDataManager extends KrakenPrivateManager {
     /**
      * Request to get query orders info
      * @param insertTrades : wheter to include trades related to position in output
-     * @param txId: comma delimited list of transaction ids to query info about (50 maximum) in long array format
+     * @param txId: comma delimited list of transaction ids to query info about (50 maximum) in {@link Long} array format
      * @return query orders info as {@link String}
      * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Data/operation/getOpenOrders">
      * https://docs.kraken.com/rest/#tag/User-Data/operation/getOpenOrders</a>
      **/
-    public String getQueryOrdersInfo(boolean insertTrades, long[] txId) throws Exception {
+    public String getQueryOrdersInfo(boolean insertTrades, Long[] txId) throws Exception {
         Params params = new Params();
         if(insertTrades)
             params.addParam("trades", true);
@@ -349,23 +349,23 @@ public class KrakenUserDataManager extends KrakenPrivateManager {
 
     /** Request to get query orders info
      * @param insertTrades : wheter to include trades related to position in output
-     * @param txId: comma delimited list of transaction ids to query info about (50 maximum) in long array format
+     * @param txId: comma delimited list of transaction ids to query info about (50 maximum) in {@link Long} array format
      * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Data/operation/getOpenOrders">
      *     https://docs.kraken.com/rest/#tag/User-Data/operation/getOpenOrders</a>
      * @return query orders info as {@link JSONObject}
      * **/
-    public JSONObject getQueryOrdersInfoJSON(boolean insertTrades, long[] txId) throws Exception {
+    public JSONObject getQueryOrdersInfoJSON(boolean insertTrades, Long[] txId) throws Exception {
         return new JSONObject(getQueryOrdersInfo(insertTrades, txId));
     }
 
     /** Request to get query orders info list
      * @param insertTrades : wheter to include trades related to position in output
-     * @param txId: comma delimited list of transaction ids to query info about (50 maximum) in long array format
+     * @param txId: comma delimited list of transaction ids to query info about (50 maximum) in {@link Long} array format
      * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Data/operation/getOpenOrders">
      *     https://docs.kraken.com/rest/#tag/User-Data/operation/getOpenOrders</a>
      * @return query orders info list as {@link ArrayList} of {@link Order} custom object
      * **/
-    public ArrayList<Order> getQueryOrdersInfoList(boolean insertTrades, long[] txId) throws Exception {
+    public ArrayList<Order> getQueryOrdersInfoList(boolean insertTrades, Long[] txId) throws Exception {
         return assembleOrdersList(getQueryOrdersInfoJSON(insertTrades, txId).getJSONObject("result"));
     }
 
@@ -378,12 +378,8 @@ public class KrakenUserDataManager extends KrakenPrivateManager {
      * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Data/operation/getOpenOrders">
      * https://docs.kraken.com/rest/#tag/User-Data/operation/getOpenOrders</a>
      **/
-    // TODO: 31/07/2022 CHECK
     public String getQueryOrdersInfo(boolean insertTrades, ArrayList<Long> txId) throws Exception {
-        /*Long[] longs = txId.toArray(new Long[txId.size()]);
-        long[] l = longs;
-        return getQueryOrdersInfo(insertTrades, txId.toArray(new Long[txId.size()]));*/
-        return null;
+        return getQueryOrdersInfo(insertTrades, txId.toArray(new Long[txId.size()]));
     }
 
     /** Request to get query orders info
@@ -414,12 +410,12 @@ public class KrakenUserDataManager extends KrakenPrivateManager {
      * Request to get query orders info
      * @param insertTrades: wheter to include trades related to position in output
      * @param userRef: restrict results to given user reference id
-     * @param txId: comma delimited list of transaction ids to query info about (50 maximum) in long array format
+     * @param txId: comma delimited list of transaction ids to query info about (50 maximum) in {@link Long} array format
      * @return query orders info as {@link String}
      * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Data/operation/getOpenOrders">
      * https://docs.kraken.com/rest/#tag/User-Data/operation/getOpenOrders</a>
      **/
-    public String getQueryOrdersInfo(boolean insertTrades, long userRef, long[] txId) throws Exception {
+    public String getQueryOrdersInfo(boolean insertTrades, long userRef, Long[] txId) throws Exception {
         Params params = new Params();
         if(insertTrades)
             params.addParam("trades", true);
@@ -431,24 +427,64 @@ public class KrakenUserDataManager extends KrakenPrivateManager {
     /** Request to get query orders info
      * @param insertTrades: wheter to include trades related to position in output
      * @param userRef: restrict results to given user reference id
-     * @param txId: comma delimited list of transaction ids to query info about (50 maximum) in long array format
+     * @param txId: comma delimited list of transaction ids to query info about (50 maximum) in {@link Long} array format
      * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Data/operation/getOpenOrders">
      *     https://docs.kraken.com/rest/#tag/User-Data/operation/getOpenOrders</a>
      * @return query orders info as {@link JSONObject}
      * **/
-    public JSONObject getQueryOrdersInfoJSON(boolean insertTrades, long userRef, long[] txId) throws Exception {
+    public JSONObject getQueryOrdersInfoJSON(boolean insertTrades, long userRef, Long[] txId) throws Exception {
         return new JSONObject(getQueryOrdersInfo(insertTrades, userRef, txId));
     }
 
     /** Request to get query orders info
      * @param insertTrades: wheter to include trades related to position in output
      * @param userRef: restrict results to given user reference id
-     * @param txId: comma delimited list of transaction ids to query info about (50 maximum) in long array format
+     * @param txId: comma delimited list of transaction ids to query info about (50 maximum) in {@link Long} array format
      * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Data/operation/getOpenOrders">
      *     https://docs.kraken.com/rest/#tag/User-Data/operation/getOpenOrders</a>
      * @return query orders info list as {@link ArrayList} of {@link Order} custom object
      * **/
-    public ArrayList<Order> getQueryOrdersInfoList(boolean insertTrades, long userRef, long[] txId) throws Exception {
+    public ArrayList<Order> getQueryOrdersInfoList(boolean insertTrades, long userRef, Long[] txId) throws Exception {
+        return assembleOrdersList(getQueryOrdersInfoJSON(insertTrades, userRef, txId).getJSONObject("result"));
+    }
+
+    /**
+     * Request to get query orders info
+     * @param insertTrades: wheter to include trades related to position in output
+     * @param userRef: restrict results to given user reference id
+     * @param txId: comma delimited list of transaction ids to query info about (50 maximum) in {@link ArrayList}
+     *            of {@link Long} format
+     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Data/operation/getOpenOrders">
+     * https://docs.kraken.com/rest/#tag/User-Data/operation/getOpenOrders</a>
+     * @return query orders info as {@link String}
+     **/
+    public String getQueryOrdersInfo(boolean insertTrades, long userRef, ArrayList<Long> txId) throws Exception {
+        return getQueryOrdersInfo(insertTrades, userRef, txId.toArray(new Long[txId.size()]));
+    }
+
+    /** Request to get query orders info
+     * @param insertTrades: wheter to include trades related to position in output
+     * @param userRef: restrict results to given user reference id
+     * @param txId: comma delimited list of transaction ids to query info about (50 maximum) in {@link ArrayList}
+     *            of {@link Long} format
+     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Data/operation/getOpenOrders">
+     *     https://docs.kraken.com/rest/#tag/User-Data/operation/getOpenOrders</a>
+     * @return query orders info as {@link JSONObject}
+     * **/
+    public JSONObject getQueryOrdersInfoJSON(boolean insertTrades, long userRef, ArrayList<Long> txId) throws Exception {
+        return new JSONObject(getQueryOrdersInfo(insertTrades, userRef, txId));
+    }
+
+    /** Request to get query orders info
+     * @param insertTrades: wheter to include trades related to position in output
+     * @param userRef: restrict results to given user reference id
+     * @param txId: comma delimited list of transaction ids to query info about (50 maximum) in {@link ArrayList}
+     *            of {@link Long} format
+     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Data/operation/getOpenOrders">
+     *     https://docs.kraken.com/rest/#tag/User-Data/operation/getOpenOrders</a>
+     * @return query orders info list as {@link ArrayList} of {@link Order} custom object
+     * **/
+    public ArrayList<Order> getQueryOrdersInfoList(boolean insertTrades, long userRef, ArrayList<Long> txId) throws Exception {
         return assembleOrdersList(getQueryOrdersInfoJSON(insertTrades, userRef, txId).getJSONObject("result"));
     }
 
@@ -573,13 +609,12 @@ public class KrakenUserDataManager extends KrakenPrivateManager {
 
     /** Request to get query trades info
      * @param insertTrades: wheter to include trades related to position in output
-     * @param txId: comma delimited list of transaction IDs to query info about (20 maximum)
+     * @param txId: comma delimited list of transaction IDs to query info about (20 maximum) is {@link String} array format
      * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Data/operation/getTradesInfo">
      *     https://docs.kraken.com/rest/#tag/User-Data/operation/getTradesInfo</a>
      * @return query trades info as {@link String}
      * **/
-    // TODO: 31/07/2022 CHECK
-    public String getQueryTradesInfo(boolean insertTrades, String txId) throws Exception {
+    public String getQueryTradesInfo(boolean insertTrades, String[] txId) throws Exception {
         Params params = new Params();
         if(insertTrades)
             params.addParam("trades", true);
@@ -589,23 +624,59 @@ public class KrakenUserDataManager extends KrakenPrivateManager {
 
     /** Request to get query trades info
      * @param insertTrades: wheter to include trades related to position in output
-     * @param txId: comma delimited list of transaction IDs to query info about (20 maximum)
+     * @param txId: comma delimited list of transaction IDs to query info about (20 maximum) is {@link String} array format
      * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Data/operation/getTradesInfo">
      *     https://docs.kraken.com/rest/#tag/User-Data/operation/getTradesInfo</a>
      * @return query trades info as {@link JSONObject}
      * **/
-    public JSONObject getQueryTradesInfoJSON(boolean insertTrades, String txId) throws Exception {
+    public JSONObject getQueryTradesInfoJSON(boolean insertTrades, String[] txId) throws Exception {
         return new JSONObject(getQueryTradesInfo(insertTrades, txId));
     }
 
     /** Request to get query trades info
      * @param insertTrades: wheter to include trades related to position in output
-     * @param txId: comma delimited list of transaction IDs to query info about (20 maximum)
+     * @param txId: comma delimited list of transaction IDs to query info about (20 maximum) is {@link String} array format
      * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Data/operation/getTradesInfo">
      *     https://docs.kraken.com/rest/#tag/User-Data/operation/getTradesInfo</a>
      * @return query trades info list as {@link ArrayList} of {@link QueryTrade} custom object
      * **/
-    public ArrayList<QueryTrade> getQueryTradesInfoList(boolean insertTrades, String txId) throws Exception {
+    public ArrayList<QueryTrade> getQueryTradesInfoList(boolean insertTrades, String[] txId) throws Exception {
+        return assebleQueryTradesList(getQueryTradesInfoJSON(insertTrades, txId));
+    }
+
+    /** Request to get query trades info
+     * @param insertTrades: wheter to include trades related to position in output
+     * @param txId: comma delimited list of transaction IDs to query info about (20 maximum) in {@link ArrayList} of
+     *            {@link String} format
+     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Data/operation/getTradesInfo">
+     *     https://docs.kraken.com/rest/#tag/User-Data/operation/getTradesInfo</a>
+     * @return query trades info as {@link String}
+     * **/
+    public String getQueryTradesInfo(boolean insertTrades, ArrayList<String> txId) throws Exception {
+        return getQueryTradesInfo(insertTrades, txId.toArray(new String[txId.size()]));
+    }
+
+    /** Request to get query trades info
+     * @param insertTrades: wheter to include trades related to position in output
+     * @param txId: comma delimited list of transaction IDs to query info about (20 maximum) in {@link ArrayList} of
+     *            {@link String} format
+     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Data/operation/getTradesInfo">
+     *     https://docs.kraken.com/rest/#tag/User-Data/operation/getTradesInfo</a>
+     * @return query trades info as {@link JSONObject}
+     * **/
+    public JSONObject getQueryTradesInfoJSON(boolean insertTrades, ArrayList<String> txId) throws Exception {
+        return new JSONObject(getQueryTradesInfo(insertTrades, txId));
+    }
+
+    /** Request to get query trades info
+     * @param insertTrades: wheter to include trades related to position in output
+     * @param txId: comma delimited list of transaction IDs to query info about (20 maximum) in {@link ArrayList} of
+     *            {@link String} format
+     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Data/operation/getTradesInfo">
+     *     https://docs.kraken.com/rest/#tag/User-Data/operation/getTradesInfo</a>
+     * @return query trades info list as {@link ArrayList} of {@link QueryTrade} custom object
+     * **/
+    public ArrayList<QueryTrade> getQueryTradesInfoList(boolean insertTrades, ArrayList<String> txId) throws Exception {
         return assebleQueryTradesList(getQueryTradesInfoJSON(insertTrades, txId));
     }
 
@@ -655,13 +726,12 @@ public class KrakenUserDataManager extends KrakenPrivateManager {
 
     /** Request to get open positions
      * @param doCalcs: whether to include P&L calculations
-     * @param txId: comma delimited list of txids to limit output to
+     * @param txId: comma delimited list of txids to limit output in {@link String} array format
      * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Data/operation/getOpenPositions">
      *     https://docs.kraken.com/rest/#tag/User-Data/operation/getOpenPositions</a>
      * @return open positions as {@link String}
      * **/
-    // TODO: 31/07/2022 CHECK
-    public String getOpenPositions(boolean doCalcs, String txId) throws Exception {
+    public String getOpenPositions(boolean doCalcs, String[] txId) throws Exception {
         Params params = new Params();
         if(doCalcs)
             params.addParam("docalcs", true);
@@ -671,23 +741,56 @@ public class KrakenUserDataManager extends KrakenPrivateManager {
 
     /** Request to get open positions
      * @param doCalcs: whether to include P&L calculations
-     * @param txId: comma delimited list of txids to limit output to
+     * @param txId: comma delimited list of txids to limit output in {@link String} array format
      * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Data/operation/getOpenPositions">
      *     https://docs.kraken.com/rest/#tag/User-Data/operation/getOpenPositions</a>
      * @return open positions as {@link JSONObject}
      * **/
-    public JSONObject getOpenPositionsJSON(boolean doCalcs, String txId) throws Exception {
+    public JSONObject getOpenPositionsJSON(boolean doCalcs, String[] txId) throws Exception {
         return new JSONObject(getOpenPositions(doCalcs, txId));
     }
 
     /** Request to get open positions
      * @param doCalcs: whether to include P&L calculations
-     * @param txId: comma delimited list of txids to limit output to
+     * @param txId: comma delimited list of txids to limit output in {@link String} array format
      * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Data/operation/getOpenPositions">
      *     https://docs.kraken.com/rest/#tag/User-Data/operation/getOpenPositions</a>
      * @return open positions list as {@link ArrayList} of {@link OpenPosition} custom object
      * **/
-    public ArrayList<OpenPosition> getOpenPositionsList(boolean doCalcs, String txId) throws Exception {
+    public ArrayList<OpenPosition> getOpenPositionsList(boolean doCalcs, String[] txId) throws Exception {
+        return assembleOpenPositionsList(getOpenPositionsJSON(doCalcs, txId));
+    }
+
+    /** Request to get open positions
+     * @param doCalcs: whether to include P&L calculations
+     * @param txId: comma delimited list of txids to limit output in {@link ArrayList} of {@link String} format
+     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Data/operation/getOpenPositions">
+     *     https://docs.kraken.com/rest/#tag/User-Data/operation/getOpenPositions</a>
+     * @return open positions as {@link String}
+     * **/
+    public String getOpenPositions(boolean doCalcs, ArrayList<String> txId) throws Exception {
+        return getOpenPositions(doCalcs, txId.toArray(new String[txId.size()]));
+    }
+
+    /** Request to get open positions
+     * @param doCalcs: whether to include P&L calculations
+     * @param txId: comma delimited list of txids to limit output in {@link ArrayList} of {@link String} format
+     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Data/operation/getOpenPositions">
+     *     https://docs.kraken.com/rest/#tag/User-Data/operation/getOpenPositions</a>
+     * @return open positions as {@link JSONObject}
+     * **/
+    public JSONObject getOpenPositionsJSON(boolean doCalcs, ArrayList<String> txId) throws Exception {
+        return new JSONObject(getOpenPositions(doCalcs, txId));
+    }
+
+    /** Request to get open positions
+     * @param doCalcs: whether to include P&L calculations
+     * @param txId: comma delimited list of txids to limit output in {@link ArrayList} of {@link String} format
+     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Data/operation/getOpenPositions">
+     *     https://docs.kraken.com/rest/#tag/User-Data/operation/getOpenPositions</a>
+     * @return open positions list as {@link ArrayList} of {@link OpenPosition} custom object
+     * **/
+    public ArrayList<OpenPosition> getOpenPositionsList(boolean doCalcs, ArrayList<String> txId) throws Exception {
         return assembleOpenPositionsList(getOpenPositionsJSON(doCalcs, txId));
     }
 
@@ -1054,16 +1157,34 @@ public class KrakenUserDataManager extends KrakenPrivateManager {
         return addExportJSON(report, description, params).getJSONObject("result").getString("id");
     }
 
+    /** Request to get export status
+     * @param report: type of data to export -> trades or ledgers
+     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Data/operation/exportStatus">
+     *     https://docs.kraken.com/rest/#tag/User-Data/operation/exportStatus</a>
+     * @return export status as {@link String}
+     * **/
     public String getExportStatus(String report) throws Exception {
         Params params = new Params();
         params.addParam("report", report);
         return sendPostRequest(GET_EXPORT_STATUS_ENDPOINT, params);
     }
 
+    /** Request to get export status
+     * @param report: type of data to export -> trades or ledgers
+     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Data/operation/exportStatus">
+     *     https://docs.kraken.com/rest/#tag/User-Data/operation/exportStatus</a>
+     * @return export status as {@link JSONObject}
+     * **/
     public JSONObject getExportStatusJSON(String report) throws Exception {
         return new JSONObject(getExportStatus(report));
     }
 
+    /** Request to get export status list
+     * @param report: type of data to export -> trades or ledgers
+     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Data/operation/exportStatus">
+     *     https://docs.kraken.com/rest/#tag/User-Data/operation/exportStatus</a>
+     * @return export status list as {@link ArrayList} of {@link ReportStatus} custom object
+     * **/
     public ArrayList<ReportStatus> getExportStatusList(String report) throws Exception {
         ArrayList<ReportStatus> reports = new ArrayList<>();
         JSONArray jsonReports = getExportStatusJSON(report).getJSONArray("result");
@@ -1072,8 +1193,26 @@ public class KrakenUserDataManager extends KrakenPrivateManager {
         return reports;
     }
 
-    // TODO: 30/07/2022 INSERT CREATE TICKET IF DOES NOT WORK INTO DOCU STRING IF THIS METHOD DOES NOT WORK
-    public File retrieveDataExport(long id, String reportName) throws Exception {
+    /** Request to retrieve an export report
+     * @param id: id of report to retrieve
+     * @param reportName: name for report file zipped
+     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Data/operation/retrieveExport">
+     *     https://docs.kraken.com/rest/#tag/User-Data/operation/retrieveExport</a>
+     * @implNote this method could not work properly because need different scenarios attemps to be developed in the correct
+     * way, so if you get an error when use it please create a GitHub's ticket <a href="https://github.com/N7ghtm4r3/KrakenManager/issues/new">here</a>
+     * with Kraken's API response es:
+     * <pre><code>
+     * {
+     *   "error": [ ],
+     *   "result": {
+     *       "data": "data_example"
+     *    }
+     * }
+     * </pre></code> hide personal data, and write about error that has been throwed. Thank you for help!
+     * @return an export report as zipped {@link File}
+     * **/
+    public File retrieveDataExport(String id, String reportName) throws Exception {
+
         Params params = new Params();
         params.addParam("id", id);
         JSONArray chunks = new JSONArray(sendPostRequest(RETRIEVE_EXPORT_ENDPOINT, params));
@@ -1098,6 +1237,13 @@ public class KrakenUserDataManager extends KrakenPrivateManager {
         return fileToZip;
     }
 
+    /** Request to remove an export report
+     * @param id: id of report to delete or cancel
+     * @param type: type report export -> cancel or delete
+     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Data/operation/removeExport">
+     *     https://docs.kraken.com/rest/#tag/User-Data/operation/removeExport</a>
+     * @return result of the operation as {@link String}
+     * **/
     public String deleteExportReport(String id, String type) throws Exception {
         Params params = new Params();
         params.addParam("id", id);
@@ -1105,10 +1251,24 @@ public class KrakenUserDataManager extends KrakenPrivateManager {
         return sendPostRequest(DELETE_EXPORT_ENDPOINT, params);
     }
 
+    /** Request to remove an export report
+     * @param id: id of report to delete or cancel
+     * @param type: type report export -> cancel or delete
+     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Data/operation/removeExport">
+     *     https://docs.kraken.com/rest/#tag/User-Data/operation/removeExport</a>
+     * @return result of the operation as {@link JSONObject}
+     * **/
     public JSONObject deleteExportReportJSON(String id, String type) throws Exception {
         return new JSONObject(deleteExportReport(id, type));
     }
 
+    /** Request to remove an export report
+     * @param id: id of report to delete or cancel
+     * @param type: type report export -> cancel or delete
+     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Data/operation/removeExport">
+     *     https://docs.kraken.com/rest/#tag/User-Data/operation/removeExport</a>
+     * @return result of the operation as boolean, when there is a {@link JSONException} will return false
+     * **/
     public boolean getDeleteExportReportConfirm(String id, String type) throws Exception {
         try {
             return deleteExportReportJSON(id, type).getJSONObject("result").getBoolean(type);
