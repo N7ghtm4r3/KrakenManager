@@ -180,7 +180,7 @@ public class KrakenManager {
          * **/
         protected final String[] errors;
 
-        /** Constructor to init a {@link KrakenResponse}
+        /** Constructor to init a {@link KrakenResponse} object
          * @param jsonResponse: base json response
          * **/
         public KrakenResponse(JSONObject jsonResponse) {

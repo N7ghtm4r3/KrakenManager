@@ -7,15 +7,44 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+/**
+ * The {@code TradeVolume} class is useful to format trade volume object
+ * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Data/operation/getTradeVolume">
+ *     https://docs.kraken.com/rest/#tag/User-Data/operation/getTradeVolume</a>
+ * @author N7ghtm4r3 - Tecknobit
+ * **/
+
 public class TradeVolume extends KrakenManager.KrakenResponse {
 
+    /**
+     * {@code currency} is instance that memorizes volume currency
+     * **/
     private final String currency;
+
+    /**
+     * {@code volume} is instance that memorizes current discount volume
+     * **/
     private final double volume;
+
+    /**
+     * {@code fees} is instance that memorizes list of fees as {@link TradeFee}
+     * **/
     private final ArrayList<TradeFee> fees;
+
+    /**
+     * {@code makerFees} is instance that memorizes list of maker fees as {@link TradeFee}
+     * **/
     private final ArrayList<TradeFee> makerFees;
 
-    public TradeVolume(JSONObject jsonResponse, String currency, double volume, double fee, double minFee,
-                       double maxFee, double nextFee, double tierVolume, double nextVolume, ArrayList<TradeFee> fees,
+    /**
+     * Constructor to init a {@link TradeVolume} object
+     * @param jsonResponse : base json response
+     * @param currency: volume currency
+     * @param volume: current discount volume
+     * @param fees: list of fees as {@link TradeFee}
+     * @param makerFees: list of maker fees as {@link TradeFee}
+     **/
+    public TradeVolume(JSONObject jsonResponse, String currency, double volume, ArrayList<TradeFee> fees,
                        ArrayList<TradeFee> makerFees) {
         super(jsonResponse);
         this.currency = currency;
@@ -24,6 +53,13 @@ public class TradeVolume extends KrakenManager.KrakenResponse {
         this.makerFees = makerFees;
     }
 
+    /**
+     * Constructor to init a {@link TradeVolume} object
+     * @param currency: volume currency
+     * @param volume: current discount volume
+     * @param fees: list of fees as {@link TradeFee}
+     * @param makerFees: list of maker fees as {@link TradeFee}
+     **/
     public TradeVolume(String currency, double volume, double fee, double minFee, double maxFee, double nextFee,
                        double tierVolume, double nextVolume, ArrayList<TradeFee> fees, ArrayList<TradeFee> makerFees) {
         super(null);
@@ -34,7 +70,7 @@ public class TradeVolume extends KrakenManager.KrakenResponse {
     }
 
     /**
-     * Constructor to init a {@link TradeVolume}
+     * Constructor to init a {@link TradeVolume} object
      * @param jsonResponse : base json response
      **/
     public TradeVolume(JSONObject jsonResponse) {
@@ -46,6 +82,11 @@ public class TradeVolume extends KrakenManager.KrakenResponse {
         this.makerFees = assembleTradeFeesList(trade, "fees_maker");
     }
 
+    /** Method to assemble a trade fee list
+     * @param fees: jsonObject obtained by response request
+     * @param key: key of list in JSON
+     * @return trade fee list as {@link ArrayList} of {@link TradeFee}
+     * **/
     private ArrayList<TradeFee> assembleTradeFeesList(JSONObject fees, String key){
         ArrayList<TradeFee> tradeFees = new ArrayList<>();
         fees = JsonHelper.getJSONObject(fees, key, new JSONObject());
@@ -82,17 +123,62 @@ public class TradeVolume extends KrakenManager.KrakenResponse {
                 '}';
     }
 
+    /**
+     * The {@code TradeFee} class is useful to format trade fee object
+     * **/
+
     public static class TradeFee {
 
+        /**
+         * {@code feeKeys} is instance that memorizes keys for read trade fee details from JSON
+         * **/
         private static final String[] feeKeys = new String[]{"min_fee", "max_fee", "next_fee", "tier_volume", "next_volume"};
+
+        /**
+         * {@code pair} is instance that memorizes pair value
+         * **/
         private final String pair;
+
+        /**
+         * {@code fee} is instance that memorizes current fee (in percent)
+         * **/
         private final double fee;
+
+        /**
+         * {@code minFee} is instance that memorizes minimum fee for pair (if not fixed fee)
+         * **/
         private double minFee;
+
+        /**
+         * {@code maxFee} is instance that memorizes maximum fee for pair (if not fixed fee)
+         * **/
         private double maxFee;
+
+        /**
+         * {@code nextFee} is instance that memorizes next tier's fee for pair (if not fixed fee, null if at lowest fee tier)
+         * **/
         private double nextFee;
+
+        /**
+         * {@code tierVolume} is instance that memorizes volume level of current tier (if not fixed fee. null if at lowest fee tier)
+         * **/
         private double tierVolume;
+
+        /**
+         * {@code tierVolume} is instance that memorizes volume level of next tier (if not fixed fee. null if at lowest fee tier)
+         * **/
         private double nextVolume;
 
+        /**
+         * Constructor to init a {@link TradeFee} object
+         * @param pair: pair value
+         * @param fee: minimum fee for pair (if not fixed fee)
+         * @param minFee: type value
+         * @param maxFee: maximum fee for pair (if not fixed fee)
+         * @param nextFee: next tier's fee for pair (if not fixed fee, null if at lowest fee tier)
+         * @param tierVolume: volume level of current tier (if not fixed fee. null if at lowest fee tier)
+         * @param nextVolume: is instance that memorizes volume level of next tier (if not fixed fee. null if at lowest fee tier)
+         **/
         public TradeFee(String pair, double fee, double minFee, double maxFee, double nextFee, double tierVolume,
                         double nextVolume) {
             this.pair = pair;
@@ -104,12 +190,21 @@ public class TradeVolume extends KrakenManager.KrakenResponse {
             this.nextVolume = nextVolume;
         }
 
+        /**
+         * Constructor to init a {@link TradeFee} object
+         * @param jsonFee: fee details in JSON format
+         * @param pair: pair value
+         **/
         public TradeFee(JSONObject jsonFee, String pair){
             this.pair = pair;
             fee = jsonFee.getDouble("fee");
             loadFeesDetails(jsonFee);
         }
 
+        /**
+         * Constructor to init a {@link TradeFee} object
+         * @param jsonFee: fee details in JSON format
+         **/
         private void loadFeesDetails(JSONObject jsonFee){
             if(!jsonFee.has(feeKeys[0]))
                 for (int j = 0; j < feeKeys.length; j++)

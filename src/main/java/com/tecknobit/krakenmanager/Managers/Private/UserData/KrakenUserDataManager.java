@@ -449,7 +449,10 @@ public class KrakenUserDataManager extends KrakenPrivateManager {
         if(!reportName.contains(".zip"))
             reportName += ".zip";
         File fileToZip = new File(reportName);
-        new FileWriter(fileToZip.getName()).write(chunksBuilder.toString());
+        FileWriter fileWriter = new FileWriter(fileToZip.getName());
+        fileWriter.write(chunksBuilder.toString());
+        fileWriter.flush();
+        fileWriter.close();
         ZipOutputStream outputStream = new ZipOutputStream(new FileOutputStream(reportName));
         outputStream.putNextEntry(new ZipEntry(reportName));
         FileInputStream inputStream = new FileInputStream(fileToZip);
