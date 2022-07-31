@@ -36,8 +36,7 @@ public class TradeVolume extends KrakenManager.KrakenResponse {
      * **/
     private final ArrayList<TradeFee> makerFees;
 
-    /**
-     * Constructor to init a {@link TradeVolume} object
+    /** Constructor to init a {@link TradeVolume} object
      * @param jsonResponse : base json response
      * @param currency: volume currency
      * @param volume: current discount volume
@@ -53,8 +52,7 @@ public class TradeVolume extends KrakenManager.KrakenResponse {
         this.makerFees = makerFees;
     }
 
-    /**
-     * Constructor to init a {@link TradeVolume} object
+    /** Constructor to init a {@link TradeVolume} object
      * @param currency: volume currency
      * @param volume: current discount volume
      * @param fees: list of fees as {@link TradeFee}
@@ -169,8 +167,7 @@ public class TradeVolume extends KrakenManager.KrakenResponse {
          * **/
         private double nextVolume;
 
-        /**
-         * Constructor to init a {@link TradeFee} object
+        /** Constructor to init a {@link TradeFee} object
          * @param pair: pair value
          * @param fee: minimum fee for pair (if not fixed fee)
          * @param minFee: type value
@@ -190,8 +187,7 @@ public class TradeVolume extends KrakenManager.KrakenResponse {
             this.nextVolume = nextVolume;
         }
 
-        /**
-         * Constructor to init a {@link TradeFee} object
+        /** Constructor to init a {@link TradeFee} object
          * @param jsonFee: fee details in JSON format
          * @param pair: pair value
          **/

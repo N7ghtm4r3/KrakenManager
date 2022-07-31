@@ -67,6 +67,16 @@ public class ReportStatus extends KrakenManager.KrakenResponse {
     public static final String DELETE_DELETION_TYPE = "delete";
 
     /**
+     * {@code CSV_FORMAT_TYPE} is constant for csv format type
+     * **/
+    public static final String CSV_FORMAT_TYPE = "CSV";
+
+    /**
+     * {@code TSV_FORMAT_TYPE} is constant for tsv format type
+     * **/
+    public static final String TSV_FORMAT_TYPE = "TSV";
+
+    /**
      * {@code reportId} is instance that memorizes report identifier value
      * **/
     private final String reportId;
@@ -131,8 +141,7 @@ public class ReportStatus extends KrakenManager.KrakenResponse {
      * **/
     private final String asset;
 
-    /**
-     * Constructor to init a {@link ReportStatus} object
+    /** Constructor to init a {@link ReportStatus} object
      * @param jsonResponse : base json response
      * @param reportId: report identifier value
      * @param description: description value
@@ -167,8 +176,7 @@ public class ReportStatus extends KrakenManager.KrakenResponse {
         this.asset = asset;
     }
 
-    /**
-     * Constructor to init a {@link ReportStatus} object
+    /** Constructor to init a {@link ReportStatus} object
      * @param reportId: report identifier value
      * @param description: description value
      * @param format: format value
@@ -202,8 +210,7 @@ public class ReportStatus extends KrakenManager.KrakenResponse {
         this.asset = asset;
     }
 
-    /**
-     * Constructor to init a {@link ReportStatus} object
+    /** Constructor to init a {@link ReportStatus} object
      * @param jsonResponse : base json response
      **/
     public ReportStatus(JSONObject jsonResponse) {

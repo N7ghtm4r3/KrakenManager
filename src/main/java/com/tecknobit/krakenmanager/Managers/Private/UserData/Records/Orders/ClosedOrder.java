@@ -39,8 +39,7 @@ public class ClosedOrder extends Order {
      * **/
     private final String reason;
 
-    /**
-     * Constructor to init a {@link ClosedOrder} object
+    /** Constructor to init a {@link ClosedOrder} object
      * @param jsonResponse : base json response
      * @param refId: referral order transaction id
      * @param userRef: user reference id
@@ -73,8 +72,7 @@ public class ClosedOrder extends Order {
         this.reason = reason;
     }
 
-    /**
-     * Constructor to init a {@link ClosedOrder} object
+    /** Constructor to init a {@link ClosedOrder} object
      * @param refId: referral order transaction id
      * @param userRef: user reference id
      * @param status: status value
@@ -106,8 +104,7 @@ public class ClosedOrder extends Order {
         this.reason = reason;
     }
 
-    /**
-     * Constructor to init a {@link ClosedOrder}
+    /** Constructor to init a {@link ClosedOrder}
      * @param jsonResponse : base json response
      **/
     public ClosedOrder(JSONObject jsonResponse) {

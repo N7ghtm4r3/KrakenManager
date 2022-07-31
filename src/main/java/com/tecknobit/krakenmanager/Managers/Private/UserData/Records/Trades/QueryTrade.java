@@ -18,8 +18,7 @@ public class QueryTrade extends Trade {
      * **/
     private final String postTradeId;
 
-    /**
-     * Constructor to init a {@link QueryTrade} object
+    /** Constructor to init a {@link QueryTrade} object
      * @param jsonResponse : base json response
      * @param tradeId: trade identifier value
      * @param orderTransactionId: order transaction identifier value
@@ -42,8 +41,7 @@ public class QueryTrade extends Trade {
         this.postTradeId = postTradeId;
     }
 
-    /**
-     * Constructor to init a {@link QueryTrade} object
+    /** Constructor to init a {@link QueryTrade} object
      * @param tradeId: trade identifier value
      * @param orderTransactionId: order transaction identifier value
      * @param pair: pair value
@@ -64,8 +62,7 @@ public class QueryTrade extends Trade {
         this.postTradeId = postTradeId;
     }
 
-    /**
-     * Constructor to init a {@link QueryTrade} object
+    /** Constructor to init a {@link QueryTrade} object
      * @param jsonResponse : base json response
      * @param tradeId: trade identifier value
      **/

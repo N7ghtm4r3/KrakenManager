@@ -14,8 +14,8 @@ import java.util.Arrays;
             https://docs.kraken.com/rest/#tag/User-Data/operation/getLedgers</a>
      </li>
      <li>
-         <a href="https://docs.kraken.com/rest/#tag/User-Data/operation/getLedgersInfo">
-            https://docs.kraken.com/rest/#tag/User-Data/operation/getLedgersInfo</a>
+         <a href="https://docs.kraken.com/rest/#tag/User-Data/operation/getLedgers">
+            https://docs.kraken.com/rest/#tag/User-Data/operation/getLedgers</a>
      </li>
  </ul>
  * @author N7ghtm4r3 - Tecknobit
@@ -128,8 +128,7 @@ public class Ledger extends KrakenManager.KrakenResponse {
      * **/
     private final double balance;
 
-    /**
-     * Constructor to init a {@link Ledger} object
+    /** Constructor to init a {@link Ledger} object
      * @param jsonResponse : base json response
      * @param ledgerId: ledger identifier value
      * @param refId: reference id value
@@ -157,8 +156,7 @@ public class Ledger extends KrakenManager.KrakenResponse {
         this.balance = balance;
     }
 
-    /**
-     * Constructor to init a {@link Ledger} object
+    /** Constructor to init a {@link Ledger} object
      * @param ledgerId: ledger identifier value
      * @param refId: reference id value
      * @param time: unix timestamp of ledger
@@ -185,8 +183,7 @@ public class Ledger extends KrakenManager.KrakenResponse {
         this.balance = balance;
     }
 
-    /**
-     * Constructor to init a {@link Ledger} object
+    /** Constructor to init a {@link Ledger} object
      * @param jsonResponse : base json response
      * @param ledgerId: ledger identifier value
      **/

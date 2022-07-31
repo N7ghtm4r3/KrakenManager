@@ -56,8 +56,7 @@ public class HistoryTrade extends Trade {
      * **/
     private final ArrayList<Long> trades;
 
-    /**
-     * Constructor to init a {@link HistoryTrade} object
+    /** Constructor to init a {@link HistoryTrade} object
      * @param jsonResponse : base json response
      * @param tradeId: trade identifier value
      * @param orderTransactionId: order transaction identifier value
@@ -95,8 +94,7 @@ public class HistoryTrade extends Trade {
         this.trades = trades;
     }
 
-    /**
-     * Constructor to init a {@link HistoryTrade} object
+    /** Constructor to init a {@link HistoryTrade} object
      * @param tradeId: trade identifier value
      * @param orderTransactionId: order transaction identifier value
      * @param pair: pair value
@@ -133,8 +131,7 @@ public class HistoryTrade extends Trade {
         this.trades = trades;
     }
 
-    /**
-     * Constructor to init a {@link HistoryTrade} object
+    /** Constructor to init a {@link HistoryTrade} object
      * @param jsonResponse : base json response
      * @param tradeId: trade identifier value
      **/

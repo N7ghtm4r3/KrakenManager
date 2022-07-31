@@ -22,8 +22,7 @@ public class AccountBalance extends KrakenManager.KrakenResponse {
      * **/
     private final Wallet wallet;
 
-    /**
-     * Constructor to init an {@link AccountBalance} object
+    /** Constructor to init an {@link AccountBalance} object
      * @param jsonResponse : base json response
      **/
     public AccountBalance(JSONObject jsonResponse) {
@@ -55,8 +54,7 @@ public class AccountBalance extends KrakenManager.KrakenResponse {
          * **/
         private final HashMap<String, BalanceAsset> wallet;
 
-        /**
-         * Constructor to init a {@link Wallet} object
+        /** Constructor to init a {@link Wallet} object
          * @param jsonWallet : wallet data in JSON format
          **/
         public Wallet(JSONObject jsonWallet) {

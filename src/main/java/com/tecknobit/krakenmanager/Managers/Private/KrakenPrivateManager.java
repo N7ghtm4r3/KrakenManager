@@ -54,8 +54,7 @@ public class KrakenPrivateManager extends KrakenManager {
      * **/
     private final Headers headers;
 
-    /**
-     * Constructor to init a {@link KrakenPrivateManager}
+    /** Constructor to init a {@link KrakenPrivateManager}
      * @param defaultErrorMessage: custom error to show when is not a request error
      * @param requestTimeout: custom timeout for request
      * @param apiKey: api key of Kraken's platform
@@ -69,8 +68,7 @@ public class KrakenPrivateManager extends KrakenManager {
         setHeaders();
     }
 
-    /**
-     * Constructor to init a {@link KrakenPrivateManager}
+    /** Constructor to init a {@link KrakenPrivateManager}
      * @param defaultErrorMessage : custom error to show when is not a request error
      * @param apiKey: api key of Kraken's platform
      * @param apiSign: api sign of Kraken's platform
@@ -83,8 +81,7 @@ public class KrakenPrivateManager extends KrakenManager {
         setHeaders();
     }
 
-    /**
-     * Constructor to init a {@link KrakenPrivateManager}
+    /** Constructor to init a {@link KrakenPrivateManager}
      * @param requestTimeout : custom timeout for request
      * @param apiKey: api key of Kraken's platform
      * @param apiSign: api sign of Kraken's platform
