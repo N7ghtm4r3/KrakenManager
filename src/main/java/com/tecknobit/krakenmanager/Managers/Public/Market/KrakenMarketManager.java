@@ -13,6 +13,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Set;
 
+import static com.tecknobit.apimanager.Tools.Trading.TradingTools.computeTPTOPAsset;
 import static com.tecknobit.krakenmanager.Constants.EndpointsList.*;
 
 /**
@@ -1096,8 +1097,8 @@ public class KrakenMarketManager extends KrakenPublicManager {
         ArrayList<Double> historicalValues = new ArrayList<>();
         for (OHLCData.TickData tickData : getOHLCDataObject(symbol, OHCLInterval).getTicksData())
             historicalValues.add(tickData.getHigh());
-        return tradingTools.computeTPTOPAsset(historicalValues, getTickerInformationObject(symbol).getClose().getPrice(),
-                intervalDays, toleranceValue);
+        return computeTPTOPAsset(historicalValues, getTickerInformationObject(symbol).getClose().getPrice(), intervalDays,
+                toleranceValue);
     }
 
     /** Method to get prevision of a cryptocurrency in base of day's gap inserted
@@ -1111,7 +1112,7 @@ public class KrakenMarketManager extends KrakenPublicManager {
      * **/
     public double getSymbolForecast(String symbol, int OHCLInterval, int intervalDays, int toleranceValue,
                                     int decimalDigits) throws IOException {
-        return tradingTools.roundValue(getSymbolForecast(symbol, OHCLInterval, intervalDays, toleranceValue), decimalDigits);
+        return roundValue(getSymbolForecast(symbol, OHCLInterval, intervalDays, toleranceValue), decimalDigits);
     }
 
 }

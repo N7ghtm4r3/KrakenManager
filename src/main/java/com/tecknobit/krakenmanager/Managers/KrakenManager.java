@@ -8,6 +8,10 @@ import org.json.JSONObject;
 
 import java.util.Arrays;
 
+import static com.tecknobit.apimanager.Manager.APIRequest.*;
+import static com.tecknobit.apimanager.Tools.Trading.TradingTools.computeAssetPercent;
+import static com.tecknobit.apimanager.Tools.Trading.TradingTools.textualizeAssetPercent;
+
 /**
  *  The {@code KrakenManager} class is useful to manage all KrakenManager's endpoints
  *  giving basics methods for others Kraken's managers and basics endpoints for API requests
@@ -29,11 +33,6 @@ public class KrakenManager {
     protected APIRequest apiRequest;
 
     /**
-     * {@code tradingTools} is instance that  memorizes {@link TradingTools} object
-     * **/
-    protected final TradingTools tradingTools;
-
-    /**
      * {@code errorResponse} is instance for responses error
      * **/
     protected String errorResponse;
@@ -44,7 +43,6 @@ public class KrakenManager {
      * **/
     public KrakenManager(String defaultErrorMessage, int requestTimeout) {
         apiRequest = new APIRequest(defaultErrorMessage, requestTimeout);
-        tradingTools = new TradingTools();
     }
 
     /** Constructor to init a {@link KrakenManager}
@@ -52,7 +50,6 @@ public class KrakenManager {
      * **/
     public KrakenManager(String defaultErrorMessage) {
         apiRequest = new APIRequest(defaultErrorMessage);
-        tradingTools = new TradingTools();
     }
 
     /** Constructor to init a {@link KrakenManager}
@@ -60,7 +57,6 @@ public class KrakenManager {
      * **/
     public KrakenManager(int requestTimeout) {
         apiRequest = new APIRequest(requestTimeout);
-        tradingTools = new TradingTools();
     }
 
     /** Constructor to init a {@link KrakenManager} <br>
@@ -68,7 +64,6 @@ public class KrakenManager {
      * **/
     public KrakenManager() {
         apiRequest = new APIRequest();
-        tradingTools = new TradingTools();
     }
 
     /** Method to get status code of request response <br>
@@ -84,9 +79,8 @@ public class KrakenManager {
      * @return error of the response as {@link String}
      * **/
     public String getErrorResponse(){
-        // TODO: 29/07/2022 IMPORT FROM LIBRARY 
         if(errorResponse == null)
-            return "Error is not in api request, check out your code";
+            return DEFAULT_ERROR_RESPONSE;
         return errorResponse;
     }
 
@@ -104,7 +98,7 @@ public class KrakenManager {
      * @throws IllegalArgumentException if decimalDigits is negative
      * **/
     public double roundValue(double value, int decimalDigits){
-        return tradingTools.roundValue(value, decimalDigits);
+        return TradingTools.roundValue(value, decimalDigits);
     }
 
     /** Method to get percent between two values
@@ -114,7 +108,7 @@ public class KrakenManager {
      * @throws IllegalArgumentException if startValue or lastValue are negative
      * **/
     public double getTrendPercent(double startValue, double finalValue){
-        return tradingTools.computeAssetPercent(startValue, finalValue);
+        return computeAssetPercent(startValue, finalValue);
     }
 
     /** Method to get percent between two values and round it
@@ -125,7 +119,7 @@ public class KrakenManager {
      * @throws IllegalArgumentException if startValue or lastValue are negative
      * **/
     public double getTrendPercent(double startValue, double finalValue, int decimalDigits){
-        return tradingTools.computeAssetPercent(startValue, finalValue, decimalDigits);
+        return computeAssetPercent(startValue, finalValue, decimalDigits);
     }
 
     /** Method to format percent between two values and textualize it
@@ -133,7 +127,7 @@ public class KrakenManager {
      * @return percent value formatted es. +8% or -8% as {@link String}
      * **/
     public String getTextTrendPercent(double percent){
-        return tradingTools.textualizeAssetPercent(percent);
+        return textualizeAssetPercent(percent);
     }
 
     /** Method to get percent between two values and textualize it
@@ -142,7 +136,7 @@ public class KrakenManager {
      * @return percent value es. +8% or -8% as {@link String}
      * **/
     public String getTextTrendPercent(double startValue, double finalValue){
-        return tradingTools.textualizeAssetPercent(startValue, finalValue);
+        return textualizeAssetPercent(startValue, finalValue);
     }
 
     /** Method to get percent between two values and textualize it
@@ -152,15 +146,7 @@ public class KrakenManager {
      * @return percent value es. +8% or -8% as {@link String}
      * **/
     public String getTextTrendPercent(double startValue, double finalValue, int decimalDigits){
-        return tradingTools.textualizeAssetPercent(startValue, finalValue, decimalDigits);
-    }
-
-    /** Method get tradingTools object
-     * any params required
-     * @return {@link TradingTools} object
-     * **/
-    public TradingTools getTradingTools() {
-        return tradingTools;
+        return textualizeAssetPercent(startValue, finalValue, decimalDigits);
     }
 
     /**

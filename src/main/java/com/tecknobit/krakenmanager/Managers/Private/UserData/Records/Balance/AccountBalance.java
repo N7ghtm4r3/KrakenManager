@@ -1,12 +1,13 @@
 package com.tecknobit.krakenmanager.Managers.Private.UserData.Records.Balance;
 
-import com.tecknobit.apimanager.Tools.Trading.TradingTools;
 import com.tecknobit.krakenmanager.Managers.KrakenManager;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
+
+import static com.tecknobit.apimanager.Tools.Trading.TradingTools.roundValue;
 
 /**
  * The {@code AccountBalance} class is useful to format account balance data object
@@ -126,8 +127,7 @@ public class AccountBalance extends KrakenManager.KrakenResponse {
          * @return total balance as double
          * **/
         public double getTotalBalance(int decimals) {
-            // TODO: 28/07/2022 INSERT STATIC METHOD FROM LIBRARY 
-            return new TradingTools().roundValue(getTotalBalance(), decimals);
+            return roundValue(getTotalBalance(), decimals);
         }
 
         @Override
