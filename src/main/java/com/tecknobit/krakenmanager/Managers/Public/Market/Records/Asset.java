@@ -107,7 +107,6 @@ public class Asset extends KrakenManager.KrakenResponse {
                 ", altName='" + altName + '\'' +
                 ", decimals=" + decimals +
                 ", displayDecimals=" + displayDecimals +
-                ", jsonResponse=" + jsonResponse +
                 ", errors=" + Arrays.toString(errors) +
                 '}';
     }

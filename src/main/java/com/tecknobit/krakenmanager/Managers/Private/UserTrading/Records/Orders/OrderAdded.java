@@ -78,7 +78,6 @@ public class OrderAdded extends KrakenManager.KrakenResponse {
         return "OrderAdded{" +
                 "txIds=" + txIds +
                 ", description=" + description +
-                ", jsonResponse=" + jsonResponse +
                 ", errors=" + Arrays.toString(errors) +
                 '}';
     }

@@ -116,7 +116,6 @@ public class TradeVolume extends KrakenManager.KrakenResponse {
                 ", volume=" + volume +
                 ", fees=" + fees +
                 ", makerFees=" + makerFees +
-                ", jsonResponse=" + jsonResponse +
                 ", errors=" + Arrays.toString(errors) +
                 '}';
     }

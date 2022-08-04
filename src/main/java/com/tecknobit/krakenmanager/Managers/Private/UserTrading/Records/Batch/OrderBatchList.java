@@ -1,4 +1,4 @@
-package com.tecknobit.krakenmanager.Managers.Private.UserTrading.Records.Orders;
+package com.tecknobit.krakenmanager.Managers.Private.UserTrading.Records.Batch;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -138,6 +138,15 @@ public class OrderBatchList {
 
     public JSONArray getOrders() {
         return orders;
+    }
+
+    @Override
+    public String toString() {
+        return "OrderBatchList{" +
+                "orders=" + orders +
+                ", pair='" + pair + '\'' +
+                ", params=" + params +
+                '}';
     }
 
 }

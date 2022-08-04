@@ -324,7 +324,6 @@ public class TradeBalance extends KrakenManager.KrakenResponse {
                 ", equity=" + equity +
                 ", freeMargin=" + freeMargin +
                 ", marginLevel='" + marginLevel + '\'' +
-                ", jsonResponse=" + jsonResponse +
                 ", errors=" + Arrays.toString(errors) +
                 '}';
     }

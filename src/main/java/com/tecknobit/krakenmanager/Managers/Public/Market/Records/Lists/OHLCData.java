@@ -115,7 +115,6 @@ public class OHLCData extends MarketList {
                 "last=" + last +
                 ", symbol='" + symbol + '\'' +
                 ", ticksData=" + ticksData +
-                ", jsonResponse=" + jsonResponse +
                 ", errors=" + Arrays.toString(errors) +
                 '}';
     }

@@ -298,7 +298,6 @@ public class ReportStatus extends KrakenManager.KrakenResponse {
                 ", dataStartTimestamp=" + dataStartTimestamp +
                 ", dataEndTimestamp=" + dataEndTimestamp +
                 ", asset='" + asset + '\'' +
-                ", jsonResponse=" + jsonResponse +
                 ", errors=" + Arrays.toString(errors) +
                 '}';
     }

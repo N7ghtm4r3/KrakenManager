@@ -210,7 +210,6 @@ public class TickerInformation extends KrakenManager.KrakenResponse {
                 ", low=" + low +
                 ", high=" + high +
                 ", openPrice=" + openPrice +
-                ", jsonResponse=" + jsonResponse +
                 ", errors=" + Arrays.toString(errors) +
                 '}';
     }

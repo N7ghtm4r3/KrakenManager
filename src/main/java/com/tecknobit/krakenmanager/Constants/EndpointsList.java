@@ -139,4 +139,29 @@ public class EndpointsList {
      * **/
     public static final String ADD_ORDER_BATCH_ENDPOINT = "AddOrderBatch";
 
+    /**
+     * {@code EDIT_ORDER_ENDPOINT} is constant for EDIT_ORDER_ENDPOINT's endpoint
+     * **/
+    public static final String EDIT_ORDER_ENDPOINT = "EditOrder";
+
+    /**
+     * {@code CANCEL_ORDER_ENDPOINT} is constant for CANCEL_ORDER_ENDPOINT's endpoint
+     * **/
+    public static final String CANCEL_ORDER_ENDPOINT = "CancelOrder";
+
+    /**
+     * {@code CANCEL_ALL_ORDERS_ENDPOINT} is constant for CANCEL_ALL_ORDERS_ENDPOINT's endpoint
+     * **/
+    public static final String CANCEL_ALL_ORDERS_ENDPOINT = "CancelAll";
+
+    /**
+     * {@code CANCEL_ALL_ORDERS_AFTER_ENDPOINT} is constant for CANCEL_ALL_ORDERS_AFTER_ENDPOINT's endpoint
+     * **/
+    public static final String CANCEL_ALL_ORDERS_AFTER_ENDPOINT = "CancelAllOrdersAfter";
+
+    /**
+     * {@code CANCEL_ORDER_BATCH_ENDPOINT} is constant for CANCEL_ORDER_BATCH_ENDPOINT's endpoint
+     * **/
+    public static final String CANCEL_ORDER_BATCH_ENDPOINT = "CancelOrderBatch";
+
 }

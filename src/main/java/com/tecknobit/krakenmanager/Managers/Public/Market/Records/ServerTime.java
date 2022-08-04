@@ -73,7 +73,6 @@ public class ServerTime extends KrakenManager.KrakenResponse {
         return "ServerTime{" +
                 "unixTime=" + unixTime +
                 ", rfc1123='" + rfc1123 + '\'' +
-                ", jsonResponse=" + jsonResponse +
                 ", errors=" + Arrays.toString(errors) +
                 '}';
     }

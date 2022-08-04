@@ -204,7 +204,6 @@ public class HistoryTrade extends Trade {
                 ", vol=" + vol +
                 ", margin=" + margin +
                 ", misc='" + misc + '\'' +
-                ", jsonResponse=" + jsonResponse +
                 ", errors=" + Arrays.toString(errors) +
                 '}';
     }

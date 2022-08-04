@@ -102,7 +102,6 @@ public class Book extends KrakenManager.KrakenResponse {
                 "symbol='" + symbol + '\'' +
                 ", asks=" + asks +
                 ", bids=" + bids +
-                ", jsonResponse=" + jsonResponse +
                 ", errors=" + Arrays.toString(errors) +
                 '}';
     }

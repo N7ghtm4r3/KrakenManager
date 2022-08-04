@@ -254,7 +254,6 @@ public class Ledger extends KrakenManager.KrakenResponse {
                 ", amount=" + amount +
                 ", fee=" + fee +
                 ", balance=" + balance +
-                ", jsonResponse=" + jsonResponse +
                 ", errors=" + Arrays.toString(errors) +
                 '}';
     }

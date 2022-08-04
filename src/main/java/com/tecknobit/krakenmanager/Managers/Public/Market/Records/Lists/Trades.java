@@ -62,7 +62,6 @@ public class Trades extends MarketList {
                 ", last=" + last +
                 ", symbol='" + symbol + '\'' +
                 ", result=" + result +
-                ", jsonResponse=" + jsonResponse +
                 ", errors=" + Arrays.toString(errors) +
                 '}';
     }

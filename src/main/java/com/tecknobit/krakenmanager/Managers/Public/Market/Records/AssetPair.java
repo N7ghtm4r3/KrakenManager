@@ -355,7 +355,6 @@ public class AssetPair extends KrakenManager.KrakenResponse {
                 ", marginCall=" + marginCall +
                 ", marginStop=" + marginStop +
                 ", minOrder=" + minOrder +
-                ", jsonResponse=" + jsonResponse +
                 ", errors=" + Arrays.toString(errors) +
                 '}';
     }

@@ -307,7 +307,6 @@ public class OpenPosition extends KrakenManager.KrakenResponse {
                 ", rolloverTerm=" + rolloverTerm +
                 ", misc='" + misc + '\'' +
                 ", oFlags='" + oFlags + '\'' +
-                ", jsonResponse=" + jsonResponse +
                 ", errors=" + Arrays.toString(errors) +
                 '}';
     }

@@ -73,7 +73,6 @@ public class SystemStatus extends KrakenManager.KrakenResponse {
         return "SystemStatus{" +
                 "status='" + status + '\'' +
                 ", timestamp='" + timestamp + '\'' +
-                ", jsonResponse=" + jsonResponse +
                 ", errors=" + Arrays.toString(errors) +
                 '}';
     }

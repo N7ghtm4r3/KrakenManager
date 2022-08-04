@@ -39,7 +39,6 @@ public class AccountBalance extends KrakenManager.KrakenResponse {
     public String toString() {
         return "AccountBalance{" +
                 "wallet=" + wallet +
-                ", jsonResponse=" + jsonResponse +
                 ", errors=" + Arrays.toString(errors) +
                 '}';
     }

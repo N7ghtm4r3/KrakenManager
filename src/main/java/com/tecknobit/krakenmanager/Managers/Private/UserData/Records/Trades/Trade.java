@@ -230,7 +230,6 @@ public class Trade extends KrakenManager.KrakenResponse {
                 ", vol=" + vol +
                 ", margin=" + margin +
                 ", misc='" + misc + '\'' +
-                ", jsonResponse=" + jsonResponse +
                 ", errors=" + Arrays.toString(errors) +
                 '}';
     }

@@ -143,7 +143,6 @@ public class ClosedOrder extends Order {
                 ", misc='" + misc + '\'' +
                 ", oFlags='" + oFlags + '\'' +
                 ", trades=" + trades +
-                ", jsonResponse=" + jsonResponse +
                 ", errors=" + Arrays.toString(errors) +
                 '}';
     }

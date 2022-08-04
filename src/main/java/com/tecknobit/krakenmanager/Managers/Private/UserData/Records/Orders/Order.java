@@ -448,7 +448,6 @@ public class Order extends KrakenManager.KrakenResponse {
                 ", misc='" + misc + '\'' +
                 ", oFlags='" + oFlags + '\'' +
                 ", trades=" + trades +
-                ", jsonResponse=" + jsonResponse +
                 ", errors=" + Arrays.toString(errors) +
                 '}';
     }
@@ -528,14 +527,15 @@ public class Order extends KrakenManager.KrakenResponse {
          * @param jsonOrder: order description details in JSON format
          **/
         public OrderDescription(JSONObject jsonOrder){
-            pair = jsonOrder.getString("pair");
-            type = jsonOrder.getString("type");
-            orderType = jsonOrder.getString("ordertype");
-            price = jsonOrder.getDouble("price");
-            secondPrice = jsonOrder.getDouble("price2");
-            leverage = jsonOrder.getString("leverage");
-            order = jsonOrder.getString("order");
-            close = jsonOrder.getString("close");
+            JsonHelper orderDescription = new JsonHelper(jsonOrder);
+            pair = orderDescription.getString("pair");
+            type = orderDescription.getString("type");
+            orderType = orderDescription.getString("ordertype");
+            price = orderDescription.getDouble("price");
+            secondPrice = orderDescription.getDouble("price2");
+            leverage = orderDescription.getString("leverage");
+            order = orderDescription.getString("order");
+            close = orderDescription.getString("close");
         }
 
         public String getPair() {
