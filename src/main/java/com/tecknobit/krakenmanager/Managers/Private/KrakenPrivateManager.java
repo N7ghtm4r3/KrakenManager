@@ -1,8 +1,5 @@
 package com.tecknobit.krakenmanager.Managers.Private;
 
-import com.tecknobit.apimanager.Manager.APIRequest;
-import com.tecknobit.apimanager.Manager.APIRequest.Headers;
-import com.tecknobit.apimanager.Manager.APIRequest.Params;
 import com.tecknobit.krakenmanager.Managers.KrakenManager;
 import org.json.JSONObject;
 
@@ -11,8 +8,7 @@ import javax.crypto.spec.SecretKeySpec;
 import java.io.IOException;
 import java.util.Base64;
 
-import static com.tecknobit.apimanager.Manager.APIRequest.POST_METHOD;
-import static com.tecknobit.apimanager.Manager.APIRequest.SHA256_ALGORITHM;
+import static com.tecknobit.apimanager.Manager.APIRequest.*;
 import static com.tecknobit.apimanager.Tools.Formatters.JsonHelper.getJSONObject;
 
 /**
@@ -141,11 +137,10 @@ public class KrakenPrivateManager extends KrakenManager {
      * **/
     private String getSignature(String path, Params data) {
         try {
-            // TODO: 01/08/2022 TRY WITH SIGNATURE 512 METHOD FROM LIBRARY
-            Mac mac = Mac.getInstance("HmacSHA512");
-            mac.init(new SecretKeySpec(Base64.getDecoder().decode(apiSign.getBytes()), "HmacSHA512"));
+            Mac mac = Mac.getInstance(HMAC_SHA512_ALGORITHM);
+            mac.init(new SecretKeySpec(Base64.getDecoder().decode(apiSign.getBytes()), HMAC_SHA512_ALGORITHM));
             mac.update(("/0/private/" + path).getBytes());
-            return new String(Base64.getEncoder().encode(mac.doFinal(APIRequest.digest(data.getParam("nonce") 
+            return new String(Base64.getEncoder().encode(mac.doFinal(digest(data.getParam("nonce")
                             + apiRequest.encodeBodyParams(data), SHA256_ALGORITHM))));
         } catch (Exception e) {
             return null;

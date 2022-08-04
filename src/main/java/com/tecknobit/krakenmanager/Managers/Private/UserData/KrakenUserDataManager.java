@@ -1212,7 +1212,6 @@ public class KrakenUserDataManager extends KrakenPrivateManager {
      * @return an export report as zipped {@link File}
      * **/
     public File retrieveDataExport(String id, String reportName) throws Exception {
-
         Params params = new Params();
         params.addParam("id", id);
         JSONArray chunks = new JSONArray(sendPostRequest(RETRIEVE_EXPORT_ENDPOINT, params));

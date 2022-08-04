@@ -129,4 +129,14 @@ public class EndpointsList {
      * **/
     public static final String DELETE_EXPORT_ENDPOINT = "RemoveExport";
 
+    /**
+     * {@code ADD_ORDER_ENDPOINT} is constant for ADD_ORDER_ENDPOINT's endpoint
+     * **/
+    public static final String ADD_ORDER_ENDPOINT = "AddOrder";
+
+    /**
+     * {@code ADD_ORDER_BATCH_ENDPOINT} is constant for ADD_ORDER_BATCH_ENDPOINT's endpoint
+     * **/
+    public static final String ADD_ORDER_BATCH_ENDPOINT = "AddOrderBatch";
+
 }
