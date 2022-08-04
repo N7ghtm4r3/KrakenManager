@@ -8,6 +8,9 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+import static com.tecknobit.apimanager.Manager.APIRequest.Params;
+import static com.tecknobit.apimanager.Tools.Formatters.ScientificNotationParser.sNotationParse;
+
 public class OrderAdded extends KrakenManager.KrakenResponse {
 
     public static final String STP_CANCEL_NEWEST_TYPE = "cancel-newest";
@@ -59,6 +62,15 @@ public class OrderAdded extends KrakenManager.KrakenResponse {
 
     public Description getDescription() {
         return description;
+    }
+
+    public static void addBaseOrderParameters(String orderType, String type, double volume, String pair, Params params){
+        if(params == null)
+            params = new Params();
+        params.addParam("ordertype", orderType);
+        params.addParam("type", type);
+        params.addParam("volume", sNotationParse(8, volume));
+        params.addParam("pair", pair);
     }
 
     @Override
