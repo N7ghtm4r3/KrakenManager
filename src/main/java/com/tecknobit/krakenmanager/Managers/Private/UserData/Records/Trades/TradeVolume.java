@@ -74,10 +74,11 @@ public class TradeVolume extends KrakenManager.KrakenResponse {
     public TradeVolume(JSONObject jsonResponse) {
         super(jsonResponse);
         JSONObject trade = getResult();
-        this.currency = trade.getString("currency");
-        this.volume = trade.getDouble("volume");
-        this.fees = assembleTradeFeesList(trade, "fees");
-        this.makerFees = assembleTradeFeesList(trade, "fees_maker");
+        JsonHelper tradeHelper = new JsonHelper(trade);
+        currency = tradeHelper.getString("currency");
+        volume = tradeHelper.getDouble("volume");
+        fees = assembleTradeFeesList(trade, "fees");
+        makerFees = assembleTradeFeesList(trade, "fees_maker");
     }
 
     /** Method to assemble a trade fee list

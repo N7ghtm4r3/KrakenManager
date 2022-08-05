@@ -6,9 +6,7 @@ import com.tecknobit.krakenmanager.Managers.Private.KrakenPrivateManager;
 import com.tecknobit.krakenmanager.Managers.Private.UserData.Records.Orders.Order;
 import com.tecknobit.krakenmanager.Managers.Private.UserTrading.Records.Batch.OrderBatch;
 import com.tecknobit.krakenmanager.Managers.Private.UserTrading.Records.Batch.OrderBatchList;
-import com.tecknobit.krakenmanager.Managers.Private.UserTrading.Records.Orders.OrderAdded;
-import com.tecknobit.krakenmanager.Managers.Private.UserTrading.Records.Orders.OrderCancelledStatus;
-import com.tecknobit.krakenmanager.Managers.Private.UserTrading.Records.Orders.OrderEdited;
+import com.tecknobit.krakenmanager.Managers.Private.UserTrading.Records.Orders.*;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -472,6 +470,46 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
 
     public <T> OrderCancelledStatus cancelOrderObject(T orderId) throws Exception {
         return new OrderCancelledStatus(cancelOrderJSON(orderId));
+    }
+
+    public String cancelAllOrders() throws Exception {
+        return sendPostRequest(CANCEL_ALL_ORDERS_ENDPOINT, null);
+    }
+
+    public JSONObject cancelAllOrdersJSON() throws Exception {
+        return new JSONObject(cancelAllOrders());
+    }
+
+    public OrderCancelled cancelAllOrdersObject() throws Exception {
+        return new OrderCancelled(cancelAllOrdersJSON());
+    }
+
+    public String cancelAllOrdersAfter(int timeout) throws Exception {
+        Params params = new Params();
+        params.addParam("timeout", timeout);
+        return sendPostRequest(CANCEL_ALL_ORDERS_AFTER_ENDPOINT, params);
+    }
+
+    public JSONObject cancelAllOrdersAfterJSON(int timeout) throws Exception {
+        return new JSONObject(cancelAllOrdersAfter(timeout));
+    }
+
+    public OrderCancelledAfter cancelAllOrdersAfterObject(int timeout) throws Exception {
+        return new OrderCancelledAfter(cancelAllOrdersAfterJSON(timeout));
+    }
+
+    public <T> String cancelOrderBatch(ArrayList<T> orderBatchIdList) throws Exception {
+        Params params = new Params();
+        params.addParam("txid", orderBatchIdList);
+        return sendPostRequest(CANCEL_ORDER_BATCH_ENDPOINT, params);
+    }
+
+    public <T> JSONObject cancelOrderBatchJSON(ArrayList<T> orderBatchIdList) throws Exception {
+        return new JSONObject(cancelOrderBatch(orderBatchIdList));
+    }
+
+    public <T> OrderCancelled cancelOrderBatchObject(ArrayList<T> orderBatchIdList) throws Exception {
+        return new OrderCancelled(cancelOrderBatchJSON(orderBatchIdList));
     }
 
 }

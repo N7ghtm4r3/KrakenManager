@@ -4,6 +4,7 @@ import com.tecknobit.apimanager.Manager.APIRequest;
 import com.tecknobit.apimanager.Tools.Formatters.JsonHelper;
 import com.tecknobit.apimanager.Tools.Trading.TradingTools;
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.Arrays;
@@ -170,12 +171,26 @@ public class KrakenManager {
          * @param jsonResponse: base json response
          * **/
         public KrakenResponse(JSONObject jsonResponse) {
+            boolean jsonArrayList = false;
             this.jsonResponse = new JsonHelper(jsonResponse);
             JSONArray jsonErrors = this.jsonResponse.getJSONArray("error", new JSONArray());
             int errorsLength = jsonErrors.length();
             errors = new String[errorsLength];
-            for (int j = 0; j < errorsLength; j++){
-                errors[j] = jsonErrors.getString(j);
+            for (int j = 0; j < errorsLength; j++) {
+                try {
+                    errors[j] = jsonErrors.getString(j);
+                }catch (JSONException e){
+                    jsonArrayList = true;
+                    break;
+                }
+            }
+            if(jsonArrayList){
+                int counter = 0;
+                for (int j = 0; j < errorsLength; j++){
+                    JSONArray subErrors = jsonErrors.getJSONArray(j);
+                    for (int i = 0; i < subErrors.length(); i++, counter++)
+                        errors[counter] = subErrors.getString(i);
+                }
             }
         }
 
