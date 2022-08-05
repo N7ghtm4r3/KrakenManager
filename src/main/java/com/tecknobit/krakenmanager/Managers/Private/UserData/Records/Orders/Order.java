@@ -242,7 +242,7 @@ public class Order extends KrakenManager.KrakenResponse {
     protected final ArrayList<Long> trades;
 
     /** Constructor to init a {@link Order} object
-     * @param jsonResponse : base json response
+     * @param jsonResponse: base json response
      * @param refId: referral order transaction id
      * @param userRef: user reference id
      * @param status: status value
@@ -333,7 +333,7 @@ public class Order extends KrakenManager.KrakenResponse {
     }
 
     /** Constructor to init a {@link Order}
-     * @param jsonResponse : base json response
+     * @param jsonResponse: base json response
      **/
     public Order(JSONObject jsonResponse) {
         super(jsonResponse);

@@ -24,7 +24,7 @@ public class AccountBalance extends KrakenManager.KrakenResponse {
     private final Wallet wallet;
 
     /** Constructor to init an {@link AccountBalance} object
-     * @param jsonResponse : base json response
+     * @param jsonResponse: base json response
      **/
     public AccountBalance(JSONObject jsonResponse) {
         super(jsonResponse);

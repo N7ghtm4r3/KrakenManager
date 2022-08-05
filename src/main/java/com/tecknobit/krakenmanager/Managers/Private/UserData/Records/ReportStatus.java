@@ -142,7 +142,7 @@ public class ReportStatus extends KrakenManager.KrakenResponse {
     private final String asset;
 
     /** Constructor to init a {@link ReportStatus} object
-     * @param jsonResponse : base json response
+     * @param jsonResponse: base json response
      * @param reportId: report identifier value
      * @param description: description value
      * @param format: format value
@@ -211,7 +211,7 @@ public class ReportStatus extends KrakenManager.KrakenResponse {
     }
 
     /** Constructor to init a {@link ReportStatus} object
-     * @param jsonResponse : base json response
+     * @param jsonResponse: base json response
      **/
     public ReportStatus(JSONObject jsonResponse) {
         super(jsonResponse);

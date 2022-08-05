@@ -57,7 +57,7 @@ public class OrderBatch extends KrakenManager.KrakenResponse {
 
     /**
      * Constructor to init a {@link OrderBatch} object
-     * @param jsonResponse : base json response
+     * @param jsonResponse: base json response
      **/
     public OrderBatch(JSONObject jsonResponse) {
         super(jsonResponse);

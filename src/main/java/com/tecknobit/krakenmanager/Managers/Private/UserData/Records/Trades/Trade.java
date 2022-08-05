@@ -84,7 +84,7 @@ public class Trade extends KrakenManager.KrakenResponse {
     protected final String misc;
 
     /** Constructor to init a {@link Trade} object
-     * @param jsonResponse : base json response
+     * @param jsonResponse: base json response
      * @param tradeId: trade identifier value
      * @param orderTransactionId: order transaction identifier value
      * @param pair: pair value
@@ -148,7 +148,7 @@ public class Trade extends KrakenManager.KrakenResponse {
     }
 
     /** Constructor to init a {@link Trade} object
-     * @param jsonResponse : base json response
+     * @param jsonResponse: base json response
      * @param tradeId: trade identifier value
      **/
     public Trade(JSONObject jsonResponse, String tradeId) {

@@ -129,7 +129,7 @@ public class Ledger extends KrakenManager.KrakenResponse {
     private final double balance;
 
     /** Constructor to init a {@link Ledger} object
-     * @param jsonResponse : base json response
+     * @param jsonResponse: base json response
      * @param ledgerId: ledger identifier value
      * @param refId: reference id value
      * @param time: unix timestamp of ledger
@@ -184,7 +184,7 @@ public class Ledger extends KrakenManager.KrakenResponse {
     }
 
     /** Constructor to init a {@link Ledger} object
-     * @param jsonResponse : base json response
+     * @param jsonResponse: base json response
      * @param ledgerId: ledger identifier value
      **/
     public Ledger(JSONObject jsonResponse, String ledgerId) {

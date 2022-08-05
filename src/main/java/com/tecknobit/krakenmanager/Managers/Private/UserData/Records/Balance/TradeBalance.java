@@ -61,7 +61,7 @@ public class TradeBalance extends KrakenManager.KrakenResponse {
     private String marginLevel;
 
     /** Constructor to init a {@link TradeBalance} object
-     * @param jsonResponse : base json response
+     * @param jsonResponse: base json response
      * @param equivalentBalance: combined balance of all currencies
      * @param tradeBalance: combined balance of all equity currencies
      * @param marginAmount: margin amount of open positions
@@ -169,7 +169,7 @@ public class TradeBalance extends KrakenManager.KrakenResponse {
     }
 
     /** Constructor to init a {@link TradeBalance} object
-     * @param jsonResponse : base json response
+     * @param jsonResponse: base json response
      **/
     public TradeBalance(JSONObject jsonResponse) {
         super(jsonResponse);

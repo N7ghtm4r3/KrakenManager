@@ -105,7 +105,7 @@ public class OpenPosition extends KrakenManager.KrakenResponse {
     private final String oFlags;
 
     /** Constructor to init a {@link OpenPosition} object
-     * @param jsonResponse : base json response
+     * @param jsonResponse: base json response
      * @param positionId: position identifier value
      * @param orderTransactionId: order id responsible for the position
      * @param postStatus: position status
@@ -194,7 +194,7 @@ public class OpenPosition extends KrakenManager.KrakenResponse {
     }
 
     /** Constructor to init a {@link OpenPosition} object
-     * @param jsonResponse : base json response
+     * @param jsonResponse: base json response
      * @param positionId: position identifier value
      **/
     public OpenPosition(JSONObject jsonResponse, String positionId) {

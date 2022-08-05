@@ -57,7 +57,7 @@ public class HistoryTrade extends Trade {
     private final ArrayList<Long> trades;
 
     /** Constructor to init a {@link HistoryTrade} object
-     * @param jsonResponse : base json response
+     * @param jsonResponse: base json response
      * @param tradeId: trade identifier value
      * @param orderTransactionId: order transaction identifier value
      * @param pair: pair value
@@ -132,7 +132,7 @@ public class HistoryTrade extends Trade {
     }
 
     /** Constructor to init a {@link HistoryTrade} object
-     * @param jsonResponse : base json response
+     * @param jsonResponse: base json response
      * @param tradeId: trade identifier value
      **/
     public HistoryTrade(JSONObject jsonResponse, String tradeId) {

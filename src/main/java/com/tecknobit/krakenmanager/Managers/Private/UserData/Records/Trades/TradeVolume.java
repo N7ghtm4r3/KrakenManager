@@ -37,7 +37,7 @@ public class TradeVolume extends KrakenManager.KrakenResponse {
     private final ArrayList<TradeFee> makerFees;
 
     /** Constructor to init a {@link TradeVolume} object
-     * @param jsonResponse : base json response
+     * @param jsonResponse: base json response
      * @param currency: volume currency
      * @param volume: current discount volume
      * @param fees: list of fees as {@link TradeFee}
@@ -69,7 +69,7 @@ public class TradeVolume extends KrakenManager.KrakenResponse {
 
     /**
      * Constructor to init a {@link TradeVolume} object
-     * @param jsonResponse : base json response
+     * @param jsonResponse: base json response
      **/
     public TradeVolume(JSONObject jsonResponse) {
         super(jsonResponse);

@@ -1,7 +1,7 @@
 package com.tecknobit.krakenmanager.Managers.Private.UserTrading.Records.Orders;
 
-import com.tecknobit.apimanager.Tools.Formatters.JsonHelper;
 import com.tecknobit.krakenmanager.Managers.KrakenManager;
+import com.tecknobit.krakenmanager.Managers.Private.UserData.Records.Orders.Order;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -11,32 +11,106 @@ import java.util.Arrays;
 import static com.tecknobit.apimanager.Manager.APIRequest.Params;
 import static com.tecknobit.apimanager.Tools.Formatters.ScientificNotationParser.sNotationParse;
 
+/**
+ * The {@code OrderAdded} class is useful to assemble order added object
+ * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/addOrder">
+ *     https://docs.kraken.com/rest/#tag/User-Trading/operation/addOrder</a>
+ * @author N7ghtm4r3 - Tecknobit
+ * **/
+
 public class OrderAdded extends KrakenManager.KrakenResponse {
 
+    /**
+     * {@code STP_CANCEL_NEWEST_TYPE} is constant for cancel-newest self trade prevention type
+     * **/
     public static final String STP_CANCEL_NEWEST_TYPE = "cancel-newest";
+
+    /**
+     * {@code STP_CANCEL_OLDEST_TYPE} is constant for cancel-oldest self trade prevention type
+     * **/
     public static final String STP_CANCEL_OLDEST_TYPE = "cancel-oldest";
+
+    /**
+     * {@code STP_CANCEL_BOTH_TYPE} is constant for cancel-both self trade prevention type
+     * **/
     public static final String STP_CANCEL_BOTH_TYPE = "cancel-both";
+
+    /**
+     * {@code GTC_TIME_IN_FORCE} is constant for GTC time in force type
+     * **/
     public static final String GTC_TIME_IN_FORCE = "GTC";
+
+    /**
+     * {@code IOC_TIME_IN_FORCE} is constant for IOC time in force type
+     * **/
     public static final String IOC_TIME_IN_FORCE = "IOC";
+
+    /**
+     * {@code GTD_TIME_IN_FORCE} is constant for GTD time in force type
+     * **/
     public static final String GTD_TIME_IN_FORCE = "GTD";
+
+    /**
+     * {@code DEFAULT_SCHEDULED_TIME} is constant for default scheduled time type
+     * **/
     public static final String DEFAULT_SCHEDULED_TIME = "0";
+
+    /**
+     * {@code FROM_NOW_SCHEDULED_TIME} is constant for from now scheduled time type
+     * **/
     public static final String FROM_NOW_SCHEDULED_TIME = "+<n>";
+
+    /**
+     * {@code UNIX_TIMESTAMP_SCHEDULED_TIME} is constant for unix timestamp scheduled time type
+     * **/
     public static final String UNIX_TIMESTAMP_SCHEDULED_TIME = "<n>";
+
+    /**
+     * {@code ADD_OFFSET_AMOUNT} is constant for add offset amount
+     * **/
     public static final String ADD_OFFSET_AMOUNT = "+";
-    public static final String SUBTRATS_OFFSET_AMOUNT = "-";
+
+    /**
+     * {@code SUBSTRACS_OFFSET_AMOUNT} is constant for substract offset amount
+     * **/
+    public static final String SUBSTRACS_OFFSET_AMOUNT = "-";
+
+    /**
+     * {@code GENERIC_OFFSET_AMOUNT} is constant for generic offset amount
+     * **/
     public static final String GENERIC_OFFSET_AMOUNT = "#";
+
+    /**
+     * {@code RELATIVE_PERCENTAGE_OFFSET_AMOUNT} is constant for relative percentage offset amount
+     * **/
     public static final String RELATIVE_PERCENTAGE_OFFSET_AMOUNT = "%";
 
+    /**
+     * {@code txIds} is instance that memorizes list of tx ids
+     * **/
     private final ArrayList<String> txIds;
-    private final Description description;
 
-    public OrderAdded(JSONObject jsonResponse, ArrayList<String> txIds, Description description) {
+    /**
+     * {@code description} is instance that memorizes description of added order
+     * **/
+    private final Order.OrderDescription description;
+
+    /** Constructor to init a {@link OrderAdded} object
+     * @param jsonResponse: base json response
+     * @param txIds: list of tx ids
+     * @param description: description of added order
+     **/
+    public OrderAdded(JSONObject jsonResponse, ArrayList<String> txIds, Order.OrderDescription description) {
         super(jsonResponse);
         this.txIds = txIds;
         this.description = description;
     }
 
-    public OrderAdded(ArrayList<String> txIds, Description description) {
+    /** Constructor to init a {@link OrderAdded} object
+     * @param txIds: list of tx ids
+     * @param description: description of added order
+     **/
+    public OrderAdded(ArrayList<String> txIds, Order.OrderDescription description) {
         super(null);
         this.txIds = txIds;
         this.description = description;
@@ -44,12 +118,12 @@ public class OrderAdded extends KrakenManager.KrakenResponse {
 
     /**
      * Constructor to init a {@link OrderAdded} object
-     * @param jsonResponse : base json response
+     * @param jsonResponse: base json response
      **/
     public OrderAdded(JSONObject jsonResponse) {
         super(jsonResponse);
         JSONObject result = getResult();
-        description = new Description(result.getJSONObject("descr"));
+        description = new Order.OrderDescription(result.getJSONObject("descr"));
         txIds = new ArrayList<>();
         JSONArray jsonTxIds = result.getJSONArray("txid");
         for (int j = 0; j < jsonTxIds.length(); j++)
@@ -60,10 +134,17 @@ public class OrderAdded extends KrakenManager.KrakenResponse {
         return txIds;
     }
 
-    public Description getDescription() {
+    public Order.OrderDescription getDescription() {
         return description;
     }
 
+    /** Method to add base order paramaters
+     * @param orderType: order type -> all constants in {@link Order} class
+     * @param type: order direction -> buy or sell
+     * @param volume: order quantity in terms of the base asset
+     * @param pair: pair value
+     * @param params: extra order details
+     * **/
     public static void addBaseOrderParameters(String orderType, String type, double volume, String pair, Params params){
         if(params == null)
             params = new Params();
@@ -80,51 +161,6 @@ public class OrderAdded extends KrakenManager.KrakenResponse {
                 ", description=" + description +
                 ", errors=" + Arrays.toString(errors) +
                 '}';
-    }
-
-    // TODO: 03/08/2022 INSERT CREATE TICKET WITH SCREEN OF RESULT JSON TO CREATE OTHER DESCR INSTANCE
-
-    public static class Description {
-
-        // TODO: 03/08/2022 TMP AS FAR AS DESCR WILL NOT COMPLETE
-        private final JsonHelper jsonHelper;
-        private final String order;
-        private final String close;
-
-        public Description(String order, String close) {
-            jsonHelper = null;
-            this.order = order;
-            this.close = close;
-        }
-
-        public Description(JSONObject jsonDescription) {
-            jsonHelper = new JsonHelper(jsonDescription);
-            order = jsonHelper.getString("order");
-            close = jsonHelper.getString("close");
-        }
-
-        // TODO: 03/08/2022 INSERT CREATE TICKET WITH SCREEN OF RESULT JSON TO CREATE OTHER DESCR INSTANCE
-        //  AND WARN USER ABOUT TMP METHOD AS FAR AS DESCR WILL NOT BE COMPLETED
-        public JsonHelper getJsonHelper() {
-            return jsonHelper;
-        }
-
-        public String getOrder() {
-            return order;
-        }
-
-        public String getClose() {
-            return close;
-        }
-
-        @Override
-        public String toString() {
-            return "Description{" +
-                    "order='" + order + '\'' +
-                    ", close='" + close + '\'' +
-                    '}';
-        }
-
     }
 
 }

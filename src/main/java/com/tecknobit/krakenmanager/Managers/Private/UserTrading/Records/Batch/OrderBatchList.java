@@ -239,7 +239,7 @@ public class OrderBatchList {
         if(price2 < 0)
             throw new IllegalArgumentException("Price 2 value cannot be smaller than 0");
         else{
-            if(!offsetType.equals(ADD_OFFSET_AMOUNT) && !offsetType.equals(SUBTRATS_OFFSET_AMOUNT)
+            if(!offsetType.equals(ADD_OFFSET_AMOUNT) && !offsetType.equals(SUBSTRACS_OFFSET_AMOUNT)
                     && !offsetType.equals(GENERIC_OFFSET_AMOUNT) && !offsetType.equals(RELATIVE_PERCENTAGE_OFFSET_AMOUNT))
                 throw new IllegalArgumentException("Offset value must be +,-,# or %");
             else
