@@ -212,4 +212,12 @@ public class KrakenManager {
 
     }
 
+    /**
+     * The {@code Params} class is useful to assemble params values for the request
+     * @implNote this class can be used to assemble body payload or query request params
+     * @implSpec look this library <a href="https://github.com/N7ghtm4r3/APIManager">here</a>
+     * @see com.tecknobit.apimanager.Manager.APIRequest.Params
+     * **/
+    public static class Params extends APIRequest.Params {}
+
 }

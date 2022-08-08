@@ -14,8 +14,8 @@ import java.util.Arrays;
             https://docs.kraken.com/rest/#tag/User-Data/operation/getLedgers</a>
      </li>
      <li>
-         <a href="https://docs.kraken.com/rest/#tag/User-Data/operation/getLedgers">
-            https://docs.kraken.com/rest/#tag/User-Data/operation/getLedgers</a>
+         <a href="https://docs.kraken.com/rest/#tag/User-Data/operation/getLedgersInfo">
+            https://docs.kraken.com/rest/#tag/User-Data/operation/getLedgersInfo</a>
      </li>
  </ul>
  * @author N7ghtm4r3 - Tecknobit
@@ -86,7 +86,7 @@ public class Ledger extends KrakenManager.KrakenResponse {
     /**
      * {@code refId} is instance that memorizes reference id value
      * **/
-    private final long refId;
+    private final String refId;
 
     /**
      * {@code time} is instance that memorizes UNIX timestamp of ledger
@@ -141,7 +141,7 @@ public class Ledger extends KrakenManager.KrakenResponse {
      * @param fee: transaction fee value
      * @param balance: resulting balance value
      **/
-    public Ledger(JSONObject jsonResponse, String ledgerId, long refId, long time, String type, String subType,
+    public Ledger(JSONObject jsonResponse, String ledgerId, String refId, long time, String type, String subType,
                   String aClass, String asset, double amount, double fee, double balance) {
         super(jsonResponse);
         this.ledgerId = ledgerId;
@@ -168,7 +168,7 @@ public class Ledger extends KrakenManager.KrakenResponse {
      * @param fee: transaction fee value
      * @param balance: resulting balance value
      **/
-    public Ledger(String ledgerId, long refId, long time, String type, String subType, String aClass, String asset,
+    public Ledger(String ledgerId, String refId, long time, String type, String subType, String aClass, String asset,
                   double amount, double fee, double balance) {
         super(null);
         this.ledgerId = ledgerId;
@@ -190,7 +190,7 @@ public class Ledger extends KrakenManager.KrakenResponse {
     public Ledger(JSONObject jsonResponse, String ledgerId) {
         super(jsonResponse);
         this.ledgerId = ledgerId;
-        refId = jsonResponse.getLong("refid");
+        refId = jsonResponse.getString("refid");
         time = jsonResponse.getLong("time");
         type = jsonResponse.getString("type");
         subType = jsonResponse.getString("subtype");
@@ -205,7 +205,7 @@ public class Ledger extends KrakenManager.KrakenResponse {
         return ledgerId;
     }
 
-    public long getRefId() {
+    public String getRefId() {
         return refId;
     }
 

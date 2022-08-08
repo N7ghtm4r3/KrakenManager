@@ -164,4 +164,44 @@ public class EndpointsList {
      * **/
     public static final String CANCEL_ORDER_BATCH_ENDPOINT = "CancelOrderBatch";
 
+    /**
+     * {@code DEPOSIT_METHODS_ENDPOINT} is constant for DEPOSIT_METHODS_ENDPOINT's endpoint
+     * **/
+    public static final String DEPOSIT_METHODS_ENDPOINT = "DepositMethods";
+
+    /**
+     * {@code DEPOSIT_ADRESSES_ENDPOINT} is constant for DEPOSIT_ADRESSES_ENDPOINT's endpoint
+     * **/
+    public static final String DEPOSIT_ADRESSES_ENDPOINT = "DepositAddresses";
+
+    /**
+     * {@code DEPOSIT_STATUS_ENDPOINT} is constant for DEPOSIT_STATUS_ENDPOINT's endpoint
+     * **/
+    public static final String DEPOSIT_STATUS_ENDPOINT = "OperationStatus";
+
+    /**
+     * {@code GET_WITHDRAWAL_INFORMATION_ENDPOINT} is constant for GET_WITHDRAWAL_INFORMATION_ENDPOINT's endpoint
+     * **/
+    public static final String GET_WITHDRAWAL_INFORMATION_ENDPOINT = "WithdrawInfo";
+
+    /**
+     * {@code MAKE_WITHDRAW_ENDPOINT} is constant for MAKE_WITHDRAW_ENDPOINT's endpoint
+     * **/
+    public static final String MAKE_WITHDRAW_ENDPOINT = "Withdraw";
+
+    /**
+     * {@code WITHDRAW_STATUS_ENDPOINT} is constant for WITHDRAW_STATUS_ENDPOINT's endpoint
+     * **/
+    public static final String WITHDRAW_STATUS_ENDPOINT = "WithdrawStatus";
+
+    /**
+     * {@code CANCEL_WITHDRAW_ENDPOINT} is constant for CANCEL_WITHDRAW_ENDPOINT's endpoint
+     * **/
+    public static final String CANCEL_WITHDRAW_ENDPOINT = "WithdrawCancel";
+
+    /**
+     * {@code WALLET_TRANSFER_ENDPOINT} is constant for WALLET_TRANSFER_ENDPOINT's endpoint
+     * **/
+    public static final String WALLET_TRANSFER_ENDPOINT = "WalletTransfer";
+
 }
