@@ -6,7 +6,7 @@ import org.json.JSONObject;
 import java.util.Arrays;
 
 /**
- * The {@code Order} class is useful to format ledger object
+ * The {@code Ledger} class is useful to format ledger object
  * @apiNote see official documentation at:
  <ul>
      <li>
