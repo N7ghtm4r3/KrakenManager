@@ -204,4 +204,34 @@ public class EndpointsList {
      * **/
     public static final String WALLET_TRANSFER_ENDPOINT = "WalletTransfer";
 
+    /**
+     * {@code STAKE_ENDPOINT} is constant for STAKE_ENDPOINT's endpoint
+     * **/
+    public static final String STAKE_ENDPOINT = "Stake";
+
+    /**
+     * {@code UNSTAKE_ENDPOINT} is constant for UNSTAKE_ENDPOINT's endpoint
+     * **/
+    public static final String UNSTAKE_ENDPOINT = "Unstake";
+
+    /**
+     * {@code ASSETS_STAKEABLE_ENDPOINT} is constant for ASSETS_STAKEABLE_ENDPOINT's endpoint
+     * **/
+    public static final String ASSETS_STAKEABLE_ENDPOINT = "Staking/Assets";
+
+    /**
+     * {@code PENDING_STAKING_TRANSACTIONS_ENDPOINT} is constant for PENDING_STAKING_TRANSACTIONS_ENDPOINT's endpoint
+     * **/
+    public static final String PENDING_STAKING_TRANSACTIONS_ENDPOINT = "Staking/Pending";
+
+    /**
+     * {@code STAKING_TRANSACTIONS_ENDPOINT} is constant for STAKING_TRANSACTIONS_ENDPOINT's endpoint
+     * **/
+    public static final String STAKING_TRANSACTIONS_ENDPOINT = "Staking/Transactions";
+
+    /**
+     * {@code GET_WEBSOCKETS_TOKEN_ENDPOINT} is constant for GET_WEBSOCKETS_TOKEN_ENDPOINT's endpoint
+     * **/
+    public static final String GET_WEBSOCKETS_TOKEN_ENDPOINT = "GetWebSocketsToken";
+
 }

@@ -10,6 +10,7 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
+import static com.tecknobit.apimanager.Tools.Formatters.ScientificNotationParser.sNotationParse;
 import static com.tecknobit.krakenmanager.Constants.EndpointsList.*;
 
 /**
@@ -27,7 +28,7 @@ public class KrakenUserFundingManager extends KrakenPrivateManager {
     public static final String SPOT_WALLET_SOURCE = "Spot Wallet";
 
     /**
-     * {@code FUTURES_WALLET_SOURCE} is constant for Futures wallet source
+     * {@code FUTURES_WALLET_SOURCE} is constant for futures wallet source
      * **/
     public static final String FUTURES_WALLET_SOURCE = "Futures Wallet";
 
@@ -240,7 +241,7 @@ public class KrakenUserFundingManager extends KrakenPrivateManager {
         Params params = new Params();
         params.addParam("asset", asset);
         params.addParam("key", key);
-        params.addParam("amount", amount);
+        params.addParam("amount", sNotationParse(8, amount));
         return sendPostRequest(GET_WITHDRAWAL_INFORMATION_ENDPOINT, params);
     }
 
@@ -280,7 +281,7 @@ public class KrakenUserFundingManager extends KrakenPrivateManager {
         Params params = new Params();
         params.addParam("asset", asset);
         params.addParam("key", key);
-        params.addParam("amount", amount);
+        params.addParam("amount", sNotationParse(8, amount));
         return sendPostRequest(MAKE_WITHDRAW_ENDPOINT, params);
     }
 
@@ -427,7 +428,7 @@ public class KrakenUserFundingManager extends KrakenPrivateManager {
         params.addParam("asset", asset);
         params.addParam("from", from);
         params.addParam("to", to);
-        params.addParam("amount", amount);
+        params.addParam("amount", sNotationParse(8, amount));
         return sendPostRequest(WALLET_TRANSFER_ENDPOINT, params);
     }
 
