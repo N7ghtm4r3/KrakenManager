@@ -37,6 +37,11 @@ public class KrakenPrivateManager extends KrakenManager {
     public static final String CONTENT_TYPE_HEADER = "Content-Type";
 
     /**
+     * {@code USER_AGENT_HEADER} is constant for User-Agent header
+     * **/
+    public static final String USER_AGENT_HEADER = "User-Agent";
+
+    /**
      * {@code apiKey} is the instance that contains api key of Kraken's platform
      * **/
     protected final String apiKey;
@@ -109,6 +114,7 @@ public class KrakenPrivateManager extends KrakenManager {
     private void setHeaders(){
         headers.addHeader(API_KEY_HEADER, apiKey);
         headers.addHeader(CONTENT_TYPE_HEADER, "application/x-www-form-urlencoded; charset=utf-8'");
+        headers.addHeader(USER_AGENT_HEADER, "Mozilla/5.0 Firefox/26.0");
     }
 
     /** Method to send a POST request<br>

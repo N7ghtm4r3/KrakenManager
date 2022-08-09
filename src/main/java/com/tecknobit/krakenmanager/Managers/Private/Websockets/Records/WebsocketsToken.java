@@ -5,17 +5,29 @@ import org.json.JSONObject;
 
 import java.util.Arrays;
 
+/**
+ * The {@code StakeableAsset} class is useful to format a websockets token object
+ * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/Websockets-Authentication/operation/getWebsocketsToken">
+ *     https://docs.kraken.com/rest/#tag/Websockets-Authentication/operation/getWebsocketsToken</a>
+ * @author N7ghtm4r3 - Tecknobit
+ * **/
+
 public class WebsocketsToken extends KrakenManager.KrakenResponse {
 
+    /**
+     * {@code token} is instance that memorizes websockets token
+     * **/
     private final String token;
+
+    /**
+     * {@code expires} is instance that memorizes time (in seconds) after which the token expires
+     * **/
     private final int expires;
 
-    public WebsocketsToken(JSONObject jsonResponse, String token, int expires) {
-        super(jsonResponse);
-        this.token = token;
-        this.expires = expires;
-    }
-
+    /** Constructor to init a {@link WebsocketsToken} object
+     * @param token: memorizes websockets token
+     * @param expires: time (in seconds) after which the token expires
+     **/
     public WebsocketsToken(String token, int expires) {
         super(null);
         this.token = token;
@@ -46,7 +58,6 @@ public class WebsocketsToken extends KrakenManager.KrakenResponse {
         return "WebsocketsToken{" +
                 "token='" + token + '\'' +
                 ", expires=" + expires +
-                ", jsonResponse=" + jsonResponse +
                 ", errors=" + Arrays.toString(errors) +
                 '}';
     }
