@@ -129,7 +129,8 @@ try {
 
 ## Support
 
-For support, email infotecknobitcompany@gmail.com.
+- Support via <a href="mailto:infotecknobitcompany@gmail.com">email</a>
+- Support via <a href="https://github.com/N7ghtm4r3/KrakenManager/issues/new">GitHub</a>
 
 ## Badges
 
