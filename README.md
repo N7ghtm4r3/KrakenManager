@@ -129,8 +129,12 @@ try {
 
 ## Support
 
+If you need help using the library or encounter any problems or bugs, please contact us via the following links:
+
 - Support via <a href="mailto:infotecknobitcompany@gmail.com">email</a>
 - Support via <a href="https://github.com/N7ghtm4r3/KrakenManager/issues/new">GitHub</a>
+
+Thank you for your help!
 
 ## Badges
 
