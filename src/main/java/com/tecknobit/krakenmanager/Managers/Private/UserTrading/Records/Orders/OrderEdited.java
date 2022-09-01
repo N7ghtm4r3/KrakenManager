@@ -9,6 +9,7 @@ import java.util.Arrays;
 
 import static com.tecknobit.apimanager.Manager.APIRequest.Params;
 import static com.tecknobit.apimanager.Tools.Formatters.ScientificNotationParser.sNotationParse;
+import static com.tecknobit.apimanager.Tools.Trading.TradingTools.roundValue;
 
 /**
  * The {@code OrderEdited} class is useful to assemble an order that has been edited
@@ -139,12 +140,45 @@ public class OrderEdited extends KrakenManager.KrakenResponse{
         return volume;
     }
 
+    /**
+     * Method to get {@link #volume} instance
+     *
+     * @param decimals: number of digits to round final value
+     * @return {@link #volume} instance rounded with decimal digits inserted
+     * @throws IllegalArgumentException if decimalDigits is negative
+     **/
+    public double getVolume(int decimals) {
+        return roundValue(volume, decimals);
+    }
+
     public double getPrice() {
         return price;
     }
 
+    /**
+     * Method to get {@link #price} instance
+     *
+     * @param decimals: number of digits to round final value
+     * @return {@link #price} instance rounded with decimal digits inserted
+     * @throws IllegalArgumentException if decimalDigits is negative
+     **/
+    public double getPrice(int decimals) {
+        return roundValue(price, decimals);
+    }
+
     public double getPrice2() {
         return price2;
+    }
+
+    /**
+     * Method to get {@link #price2} instance
+     *
+     * @param decimals: number of digits to round final value
+     * @return {@link #price2} instance rounded with decimal digits inserted
+     * @throws IllegalArgumentException if decimalDigits is negative
+     **/
+    public double getPrice2(int decimals) {
+        return roundValue(price2, decimals);
     }
 
     public int getOrdersCancelled() {

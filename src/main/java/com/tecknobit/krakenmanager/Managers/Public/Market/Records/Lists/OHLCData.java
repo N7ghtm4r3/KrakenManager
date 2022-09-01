@@ -6,12 +6,15 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+import static com.tecknobit.apimanager.Tools.Trading.TradingTools.roundValue;
+
 /**
  * The {@code OHLCData} class is useful to format OHLC data object
- * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getOHLCData">
- *     https://docs.kraken.com/rest/#tag/Market-Data/operation/getOHLCData</a>
+ *
  * @author N7ghtm4r3 - Tecknobit
- * **/
+ * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getOHLCData">
+ * https://docs.kraken.com/rest/#tag/Market-Data/operation/getOHLCData</a>
+ **/
 
 public class OHLCData extends MarketList {
 
@@ -219,24 +222,90 @@ public class OHLCData extends MarketList {
             return open;
         }
 
+        /**
+         * Method to get {@link #open} instance
+         *
+         * @param decimals: number of digits to round final value
+         * @return {@link #open} instance rounded with decimal digits inserted
+         * @throws IllegalArgumentException if decimalDigits is negative
+         **/
+        public double getOpen(int decimals) {
+            return roundValue(open, decimals);
+        }
+
         public double getHigh() {
             return high;
+        }
+
+        /**
+         * Method to get {@link #high} instance
+         *
+         * @param decimals: number of digits to round final value
+         * @return {@link #high} instance rounded with decimal digits inserted
+         * @throws IllegalArgumentException if decimalDigits is negative
+         **/
+        public double getHigh(int decimals) {
+            return roundValue(high, decimals);
         }
 
         public double getLow() {
             return low;
         }
 
+        /**
+         * Method to get {@link #low} instance
+         *
+         * @param decimals: number of digits to round final value
+         * @return {@link #low} instance rounded with decimal digits inserted
+         * @throws IllegalArgumentException if decimalDigits is negative
+         **/
+        public double getLow(int decimals) {
+            return roundValue(low, decimals);
+        }
+
         public double getClose() {
             return close;
+        }
+
+        /**
+         * Method to get {@link #close} instance
+         *
+         * @param decimals: number of digits to round final value
+         * @return {@link #close} instance rounded with decimal digits inserted
+         * @throws IllegalArgumentException if decimalDigits is negative
+         **/
+        public double getClose(int decimals) {
+            return roundValue(close, decimals);
         }
 
         public double getvWap() {
             return vWap;
         }
 
+        /**
+         * Method to get {@link #vWap} instance
+         *
+         * @param decimals: number of digits to round final value
+         * @return {@link #vWap} instance rounded with decimal digits inserted
+         * @throws IllegalArgumentException if decimalDigits is negative
+         **/
+        public double getvWap(int decimals) {
+            return roundValue(vWap, decimals);
+        }
+
         public double getVolume() {
             return volume;
+        }
+
+        /**
+         * Method to get {@link #volume} instance
+         *
+         * @param decimals: number of digits to round final value
+         * @return {@link #volume} instance rounded with decimal digits inserted
+         * @throws IllegalArgumentException if decimalDigits is negative
+         **/
+        public double getVolume(int decimals) {
+            return roundValue(volume, decimals);
         }
 
         public int getCount() {

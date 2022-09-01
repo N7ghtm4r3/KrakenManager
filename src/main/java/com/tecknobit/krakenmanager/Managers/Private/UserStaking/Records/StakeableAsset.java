@@ -8,12 +8,15 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+import static com.tecknobit.apimanager.Tools.Trading.TradingTools.roundValue;
+
 /**
  * The {@code StakeableAsset} class is useful to format a stakeable asset
- * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Staking/operation/getStakingAssetInfo">
- *     https://docs.kraken.com/rest/#tag/User-Staking/operation/getStakingAssetInfo</a>
+ *
  * @author N7ghtm4r3 - Tecknobit
- * **/
+ * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Staking/operation/getStakingAssetInfo">
+ * https://docs.kraken.com/rest/#tag/User-Staking/operation/getStakingAssetInfo</a>
+ **/
 
 public class StakeableAsset extends KrakenManager.KrakenResponse {
 
@@ -590,6 +593,17 @@ public class StakeableAsset extends KrakenManager.KrakenResponse {
             return reward;
         }
 
+        /**
+         * Method to get {@link #reward} instance
+         *
+         * @param decimals: number of digits to round final value
+         * @return {@link #reward} instance rounded with decimal digits inserted
+         * @throws IllegalArgumentException if decimalDigits is negative
+         **/
+        public double getReward(int decimals) {
+            return roundValue(reward, decimals);
+        }
+
         public String getType() {
             return type;
         }
@@ -640,8 +654,30 @@ public class StakeableAsset extends KrakenManager.KrakenResponse {
             return staking;
         }
 
+        /**
+         * Method to get {@link #staking} instance
+         *
+         * @param decimals: number of digits to round final value
+         * @return {@link #staking} instance rounded with decimal digits inserted
+         * @throws IllegalArgumentException if decimalDigits is negative
+         **/
+        public double getStaking(int decimals) {
+            return roundValue(staking, decimals);
+        }
+
         public double getUnstaking() {
             return unstaking;
+        }
+
+        /**
+         * Method to get {@link #unstaking} instance
+         *
+         * @param decimals: number of digits to round final value
+         * @return {@link #unstaking} instance rounded with decimal digits inserted
+         * @throws IllegalArgumentException if decimalDigits is negative
+         **/
+        public double getUnstaking(int decimals) {
+            return roundValue(unstaking, decimals);
         }
 
         @Override
@@ -693,6 +729,17 @@ public class StakeableAsset extends KrakenManager.KrakenResponse {
 
         public double getPercentage() {
             return percentage;
+        }
+
+        /**
+         * Method to get {@link #percentage} instance
+         *
+         * @param decimals: number of digits to round final value
+         * @return {@link #percentage} instance rounded with decimal digits inserted
+         * @throws IllegalArgumentException if decimalDigits is negative
+         **/
+        public double getPercentage(int decimals) {
+            return roundValue(percentage, decimals);
         }
 
         @Override

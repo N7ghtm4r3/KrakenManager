@@ -6,12 +6,15 @@ import org.json.JSONObject;
 
 import java.util.Arrays;
 
+import static com.tecknobit.apimanager.Tools.Trading.TradingTools.roundValue;
+
 /**
  * The {@code TradeBalance} class is useful to format trade balance data object
- * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Data/operation/getTradeBalance">
- *     https://docs.kraken.com/rest/#tag/User-Data/operation/getTradeBalance</a>
+ *
  * @author N7ghtm4r3 - Tecknobit
- * **/
+ * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Data/operation/getTradeBalance">
+ * https://docs.kraken.com/rest/#tag/User-Data/operation/getTradeBalance</a>
+ **/
 
 public class TradeBalance extends KrakenManager.KrakenResponse {
 
@@ -189,12 +192,25 @@ public class TradeBalance extends KrakenManager.KrakenResponse {
         return equivalentBalance;
     }
 
-    /** Method to set {@link #equivalentBalance}
+    /**
+     * Method to get {@link #equivalentBalance} instance
+     *
+     * @param decimals: number of digits to round final value
+     * @return {@link #equivalentBalance} instance rounded with decimal digits inserted
+     * @throws IllegalArgumentException if decimalDigits is negative
+     **/
+    public double getEquivalentBalance(int decimals) {
+        return roundValue(equivalentBalance, decimals);
+    }
+
+    /**
+     * Method to set {@link #equivalentBalance}
+     *
      * @param equivalentBalance: combined balance of all currencies
      * @throws IllegalArgumentException when equivalent balance value is smaller than 0
-     * **/
+     **/
     public void setEquivalentBalance(double equivalentBalance) {
-        if(equivalentBalance < 0)
+        if (equivalentBalance < 0)
             throw new IllegalArgumentException("Equivalent balance value cannot be lesser than 0");
         this.equivalentBalance = equivalentBalance;
     }
@@ -203,12 +219,25 @@ public class TradeBalance extends KrakenManager.KrakenResponse {
         return tradeBalance;
     }
 
-    /** Method to set {@link #tradeBalance}
+    /**
+     * Method to get {@link #tradeBalance} instance
+     *
+     * @param decimals: number of digits to round final value
+     * @return {@link #tradeBalance} instance rounded with decimal digits inserted
+     * @throws IllegalArgumentException if decimalDigits is negative
+     **/
+    public double getTradeBalance(int decimals) {
+        return roundValue(tradeBalance, decimals);
+    }
+
+    /**
+     * Method to set {@link #tradeBalance}
+     *
      * @param tradeBalance: combined balance of all equity currencies
      * @throws IllegalArgumentException when trade balance value is smaller than 0
-     * **/
+     **/
     public void setTradeBalance(double tradeBalance) {
-        if(tradeBalance < 0)
+        if (tradeBalance < 0)
             throw new IllegalArgumentException("Trade balance value cannot be lesser than 0");
         this.tradeBalance = tradeBalance;
     }
@@ -217,12 +246,25 @@ public class TradeBalance extends KrakenManager.KrakenResponse {
         return marginAmount;
     }
 
-    /** Method to set {@link #marginAmount}
+    /**
+     * Method to get {@link #marginAmount} instance
+     *
+     * @param decimals: number of digits to round final value
+     * @return {@link #marginAmount} instance rounded with decimal digits inserted
+     * @throws IllegalArgumentException if decimalDigits is negative
+     **/
+    public double getMarginAmount(int decimals) {
+        return roundValue(marginAmount, decimals);
+    }
+
+    /**
+     * Method to set {@link #marginAmount}
+     *
      * @param marginAmount: margin amount of open positions
      * @throws IllegalArgumentException when margin amount value is smaller than 0
-     * **/
+     **/
     public void setMarginAmount(double marginAmount) {
-        if(marginAmount < 0)
+        if (marginAmount < 0)
             throw new IllegalArgumentException("Margin amount value cannot be lesser than 0");
         this.marginAmount = marginAmount;
     }
@@ -231,12 +273,25 @@ public class TradeBalance extends KrakenManager.KrakenResponse {
         return unrealizeIncome;
     }
 
-    /** Method to set {@link #unrealizeIncome}
+    /**
+     * Method to get {@link #unrealizeIncome} instance
+     *
+     * @param decimals: number of digits to round final value
+     * @return {@link #unrealizeIncome} instance rounded with decimal digits inserted
+     * @throws IllegalArgumentException if decimalDigits is negative
+     **/
+    public double getUnrealizeIncome(int decimals) {
+        return roundValue(unrealizeIncome, decimals);
+    }
+
+    /**
+     * Method to set {@link #unrealizeIncome}
+     *
      * @param unrealizeIncome: unrealized net profit/loss of open positions
      * @throws IllegalArgumentException when unrealize income value is smaller than 0
-     * **/
+     **/
     public void setUnrealizeIncome(double unrealizeIncome) {
-        if(unrealizeIncome < 0)
+        if (unrealizeIncome < 0)
             throw new IllegalArgumentException("Unrealize income value cannot be lesser than 0");
         this.unrealizeIncome = unrealizeIncome;
     }
@@ -245,12 +300,25 @@ public class TradeBalance extends KrakenManager.KrakenResponse {
         return costBasis;
     }
 
-    /** Method to set {@link #costBasis}
+    /**
+     * Method to get {@link #costBasis} instance
+     *
+     * @param decimals: number of digits to round final value
+     * @return {@link #costBasis} instance rounded with decimal digits inserted
+     * @throws IllegalArgumentException if decimalDigits is negative
+     **/
+    public double getCostBasis(int decimals) {
+        return roundValue(costBasis, decimals);
+    }
+
+    /**
+     * Method to set {@link #costBasis}
+     *
      * @param costBasis: cost basis of open positions
      * @throws IllegalArgumentException when cost basis value is smaller than 0
-     * **/
+     **/
     public void setCostBasis(double costBasis) {
-        if(costBasis < 0)
+        if (costBasis < 0)
             throw new IllegalArgumentException("Cost basis value cannot be lesser than 0");
         this.costBasis = costBasis;
     }
@@ -259,12 +327,25 @@ public class TradeBalance extends KrakenManager.KrakenResponse {
         return floatingValuation;
     }
 
-    /** Method to set {@link #floatingValuation}
+    /**
+     * Method to get {@link #floatingValuation} instance
+     *
+     * @param decimals: number of digits to round final value
+     * @return {@link #floatingValuation} instance rounded with decimal digits inserted
+     * @throws IllegalArgumentException if decimalDigits is negative
+     **/
+    public double getFloatingValuation(int decimals) {
+        return roundValue(floatingValuation, decimals);
+    }
+
+    /**
+     * Method to set {@link #floatingValuation}
+     *
      * @param floatingValuation: current floating valuation of open positions
      * @throws IllegalArgumentException when floating valuation value is smaller than 0
-     * **/
+     **/
     public void setFloatingValuation(double floatingValuation) {
-        if(floatingValuation < 0)
+        if (floatingValuation < 0)
             throw new IllegalArgumentException("Floating valuation cannot be lesser than 0");
         this.floatingValuation = floatingValuation;
     }
@@ -273,12 +354,25 @@ public class TradeBalance extends KrakenManager.KrakenResponse {
         return equity;
     }
 
-    /** Method to set {@link #equity}
+    /**
+     * Method to get {@link #equity} instance
+     *
+     * @param decimals: number of digits to round final value
+     * @return {@link #equity} instance rounded with decimal digits inserted
+     * @throws IllegalArgumentException if decimalDigits is negative
+     **/
+    public double getEquity(int decimals) {
+        return roundValue(equity, decimals);
+    }
+
+    /**
+     * Method to set {@link #equity}
+     *
      * @param equity: equity value
      * @throws IllegalArgumentException when equity value is smaller than 0
-     * **/
+     **/
     public void setEquity(double equity) {
-        if(equity < 0)
+        if (equity < 0)
             throw new IllegalArgumentException("Equity value cannot be lesser than 0");
         this.equity = equity;
     }
@@ -287,12 +381,25 @@ public class TradeBalance extends KrakenManager.KrakenResponse {
         return freeMargin;
     }
 
-    /** Method to set {@link #freeMargin}
+    /**
+     * Method to get {@link #freeMargin} instance
+     *
+     * @param decimals: number of digits to round final value
+     * @return {@link #freeMargin} instance rounded with decimal digits inserted
+     * @throws IllegalArgumentException if decimalDigits is negative
+     **/
+    public double getFreeMargin(int decimals) {
+        return roundValue(freeMargin, decimals);
+    }
+
+    /**
+     * Method to set {@link #freeMargin}
+     *
      * @param freeMargin: free margin value
      * @throws IllegalArgumentException when free margin value is smaller than 0
-     * **/
+     **/
     public void setFreeMargin(double freeMargin) {
-        if(freeMargin < 0)
+        if (freeMargin < 0)
             throw new IllegalArgumentException("Free margin value cannot be lesser than 0");
         this.freeMargin = freeMargin;
     }

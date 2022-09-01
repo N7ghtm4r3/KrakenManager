@@ -5,12 +5,15 @@ import org.json.JSONObject;
 
 import java.util.Arrays;
 
+import static com.tecknobit.apimanager.Tools.Trading.TradingTools.roundValue;
+
 /**
  * The {@code DepositMethod} class is useful to format a deposit method
- * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Funding/operation/getDepositMethods">
- *     https://docs.kraken.com/rest/#tag/User-Funding/operation/getDepositMethods</a>
+ *
  * @author N7ghtm4r3 - Tecknobit
- * **/
+ * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Funding/operation/getDepositMethods">
+ * https://docs.kraken.com/rest/#tag/User-Funding/operation/getDepositMethods</a>
+ **/
 
 public class DepositMethod extends KrakenManager.KrakenResponse {
 
@@ -81,6 +84,17 @@ public class DepositMethod extends KrakenManager.KrakenResponse {
 
     public double getFee() {
         return fee;
+    }
+
+    /**
+     * Method to get {@link #fee} instance
+     *
+     * @param decimals: number of digits to round final value
+     * @return {@link #fee} instance rounded with decimal digits inserted
+     * @throws IllegalArgumentException if decimalDigits is negative
+     **/
+    public double getFee(int decimals) {
+        return roundValue(fee, decimals);
     }
 
     public String getAddressSetupFee() {

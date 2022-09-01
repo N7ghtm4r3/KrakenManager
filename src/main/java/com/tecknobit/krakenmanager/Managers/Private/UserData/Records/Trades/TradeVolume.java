@@ -7,12 +7,15 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+import static com.tecknobit.apimanager.Tools.Trading.TradingTools.roundValue;
+
 /**
  * The {@code TradeVolume} class is useful to format trade volume object
- * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Data/operation/getTradeVolume">
- *     https://docs.kraken.com/rest/#tag/User-Data/operation/getTradeVolume</a>
+ *
  * @author N7ghtm4r3 - Tecknobit
- * **/
+ * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Data/operation/getTradeVolume">
+ * https://docs.kraken.com/rest/#tag/User-Data/operation/getTradeVolume</a>
+ **/
 
 public class TradeVolume extends KrakenManager.KrakenResponse {
 
@@ -100,6 +103,17 @@ public class TradeVolume extends KrakenManager.KrakenResponse {
 
     public double getVolume() {
         return volume;
+    }
+
+    /**
+     * Method to get {@link #volume} instance
+     *
+     * @param decimals: number of digits to round final value
+     * @return {@link #volume} instance rounded with decimal digits inserted
+     * @throws IllegalArgumentException if decimalDigits is negative
+     **/
+    public double getVolume(int decimals) {
+        return roundValue(volume, decimals);
     }
 
     public ArrayList<TradeFee> getFees() {
@@ -220,24 +234,90 @@ public class TradeVolume extends KrakenManager.KrakenResponse {
             return fee;
         }
 
+        /**
+         * Method to get {@link #fee} instance
+         *
+         * @param decimals: number of digits to round final value
+         * @return {@link #fee} instance rounded with decimal digits inserted
+         * @throws IllegalArgumentException if decimalDigits is negative
+         **/
+        public double getFee(int decimals) {
+            return roundValue(fee, decimals);
+        }
+
         public double getMinFee() {
             return minFee;
+        }
+
+        /**
+         * Method to get {@link #minFee} instance
+         *
+         * @param decimals: number of digits to round final value
+         * @return {@link #minFee} instance rounded with decimal digits inserted
+         * @throws IllegalArgumentException if decimalDigits is negative
+         **/
+        public double getMinFee(int decimals) {
+            return roundValue(minFee, decimals);
         }
 
         public double getMaxFee() {
             return maxFee;
         }
 
+        /**
+         * Method to get {@link #maxFee} instance
+         *
+         * @param decimals: number of digits to round final value
+         * @return {@link #maxFee} instance rounded with decimal digits inserted
+         * @throws IllegalArgumentException if decimalDigits is negative
+         **/
+        public double getMaxFee(int decimals) {
+            return roundValue(maxFee, decimals);
+        }
+
         public double getNextFee() {
             return nextFee;
+        }
+
+        /**
+         * Method to get {@link #nextFee} instance
+         *
+         * @param decimals: number of digits to round final value
+         * @return {@link #nextFee} instance rounded with decimal digits inserted
+         * @throws IllegalArgumentException if decimalDigits is negative
+         **/
+        public double getNextFee(int decimals) {
+            return roundValue(nextFee, decimals);
         }
 
         public double getTierVolume() {
             return tierVolume;
         }
 
+        /**
+         * Method to get {@link #tierVolume} instance
+         *
+         * @param decimals: number of digits to round final value
+         * @return {@link #tierVolume} instance rounded with decimal digits inserted
+         * @throws IllegalArgumentException if decimalDigits is negative
+         **/
+        public double getTierVolume(int decimals) {
+            return roundValue(tierVolume, decimals);
+        }
+
         public double getNextVolume() {
             return nextVolume;
+        }
+
+        /**
+         * Method to get {@link #nextVolume} instance
+         *
+         * @param decimals: number of digits to round final value
+         * @return {@link #nextVolume} instance rounded with decimal digits inserted
+         * @throws IllegalArgumentException if decimalDigits is negative
+         **/
+        public double getNextVolume(int decimals) {
+            return roundValue(nextVolume, decimals);
         }
 
         @Override

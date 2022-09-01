@@ -5,23 +5,26 @@ import org.json.JSONObject;
 
 import java.util.Arrays;
 
+import static com.tecknobit.apimanager.Tools.Trading.TradingTools.roundValue;
+
 /**
  * The {@code Trade} class is useful to format trade object and give base trade instances
- * @apiNote see official documentation at:
- <ul>
-     <li>
-         <a href="https://docs.kraken.com/rest/#tag/User-Data/operation/getTradesInfo">
-            https://docs.kraken.com/rest/#tag/User-Data/operation/getTradesInfo</a>
-     </li>
-     <li>
-         <a href="https://docs.kraken.com/rest/#tag/User-Data/operation/getTradeHistory">
-            https://docs.kraken.com/rest/#tag/User-Data/operation/getTradeHistory</a>
-     </li>
- </ul>
+ *
  * @author N7ghtm4r3 - Tecknobit
- * **/
+ * @apiNote see official documentation at:
+ * <ul>
+ * <li>
+ * <a href="https://docs.kraken.com/rest/#tag/User-Data/operation/getTradesInfo">
+ * https://docs.kraken.com/rest/#tag/User-Data/operation/getTradesInfo</a>
+ * </li>
+ * <li>
+ * <a href="https://docs.kraken.com/rest/#tag/User-Data/operation/getTradeHistory">
+ * https://docs.kraken.com/rest/#tag/User-Data/operation/getTradeHistory</a>
+ * </li>
+ * </ul>
+ **/
 
-public class Trade extends KrakenManager.KrakenResponse {
+public abstract class Trade extends KrakenManager.KrakenResponse {
 
     /**
      * {@code tradeId} is instance that memorizes trade identifier value
@@ -195,20 +198,75 @@ public class Trade extends KrakenManager.KrakenResponse {
         return price;
     }
 
+    /**
+     * Method to get {@link #price} instance
+     *
+     * @param decimals: number of digits to round final value
+     * @return {@link #price} instance rounded with decimal digits inserted
+     * @throws IllegalArgumentException if decimalDigits is negative
+     **/
+    public double getPrice(int decimals) {
+        return roundValue(price, decimals);
+    }
+
     public double getCost() {
         return cost;
+    }
+
+    /**
+     * Method to get {@link #cost} instance
+     *
+     * @param decimals: number of digits to round final value
+     * @return {@link #cost} instance rounded with decimal digits inserted
+     * @throws IllegalArgumentException if decimalDigits is negative
+     **/
+    public double getCost(int decimals) {
+        return roundValue(cost, decimals);
     }
 
     public double getFee() {
         return fee;
     }
 
+    /**
+     * Method to get {@link #fee} instance
+     *
+     * @param decimals: number of digits to round final value
+     * @return {@link #fee} instance rounded with decimal digits inserted
+     * @throws IllegalArgumentException if decimalDigits is negative
+     **/
+    public double getFee(int decimals) {
+        return roundValue(fee, decimals);
+    }
+
     public double getVol() {
         return vol;
     }
 
+    /**
+     * Method to get {@link #vol} instance
+     *
+     * @param decimals: number of digits to round final value
+     * @return {@link #vol} instance rounded with decimal digits inserted
+     * @throws IllegalArgumentException if decimalDigits is negative
+     **/
+    public double getVol(int decimals) {
+        return roundValue(fee, decimals);
+    }
+
     public double getMargin() {
         return margin;
+    }
+
+    /**
+     * Method to get {@link #margin} instance
+     *
+     * @param decimals: number of digits to round final value
+     * @return {@link #margin} instance rounded with decimal digits inserted
+     * @throws IllegalArgumentException if decimalDigits is negative
+     **/
+    public double getMargin(int decimals) {
+        return roundValue(margin, decimals);
     }
 
     public String getMisc() {

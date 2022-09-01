@@ -6,6 +6,7 @@ import org.json.JSONObject;
 
 import java.util.Arrays;
 
+import static com.tecknobit.apimanager.Tools.Trading.TradingTools.roundValue;
 import static java.lang.Double.parseDouble;
 
 /**
@@ -239,8 +240,38 @@ public class OperationStatus extends KrakenManager.KrakenResponse {
         return amount;
     }
 
+    /**
+     * Method to get {@link #amount} instance
+     *
+     * @param decimals: number of digits to round final value
+     * @return {@link #amount} instance rounded with decimal digits inserted
+     * @throws IllegalArgumentException if decimalDigits is negative
+     **/
+    public double getAmount(int decimals) {
+        return roundValue(amount, decimals);
+    }
+
+    public double getFee() {
+        return fee;
+    }
+
+    /**
+     * Method to get {@link #fee} instance
+     *
+     * @param decimals: number of digits to round final value
+     * @return {@link #fee} instance rounded with decimal digits inserted
+     * @throws IllegalArgumentException if decimalDigits is negative
+     **/
+    public double getFee(int decimals) {
+        return roundValue(fee, decimals);
+    }
+
     public long getTime() {
         return time;
+    }
+
+    public String getStatus() {
+        return status;
     }
 
     public String getStatusProp() {

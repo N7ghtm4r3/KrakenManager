@@ -8,15 +8,17 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+import static com.tecknobit.apimanager.Tools.Trading.TradingTools.roundValue;
+
 /**
  * The {@code Order} class is useful to format order object
  * @apiNote see official documentation at:
- <ul>
-     <li>
-         <a href="https://docs.kraken.com/rest/#tag/User-Data/operation/getOpenOrders">
-            https://docs.kraken.com/rest/#tag/User-Data/operation/getOpenOrders</a>
-     </li>
-     <li>
+<ul>
+<li>
+<a href="https://docs.kraken.com/rest/#tag/User-Data/operation/getOpenOrders">
+https://docs.kraken.com/rest/#tag/User-Data/operation/getOpenOrders</a>
+</li>
+<li>
          <a href="https://docs.kraken.com/rest/#tag/User-Data/operation/getOrdersInfo">
             https://docs.kraken.com/rest/#tag/User-Data/operation/getOrdersInfo</a>
      </li>
@@ -392,24 +394,90 @@ public class Order extends KrakenManager.KrakenResponse {
         return volume;
     }
 
+    /**
+     * Method to get {@link #volume} instance
+     *
+     * @param decimals: number of digits to round final value
+     * @return {@link #volume} instance rounded with decimal digits inserted
+     * @throws IllegalArgumentException if decimalDigits is negative
+     **/
+    public double getVolume(int decimals) {
+        return roundValue(volume, decimals);
+    }
+
     public double getExecutedVolume() {
         return executedVolume;
+    }
+
+    /**
+     * Method to get {@link #executedVolume} instance
+     *
+     * @param decimals: number of digits to round final value
+     * @return {@link #executedVolume} instance rounded with decimal digits inserted
+     * @throws IllegalArgumentException if decimalDigits is negative
+     **/
+    public double getExecutedVolume(int decimals) {
+        return roundValue(executedVolume, decimals);
     }
 
     public double getCost() {
         return cost;
     }
 
+    /**
+     * Method to get {@link #cost} instance
+     *
+     * @param decimals: number of digits to round final value
+     * @return {@link #cost} instance rounded with decimal digits inserted
+     * @throws IllegalArgumentException if decimalDigits is negative
+     **/
+    public double getCost(int decimals) {
+        return roundValue(cost, decimals);
+    }
+
     public double getFee() {
         return fee;
+    }
+
+    /**
+     * Method to get {@link #fee} instance
+     *
+     * @param decimals: number of digits to round final value
+     * @return {@link #fee} instance rounded with decimal digits inserted
+     * @throws IllegalArgumentException if decimalDigits is negative
+     **/
+    public double getFee(int decimals) {
+        return roundValue(fee, decimals);
     }
 
     public double getStopPrice() {
         return stopPrice;
     }
 
+    /**
+     * Method to get {@link #stopPrice} instance
+     *
+     * @param decimals: number of digits to round final value
+     * @return {@link #stopPrice} instance rounded with decimal digits inserted
+     * @throws IllegalArgumentException if decimalDigits is negative
+     **/
+    public double getStopPrice(int decimals) {
+        return roundValue(stopPrice, decimals);
+    }
+
     public double getLimitPrice() {
         return limitPrice;
+    }
+
+    /**
+     * Method to get {@link #limitPrice} instance
+     *
+     * @param decimals: number of digits to round final value
+     * @return {@link #limitPrice} instance rounded with decimal digits inserted
+     * @throws IllegalArgumentException if decimalDigits is negative
+     **/
+    public double getLimitPrice(int decimals) {
+        return roundValue(limitPrice, decimals);
     }
 
     public String getTrigger() {
@@ -554,8 +622,30 @@ public class Order extends KrakenManager.KrakenResponse {
             return price;
         }
 
+        /**
+         * Method to get {@link #price} instance
+         *
+         * @param decimals: number of digits to round final value
+         * @return {@link #price} instance rounded with decimal digits inserted
+         * @throws IllegalArgumentException if decimalDigits is negative
+         **/
+        public double getPrice(int decimals) {
+            return roundValue(price, decimals);
+        }
+
         public double getSecondPrice() {
             return secondPrice;
+        }
+
+        /**
+         * Method to get {@link #secondPrice} instance
+         *
+         * @param decimals: number of digits to round final value
+         * @return {@link #secondPrice} instance rounded with decimal digits inserted
+         * @throws IllegalArgumentException if decimalDigits is negative
+         **/
+        public double getSecondPrice(int decimals) {
+            return roundValue(secondPrice, decimals);
         }
 
         public String getLeverage() {

@@ -121,11 +121,14 @@ public class AccountBalance extends KrakenManager.KrakenResponse {
             return walletBalance;
         }
 
-        /** Method to total balance of user's account
-         * @param decimals: decimals digits to round value
-         * @return total balance as double
-         * **/
-        public double getTotalBalance(int decimals) {
+        /**
+         * Method to get total balance of user's account <br>
+         *
+         * @param decimals: number of digits to round final value
+         * @return total balance instance rounded with decimal digits inserted
+         * @throws IllegalArgumentException if decimalDigits is negative
+         **/
+        public double getPrice(int decimals) {
             return roundValue(getTotalBalance(), decimals);
         }
 
@@ -174,12 +177,25 @@ public class AccountBalance extends KrakenManager.KrakenResponse {
                 return balance;
             }
 
-            /** Method to refresh value of {@link BalanceAsset}
+            /**
+             * Method to get {@link #balance} instance
+             *
+             * @param decimals: number of digits to round final value
+             * @return {@link #balance} instance rounded with decimal digits inserted
+             * @throws IllegalArgumentException if decimalDigits is negative
+             **/
+            public double getBalance(int decimals) {
+                return roundValue(balance, decimals);
+            }
+
+            /**
+             * Method to refresh value of {@link BalanceAsset}
+             *
              * @param refreshedBalance: new balance value of asset's address
              * @throws IllegalArgumentException when balance value is a negative value
-             * **/
+             **/
             public void refreshBalance(double refreshedBalance) {
-                if(refreshedBalance < 0)
+                if (refreshedBalance < 0)
                     throw new IllegalArgumentException("Balance value cannot be lesser than 0");
                 this.balance = refreshedBalance;
             }

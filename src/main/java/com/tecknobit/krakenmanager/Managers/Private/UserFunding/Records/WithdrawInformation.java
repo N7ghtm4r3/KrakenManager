@@ -5,12 +5,15 @@ import org.json.JSONObject;
 
 import java.util.Arrays;
 
+import static com.tecknobit.apimanager.Tools.Trading.TradingTools.roundValue;
+
 /**
  * The {@code WithdrawInformation} class is useful to format a deposit method
- * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Funding/operation/getWithdrawalInformation">
- *     https://docs.kraken.com/rest/#tag/User-Funding/operation/getWithdrawalInformation</a>
+ *
  * @author N7ghtm4r3 - Tecknobit
- * **/
+ * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Funding/operation/getWithdrawalInformation">
+ * https://docs.kraken.com/rest/#tag/User-Funding/operation/getWithdrawalInformation</a>
+ **/
 
 public class WithdrawInformation extends KrakenManager.KrakenResponse {
 
@@ -84,12 +87,45 @@ public class WithdrawInformation extends KrakenManager.KrakenResponse {
         return limit;
     }
 
+    /**
+     * Method to get {@link #limit} instance
+     *
+     * @param decimals: number of digits to round final value
+     * @return {@link #limit} instance rounded with decimal digits inserted
+     * @throws IllegalArgumentException if decimalDigits is negative
+     **/
+    public double getLimit(int decimals) {
+        return roundValue(limit, decimals);
+    }
+
     public double getAmount() {
         return amount;
     }
 
+    /**
+     * Method to get {@link #amount} instance
+     *
+     * @param decimals: number of digits to round final value
+     * @return {@link #amount} instance rounded with decimal digits inserted
+     * @throws IllegalArgumentException if decimalDigits is negative
+     **/
+    public double getAmount(int decimals) {
+        return roundValue(amount, decimals);
+    }
+
     public double getFee() {
         return fee;
+    }
+
+    /**
+     * Method to get {@link #fee} instance
+     *
+     * @param decimals: number of digits to round final value
+     * @return {@link #fee} instance rounded with decimal digits inserted
+     * @throws IllegalArgumentException if decimalDigits is negative
+     **/
+    public double getFee(int decimals) {
+        return roundValue(fee, decimals);
     }
 
     @Override

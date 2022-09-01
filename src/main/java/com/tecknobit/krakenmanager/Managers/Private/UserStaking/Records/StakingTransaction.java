@@ -6,12 +6,15 @@ import org.json.JSONObject;
 
 import java.util.Arrays;
 
+import static com.tecknobit.apimanager.Tools.Trading.TradingTools.roundValue;
+
 /**
  * The {@code StakingTransaction} class is useful to format a staking transaction
- * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Staking/operation/getStakingPendingDeposits">
- *     https://docs.kraken.com/rest/#tag/User-Staking/operation/getStakingPendingDeposits</a>
+ *
  * @author N7ghtm4r3 - Tecknobit
- * **/
+ * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Staking/operation/getStakingPendingDeposits">
+ * https://docs.kraken.com/rest/#tag/User-Staking/operation/getStakingPendingDeposits</a>
+ **/
 
 public class StakingTransaction extends KrakenManager.KrakenResponse {
 
@@ -242,8 +245,30 @@ public class StakingTransaction extends KrakenManager.KrakenResponse {
         return amount;
     }
 
+    /**
+     * Method to get {@link #amount} instance
+     *
+     * @param decimals: number of digits to round final value
+     * @return {@link #amount} instance rounded with decimal digits inserted
+     * @throws IllegalArgumentException if decimalDigits is negative
+     **/
+    public double getAmount(int decimals) {
+        return roundValue(amount, decimals);
+    }
+
     public double getFee() {
         return fee;
+    }
+
+    /**
+     * Method to get {@link #fee} instance
+     *
+     * @param decimals: number of digits to round final value
+     * @return {@link #fee} instance rounded with decimal digits inserted
+     * @throws IllegalArgumentException if decimalDigits is negative
+     **/
+    public double getFee(int decimals) {
+        return roundValue(fee, decimals);
     }
 
     public long getTime() {

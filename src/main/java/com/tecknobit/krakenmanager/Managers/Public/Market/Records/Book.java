@@ -7,12 +7,15 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+import static com.tecknobit.apimanager.Tools.Trading.TradingTools.roundValue;
+
 /**
  * The {@code Book} class is useful to format Book data object
- * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getOrderBook">
- *     https://docs.kraken.com/rest/#tag/Market-Data/operation/getOrderBook</a>
+ *
  * @author N7ghtm4r3 - Tecknobit
- * **/
+ * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getOrderBook">
+ * https://docs.kraken.com/rest/#tag/Market-Data/operation/getOrderBook</a>
+ **/
 
 public class Book extends KrakenManager.KrakenResponse {
 
@@ -143,8 +146,30 @@ public class Book extends KrakenManager.KrakenResponse {
             return price;
         }
 
+        /**
+         * Method to get {@link #price} instance
+         *
+         * @param decimals: number of digits to round final value
+         * @return {@link #price} instance rounded with decimal digits inserted
+         * @throws IllegalArgumentException if decimalDigits is negative
+         **/
+        public double getPrice(int decimals) {
+            return roundValue(price, decimals);
+        }
+
         public double getVolume() {
             return volume;
+        }
+
+        /**
+         * Method to get {@link #volume} instance
+         *
+         * @param decimals: number of digits to round final value
+         * @return {@link #volume} instance rounded with decimal digits inserted
+         * @throws IllegalArgumentException if decimalDigits is negative
+         **/
+        public double getVolume(int decimals) {
+            return roundValue(volume, decimals);
         }
 
         public long getTimestamp() {

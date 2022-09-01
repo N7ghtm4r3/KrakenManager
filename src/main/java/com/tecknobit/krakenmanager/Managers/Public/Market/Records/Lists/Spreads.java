@@ -5,14 +5,17 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
+import static com.tecknobit.apimanager.Tools.Trading.TradingTools.roundValue;
+
 /**
  * The {@code Spreads} class is useful to format Spreads object
- * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getRecentSpreads">
- *     https://docs.kraken.com/rest/#tag/Market-Data/operation/getRecentSpreads</a>
+ *
  * @author N7ghtm4r3 - Tecknobit
- * **/
+ * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getRecentSpreads">
+ * https://docs.kraken.com/rest/#tag/Market-Data/operation/getRecentSpreads</a>
+ **/
 
-public class Spreads extends MarketList{
+public class Spreads extends MarketList {
 
     /**
      * {@code recentSpreads} is instance that memorizes list of {@link Spread}
@@ -109,8 +112,30 @@ public class Spreads extends MarketList{
             return doubleOne;
         }
 
+        /**
+         * Method to get {@link #doubleOne} instance
+         *
+         * @param decimals: number of digits to round final value
+         * @return {@link #doubleOne} instance rounded with decimal digits inserted
+         * @throws IllegalArgumentException if decimalDigits is negative
+         **/
+        public double getDoubleOne(int decimals) {
+            return roundValue(doubleOne, decimals);
+        }
+
         public double getDoubleTwo() {
             return doubleTwo;
+        }
+
+        /**
+         * Method to get {@link #doubleTwo} instance
+         *
+         * @param decimals: number of digits to round final value
+         * @return {@link #doubleTwo} instance rounded with decimal digits inserted
+         * @throws IllegalArgumentException if decimalDigits is negative
+         **/
+        public double getDoubleTwo(int decimals) {
+            return roundValue(doubleTwo, decimals);
         }
 
         @Override

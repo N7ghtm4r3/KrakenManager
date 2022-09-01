@@ -8,12 +8,15 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+import static com.tecknobit.apimanager.Tools.Trading.TradingTools.roundValue;
+
 /**
  * The {@code AssetPair} class is useful to format AssetPair data object
- * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getTradableAssetPairs">
- *     https://docs.kraken.com/rest/#tag/Market-Data/operation/getTradableAssetPairs</a>
+ *
  * @author N7ghtm4r3 - Tecknobit
- * **/
+ * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getTradableAssetPairs">
+ * https://docs.kraken.com/rest/#tag/Market-Data/operation/getTradableAssetPairs</a>
+ **/
 
 public class AssetPair extends KrakenManager.KrakenResponse {
 
@@ -327,12 +330,45 @@ public class AssetPair extends KrakenManager.KrakenResponse {
         return marginCall;
     }
 
+    /**
+     * Method to get {@link #marginCall} instance
+     *
+     * @param decimals: number of digits to round final value
+     * @return {@link #marginCall} instance rounded with decimal digits inserted
+     * @throws IllegalArgumentException if decimalDigits is negative
+     **/
+    public double getMarginCall(int decimals) {
+        return roundValue(marginCall, decimals);
+    }
+
     public double getMarginStop() {
         return marginStop;
     }
 
+    /**
+     * Method to get {@link #marginStop} instance
+     *
+     * @param decimals: number of digits to round final value
+     * @return {@link #marginStop} instance rounded with decimal digits inserted
+     * @throws IllegalArgumentException if decimalDigits is negative
+     **/
+    public double getMarginStop(int decimals) {
+        return roundValue(marginStop, decimals);
+    }
+
     public double getMinOrder() {
         return minOrder;
+    }
+
+    /**
+     * Method to get {@link #minOrder} instance
+     *
+     * @param decimals: number of digits to round final value
+     * @return {@link #minOrder} instance rounded with decimal digits inserted
+     * @throws IllegalArgumentException if decimalDigits is negative
+     **/
+    public double getMinOrder(int decimals) {
+        return roundValue(minOrder, decimals);
     }
 
     @Override

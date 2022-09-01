@@ -6,12 +6,15 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+import static com.tecknobit.apimanager.Tools.Trading.TradingTools.roundValue;
+
 /**
  * The {@code Trades} class is useful to format Trades object
- * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getRecentTrades">
- *     https://docs.kraken.com/rest/#tag/Market-Data/operation/getRecentTrades</a>
+ *
  * @author N7ghtm4r3 - Tecknobit
- * **/
+ * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getRecentTrades">
+ * https://docs.kraken.com/rest/#tag/Market-Data/operation/getRecentTrades</a>
+ **/
 
 public class Trades extends MarketList {
 
@@ -144,8 +147,30 @@ public class Trades extends MarketList {
             return price;
         }
 
+        /**
+         * Method to get {@link #price} instance
+         *
+         * @param decimals: number of digits to round final value
+         * @return {@link #price} instance rounded with decimal digits inserted
+         * @throws IllegalArgumentException if decimalDigits is negative
+         **/
+        public double getPrice(int decimals) {
+            return roundValue(price, decimals);
+        }
+
         public double getVolume() {
             return volume;
+        }
+
+        /**
+         * Method to get {@link #volume} instance
+         *
+         * @param decimals: number of digits to round final value
+         * @return {@link #volume} instance rounded with decimal digits inserted
+         * @throws IllegalArgumentException if decimalDigits is negative
+         **/
+        public double getVolume(int decimals) {
+            return roundValue(volume, decimals);
         }
 
         public long getTime() {

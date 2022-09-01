@@ -5,12 +5,15 @@ import org.json.JSONObject;
 
 import java.util.Arrays;
 
+import static com.tecknobit.apimanager.Tools.Trading.TradingTools.roundValue;
+
 /**
  * The {@code OpenPosition} class is useful to format an open positions object
- * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Data/operation/getOpenPositions">
- *     https://docs.kraken.com/rest/#tag/User-Data/operation/getOpenPositions</a>
+ *
  * @author N7ghtm4r3 - Tecknobit
- * **/
+ * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Data/operation/getOpenPositions">
+ * https://docs.kraken.com/rest/#tag/User-Data/operation/getOpenPositions</a>
+ **/
 
 public class OpenPosition extends KrakenManager.KrakenResponse {
 
@@ -247,28 +250,105 @@ public class OpenPosition extends KrakenManager.KrakenResponse {
         return cost;
     }
 
+    /**
+     * Method to get {@link #cost} instance
+     *
+     * @param decimals: number of digits to round final value
+     * @return {@link #cost} instance rounded with decimal digits inserted
+     * @throws IllegalArgumentException if decimalDigits is negative
+     **/
+    public double getCost(int decimals) {
+        return roundValue(cost, decimals);
+    }
+
     public double getFee() {
         return fee;
+    }
+
+    /**
+     * Method to get {@link #fee} instance
+     *
+     * @param decimals: number of digits to round final value
+     * @return {@link #fee} instance rounded with decimal digits inserted
+     * @throws IllegalArgumentException if decimalDigits is negative
+     **/
+    public double getFee(int decimals) {
+        return roundValue(fee, decimals);
     }
 
     public double getVol() {
         return vol;
     }
 
+    /**
+     * Method to get {@link #vol} instance
+     *
+     * @param decimals: number of digits to round final value
+     * @return {@link #vol} instance rounded with decimal digits inserted
+     * @throws IllegalArgumentException if decimalDigits is negative
+     **/
+    public double getVol(int decimals) {
+        return roundValue(vol, decimals);
+    }
+
     public double getVolClosed() {
         return volClosed;
+    }
+
+    /**
+     * Method to get {@link #volClosed} instance
+     *
+     * @param decimals: number of digits to round final value
+     * @return {@link #volClosed} instance rounded with decimal digits inserted
+     * @throws IllegalArgumentException if decimalDigits is negative
+     **/
+    public double getVolClosed(int decimals) {
+        return roundValue(volClosed, decimals);
     }
 
     public double getMargin() {
         return margin;
     }
 
+    /**
+     * Method to get {@link #margin} instance
+     *
+     * @param decimals: number of digits to round final value
+     * @return {@link #margin} instance rounded with decimal digits inserted
+     * @throws IllegalArgumentException if decimalDigits is negative
+     **/
+    public double getMargin(int decimals) {
+        return roundValue(margin, decimals);
+    }
+
     public double getValue() {
         return value;
     }
 
+    /**
+     * Method to get {@link #value} instance
+     *
+     * @param decimals: number of digits to round final value
+     * @return {@link #value} instance rounded with decimal digits inserted
+     * @throws IllegalArgumentException if decimalDigits is negative
+     **/
+    public double getValue(int decimals) {
+        return roundValue(value, decimals);
+    }
+
     public double getNet() {
         return net;
+    }
+
+    /**
+     * Method to get {@link #net} instance
+     *
+     * @param decimals: number of digits to round final value
+     * @return {@link #net} instance rounded with decimal digits inserted
+     * @throws IllegalArgumentException if decimalDigits is negative
+     **/
+    public double getNet(int decimals) {
+        return roundValue(net, decimals);
     }
 
     public String getTerms() {

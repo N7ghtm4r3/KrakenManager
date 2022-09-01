@@ -9,7 +9,7 @@ import org.json.JSONObject;
 
 import java.util.Arrays;
 
-import static com.tecknobit.apimanager.Manager.APIRequest.*;
+import static com.tecknobit.apimanager.Manager.APIRequest.DEFAULT_ERROR_RESPONSE;
 import static com.tecknobit.apimanager.Tools.Trading.TradingTools.computeAssetPercent;
 import static com.tecknobit.apimanager.Tools.Trading.TradingTools.textualizeAssetPercent;
 
@@ -158,9 +158,9 @@ public class KrakenManager {
     public static class KrakenResponse {
 
         /**
-         * {@code jsonResponse} is instance that memorizes base json response
-         * **/
-        protected final JsonHelper jsonResponse;
+         * {@code hResponse} is instance that memorizes base json response
+         **/
+        protected final JsonHelper hResponse;
 
         /**
          * {@code errors} is instance that memorizes list of the errors
@@ -168,18 +168,18 @@ public class KrakenManager {
         protected final String[] errors;
 
         /** Constructor to init a {@link KrakenResponse} object
-         * @param jsonResponse: base json response
+         * @param hResponse: base json response
          * **/
-        public KrakenResponse(JSONObject jsonResponse) {
+        public KrakenResponse(JSONObject hResponse) {
             boolean jsonArrayList = false;
-            this.jsonResponse = new JsonHelper(jsonResponse);
-            JSONArray jsonErrors = this.jsonResponse.getJSONArray("error", new JSONArray());
+            this.hResponse = new JsonHelper(hResponse);
+            JSONArray jsonErrors = this.hResponse.getJSONArray("error", new JSONArray());
             int errorsLength = jsonErrors.length();
             errors = new String[errorsLength];
             for (int j = 0; j < errorsLength; j++) {
                 try {
                     errors[j] = jsonErrors.getString(j);
-                }catch (JSONException e){
+                } catch (JSONException e) {
                     jsonArrayList = true;
                     break;
                 }
@@ -195,7 +195,7 @@ public class KrakenManager {
         }
 
         public <T> T getResult(){
-            return (T) jsonResponse.get("result");
+            return (T) hResponse.get("result");
         }
 
         public String[] getErrors() {
@@ -205,7 +205,7 @@ public class KrakenManager {
         @Override
         public String toString() {
             return "KrakenResponse{" +
-                    "jsonResponse=" + jsonResponse +
+                    "hResponse=" + hResponse +
                     ", errors=" + Arrays.toString(errors) +
                     '}';
         }

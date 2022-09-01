@@ -1,13 +1,14 @@
 package com.tecknobit.krakenmanager.Constants;
 
 /**
- *  The {@code EndpointsList} class is a container class for all Kraken's endpoints of the service API
- *  @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#section/General-Usage">
- *      https://docs.kraken.com/rest/#section/General-Usage</a>
- *  @author N7ghtm4r3 - Tecknobit
- * **/
+ * The {@code EndpointsList} class is a container class for all Kraken's endpoints of the service API
+ *
+ * @author N7ghtm4r3 - Tecknobit
+ * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#section/General-Usage">
+ * https://docs.kraken.com/rest/#section/General-Usage</a>
+ **/
 
-public class EndpointsList {
+public abstract class EndpointsList {
 
     /**
      * {@code GET_SERVER_TIME_ENDPOINT} is constant for GET_SERVER_TIME_ENDPOINT's endpoint

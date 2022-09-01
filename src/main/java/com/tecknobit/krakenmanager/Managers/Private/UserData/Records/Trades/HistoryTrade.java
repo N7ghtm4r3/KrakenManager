@@ -7,12 +7,15 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+import static com.tecknobit.apimanager.Tools.Trading.TradingTools.roundValue;
+
 /**
  * The {@code HistoryTrade} class is useful to format history trade object
- * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Data/operation/getTradeHistory">
- *     https://docs.kraken.com/rest/#tag/User-Data/operation/getTradeHistory</a>
+ *
  * @author N7ghtm4r3 - Tecknobit
- * **/
+ * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Data/operation/getTradeHistory">
+ * https://docs.kraken.com/rest/#tag/User-Data/operation/getTradeHistory</a>
+ **/
 
 public class HistoryTrade extends Trade {
 
@@ -158,24 +161,90 @@ public class HistoryTrade extends Trade {
         return cPrice;
     }
 
+    /**
+     * Method to get {@link #cPrice} instance
+     *
+     * @param decimals: number of digits to round final value
+     * @return {@link #cPrice} instance rounded with decimal digits inserted
+     * @throws IllegalArgumentException if decimalDigits is negative
+     **/
+    public double getcPrice(int decimals) {
+        return roundValue(cPrice, decimals);
+    }
+
     public double getcCost() {
         return cCost;
+    }
+
+    /**
+     * Method to get {@link #cCost} instance
+     *
+     * @param decimals: number of digits to round final value
+     * @return {@link #cCost} instance rounded with decimal digits inserted
+     * @throws IllegalArgumentException if decimalDigits is negative
+     **/
+    public double getcCost(int decimals) {
+        return roundValue(cCost, decimals);
     }
 
     public double getcFee() {
         return cFee;
     }
 
+    /**
+     * Method to get {@link #cFee} instance
+     *
+     * @param decimals: number of digits to round final value
+     * @return {@link #cFee} instance rounded with decimal digits inserted
+     * @throws IllegalArgumentException if decimalDigits is negative
+     **/
+    public double getcFee(int decimals) {
+        return roundValue(cCost, decimals);
+    }
+
     public double getcVol() {
         return cVol;
+    }
+
+    /**
+     * Method to get {@link #cVol} instance
+     *
+     * @param decimals: number of digits to round final value
+     * @return {@link #cVol} instance rounded with decimal digits inserted
+     * @throws IllegalArgumentException if decimalDigits is negative
+     **/
+    public double getcVol(int decimals) {
+        return roundValue(cVol, decimals);
     }
 
     public double getcMargin() {
         return cMargin;
     }
 
+    /**
+     * Method to get {@link #cMargin} instance
+     *
+     * @param decimals: number of digits to round final value
+     * @return {@link #cMargin} instance rounded with decimal digits inserted
+     * @throws IllegalArgumentException if decimalDigits is negative
+     **/
+    public double getcMargin(int decimals) {
+        return roundValue(cMargin, decimals);
+    }
+
     public double getNet() {
         return net;
+    }
+
+    /**
+     * Method to get {@link #net} instance
+     *
+     * @param decimals: number of digits to round final value
+     * @return {@link #net} instance rounded with decimal digits inserted
+     * @throws IllegalArgumentException if decimalDigits is negative
+     **/
+    public double getNet(int decimals) {
+        return roundValue(net, decimals);
     }
 
     public ArrayList<Long> getTrades() {

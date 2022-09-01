@@ -6,6 +6,7 @@ import org.json.JSONObject;
 
 import java.util.Arrays;
 
+import static com.tecknobit.apimanager.Tools.Trading.TradingTools.roundValue;
 import static com.tecknobit.krakenmanager.Managers.Public.Market.Records.TickerInformation.MarketAction.assembleMarketAction;
 import static com.tecknobit.krakenmanager.Managers.Public.Market.Records.TickerInformation.MarketParam.assembleMarketParam;
 import static com.tecknobit.krakenmanager.Managers.Public.Market.Records.TickerInformation.Trade.assembleTrade;
@@ -197,6 +198,17 @@ public class TickerInformation extends KrakenManager.KrakenResponse {
         return openPrice;
     }
 
+    /**
+     * Method to get {@link #openPrice} instance
+     *
+     * @param decimals: number of digits to round final value
+     * @return {@link #openPrice} instance rounded with decimal digits inserted
+     * @throws IllegalArgumentException if decimalDigits is negative
+     **/
+    public double getOpenPrice(int decimals) {
+        return roundValue(openPrice, decimals);
+    }
+
     @Override
     public String toString() {
         return "TickerInformation{" +
@@ -243,15 +255,39 @@ public class TickerInformation extends KrakenManager.KrakenResponse {
             return price;
         }
 
+        /**
+         * Method to get {@link #price} instance
+         *
+         * @param decimals: number of digits to round final value
+         * @return {@link #price} instance rounded with decimal digits inserted
+         * @throws IllegalArgumentException if decimalDigits is negative
+         **/
+        public double getPrice(int decimals) {
+            return roundValue(price, decimals);
+        }
+
         public double getLotVolume() {
             return lotVolume;
         }
 
-        /** Method to assemble a trade object
+        /**
+         * Method to get {@link #lotVolume} instance
+         *
+         * @param decimals: number of digits to round final value
+         * @return {@link #lotVolume} instance rounded with decimal digits inserted
+         * @throws IllegalArgumentException if decimalDigits is negative
+         **/
+        public double getLotVolume(int decimals) {
+            return roundValue(lotVolume, decimals);
+        }
+
+        /**
+         * Method to assemble a trade object
+         *
          * @param jsonTrade: jsonObject obtained by response request
          * @return trade object as {@link Trade}
-         * **/
-        public static Trade assembleTrade(JSONArray jsonTrade){
+         **/
+        public static Trade assembleTrade(JSONArray jsonTrade) {
             int valuesLength = jsonTrade.length();
             final double[] values = new double[valuesLength];
             for (int j = 0; j < valuesLength; j++)
@@ -295,11 +331,24 @@ public class TickerInformation extends KrakenManager.KrakenResponse {
             return wholeLotVolume;
         }
 
-        /** Method to assemble a market action object
+        /**
+         * Method to get {@link #wholeLotVolume} instance
+         *
+         * @param decimals: number of digits to round final value
+         * @return {@link #wholeLotVolume} instance rounded with decimal digits inserted
+         * @throws IllegalArgumentException if decimalDigits is negative
+         **/
+        public double getWholeLotVolume(int decimals) {
+            return roundValue(wholeLotVolume, decimals);
+        }
+
+        /**
+         * Method to assemble a market action object
+         *
          * @param jsonMarket: jsonObject obtained by response request
          * @return market action object as {@link MarketAction}
-         * **/
-        public static MarketAction assembleMarketAction(JSONArray jsonMarket){
+         **/
+        public static MarketAction assembleMarketAction(JSONArray jsonMarket) {
             int valuesLength = jsonMarket.length();
             final double[] values = new double[valuesLength];
             for (int j = 0; j < valuesLength; j++)
@@ -347,15 +396,39 @@ public class TickerInformation extends KrakenManager.KrakenResponse {
             return today;
         }
 
+        /**
+         * Method to get {@link #today} instance
+         *
+         * @param decimals: number of digits to round final value
+         * @return {@link #today} instance rounded with decimal digits inserted
+         * @throws IllegalArgumentException if decimalDigits is negative
+         **/
+        public double getToday(int decimals) {
+            return roundValue(today, decimals);
+        }
+
         public double getLast24Hours() {
             return last24Hours;
         }
 
-        /** Method to assemble a market param object
+        /**
+         * Method to get {@link #last24Hours} instance
+         *
+         * @param decimals: number of digits to round final value
+         * @return {@link #last24Hours} instance rounded with decimal digits inserted
+         * @throws IllegalArgumentException if decimalDigits is negative
+         **/
+        public double getLast24Hours(int decimals) {
+            return roundValue(last24Hours, decimals);
+        }
+
+        /**
+         * Method to assemble a market param object
+         *
          * @param jsonParam: jsonObject obtained by response request
          * @return market param object as {@link MarketParam}
-         * **/
-        public static MarketParam assembleMarketParam(JSONArray jsonParam){
+         **/
+        public static MarketParam assembleMarketParam(JSONArray jsonParam) {
             int valuesLength = jsonParam.length();
             final double[] values = new double[valuesLength];
             for (int j = 0; j < valuesLength; j++)
