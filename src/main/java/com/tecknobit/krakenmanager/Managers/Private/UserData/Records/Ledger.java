@@ -172,17 +172,7 @@ public class Ledger extends KrakenManager.KrakenResponse {
      **/
     public Ledger(String ledgerId, String refId, long time, String type, String subType, String aClass, String asset,
                   double amount, double fee, double balance) {
-        super(null);
-        this.ledgerId = ledgerId;
-        this.refId = refId;
-        this.time = time;
-        this.type = type;
-        this.subType = subType;
-        this.aClass = aClass;
-        this.asset = asset;
-        this.amount = amount;
-        this.fee = fee;
-        this.balance = balance;
+        this(null, ledgerId, refId, time, type, subType, aClass, asset, amount, fee, balance);
     }
 
     /** Constructor to init a {@link Ledger} object

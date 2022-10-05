@@ -55,19 +55,16 @@ public class TradeVolume extends KrakenManager.KrakenResponse {
         this.makerFees = makerFees;
     }
 
-    /** Constructor to init a {@link TradeVolume} object
-     * @param currency: volume currency
-     * @param volume: current discount volume
-     * @param fees: list of fees as {@link TradeFee}
+    /**
+     * Constructor to init a {@link TradeVolume} object
+     *
+     * @param currency:  volume currency
+     * @param volume:    current discount volume
+     * @param fees:      list of fees as {@link TradeFee}
      * @param makerFees: list of maker fees as {@link TradeFee}
      **/
-    public TradeVolume(String currency, double volume, double fee, double minFee, double maxFee, double nextFee,
-                       double tierVolume, double nextVolume, ArrayList<TradeFee> fees, ArrayList<TradeFee> makerFees) {
-        super(null);
-        this.currency = currency;
-        this.volume = volume;
-        this.fees = fees;
-        this.makerFees = makerFees;
+    public TradeVolume(String currency, double volume, ArrayList<TradeFee> fees, ArrayList<TradeFee> makerFees) {
+        this(null, currency, volume, fees, makerFees);
     }
 
     /**

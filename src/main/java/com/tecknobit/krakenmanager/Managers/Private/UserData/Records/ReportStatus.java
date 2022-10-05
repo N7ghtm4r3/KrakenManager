@@ -194,20 +194,8 @@ public class ReportStatus extends KrakenManager.KrakenResponse {
     public ReportStatus(String reportId, String description, String format, String report, String subtype, String status,
                         String fields, long createTimestamp, long startTimestamp, long completedTimestamp,
                         long dataStartTimestamp, long dataEndTimestamp, String asset) {
-        super(null);
-        this.reportId = reportId;
-        this.description = description;
-        this.format = format;
-        this.report = report;
-        this.subtype = subtype;
-        this.status = status;
-        this.fields = fields;
-        this.createTimestamp = createTimestamp;
-        this.startTimestamp = startTimestamp;
-        this.completedTimestamp = completedTimestamp;
-        this.dataStartTimestamp = dataStartTimestamp;
-        this.dataEndTimestamp = dataEndTimestamp;
-        this.asset = asset;
+        this(null, reportId, description, format, report, subtype, status, fields, createTimestamp, startTimestamp,
+                completedTimestamp, dataStartTimestamp, dataEndTimestamp, asset);
     }
 
     /** Constructor to init a {@link ReportStatus} object

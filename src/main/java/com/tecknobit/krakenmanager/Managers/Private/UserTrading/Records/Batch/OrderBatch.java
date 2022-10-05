@@ -49,10 +49,7 @@ public class OrderBatch extends KrakenManager.KrakenResponse {
      * @param close: close value
      **/
     public OrderBatch(String order, String txId, String close) {
-        super(null);
-        this.order = order;
-        this.txId = txId;
-        this.close = close;
+        this(null, order, txId, close);
     }
 
     /**

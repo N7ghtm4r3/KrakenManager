@@ -313,25 +313,8 @@ public class Order extends KrakenManager.KrakenResponse {
                  OrderDescription orderDescription, double volume, double executedVolume, double cost, double fee,
                  double price, double stopPrice, double limitPrice, String trigger, String misc, String oFlags,
                  ArrayList<Long> trades) {
-        super(null);
-        this.refId = refId;
-        this.userRef = userRef;
-        this.status = status;
-        this.openTime = openTime;
-        this.startTime = startTime;
-        this.expireTime = expireTime;
-        this.orderDescription = orderDescription;
-        this.volume = volume;
-        this.executedVolume = executedVolume;
-        this.cost = cost;
-        this.fee = fee;
-        this.price = price;
-        this.stopPrice = stopPrice;
-        this.limitPrice = limitPrice;
-        this.trigger = trigger;
-        this.misc = misc;
-        this.oFlags = oFlags;
-        this.trades = trades;
+        this(null, refId, userRef, status, openTime, startTime, expireTime, orderDescription, volume, executedVolume,
+                cost, fee, price, stopPrice, limitPrice, trigger, misc, oFlags, trades);
     }
 
     /** Constructor to init a {@link Order}

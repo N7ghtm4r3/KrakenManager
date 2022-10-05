@@ -175,25 +175,8 @@ public class OpenPosition extends KrakenManager.KrakenResponse {
     public OpenPosition(String positionId, String orderTransactionId, String postStatus, String pair, long time, String type,
                         String orderType, double cost, double fee, double vol, double volClosed, double margin, double value,
                         double net, String terms, long rolloverTerm, String misc, String oFlags) {
-        super(null);
-        this.positionId = positionId;
-        this.orderTransactionId = orderTransactionId;
-        this.postStatus = postStatus;
-        this.pair = pair;
-        this.time = time;
-        this.type = type;
-        this.orderType = orderType;
-        this.cost = cost;
-        this.fee = fee;
-        this.vol = vol;
-        this.volClosed = volClosed;
-        this.margin = margin;
-        this.value = value;
-        this.net = net;
-        this.terms = terms;
-        this.rolloverTerm = rolloverTerm;
-        this.misc = misc;
-        this.oFlags = oFlags;
+        this(null, positionId, orderTransactionId, postStatus, pair, time, type, orderType, cost, fee, vol, volClosed,
+                margin, value, net, terms, rolloverTerm, misc, oFlags);
     }
 
     /** Constructor to init a {@link OpenPosition} object

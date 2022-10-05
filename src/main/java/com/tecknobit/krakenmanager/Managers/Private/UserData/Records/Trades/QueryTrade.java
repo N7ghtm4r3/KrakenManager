@@ -58,8 +58,8 @@ public class QueryTrade extends Trade {
      **/
     public QueryTrade(String tradeId, String orderTransactionId, String pair, long time, String type, String orderType,
                       double price, double cost, double fee, double vol, double margin, String misc, String postTradeId) {
-        super(tradeId, orderTransactionId, pair, time, type, orderType, price, cost, fee, vol, margin, misc);
-        this.postTradeId = postTradeId;
+        this(null, tradeId, orderTransactionId, pair, time, type, orderType, price, cost, fee, vol, margin, misc,
+                postTradeId);
     }
 
     /** Constructor to init a {@link QueryTrade} object

@@ -40,9 +40,7 @@ public class SystemStatus extends KrakenManager.KrakenResponse {
      * @param timestamp: timestamp value
      * **/
     public SystemStatus(String status, String timestamp) {
-        super(null);
-        this.status = status;
-        this.timestamp = timestamp;
+        this(null, status, timestamp);
     }
 
     /** Constructor to init a {@link SystemStatus} object

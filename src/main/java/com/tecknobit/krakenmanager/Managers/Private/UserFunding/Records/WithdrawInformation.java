@@ -59,11 +59,7 @@ public class WithdrawInformation extends KrakenManager.KrakenResponse {
      * @param fee: amount of fees that will be paid
      **/
     public WithdrawInformation(String method, double limit, double amount, double fee) {
-        super(null);
-        this.method = method;
-        this.limit = limit;
-        this.amount = amount;
-        this.fee = fee;
+        this(null, method, limit, amount, fee);
     }
 
     /**

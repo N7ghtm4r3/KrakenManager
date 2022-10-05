@@ -178,18 +178,7 @@ public class OperationStatus extends KrakenManager.KrakenResponse {
      **/
     public OperationStatus(String method, String aClass, String asset, String refId, String txId, String info, double amount,
                            double fee, long time, String status, String statusProp) {
-        super(null);
-        this.method = method;
-        this.aClass = aClass;
-        this.asset = asset;
-        this.refId = refId;
-        this.txId = txId;
-        this.info = info;
-        this.amount = amount;
-        this.fee = fee;
-        this.time = time;
-        this.status = status;
-        this.statusProp = statusProp;
+        this(null, method, aClass, asset, refId, txId, info, amount, fee, time, status, statusProp);
     }
 
     /**

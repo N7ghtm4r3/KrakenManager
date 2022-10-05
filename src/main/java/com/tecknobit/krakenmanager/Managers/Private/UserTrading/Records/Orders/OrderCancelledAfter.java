@@ -53,9 +53,7 @@ public class OrderCancelledAfter extends KrakenManager.KrakenResponse {
      * @param triggerTime: trigger time value, so when all orders will be canceled
      **/
     public OrderCancelledAfter(long currentTime, long triggerTime) {
-        super(null);
-        this.currentTime = currentTime;
-        this.triggerTime = triggerTime;
+        this(null, currentTime, triggerTime);
     }
 
     /**

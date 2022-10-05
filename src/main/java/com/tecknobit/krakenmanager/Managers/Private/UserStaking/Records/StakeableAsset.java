@@ -139,20 +139,8 @@ public class StakeableAsset extends KrakenManager.KrakenResponse {
     public StakeableAsset(String method, String asset, String stakingAsset, Rewards rewards, boolean onChain,
                           boolean canStake, boolean canUnstake, MinimumAmount minimumAmount, boolean enabledForUser,
                           boolean disabled, ArrayList<Lock> unstaking, ArrayList<Lock> staking, ArrayList<Lock> lockup) {
-        super(null);
-        this.method = method;
-        this.asset = asset;
-        this.stakingAsset = stakingAsset;
-        this.rewards = rewards;
-        this.onChain = onChain;
-        this.canStake = canStake;
-        this.canUnstake = canUnstake;
-        this.minimumAmount = minimumAmount;
-        this.enabledForUser = enabledForUser;
-        this.disabled = disabled;
-        this.unstaking = unstaking;
-        this.staking = staking;
-        this.lockup = lockup;
+        this(null, method, asset, stakingAsset, rewards, onChain, canStake, canUnstake, minimumAmount, enabledForUser,
+                disabled, unstaking, staking, lockup);
     }
 
     /** Constructor to init a {@link StakeableAsset} object
@@ -202,20 +190,8 @@ public class StakeableAsset extends KrakenManager.KrakenResponse {
     public StakeableAsset(String method, String asset, String stakingAsset, Rewards rewards,
                           boolean onChain, boolean canStake, boolean canUnstake, MinimumAmount minimumAmount,
                           boolean enabledForUser, boolean disabled) {
-        super(null);
-        this.method = method;
-        this.asset = asset;
-        this.stakingAsset = stakingAsset;
-        this.rewards = rewards;
-        this.onChain = onChain;
-        this.canStake = canStake;
-        this.canUnstake = canUnstake;
-        this.minimumAmount = minimumAmount;
-        this.enabledForUser = enabledForUser;
-        this.disabled = disabled;
-        unstaking = new ArrayList<>();
-        staking = new ArrayList<>();
-        lockup = new ArrayList<>();
+        this(null, method, asset, stakingAsset, rewards, onChain, canStake, canUnstake, minimumAmount, enabledForUser,
+                disabled);
     }
 
     /** Constructor to init a {@link StakeableAsset} object
@@ -262,20 +238,7 @@ public class StakeableAsset extends KrakenManager.KrakenResponse {
      **/
     public StakeableAsset(String method, String asset, String stakingAsset, Rewards rewards, boolean onChain,
                           boolean canStake, boolean canUnstake, MinimumAmount minimumAmount, boolean enabledForUser) {
-        super(null);
-        this.method = method;
-        this.asset = asset;
-        this.stakingAsset = stakingAsset;
-        this.rewards = rewards;
-        this.onChain = onChain;
-        this.canStake = canStake;
-        this.canUnstake = canUnstake;
-        this.minimumAmount = minimumAmount;
-        this.enabledForUser = enabledForUser;
-        disabled = false;
-        unstaking = new ArrayList<>();
-        staking = new ArrayList<>();
-        lockup = new ArrayList<>();
+        this(null, method, asset, stakingAsset, rewards, onChain, canStake, canUnstake, minimumAmount, enabledForUser);
     }
 
     /** Constructor to init a {@link StakeableAsset} object
@@ -329,20 +292,8 @@ public class StakeableAsset extends KrakenManager.KrakenResponse {
     public StakeableAsset(String method, String asset, String stakingAsset, Rewards rewards, boolean onChain,
                           boolean canStake, boolean canUnstake, MinimumAmount minimumAmount, boolean enabledForUser,
                           ArrayList<Lock> unstaking, ArrayList<Lock> staking, ArrayList<Lock> lockup) {
-        super(null);
-        this.method = method;
-        this.asset = asset;
-        this.stakingAsset = stakingAsset;
-        this.rewards = rewards;
-        this.onChain = onChain;
-        this.canStake = canStake;
-        this.canUnstake = canUnstake;
-        this.minimumAmount = minimumAmount;
-        this.enabledForUser = enabledForUser;
-        this.unstaking = unstaking;
-        this.staking = staking;
-        this.lockup = lockup;
-        disabled = false;
+        this(null, method, asset, stakingAsset, rewards, onChain, canStake, canUnstake, minimumAmount, enabledForUser,
+                unstaking, staking, lockup);
     }
 
     /** Constructor to init a {@link StakeableAsset} object
@@ -358,8 +309,8 @@ public class StakeableAsset extends KrakenManager.KrakenResponse {
      * @param disabled: flag that memorizes if staking is disabled
      **/
     public StakeableAsset(JSONObject jsonResponse, String method, String asset, String stakingAsset, Rewards rewards,
-                          boolean onChain, boolean canStake, boolean canUnstake, MinimumAmount minimumAmount,
-                          Boolean disabled) {
+                          boolean onChain, boolean canStake, boolean canUnstake, boolean disabled,
+                          MinimumAmount minimumAmount) {
         super(jsonResponse);
         this.method = method;
         this.asset = asset;
@@ -376,24 +327,46 @@ public class StakeableAsset extends KrakenManager.KrakenResponse {
         lockup = new ArrayList<>();
     }
 
-    /** Constructor to init a {@link StakeableAsset} object
-     * @param method: unique ID of the staking option (used in Stake/Unstake operations)
-     * @param asset: asset code/name
-     * @param stakingAsset: staking asset code/name
-     * @param rewards: describes the rewards earned while staking
-     * @param onChain: flag that memorizes whether the staking operation is on-chain or not
-     * @param canStake: flag that memorizes whether the user will be able to stake this asset
-     * @param canUnstake: flag that memorizes whether the user will be able to unstake this asset
+    /**
+     * Constructor to init a {@link StakeableAsset} object
+     *
+     * @param method:        unique ID of the staking option (used in Stake/Unstake operations)
+     * @param asset:         asset code/name
+     * @param stakingAsset:  staking asset code/name
+     * @param rewards:       describes the rewards earned while staking
+     * @param onChain:       flag that memorizes whether the staking operation is on-chain or not
+     * @param canStake:      flag that memorizes whether the user will be able to stake this asset
+     * @param canUnstake:    flag that memorizes whether the user will be able to unstake this asset
      * @param minimumAmount: minimium amounts for staking/unstaking
-     * @param disabled: flag that memorizes if staking is disabled
-     * @param unstaking: list of {@link Lock} as unstaking list
-     * @param staking: list of {@link Lock} as staking list
-     * @param lockup: list of {@link Lock} as lockup list
      **/
-    public StakeableAsset(String method, String asset, String stakingAsset, Rewards rewards, boolean onChain,
-                          boolean canStake, boolean canUnstake, MinimumAmount minimumAmount, Boolean disabled,
-                          ArrayList<Lock> unstaking, ArrayList<Lock> staking, ArrayList<Lock> lockup) {
-        super(null);
+    public StakeableAsset(String method, String asset, String stakingAsset, Rewards rewards,
+                          boolean onChain, boolean canStake, boolean canUnstake, boolean disabled,
+                          MinimumAmount minimumAmount) {
+        this(null, method, asset, stakingAsset, rewards, onChain, canStake, canUnstake, disabled, minimumAmount);
+    }
+
+    /**
+     * Constructor to init a {@link StakeableAsset} object
+     *
+     * @param jsonResponse:  base json response
+     * @param method:        unique ID of the staking option (used in Stake/Unstake operations)
+     * @param asset:         asset code/name
+     * @param stakingAsset:  staking asset code/name
+     * @param rewards:       describes the rewards earned while staking
+     * @param onChain:       flag that memorizes whether the staking operation is on-chain or not
+     * @param canStake:      flag that memorizes whether the user will be able to stake this asset
+     * @param canUnstake:    flag that memorizes whether the user will be able to unstake this asset
+     * @param minimumAmount: minimium amounts for staking/unstaking
+     * @param disabled:      flag that memorizes if staking is disabled
+     * @param unstaking:     list of {@link Lock} as unstaking list
+     * @param staking:       list of {@link Lock} as staking list
+     * @param lockup:        list of {@link Lock} as lockup list
+     **/
+    public StakeableAsset(JSONObject jsonResponse, String method, String asset, String stakingAsset, Rewards rewards,
+                          boolean onChain, boolean canStake, boolean canUnstake, boolean disabled,
+                          MinimumAmount minimumAmount, ArrayList<Lock> unstaking, ArrayList<Lock> staking,
+                          ArrayList<Lock> lockup) {
+        super(jsonResponse);
         this.method = method;
         this.asset = asset;
         this.stakingAsset = stakingAsset;
@@ -410,7 +383,6 @@ public class StakeableAsset extends KrakenManager.KrakenResponse {
     }
 
     /** Constructor to init a {@link StakeableAsset} object
-     * @param jsonResponse: base json response
      * @param method: unique ID of the staking option (used in Stake/Unstake operations)
      * @param asset: asset code/name
      * @param stakingAsset: staking asset code/name
@@ -424,23 +396,12 @@ public class StakeableAsset extends KrakenManager.KrakenResponse {
      * @param staking: list of {@link Lock} as staking list
      * @param lockup: list of {@link Lock} as lockup list
      **/
-    public StakeableAsset(JSONObject jsonResponse, String method, String asset, String stakingAsset, Rewards rewards,
-                          boolean onChain, boolean canStake, boolean canUnstake, MinimumAmount minimumAmount, Boolean disabled,
-                          ArrayList<Lock> unstaking, ArrayList<Lock> staking, ArrayList<Lock> lockup) {
-        super(jsonResponse);
-        this.method = method;
-        this.asset = asset;
-        this.stakingAsset = stakingAsset;
-        this.rewards = rewards;
-        this.onChain = onChain;
-        this.canStake = canStake;
-        this.canUnstake = canUnstake;
-        this.minimumAmount = minimumAmount;
-        this.disabled = disabled;
-        this.unstaking = unstaking;
-        this.staking = staking;
-        this.lockup = lockup;
-        enabledForUser = true;
+    public StakeableAsset(String method, String asset, String stakingAsset, Rewards rewards,
+                          boolean onChain, boolean canStake, boolean canUnstake, boolean disabled,
+                          MinimumAmount minimumAmount, ArrayList<Lock> unstaking, ArrayList<Lock> staking,
+                          ArrayList<Lock> lockup) {
+        this(null, method, asset, stakingAsset, rewards, onChain, canStake, canUnstake, disabled, minimumAmount,
+                unstaking, staking, lockup);
     }
 
     /**

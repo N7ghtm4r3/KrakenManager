@@ -114,17 +114,7 @@ public class TickerInformation extends KrakenManager.KrakenResponse {
     public TickerInformation(String symbol, MarketAction ask, MarketAction bid, Trade close, MarketParam volume,
                              MarketParam volumeWeightedAvgPrice, MarketParam trades, MarketParam low, MarketParam high,
                              double openPrice) {
-        super(null);
-        this.symbol = symbol;
-        this.ask = ask;
-        this.bid = bid;
-        this.close = close;
-        this.volume = volume;
-        this.volumeWeightedAvgPrice = volumeWeightedAvgPrice;
-        this.trades = trades;
-        this.low = low;
-        this.high = high;
-        this.openPrice = openPrice;
+        this(null, symbol, ask, bid, close, volume, volumeWeightedAvgPrice, trades, low, high, openPrice);
     }
 
     /** Constructor to init a {@link TickerInformation} object

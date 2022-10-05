@@ -111,9 +111,7 @@ public class OrderAdded extends KrakenManager.KrakenResponse {
      * @param description: description of added order
      **/
     public OrderAdded(ArrayList<String> txIds, Order.OrderDescription description) {
-        super(null);
-        this.txIds = txIds;
-        this.description = description;
+        this(null, txIds, description);
     }
 
     /**

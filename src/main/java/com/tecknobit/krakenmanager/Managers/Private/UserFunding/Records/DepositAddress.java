@@ -28,15 +28,15 @@ public class DepositAddress extends KrakenManager.KrakenResponse {
     private final long expireTime;
 
     /**
-     * {@code newAddress} is flag that memorizes whether or not address has ever been used
-     * **/
+     * {@code newAddress} is flag that memorizes whether address has ever been used
+     **/
     private final boolean newAddress;
 
     /** Constructor to init a {@link DepositAddress} object
      * @param jsonResponse: base json response
      * @param address: deposit address
      * @param expireTime: expiration time in unix timestamp, or 0 if not expiring
-     * @param newAddress: whether or not address has ever been used
+     * @param newAddress: whether address has ever been used
      **/
     public DepositAddress(JSONObject jsonResponse, String address, long expireTime, boolean newAddress) {
         super(jsonResponse);
@@ -48,13 +48,10 @@ public class DepositAddress extends KrakenManager.KrakenResponse {
     /** Constructor to init a {@link DepositAddress} object
      * @param address: deposit address
      * @param expireTime: expiration time in unix timestamp, or 0 if not expiring
-     * @param newAddress: whether or not address has ever been used
+     * @param newAddress: whether address has ever been used
      **/
     public DepositAddress(String address, long expireTime, boolean newAddress) {
-        super(null);
-        this.address = address;
-        this.expireTime = expireTime;
-        this.newAddress = newAddress;
+        this(null, address, expireTime, newAddress);
     }
 
     /**

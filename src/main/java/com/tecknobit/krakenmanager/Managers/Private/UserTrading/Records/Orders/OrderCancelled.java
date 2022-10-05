@@ -41,8 +41,7 @@ public class OrderCancelled extends KrakenManager.KrakenResponse {
      * @param count: count of the orders cancelled
      **/
     public OrderCancelled(int count) {
-        super(null);
-        this.count = count;
+        this(null, count);
     }
 
     /**

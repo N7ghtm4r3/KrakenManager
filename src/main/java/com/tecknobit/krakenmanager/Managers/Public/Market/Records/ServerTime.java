@@ -40,9 +40,7 @@ public class ServerTime extends KrakenManager.KrakenResponse {
      * @param rfc1123: rfc1123 value
      * **/
     public ServerTime(long unixTime, String rfc1123) {
-        super(null);
-        this.unixTime = unixTime;
-        this.rfc1123 = rfc1123;
+        this(null, unixTime, rfc1123);
     }
 
     /** Constructor to init a {@link ServerTime} object

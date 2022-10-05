@@ -104,14 +104,16 @@ public class KrakenUserFundingManager extends KrakenPrivateManager {
         return depositMethods;
     }
 
-    /** Request to retrieve (or generate a new) deposit addresses for a particular asset and method
-     * @param asset: asset being deposited
-     * @param method: name of the deposit method
-     * @param newAddress: whether or not to generate a new address
-     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Funding/operation/getDepositAddresses">
-     *     https://docs.kraken.com/rest/#tag/User-Funding/operation/getDepositAddresses</a>
+    /**
+     * Request to retrieve (or generate a new) deposit addresses for a particular asset and method
+     *
+     * @param asset:      asset being deposited
+     * @param method:     name of the deposit method
+     * @param newAddress: whether to generate a new address
      * @return deposit addresses as {@link String}
-     * **/
+     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Funding/operation/getDepositAddresses">
+     * https://docs.kraken.com/rest/#tag/User-Funding/operation/getDepositAddresses</a>
+     **/
     public String getDepositAddresses(String asset, String method, boolean newAddress) throws Exception {
         Params params = new Params();
         params.addParam("asset", asset);
@@ -124,7 +126,7 @@ public class KrakenUserFundingManager extends KrakenPrivateManager {
     /** Request to retrieve (or generate a new) deposit addresses for a particular asset and method
      * @param asset: asset being deposited
      * @param method: name of the deposit method
-     * @param newAddress: whether or not to generate a new address
+     * @param newAddress: whether to generate a new address
      * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Funding/operation/getDepositAddresses">
      *     https://docs.kraken.com/rest/#tag/User-Funding/operation/getDepositAddresses</a>
      * @return deposit addresses as {@link JSONObject}
@@ -136,7 +138,7 @@ public class KrakenUserFundingManager extends KrakenPrivateManager {
     /** Request to retrieve (or generate a new) deposit addresses for a particular asset and method
      * @param asset: asset being deposited
      * @param method: name of the deposit method
-     * @param newAddress: whether or not to generate a new address
+     * @param newAddress: whether to generate a new address
      * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Funding/operation/getDepositAddresses">
      *     https://docs.kraken.com/rest/#tag/User-Funding/operation/getDepositAddresses</a>
      * @return deposit addresses as {@link ArrayList} of {@link DepositAddress} custom object

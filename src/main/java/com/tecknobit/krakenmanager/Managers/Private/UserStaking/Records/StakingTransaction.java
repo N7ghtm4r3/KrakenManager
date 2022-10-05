@@ -191,18 +191,7 @@ public class StakingTransaction extends KrakenManager.KrakenResponse {
      **/
     public StakingTransaction(String method, String aClass, String asset, String refId, double amount, double fee,
                               long time, String status, String type) {
-        super(null);
-        this.method = method;
-        this.aClass = aClass;
-        this.asset = asset;
-        this.refId = refId;
-        this.amount = amount;
-        this.fee = fee;
-        this.time = time;
-        this.status = status;
-        this.type = type;
-        bondStart = -1;
-        bondEnd = -1;
+        this(null, method, aClass, asset, refId, amount, fee, time, status, type);
     }
 
     /**

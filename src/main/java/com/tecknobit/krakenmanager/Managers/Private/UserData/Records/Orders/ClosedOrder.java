@@ -98,10 +98,8 @@ public class ClosedOrder extends Order {
                        OrderDescription orderDescription, double volume, double executedVolume, double cost, double fee,
                        double price, double stopPrice, double limitPrice, String trigger, String misc, String oFlags,
                        ArrayList<Long> trades, long closeTime, String reason) {
-        super(refId, userRef, status, openTime, startTime, expireTime, orderDescription, volume, executedVolume, cost,
-                fee, price, stopPrice, limitPrice, trigger, misc, oFlags, trades);
-        this.closeTime = closeTime;
-        this.reason = reason;
+        this(null, refId, userRef, status, openTime, startTime, expireTime, orderDescription, volume,
+                executedVolume, cost, fee, price, stopPrice, limitPrice, trigger, misc, oFlags, trades, closeTime, reason);
     }
 
     /** Constructor to init a {@link ClosedOrder}

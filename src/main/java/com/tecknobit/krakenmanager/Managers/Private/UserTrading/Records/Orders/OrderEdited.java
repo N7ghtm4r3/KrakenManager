@@ -96,15 +96,7 @@ public class OrderEdited extends KrakenManager.KrakenResponse{
      **/
     public OrderEdited(String status, String txId, String originalTxId, double volume, double price, double price2,
                        int ordersCancelled, OrderDescription orderDescription) {
-        super(null);
-        this.status = status;
-        this.txId = txId;
-        this.originalTxId = originalTxId;
-        this.volume = volume;
-        this.price = price;
-        this.price2 = price2;
-        this.ordersCancelled = ordersCancelled;
-        this.orderDescription = orderDescription;
+        this(null, status, txId, originalTxId, volume, price, price2, ordersCancelled, orderDescription);
     }
 
     /**

@@ -132,43 +132,8 @@ public class TradeBalance extends KrakenManager.KrakenResponse {
      **/
     public TradeBalance(double equivalentBalance, double tradeBalance, double marginAmount, double unrealizeIncome,
                         double costBasis, double floatingValuation, double equity, double freeMargin, String marginLevel) {
-        super(null);
-        if(equivalentBalance < 0)
-            throw new IllegalArgumentException("Equivalent balance value cannot be lesser than 0");
-        else
-            this.equivalentBalance = equivalentBalance;
-        if(tradeBalance < 0)
-            throw new IllegalArgumentException("Trade balance value cannot be lesser than 0");
-        else
-            this.tradeBalance = tradeBalance;
-        if(marginAmount < 0)
-            throw new IllegalArgumentException("Margin amount value cannot be lesser than 0");
-        else
-            this.marginAmount = marginAmount;
-        if(unrealizeIncome < 0)
-            throw new IllegalArgumentException("Unrealize income value cannot be lesser than 0");
-        else
-            this.unrealizeIncome = unrealizeIncome;
-        if(costBasis < 0)
-            throw new IllegalArgumentException("Cost basis value cannot be lesser than 0");
-        else
-            this.costBasis = costBasis;
-        if(floatingValuation < 0)
-            throw new IllegalArgumentException("Floating valuation cannot be lesser than 0");
-        else
-            this.floatingValuation = floatingValuation;
-        if(equity < 0)
-            throw new IllegalArgumentException("Equity value cannot be lesser than 0");
-        else
-            this.equity = equity;
-        if(freeMargin < 0)
-            throw new IllegalArgumentException("Free margin value cannot be lesser than 0");
-        else
-            this.freeMargin = freeMargin;
-        if(marginLevel == null || marginLevel.isEmpty())
-            this.marginLevel = "No margin level found";
-        else
-            this.marginLevel = marginLevel;
+        this(null, equivalentBalance, tradeBalance, marginAmount, unrealizeIncome, costBasis, floatingValuation,
+                equity, freeMargin, marginLevel);
     }
 
     /** Constructor to init a {@link TradeBalance} object

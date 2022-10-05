@@ -66,11 +66,7 @@ public class Asset extends KrakenManager.KrakenResponse {
      * @param displayDecimals: number of decimals digits displayed
      * **/
     public Asset(String aClass, String altName, int decimals, int displayDecimals) {
-        super(null);
-        this.aClass = aClass;
-        this.altName = altName;
-        this.decimals = decimals;
-        this.displayDecimals = displayDecimals;
+        this(null, aClass, altName, decimals, displayDecimals);
     }
 
     /** Constructor to init an {@link Asset} object

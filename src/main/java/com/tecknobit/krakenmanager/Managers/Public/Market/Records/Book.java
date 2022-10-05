@@ -53,10 +53,7 @@ public class Book extends KrakenManager.KrakenResponse {
      * @param bids: list of {@link BookElement} for bids
      * **/
     public Book(String symbol, ArrayList<BookElement> asks, ArrayList<BookElement> bids) {
-        super(null);
-        this.symbol = symbol;
-        this.asks = asks;
-        this.bids = bids;
+        this(null, symbol, asks, bids);
     }
 
     /** Constructor to init a {@link Book} object

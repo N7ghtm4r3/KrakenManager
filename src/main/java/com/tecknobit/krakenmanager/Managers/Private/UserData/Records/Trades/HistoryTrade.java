@@ -123,15 +123,8 @@ public class HistoryTrade extends Trade {
                         String orderType, double price, double cost, double fee, double vol, double margin, String misc,
                         String postStatus, double cPrice, double cCost, double cFee, double cVol, double cMargin,
                         double net, ArrayList<Long> trades) {
-        super(tradeId, orderTransactionId, pair, time, type, orderType, price, cost, fee, vol, margin, misc);
-        this.postStatus = postStatus;
-        this.cPrice = cPrice;
-        this.cCost = cCost;
-        this.cFee = cFee;
-        this.cVol = cVol;
-        this.cMargin = cMargin;
-        this.net = net;
-        this.trades = trades;
+        this(null, tradeId, orderTransactionId, pair, time, type, orderType, price, cost, fee, vol, margin, misc,
+                postStatus, cPrice, cCost, cFee, cVol, cMargin, net, trades);
     }
 
     /** Constructor to init a {@link HistoryTrade} object

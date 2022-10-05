@@ -28,8 +28,8 @@ public class DepositMethod extends KrakenManager.KrakenResponse {
     private final double fee;
 
     /**
-     * {@code addressSetupFee} is instance that memorizes whether or not method has an address setup fee
-     * **/
+     * {@code addressSetupFee} is instance that memorizes whether method has an address setup fee
+     **/
     private final String addressSetupFee;
 
     /**
@@ -41,7 +41,7 @@ public class DepositMethod extends KrakenManager.KrakenResponse {
      * @param jsonResponse: base json response
      * @param method: name of deposit method
      * @param fee: amount of fees that will be paid
-     * @param addressSetupFee: whether or not method has an address setup fee
+     * @param addressSetupFee: whether method has an address setup fee
      * @param genAddress: whether new addresses can be generated for this method
      **/
     public DepositMethod(JSONObject jsonResponse, String method, double fee, String addressSetupFee, boolean genAddress) {
@@ -55,15 +55,11 @@ public class DepositMethod extends KrakenManager.KrakenResponse {
     /** Constructor to init a {@link DepositMethod} object
      * @param method: name of deposit method
      * @param fee: amount of fees that will be paid
-     * @param addressSetupFee: whether or not method has an address setup fee
+     * @param addressSetupFee: whether method has an address setup fee
      * @param genAddress: whether new addresses can be generated for this method
      **/
     public DepositMethod(String method, double fee, String addressSetupFee, boolean genAddress) {
-        super(null);
-        this.method = method;
-        this.fee = fee;
-        this.addressSetupFee = addressSetupFee;
-        this.genAddress = genAddress;
+        this(null, method, fee, addressSetupFee, genAddress);
     }
 
     /**

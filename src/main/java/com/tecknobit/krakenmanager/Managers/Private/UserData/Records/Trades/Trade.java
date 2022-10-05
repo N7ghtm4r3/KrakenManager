@@ -135,19 +135,8 @@ public abstract class Trade extends KrakenManager.KrakenResponse {
      **/
     public Trade(String tradeId, String orderTransactionId, String pair, long time, String type, String orderType,
                  double price, double cost, double fee, double vol, double margin, String misc) {
-        super(null);
-        this.tradeId = tradeId;
-        this.orderTransactionId = orderTransactionId;
-        this.pair = pair;
-        this.time = time;
-        this.type = type;
-        this.orderType = orderType;
-        this.price = price;
-        this.cost = cost;
-        this.fee = fee;
-        this.vol = vol;
-        this.margin = margin;
-        this.misc = misc;
+        this(null, tradeId, orderTransactionId, pair, time, type, orderType, price, cost, fee, vol, margin,
+                misc);
     }
 
     /** Constructor to init a {@link Trade} object
