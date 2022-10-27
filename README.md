@@ -23,7 +23,7 @@ allprojects {
 
 ```gradle
 dependencies {
-	implementation 'com.github.N7ghtm4r3:KrakenManager:1.0.3'
+    implementation 'com.github.N7ghtm4r3:KrakenManager:1.0.3'
 }
 ```
 
@@ -59,24 +59,24 @@ The other endpoints managers will be gradually released
 ```java
 
 // init a Kraken manager
-try{
-        KrakenMarketManager manager=new KrakenMarketManager();
-        }catch(Exception e){
-        e.printStackTrace();
-        }
+try {
+   KrakenMarketManager manager = new KrakenMarketManager();
+} catch(Exception e) {
+   e.printStackTrace();
+}
 ```
 
 To avoid re-entering credentials for each manager, you can instantiate managers like this:
 
 ```java
 // choose the manager for example: KrakenUserDataManager, KrakenUserTradingManager, etc 
-KrakenPrivateManager firstManager=new KrakenPrivateManager( /* params of the constructor chosen */,"apiKey","apiSign");
+KrakenPrivateManager firstManager = new KrakenPrivateManager( /* params of the constructor chosen */,"apiKey","apiSign");
 // and then use it 
-        firstManager.makeSomething();
+firstManager.makeSomething();
 // you don't need to insert all credentials to make manager work
-        KrakenPrivateManager secondManager=new KrakenPrivateManager(); // same credentials used
+KrakenPrivateManager secondManager = new KrakenPrivateManager(); // same credentials used
 // and then use it
-        secondManager.makeSomething();
+secondManager.makeSomething();
 ```
 
 ### Responses
@@ -84,10 +84,10 @@ KrakenPrivateManager firstManager=new KrakenPrivateManager( /* params of the con
 - String: will return response formatted as String object
 
 ```java
-try{
-        System.out.println(manager.getAsset("BTCEUR"));
-        }catch(Exception e){
-        e.printStackTrace();
+try {
+   System.out.println(manager.getAsset("BTCEUR"));
+} catch(Exception e) {
+   e.printStackTrace();
 }
 ```
 
