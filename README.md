@@ -1,5 +1,5 @@
 # KrakenManager
-**v1.0.2**
+**v1.0.3**
 
 This is a Java Based library useful to work with Kraken's API service.
 
@@ -23,7 +23,7 @@ allprojects {
 
 ```gradle
 dependencies {
-	implementation 'com.github.N7ghtm4r3:KrakenManager:1.0.2'
+	implementation 'com.github.N7ghtm4r3:KrakenManager:1.0.3'
 }
 ```
 
@@ -45,7 +45,7 @@ dependencies {
 <dependency>
     <groupId>com.github.N7ghtm4r3</groupId>
     <artifactId>KrakenManager</artifactId>
-    <version>1.0.2</version>
+    <version>1.0.3</version>
 </dependency>
 ```
 
@@ -59,11 +59,24 @@ The other endpoints managers will be gradually released
 ```java
 
 // init a Kraken manager
-try {
-    KrakenMarketManager manager = new KrakenMarketManager();
-} catch (Exception e) {
-    e.printStackTrace();
-}
+try{
+        KrakenMarketManager manager=new KrakenMarketManager();
+        }catch(Exception e){
+        e.printStackTrace();
+        }
+```
+
+To avoid re-entering credentials for each manager, you can instantiate managers like this:
+
+```java
+// choose the manager for example: KrakenUserDataManager, KrakenUserTradingManager, etc 
+KrakenPrivateManager firstManager=new KrakenPrivateManager( /* params of the constructor chosen */,"apiKey","apiSign");
+// and then use it 
+        firstManager.makeSomething();
+// you don't need to insert all credentials to make manager work
+        KrakenPrivateManager secondManager=new KrakenPrivateManager(); // same credentials used
+// and then use it
+        secondManager.makeSomething();
 ```
 
 ### Responses
@@ -71,10 +84,10 @@ try {
 - String: will return response formatted as String object
 
 ```java
-try {
-    System.out.println(manager.getAsset("BTCEUR"));
-} catch (Exception e) {
-    e.printStackTrace();
+try{
+        System.out.println(manager.getAsset("BTCEUR"));
+        }catch(Exception e){
+        e.printStackTrace();
 }
 ```
 

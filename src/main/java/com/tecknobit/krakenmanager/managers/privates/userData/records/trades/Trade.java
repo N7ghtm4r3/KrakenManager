@@ -1,0 +1,345 @@
+package com.tecknobit.krakenmanager.managers.privates.userData.records.trades;
+
+import com.tecknobit.krakenmanager.managers.KrakenManager;
+import org.json.JSONObject;
+
+import static com.tecknobit.apimanager.trading.TradingTools.roundValue;
+
+/**
+ * The {@code Trade} class is useful to format trade object and give base trade instances
+ *
+ * @author N7ghtm4r3 - Tecknobit
+ * @apiNote see official documentation at:
+ * <ul>
+ * <li>
+ * <a href="https://docs.kraken.com/rest/#tag/User-Data/operation/getTradesInfo">
+ * https://docs.kraken.com/rest/#tag/User-Data/operation/getTradesInfo</a>
+ * </li>
+ * <li>
+ * <a href="https://docs.kraken.com/rest/#tag/User-Data/operation/getTradeHistory">
+ * https://docs.kraken.com/rest/#tag/User-Data/operation/getTradeHistory</a>
+ * </li>
+ * </ul>
+ **/
+public abstract class Trade extends KrakenManager.KrakenResponse {
+
+    /**
+     * {@code tradeId} is instance that memorizes trade identifier value
+     * **/
+    protected final String tradeId;
+
+    /**
+     * {@code orderTransactionId} is instance that memorizes order transaction identifier value
+     * **/
+    protected final String orderTransactionId;
+
+    /**
+     * {@code pair} is instance that memorizes pair value
+     * **/
+    protected final String pair;
+
+    /**
+     * {@code time} is instance that memorizes time value
+     * **/
+    protected final long time;
+
+    /**
+     * {@code type} is instance that memorizes type of order value -> (buy or sell)
+     * **/
+    protected final String type;
+
+    /**
+     * {@code orderType} is instance that memorizes order type value
+     * **/
+    protected final String orderType;
+
+    /**
+     * {@code price} is instance that memorizes price value
+     * **/
+    protected final double price;
+
+    /**
+     * {@code cost} is instance that memorizes cost value
+     * **/
+    protected final double cost;
+
+    /**
+     * {@code fee} is instance that memorizes fee value
+     * **/
+    protected final double fee;
+
+    /**
+     * {@code vol} is instance that memorizes vol value
+     * **/
+    protected final double vol;
+
+    /**
+     * {@code margin} is instance that memorizes margin value
+     * **/
+    protected final double margin;
+
+    /**
+     * {@code misc} is instance that memorizes misc value
+     * **/
+    protected final String misc;
+
+    /** Constructor to init a {@link Trade} object
+     * @param jsonResponse: base json response
+     * @param tradeId: trade identifier value
+     * @param orderTransactionId: order transaction identifier value
+     * @param pair: pair value
+     * @param time: time value
+     * @param type: type value
+     * @param orderType: order type value
+     * @param price: price value
+     * @param cost: cost value
+     * @param fee: fee value
+     * @param vol: vol value
+     * @param margin: margin value
+     * @param misc: misc value
+     **/
+    public Trade(JSONObject jsonResponse, String tradeId, String orderTransactionId, String pair, long time,
+                 String type, String orderType, double price, double cost, double fee, double vol, double margin,
+                 String misc) {
+        super(jsonResponse);
+        this.tradeId = tradeId;
+        this.orderTransactionId = orderTransactionId;
+        this.pair = pair;
+        this.time = time;
+        this.type = type;
+        this.orderType = orderType;
+        this.price = price;
+        this.cost = cost;
+        this.fee = fee;
+        this.vol = vol;
+        this.margin = margin;
+        this.misc = misc;
+    }
+
+    /** Constructor to init a {@link Trade} object
+     * @param tradeId: trade identifier value
+     * @param orderTransactionId: order transaction identifier value
+     * @param pair: pair value
+     * @param time: time value
+     * @param type: type value
+     * @param orderType: order type value
+     * @param price: price value
+     * @param cost: cost value
+     * @param fee: fee value
+     * @param vol: vol value
+     * @param margin: margin value
+     * @param misc: misc value
+     **/
+    public Trade(String tradeId, String orderTransactionId, String pair, long time, String type, String orderType,
+                 double price, double cost, double fee, double vol, double margin, String misc) {
+        this(null, tradeId, orderTransactionId, pair, time, type, orderType, price, cost, fee, vol, margin,
+                misc);
+    }
+
+    /** Constructor to init a {@link Trade} object
+     * @param jsonResponse: base json response
+     * @param tradeId: trade identifier value
+     **/
+    public Trade(JSONObject jsonResponse, String tradeId) {
+        super(jsonResponse);
+        this.tradeId = tradeId;
+        orderTransactionId = jsonResponse.getString("ordertxid");
+        pair = jsonResponse.getString("pair");
+        time = jsonResponse.getLong("time");
+        type = jsonResponse.getString("type");
+        orderType = jsonResponse.getString("ordertype");
+        price = jsonResponse.getDouble("price");
+        cost = jsonResponse.getDouble("cost");
+        fee = jsonResponse.getDouble("fee");
+        vol = jsonResponse.getDouble("vol");
+        margin = jsonResponse.getDouble("margin");
+        misc = jsonResponse.getString("misc");
+    }
+
+    /**
+     * Method to get {@link #tradeId} instance <br>
+     * Any params required
+     *
+     * @return {@link #tradeId} instance as {@link String}
+     **/
+    public String getTradeId() {
+        return tradeId;
+    }
+
+    /**
+     * Method to get {@link #orderTransactionId} instance <br>
+     * Any params required
+     *
+     * @return {@link #orderTransactionId} instance as {@link String}
+     **/
+    public String getOrderTransactionId() {
+        return orderTransactionId;
+    }
+
+    /**
+     * Method to get {@link #pair} instance <br>
+     * Any params required
+     *
+     * @return {@link #pair} instance as {@link String}
+     **/
+    public String getPair() {
+        return pair;
+    }
+
+    /**
+     * Method to get {@link #time} instance <br>
+     * Any params required
+     *
+     * @return {@link #time} instance as long
+     **/
+    public long getTime() {
+        return time;
+    }
+
+    /**
+     * Method to get {@link #type} instance <br>
+     * Any params required
+     *
+     * @return {@link #type} instance as {@link String}
+     **/
+    public String getType() {
+        return type;
+    }
+
+    /**
+     * Method to get {@link #orderType} instance <br>
+     * Any params required
+     *
+     * @return {@link #orderType} instance as {@link String}
+     **/
+    public String getOrderType() {
+        return orderType;
+    }
+
+    /**
+     * Method to get {@link #price} instance <br>
+     * Any params required
+     *
+     * @return {@link #price} instance as double
+     **/
+    public double getPrice() {
+        return price;
+    }
+
+    /**
+     * Method to get {@link #price} instance
+     *
+     * @param decimals: number of digits to round final value
+     * @return {@link #price} instance rounded with decimal digits inserted
+     * @throws IllegalArgumentException if decimalDigits is negative
+     **/
+    public double getPrice(int decimals) {
+        return roundValue(price, decimals);
+    }
+
+    /**
+     * Method to get {@link #cost} instance <br>
+     * Any params required
+     *
+     * @return {@link #cost} instance as double
+     **/
+    public double getCost() {
+        return cost;
+    }
+
+    /**
+     * Method to get {@link #cost} instance
+     *
+     * @param decimals: number of digits to round final value
+     * @return {@link #cost} instance rounded with decimal digits inserted
+     * @throws IllegalArgumentException if decimalDigits is negative
+     **/
+    public double getCost(int decimals) {
+        return roundValue(cost, decimals);
+    }
+
+    /**
+     * Method to get {@link #fee} instance <br>
+     * Any params required
+     *
+     * @return {@link #fee} instance as double
+     **/
+    public double getFee() {
+        return fee;
+    }
+
+    /**
+     * Method to get {@link #fee} instance
+     *
+     * @param decimals: number of digits to round final value
+     * @return {@link #fee} instance rounded with decimal digits inserted
+     * @throws IllegalArgumentException if decimalDigits is negative
+     **/
+    public double getFee(int decimals) {
+        return roundValue(fee, decimals);
+    }
+
+    /**
+     * Method to get {@link #vol} instance <br>
+     * Any params required
+     *
+     * @return {@link #vol} instance as double
+     **/
+    public double getVol() {
+        return vol;
+    }
+
+    /**
+     * Method to get {@link #vol} instance
+     *
+     * @param decimals: number of digits to round final value
+     * @return {@link #vol} instance rounded with decimal digits inserted
+     * @throws IllegalArgumentException if decimalDigits is negative
+     **/
+    public double getVol(int decimals) {
+        return roundValue(fee, decimals);
+    }
+
+    /**
+     * Method to get {@link #margin} instance <br>
+     * Any params required
+     *
+     * @return {@link #margin} instance as double
+     **/
+    public double getMargin() {
+        return margin;
+    }
+
+    /**
+     * Method to get {@link #margin} instance
+     *
+     * @param decimals: number of digits to round final value
+     * @return {@link #margin} instance rounded with decimal digits inserted
+     * @throws IllegalArgumentException if decimalDigits is negative
+     **/
+    public double getMargin(int decimals) {
+        return roundValue(margin, decimals);
+    }
+
+    /**
+     * Method to get {@link #misc} instance <br>
+     * Any params required
+     *
+     * @return {@link #misc} instance as {@link String}
+     **/
+    public String getMisc() {
+        return misc;
+    }
+
+    /**
+     * Returns a string representation of the object <br>
+     * Any params required
+     *
+     * @return a string representation of the object as {@link String}
+     */
+    @Override
+    public String toString() {
+        return new JSONObject(this).toString();
+    }
+
+}
