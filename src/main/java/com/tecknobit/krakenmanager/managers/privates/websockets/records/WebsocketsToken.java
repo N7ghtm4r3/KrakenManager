@@ -5,10 +5,11 @@ import org.json.JSONObject;
 
 /**
  * The {@code StakeableAsset} class is useful to format a websockets token object
- * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/Websockets-Authentication/operation/getWebsocketsToken">
- *     https://docs.kraken.com/rest/#tag/Websockets-Authentication/operation/getWebsocketsToken</a>
+ *
  * @author N7ghtm4r3 - Tecknobit
- * **/
+ * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/Websockets-Authentication/operation/getWebsocketsToken">
+ * https://docs.kraken.com/rest/#tag/Websockets-Authentication/operation/getWebsocketsToken</a>
+ **/
 public class WebsocketsToken extends KrakenManager.KrakenResponse {
 
     /**
@@ -37,9 +38,8 @@ public class WebsocketsToken extends KrakenManager.KrakenResponse {
      **/
     public WebsocketsToken(JSONObject jsonResponse) {
         super(jsonResponse);
-        jsonResponse = getResult();
-        token = jsonResponse.getString("token");
-        expires = jsonResponse.getInt("expires");
+        token = result.getString("token");
+        expires = result.getInt("expires", 0);
     }
 
     /**
@@ -60,17 +60,6 @@ public class WebsocketsToken extends KrakenManager.KrakenResponse {
      **/
     public int getExpires() {
         return expires;
-    }
-
-    /**
-     * Returns a string representation of the object <br>
-     * Any params required
-     *
-     * @return a string representation of the object as {@link String}
-     */
-    @Override
-    public String toString() {
-        return new JSONObject(this).toString();
     }
 
 }

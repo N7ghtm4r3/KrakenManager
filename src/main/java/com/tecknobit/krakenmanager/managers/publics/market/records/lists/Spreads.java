@@ -21,23 +21,25 @@ public class Spreads extends MarketList {
      * **/
     private final ArrayList<Spread> recentSpreads;
 
-    /** Constructor to init a {@link Spreads} object
-     * @param jsonResponse: base json response
-     * @param last: last timestamp value
-     * @param symbol: symbol value
+    /**
+     * Constructor to init a {@link Spreads} object
+     *
+     * @param last:          last timestamp value
+     * @param symbol:        symbol value
      * @param recentSpreads: list of {@link Spread}
-     * **/
-    public Spreads(JSONObject jsonResponse, long last, String symbol, ArrayList<Spread> recentSpreads) {
-        super(jsonResponse, last, symbol);
+     **/
+    public Spreads(long last, String symbol, ArrayList<Spread> recentSpreads) {
+        super(last, symbol);
         this.recentSpreads = recentSpreads;
     }
 
-    /** Constructor to init a {@link Spreads} object
-     * @param jsonResponse: base json response
+    /**
+     * Constructor to init a {@link Spreads} object
+     *
      * @param recentSpreads: list of {@link Spread}
-     * **/
-    public Spreads(JSONObject jsonResponse, ArrayList<Spread> recentSpreads) {
-        super(jsonResponse);
+     **/
+    public Spreads(ArrayList<Spread> recentSpreads) {
+        super(null);
         this.recentSpreads = recentSpreads;
     }
 
@@ -47,7 +49,7 @@ public class Spreads extends MarketList {
     public Spreads(JSONObject jsonResponse) {
         super(jsonResponse);
         recentSpreads = new ArrayList<>();
-        JSONArray jsonSpreads = result.getJSONArray(symbol);
+        JSONArray jsonSpreads = result.getJSONArray(symbol, new JSONArray());
         for (int j = 0; j < jsonSpreads.length(); j++)
             recentSpreads.add(new Spread(jsonSpreads.getJSONArray(j)));
     }
@@ -94,7 +96,7 @@ public class Spreads extends MarketList {
         }
 
         /** Constructor to init a {@link Spread} object
-         * @param jsonSpread: spread data in JSON format
+         * @param jsonSpread: spread data in {@code "JSON"} format
          * **/
         public Spread(JSONArray jsonSpread) {
             if (jsonSpread != null) {

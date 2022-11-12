@@ -38,17 +38,13 @@ public class MarketList extends KrakenManager.KrakenResponse {
     protected String symbol;
 
     /**
-     * {@code result} is instance that memorizes result value in JSON format
-     * **/
-    protected JSONObject result;
-
-    /** Constructor to init a {@link MarketList} object
-     * @param jsonResponse: base json response
-     * @param last: last timestamp value
+     * Constructor to init a {@link MarketList} object
+     *
+     * @param last:   last timestamp value
      * @param symbol: symbol value
-     * **/
-    public MarketList(JSONObject jsonResponse, long last, String symbol) {
-        super(jsonResponse);
+     **/
+    public MarketList(long last, String symbol) {
+        super(null);
         this.last = last;
         this.symbol = symbol;
     }
@@ -58,8 +54,7 @@ public class MarketList extends KrakenManager.KrakenResponse {
      * **/
     public MarketList(JSONObject jsonResponse) {
         super(jsonResponse);
-        result = getResult();
-        ArrayList<String> keys = new ArrayList<>(result.keySet());
+        ArrayList<String> keys = new ArrayList<>(result.getJSONObjectSource().keySet());
         try {
             last = result.getLong(keys.get(0));
             symbol = keys.get(1);
@@ -87,17 +82,6 @@ public class MarketList extends KrakenManager.KrakenResponse {
      **/
     public String getSymbol() {
         return symbol;
-    }
-
-    /**
-     * Returns a string representation of the object <br>
-     * Any params required
-     *
-     * @return a string representation of the object as {@link String}
-     */
-    @Override
-    public String toString() {
-        return new JSONObject(this).toString();
     }
 
 }

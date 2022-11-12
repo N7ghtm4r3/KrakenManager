@@ -13,31 +13,24 @@ public class SystemStatus extends KrakenManager.KrakenResponse {
 
     /**
      * {@code status} is instance that memorizes status value
-     * **/
+     **/
     private final String status;
 
     /**
      * {@code timestamp} is instance that memorizes timestamp value
-     * **/
+     **/
     private final String timestamp;
 
-    /** Constructor to init a {@link SystemStatus} object
-     * @param jsonResponse: base json response
-     * @param status: status value
+    /**
+     * Constructor to init a {@link SystemStatus} object
+     *
+     * @param status:    status value
      * @param timestamp: timestamp value
-     * **/
-    public SystemStatus(JSONObject jsonResponse, String status, String timestamp) {
-        super(jsonResponse);
+     **/
+    public SystemStatus(String status, String timestamp) {
+        super(null);
         this.status = status;
         this.timestamp = timestamp;
-    }
-
-    /** Constructor to init a {@link SystemStatus} object
-     * @param status: status value
-     * @param timestamp: timestamp value
-     * **/
-    public SystemStatus(String status, String timestamp) {
-        this(null, status, timestamp);
     }
 
     /** Constructor to init a {@link SystemStatus} object
@@ -45,10 +38,9 @@ public class SystemStatus extends KrakenManager.KrakenResponse {
      * **/
     public SystemStatus(JSONObject jsonResponse) {
         super(jsonResponse);
-        JSONObject status = getResult();
-        if (status != null) {
-            this.status = status.getString("status");
-            timestamp = status.getString("timestamp");
+        if (!result.getJSONObjectSource().isEmpty()) {
+            this.status = result.getString("status");
+            timestamp = result.getString("timestamp");
         } else {
             this.status = "";
             timestamp = "";
@@ -73,17 +65,6 @@ public class SystemStatus extends KrakenManager.KrakenResponse {
      **/
     public String getTimestamp() {
         return timestamp;
-    }
-
-    /**
-     * Returns a string representation of the object <br>
-     * Any params required
-     *
-     * @return a string representation of the object as {@link String}
-     */
-    @Override
-    public String toString() {
-        return new JSONObject(this).toString();
     }
 
 }

@@ -1,5 +1,7 @@
 package com.tecknobit.krakenmanager.managers.publics.market.records;
 
+import com.tecknobit.apimanager.annotations.Returner;
+import com.tecknobit.apimanager.formatters.JsonHelper;
 import com.tecknobit.krakenmanager.managers.KrakenManager;
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -68,7 +70,7 @@ public class TickerInformation extends KrakenManager.KrakenResponse {
     private final double openPrice;
 
     /** Constructor to init a {@link TickerInformation} object
-     * @param jsonResponse: base json response
+     *
      * @param symbol: symbol value
      * @param ask: ask value
      * @param bid: bid value
@@ -80,10 +82,10 @@ public class TickerInformation extends KrakenManager.KrakenResponse {
      * @param high: high value
      * @param openPrice: open price value
      * **/
-    public TickerInformation(JSONObject jsonResponse, String symbol, MarketAction ask, MarketAction bid, Trade close,
+    public TickerInformation(String symbol, MarketAction ask, MarketAction bid, Trade close,
                              MarketParam volume, MarketParam volumeWeightedAvgPrice, MarketParam trades, MarketParam low,
                              MarketParam high, double openPrice) {
-        super(jsonResponse);
+        super(null);
         this.symbol = symbol;
         this.ask = ask;
         this.bid = bid;
@@ -97,52 +99,21 @@ public class TickerInformation extends KrakenManager.KrakenResponse {
     }
 
     /** Constructor to init a {@link TickerInformation} object
-     * @param symbol: symbol value
-     * @param ask: ask value
-     * @param bid: bid value
-     * @param close: close value
-     * @param volume: volume value
-     * @param volumeWeightedAvgPrice: weighted volume average price value
-     * @param trades: tradesv alue
-     * @param low: low value
-     * @param high: high value
-     * @param openPrice: open price value
-     * **/
-    public TickerInformation(String symbol, MarketAction ask, MarketAction bid, Trade close, MarketParam volume,
-                             MarketParam volumeWeightedAvgPrice, MarketParam trades, MarketParam low, MarketParam high,
-                             double openPrice) {
-        this(null, symbol, ask, bid, close, volume, volumeWeightedAvgPrice, trades, low, high, openPrice);
-    }
-
-    /** Constructor to init a {@link TickerInformation} object
      * @param jsonTicker: base json response
      * **/
     public TickerInformation(JSONObject jsonTicker) {
         super(jsonTicker);
-        JSONObject ticker = getResult();
-        this.symbol = ticker.keys().next();
-        ticker = ticker.getJSONObject(symbol);
-        if(ticker != null){
-            ask = assembleMarketAction(ticker.getJSONArray("a"));
-            bid = assembleMarketAction(ticker.getJSONArray("b"));
-            close = assembleTrade(ticker.getJSONArray("c"));
-            volume = assembleMarketParam(ticker.getJSONArray("v"));
-            volumeWeightedAvgPrice = assembleMarketParam(ticker.getJSONArray("p"));
-            trades = assembleMarketParam(ticker.getJSONArray("t"));
-            low = assembleMarketParam(ticker.getJSONArray("l"));
-            high = assembleMarketParam(ticker.getJSONArray("h"));
-            openPrice = ticker.getDouble("o");
-        }else{
-            ask = null;
-            bid = null;
-            close = null;
-            volume = null;
-            volumeWeightedAvgPrice = null;
-            trades = null;
-            low = null;
-            high = null;
-            openPrice = -1;
-        }
+        this.symbol = result.getJSONObjectSource().keys().next();
+        JsonHelper hTicker = new JsonHelper(result.getJSONObject(symbol, new JSONObject()));
+        ask = assembleMarketAction(hTicker.getJSONArray("a", new JSONArray()));
+        bid = assembleMarketAction(hTicker.getJSONArray("b", new JSONArray()));
+        close = assembleTrade(hTicker.getJSONArray("c", new JSONArray()));
+        volume = assembleMarketParam(hTicker.getJSONArray("v", new JSONArray()));
+        volumeWeightedAvgPrice = assembleMarketParam(hTicker.getJSONArray("p", new JSONArray()));
+        trades = assembleMarketParam(hTicker.getJSONArray("t", new JSONArray()));
+        low = assembleMarketParam(hTicker.getJSONArray("l", new JSONArray()));
+        high = assembleMarketParam(hTicker.getJSONArray("h", new JSONArray()));
+        openPrice = hTicker.getDouble("o", 0);
     }
 
     /**
@@ -257,17 +228,6 @@ public class TickerInformation extends KrakenManager.KrakenResponse {
     }
 
     /**
-     * Returns a string representation of the object <br>
-     * Any params required
-     *
-     * @return a string representation of the object as {@link String}
-     */
-    @Override
-    public String toString() {
-        return new JSONObject(this).toString();
-    }
-
-    /**
      * The {@code Trade} class is useful to format a trade object
      **/
     public static class Trade {
@@ -338,7 +298,7 @@ public class TickerInformation extends KrakenManager.KrakenResponse {
         /**
          * Method to assemble a trade object
          *
-         * @param jsonTrade: jsonObject obtained by response request
+         * @param jsonTrade: obtained by response request
          * @return trade object as {@link Trade}
          **/
         public static Trade assembleTrade(JSONArray jsonTrade) {
@@ -409,10 +369,11 @@ public class TickerInformation extends KrakenManager.KrakenResponse {
         /**
          * Method to assemble a market action object
          *
-         * @param jsonMarket: jsonObject obtained by response request
+         * @param jsonMarket: obtained by response request
          * @return market action object as {@link MarketAction}
          **/
-        public static MarketAction assembleMarketAction(JSONArray jsonMarket) {
+        @Returner
+        protected static MarketAction assembleMarketAction(JSONArray jsonMarket) {
             int valuesLength = jsonMarket.length();
             final double[] values = new double[valuesLength];
             for (int j = 0; j < valuesLength; j++)
@@ -504,10 +465,11 @@ public class TickerInformation extends KrakenManager.KrakenResponse {
         /**
          * Method to assemble a market param object
          *
-         * @param jsonParam: jsonObject obtained by response request
+         * @param jsonParam: obtained by response request
          * @return market param object as {@link MarketParam}
          **/
-        public static MarketParam assembleMarketParam(JSONArray jsonParam) {
+        @Returner
+        protected static MarketParam assembleMarketParam(JSONArray jsonParam) {
             int valuesLength = jsonParam.length();
             final double[] values = new double[valuesLength];
             for (int j = 0; j < valuesLength; j++)

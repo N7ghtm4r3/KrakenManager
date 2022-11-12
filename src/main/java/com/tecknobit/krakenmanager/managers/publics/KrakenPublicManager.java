@@ -52,7 +52,7 @@ public class KrakenPublicManager extends KrakenManager {
      * **/
     public String sendGetRequest(String endpoint) throws IOException {
         apiRequest.sendAPIRequest(BASE_ENDPOINT + "/public/" + endpoint, GET_METHOD);
-        JSONObject response = apiRequest.getJSONResponse();
+        JSONObject response = new JSONObject(apiRequest.getResponse());
         if(getJSONObject(response, "result") == null) {
             errorResponse = response.getJSONArray("error").toString();
             throw new IOException();

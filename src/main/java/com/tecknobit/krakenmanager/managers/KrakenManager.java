@@ -1,5 +1,6 @@
 package com.tecknobit.krakenmanager.managers;
 
+import com.tecknobit.apimanager.annotations.Returner;
 import com.tecknobit.apimanager.apis.APIRequest;
 import com.tecknobit.apimanager.formatters.JsonHelper;
 import com.tecknobit.apimanager.trading.TradingTools;
@@ -23,6 +24,25 @@ import static com.tecknobit.apimanager.trading.TradingTools.textualizeAssetPerce
  * https://docs.kraken.com/rest/#section/General-Usage</a>
  **/
 public class KrakenManager {
+
+    /**
+     * {@code formatters} is the instance to pass in {@link Returner} methods to format as you want the response by
+     * {@code "Kraken"}
+     *
+     * @apiNote you can choose between:
+     * <ul>
+     * <li>
+     * {@link Returner.ReturnFormat#STRING} -> returns the response formatted as {@link String}
+     * </li>
+     * <li>
+     * {@link Returner.ReturnFormat#JSON} -> returns the response formatted as {@code "JSON"}
+     * </li>
+     * <li>
+     * {@link Returner.ReturnFormat#LIBRARY_OBJECT} -> returns the response formatted as custom object offered by library that uses this list
+     * </li>
+     * </ul>
+     **/
+    public static Returner.ReturnFormat formatters;
 
     /**
      * {@code properties} is a local instance used to instantiate a new {@link KrakenPrivateManager}'s manager without
@@ -51,8 +71,7 @@ public class KrakenManager {
      * **/
     public KrakenManager(String defaultErrorMessage, int requestTimeout) {
         apiRequest = new APIRequest(defaultErrorMessage, requestTimeout);
-        properties.setProperty("defaultErrorMessage", defaultErrorMessage);
-        properties.setProperty("requestTimeout", String.valueOf(requestTimeout));
+        storeProperties(defaultErrorMessage, requestTimeout);
     }
 
     /** Constructor to init a {@link KrakenManager}
@@ -60,8 +79,7 @@ public class KrakenManager {
      * **/
     public KrakenManager(String defaultErrorMessage) {
         apiRequest = new APIRequest(defaultErrorMessage);
-        properties.setProperty("defaultErrorMessage", defaultErrorMessage);
-        properties.remove("requestTimeout");
+        storeProperties(defaultErrorMessage, -1);
     }
 
     /** Constructor to init a {@link KrakenManager}
@@ -69,8 +87,7 @@ public class KrakenManager {
      * **/
     public KrakenManager(int requestTimeout) {
         apiRequest = new APIRequest(requestTimeout);
-        properties.remove("defaultErrorMessage");
-        properties.setProperty("requestTimeout", String.valueOf(requestTimeout));
+        storeProperties(null, requestTimeout);
     }
 
     /** Constructor to init a {@link KrakenManager} <br>
@@ -94,38 +111,69 @@ public class KrakenManager {
             apiRequest = new APIRequest();
     }
 
-    /** Method to get status code of request response <br>
+    /**
+     * Method to store some properties
+     *
+     * @param defaultErrorMessage: custom error to show when is not a request error
+     * @param requestTimeout:      custom timeout for request
+     **/
+    protected void storeProperties(String defaultErrorMessage, int requestTimeout) {
+        properties.clear();
+        if (defaultErrorMessage != null)
+            properties.setProperty("defaultErrorMessage", defaultErrorMessage);
+        if (requestTimeout != -1)
+            properties.setProperty("requestTimeout", String.valueOf(requestTimeout));
+    }
+
+    /**
+     * Method to get status code of request response <br>
      * Any params required
+     *
      * @return status code of request response
-     * **/
-    public int getStatusResponse(){
+     **/
+    public int getStatusResponse() {
         return apiRequest.getResponseStatusCode();
     }
 
-    /** Method to get error response of request <br>
+    /**
+     * Method to get error response of request <br>
      * Any params required
+     *
      * @return error of the response as {@link String}
-     * **/
-    public String getErrorResponse(){
-        if(errorResponse == null)
+     **/
+    public String getErrorResponse() {
+        if (errorResponse == null)
             return DEFAULT_ERROR_RESPONSE;
         return errorResponse;
     }
 
-    /** Method to print error response of request <br>
+    /**
+     * Method to get the error response of the request <br>
      * Any params required
-     * **/
-    public void printErrorResponse(){
+     *
+     * @return error response of the request formatted as {@code "JSON"}
+     **/
+    public String getJSONErrorResponse() {
+        return apiRequest.getJSONErrorResponse();
+    }
+
+    /**
+     * Method to print error response of request <br>
+     * Any params required
+     **/
+    public void printErrorResponse() {
         System.out.println(getErrorResponse());
     }
 
-    /** Method to round a value
-     * @param value: value to round
+    /**
+     * Method to round a value
+     *
+     * @param value:         value to round
      * @param decimalDigits: number of digits to round final value
      * @return value rounded with decimalDigits inserted
      * @throws IllegalArgumentException if decimalDigits is negative
-     * **/
-    public double roundValue(double value, int decimalDigits){
+     **/
+    public double roundValue(double value, int decimalDigits) {
         return TradingTools.roundValue(value, decimalDigits);
     }
 
@@ -180,7 +228,7 @@ public class KrakenManager {
     /**
      * The {@code KrakenResponse} class is useful to format all responses and give base details for
      * others custom records given by library
-     * **/
+     **/
     public static class KrakenResponse {
 
         /**
@@ -189,16 +237,26 @@ public class KrakenManager {
         protected final JsonHelper hResponse;
 
         /**
+         * {@code result} is instance useful to work on {@code "JSON"}
+         **/
+        protected final JsonHelper result;
+
+        /**
          * {@code errors} is instance that memorizes list of the errors
-         * **/
+         **/
         protected final String[] errors;
 
-        /** Constructor to init a {@link KrakenResponse} object
+        /**
+         * Constructor to init a {@link KrakenResponse} object
+         *
          * @param hResponse: base json response
-         * **/
+         **/
         public KrakenResponse(JSONObject hResponse) {
             boolean jsonArrayList = false;
+            if (hResponse == null)
+                hResponse = new JSONObject();
             this.hResponse = new JsonHelper(hResponse);
+            result = new JsonHelper(this.hResponse.get("result", hResponse));
             JSONArray jsonErrors = this.hResponse.getJSONArray("error", new JSONArray());
             int errorsLength = jsonErrors.length();
             errors = new String[errorsLength];

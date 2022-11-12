@@ -1,5 +1,6 @@
 package com.tecknobit.krakenmanager.managers.publics.market.records;
 
+import com.tecknobit.apimanager.annotations.Returner;
 import com.tecknobit.krakenmanager.managers.KrakenManager;
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -24,34 +25,26 @@ public class Book extends KrakenManager.KrakenResponse {
 
     /**
      * {@code asks} is instance that memorizes list of {@link BookElement} for asks
-     * **/
+     **/
     private final ArrayList<BookElement> asks;
 
     /**
      * {@code bids} is instance that memorizes list of {@link BookElement} for bids
-     * **/
+     **/
     private final ArrayList<BookElement> bids;
 
-    /** Constructor to init a {@link Book} object
-     * @param jsonResponse: base json response
+    /**
+     * Constructor to init a {@link Book} object
+     *
      * @param symbol: symbol value
-     * @param asks: list of {@link BookElement} for asks
-     * @param bids: list of {@link BookElement} for bids
-     * **/
-    public Book(JSONObject jsonResponse, String symbol, ArrayList<BookElement> asks, ArrayList<BookElement> bids) {
-        super(jsonResponse);
+     * @param asks:   list of {@link BookElement} for asks
+     * @param bids:   list of {@link BookElement} for bids
+     **/
+    public Book(String symbol, ArrayList<BookElement> asks, ArrayList<BookElement> bids) {
+        super(null);
         this.symbol = symbol;
         this.asks = asks;
         this.bids = bids;
-    }
-
-    /** Constructor to init a {@link Book} object
-     * @param symbol: symbol value
-     * @param asks: list of {@link BookElement} for asks
-     * @param bids: list of {@link BookElement} for bids
-     * **/
-    public Book(String symbol, ArrayList<BookElement> asks, ArrayList<BookElement> bids) {
-        this(null, symbol, asks, bids);
     }
 
     /** Constructor to init a {@link Book} object
@@ -59,17 +52,17 @@ public class Book extends KrakenManager.KrakenResponse {
      * **/
     public Book(JSONObject jsonBook) {
         super(jsonBook);
-        JSONObject book = getResult();
-        symbol = book.keys().next();
-        JSONObject lists = book.getJSONObject(symbol);
+        symbol = result.getJSONObjectSource().keys().next();
+        JSONObject lists = result.getJSONObject(symbol, new JSONObject());
         asks = assembleBookElementsList(lists.getJSONArray("asks"));
         bids = assembleBookElementsList(lists.getJSONArray("bids"));
     }
 
     /** Method to assemble a book element list
-     * @param jsonList: jsonObject obtained by response request
+     * @param jsonList: obtained by response request
      * @return book element list as {@link ArrayList} of {@link BookElement}
      * **/
+    @Returner
     private ArrayList<BookElement> assembleBookElementsList(JSONArray jsonList){
         ArrayList<BookElement> bookElements = new ArrayList<>();
         for (int j = 0; j < jsonList.length(); j++) {
@@ -110,17 +103,6 @@ public class Book extends KrakenManager.KrakenResponse {
      **/
     public ArrayList<BookElement> getBids() {
         return bids;
-    }
-
-    /**
-     * Returns a string representation of the object <br>
-     * Any params required
-     *
-     * @return a string representation of the object as {@link String}
-     */
-    @Override
-    public String toString() {
-        return new JSONObject(this).toString();
     }
 
     /**

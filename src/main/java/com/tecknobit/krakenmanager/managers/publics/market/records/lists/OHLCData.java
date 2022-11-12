@@ -67,33 +67,25 @@ public class OHLCData extends MarketList {
     private final ArrayList<TickData> ticksData;
 
     /** Constructor to init a {@link OHLCData} object
-     * @param jsonResponse: base json response
-     * @param last: last timestamp value
-     * @param symbol: symbol value
-     * @param ticksData: list of {@link TickData}
-     * **/
-    public OHLCData(JSONObject jsonResponse, long last, String symbol, ArrayList<TickData> ticksData) {
-        super(jsonResponse, last, symbol);
-        this.ticksData = ticksData;
-    }
-
-    /** Constructor to init a {@link OHLCData} object
+     *
      * @param last: last timestamp value
      * @param symbol: symbol value
      * @param ticksData: list of {@link TickData}
      * **/
     public OHLCData(long last, String symbol, ArrayList<TickData> ticksData) {
-        super(null, last, symbol);
+        super(last, symbol);
         this.ticksData = ticksData;
     }
 
-    /** Constructor to init a {@link OHLCData} object
-     * @param jsonData: OHLC data in JSON format
-     * **/
+    /**
+     * Constructor to init a {@link OHLCData} object
+     *
+     * @param jsonData: OHLC data in {@code "JSON"} format
+     **/
     public OHLCData(JSONObject jsonData) {
         super(jsonData);
         ticksData = new ArrayList<>();
-        JSONArray dataList = result.getJSONArray(symbol);
+        JSONArray dataList = result.getJSONArray(symbol, new JSONArray());
         for (int j = 0; j < dataList.length(); j++)
             ticksData.add(new TickData(dataList.getJSONArray(j)));
     }
@@ -106,17 +98,6 @@ public class OHLCData extends MarketList {
      **/
     public ArrayList<TickData> getTicksData() {
         return ticksData;
-    }
-
-    /**
-     * Returns a string representation of the object <br>
-     * Any params required
-     *
-     * @return a string representation of the object as {@link String}
-     */
-    @Override
-    public String toString() {
-        return new JSONObject(this).toString();
     }
 
     /**
@@ -185,9 +166,11 @@ public class OHLCData extends MarketList {
             this.count = count;
         }
 
-        /** Constructor to init a {@link TickData} object
-         * @param jsonTick: TickData in JSON format
-         * **/
+        /**
+         * Constructor to init a {@link TickData} object
+         *
+         * @param jsonTick: TickData in {@code "JSON"} format
+         **/
         public TickData(JSONArray jsonTick){
             if(jsonTick != null){
                 time = jsonTick.getLong(0);

@@ -1,7 +1,8 @@
 package com.tecknobit.krakenmanager.managers.publics.market;
 
+import com.tecknobit.apimanager.annotations.RequestPath;
+import com.tecknobit.apimanager.annotations.Returner;
 import com.tecknobit.apimanager.annotations.WrappedRequest;
-import com.tecknobit.apimanager.formatters.JsonHelper;
 import com.tecknobit.krakenmanager.managers.publics.KrakenPublicManager;
 import com.tecknobit.krakenmanager.managers.publics.market.records.*;
 import com.tecknobit.krakenmanager.managers.publics.market.records.lists.OHLCData;
@@ -14,6 +15,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Set;
 
+import static com.tecknobit.apimanager.annotations.Returner.ReturnFormat;
+import static com.tecknobit.apimanager.annotations.Returner.ReturnFormat.*;
 import static com.tecknobit.apimanager.trading.TradingTools.computeTPTOPIndex;
 import static com.tecknobit.krakenmanager.constants.EndpointsList.*;
 
@@ -29,11 +32,6 @@ public class KrakenMarketManager extends KrakenPublicManager {
      * {@code symbols} is instance that memorizes symbols list set
      * **/
     private Set<String> symbols;
-
-    /**
-     * {@code previousLoadSymbols} is instance that memorizes previous timestamp of load symbols list set
-     * **/
-    private long previousLoadSymbols;
 
     /** Constructor to init a {@link KrakenMarketManager}
      * @param defaultErrorMessage: custom error to show when is not a request error
@@ -57,1049 +55,2400 @@ public class KrakenMarketManager extends KrakenPublicManager {
         super(requestTimeout);
     }
 
-    /** Constructor to init a {@link KrakenMarketManager} <br>
+    /**
+     * Constructor to init a {@link KrakenMarketManager} <br>
      * Any params required
-     * **/
+     **/
     public KrakenMarketManager() {
         super();
     }
 
-    /** Request to get server time<br>
-     *  Any params required
-     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getServerTime">
-     *     https://docs.kraken.com/rest/#tag/Market-Data/operation/getServerTime</a>
+    /**
+     * Request to get server time<br>
+     * Any params required
+     *
      * @return server time as {@link String}
-     * **/
-    public String getServerTime() throws IOException {
-        return sendGetRequest(GET_SERVER_TIME_ENDPOINT);
+     * @throws IOException when request has been go wrong -> you can use these methods to get more details about error:
+     *                     <ul>
+     *                         <li>
+     *                             {@link #getErrorResponse()}
+     *                         </li>
+     *                         <li>
+     *                             {@link #getJSONErrorResponse()}
+     *                         </li>
+     *                         <li>
+     *                             {@link #printErrorResponse()}
+     *                         </li>
+     *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
+     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getServerTime">
+     * https://docs.kraken.com/rest/#tag/Market-Data/operation/getServerTime</a>
+     **/
+    @RequestPath(path = "https://api.kraken.com/0/public/Time")
+    public ServerTime getServerTime() throws IOException {
+        return getServerTime(LIBRARY_OBJECT);
     }
 
-    /** Request to get server time<br>
-     *  Any params required
-     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getServerTime">
-     *     https://docs.kraken.com/rest/#tag/Market-Data/operation/getServerTime</a>
-     * @return server time as {@link JSONObject}
-     * **/
-    public JSONObject getServerTimeJSON() throws IOException {
-        return new JSONObject(getServerTime());
-    }
-
-    /** Request to get server time<br>
-     *  Any params required
-     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getServerTime">
-     *     https://docs.kraken.com/rest/#tag/Market-Data/operation/getServerTime</a>
-     * @return server time as {@link ServerTime} custom object
-     * **/
-    public ServerTime getServerTimeObject() throws IOException {
-        return new ServerTime(getServerTimeJSON());
-    }
-
-    /** Custom request to get server time value<br>
-     *  Any params required
-     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getServerTime">
-     *     https://docs.kraken.com/rest/#tag/Market-Data/operation/getServerTime</a>
+    /**
+     * Custom request to get server time value <br>
+     * Any params required
+     *
      * @return server time value as long
-     * **/
+     * @throws IOException when request has been go wrong -> you can use these methods to get more details about error:
+     *                     <ul>
+     *                         <li>
+     *                             {@link #getErrorResponse()}
+     *                         </li>
+     *                         <li>
+     *                             {@link #getJSONErrorResponse()}
+     *                         </li>
+     *                         <li>
+     *                             {@link #printErrorResponse()}
+     *                         </li>
+     *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
+     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getServerTime">
+     * https://docs.kraken.com/rest/#tag/Market-Data/operation/getServerTime</a>
+     **/
     @WrappedRequest
+    @RequestPath(path = "https://api.kraken.com/0/public/Time")
     public long getServerTimeValue() throws IOException {
-        return getServerTimeJSON().getJSONObject("result").getLong("unixtime");
+        return getServerTime().getUnixTime();
     }
 
-    /** Request to get system status<br>
-     *  Any params required
-     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getSystemStatus">
-     *     https://docs.kraken.com/rest/#tag/Market-Data/operation/getSystemStatus</a>
+    /**
+     * Request to get server time
+     *
+     * @param format: return type formatter -> {@link ReturnFormat}
+     * @return server time as {@code "format"} defines
+     * @throws IOException when request has been go wrong -> you can use these methods to get more details about error:
+     *                     <ul>
+     *                         <li>
+     *                             {@link #getErrorResponse()}
+     *                         </li>
+     *                         <li>
+     *                             {@link #getJSONErrorResponse()}
+     *                         </li>
+     *                         <li>
+     *                             {@link #printErrorResponse()}
+     *                         </li>
+     *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
+     * @throws IOException when request has been go wrong -> you can use these methods to get more details about error:
+     *                     <ul>
+     *                         <li>
+     *                             {@link #getErrorResponse()}
+     *                         </li>
+     *                         <li>
+     *                             {@link #getJSONErrorResponse()}
+     *                         </li>
+     *                         <li>
+     *                             {@link #printErrorResponse()}
+     *                         </li>
+     *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
+     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getServerTime">
+     * https://docs.kraken.com/rest/#tag/Market-Data/operation/getServerTime</a>
+     **/
+    @Returner
+    @RequestPath(path = "https://api.kraken.com/0/public/Time")
+    public <T> T getServerTime(ReturnFormat format) throws IOException {
+        String serverTimeResponse = sendGetRequest(GET_SERVER_TIME_ENDPOINT);
+        switch (format) {
+            case JSON:
+                return (T) new JSONObject(serverTimeResponse);
+            case LIBRARY_OBJECT:
+                return (T) new ServerTime(new JSONObject(serverTimeResponse));
+            default:
+                return (T) serverTimeResponse;
+        }
+    }
+
+    /**
+     * Request to get system status<br>
+     * Any params required
+     *
      * @return system status as {@link String}
-     * **/
-    public String getSystemStatus() throws IOException {
-        return sendGetRequest(GET_SYSTEM_STATUS_ENDPOINT);
+     * @throws IOException when request has been go wrong -> you can use these methods to get more details about error:
+     *                     <ul>
+     *                         <li>
+     *                             {@link #getErrorResponse()}
+     *                         </li>
+     *                         <li>
+     *                             {@link #getJSONErrorResponse()}
+     *                         </li>
+     *                         <li>
+     *                             {@link #printErrorResponse()}
+     *                         </li>
+     *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
+     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getSystemStatus">
+     * https://docs.kraken.com/rest/#tag/Market-Data/operation/getSystemStatus</a>
+     **/
+    @RequestPath(path = "https://api.kraken.com/0/public/SystemStatus")
+    public SystemStatus getSystemStatus() throws IOException {
+        return getSystemStatus(LIBRARY_OBJECT);
     }
 
-    /** Request to get system status<br>
-     *  Any params required
-     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getSystemStatus">
-     *     https://docs.kraken.com/rest/#tag/Market-Data/operation/getSystemStatus</a>
-     * @return system status as {@link JSONObject}
-     * **/
-    public JSONObject getSystemStatusJSON() throws IOException {
-        return new JSONObject(getSystemStatus());
-    }
-
-    /** Request to get system status<br>
-     *  Any params required
-     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getSystemStatus">
-     *     https://docs.kraken.com/rest/#tag/Market-Data/operation/getSystemStatus</a>
-     * @return system status as {@link SystemStatus} custom object
-     * **/
-    public SystemStatus getSystemStatusObject() throws IOException {
-        return new SystemStatus(getSystemStatusJSON());
-    }
-
-    /** Custom request to get system status value<br>
-     *  Any params required
-     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getSystemStatus">
-     *     https://docs.kraken.com/rest/#tag/Market-Data/operation/getSystemStatus</a>
+    /**
+     * Custom request to get system status value<br>
+     * Any params required
+     *
      * @return system status value as {@link String}
-     * **/
+     * @throws IOException when request has been go wrong -> you can use these methods to get more details about error:
+     *                     <ul>
+     *                         <li>
+     *                             {@link #getErrorResponse()}
+     *                         </li>
+     *                         <li>
+     *                             {@link #getJSONErrorResponse()}
+     *                         </li>
+     *                         <li>
+     *                             {@link #printErrorResponse()}
+     *                         </li>
+     *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
+     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getSystemStatus">
+     * https://docs.kraken.com/rest/#tag/Market-Data/operation/getSystemStatus</a>
+     **/
     @WrappedRequest
+    @RequestPath(path = "https://api.kraken.com/0/public/SystemStatus")
     public String getSystemStatusValue() throws IOException {
-        return getSystemStatusJSON().getJSONObject("result").getString("status");
+        return getSystemStatus().getStatus();
     }
 
-    /** Request to get assets list<br>
-     *  Any params required
-     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getAssetInfo">
-     *     https://docs.kraken.com/rest/#tag/Market-Data/operation/getAssetInfo</a>
-     * @return assets list as {@link String}
-     * **/
-    public String getAssets() throws IOException {
-        return sendGetRequest(GET_ASSETS_ENDPOINT);
+    /**
+     * Request to get system status
+     *
+     * @param format: return type formatter -> {@link ReturnFormat}
+     * @return system status as {@code "format"} defines
+     * @throws IOException when request has been go wrong -> you can use these methods to get more details about error:
+     *                     <ul>
+     *                         <li>
+     *                             {@link #getErrorResponse()}
+     *                         </li>
+     *                         <li>
+     *                             {@link #getJSONErrorResponse()}
+     *                         </li>
+     *                         <li>
+     *                             {@link #printErrorResponse()}
+     *                         </li>
+     *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
+     * @throws IOException when request has been go wrong -> you can use these methods to get more details about error:
+     *                     <ul>
+     *                         <li>
+     *                             {@link #getErrorResponse()}
+     *                         </li>
+     *                         <li>
+     *                             {@link #getJSONErrorResponse()}
+     *                         </li>
+     *                         <li>
+     *                             {@link #printErrorResponse()}
+     *                         </li>
+     *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
+     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getSystemStatus">
+     * https://docs.kraken.com/rest/#tag/Market-Data/operation/getSystemStatus</a>
+     **/
+    @Returner
+    @RequestPath(path = "https://api.kraken.com/0/public/SystemStatus")
+    public <T> T getSystemStatus(ReturnFormat format) throws IOException {
+        String serverTimeResponse = sendGetRequest(GET_SYSTEM_STATUS_ENDPOINT);
+        switch (format) {
+            case JSON:
+                return (T) new JSONObject(serverTimeResponse);
+            case LIBRARY_OBJECT:
+                return (T) new SystemStatus(new JSONObject(serverTimeResponse));
+            default:
+                return (T) serverTimeResponse;
+        }
     }
 
-    /** Request to get assets list<br>
-     *  Any params required
-     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getAssetInfo">
-     *     https://docs.kraken.com/rest/#tag/Market-Data/operation/getAssetInfo</a>
-     * @return assets list as {@link JSONObject}
-     * **/
-    public JSONObject getAssetsJSON() throws IOException {
-        return new JSONObject(getAssets());
-    }
-
-    /** Request to get assets list<br>
-     *  Any params required
-     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getAssetInfo">
-     *     https://docs.kraken.com/rest/#tag/Market-Data/operation/getAssetInfo</a>
+    /**
+     * Request to get assets list<br>
+     * Any params required
+     *
      * @return assets list as {@link ArrayList} of {@link Asset} custom object
-     * **/
+     * @throws IOException when request has been go wrong -> you can use these methods to get more details about error:
+     *                     <ul>
+     *                         <li>
+     *                             {@link #getErrorResponse()}
+     *                         </li>
+     *                         <li>
+     *                             {@link #getJSONErrorResponse()}
+     *                         </li>
+     *                         <li>
+     *                             {@link #printErrorResponse()}
+     *                         </li>
+     *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
+     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getAssetInfo">
+     * https://docs.kraken.com/rest/#tag/Market-Data/operation/getAssetInfo</a>
+     **/
+    @RequestPath(path = "https://api.kraken.com/0/public/Assets")
     public ArrayList<Asset> getAssetsList() throws IOException {
-        return assembleAssetsList(getAssetsJSON());
+        return getAssetsList(LIBRARY_OBJECT);
     }
 
-    /** Request to get assets list<br>
-     * @param assets: list of asset to fetch in {@link String} array format
+    /**
+     * Request to get assets list
+     *
+     * @param format: return type formatter -> {@link ReturnFormat}
+     * @return assets list as {@code "format"} defines
+     * @throws IOException when request has been go wrong -> you can use these methods to get more details about error:
+     *                     <ul>
+     *                         <li>
+     *                             {@link #getErrorResponse()}
+     *                         </li>
+     *                         <li>
+     *                             {@link #getJSONErrorResponse()}
+     *                         </li>
+     *                         <li>
+     *                             {@link #printErrorResponse()}
+     *                         </li>
+     *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
      * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getAssetInfo">
-     *     https://docs.kraken.com/rest/#tag/Market-Data/operation/getAssetInfo</a>
-     * @return assets list as {@link String}
-     * **/
-    public String getAssets(String[] assets) throws IOException {
-        return sendGetRequest(GET_ASSETS_ENDPOINT + "?asset=" + apiRequest.assembleParamsList(",", assets));
+     * https://docs.kraken.com/rest/#tag/Market-Data/operation/getAssetInfo</a>
+     **/
+    @RequestPath(path = "https://api.kraken.com/0/public/Assets")
+    public <T> T getAssetsList(ReturnFormat format) throws IOException {
+        return returnAssetsList(GET_ASSETS_ENDPOINT, format);
     }
 
-    /** Request to get assets list<br>
+    /**
+     * Request to get assets list<br>
+     *
      * @param assets: list of asset to fetch in {@link String} array format
-     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getAssetInfo">
-     *     https://docs.kraken.com/rest/#tag/Market-Data/operation/getAssetInfo</a>
-     * @return assets list as {@link JSONObject}
-     * **/
-    public JSONObject getAssetsJSON(String[] assets) throws IOException {
-        return new JSONObject(getAssets(assets));
-    }
-
-    /** Request to get assets list<br>
-     * @param assets: list of asset to fetch in {@link String} array format
-     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getAssetInfo">
-     *     https://docs.kraken.com/rest/#tag/Market-Data/operation/getAssetInfo</a>
      * @return assets list as {@link ArrayList} of {@link Asset} custom object
-     * **/
+     * @throws IOException when request has been go wrong -> you can use these methods to get more details about error:
+     *                     <ul>
+     *                         <li>
+     *                             {@link #getErrorResponse()}
+     *                         </li>
+     *                         <li>
+     *                             {@link #getJSONErrorResponse()}
+     *                         </li>
+     *                         <li>
+     *                             {@link #printErrorResponse()}
+     *                         </li>
+     *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
+     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getAssetInfo">
+     * https://docs.kraken.com/rest/#tag/Market-Data/operation/getAssetInfo</a>
+     **/
+    @RequestPath(path = "https://api.kraken.com/0/public/Assets")
     public ArrayList<Asset> getAssetsList(String[] assets) throws IOException {
-        return assembleAssetsList(getAssetsJSON(assets));
+        return getAssetsList(assets, LIBRARY_OBJECT);
     }
 
-    /** Request to get assets list<br>
-     * @param assets: list of asset to fetch in {@link ArrayList} of {@link String} format
+    /**
+     * Request to get assets list<br>
+     *
+     * @param assets: list of asset to fetch in {@link String} array format
+     * @param format: return type formatter -> {@link ReturnFormat}
+     * @return assets list as {@code "format"} defines
+     * @throws IOException when request has been go wrong -> you can use these methods to get more details about error:
+     *                     <ul>
+     *                         <li>
+     *                             {@link #getErrorResponse()}
+     *                         </li>
+     *                         <li>
+     *                             {@link #getJSONErrorResponse()}
+     *                         </li>
+     *                         <li>
+     *                             {@link #printErrorResponse()}
+     *                         </li>
+     *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
      * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getAssetInfo">
-     *     https://docs.kraken.com/rest/#tag/Market-Data/operation/getAssetInfo</a>
-     * @return assets list as {@link String}
-     * **/
-    public String getAssets(ArrayList<String> assets) throws IOException {
-        return getAssets(assets.toArray(new String[assets.size()]));
+     * https://docs.kraken.com/rest/#tag/Market-Data/operation/getAssetInfo</a>
+     **/
+    @RequestPath(path = "https://api.kraken.com/0/public/Assets")
+    public <T> T getAssetsList(String[] assets, ReturnFormat format) throws IOException {
+        return returnAssetsList(GET_ASSETS_ENDPOINT + "?asset=" + apiRequest.assembleParamsList(",",
+                assets), format);
     }
 
-    /** Request to get assets list<br>
+    /**
+     * Request to get assets list<br>
+     *
      * @param assets: list of asset to fetch in {@link ArrayList} of {@link String} format
-     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getAssetInfo">
-     *     https://docs.kraken.com/rest/#tag/Market-Data/operation/getAssetInfo</a>
-     * @return assets list as {@link JSONObject}
-     * **/
-    public JSONObject getAssetsJSON(ArrayList<String> assets) throws IOException {
-        return getAssetsJSON(assets.toArray(new String[assets.size()]));
-    }
-
-    /** Request to get assets list<br>
-     * @param assets: list of asset to fetch in {@link ArrayList} of {@link String} format
-     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getAssetInfo">
-     *     https://docs.kraken.com/rest/#tag/Market-Data/operation/getAssetInfo</a>
      * @return assets list as {@link ArrayList} of {@link Asset} custom object
-     * **/
+     * @throws IOException when request has been go wrong -> you can use these methods to get more details about error:
+     *                     <ul>
+     *                         <li>
+     *                             {@link #getErrorResponse()}
+     *                         </li>
+     *                         <li>
+     *                             {@link #getJSONErrorResponse()}
+     *                         </li>
+     *                         <li>
+     *                             {@link #printErrorResponse()}
+     *                         </li>
+     *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
+     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getAssetInfo">
+     * https://docs.kraken.com/rest/#tag/Market-Data/operation/getAssetInfo</a>
+     **/
+    @RequestPath(path = "https://api.kraken.com/0/public/Assets")
     public ArrayList<Asset> getAssetsList(ArrayList<String> assets) throws IOException {
-        return assembleAssetsList(getAssetsJSON(assets));
+        return getAssetsList(assets, LIBRARY_OBJECT);
     }
 
-    /** Request to get assets list<br>
-     * @param aClass: class of the assets to fetch
+    /**
+     * Request to get assets list<br>
+     *
+     * @param assets: list of asset to fetch in {@link ArrayList} of {@link String} format
+     * @param format: return type formatter -> {@link ReturnFormat}
+     * @return assets list as {@code "format"} defines
+     * @throws IOException when request has been go wrong -> you can use these methods to get more details about error:
+     *                     <ul>
+     *                         <li>
+     *                             {@link #getErrorResponse()}
+     *                         </li>
+     *                         <li>
+     *                             {@link #getJSONErrorResponse()}
+     *                         </li>
+     *                         <li>
+     *                             {@link #printErrorResponse()}
+     *                         </li>
+     *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
      * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getAssetInfo">
-     *     https://docs.kraken.com/rest/#tag/Market-Data/operation/getAssetInfo</a>
-     * @return assets list as {@link String}
-     * **/
-    public String getAssets(String aClass) throws IOException {
-        return sendGetRequest(GET_ASSETS_ENDPOINT + "?aclass=" + aClass);
+     * https://docs.kraken.com/rest/#tag/Market-Data/operation/getAssetInfo</a>
+     **/
+    @RequestPath(path = "https://api.kraken.com/0/public/Assets")
+    public <T> T getAssetsList(ArrayList<String> assets, ReturnFormat format) throws IOException {
+        return returnAssetsList(GET_ASSETS_ENDPOINT + "?asset=" + apiRequest.assembleParamsList(",",
+                assets), format);
     }
 
-    /** Request to get assets list<br>
+    /**
+     * Request to get assets list<br>
+     *
      * @param aClass: class of the assets to fetch
-     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getAssetInfo">
-     *     https://docs.kraken.com/rest/#tag/Market-Data/operation/getAssetInfo</a>
-     * @return assets list as {@link JSONObject}
-     * **/
-    public JSONObject getAssetsJSON(String aClass) throws IOException {
-        return new JSONObject(getAssets(aClass));
-    }
-
-    /** Request to get assets list<br>
-     * @param aClass: class of the assets to fetch
-     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getAssetInfo">
-     *     https://docs.kraken.com/rest/#tag/Market-Data/operation/getAssetInfo</a>
      * @return assets list as {@link ArrayList} of {@link Asset} custom object
-     * **/
+     * @throws IOException when request has been go wrong -> you can use these methods to get more details about error:
+     *                     <ul>
+     *                         <li>
+     *                             {@link #getErrorResponse()}
+     *                         </li>
+     *                         <li>
+     *                             {@link #getJSONErrorResponse()}
+     *                         </li>
+     *                         <li>
+     *                             {@link #printErrorResponse()}
+     *                         </li>
+     *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
+     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getAssetInfo">
+     * https://docs.kraken.com/rest/#tag/Market-Data/operation/getAssetInfo</a>
+     **/
+    @RequestPath(path = "https://api.kraken.com/0/public/Assets")
     public ArrayList<Asset> getAssetsList(String aClass) throws IOException {
-        return assembleAssetsList(getAssetsJSON(aClass));
+        return getAssetsList(aClass, LIBRARY_OBJECT);
     }
 
-    /** Request to get assets list<br>
-     * @param assets: list of asset to fetch in {@link String} array format
+    /**
+     * Request to get assets list<br>
+     *
      * @param aClass: class of the assets to fetch
+     * @param format: return type formatter -> {@link ReturnFormat}
+     * @return assets list as {@code "format"} defines
+     * @throws IOException when request has been go wrong -> you can use these methods to get more details about error:
+     *                     <ul>
+     *                         <li>
+     *                             {@link #getErrorResponse()}
+     *                         </li>
+     *                         <li>
+     *                             {@link #getJSONErrorResponse()}
+     *                         </li>
+     *                         <li>
+     *                             {@link #printErrorResponse()}
+     *                         </li>
+     *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
      * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getAssetInfo">
-     *     https://docs.kraken.com/rest/#tag/Market-Data/operation/getAssetInfo</a>
-     * @return assets list as {@link String}
-     * **/
-    public String getAssets(String[] assets, String aClass) throws IOException {
-        return sendGetRequest(GET_ASSETS_ENDPOINT + "?asset=" + apiRequest.assembleParamsList(",", assets)
-                + "&aclass=" + aClass);
+     * https://docs.kraken.com/rest/#tag/Market-Data/operation/getAssetInfo</a>
+     **/
+    @RequestPath(path = "https://api.kraken.com/0/public/Assets")
+    public <T> T getAssetsList(String aClass, ReturnFormat format) throws IOException {
+        return returnAssetsList(GET_ASSETS_ENDPOINT + "?aclass=" + aClass, format);
     }
 
-    /** Request to get assets list<br>
+    /**
+     * Request to get assets list<br>
+     *
      * @param assets: list of asset to fetch in {@link String} array format
      * @param aClass: class of the assets to fetch
-     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getAssetInfo">
-     *     https://docs.kraken.com/rest/#tag/Market-Data/operation/getAssetInfo</a>
-     * @return assets list as {@link JSONObject}
-     * **/
-    public JSONObject getAssetsJSON(String[] assets, String aClass) throws IOException {
-        return new JSONObject(getAssets(assets, aClass));
-    }
-
-    /** Request to get assets list<br>
-     * @param assets: list of asset to fetch in {@link String} array format
-     * @param aClass: class of the assets to fetch
-     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getAssetInfo">
-     *     https://docs.kraken.com/rest/#tag/Market-Data/operation/getAssetInfo</a>
      * @return assets list as {@link ArrayList} of {@link Asset} custom object
-     * **/
+     * @throws IOException when request has been go wrong -> you can use these methods to get more details about error:
+     *                     <ul>
+     *                         <li>
+     *                             {@link #getErrorResponse()}
+     *                         </li>
+     *                         <li>
+     *                             {@link #getJSONErrorResponse()}
+     *                         </li>
+     *                         <li>
+     *                             {@link #printErrorResponse()}
+     *                         </li>
+     *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
+     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getAssetInfo">
+     * https://docs.kraken.com/rest/#tag/Market-Data/operation/getAssetInfo</a>
+     **/
+    @RequestPath(path = "https://api.kraken.com/0/public/Assets")
     public ArrayList<Asset> getAssetsList(String[] assets, String aClass) throws IOException {
-        return assembleAssetsList(getAssetsJSON(assets, aClass));
+        return getAssetsList(assets, aClass, LIBRARY_OBJECT);
     }
 
-    /** Request to get assets list<br>
-     * @param assets: list of asset to fetch in {@link ArrayList} of {@link String} format
+    /**
+     * Request to get assets list<br>
+     *
+     * @param assets: list of asset to fetch in {@link String} array format
      * @param aClass: class of the assets to fetch
+     * @param format: return type formatter -> {@link ReturnFormat}
+     * @return assets list as {@code "format"} defines
+     * @throws IOException when request has been go wrong -> you can use these methods to get more details about error:
+     *                     <ul>
+     *                         <li>
+     *                             {@link #getErrorResponse()}
+     *                         </li>
+     *                         <li>
+     *                             {@link #getJSONErrorResponse()}
+     *                         </li>
+     *                         <li>
+     *                             {@link #printErrorResponse()}
+     *                         </li>
+     *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
      * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getAssetInfo">
-     *     https://docs.kraken.com/rest/#tag/Market-Data/operation/getAssetInfo</a>
-     * @return assets list as {@link String}
-     * **/
-    public String getAssets(ArrayList<String> assets, String aClass) throws IOException {
-        return getAssets(assets.toArray(new String[assets.size()]), aClass);
+     * https://docs.kraken.com/rest/#tag/Market-Data/operation/getAssetInfo</a>
+     **/
+    @RequestPath(path = "https://api.kraken.com/0/public/Assets")
+    public <T> T getAssetsList(String[] assets, String aClass, ReturnFormat format) throws IOException {
+        return returnAssetsList(GET_ASSETS_ENDPOINT + "?asset=" + apiRequest.assembleParamsList(",",
+                assets) + "&aclass=" + aClass, format);
     }
 
-    /** Request to get assets list<br>
+    /**
+     * Request to get assets list<br>
+     *
      * @param assets: list of asset to fetch in {@link ArrayList} of {@link String} format
      * @param aClass: class of the assets to fetch
-     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getAssetInfo">
-     *     https://docs.kraken.com/rest/#tag/Market-Data/operation/getAssetInfo</a>
-     * @return assets list as {@link JSONObject}
-     * **/
-    public JSONObject getAssetsJSON(ArrayList<String> assets, String aClass) throws IOException {
-        return getAssetsJSON(assets.toArray(new String[assets.size()]), aClass);
-    }
-
-    /** Request to get assets list<br>
-     * @param assets: list of asset to fetch in {@link ArrayList} of {@link String} format
-     * @param aClass: class of the assets to fetch
-     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getAssetInfo">
-     *     https://docs.kraken.com/rest/#tag/Market-Data/operation/getAssetInfo</a>
      * @return assets list as {@link ArrayList} of {@link Asset} custom object
-     * **/
+     * @throws IOException when request has been go wrong -> you can use these methods to get more details about error:
+     *                     <ul>
+     *                         <li>
+     *                             {@link #getErrorResponse()}
+     *                         </li>
+     *                         <li>
+     *                             {@link #getJSONErrorResponse()}
+     *                         </li>
+     *                         <li>
+     *                             {@link #printErrorResponse()}
+     *                         </li>
+     *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
+     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getAssetInfo">
+     * https://docs.kraken.com/rest/#tag/Market-Data/operation/getAssetInfo</a>
+     **/
+    @RequestPath(path = "https://api.kraken.com/0/public/Assets")
     public ArrayList<Asset> getAssetsList(ArrayList<String> assets, String aClass) throws IOException {
-        return assembleAssetsList(getAssetsJSON(assets, aClass));
+        return getAssetsList(assets, aClass, LIBRARY_OBJECT);
     }
 
-    /** Custom request to get a single asset<br>
-     * @param symbol: asset to fetch details es. BTCEUR
+    /**
+     * Request to get assets list<br>
+     *
+     * @param assets: list of asset to fetch in {@link ArrayList} of {@link String} format
+     * @param aClass: class of the assets to fetch
+     * @param format: return type formatter -> {@link ReturnFormat}
+     * @return assets list as {@code "format"} defines
+     * @throws IOException when request has been go wrong -> you can use these methods to get more details about error:
+     *                     <ul>
+     *                         <li>
+     *                             {@link #getErrorResponse()}
+     *                         </li>
+     *                         <li>
+     *                             {@link #getJSONErrorResponse()}
+     *                         </li>
+     *                         <li>
+     *                             {@link #printErrorResponse()}
+     *                         </li>
+     *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
      * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getAssetInfo">
-     *     https://docs.kraken.com/rest/#tag/Market-Data/operation/getAssetInfo</a>
-     * @return single assets pair as {@link String}
-     * **/
-    @WrappedRequest
-    public String getAsset(String symbol) throws IOException {
-        return getAssets(new String[]{symbol});
+     * https://docs.kraken.com/rest/#tag/Market-Data/operation/getAssetInfo</a>
+     **/
+    @RequestPath(path = "https://api.kraken.com/0/public/Assets")
+    public <T> T getAssetsList(ArrayList<String> assets, String aClass, ReturnFormat format) throws IOException {
+        return returnAssetsList(GET_ASSETS_ENDPOINT + "?asset=" + apiRequest.assembleParamsList(",",
+                assets) + "&aclass=" + aClass, format);
     }
 
-    /** Custom request to get a single asset<br>
+    /**
+     * Method to assemble an assets list
+     *
+     * @param endpoint: endpoint to do the request
+     * @param format:   return type formatter -> {@link ReturnFormat}
+     * @return assets list as {"format"} defines
+     **/
+    @Returner
+    private <T> T returnAssetsList(String endpoint, ReturnFormat format) throws IOException {
+        String assetsListResponse = sendGetRequest(endpoint);
+        switch (format) {
+            case JSON:
+                return (T) new JSONObject(assetsListResponse);
+            case LIBRARY_OBJECT:
+                ArrayList<Asset> assets = new ArrayList<>();
+                JSONObject jAssets = new JSONObject(assetsListResponse).getJSONObject("result");
+                for (String asset : jAssets.keySet())
+                    assets.add(new Asset(jAssets.getJSONObject(asset)));
+                return (T) assets;
+            default:
+                return (T) assetsListResponse;
+        }
+    }
+
+    /**
+     * Custom request to get a single asset<br>
+     *
      * @param symbol: asset to fetch details es. BTCEUR
+     * @return single asset as {@link Asset} custom object
+     * @throws IOException when request has been go wrong -> you can use these methods to get more details about error:
+     *                     <ul>
+     *                         <li>
+     *                             {@link #getErrorResponse()}
+     *                         </li>
+     *                         <li>
+     *                             {@link #getJSONErrorResponse()}
+     *                         </li>
+     *                         <li>
+     *                             {@link #printErrorResponse()}
+     *                         </li>
+     *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
      * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getAssetInfo">
-     *     https://docs.kraken.com/rest/#tag/Market-Data/operation/getAssetInfo</a>
-     * @return single assets pair as {@link JSONObject}
-     * **/
+     * https://docs.kraken.com/rest/#tag/Market-Data/operation/getAssetInfo</a>
+     **/
     @WrappedRequest
-    public JSONObject getAssetJSON(String symbol) throws IOException {
-        return getAssetsJSON(new String[]{symbol});
+    public Asset getSingleAsset(String symbol) throws IOException {
+        return getSingleAsset(symbol, LIBRARY_OBJECT);
     }
 
-    /** Custom request to get a single asset<br>
+    /**
+     * Custom request to get a single asset<br>
+     *
      * @param symbol: asset to fetch details es. BTCEUR
+     * @param format: return type formatter -> {@link ReturnFormat}
+     * @return asset as {"format"} defines
+     * @throws IOException when request has been go wrong -> you can use these methods to get more details about error:
+     *                     <ul>
+     *                         <li>
+     *                             {@link #getErrorResponse()}
+     *                         </li>
+     *                         <li>
+     *                             {@link #getJSONErrorResponse()}
+     *                         </li>
+     *                         <li>
+     *                             {@link #printErrorResponse()}
+     *                         </li>
+     *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
      * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getAssetInfo">
-     *     https://docs.kraken.com/rest/#tag/Market-Data/operation/getAssetInfo</a>
-     * @return single assets pair as {@link Asset} custom object
-     * **/
+     * https://docs.kraken.com/rest/#tag/Market-Data/operation/getAssetInfo</a>
+     **/
     @WrappedRequest
-    public Asset getAssetObject(String symbol) throws IOException {
-        return new Asset(getAssetJSON(symbol));
+    public <T> T getSingleAsset(String symbol, ReturnFormat format) throws IOException {
+        return returnAsset(getAssetsList(new String[]{symbol}, STRING), format);
     }
 
-    /** Custom request to get a single asset<br>
+    /**
+     * Custom request to get a single asset<br>
+     *
      * @param symbol: asset to fetch details es. BTCEUR
      * @param aClass: class of the assets to fetch
+     * @return single asset as {@link Asset} custom object
+     * @throws IOException when request has been go wrong -> you can use these methods to get more details about error:
+     *                     <ul>
+     *                         <li>
+     *                             {@link #getErrorResponse()}
+     *                         </li>
+     *                         <li>
+     *                             {@link #getJSONErrorResponse()}
+     *                         </li>
+     *                         <li>
+     *                             {@link #printErrorResponse()}
+     *                         </li>
+     *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
      * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getAssetInfo">
-     *     https://docs.kraken.com/rest/#tag/Market-Data/operation/getAssetInfo</a>
-     * @return single assets pair as {@link String}
-     * **/
-    @WrappedRequest
-    public String getAsset(String symbol, String aClass) throws IOException {
-        return getAssets(new String[]{symbol}, aClass);
-    }
-
-    /** Custom request to get a single asset<br>
-     * @param symbol: asset to fetch details es. BTCEUR
-     * @param aClass: class of the assets to fetch
-     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getAssetInfo">
-     *     https://docs.kraken.com/rest/#tag/Market-Data/operation/getAssetInfo</a>
-     * @return single assets pair as {@link JSONObject}
-     * **/
-    @WrappedRequest
-    public JSONObject getAssetJSON(String symbol, String aClass) throws IOException {
-        return getAssetsJSON(new String[]{symbol}, aClass);
-    }
-
-    /** Custom request to get a single asset<br>
-     * @param symbol: asset to fetch details es. BTCEUR
-     * @param aClass: class of the assets to fetch
-     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getAssetInfo">
-     *     https://docs.kraken.com/rest/#tag/Market-Data/operation/getAssetInfo</a>
-     * @return single assets pair as {@link Asset} custom object
-     * **/
+     * https://docs.kraken.com/rest/#tag/Market-Data/operation/getAssetInfo</a>
+     **/
     @WrappedRequest
     public Asset getAssetObject(String symbol, String aClass) throws IOException {
-        return new Asset(getAssetJSON(symbol, aClass));
+        return getAssetObject(symbol, aClass, LIBRARY_OBJECT);
     }
 
-    /** Method to assemble an assets list
-     * @param jsonResponse: jsonObject obtained by response request
-     * @return assets list as {@link ArrayList} of {@link Asset}
-     * **/
-    private ArrayList<Asset> assembleAssetsList(JSONObject jsonResponse){
-        ArrayList<Asset> assets = new ArrayList<>();
-        JSONObject jsonAssets = jsonResponse.getJSONObject("result");
-        for (String key : jsonAssets.keySet()){
-            JSONObject asset = jsonAssets.getJSONObject(key);
-            assets.add(new Asset(jsonResponse,
-                    asset.getString("aclass"),
-                    asset.getString("altname"),
-                    asset.getInt("decimals"),
-                    asset.getInt("display_decimals")
-            ));
+    /**
+     * Custom request to get a single asset<br>
+     *
+     * @param symbol: asset to fetch details es. BTCEUR
+     * @param aClass: class of the assets to fetch
+     * @param format: return type formatter -> {@link ReturnFormat}
+     * @return asset as {"format"} defines
+     * @throws IOException when request has been go wrong -> you can use these methods to get more details about error:
+     *                     <ul>
+     *                         <li>
+     *                             {@link #getErrorResponse()}
+     *                         </li>
+     *                         <li>
+     *                             {@link #getJSONErrorResponse()}
+     *                         </li>
+     *                         <li>
+     *                             {@link #printErrorResponse()}
+     *                         </li>
+     *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
+     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getAssetInfo">
+     * https://docs.kraken.com/rest/#tag/Market-Data/operation/getAssetInfo</a>
+     **/
+    @WrappedRequest
+    public <T> T getAssetObject(String symbol, String aClass, ReturnFormat format) throws IOException {
+        return returnAsset(getAssetsList(new String[]{symbol}, aClass, STRING), format);
+    }
+
+    /**
+     * Method to assemble an asset object
+     *
+     * @param assetResponse: asset to format
+     * @param format:        return type formatter -> {@link ReturnFormat}
+     * @return asset as {"format"} defines
+     **/
+    @Returner
+    private <T> T returnAsset(String assetResponse, ReturnFormat format) {
+        switch (format) {
+            case JSON:
+                return (T) new JSONObject(assetResponse);
+            case LIBRARY_OBJECT:
+                return (T) new Asset(new JSONObject(assetResponse));
+            default:
+                return (T) assetResponse;
         }
-        return assets;
     }
 
-    /** Request to get assets pairs list<br>
-     *  Any params required
-     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getTradableAssetPairs">
-     *     https://docs.kraken.com/rest/#tag/Market-Data/operation/getTradableAssetPairs</a>
-     * @return assets pairs list as {@link String}
-     * **/
-    public String getAssetPairs() throws IOException {
-        return sendGetRequest(GET_ASSET_PAIRS_ENDPOINT);
-    }
-
-    /** Request to get assets pairs list<br>
-     *  Any params required
-     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getTradableAssetPairs">
-     *     https://docs.kraken.com/rest/#tag/Market-Data/operation/getTradableAssetPairs</a>
-     * @return assets pairs list as {@link JSONObject}
-     * **/
-    public JSONObject getAssetPairsJSON() throws IOException {
-        return new JSONObject(getAssetPairs());
-    }
-
-    /** Request to get assets pairs list<br>
-     *  Any params required
-     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getTradableAssetPairs">
-     *     https://docs.kraken.com/rest/#tag/Market-Data/operation/getTradableAssetPairs</a>
+    /**
+     * Request to get assets pairs list<br>
+     * Any params required
+     *
      * @return assets pairs list as {@link ArrayList} of {@link AssetPair} custom object
-     * **/
+     * @throws IOException when request has been go wrong -> you can use these methods to get more details about error:
+     *                     <ul>
+     *                         <li>
+     *                             {@link #getErrorResponse()}
+     *                         </li>
+     *                         <li>
+     *                             {@link #getJSONErrorResponse()}
+     *                         </li>
+     *                         <li>
+     *                             {@link #printErrorResponse()}
+     *                         </li>
+     *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
+     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getTradableAssetPairs">
+     * https://docs.kraken.com/rest/#tag/Market-Data/operation/getTradableAssetPairs</a>
+     **/
+    @RequestPath(path = "https://api.kraken.com/0/public/AssetPairs")
     public ArrayList<AssetPair> getAssetPairsList() throws IOException {
-        return assembleAssetPairsList(getAssetPairsJSON());
+        return getAssetPairsList(LIBRARY_OBJECT);
     }
 
-    /** Request to get assets pairs list<br>
-     * @param pairs: pairs to fetch details es. BTCEUR or ETHEUR in {@link String} array format
+    /**
+     * Request to get assets pairs list
+     *
+     * @param format: return type formatter -> {@link ReturnFormat}
+     * @return assets pairs list as {"format"} defines
+     * @throws IOException when request has been go wrong -> you can use these methods to get more details about error:
+     *                     <ul>
+     *                         <li>
+     *                             {@link #getErrorResponse()}
+     *                         </li>
+     *                         <li>
+     *                             {@link #getJSONErrorResponse()}
+     *                         </li>
+     *                         <li>
+     *                             {@link #printErrorResponse()}
+     *                         </li>
+     *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
      * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getTradableAssetPairs">
-     *     https://docs.kraken.com/rest/#tag/Market-Data/operation/getTradableAssetPairs</a>
-     * @return assets pairs list as {@link String}
-     * **/
-    public String getAssetPairs(String[] pairs) throws IOException {
-        return sendGetRequest(GET_ASSET_PAIRS_ENDPOINT + "?pair=" + apiRequest.assembleParamsList(",", pairs));
+     * https://docs.kraken.com/rest/#tag/Market-Data/operation/getTradableAssetPairs</a>
+     **/
+    @RequestPath(path = "https://api.kraken.com/0/public/AssetPairs")
+    public <T> T getAssetPairsList(ReturnFormat format) throws IOException {
+        return returnAssetPairsList(GET_ASSET_PAIRS_ENDPOINT, format);
     }
 
-    /** Request to get assets pairs list<br>
+    /**
+     * Request to get assets pairs list<br>
+     *
      * @param pairs: pairs to fetch details es. BTCEUR or ETHEUR in {@link String} array format
-     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getTradableAssetPairs">
-     *     https://docs.kraken.com/rest/#tag/Market-Data/operation/getTradableAssetPairs</a>
-     * @return assets pairs list as {@link JSONObject}
-     * **/
-    public JSONObject getAssetPairsJSON(String[] pairs) throws IOException {
-        return new JSONObject(getAssetPairs(pairs));
-    }
-
-    /** Request to get assets pairs list<br>
-     * @param pairs: pairs to fetch details es. BTCEUR or ETHEUR in {@link String} array format
-     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getTradableAssetPairs">
-     *     https://docs.kraken.com/rest/#tag/Market-Data/operation/getTradableAssetPairs</a>
      * @return assets pairs list as {@link ArrayList} of {@link AssetPair} custom object
-     * **/
+     * @throws IOException when request has been go wrong -> you can use these methods to get more details about error:
+     *                     <ul>
+     *                         <li>
+     *                             {@link #getErrorResponse()}
+     *                         </li>
+     *                         <li>
+     *                             {@link #getJSONErrorResponse()}
+     *                         </li>
+     *                         <li>
+     *                             {@link #printErrorResponse()}
+     *                         </li>
+     *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
+     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getTradableAssetPairs">
+     * https://docs.kraken.com/rest/#tag/Market-Data/operation/getTradableAssetPairs</a>
+     **/
+    @RequestPath(path = "https://api.kraken.com/0/public/AssetPairs")
     public ArrayList<AssetPair> getAssetPairsList(String[] pairs) throws IOException {
-        return assembleAssetPairsList(getAssetPairsJSON(pairs));
+        return getAssetPairsList(pairs, LIBRARY_OBJECT);
     }
 
-    /** Request to get assets pairs list<br>
-     * @param pairs: pairs to fetch details es. BTCEUR or ETHEUR in {@link ArrayList} of {@link String} format
+    /**
+     * Request to get assets pairs list<br>
+     *
+     * @param pairs:  pairs to fetch details es. BTCEUR or ETHEUR in {@link String} array format
+     * @param format: return type formatter -> {@link ReturnFormat}
+     * @return assets pairs list as {"format"} defines
+     * @throws IOException when request has been go wrong -> you can use these methods to get more details about error:
+     *                     <ul>
+     *                         <li>
+     *                             {@link #getErrorResponse()}
+     *                         </li>
+     *                         <li>
+     *                             {@link #getJSONErrorResponse()}
+     *                         </li>
+     *                         <li>
+     *                             {@link #printErrorResponse()}
+     *                         </li>
+     *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
      * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getTradableAssetPairs">
-     *     https://docs.kraken.com/rest/#tag/Market-Data/operation/getTradableAssetPairs</a>
-     * @return assets pairs list as {@link String}
-     * **/
-    public String getAssetPairs(ArrayList<String> pairs) throws IOException {
-        return getAssetPairs(pairs.toArray(new String[pairs.size()]));
+     * https://docs.kraken.com/rest/#tag/Market-Data/operation/getTradableAssetPairs</a>
+     **/
+    @RequestPath(path = "https://api.kraken.com/0/public/AssetPairs")
+    public <T> T getAssetPairsList(String[] pairs, ReturnFormat format) throws IOException {
+        return returnAssetPairsList(GET_ASSET_PAIRS_ENDPOINT + "?pair=" + apiRequest.assembleParamsList(",",
+                pairs), format);
     }
 
-    /** Request to get assets pairs list<br>
+    /**
+     * Request to get assets pairs list<br>
+     *
      * @param pairs: pairs to fetch details es. BTCEUR or ETHEUR in {@link ArrayList} of {@link String} format
-     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getTradableAssetPairs">
-     *     https://docs.kraken.com/rest/#tag/Market-Data/operation/getTradableAssetPairs</a>
-     * @return assets pairs list as {@link JSONObject}
-     * **/
-    public JSONObject getAssetPairsJSON(ArrayList<String> pairs) throws IOException {
-        return new JSONObject(getAssetPairsJSON(pairs.toArray(new String[pairs.size()])));
-    }
-
-    /** Request to get assets pairs list<br>
-     * @param pairs: pairs to fetch details es. BTCEUR or ETHEUR in {@link ArrayList} of {@link String} format
-     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getTradableAssetPairs">
-     *     https://docs.kraken.com/rest/#tag/Market-Data/operation/getTradableAssetPairs</a>
      * @return assets pairs list as {@link ArrayList} of {@link AssetPair} custom object
-     * **/
+     * @throws IOException when request has been go wrong -> you can use these methods to get more details about error:
+     *                     <ul>
+     *                         <li>
+     *                             {@link #getErrorResponse()}
+     *                         </li>
+     *                         <li>
+     *                             {@link #getJSONErrorResponse()}
+     *                         </li>
+     *                         <li>
+     *                             {@link #printErrorResponse()}
+     *                         </li>
+     *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
+     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getTradableAssetPairs">
+     * https://docs.kraken.com/rest/#tag/Market-Data/operation/getTradableAssetPairs</a>
+     **/
+    @RequestPath(path = "https://api.kraken.com/0/public/AssetPairs")
     public ArrayList<AssetPair> getAssetPairsList(ArrayList<String> pairs) throws IOException {
-        return assembleAssetPairsList(getAssetPairsJSON(pairs));
+        return getAssetPairsList(pairs, LIBRARY_OBJECT);
     }
 
-    /** Request to get assets pairs list<br>
-     * @param info: detail to fetch (info, leverage, fees or margin)
+    /**
+     * Request to get assets pairs list<br>
+     *
+     * @param pairs:  pairs to fetch details es. BTCEUR or ETHEUR in {@link ArrayList} of {@link String} format
+     * @param format: return type formatter -> {@link ReturnFormat}
+     * @return assets pairs list as {"format"} defines
+     * @throws IOException when request has been go wrong -> you can use these methods to get more details about error:
+     *                     <ul>
+     *                         <li>
+     *                             {@link #getErrorResponse()}
+     *                         </li>
+     *                         <li>
+     *                             {@link #getJSONErrorResponse()}
+     *                         </li>
+     *                         <li>
+     *                             {@link #printErrorResponse()}
+     *                         </li>
+     *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
      * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getTradableAssetPairs">
-     *     https://docs.kraken.com/rest/#tag/Market-Data/operation/getTradableAssetPairs</a>
-     * @return assets pairs list as {@link String}
-     * **/
-    public String getAssetPairs(String info) throws IOException {
-        return sendGetRequest(GET_ASSET_PAIRS_ENDPOINT + "?info=" + info);
+     * https://docs.kraken.com/rest/#tag/Market-Data/operation/getTradableAssetPairs</a>
+     **/
+    @RequestPath(path = "https://api.kraken.com/0/public/AssetPairs")
+    public <T> T getAssetPairsList(ArrayList<String> pairs, ReturnFormat format) throws IOException {
+        return returnAssetPairsList(GET_ASSET_PAIRS_ENDPOINT + "?pair=" + apiRequest.assembleParamsList(",",
+                pairs), format);
     }
 
-    /** Request to get assets pairs list<br>
+    /**
+     * Request to get assets pairs list<br>
+     *
      * @param info: detail to fetch (info, leverage, fees or margin)
-     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getTradableAssetPairs">
-     *     https://docs.kraken.com/rest/#tag/Market-Data/operation/getTradableAssetPairs</a>
-     * @return assets pairs list as {@link JSONObject}
-     * **/
-    public JSONObject getAssetPairsJSON(String info) throws IOException {
-        return new JSONObject(getAssetPairs(info));
-    }
-
-    /** Request to get assets pairs list<br>
-     * @param info: detail to fetch (info, leverage, fees or margin)
-     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getTradableAssetPairs">
-     *     https://docs.kraken.com/rest/#tag/Market-Data/operation/getTradableAssetPairs</a>
      * @return assets pairs list as {@link ArrayList} of {@link AssetPair} custom object
-     * **/
+     * @throws IOException when request has been go wrong -> you can use these methods to get more details about error:
+     *                     <ul>
+     *                         <li>
+     *                             {@link #getErrorResponse()}
+     *                         </li>
+     *                         <li>
+     *                             {@link #getJSONErrorResponse()}
+     *                         </li>
+     *                         <li>
+     *                             {@link #printErrorResponse()}
+     *                         </li>
+     *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
+     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getTradableAssetPairs">
+     * https://docs.kraken.com/rest/#tag/Market-Data/operation/getTradableAssetPairs</a>
+     **/
+    @RequestPath(path = "https://api.kraken.com/0/public/AssetPairs")
     public ArrayList<AssetPair> getAssetPairsList(String info) throws IOException {
-        return assembleAssetPairsList(getAssetPairsJSON(info));
+        return getAssetPairsList(info, LIBRARY_OBJECT);
     }
 
-    /** Request to get assets pairs list<br>
-     * @param pairs: pairs to fetch details es. BTCEUR or ETHEUR in {@link String} array format
-     * @param info: detail to fetch (info, leverage, fees or margin)
+    /**
+     * Request to get assets pairs list<br>
+     *
+     * @param info:   detail to fetch (info, leverage, fees or margin)
+     * @param format: return type formatter -> {@link ReturnFormat}
+     * @return assets pairs list as {"format"} defines
+     * @throws IOException when request has been go wrong -> you can use these methods to get more details about error:
+     *                     <ul>
+     *                         <li>
+     *                             {@link #getErrorResponse()}
+     *                         </li>
+     *                         <li>
+     *                             {@link #getJSONErrorResponse()}
+     *                         </li>
+     *                         <li>
+     *                             {@link #printErrorResponse()}
+     *                         </li>
+     *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
      * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getTradableAssetPairs">
-     *     https://docs.kraken.com/rest/#tag/Market-Data/operation/getTradableAssetPairs</a>
-     * @return assets pairs list as {@link String}
-     * **/
-    public String getAssetPairs(String[] pairs, String info) throws IOException {
-        return sendGetRequest(GET_ASSET_PAIRS_ENDPOINT + "?pair=" + apiRequest.assembleParamsList(",", pairs) +
-                "&info=" + info);
+     * https://docs.kraken.com/rest/#tag/Market-Data/operation/getTradableAssetPairs</a>
+     **/
+    @RequestPath(path = "https://api.kraken.com/0/public/AssetPairs")
+    public <T> T getAssetPairsList(String info, ReturnFormat format) throws IOException {
+        return returnAssetPairsList(GET_ASSET_PAIRS_ENDPOINT + "?info=" + info, format);
     }
 
-    /** Request to get assets pairs list<br>
+    /**
+     * Request to get assets pairs list<br>
+     *
      * @param pairs: pairs to fetch details es. BTCEUR or ETHEUR in {@link String} array format
-     * @param info: detail to fetch (info, leverage, fees or margin)
-     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getTradableAssetPairs">
-     *     https://docs.kraken.com/rest/#tag/Market-Data/operation/getTradableAssetPairs</a>
-     * @return assets pairs list as {@link JSONObject}
-     * **/
-    public JSONObject getAssetPairsJSON(String[] pairs, String info) throws IOException {
-        return new JSONObject(getAssetPairs(pairs, info));
-    }
-
-    /** Request to get assets pairs list<br>
-     * @param pairs: pairs to fetch details es. BTCEUR or ETHEUR in {@link String} array format
-     * @param info: detail to fetch (info, leverage, fees or margin)
-     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getTradableAssetPairs">
-     *     https://docs.kraken.com/rest/#tag/Market-Data/operation/getTradableAssetPairs</a>
+     * @param info:  detail to fetch (info, leverage, fees or margin)
      * @return assets pairs list as {@link ArrayList} of {@link AssetPair} custom object
-     * **/
+     * @throws IOException when request has been go wrong -> you can use these methods to get more details about error:
+     *                     <ul>
+     *                         <li>
+     *                             {@link #getErrorResponse()}
+     *                         </li>
+     *                         <li>
+     *                             {@link #getJSONErrorResponse()}
+     *                         </li>
+     *                         <li>
+     *                             {@link #printErrorResponse()}
+     *                         </li>
+     *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
+     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getTradableAssetPairs">
+     * https://docs.kraken.com/rest/#tag/Market-Data/operation/getTradableAssetPairs</a>
+     **/
+    @RequestPath(path = "https://api.kraken.com/0/public/AssetPairs")
     public ArrayList<AssetPair> getAssetPairsList(String[] pairs, String info) throws IOException {
-        return assembleAssetPairsList(getAssetPairsJSON(pairs, info));
+        return getAssetPairsList(pairs, info, LIBRARY_OBJECT);
     }
 
-    /** Request to get assets pairs list<br>
-     * @param pairs: pairs to fetch details es. BTCEUR or ETHEUR in {@link ArrayList} of {@link String} format
-     * @param info: detail to fetch (info, leverage, fees or margin)
+    /**
+     * Request to get assets pairs list<br>
+     *
+     * @param pairs:  pairs to fetch details es. BTCEUR or ETHEUR in {@link String} array format
+     * @param info:   detail to fetch (info, leverage, fees or margin)
+     * @param format: return type formatter -> {@link ReturnFormat}
+     * @return assets pairs list as {"format"} defines
+     * @throws IOException when request has been go wrong -> you can use these methods to get more details about error:
+     *                     <ul>
+     *                         <li>
+     *                             {@link #getErrorResponse()}
+     *                         </li>
+     *                         <li>
+     *                             {@link #getJSONErrorResponse()}
+     *                         </li>
+     *                         <li>
+     *                             {@link #printErrorResponse()}
+     *                         </li>
+     *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
      * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getTradableAssetPairs">
-     *     https://docs.kraken.com/rest/#tag/Market-Data/operation/getTradableAssetPairs</a>
-     * @return assets pairs list as {@link String}
-     * **/
-    public String getAssetPairs(ArrayList<String> pairs, String info) throws IOException {
-        return getAssetPairs(pairs.toArray(new String[pairs.size()]), info);
+     * https://docs.kraken.com/rest/#tag/Market-Data/operation/getTradableAssetPairs</a>
+     **/
+    @RequestPath(path = "https://api.kraken.com/0/public/AssetPairs")
+    public <T> T getAssetPairsList(String[] pairs, String info, ReturnFormat format) throws IOException {
+        return returnAssetPairsList(GET_ASSET_PAIRS_ENDPOINT + "?pair=" + apiRequest.assembleParamsList(",",
+                pairs) + "&info=" + info, format);
     }
 
-    /** Request to get assets pairs list<br>
+    /**
+     * Request to get assets pairs list<br>
+     *
      * @param pairs: pairs to fetch details es. BTCEUR or ETHEUR in {@link ArrayList} of {@link String} format
-     * @param info: detail to fetch (info, leverage, fees or margin)
-     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getTradableAssetPairs">
-     *     https://docs.kraken.com/rest/#tag/Market-Data/operation/getTradableAssetPairs</a>
-     * @return assets pairs list as {@link JSONObject}
-     * **/
-    public JSONObject getAssetPairsJSON(ArrayList<String> pairs, String info) throws IOException {
-        return new JSONObject(getAssetPairs(pairs.toArray(new String[pairs.size()]), info));
-    }
-
-    /** Request to get assets pairs list<br>
-     * @param pairs: pairs to fetch details es. BTCEUR or ETHEUR in {@link ArrayList} of {@link String} format
-     * @param info: detail to fetch (info, leverage, fees or margin)
-     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getTradableAssetPairs">
-     *     https://docs.kraken.com/rest/#tag/Market-Data/operation/getTradableAssetPairs</a>
+     * @param info:  detail to fetch (info, leverage, fees or margin)
      * @return assets pairs list as {@link ArrayList} of {@link AssetPair} custom object
-     * **/
+     * @throws IOException when request has been go wrong -> you can use these methods to get more details about error:
+     *                     <ul>
+     *                         <li>
+     *                             {@link #getErrorResponse()}
+     *                         </li>
+     *                         <li>
+     *                             {@link #getJSONErrorResponse()}
+     *                         </li>
+     *                         <li>
+     *                             {@link #printErrorResponse()}
+     *                         </li>
+     *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
+     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getTradableAssetPairs">
+     * https://docs.kraken.com/rest/#tag/Market-Data/operation/getTradableAssetPairs</a>
+     **/
+    @RequestPath(path = "https://api.kraken.com/0/public/AssetPairs")
     public ArrayList<AssetPair> getAssetPairsList(ArrayList<String> pairs, String info) throws IOException {
-        return assembleAssetPairsList(getAssetPairsJSON(pairs, info));
+        return getAssetPairsList(pairs, info, LIBRARY_OBJECT);
     }
 
-    /** Custom request to get a single assets pair<br>
-     * @param pairs: pairs to fetch details es. BTCEUR
+    /**
+     * Request to get assets pairs list<br>
+     *
+     * @param pairs:  pairs to fetch details es. BTCEUR or ETHEUR in {@link ArrayList} of {@link String} format
+     * @param info:   detail to fetch (info, leverage, fees or margin)
+     * @param format: return type formatter -> {@link ReturnFormat}
+     * @return assets pairs list as {"format"} defines
+     * @throws IOException when request has been go wrong -> you can use these methods to get more details about error:
+     *                     <ul>
+     *                         <li>
+     *                             {@link #getErrorResponse()}
+     *                         </li>
+     *                         <li>
+     *                             {@link #getJSONErrorResponse()}
+     *                         </li>
+     *                         <li>
+     *                             {@link #printErrorResponse()}
+     *                         </li>
+     *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
      * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getTradableAssetPairs">
-     *     https://docs.kraken.com/rest/#tag/Market-Data/operation/getTradableAssetPairs</a>
-     * @return single assets pair as {@link String}
-     * **/
-    @WrappedRequest
-    public String getAssetPair(String pairs) throws IOException {
-        return getAssetPairs(new String[]{pairs});
+     * https://docs.kraken.com/rest/#tag/Market-Data/operation/getTradableAssetPairs</a>
+     **/
+    @RequestPath(path = "https://api.kraken.com/0/public/AssetPairs")
+    public <T> T getAssetPairsList(ArrayList<String> pairs, String info, ReturnFormat format) throws IOException {
+        return returnAssetPairsList(GET_ASSET_PAIRS_ENDPOINT + "?pair=" + apiRequest.assembleParamsList(",",
+                pairs) + "&info=" + info, format);
     }
 
-    /** Custom request to get a single assets pair<br>
-     * @param pairs: pairs to fetch details es. BTCEUR
-     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getTradableAssetPairs">
-     *     https://docs.kraken.com/rest/#tag/Market-Data/operation/getTradableAssetPairs</a>
-     * @return single assets pair as {@link JSONObject}
-     * **/
-    @WrappedRequest
-    public JSONObject getAssetPairJSON(String pairs) throws IOException {
-        return getAssetPairsJSON(new String[]{pairs});
-    }
-
-    /** Custom request to get a single assets pair<br>
-     * @param pairs: pairs to fetch details es. BTCEUR
-     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getTradableAssetPairs">
-     *     https://docs.kraken.com/rest/#tag/Market-Data/operation/getTradableAssetPairs</a>
-     * @return single assets pair as {@link AssetPair} custom object
-     * **/
-    @WrappedRequest
-    public AssetPair getAssetPairObject(String pairs) throws IOException {
-        return new AssetPair(getAssetPairsJSON(new String[]{pairs}));
-    }
-
-    /** Custom request to get a single assets pair<br>
-     * @param pairs: pairs to fetch details es. BTCEUR
-     * @param info: detail to fetch (info, leverage, fees or margin)
-     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getTradableAssetPairs">
-     *     https://docs.kraken.com/rest/#tag/Market-Data/operation/getTradableAssetPairs</a>
-     * @return single assets pair as {@link String}
-     * **/
-    @WrappedRequest
-    public String getAssetPair(String pairs, String info) throws IOException {
-        return getAssetPairs(new String[]{pairs}, info);
-    }
-
-    /** Custom request to get a single assets pair<br>
-     * @param pairs: pairs to fetch details es. BTCEUR
-     * @param info: detail to fetch (info, leverage, fees or margin)
-     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getTradableAssetPairs">
-     *     https://docs.kraken.com/rest/#tag/Market-Data/operation/getTradableAssetPairs</a>
-     * @return single assets pair as {@link JSONObject}
-     * **/
-    @WrappedRequest
-    public JSONObject getAssetPairJSON(String pairs, String info) throws IOException {
-        return getAssetPairsJSON(new String[]{pairs}, info);
-    }
-
-    /** Custom request to get a single assets pair<br>
-     * @param pairs: pairs to fetch details es. BTCEUR
-     * @param info: detail to fetch (info, leverage, fees or margin)
-     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getTradableAssetPairs">
-     *     https://docs.kraken.com/rest/#tag/Market-Data/operation/getTradableAssetPairs</a>
-     * @return single assets pair as {@link AssetPair} custom object
-     * **/
-    @WrappedRequest
-    public AssetPair getAssetPairObject(String pairs, String info) throws IOException {
-        return new AssetPair(getAssetPairsJSON(new String[]{pairs}, info));
-    }
-
-    /** Method to assemble an assets pair list
-     * @param jsonResponse: jsonObject obtained by response request
-     * @return assets pair list as {@link ArrayList} of {@link AssetPair}
-     * **/
-    private ArrayList<AssetPair> assembleAssetPairsList(JSONObject jsonResponse){
-        ArrayList<AssetPair> assetPairs = new ArrayList<>();
-        JSONObject jsonAssets = jsonResponse.getJSONObject("result");
-        for (String key : jsonAssets.keySet()){
-            JsonHelper assetPair = new JsonHelper(jsonAssets.getJSONObject(key));
-            assetPairs.add(new AssetPair(jsonResponse,
-                    assetPair.getString("altname"),
-                    assetPair.getString("wsname"),
-                    assetPair.getString("aclass_base"),
-                    assetPair.getString("base"),
-                    assetPair.getString("aclass_quote"),
-                    assetPair.getString("quote"),
-                    assetPair.getInt("pair_decimals"),
-                    assetPair.getInt("lot_decimals"),
-                    assetPair.getInt("lot_multiplier"),
-                    assetPair.getString("fee_volume_currency"),
-                    assetPair.getDouble("margin_call"),
-                    assetPair.getDouble("margin_stop"),
-                    assetPair.getDouble("ordermin"),
-                    key,
-                    assetPair.getDouble("costmin")));
+    /**
+     * Method to assemble an assets pairs list
+     *
+     * @param endpoint: endpoint to do the request
+     * @param format:   return type formatter -> {@link ReturnFormat}
+     * @return assets pairs list as {"format"} defines
+     **/
+    @Returner
+    private <T> T returnAssetPairsList(String endpoint, ReturnFormat format) throws IOException {
+        String assetsPairsListResponse = sendGetRequest(endpoint);
+        switch (format) {
+            case JSON:
+                return (T) new JSONObject(assetsPairsListResponse);
+            case LIBRARY_OBJECT:
+                ArrayList<AssetPair> assetsPairs = new ArrayList<>();
+                JSONObject jAssetsPairs = new JSONObject(assetsPairsListResponse).getJSONObject("result");
+                for (String assetPairs : jAssetsPairs.keySet())
+                    assetsPairs.add(new AssetPair(jAssetsPairs.getJSONObject(assetPairs)));
+                return (T) assetsPairs;
+            default:
+                return (T) assetsPairsListResponse;
         }
-        return assetPairs;
     }
 
-    /** Request to get ticker information<br>
-     * @param pair: pair to fetch details es. BTCEUR
-     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getTickerInformation">
-     *     https://docs.kraken.com/rest/#tag/Market-Data/operation/getTickerInformation</a>
-     * @return ticker information as {@link String}
-     * **/
-    public String getTickerInformation(String pair) throws IOException {
-        return sendGetRequest(GET_TICKER_ENDPOINT + "?pair=" + pair);
+    /**
+     * Custom request to get a single assets pair<br>
+     *
+     * @param pair: pair from fetch details es. BTCEUR
+     * @return single assets pair as {@link AssetPair} custom object
+     * @throws IOException when request has been go wrong -> you can use these methods to get more details about error:
+     *                     <ul>
+     *                         <li>
+     *                             {@link #getErrorResponse()}
+     *                         </li>
+     *                         <li>
+     *                             {@link #getJSONErrorResponse()}
+     *                         </li>
+     *                         <li>
+     *                             {@link #printErrorResponse()}
+     *                         </li>
+     *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
+     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getTradableAssetPairs">
+     * https://docs.kraken.com/rest/#tag/Market-Data/operation/getTradableAssetPairs</a>
+     **/
+    @WrappedRequest
+    public AssetPair getAssetPair(String pair) throws IOException {
+        return getAssetPair(pair, LIBRARY_OBJECT);
     }
 
-    /** Request to get ticker information<br>
-     * @param pair: pair to fetch details es. BTCEUR
-     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getTickerInformation">
-     *     https://docs.kraken.com/rest/#tag/Market-Data/operation/getTickerInformation</a>
-     * @return ticker information as {@link JSONObject}
-     * **/
-    public JSONObject getTickerInformationJSON(String pair) throws IOException {
-        return new JSONObject(getTickerInformation(pair));
+    /**
+     * Custom request to get a single assets pair<br>
+     *
+     * @param pair:   pair from fetch details es. BTCEUR
+     * @param format: return type formatter -> {@link ReturnFormat}
+     * @return asset pair as {"format"} defines
+     * @throws IOException when request has been go wrong -> you can use these methods to get more details about error:
+     *                     <ul>
+     *                         <li>
+     *                             {@link #getErrorResponse()}
+     *                         </li>
+     *                         <li>
+     *                             {@link #getJSONErrorResponse()}
+     *                         </li>
+     *                         <li>
+     *                             {@link #printErrorResponse()}
+     *                         </li>
+     *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
+     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getTradableAssetPairs">
+     * https://docs.kraken.com/rest/#tag/Market-Data/operation/getTradableAssetPairs</a>
+     **/
+    @WrappedRequest
+    public <T> T getAssetPair(String pair, ReturnFormat format) throws IOException {
+        return returnAssetPair(getAssetPairsList(new String[]{pair}, STRING), format);
     }
 
-    /** Request to get ticker information<br>
-     * @param pair: pair to fetch details es. BTCEUR
-     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getTickerInformation">
-     *     https://docs.kraken.com/rest/#tag/Market-Data/operation/getTickerInformation</a>
+    /**
+     * Custom request to get a single assets pair<br>
+     *
+     * @param pair: pairs to fetch details es. BTCEUR
+     * @param info: detail to fetch (info, leverage, fees or margin)
+     * @return single assets pair as {@link AssetPair} custom object
+     * @throws IOException when request has been go wrong -> you can use these methods to get more details about error:
+     *                     <ul>
+     *                         <li>
+     *                             {@link #getErrorResponse()}
+     *                         </li>
+     *                         <li>
+     *                             {@link #getJSONErrorResponse()}
+     *                         </li>
+     *                         <li>
+     *                             {@link #printErrorResponse()}
+     *                         </li>
+     *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
+     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getTradableAssetPairs">
+     * https://docs.kraken.com/rest/#tag/Market-Data/operation/getTradableAssetPairs</a>
+     **/
+    @WrappedRequest
+    public AssetPair getAssetPair(String pair, String info) throws IOException {
+        return getAssetPair(pair, info, LIBRARY_OBJECT);
+    }
+
+    /**
+     * Custom request to get a single assets pair<br>
+     *
+     * @param pair:   pairs to fetch details es. BTCEUR
+     * @param info:   detail to fetch (info, leverage, fees or margin)
+     * @param format: return type formatter -> {@link ReturnFormat}
+     * @return asset pair as {"format"} defines
+     * @throws IOException when request has been go wrong -> you can use these methods to get more details about error:
+     *                     <ul>
+     *                         <li>
+     *                             {@link #getErrorResponse()}
+     *                         </li>
+     *                         <li>
+     *                             {@link #getJSONErrorResponse()}
+     *                         </li>
+     *                         <li>
+     *                             {@link #printErrorResponse()}
+     *                         </li>
+     *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
+     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getTradableAssetPairs">
+     * https://docs.kraken.com/rest/#tag/Market-Data/operation/getTradableAssetPairs</a>
+     **/
+    @WrappedRequest
+    public <T> T getAssetPair(String pair, String info, ReturnFormat format) throws IOException {
+        return returnAssetPair(getAssetPairsList(new String[]{pair}, info, STRING), format);
+    }
+
+    /**
+     * Method to assemble an asset pair object
+     *
+     * @param assetPairResponse: asset pair to format
+     * @param format:            return type formatter -> {@link ReturnFormat}
+     * @return asset pair as {"format"} defines
+     **/
+    @Returner
+    private <T> T returnAssetPair(String assetPairResponse, ReturnFormat format) {
+        switch (format) {
+            case JSON:
+                return (T) new JSONObject(assetPairResponse);
+            case LIBRARY_OBJECT:
+                return (T) new AssetPair(new JSONObject(assetPairResponse));
+            default:
+                return (T) assetPairResponse;
+        }
+    }
+
+    /**
+     * Request to get ticker information<br>
+     *
+     * @param pair: pair from fetch details es. BTCEUR
      * @return ticker information as {@link TickerInformation} custom object
-     * **/
-    public TickerInformation getTickerInformationObject(String pair) throws IOException {
-        return new TickerInformation(getTickerInformationJSON(pair));
+     * @throws IOException when request has been go wrong -> you can use these methods to get more details about error:
+     *                     <ul>
+     *                         <li>
+     *                             {@link #getErrorResponse()}
+     *                         </li>
+     *                         <li>
+     *                             {@link #getJSONErrorResponse()}
+     *                         </li>
+     *                         <li>
+     *                             {@link #printErrorResponse()}
+     *                         </li>
+     *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
+     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getTickerInformation">
+     * https://docs.kraken.com/rest/#tag/Market-Data/operation/getTickerInformation</a>
+     **/
+    @RequestPath(path = "https://api.kraken.com/0/public/Ticker?pair={pair}")
+    public TickerInformation getTickerInformation(String pair) throws IOException {
+        return getTickerInformation(pair, LIBRARY_OBJECT);
     }
 
-    /** Custom request to get all tickers information <br>
-     * Any params required
+    /**
+     * Request to get ticker information<br>
+     *
+     * @param pair:   pair from fetch details es. BTCEUR
+     * @param format: return type formatter -> {@link ReturnFormat}
+     * @return ticker information as {"format"} defines
+     * @throws IOException when request has been go wrong -> you can use these methods to get more details about error:
+     *                     <ul>
+     *                         <li>
+     *                             {@link #getErrorResponse()}
+     *                         </li>
+     *                         <li>
+     *                             {@link #getJSONErrorResponse()}
+     *                         </li>
+     *                         <li>
+     *                             {@link #printErrorResponse()}
+     *                         </li>
+     *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
      * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getTickerInformation">
-     *     https://docs.kraken.com/rest/#tag/Market-Data/operation/getTickerInformation</a>
-     * @return all tickers' information as {@link String}
-     * **/
-    @WrappedRequest
-    public String getAllTickers() throws IOException {
-        return getAllTickersJSON().toString();
-    }
-
-    /** Custom request to get all tickers information <br>
-     * Any params required
-     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getTickerInformation">
-     *     https://docs.kraken.com/rest/#tag/Market-Data/operation/getTickerInformation</a>
-     * @return all tickers' information as {@link JSONArray}
-     * **/
-    @WrappedRequest
-    public JSONArray getAllTickersJSON() throws IOException {
-        JSONArray tickers = new JSONArray();
-        long actualTimestamp = System.currentTimeMillis();
-        if(symbols == null || ((actualTimestamp - previousLoadSymbols) > 3600 * 1000)) {
-            symbols = getAssetPairsJSON().getJSONObject("result").keySet();
-            previousLoadSymbols = actualTimestamp;
+     * https://docs.kraken.com/rest/#tag/Market-Data/operation/getTickerInformation</a>
+     **/
+    @Returner
+    @RequestPath(path = "https://api.kraken.com/0/public/Ticker?pair={pair}")
+    public <T> T getTickerInformation(String pair, ReturnFormat format) throws IOException {
+        String tickerResponse = sendGetRequest(GET_TICKER_ENDPOINT + "?pair=" + pair);
+        switch (format) {
+            case JSON:
+                return (T) new JSONObject(tickerResponse);
+            case LIBRARY_OBJECT:
+                return (T) new TickerInformation(new JSONObject(tickerResponse));
+            default:
+                return (T) tickerResponse;
         }
-        for (String symbol : symbols)
-            tickers.put(getTickerInformationJSON(symbol));
-        return tickers;
     }
 
-    /** Custom request to get all tickers information <br>
+    /**
+     * Custom request to get all tickers information <br>
      * Any params required
-     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getTickerInformation">
-     *     https://docs.kraken.com/rest/#tag/Market-Data/operation/getTickerInformation</a>
+     *
      * @return all tickers' information as {@link ArrayList} of {@link TickerInformation} custom object
-     * **/
+     * @throws IOException when request has been go wrong -> you can use these methods to get more details about error:
+     *                     <ul>
+     *                         <li>
+     *                             {@link #getErrorResponse()}
+     *                         </li>
+     *                         <li>
+     *                             {@link #getJSONErrorResponse()}
+     *                         </li>
+     *                         <li>
+     *                             {@link #printErrorResponse()}
+     *                         </li>
+     *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
+     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getTickerInformation">
+     * https://docs.kraken.com/rest/#tag/Market-Data/operation/getTickerInformation</a>
+     **/
     @WrappedRequest
     public ArrayList<TickerInformation> getAllTickersList() throws IOException {
-        ArrayList<TickerInformation> tickers = new ArrayList<>();
-        JSONArray jsonTickers = getAllTickersJSON();
-        for (int j = 0; j < jsonTickers.length(); j++)
-            tickers.add(new TickerInformation(jsonTickers.getJSONObject(j)));
-        return tickers;
+        return getAllTickersList(LIBRARY_OBJECT);
     }
 
-    /** Request to get OHLC data information<br>
-     * @param pair: pair to fetch details es. BTCEUR
-     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getOHLCData">
-     *     https://docs.kraken.com/rest/#tag/Market-Data/operation/getOHLCData</a>
-     * @return OHLC data information as {@link String}
-     * **/
-    public String getOHLCData(String pair) throws IOException {
-        return sendGetRequest(GET_OHLC_ENDPOINT + "?pair=" + pair);
+    /**
+     * Custom request to get all tickers information
+     *
+     * @param format: return type formatter -> {@link ReturnFormat}
+     * @return all tickers information as {"format"} defines
+     * @throws IOException when request has been go wrong -> you can use these methods to get more details about error:
+     *                     <ul>
+     *                         <li>
+     *                             {@link #getErrorResponse()}
+     *                         </li>
+     *                         <li>
+     *                             {@link #getJSONErrorResponse()}
+     *                         </li>
+     *                         <li>
+     *                             {@link #printErrorResponse()}
+     *                         </li>
+     *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
+     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getTickerInformation">
+     * https://docs.kraken.com/rest/#tag/Market-Data/operation/getTickerInformation</a>
+     **/
+    @Returner
+    @WrappedRequest
+    public <T> T getAllTickersList(ReturnFormat format) throws IOException {
+        JSONArray jTickers = new JSONArray();
+        for (String symbol : ((JSONObject) getAssetPairsList(JSON)).getJSONObject("result").keySet())
+            jTickers.put((JSONObject) getTickerInformation(symbol, JSON));
+        switch (format) {
+            case JSON:
+                return (T) jTickers;
+            case LIBRARY_OBJECT:
+                ArrayList<TickerInformation> tickers = new ArrayList<>();
+                for (int j = 0; j < jTickers.length(); j++)
+                    tickers.add(new TickerInformation(jTickers.getJSONObject(j)));
+                return (T) tickers;
+            default:
+                return (T) jTickers.toString();
+        }
     }
 
-    /** Request to get OHLC data information<br>
-     * @param pair: pair to fetch details es. BTCEUR
-     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getOHLCData">
-     *     https://docs.kraken.com/rest/#tag/Market-Data/operation/getOHLCData</a>
-     * @return OHLC data information as {@link JSONObject}
-     * **/
-    public JSONObject getOHLCDataJSON(String pair) throws IOException {
-        return new JSONObject(getOHLCData(pair));
-    }
-
-    /** Request to get OHLC data information<br>
-     * @param pair: pair to fetch details es. BTCEUR
-     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getOHLCData">
-     *     https://docs.kraken.com/rest/#tag/Market-Data/operation/getOHLCData</a>
+    /**
+     * Request to get OHLC data information<br>
+     *
+     * @param pair: pair from fetch details es. BTCEUR
      * @return OHLC data information as {@link OHLCData} custom object
-     * **/
+     * @throws IOException when request has been go wrong -> you can use these methods to get more details about error:
+     *                     <ul>
+     *                         <li>
+     *                             {@link #getErrorResponse()}
+     *                         </li>
+     *                         <li>
+     *                             {@link #getJSONErrorResponse()}
+     *                         </li>
+     *                         <li>
+     *                             {@link #printErrorResponse()}
+     *                         </li>
+     *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
+     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getOHLCData">
+     * https://docs.kraken.com/rest/#tag/Market-Data/operation/getOHLCData</a>
+     **/
+    @WrappedRequest
+    @RequestPath(path = "https://api.kraken.com/0/public/OHLC?pair={pair}")
+    public OHLCData getOHLCDataObject(AssetPair pair) throws IOException {
+        return getOHLCData(pair, LIBRARY_OBJECT);
+    }
+
+    /**
+     * Request to get OHLC data information<br>
+     *
+     * @param pair:   pair from fetch details es. BTCEUR
+     * @param format: return type formatter -> {@link ReturnFormat}
+     * @return OHLC data information as {"format"} defines
+     * @throws IOException when request has been go wrong -> you can use these methods to get more details about error:
+     *                     <ul>
+     *                         <li>
+     *                             {@link #getErrorResponse()}
+     *                         </li>
+     *                         <li>
+     *                             {@link #getJSONErrorResponse()}
+     *                         </li>
+     *                         <li>
+     *                             {@link #printErrorResponse()}
+     *                         </li>
+     *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
+     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getOHLCData">
+     * https://docs.kraken.com/rest/#tag/Market-Data/operation/getOHLCData</a>
+     **/
+    @WrappedRequest
+    @RequestPath(path = "https://api.kraken.com/0/public/OHLC?pair={pair}")
+    public <T> T getOHLCData(AssetPair pair, ReturnFormat format) throws IOException {
+        return returnOHLCData(sendGetRequest(GET_OHLC_ENDPOINT + "?pair=" + pair.getAltName()), format);
+    }
+
+    /**
+     * Request to get OHLC data information<br>
+     *
+     * @param pair: pair from fetch details es. BTCEUR
+     * @return OHLC data information as {@link OHLCData} custom object
+     * @throws IOException when request has been go wrong -> you can use these methods to get more details about error:
+     *                     <ul>
+     *                         <li>
+     *                             {@link #getErrorResponse()}
+     *                         </li>
+     *                         <li>
+     *                             {@link #getJSONErrorResponse()}
+     *                         </li>
+     *                         <li>
+     *                             {@link #printErrorResponse()}
+     *                         </li>
+     *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
+     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getOHLCData">
+     * https://docs.kraken.com/rest/#tag/Market-Data/operation/getOHLCData</a>
+     **/
+    @RequestPath(path = "https://api.kraken.com/0/public/OHLC?pair={pair}")
     public OHLCData getOHLCDataObject(String pair) throws IOException {
-        return new OHLCData(getOHLCDataJSON(pair));
+        return getOHLCData(pair, LIBRARY_OBJECT);
     }
 
-    /** Request to get OHLC data information<br>
-     * @param pair: pair to fetch details es. BTCEUR
-     * @param interval: time frame interval in minutes
+    /**
+     * Request to get OHLC data information<br>
+     *
+     * @param pair:   pair from fetch details es. BTCEUR
+     * @param format: return type formatter -> {@link ReturnFormat}
+     * @return OHLC data information as {"format"} defines
+     * @throws IOException when request has been go wrong -> you can use these methods to get more details about error:
+     *                     <ul>
+     *                         <li>
+     *                             {@link #getErrorResponse()}
+     *                         </li>
+     *                         <li>
+     *                             {@link #getJSONErrorResponse()}
+     *                         </li>
+     *                         <li>
+     *                             {@link #printErrorResponse()}
+     *                         </li>
+     *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
      * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getOHLCData">
-     *     https://docs.kraken.com/rest/#tag/Market-Data/operation/getOHLCData</a>
-     * @return OHLC data information as {@link String}
-     * **/
-    public String getOHLCData(String pair, int interval) throws IOException {
-        return sendGetRequest(GET_OHLC_ENDPOINT + "?pair=" + pair + "&interval=" + interval);
+     * https://docs.kraken.com/rest/#tag/Market-Data/operation/getOHLCData</a>
+     **/
+    @RequestPath(path = "https://api.kraken.com/0/public/OHLC?pair={pair}")
+    public <T> T getOHLCData(String pair, ReturnFormat format) throws IOException {
+        return returnOHLCData(sendGetRequest(GET_OHLC_ENDPOINT + "?pair=" + pair), format);
     }
 
-    /** Request to get OHLC data information<br>
-     * @param pair: pair to fetch details es. BTCEUR
+    /**
+     * Request to get OHLC data information<br>
+     *
+     * @param pair:     pair from fetch details es. BTCEUR
      * @param interval: time frame interval in minutes
-     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getOHLCData">
-     *     https://docs.kraken.com/rest/#tag/Market-Data/operation/getOHLCData</a>
-     * @return OHLC data information as {@link JSONObject}
-     * **/
-    public JSONObject getOHLCDataJSON(String pair, int interval) throws IOException {
-        return new JSONObject(getOHLCData(pair, interval));
-    }
-
-    /** Request to get OHLC data information<br>
-     * @param pair: pair to fetch details es. BTCEUR
-     * @param interval: time frame interval in minutes
-     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getOHLCData">
-     *     https://docs.kraken.com/rest/#tag/Market-Data/operation/getOHLCData</a>
      * @return OHLC data information as {@link OHLCData} custom object
-     * **/
-    public OHLCData getOHLCDataObject(String pair, int interval) throws IOException {
-        return new OHLCData(getOHLCDataJSON(pair, interval));
+     * @throws IOException when request has been go wrong -> you can use these methods to get more details about error:
+     *                     <ul>
+     *                         <li>
+     *                             {@link #getErrorResponse()}
+     *                         </li>
+     *                         <li>
+     *                             {@link #getJSONErrorResponse()}
+     *                         </li>
+     *                         <li>
+     *                             {@link #printErrorResponse()}
+     *                         </li>
+     *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
+     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getOHLCData">
+     * https://docs.kraken.com/rest/#tag/Market-Data/operation/getOHLCData</a>
+     **/
+    @WrappedRequest
+    @RequestPath(path = "https://api.kraken.com/0/public/OHLC?pair={pair}&interval={interval}")
+    public OHLCData getOHLCData(AssetPair pair, int interval) throws IOException {
+        return getOHLCData(pair, interval, LIBRARY_OBJECT);
     }
 
-    /** Request to get OHLC data information<br>
-     * @param pair: pair to fetch details es. BTCEUR
-     * @param since: since timestamp from fetch data
+    /**
+     * Request to get OHLC data information<br>
+     *
+     * @param pair:     pair from fetch details es. BTCEUR
+     * @param interval: time frame interval in minutes
+     * @param format:   return type formatter -> {@link ReturnFormat}
+     * @return OHLC data information as {"format"} defines
+     * @throws IOException when request has been go wrong -> you can use these methods to get more details about error:
+     *                     <ul>
+     *                         <li>
+     *                             {@link #getErrorResponse()}
+     *                         </li>
+     *                         <li>
+     *                             {@link #getJSONErrorResponse()}
+     *                         </li>
+     *                         <li>
+     *                             {@link #printErrorResponse()}
+     *                         </li>
+     *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
      * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getOHLCData">
-     *     https://docs.kraken.com/rest/#tag/Market-Data/operation/getOHLCData</a>
-     * @return OHLC data information as {@link String}
-     * **/
-    public String getOHLCData(String pair, long since) throws IOException {
-        return sendGetRequest(GET_OHLC_ENDPOINT + "?pair=" + pair + "&since=" + since);
+     * https://docs.kraken.com/rest/#tag/Market-Data/operation/getOHLCData</a>
+     **/
+    @WrappedRequest
+    @RequestPath(path = "https://api.kraken.com/0/public/OHLC?pair={pair}&interval={interval}")
+    public OHLCData getOHLCData(AssetPair pair, int interval, ReturnFormat format) throws IOException {
+        return returnOHLCData(sendGetRequest(GET_OHLC_ENDPOINT + "?pair=" + pair.getAltName() + "&interval=" +
+                interval), format);
     }
 
-    /** Request to get OHLC data information<br>
-     * @param pair: pair to fetch details es. BTCEUR
-     * @param since: since timestamp from fetch data
-     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getOHLCData">
-     *     https://docs.kraken.com/rest/#tag/Market-Data/operation/getOHLCData</a>
-     * @return OHLC data information as {@link JSONObject}
-     * **/
-    public JSONObject getOHLCDataJSON(String pair, long since) throws IOException {
-        return new JSONObject(getOHLCData(pair, since));
-    }
-
-    /** Request to get OHLC data information<br>
-     * @param pair: pair to fetch details es. BTCEUR
-     * @param since: since timestamp from fetch data
-     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getOHLCData">
-     *     https://docs.kraken.com/rest/#tag/Market-Data/operation/getOHLCData</a>
+    /**
+     * Request to get OHLC data information<br>
+     *
+     * @param pair:     pair from fetch details es. BTCEUR
+     * @param interval: time frame interval in minutes
      * @return OHLC data information as {@link OHLCData} custom object
-     * **/
-    public OHLCData getOHLCDataObject(String pair, long since) throws IOException {
-        return new OHLCData(getOHLCDataJSON(pair, since));
+     * @throws IOException when request has been go wrong -> you can use these methods to get more details about error:
+     *                     <ul>
+     *                         <li>
+     *                             {@link #getErrorResponse()}
+     *                         </li>
+     *                         <li>
+     *                             {@link #getJSONErrorResponse()}
+     *                         </li>
+     *                         <li>
+     *                             {@link #printErrorResponse()}
+     *                         </li>
+     *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
+     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getOHLCData">
+     * https://docs.kraken.com/rest/#tag/Market-Data/operation/getOHLCData</a>
+     **/
+    @RequestPath(path = "https://api.kraken.com/0/public/OHLC?pair={pair}&interval={interval}")
+    public OHLCData getOHLCData(String pair, int interval) throws IOException {
+        return getOHLCData(pair, interval, LIBRARY_OBJECT);
     }
 
-    /** Request to get OHLC data information<br>
-     * @param pair: pair to fetch details es. BTCEUR
+    /**
+     * Request to get OHLC data information<br>
+     *
+     * @param pair:     pair from fetch details es. BTCEUR
      * @param interval: time frame interval in minutes
-     * @param since: since timestamp from fetch data
+     * @param format:   return type formatter -> {@link ReturnFormat}
+     * @return OHLC data information as {"format"} defines
+     * @throws IOException when request has been go wrong -> you can use these methods to get more details about error:
+     *                     <ul>
+     *                         <li>
+     *                             {@link #getErrorResponse()}
+     *                         </li>
+     *                         <li>
+     *                             {@link #getJSONErrorResponse()}
+     *                         </li>
+     *                         <li>
+     *                             {@link #printErrorResponse()}
+     *                         </li>
+     *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
      * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getOHLCData">
-     *     https://docs.kraken.com/rest/#tag/Market-Data/operation/getOHLCData</a>
-     * @return OHLC data information as {@link String}
-     * **/
-    public String getOHLCData(String pair, int interval, long since) throws IOException {
-        return sendGetRequest(GET_OHLC_ENDPOINT + "?pair=" + pair + "&interval=" + interval + "&since=" + since);
+     * https://docs.kraken.com/rest/#tag/Market-Data/operation/getOHLCData</a>
+     **/
+    @RequestPath(path = "https://api.kraken.com/0/public/OHLC?pair={pair}&interval={interval}")
+    public OHLCData getOHLCData(String pair, int interval, ReturnFormat format) throws IOException {
+        return returnOHLCData(sendGetRequest(GET_OHLC_ENDPOINT + "?pair=" + pair + "&interval=" + interval),
+                format);
     }
 
-    /** Request to get OHLC data information<br>
-     * @param pair: pair to fetch details es. BTCEUR
-     * @param interval: time frame interval in minutes
+    /**
+     * Request to get OHLC data information<br>
+     *
+     * @param pair:  pair from fetch details es. BTCEUR
      * @param since: since timestamp from fetch data
-     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getOHLCData">
-     *     https://docs.kraken.com/rest/#tag/Market-Data/operation/getOHLCData</a>
-     * @return OHLC data information as {@link JSONObject}
-     * **/
-    public JSONObject getOHLCDataJSON(String pair, int interval, long since) throws IOException {
-        return new JSONObject(getOHLCData(pair, interval, since));
-    }
-
-    /** Request to get OHLC data information<br>
-     * @param pair: pair to fetch details es. BTCEUR
-     * @param interval: time frame interval in minutes
-     * @param since: since timestamp from fetch data
-     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getOHLCData">
-     *     https://docs.kraken.com/rest/#tag/Market-Data/operation/getOHLCData</a>
      * @return OHLC data information as {@link OHLCData} custom object
-     * **/
-    public OHLCData getOHLCDataObject(String pair, int interval, long since) throws IOException {
-        return new OHLCData(getOHLCDataJSON(pair, interval, since));
+     * @throws IOException when request has been go wrong -> you can use these methods to get more details about error:
+     *                     <ul>
+     *                         <li>
+     *                             {@link #getErrorResponse()}
+     *                         </li>
+     *                         <li>
+     *                             {@link #getJSONErrorResponse()}
+     *                         </li>
+     *                         <li>
+     *                             {@link #printErrorResponse()}
+     *                         </li>
+     *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
+     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getOHLCData">
+     * https://docs.kraken.com/rest/#tag/Market-Data/operation/getOHLCData</a>
+     **/
+    @WrappedRequest
+    @RequestPath(path = "https://api.kraken.com/0/public/OHLC?pair={pair}&since={since}")
+    public OHLCData getOHLCData(AssetPair pair, long since) throws IOException {
+        return getOHLCData(pair, since, LIBRARY_OBJECT);
     }
 
-    /** Request to get order book details<br>
-     * @param pair: pair to fetch details es. BTCEUR
-     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getOrderBook">
-     *     https://docs.kraken.com/rest/#tag/Market-Data/operation/getOrderBook</a>
-     * @return order book details as {@link String}
-     * **/
-    public String getOrderBook(String pair) throws IOException {
-        return sendGetRequest(GET_ORDER_BOOK_ENDPOINT + "?pair=" + pair);
+    /**
+     * Request to get OHLC data information<br>
+     *
+     * @param pair:   pair from fetch details es. BTCEUR
+     * @param since:  since timestamp from fetch data
+     * @param format: return type formatter -> {@link ReturnFormat}
+     * @return OHLC data information as {"format"} defines
+     * @throws IOException when request has been go wrong -> you can use these methods to get more details about error:
+     *                     <ul>
+     *                         <li>
+     *                             {@link #getErrorResponse()}
+     *                         </li>
+     *                         <li>
+     *                             {@link #getJSONErrorResponse()}
+     *                         </li>
+     *                         <li>
+     *                             {@link #printErrorResponse()}
+     *                         </li>
+     *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
+     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getOHLCData">
+     * https://docs.kraken.com/rest/#tag/Market-Data/operation/getOHLCData</a>
+     **/
+    @WrappedRequest
+    @RequestPath(path = "https://api.kraken.com/0/public/OHLC?pair={pair}&since={since}")
+    public <T> T getOHLCData(AssetPair pair, long since, ReturnFormat format) throws IOException {
+        return returnOHLCData(sendGetRequest(GET_OHLC_ENDPOINT + "?pair=" + pair.getAltName() + "&since=" + since),
+                format);
     }
 
-    /** Request to get order book details<br>
-     * @param pair: pair to fetch details es. BTCEUR
-     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getOrderBook">
-     *     https://docs.kraken.com/rest/#tag/Market-Data/operation/getOrderBook</a>
-     * @return order book details as {@link JSONObject}
-     * **/
-    public JSONObject getOrderBookJSON(String pair) throws IOException {
-        return new JSONObject(getOrderBook(pair));
+    /**
+     * Request to get OHLC data information<br>
+     *
+     * @param pair:  pair from fetch details es. BTCEUR
+     * @param since: since timestamp from fetch data
+     * @return OHLC data information as {@link OHLCData} custom object
+     * @throws IOException when request has been go wrong -> you can use these methods to get more details about error:
+     *                     <ul>
+     *                         <li>
+     *                             {@link #getErrorResponse()}
+     *                         </li>
+     *                         <li>
+     *                             {@link #getJSONErrorResponse()}
+     *                         </li>
+     *                         <li>
+     *                             {@link #printErrorResponse()}
+     *                         </li>
+     *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
+     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getOHLCData">
+     * https://docs.kraken.com/rest/#tag/Market-Data/operation/getOHLCData</a>
+     **/
+    @RequestPath(path = "https://api.kraken.com/0/public/OHLC?pair={pair}&since={since}")
+    public OHLCData getOHLCData(String pair, long since) throws IOException {
+        return getOHLCData(pair, since, LIBRARY_OBJECT);
     }
 
-    /** Request to get order book details<br>
-     * @param pair: pair to fetch details es. BTCEUR
-     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getOrderBook">
-     *     https://docs.kraken.com/rest/#tag/Market-Data/operation/getOrderBook</a>
+    /**
+     * Request to get OHLC data information<br>
+     *
+     * @param pair:   pair from fetch details es. BTCEUR
+     * @param since:  since timestamp from fetch data
+     * @param format: return type formatter -> {@link ReturnFormat}
+     * @return OHLC data information as {"format"} defines
+     * @throws IOException when request has been go wrong -> you can use these methods to get more details about error:
+     *                     <ul>
+     *                         <li>
+     *                             {@link #getErrorResponse()}
+     *                         </li>
+     *                         <li>
+     *                             {@link #getJSONErrorResponse()}
+     *                         </li>
+     *                         <li>
+     *                             {@link #printErrorResponse()}
+     *                         </li>
+     *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
+     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getOHLCData">
+     * https://docs.kraken.com/rest/#tag/Market-Data/operation/getOHLCData</a>
+     **/
+    @RequestPath(path = "https://api.kraken.com/0/public/OHLC?pair={pair}&since={since}")
+    public <T> T getOHLCData(String pair, long since, ReturnFormat format) throws IOException {
+        return returnOHLCData(sendGetRequest(GET_OHLC_ENDPOINT + "?pair=" + pair + "&since=" + since), format);
+    }
+
+    /**
+     * Request to get OHLC data information<br>
+     *
+     * @param pair:     pair from fetch details es. BTCEUR
+     * @param interval: time frame interval in minutes
+     * @param since:    since timestamp from fetch data
+     * @return OHLC data information as {@link OHLCData} custom object
+     * @throws IOException when request has been go wrong -> you can use these methods to get more details about error:
+     *                     <ul>
+     *                         <li>
+     *                             {@link #getErrorResponse()}
+     *                         </li>
+     *                         <li>
+     *                             {@link #getJSONErrorResponse()}
+     *                         </li>
+     *                         <li>
+     *                             {@link #printErrorResponse()}
+     *                         </li>
+     *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
+     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getOHLCData">
+     * https://docs.kraken.com/rest/#tag/Market-Data/operation/getOHLCData</a>
+     **/
+    @WrappedRequest
+    @RequestPath(path = "https://api.kraken.com/0/public/OHLC?pair={pair}&interval={interval}&since={since}")
+    public OHLCData getOHLCData(AssetPair pair, int interval, long since) throws IOException {
+        return getOHLCData(pair, interval, since, LIBRARY_OBJECT);
+    }
+
+    /**
+     * Request to get OHLC data information<br>
+     *
+     * @param pair:     pair from fetch details es. BTCEUR
+     * @param interval: time frame interval in minutes
+     * @param since:    since timestamp from fetch data
+     * @param format:   return type formatter -> {@link ReturnFormat}
+     * @return OHLC data as {"format"} defines
+     * @throws IOException when request has been go wrong -> you can use these methods to get more details about error:
+     *                     <ul>
+     *                         <li>
+     *                             {@link #getErrorResponse()}
+     *                         </li>
+     *                         <li>
+     *                             {@link #getJSONErrorResponse()}
+     *                         </li>
+     *                         <li>
+     *                             {@link #printErrorResponse()}
+     *                         </li>
+     *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
+     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getOHLCData">
+     * https://docs.kraken.com/rest/#tag/Market-Data/operation/getOHLCData</a>
+     **/
+    @WrappedRequest
+    @RequestPath(path = "https://api.kraken.com/0/public/OHLC?pair={pair}&interval={interval}&since={since}")
+    public <T> T getOHLCData(AssetPair pair, int interval, long since, ReturnFormat format) throws IOException {
+        return returnOHLCData(sendGetRequest(GET_OHLC_ENDPOINT + "?pair=" + pair.getAltName() + "&interval=" +
+                interval + "&since=" + since), format);
+    }
+
+    /**
+     * Request to get OHLC data information<br>
+     *
+     * @param pair:     pair from fetch details es. BTCEUR
+     * @param interval: time frame interval in minutes
+     * @param since:    since timestamp from fetch data
+     * @return OHLC data information as {@link OHLCData} custom object
+     * @throws IOException when request has been go wrong -> you can use these methods to get more details about error:
+     *                     <ul>
+     *                         <li>
+     *                             {@link #getErrorResponse()}
+     *                         </li>
+     *                         <li>
+     *                             {@link #getJSONErrorResponse()}
+     *                         </li>
+     *                         <li>
+     *                             {@link #printErrorResponse()}
+     *                         </li>
+     *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
+     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getOHLCData">
+     * https://docs.kraken.com/rest/#tag/Market-Data/operation/getOHLCData</a>
+     **/
+    @RequestPath(path = "https://api.kraken.com/0/public/OHLC?pair={pair}&interval={interval}&since={since}")
+    public OHLCData getOHLCData(String pair, int interval, long since) throws IOException {
+        return getOHLCData(pair, interval, since, LIBRARY_OBJECT);
+    }
+
+    /**
+     * Request to get OHLC data information<br>
+     *
+     * @param pair:     pair from fetch details es. BTCEUR
+     * @param interval: time frame interval in minutes
+     * @param since:    since timestamp from fetch data
+     * @param format:   return type formatter -> {@link ReturnFormat}
+     * @return OHLC data as {"format"} defines
+     * @throws IOException when request has been go wrong -> you can use these methods to get more details about error:
+     *                     <ul>
+     *                         <li>
+     *                             {@link #getErrorResponse()}
+     *                         </li>
+     *                         <li>
+     *                             {@link #getJSONErrorResponse()}
+     *                         </li>
+     *                         <li>
+     *                             {@link #printErrorResponse()}
+     *                         </li>
+     *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
+     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getOHLCData">
+     * https://docs.kraken.com/rest/#tag/Market-Data/operation/getOHLCData</a>
+     **/
+    @RequestPath(path = "https://api.kraken.com/0/public/OHLC?pair={pair}&interval={interval}&since={since}")
+    public <T> T getOHLCData(String pair, int interval, long since, ReturnFormat format) throws IOException {
+        return returnOHLCData(sendGetRequest(GET_OHLC_ENDPOINT + "?pair=" + pair + "&interval=" + interval +
+                "&since=" + since), format);
+    }
+
+    /**
+     * Method to assemble an OHLC data object
+     *
+     * @param OHLCDataResponse: OHLC data to format
+     * @param format:           return type formatter -> {@link ReturnFormat}
+     * @return OHLC data as {"format"} defines
+     **/
+    @Returner
+    private <T> T returnOHLCData(String OHLCDataResponse, ReturnFormat format) {
+        switch (format) {
+            case JSON:
+                return (T) new JSONObject(OHLCDataResponse);
+            case LIBRARY_OBJECT:
+                return (T) new OHLCData(new JSONObject(OHLCDataResponse));
+            default:
+                return (T) OHLCDataResponse;
+        }
+    }
+
+    /**
+     * Request to get order book details<br>
+     *
+     * @param pair: pair from fetch details es. BTCEUR
      * @return order book details as {@link Book} custom object
-     * **/
-    public Book getOrderBookObject(String pair) throws IOException {
-        return new Book(getOrderBookJSON(pair));
+     * @throws IOException when request has been go wrong -> you can use these methods to get more details about error:
+     *                     <ul>
+     *                         <li>
+     *                             {@link #getErrorResponse()}
+     *                         </li>
+     *                         <li>
+     *                             {@link #getJSONErrorResponse()}
+     *                         </li>
+     *                         <li>
+     *                             {@link #printErrorResponse()}
+     *                         </li>
+     *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
+     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getOrderBook">
+     * https://docs.kraken.com/rest/#tag/Market-Data/operation/getOrderBook</a>
+     **/
+    @WrappedRequest
+    @RequestPath(path = "https://api.kraken.com/0/public/Depth?pair={pair}")
+    public Book getOrderBook(AssetPair pair) throws IOException {
+        return getOrderBook(pair, LIBRARY_OBJECT);
     }
 
-    /** Request to get order book details<br>
-     * @param pair: pair to fetch details es. BTCEUR
-     * @param count: maximum number of asks and bids
+    /**
+     * Request to get order book details<br>
+     *
+     * @param pair: pair from fetch details es. BTCEUR
+     * @return book as {"format"} defines
+     * @throws IOException when request has been go wrong -> you can use these methods to get more details about error:
+     *                     <ul>
+     *                         <li>
+     *                             {@link #getErrorResponse()}
+     *                         </li>
+     *                         <li>
+     *                             {@link #getJSONErrorResponse()}
+     *                         </li>
+     *                         <li>
+     *                             {@link #printErrorResponse()}
+     *                         </li>
+     *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
      * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getOrderBook">
-     *     https://docs.kraken.com/rest/#tag/Market-Data/operation/getOrderBook</a>
-     * @return order book details as {@link String}
-     * **/
-    public String getOrderBook(String pair, int count) throws IOException {
-        return sendGetRequest(GET_ORDER_BOOK_ENDPOINT + "?pair=" + pair + "&count=" + count);
+     * https://docs.kraken.com/rest/#tag/Market-Data/operation/getOrderBook</a>
+     **/
+    @WrappedRequest
+    @RequestPath(path = "https://api.kraken.com/0/public/Depth?pair={pair}")
+    public <T> T getOrderBook(AssetPair pair, ReturnFormat format) throws IOException {
+        return returnBook(sendGetRequest(GET_ORDER_BOOK_ENDPOINT + "?pair=" + pair.getAltName()), format);
     }
 
-    /** Request to get order book details<br>
-     * @param pair: pair to fetch details es. BTCEUR
-     * @param count: maximum number of asks and bids
-     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getOrderBook">
-     *     https://docs.kraken.com/rest/#tag/Market-Data/operation/getOrderBook</a>
-     * @return order book details as {@link JSONObject}
-     * **/
-    public JSONObject getOrderBookJSON(String pair, int count) throws IOException {
-        return new JSONObject(getOrderBook(pair, count));
-    }
-
-    /** Request to get order book details<br>
-     * @param pair: pair to fetch details es. BTCEUR
-     * @param count: maximum number of asks and bids
-     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getOrderBook">
-     *     https://docs.kraken.com/rest/#tag/Market-Data/operation/getOrderBook</a>
+    /**
+     * Request to get order book details<br>
+     *
+     * @param pair: pair from fetch details es. BTCEUR
      * @return order book details as {@link Book} custom object
-     * **/
-    public Book getOrderBookObject(String pair, int count) throws IOException {
-        return new Book(getOrderBookJSON(pair, count));
+     * @throws IOException when request has been go wrong -> you can use these methods to get more details about error:
+     *                     <ul>
+     *                         <li>
+     *                             {@link #getErrorResponse()}
+     *                         </li>
+     *                         <li>
+     *                             {@link #getJSONErrorResponse()}
+     *                         </li>
+     *                         <li>
+     *                             {@link #printErrorResponse()}
+     *                         </li>
+     *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
+     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getOrderBook">
+     * https://docs.kraken.com/rest/#tag/Market-Data/operation/getOrderBook</a>
+     **/
+    @RequestPath(path = "https://api.kraken.com/0/public/Depth?pair={pair}")
+    public Book getOrderBook(String pair) throws IOException {
+        return getOrderBook(pair, LIBRARY_OBJECT);
     }
 
-    /** Request to get recent trades details<br>
-     * @param pair: pair to fetch details es. BTCEUR
-     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getRecentTrades">
-     *     https://docs.kraken.com/rest/#tag/Market-Data/operation/getRecentTrades</a>
-     * @return recent trades details as {@link String}
-     * **/
-    public String getRecentTrades(String pair) throws IOException {
-        return sendGetRequest(GET_RECENT_TRADES_ENDPOINT + "?pair=" + pair);
+    /**
+     * Request to get order book details<br>
+     *
+     * @param pair: pair from fetch details es. BTCEUR
+     * @return book as {"format"} defines
+     * @throws IOException when request has been go wrong -> you can use these methods to get more details about error:
+     *                     <ul>
+     *                         <li>
+     *                             {@link #getErrorResponse()}
+     *                         </li>
+     *                         <li>
+     *                             {@link #getJSONErrorResponse()}
+     *                         </li>
+     *                         <li>
+     *                             {@link #printErrorResponse()}
+     *                         </li>
+     *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
+     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getOrderBook">
+     * https://docs.kraken.com/rest/#tag/Market-Data/operation/getOrderBook</a>
+     **/
+    @RequestPath(path = "https://api.kraken.com/0/public/Depth?pair={pair}")
+    public <T> T getOrderBook(String pair, ReturnFormat format) throws IOException {
+        return returnBook(sendGetRequest(GET_ORDER_BOOK_ENDPOINT + "?pair=" + pair), format);
     }
 
-    /** Request to get recent trades details<br>
-     * @param pair: pair to fetch details es. BTCEUR
-     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getRecentTrades">
-     *     https://docs.kraken.com/rest/#tag/Market-Data/operation/getRecentTrades</a>
-     * @return recent trades details as {@link JSONObject}
-     * **/
-    public JSONObject getRecentTradesJSON(String pair) throws IOException {
-        return new JSONObject(getRecentTrades(pair));
+    /**
+     * Request to get order book details<br>
+     *
+     * @param pair:  pair from fetch details es. BTCEUR
+     * @param count: maximum number of asks and bids
+     * @return order book details as {@link Book} custom object
+     * @throws IOException when request has been go wrong -> you can use these methods to get more details about error:
+     *                     <ul>
+     *                         <li>
+     *                             {@link #getErrorResponse()}
+     *                         </li>
+     *                         <li>
+     *                             {@link #getJSONErrorResponse()}
+     *                         </li>
+     *                         <li>
+     *                             {@link #printErrorResponse()}
+     *                         </li>
+     *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
+     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getOrderBook">
+     * https://docs.kraken.com/rest/#tag/Market-Data/operation/getOrderBook</a>
+     **/
+    @WrappedRequest
+    @RequestPath(path = "https://api.kraken.com/0/public/Depth?pair={pair}&count={count}")
+    public Book getOrderBook(AssetPair pair, int count) throws IOException {
+        return getOrderBook(pair, count, LIBRARY_OBJECT);
     }
 
-    /** Request to get recent trades details<br>
-     * @param pair: pair to fetch details es. BTCEUR
-     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getRecentTrades">
-     *     https://docs.kraken.com/rest/#tag/Market-Data/operation/getRecentTrades</a>
+    /**
+     * Request to get order book details<br>
+     *
+     * @param pair:  pair from fetch details es. BTCEUR
+     * @param count: maximum number of asks and bids
+     * @return book as {"format"} defines
+     * @throws IOException when request has been go wrong -> you can use these methods to get more details about error:
+     *                     <ul>
+     *                         <li>
+     *                             {@link #getErrorResponse()}
+     *                         </li>
+     *                         <li>
+     *                             {@link #getJSONErrorResponse()}
+     *                         </li>
+     *                         <li>
+     *                             {@link #printErrorResponse()}
+     *                         </li>
+     *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
+     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getOrderBook">
+     * https://docs.kraken.com/rest/#tag/Market-Data/operation/getOrderBook</a>
+     **/
+    @WrappedRequest
+    @RequestPath(path = "https://api.kraken.com/0/public/Depth?pair={pair}&count={count}")
+    public <T> T getOrderBook(AssetPair pair, int count, ReturnFormat format) throws IOException {
+        return returnBook(sendGetRequest(GET_ORDER_BOOK_ENDPOINT + "?pair=" + pair.getAltName() + "&count=" +
+                count), format);
+    }
+
+    /**
+     * Request to get order book details<br>
+     *
+     * @param pair:  pair from fetch details es. BTCEUR
+     * @param count: maximum number of asks and bids
+     * @return order book details as {@link Book} custom object
+     * @throws IOException when request has been go wrong -> you can use these methods to get more details about error:
+     *                     <ul>
+     *                         <li>
+     *                             {@link #getErrorResponse()}
+     *                         </li>
+     *                         <li>
+     *                             {@link #getJSONErrorResponse()}
+     *                         </li>
+     *                         <li>
+     *                             {@link #printErrorResponse()}
+     *                         </li>
+     *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
+     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getOrderBook">
+     * https://docs.kraken.com/rest/#tag/Market-Data/operation/getOrderBook</a>
+     **/
+    @RequestPath(path = "https://api.kraken.com/0/public/Depth?pair={pair}&count={count}")
+    public Book getOrderBook(String pair, int count) throws IOException {
+        return getOrderBook(pair, count, LIBRARY_OBJECT);
+    }
+
+    /**
+     * Request to get order book details<br>
+     *
+     * @param pair:  pair from fetch details es. BTCEUR
+     * @param count: maximum number of asks and bids
+     * @return book as {"format"} defines
+     * @throws IOException when request has been go wrong -> you can use these methods to get more details about error:
+     *                     <ul>
+     *                         <li>
+     *                             {@link #getErrorResponse()}
+     *                         </li>
+     *                         <li>
+     *                             {@link #getJSONErrorResponse()}
+     *                         </li>
+     *                         <li>
+     *                             {@link #printErrorResponse()}
+     *                         </li>
+     *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
+     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getOrderBook">
+     * https://docs.kraken.com/rest/#tag/Market-Data/operation/getOrderBook</a>
+     **/
+    @RequestPath(path = "https://api.kraken.com/0/public/Depth?pair={pair}&count={count}")
+    public <T> T getOrderBook(String pair, int count, ReturnFormat format) throws IOException {
+        return returnBook(sendGetRequest(GET_ORDER_BOOK_ENDPOINT + "?pair=" + pair + "&count=" + count), format);
+    }
+
+    /**
+     * Method to assemble a book object
+     *
+     * @param bookResponse: book to format
+     * @param format:       return type formatter -> {@link ReturnFormat}
+     * @return book as {"format"} defines
+     **/
+    @Returner
+    private <T> T returnBook(String bookResponse, ReturnFormat format) {
+        switch (format) {
+            case JSON:
+                return (T) new JSONObject(bookResponse);
+            case LIBRARY_OBJECT:
+                return (T) new Book(new JSONObject(bookResponse));
+            default:
+                return (T) bookResponse;
+        }
+    }
+
+    /**
+     * Request to get recent trades details<br>
+     *
+     * @param pair: pair from fetch details es. BTCEUR
      * @return recent trades details as {@link Trades} custom object
-     * **/
-    public Trades getRecentTradesObject(String pair) throws IOException {
-        return new Trades(getRecentTradesJSON(pair));
+     * @throws IOException when request has been go wrong -> you can use these methods to get more details about error:
+     *                     <ul>
+     *                         <li>
+     *                             {@link #getErrorResponse()}
+     *                         </li>
+     *                         <li>
+     *                             {@link #getJSONErrorResponse()}
+     *                         </li>
+     *                         <li>
+     *                             {@link #printErrorResponse()}
+     *                         </li>
+     *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
+     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getRecentTrades">
+     * https://docs.kraken.com/rest/#tag/Market-Data/operation/getRecentTrades</a>
+     **/
+    @WrappedRequest
+    @RequestPath(path = "https://api.kraken.com/0/public/Trades?pair={pair}")
+    public Trades getRecentTrades(AssetPair pair) throws IOException {
+        return getRecentTrades(pair, LIBRARY_OBJECT);
     }
 
-    /** Request to get recent trades details<br>
-     * @param pair: pair to fetch details es. BTCEUR
-     * @param since: since timestamp from fetch data
+    /**
+     * Request to get recent trades details<br>
+     *
+     * @param pair:   pair from fetch details es. BTCEUR
+     * @param format: return type formatter -> {@link ReturnFormat}
+     * @return trades as {"format"} defines
+     * @throws IOException when request has been go wrong -> you can use these methods to get more details about error:
+     *                     <ul>
+     *                         <li>
+     *                             {@link #getErrorResponse()}
+     *                         </li>
+     *                         <li>
+     *                             {@link #getJSONErrorResponse()}
+     *                         </li>
+     *                         <li>
+     *                             {@link #printErrorResponse()}
+     *                         </li>
+     *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
      * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getRecentTrades">
-     *     https://docs.kraken.com/rest/#tag/Market-Data/operation/getRecentTrades</a>
-     * @return recent trades details as {@link String}
-     * **/
-    public String getRecentTrades(String pair, long since) throws IOException {
-        return sendGetRequest(GET_RECENT_TRADES_ENDPOINT + "?pair=" + pair + "&since=" + since);
+     * https://docs.kraken.com/rest/#tag/Market-Data/operation/getRecentTrades</a>
+     **/
+    @WrappedRequest
+    @RequestPath(path = "https://api.kraken.com/0/public/Trades?pair={pair}")
+    public <T> T getRecentTrades(AssetPair pair, ReturnFormat format) throws IOException {
+        return returnRecentTrades(sendGetRequest(GET_RECENT_TRADES_ENDPOINT + "?pair=" + pair.getAltName()),
+                format);
     }
 
-    /** Request to get recent trades details<br>
-     * @param pair: pair to fetch details es. BTCEUR
-     * @param since: since timestamp from fetch data
-     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getRecentTrades">
-     *     https://docs.kraken.com/rest/#tag/Market-Data/operation/getRecentTrades</a>
-     * @return recent trades details as {@link JSONObject}
-     * **/
-    public JSONObject getRecentTradesJSON(String pair, long since) throws IOException {
-        return new JSONObject(getRecentTrades(pair, since));
-    }
-
-    /** Request to get recent trades details<br>
-     * @param pair: pair to fetch details es. BTCEUR
-     * @param since: since timestamp from fetch data
-     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getRecentTrades">
-     *     https://docs.kraken.com/rest/#tag/Market-Data/operation/getRecentTrades</a>
+    /**
+     * Request to get recent trades details<br>
+     *
+     * @param pair: pair from fetch details es. BTCEUR
      * @return recent trades details as {@link Trades} custom object
-     * **/
-    public Trades getRecentTradesObject(String pair, long since) throws IOException {
-        return new Trades(getRecentTradesJSON(pair, since));
+     * @throws IOException when request has been go wrong -> you can use these methods to get more details about error:
+     *                     <ul>
+     *                         <li>
+     *                             {@link #getErrorResponse()}
+     *                         </li>
+     *                         <li>
+     *                             {@link #getJSONErrorResponse()}
+     *                         </li>
+     *                         <li>
+     *                             {@link #printErrorResponse()}
+     *                         </li>
+     *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
+     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getRecentTrades">
+     * https://docs.kraken.com/rest/#tag/Market-Data/operation/getRecentTrades</a>
+     **/
+    @RequestPath(path = "https://api.kraken.com/0/public/Trades?pair={pair}")
+    public Trades getRecentTrades(String pair) throws IOException {
+        return getRecentTrades(pair, LIBRARY_OBJECT);
     }
 
-    /** Request to get recent spreads details<br>
-     * @param pair: pair to fetch details es. BTCEUR
-     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getRecentSpreads">
-     *     https://docs.kraken.com/rest/#tag/Market-Data/operation/getRecentSpreads</a>
-     * @return recent spreads details as {@link String}
-     * **/
-    public String getRecentSpreads(String pair) throws IOException {
-        return sendGetRequest(GET_RECENT_SPREADS_ENDPOINT + "?pair=" + pair);
+    /**
+     * Request to get recent trades details<br>
+     *
+     * @param pair:   pair from fetch details es. BTCEUR
+     * @param format: return type formatter -> {@link ReturnFormat}
+     * @return trades as {"format"} defines
+     * @throws IOException when request has been go wrong -> you can use these methods to get more details about error:
+     *                     <ul>
+     *                         <li>
+     *                             {@link #getErrorResponse()}
+     *                         </li>
+     *                         <li>
+     *                             {@link #getJSONErrorResponse()}
+     *                         </li>
+     *                         <li>
+     *                             {@link #printErrorResponse()}
+     *                         </li>
+     *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
+     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getRecentTrades">
+     * https://docs.kraken.com/rest/#tag/Market-Data/operation/getRecentTrades</a>
+     **/
+    @RequestPath(path = "https://api.kraken.com/0/public/Trades?pair={pair}")
+    public <T> T getRecentTrades(String pair, ReturnFormat format) throws IOException {
+        return returnRecentTrades(sendGetRequest(GET_RECENT_TRADES_ENDPOINT + "?pair=" + pair), format);
     }
 
-    /** Request to get recent spreads details<br>
-     * @param pair: pair to fetch details es. BTCEUR
-     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getRecentSpreads">
-     *     https://docs.kraken.com/rest/#tag/Market-Data/operation/getRecentSpreads</a>
-     * @return recent spreads details as {@link JSONObject}
-     * **/
-    public JSONObject getRecentSpreadsJSON(String pair) throws IOException {
-        return new JSONObject(getRecentSpreads(pair));
+    /**
+     * Request to get recent trades details<br>
+     *
+     * @param pair:  pair from fetch details es. BTCEUR
+     * @param since: since timestamp from fetch data
+     * @return recent trades details as {@link Trades} custom object
+     * @throws IOException when request has been go wrong -> you can use these methods to get more details about error:
+     *                     <ul>
+     *                         <li>
+     *                             {@link #getErrorResponse()}
+     *                         </li>
+     *                         <li>
+     *                             {@link #getJSONErrorResponse()}
+     *                         </li>
+     *                         <li>
+     *                             {@link #printErrorResponse()}
+     *                         </li>
+     *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
+     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getRecentTrades">
+     * https://docs.kraken.com/rest/#tag/Market-Data/operation/getRecentTrades</a>
+     **/
+    @WrappedRequest
+    @RequestPath(path = "https://api.kraken.com/0/public/Trades?pair={pair}&since={since}")
+    public Trades getRecentTrades(AssetPair pair, long since) throws IOException {
+        return getRecentTrades(pair, since, LIBRARY_OBJECT);
     }
 
-    /** Request to get recent spreads details<br>
-     * @param pair: pair to fetch details es. BTCEUR
-     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getRecentSpreads">
-     *     https://docs.kraken.com/rest/#tag/Market-Data/operation/getRecentSpreads</a>
+    /**
+     * Request to get recent trades details<br>
+     *
+     * @param pair:  pair from fetch details es. BTCEUR
+     * @param since: since timestamp from fetch data
+     * @return trades as {"format"} defines
+     * @throws IOException when request has been go wrong -> you can use these methods to get more details about error:
+     *                     <ul>
+     *                         <li>
+     *                             {@link #getErrorResponse()}
+     *                         </li>
+     *                         <li>
+     *                             {@link #getJSONErrorResponse()}
+     *                         </li>
+     *                         <li>
+     *                             {@link #printErrorResponse()}
+     *                         </li>
+     *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
+     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getRecentTrades">
+     * https://docs.kraken.com/rest/#tag/Market-Data/operation/getRecentTrades</a>
+     **/
+    @WrappedRequest
+    @RequestPath(path = "https://api.kraken.com/0/public/Trades?pair={pair}&since={since}")
+    public <T> T getRecentTrades(AssetPair pair, long since, ReturnFormat format) throws IOException {
+        return returnRecentTrades(sendGetRequest(GET_RECENT_TRADES_ENDPOINT + "?pair=" + pair.getAltName() +
+                "&since=" + since), format);
+    }
+
+    /**
+     * Request to get recent trades details<br>
+     *
+     * @param pair:  pair from fetch details es. BTCEUR
+     * @param since: since timestamp from fetch data
+     * @return recent trades details as {@link Trades} custom object
+     * @throws IOException when request has been go wrong -> you can use these methods to get more details about error:
+     *                     <ul>
+     *                         <li>
+     *                             {@link #getErrorResponse()}
+     *                         </li>
+     *                         <li>
+     *                             {@link #getJSONErrorResponse()}
+     *                         </li>
+     *                         <li>
+     *                             {@link #printErrorResponse()}
+     *                         </li>
+     *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
+     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getRecentTrades">
+     * https://docs.kraken.com/rest/#tag/Market-Data/operation/getRecentTrades</a>
+     **/
+    @RequestPath(path = "https://api.kraken.com/0/public/Trades?pair={pair}&since={since}")
+    public Trades getRecentTrades(String pair, long since) throws IOException {
+        return getRecentTrades(pair, since, LIBRARY_OBJECT);
+    }
+
+    /**
+     * Request to get recent trades details<br>
+     *
+     * @param pair:  pair from fetch details es. BTCEUR
+     * @param since: since timestamp from fetch data
+     * @return trades as {"format"} defines
+     * @throws IOException when request has been go wrong -> you can use these methods to get more details about error:
+     *                     <ul>
+     *                         <li>
+     *                             {@link #getErrorResponse()}
+     *                         </li>
+     *                         <li>
+     *                             {@link #getJSONErrorResponse()}
+     *                         </li>
+     *                         <li>
+     *                             {@link #printErrorResponse()}
+     *                         </li>
+     *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
+     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getRecentTrades">
+     * https://docs.kraken.com/rest/#tag/Market-Data/operation/getRecentTrades</a>
+     **/
+    @RequestPath(path = "https://api.kraken.com/0/public/Trades?pair={pair}&since={since}")
+    public <T> T getRecentTrades(String pair, long since, ReturnFormat format) throws IOException {
+        return returnRecentTrades(sendGetRequest(GET_RECENT_TRADES_ENDPOINT + "?pair=" + pair + "&since=" +
+                since), format);
+    }
+
+    /**
+     * Method to assemble a trades object
+     *
+     * @param recentTradesResponse: trades to format
+     * @param format:               return type formatter -> {@link ReturnFormat}
+     * @return trades as {"format"} defines
+     **/
+    @Returner
+    private <T> T returnRecentTrades(String recentTradesResponse, ReturnFormat format) {
+        switch (format) {
+            case JSON:
+                return (T) new JSONObject(recentTradesResponse);
+            case LIBRARY_OBJECT:
+                return (T) new Trades(new JSONObject(recentTradesResponse));
+            default:
+                return (T) recentTradesResponse;
+        }
+    }
+
+    /**
+     * Request to get recent spreads details<br>
+     *
+     * @param pair: pair from fetch details es. BTCEUR
      * @return recent spreads details as {@link Spreads} custom object
-     * **/
+     * @throws IOException when request has been go wrong -> you can use these methods to get more details about error:
+     *                     <ul>
+     *                         <li>
+     *                             {@link #getErrorResponse()}
+     *                         </li>
+     *                         <li>
+     *                             {@link #getJSONErrorResponse()}
+     *                         </li>
+     *                         <li>
+     *                             {@link #printErrorResponse()}
+     *                         </li>
+     *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
+     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getRecentSpreads">
+     * https://docs.kraken.com/rest/#tag/Market-Data/operation/getRecentSpreads</a>
+     **/
+    @WrappedRequest
+    @RequestPath(path = "https://api.kraken.com/0/public/Spread?pair={pair}")
+    public Spreads getRecentSpreadsObject(AssetPair pair) throws IOException {
+        return getRecentSpreadsObject(pair, LIBRARY_OBJECT);
+    }
+
+    /**
+     * Request to get recent spreads details<br>
+     *
+     * @param pair:   pair from fetch details es. BTCEUR
+     * @param format: return type formatter -> {@link ReturnFormat}
+     * @return spreads as {"format"} defines
+     * @throws IOException when request has been go wrong -> you can use these methods to get more details about error:
+     *                     <ul>
+     *                         <li>
+     *                             {@link #getErrorResponse()}
+     *                         </li>
+     *                         <li>
+     *                             {@link #getJSONErrorResponse()}
+     *                         </li>
+     *                         <li>
+     *                             {@link #printErrorResponse()}
+     *                         </li>
+     *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
+     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getRecentSpreads">
+     * https://docs.kraken.com/rest/#tag/Market-Data/operation/getRecentSpreads</a>
+     **/
+    @WrappedRequest
+    @RequestPath(path = "https://api.kraken.com/0/public/Spread?pair={pair}")
+    public <T> T getRecentSpreadsObject(AssetPair pair, ReturnFormat format) throws IOException {
+        return returnRecentSpreads(sendGetRequest(GET_RECENT_SPREADS_ENDPOINT + "?pair=" + pair.getAltName()),
+                format);
+    }
+
+    /**
+     * Request to get recent spreads details<br>
+     *
+     * @param pair: pair from fetch details es. BTCEUR
+     * @return recent spreads details as {@link Spreads} custom object
+     * @throws IOException when request has been go wrong -> you can use these methods to get more details about error:
+     *                     <ul>
+     *                         <li>
+     *                             {@link #getErrorResponse()}
+     *                         </li>
+     *                         <li>
+     *                             {@link #getJSONErrorResponse()}
+     *                         </li>
+     *                         <li>
+     *                             {@link #printErrorResponse()}
+     *                         </li>
+     *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
+     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getRecentSpreads">
+     * https://docs.kraken.com/rest/#tag/Market-Data/operation/getRecentSpreads</a>
+     **/
+    @RequestPath(path = "https://api.kraken.com/0/public/Spread?pair={pair}")
     public Spreads getRecentSpreadsObject(String pair) throws IOException {
-        return new Spreads(getRecentSpreadsJSON(pair));
+        return getRecentSpreadsObject(pair, LIBRARY_OBJECT);
     }
 
-    /** Request to get recent spreads details<br>
-     * @param pair: pair to fetch details es. BTCEUR
-     * @param since: since timestamp from fetch data
+    /**
+     * Request to get recent spreads details<br>
+     *
+     * @param pair:   pair from fetch details es. BTCEUR
+     * @param format: return type formatter -> {@link ReturnFormat}
+     * @return spreads as {"format"} defines
+     * @throws IOException when request has been go wrong -> you can use these methods to get more details about error:
+     *                     <ul>
+     *                         <li>
+     *                             {@link #getErrorResponse()}
+     *                         </li>
+     *                         <li>
+     *                             {@link #getJSONErrorResponse()}
+     *                         </li>
+     *                         <li>
+     *                             {@link #printErrorResponse()}
+     *                         </li>
+     *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
      * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getRecentSpreads">
-     *     https://docs.kraken.com/rest/#tag/Market-Data/operation/getRecentSpreads</a>
-     * @return recent spreads details as {@link String}
-     * **/
-    public String getRecentSpreads(String pair, long since) throws IOException {
-        return sendGetRequest(GET_RECENT_SPREADS_ENDPOINT + "?pair=" + pair + "&since=" + since);
+     * https://docs.kraken.com/rest/#tag/Market-Data/operation/getRecentSpreads</a>
+     **/
+    @RequestPath(path = "https://api.kraken.com/0/public/Spread?pair={pair}")
+    public <T> T getRecentSpreadsObject(String pair, ReturnFormat format) throws IOException {
+        return returnRecentSpreads(sendGetRequest(GET_RECENT_SPREADS_ENDPOINT + "?pair=" + pair), format);
     }
 
-    /** Request to get recent spreads details<br>
-     * @param pair: pair to fetch details es. BTCEUR
+    /**
+     * Request to get recent spreads details<br>
+     *
+     * @param pair:  pair from fetch details es. BTCEUR
      * @param since: since timestamp from fetch data
-     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getRecentSpreads">
-     *     https://docs.kraken.com/rest/#tag/Market-Data/operation/getRecentSpreads</a>
-     * @return recent spreads details as {@link JSONObject}
-     * **/
-    public JSONObject getRecentSpreadsJSON(String pair, long since) throws IOException {
-        return new JSONObject(getRecentSpreads(pair, since));
-    }
-
-    /** Request to get recent spreads details<br>
-     * @param pair: pair to fetch details es. BTCEUR
-     * @param since: since timestamp from fetch data
-     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getRecentSpreads">
-     *     https://docs.kraken.com/rest/#tag/Market-Data/operation/getRecentSpreads</a>
      * @return recent spreads details as {@link Spreads} custom object
-     * **/
+     * @throws IOException when request has been go wrong -> you can use these methods to get more details about error:
+     *                     <ul>
+     *                         <li>
+     *                             {@link #getErrorResponse()}
+     *                         </li>
+     *                         <li>
+     *                             {@link #getJSONErrorResponse()}
+     *                         </li>
+     *                         <li>
+     *                             {@link #printErrorResponse()}
+     *                         </li>
+     *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
+     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getRecentSpreads">
+     * https://docs.kraken.com/rest/#tag/Market-Data/operation/getRecentSpreads</a>
+     **/
+    @WrappedRequest
+    @RequestPath(path = "https://api.kraken.com/0/public/Spread?pair={pair}&since={since}")
+    public Spreads getRecentSpreadsObject(AssetPair pair, long since) throws IOException {
+        return getRecentSpreadsObject(pair, since, LIBRARY_OBJECT);
+    }
+
+    /**
+     * Request to get recent spreads details<br>
+     *
+     * @param pair:   pair from fetch details es. BTCEUR
+     * @param since:  since timestamp from fetch data
+     * @param format: return type formatter -> {@link ReturnFormat}
+     * @return spreads as {"format"} defines
+     * @throws IOException when request has been go wrong -> you can use these methods to get more details about error:
+     *                     <ul>
+     *                         <li>
+     *                             {@link #getErrorResponse()}
+     *                         </li>
+     *                         <li>
+     *                             {@link #getJSONErrorResponse()}
+     *                         </li>
+     *                         <li>
+     *                             {@link #printErrorResponse()}
+     *                         </li>
+     *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
+     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getRecentSpreads">
+     * https://docs.kraken.com/rest/#tag/Market-Data/operation/getRecentSpreads</a>
+     **/
+    @WrappedRequest
+    @RequestPath(path = "https://api.kraken.com/0/public/Spread?pair={pair}&since={since}")
+    public <T> T getRecentSpreadsObject(AssetPair pair, long since, ReturnFormat format) throws IOException {
+        return returnRecentSpreads(sendGetRequest(GET_RECENT_SPREADS_ENDPOINT + "?pair=" + pair.getAltName()
+                + "&since=" + since), format);
+    }
+
+    /**
+     * Request to get recent spreads details<br>
+     *
+     * @param pair:  pair from fetch details es. BTCEUR
+     * @param since: since timestamp from fetch data
+     * @return recent spreads details as {@link Spreads} custom object
+     * @throws IOException when request has been go wrong -> you can use these methods to get more details about error:
+     *                     <ul>
+     *                         <li>
+     *                             {@link #getErrorResponse()}
+     *                         </li>
+     *                         <li>
+     *                             {@link #getJSONErrorResponse()}
+     *                         </li>
+     *                         <li>
+     *                             {@link #printErrorResponse()}
+     *                         </li>
+     *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
+     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getRecentSpreads">
+     * https://docs.kraken.com/rest/#tag/Market-Data/operation/getRecentSpreads</a>
+     **/
+    @RequestPath(path = "https://api.kraken.com/0/public/Spread?pair={pair}&since={since}")
     public Spreads getRecentSpreadsObject(String pair, long since) throws IOException {
-        return new Spreads(getRecentSpreadsJSON(pair, since));
+        return getRecentSpreadsObject(pair, since, LIBRARY_OBJECT);
+    }
+
+    /**
+     * Request to get recent spreads details<br>
+     *
+     * @param pair:   pair from fetch details es. BTCEUR
+     * @param since:  since timestamp from fetch data
+     * @param format: return type formatter -> {@link ReturnFormat}
+     * @return spreads as {"format"} defines
+     * @throws IOException when request has been go wrong -> you can use these methods to get more details about error:
+     *                     <ul>
+     *                         <li>
+     *                             {@link #getErrorResponse()}
+     *                         </li>
+     *                         <li>
+     *                             {@link #getJSONErrorResponse()}
+     *                         </li>
+     *                         <li>
+     *                             {@link #printErrorResponse()}
+     *                         </li>
+     *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
+     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getRecentSpreads">
+     * https://docs.kraken.com/rest/#tag/Market-Data/operation/getRecentSpreads</a>
+     **/
+    @RequestPath(path = "https://api.kraken.com/0/public/Spread?pair={pair}&since={since}")
+    public <T> T getRecentSpreadsObject(String pair, long since, ReturnFormat format) throws IOException {
+        return returnRecentSpreads(sendGetRequest(GET_RECENT_SPREADS_ENDPOINT + "?pair=" + pair + "&since="
+                + since), format);
+    }
+
+    /**
+     * Method to assemble a spreads object
+     *
+     * @param recentSpreadsResponse: spreads to format
+     * @param format:                return type formatter -> {@link ReturnFormat}
+     * @return spreads as {"format"} defines
+     **/
+    @Returner
+    private <T> T returnRecentSpreads(String recentSpreadsResponse, ReturnFormat format) {
+        switch (format) {
+            case JSON:
+                return (T) new JSONObject(recentSpreadsResponse);
+            case LIBRARY_OBJECT:
+                return (T) new Spreads(new JSONObject(recentSpreadsResponse));
+            default:
+                return (T) recentSpreadsResponse;
+        }
     }
 
     /** Method to get prevision of a cryptocurrency in base of day's gap inserted
@@ -1112,9 +2461,9 @@ public class KrakenMarketManager extends KrakenPublicManager {
      * **/
     public double getSymbolForecast(String symbol, int OHCLInterval, int intervalDays, int toleranceValue) throws IOException {
         ArrayList<Double> historicalValues = new ArrayList<>();
-        for (OHLCData.TickData tickData : getOHLCDataObject(symbol, OHCLInterval).getTicksData())
+        for (OHLCData.TickData tickData : getOHLCData(symbol, OHCLInterval).getTicksData())
             historicalValues.add(tickData.getHigh());
-        return computeTPTOPIndex(historicalValues, getTickerInformationObject(symbol).getClose().getPrice(), intervalDays,
+        return computeTPTOPIndex(historicalValues, getTickerInformation(symbol).getClose().getPrice(), intervalDays,
                 toleranceValue);
     }
 

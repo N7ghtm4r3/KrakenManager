@@ -74,36 +74,76 @@ public class KrakenWebsocketsAuthManager extends KrakenPrivateManager {
         super();
     }
 
-    /** Request to get websockets auth token <br>
+    /**
+     * Request to get websockets auth token <br>
      * Any params required
+     *
+     * @return websockets auth token as {@link String}
+     * @throws Exception when request has been go wrong -> you can use these methods to get more details about error:
+     *                   <ul>
+     *                       <li>
+     *                           {@link #getErrorResponse()}
+     *                       </li>
+     *                       <li>
+     *                           {@link #getJSONErrorResponse()}
+     *                       </li>
+     *                       <li>
+     *                           {@link #printErrorResponse()}
+     *                       </li>
+     *                   </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
      * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/Websockets-Authentication/operation/getWebsocketsToken">
-     *     https://docs.kraken.com/rest/#tag/Websockets-Authentication/operation/getWebsocketsToken</a>
+     * https://docs.kraken.com/rest/#tag/Websockets-Authentication/operation/getWebsocketsToken</a>
      * @implNote an authentication token must be requested via this REST API endpoint in order to connect to and authenticate
      * with Kraken's Websockets API. The token should be used within 15 minutes of creation, but it does not expire once a successful
      * Websockets connection and private subscription has been made and is maintained
      * @implSpec the 'Access WebSockets API' permission must be enabled for the API key in order to generate the authentication token.
-     * @return websockets auth token as {@link String}
-     * **/
+     **/
     public String getWebsocketsToken() throws Exception {
         return sendPostRequest(GET_WEBSOCKETS_TOKEN_ENDPOINT, null);
     }
 
-    /** Request to get websockets auth token <br>
+    /**
+     * Request to get websockets auth token <br>
      * Any params required
+     *
+     * @return websockets auth token as {@link JSONObject}
+     * @throws Exception when request has been go wrong -> you can use these methods to get more details about error:
+     *                   <ul>
+     *                       <li>
+     *                           {@link #getErrorResponse()}
+     *                       </li>
+     *                       <li>
+     *                           {@link #getJSONErrorResponse()}
+     *                       </li>
+     *                       <li>
+     *                           {@link #printErrorResponse()}
+     *                       </li>
+     *                   </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
      * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/Websockets-Authentication/operation/getWebsocketsToken">
-     *     https://docs.kraken.com/rest/#tag/Websockets-Authentication/operation/getWebsocketsToken</a>
+     * https://docs.kraken.com/rest/#tag/Websockets-Authentication/operation/getWebsocketsToken</a>
      * @implNote an authentication token must be requested via this REST API endpoint in order to connect to and authenticate
      * with Kraken's Websockets API. The token should be used within 15 minutes of creation, but it does not expire once a successful
      * Websockets connection and private subscription has been made and is maintained
      * @implSpec the 'Access WebSockets API' permission must be enabled for the API key in order to generate the authentication token.
-     * @return websockets auth token as {@link JSONObject}
-     * **/
+     **/
     public JSONObject getWebsocketsTokenJSON() throws Exception {
         return new JSONObject(getWebsocketsToken());
     }
 
     /** Request to get websockets auth token <br>
      * Any params required
+     * @throws Exception when request has been go wrong -> you can use these methods to get more details about error:
+     *                     <ul>
+     *                         <li>
+     *                             {@link #getErrorResponse()}
+     *                         </li>
+     *                         <li>
+     *                             {@link #getJSONErrorResponse()}
+     *                         </li>
+     *                         <li>
+     *                             {@link #printErrorResponse()}
+     *                         </li>
+     *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
      * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/Websockets-Authentication/operation/getWebsocketsToken">
      *     https://docs.kraken.com/rest/#tag/Websockets-Authentication/operation/getWebsocketsToken</a>
      * @implNote an authentication token must be requested via this REST API endpoint in order to connect to and authenticate

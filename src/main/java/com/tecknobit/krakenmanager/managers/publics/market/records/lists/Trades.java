@@ -18,36 +18,40 @@ public class Trades extends MarketList {
 
     /**
      * {@code recentTrades} is instance that memorizes list of {@link RecentTrade}
-     * **/
+     **/
     private final ArrayList<RecentTrade> recentTrades;
 
-    /** Constructor to init a {@link Trades} object
-     * @param jsonResponse: base json response
-     * @param last: last timestamp value
-     * @param symbol: symbol value
+    /**
+     * Constructor to init a {@link Trades} object
+     *
+     * @param last:         last timestamp value
+     * @param symbol:       symbol value
      * @param recentTrades: list of {@link RecentTrade}
-     * **/
-    public Trades(JSONObject jsonResponse, long last, String symbol, ArrayList<RecentTrade> recentTrades) {
-        super(jsonResponse, last, symbol);
+     **/
+    public Trades(long last, String symbol, ArrayList<RecentTrade> recentTrades) {
+        super(last, symbol);
         this.recentTrades = recentTrades;
     }
 
-    /** Constructor to init a {@link Trades} object
-     * @param jsonResponse: base json response
+    /**
+     * Constructor to init a {@link Trades} object
+     *
      * @param recentTrades: list of {@link RecentTrade}
-     * **/
-    public Trades(JSONObject jsonResponse, ArrayList<RecentTrade> recentTrades) {
-        super(jsonResponse);
+     **/
+    public Trades(ArrayList<RecentTrade> recentTrades) {
+        super(null);
         this.recentTrades = recentTrades;
     }
 
-    /** Constructor to init a {@link Trades} object
+    /**
+     * Constructor to init a {@link Trades} object
+     *
      * @param jsonResponse: base json response
-     * **/
+     **/
     public Trades(JSONObject jsonResponse) {
         super(jsonResponse);
         recentTrades = new ArrayList<>();
-        JSONArray jsonTrades = result.getJSONArray(symbol);
+        JSONArray jsonTrades = result.getJSONArray(symbol, new JSONArray());
         for (int j = 0; j < jsonTrades.length(); j++)
             recentTrades.add(new RecentTrade(jsonTrades.getJSONArray(0)));
     }
@@ -60,17 +64,6 @@ public class Trades extends MarketList {
      **/
     public ArrayList<RecentTrade> getRecentTrades() {
         return recentTrades;
-    }
-
-    /**
-     * Returns a string representation of the object <br>
-     * Any params required
-     *
-     * @return a string representation of the object as {@link String}
-     */
-    @Override
-    public String toString() {
-        return new JSONObject(this).toString();
     }
 
     /**
@@ -126,7 +119,7 @@ public class Trades extends MarketList {
         }
 
         /** Constructor to init a {@link RecentTrade} object
-         * @param jsonTrade: recent trade data in JSON format
+         * @param jsonTrade: recent trade data in {@code "JSON"} format
          * **/
         public RecentTrade(JSONArray jsonTrade) {
             if (jsonTrade != null) {

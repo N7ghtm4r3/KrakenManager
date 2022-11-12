@@ -1,5 +1,6 @@
 package com.tecknobit.krakenmanager.managers.publics.market.records;
 
+import com.tecknobit.apimanager.annotations.Returner;
 import com.tecknobit.apimanager.formatters.JsonHelper;
 import com.tecknobit.krakenmanager.managers.KrakenManager;
 import org.json.JSONArray;
@@ -131,7 +132,6 @@ public class AssetPair extends KrakenManager.KrakenResponse {
     /**
      * Constructor to init an {@link AssetPair} object
      *
-     * @param jsonResponse      : base json response
      * @param altName           : alt name value
      * @param wsName            : ws name value
      * @param aClassBase        : asset class base value
@@ -148,10 +148,10 @@ public class AssetPair extends KrakenManager.KrakenResponse {
      * @param pairIndex         : symbol of pairs es. BTCEUR
      * @param minCost:          minimum order cost (in terms of quote currency)
      **/
-    public AssetPair(JSONObject jsonResponse, String altName, String wsName, String aClassBase, String base,
-                     String aClassQuote, String quote, int pairDecimals, int lotDecimals, int lotMultiplier,
-                     String feeVolumeCurrency, double marginCall, double marginStop, double minOrder, String pairIndex, double minCost) {
-        super(jsonResponse);
+    public AssetPair(String altName, String wsName, String aClassBase, String base, String aClassQuote, String quote,
+                     int pairDecimals, int lotDecimals, int lotMultiplier, String feeVolumeCurrency, double marginCall,
+                     double marginStop, double minOrder, String pairIndex, double minCost) {
+        super(null);
         this.altName = altName;
         this.wsName = wsName;
         this.aClassBase = aClassBase;
@@ -229,36 +229,39 @@ public class AssetPair extends KrakenManager.KrakenResponse {
         this.minCost = minCost;
     }
 
-    /** Constructor to init an {@link AssetPair} object
-     * @param jsonAsset: asset pair value in JSON format
-     * **/
+    /**
+     * Constructor to init an {@link AssetPair} object
+     *
+     * @param jsonAsset: asset pair value in {@code "JSON"} format
+     **/
     public AssetPair(JSONObject jsonAsset) {
-        super(null);
-        JsonHelper asset = new JsonHelper(jsonAsset);
-        altName = asset.getString("altname");
-        wsName = asset.getString("wsname");
-        aClassBase = asset.getString("aclass_base");
-        base = asset.getString("base");
-        aClassQuote = asset.getString("aclass_quote");
-        quote = asset.getString("quote");
-        pairDecimals = asset.getInt("pair_decimals");
-        lotDecimals = asset.getInt("lot_decimals");
-        lotMultiplier = asset.getInt("lot_multiplier");
-        leverageBuy = loadLeverageList(asset.getJSONArray("leverage_buy"));
-        leverageSell = loadLeverageList(asset.getJSONArray("leverage_sell"));
-        fees = loadFeesList(asset.getJSONArray("fees"));
-        makerFees = loadFeesList(asset.getJSONArray("fees_maker"));
-        feeVolumeCurrency = asset.getString("fee_volume_currency");
-        marginCall = asset.getDouble("margin_call");
-        marginStop = asset.getDouble("margin_stop");
-        minOrder = asset.getDouble("ordermin");
-        minCost = asset.getDouble("costmin");
+        super(jsonAsset);
+        altName = result.getString("altname");
+        wsName = result.getString("wsname");
+        aClassBase = result.getString("aclass_base");
+        base = result.getString("base");
+        aClassQuote = result.getString("aclass_quote");
+        quote = result.getString("quote");
+        pairDecimals = result.getInt("pair_decimals", 0);
+        lotDecimals = result.getInt("lot_decimals", 0);
+        lotMultiplier = result.getInt("lot_multiplier", 0);
+        leverageBuy = loadLeverageList(result.getJSONArray("leverage_buy", new JSONArray()));
+        leverageSell = loadLeverageList(result.getJSONArray("leverage_sell", new JSONArray()));
+        fees = loadFeesList(result.getJSONArray("fees", new JSONArray()));
+        makerFees = loadFeesList(result.getJSONArray("fees_maker", new JSONArray()));
+        feeVolumeCurrency = result.getString("fee_volume_currency");
+        marginCall = result.getDouble("margin_call", 0);
+        marginStop = result.getDouble("margin_stop", 0);
+        minOrder = result.getDouble("ordermin", 0);
+        minCost = result.getDouble("costmin", 0);
     }
 
-    /** Method to assemble a leverage list
-     * @param jsonList: jsonObject obtained by response request
+    /**
+     * Method to assemble a leverage list
+     *
+     * @param jsonList: obtained by response request
      * @return leverage list as int array
-     * **/
+     **/
     private int[] loadLeverageList(JSONArray jsonList){
         if(jsonList != null){
             int elements = jsonList.length();
@@ -273,9 +276,10 @@ public class AssetPair extends KrakenManager.KrakenResponse {
     /**
      * Method to assemble a fees list
      *
-     * @param jsonList: jsonObject obtained by response request
+     * @param jsonList: obtained by response request
      * @return fees list as {@link ArrayList} of {@link Fee}
      **/
+    @Returner
     private ArrayList<Fee> loadFeesList(JSONArray jsonList) {
         ArrayList<Fee> feesList = new ArrayList<>();
         if (jsonList != null)
@@ -509,17 +513,6 @@ public class AssetPair extends KrakenManager.KrakenResponse {
     }
 
     /**
-     * Returns a string representation of the object <br>
-     * Any params required
-     *
-     * @return a string representation of the object as {@link String}
-     */
-    @Override
-    public String toString() {
-        return new JSONObject(this).toString();
-    }
-
-    /**
      * The {@code Fee} class is useful to format a fee object
      **/
     public static class Fee {
@@ -532,7 +525,7 @@ public class AssetPair extends KrakenManager.KrakenResponse {
         /**
          * Constructor to init a {@link Fee}
          *
-         * @param jsonFees: fees data in JSON format
+         * @param jsonFees: fees data in {@code "JSON"} format
          **/
         public Fee(JSONArray jsonFees) {
             int feesNumber = jsonFees.length();
