@@ -12,11 +12,11 @@ import static java.lang.Double.parseDouble;
  * <ul>
  *    <li>
  *        <a href="https://docs.kraken.com/rest/#tag/User-Funding/operation/getStatusRecentDeposits">
- *           https://docs.kraken.com/rest/#tag/User-Funding/operation/getStatusRecentDeposits</a>
+ *           Get Status of Recent Deposits/a>
  *    </li>
  *    <li>
  *        <a href="https://docs.kraken.com/rest/#tag/User-Funding/operation/getStatusRecentWithdrawals">
- *           https://docs.kraken.com/rest/#tag/User-Funding/operation/getStatusRecentWithdrawals</a>
+ *           Get Status of Recent Withdrawals</a>
  *    </li>
  * </ul>
  * @author N7ghtm4r3 - Tecknobit

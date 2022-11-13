@@ -10,7 +10,7 @@ import static java.lang.Long.parseLong;
  *
  * @author N7ghtm4r3 - Tecknobit
  * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Funding/operation/getDepositAddresses">
- * https://docs.kraken.com/rest/#tag/User-Funding/operation/getDepositAddresses</a>
+ * Get Deposit Addresses</a>
  **/
 public class DepositAddress extends KrakenManager.KrakenResponse {
 

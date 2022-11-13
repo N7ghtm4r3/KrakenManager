@@ -21,7 +21,7 @@ import static com.tecknobit.apimanager.trading.TradingTools.textualizeAssetPerce
  *
  * @author N7ghtm4r3 - Tecknobit
  * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#section/General-Usage">
- * https://docs.kraken.com/rest/#section/General-Usage</a>
+ * General-Usage</a>
  **/
 public class KrakenManager {
 

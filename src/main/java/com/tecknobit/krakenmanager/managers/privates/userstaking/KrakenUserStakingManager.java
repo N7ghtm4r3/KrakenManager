@@ -16,7 +16,7 @@ import static com.tecknobit.krakenmanager.constants.EndpointsList.*;
  *
  * @author N7ghtm4r3 - Tecknobit
  * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Staking">
- * https://docs.kraken.com/rest/#tag/User-Staking</a>
+ * User Staking</a>
  **/
 public class KrakenUserStakingManager extends KrakenPrivateManager {
 

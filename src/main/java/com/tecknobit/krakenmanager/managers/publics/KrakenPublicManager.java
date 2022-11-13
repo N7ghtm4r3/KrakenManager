@@ -14,7 +14,7 @@ import static com.tecknobit.apimanager.formatters.JsonHelper.getJSONObject;
  *
  * @author N7ghtm4r3 - Tecknobit
  * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#section/General-Usage">
- * https://docs.kraken.com/rest/#section/General-Usage</a>
+ * General-Usage</a>
  **/
 public class KrakenPublicManager extends KrakenManager {
 

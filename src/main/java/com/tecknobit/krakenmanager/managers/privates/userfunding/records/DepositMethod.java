@@ -10,7 +10,7 @@ import static com.tecknobit.apimanager.trading.TradingTools.roundValue;
  *
  * @author N7ghtm4r3 - Tecknobit
  * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Funding/operation/getDepositMethods">
- * https://docs.kraken.com/rest/#tag/User-Funding/operation/getDepositMethods</a>
+ * Get Deposit Methods</a>
  **/
 public class DepositMethod extends KrakenManager.KrakenResponse {
 

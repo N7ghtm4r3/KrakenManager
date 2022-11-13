@@ -20,7 +20,7 @@ import static com.tecknobit.krakenmanager.managers.privates.usertrading.records.
  *
  * @author N7ghtm4r3 - Tecknobit
  * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading">
- * https://docs.kraken.com/rest/#tag/User-Trading</a>
+ * User Trading</a>
  **/
 public class KrakenUserTradingManager extends KrakenPrivateManager {
 

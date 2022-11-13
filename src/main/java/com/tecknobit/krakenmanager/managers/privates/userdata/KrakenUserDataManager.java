@@ -42,7 +42,7 @@ import static com.tecknobit.krakenmanager.constants.EndpointsList.*;
  *
  * @author N7ghtm4r3 - Tecknobit
  * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Data">
- * https://docs.kraken.com/rest/#tag/User-Data</a>
+ * User Data</a>
  **/
 public class KrakenUserDataManager extends KrakenPrivateManager {
 
@@ -2504,7 +2504,7 @@ public class KrakenUserDataManager extends KrakenPrivateManager {
      *                   </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Data/operation/removeExport">
      * Delete Export Report</a>
-     * @apiNote the {@link ReturnFormat#LIBRARY_OBJECT} format type in this case will return whether deletion has been successful
+     * @implSpec the {@link ReturnFormat#LIBRARY_OBJECT} format type in this case will return whether deletion has been successful
      * as boolean
      **/
     @Returner

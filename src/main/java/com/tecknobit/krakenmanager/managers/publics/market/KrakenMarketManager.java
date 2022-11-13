@@ -25,7 +25,7 @@ import static com.tecknobit.krakenmanager.constants.EndpointsList.*;
  *
  * @author N7ghtm4r3 - Tecknobit
  * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data">
- * https://docs.kraken.com/rest/#tag/Market-Data</a>
+ * Market Data</a>
  **/
 public class KrakenMarketManager extends KrakenPublicManager {
 

@@ -8,7 +8,7 @@ import org.json.JSONObject;
  *
  * @author N7ghtm4r3 - Tecknobit
  * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/Websockets-Authentication/operation/getWebsocketsToken">
- * https://docs.kraken.com/rest/#tag/Websockets-Authentication/operation/getWebsocketsToken</a>
+ * Get Websockets Token</a>
  **/
 public class WebsocketsToken extends KrakenManager.KrakenResponse {
 
