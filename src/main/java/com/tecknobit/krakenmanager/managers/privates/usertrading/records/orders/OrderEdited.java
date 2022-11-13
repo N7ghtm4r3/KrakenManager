@@ -12,7 +12,7 @@ import static com.tecknobit.apimanager.trading.TradingTools.roundValue;
  * The {@code OrderEdited} class is useful to assemble an order that has been edited
  *
  * @author N7ghtm4r3 - Tecknobit
- * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/editOrder">
+ * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/editOrder">
  * https://docs.kraken.com/rest/#tag/User-Trading/operation/editOrder</a>
  **/
 public class OrderEdited extends KrakenManager.KrakenResponse{

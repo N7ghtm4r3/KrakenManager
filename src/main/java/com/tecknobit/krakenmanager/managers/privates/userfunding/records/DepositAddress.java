@@ -7,10 +7,11 @@ import static java.lang.Long.parseLong;
 
 /**
  * The {@code DepositAddress} class is useful to format a deposit address
- * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Funding/operation/getDepositAddresses">
- *    https://docs.kraken.com/rest/#tag/User-Funding/operation/getDepositAddresses</a>
+ *
  * @author N7ghtm4r3 - Tecknobit
- * **/
+ * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Funding/operation/getDepositAddresses">
+ * https://docs.kraken.com/rest/#tag/User-Funding/operation/getDepositAddresses</a>
+ **/
 public class DepositAddress extends KrakenManager.KrakenResponse {
 
     /**

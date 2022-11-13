@@ -7,11 +7,12 @@ import org.json.JSONObject;
 import static com.tecknobit.krakenmanager.constants.EndpointsList.GET_WEBSOCKETS_TOKEN_ENDPOINT;
 
 /**
- *  The {@code KrakenWebsocketsAuthManager} class is useful to manage all websockets endpoints
- *  @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/Websockets-Authentication">
- *      https://docs.kraken.com/rest/#tag/Websockets-Authentication</a>
- *  @author N7ghtm4r3 - Tecknobit
- * **/
+ * The {@code KrakenWebsocketsAuthManager} class is useful to manage all websockets endpoints
+ *
+ * @author N7ghtm4r3 - Tecknobit
+ * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/Websockets-Authentication">
+ * https://docs.kraken.com/rest/#tag/Websockets-Authentication</a>
+ **/
 public class KrakenWebsocketsAuthManager extends KrakenPrivateManager {
 
     /** Constructor to init a {@link KrakenWebsocketsAuthManager}
@@ -91,7 +92,7 @@ public class KrakenWebsocketsAuthManager extends KrakenPrivateManager {
      *                           {@link #printErrorResponse()}
      *                       </li>
      *                   </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
-     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/Websockets-Authentication/operation/getWebsocketsToken">
+     * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/Websockets-Authentication/operation/getWebsocketsToken">
      * https://docs.kraken.com/rest/#tag/Websockets-Authentication/operation/getWebsocketsToken</a>
      * @implNote an authentication token must be requested via this REST API endpoint in order to connect to and authenticate
      * with Kraken's Websockets API. The token should be used within 15 minutes of creation, but it does not expire once a successful
@@ -119,7 +120,7 @@ public class KrakenWebsocketsAuthManager extends KrakenPrivateManager {
      *                           {@link #printErrorResponse()}
      *                       </li>
      *                   </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
-     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/Websockets-Authentication/operation/getWebsocketsToken">
+     * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/Websockets-Authentication/operation/getWebsocketsToken">
      * https://docs.kraken.com/rest/#tag/Websockets-Authentication/operation/getWebsocketsToken</a>
      * @implNote an authentication token must be requested via this REST API endpoint in order to connect to and authenticate
      * with Kraken's Websockets API. The token should be used within 15 minutes of creation, but it does not expire once a successful
@@ -144,7 +145,7 @@ public class KrakenWebsocketsAuthManager extends KrakenPrivateManager {
      *                             {@link #printErrorResponse()}
      *                         </li>
      *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
-     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/Websockets-Authentication/operation/getWebsocketsToken">
+     * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/Websockets-Authentication/operation/getWebsocketsToken">
      *     https://docs.kraken.com/rest/#tag/Websockets-Authentication/operation/getWebsocketsToken</a>
      * @implNote an authentication token must be requested via this REST API endpoint in order to connect to and authenticate
      * with Kraken's Websockets API. The token should be used within 15 minutes of creation, but it does not expire once a successful

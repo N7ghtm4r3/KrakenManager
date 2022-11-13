@@ -10,10 +10,11 @@ import static com.tecknobit.apimanager.trading.TradingTools.roundValue;
 
 /**
  * The {@code AccountBalance} class is useful to format account balance data object
- * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Data/operation/getAccountBalance">
- *     https://docs.kraken.com/rest/#tag/User-Data/operation/getAccountBalance</a>
+ *
  * @author N7ghtm4r3 - Tecknobit
- * **/
+ * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Data/operation/getAccountBalance">
+ * Get Account Balance</a>
+ **/
 public class AccountBalance extends KrakenManager.KrakenResponse {
 
     /**

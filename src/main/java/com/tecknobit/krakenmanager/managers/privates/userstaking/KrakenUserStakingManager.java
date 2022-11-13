@@ -12,11 +12,12 @@ import static com.tecknobit.apimanager.formatters.ScientificNotationParser.sNota
 import static com.tecknobit.krakenmanager.constants.EndpointsList.*;
 
 /**
- *  The {@code KrakenUserStakingManager} class is useful to manage all user staking endpoints
- *  @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Staking">
- *      https://docs.kraken.com/rest/#tag/User-Staking</a>
- *  @author N7ghtm4r3 - Tecknobit
- * **/
+ * The {@code KrakenUserStakingManager} class is useful to manage all user staking endpoints
+ *
+ * @author N7ghtm4r3 - Tecknobit
+ * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Staking">
+ * https://docs.kraken.com/rest/#tag/User-Staking</a>
+ **/
 public class KrakenUserStakingManager extends KrakenPrivateManager {
 
     /** Constructor to init a {@link KrakenUserStakingManager}
@@ -98,7 +99,7 @@ public class KrakenUserStakingManager extends KrakenPrivateManager {
      *                           {@link #printErrorResponse()}
      *                       </li>
      *                   </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
-     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Staking/operation/stake">
+     * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Staking/operation/stake">
      * https://docs.kraken.com/rest/#tag/User-Staking/operation/stake</a>
      **/
     public String stakeAsset(String asset, double amount, String method) throws Exception {
@@ -128,7 +129,7 @@ public class KrakenUserStakingManager extends KrakenPrivateManager {
      *                           {@link #printErrorResponse()}
      *                       </li>
      *                   </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
-     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Staking/operation/stake">
+     * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Staking/operation/stake">
      * https://docs.kraken.com/rest/#tag/User-Staking/operation/stake</a>
      **/
     public JSONObject stakeAssetJSON(String asset, double amount, String method) throws Exception {
@@ -151,7 +152,7 @@ public class KrakenUserStakingManager extends KrakenPrivateManager {
      *                             {@link #printErrorResponse()}
      *                         </li>
      *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
-     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Staking/operation/stake">
+     * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Staking/operation/stake">
      *     https://docs.kraken.com/rest/#tag/User-Staking/operation/stake</a>
      * @return stake result identifier as {@link String}
      * **/
@@ -174,7 +175,7 @@ public class KrakenUserStakingManager extends KrakenPrivateManager {
      *                             {@link #printErrorResponse()}
      *                         </li>
      *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
-     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Staking/operation/unstake">
+     * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Staking/operation/unstake">
      *     https://docs.kraken.com/rest/#tag/User-Staking/operation/unstake</a>
      * @return unstake result as {@link String}
      * **/
@@ -200,7 +201,7 @@ public class KrakenUserStakingManager extends KrakenPrivateManager {
      *                             {@link #printErrorResponse()}
      *                         </li>
      *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
-     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Staking/operation/unstake">
+     * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Staking/operation/unstake">
      *     https://docs.kraken.com/rest/#tag/User-Staking/operation/unstake</a>
      * @return unstake result as {@link JSONObject}
      * **/
@@ -223,7 +224,7 @@ public class KrakenUserStakingManager extends KrakenPrivateManager {
      *                             {@link #printErrorResponse()}
      *                         </li>
      *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
-     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Staking/operation/unstake">
+     * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Staking/operation/unstake">
      *     https://docs.kraken.com/rest/#tag/User-Staking/operation/unstake</a>
      * @return unstake result identifier as {@link JSONObject}
      * **/
@@ -246,7 +247,7 @@ public class KrakenUserStakingManager extends KrakenPrivateManager {
      *                             {@link #printErrorResponse()}
      *                         </li>
      *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
-     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Staking/operation/getStakingAssetInfo">
+     * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Staking/operation/getStakingAssetInfo">
      *     https://docs.kraken.com/rest/#tag/User-Staking/operation/getStakingAssetInfo</a>
      * @return stakeable assets list as {@link String}
      * **/
@@ -269,7 +270,7 @@ public class KrakenUserStakingManager extends KrakenPrivateManager {
      *                             {@link #printErrorResponse()}
      *                         </li>
      *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
-     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Staking/operation/getStakingAssetInfo">
+     * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Staking/operation/getStakingAssetInfo">
      *     https://docs.kraken.com/rest/#tag/User-Staking/operation/getStakingAssetInfo</a>
      * @return stakeable assets list as {@link JSONObject}
      * **/
@@ -292,7 +293,7 @@ public class KrakenUserStakingManager extends KrakenPrivateManager {
      *                             {@link #printErrorResponse()}
      *                         </li>
      *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
-     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Staking/operation/getStakingAssetInfo">
+     * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Staking/operation/getStakingAssetInfo">
      *     https://docs.kraken.com/rest/#tag/User-Staking/operation/getStakingAssetInfo</a>
      * @return stakeable assets list as {@link ArrayList} of {@link StakeableAsset} custom object
      * **/
@@ -319,7 +320,7 @@ public class KrakenUserStakingManager extends KrakenPrivateManager {
      *                             {@link #printErrorResponse()}
      *                         </li>
      *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
-     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Staking/operation/getStakingPendingDeposits">
+     * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Staking/operation/getStakingPendingDeposits">
      *     https://docs.kraken.com/rest/#tag/User-Staking/operation/getStakingPendingDeposits</a>
      * @return list of pending staking transactions as {@link String}
      * **/
@@ -342,7 +343,7 @@ public class KrakenUserStakingManager extends KrakenPrivateManager {
      *                             {@link #printErrorResponse()}
      *                         </li>
      *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
-     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Staking/operation/getStakingPendingDeposits">
+     * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Staking/operation/getStakingPendingDeposits">
      *     https://docs.kraken.com/rest/#tag/User-Staking/operation/getStakingPendingDeposits</a>
      * @return list of pending staking transactions as {@link JSONObject}
      * **/
@@ -365,7 +366,7 @@ public class KrakenUserStakingManager extends KrakenPrivateManager {
      *                             {@link #printErrorResponse()}
      *                         </li>
      *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
-     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Staking/operation/getStakingPendingDeposits">
+     * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Staking/operation/getStakingPendingDeposits">
      *     https://docs.kraken.com/rest/#tag/User-Staking/operation/getStakingPendingDeposits</a>
      * @return list of pending staking transactions as {@link ArrayList} of {@link StakingTransaction} custom object
      * **/
@@ -387,7 +388,7 @@ public class KrakenUserStakingManager extends KrakenPrivateManager {
      *                             {@link #printErrorResponse()}
      *                         </li>
      *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
-     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Staking/operation/getStakingTransactions">
+     * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Staking/operation/getStakingTransactions">
      *     https://docs.kraken.com/rest/#tag/User-Staking/operation/getStakingTransactions</a>
      * @return list staking transactions as {@link String}
      * **/
@@ -409,7 +410,7 @@ public class KrakenUserStakingManager extends KrakenPrivateManager {
      *                             {@link #printErrorResponse()}
      *                         </li>
      *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
-     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Staking/operation/getStakingTransactions">
+     * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Staking/operation/getStakingTransactions">
      *     https://docs.kraken.com/rest/#tag/User-Staking/operation/getStakingTransactions</a>
      * @return list staking transactions as {@link JSONObject}
      * **/
@@ -431,7 +432,7 @@ public class KrakenUserStakingManager extends KrakenPrivateManager {
      *                             {@link #printErrorResponse()}
      *                         </li>
      *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
-     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Staking/operation/getStakingTransactions">
+     * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Staking/operation/getStakingTransactions">
      *     https://docs.kraken.com/rest/#tag/User-Staking/operation/getStakingTransactions</a>
      * @return list staking transactions as {@link ArrayList} of {@link StakingTransaction} custom object
      * **/

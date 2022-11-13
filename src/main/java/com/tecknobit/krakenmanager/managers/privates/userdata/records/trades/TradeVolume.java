@@ -12,8 +12,8 @@ import static com.tecknobit.apimanager.trading.TradingTools.roundValue;
  * The {@code TradeVolume} class is useful to format trade volume object
  *
  * @author N7ghtm4r3 - Tecknobit
- * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Data/operation/getTradeVolume">
- * https://docs.kraken.com/rest/#tag/User-Data/operation/getTradeVolume</a>
+ * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Data/operation/getTradeVolume">
+ * Get Trade Volume</a>
  **/
 public class TradeVolume extends KrakenManager.KrakenResponse {
 

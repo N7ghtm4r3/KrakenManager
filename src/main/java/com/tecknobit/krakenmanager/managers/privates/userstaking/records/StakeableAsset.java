@@ -14,7 +14,7 @@ import static com.tecknobit.apimanager.trading.TradingTools.roundValue;
  * The {@code StakeableAsset} class is useful to format a stakeable asset
  *
  * @author N7ghtm4r3 - Tecknobit
- * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Staking/operation/getStakingAssetInfo">
+ * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Staking/operation/getStakingAssetInfo">
  * https://docs.kraken.com/rest/#tag/User-Staking/operation/getStakingAssetInfo</a>
  **/
 public class StakeableAsset extends KrakenManager.KrakenResponse {

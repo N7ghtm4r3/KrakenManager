@@ -4,7 +4,7 @@ package com.tecknobit.krakenmanager.constants;
  * The {@code EndpointsList} interface is a container for all Kraken's endpoints of the API service
  *
  * @author N7ghtm4r3 - Tecknobit
- * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#section/General-Usage">
+ * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#section/General-Usage">
  * https://docs.kraken.com/rest/#section/General-Usage</a>
  **/
 public class EndpointsList {

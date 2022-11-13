@@ -11,8 +11,8 @@ import static com.tecknobit.apimanager.trading.TradingTools.roundValue;
  * The {@code OHLCData} class is useful to format OHLC data object
  *
  * @author N7ghtm4r3 - Tecknobit
- * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getOHLCData">
- * https://docs.kraken.com/rest/#tag/Market-Data/operation/getOHLCData</a>
+ * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getOHLCData">
+ * Get OHLC Data</a>
  **/
 public class OHLCData extends MarketList {
 

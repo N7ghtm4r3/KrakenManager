@@ -6,10 +6,10 @@ import org.json.JSONObject;
 /**
  * The {@code Asset} class is useful to format Asset data object
  *
- * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getAssetInfo">
- *     https://docs.kraken.com/rest/#tag/Market-Data/operation/getAssetInfo</a>
  * @author N7ghtm4r3 - Tecknobit
- * **/
+ * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getAssetInfo">
+ * Get Asset Info</a>
+ **/
 public class Asset extends KrakenManager.KrakenResponse {
 
     /**

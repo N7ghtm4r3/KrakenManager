@@ -11,15 +11,15 @@ import static com.tecknobit.apimanager.trading.TradingTools.roundValue;
 
 /**
  * The {@code Order} class is useful to format order object
- * @apiNote see official documentation at:
+ * @apiNote see the official documentation at:
  * <ul>
  *   <li>
  *       <a href="https://docs.kraken.com/rest/#tag/User-Data/operation/getOpenOrders">
- *           https://docs.kraken.com/rest/#tag/User-Data/operation/getOpenOrders</a>
+ *           Get Open Orders</a>
  *   </li>
  *   <li>
  *        <a href="https://docs.kraken.com/rest/#tag/User-Data/operation/getOrdersInfo">
- *           https://docs.kraken.com/rest/#tag/User-Data/operation/getOrdersInfo</a>
+ *           Get Closed Orders</a>
  *    </li>
  * </ul>
  * @author N7ghtm4r3 - Tecknobit

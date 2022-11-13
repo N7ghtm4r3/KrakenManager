@@ -7,8 +7,8 @@ import org.json.JSONObject;
  * The {@code Book} class is useful to format Book data object
  *
  * @author N7ghtm4r3 - Tecknobit
- * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getSystemStatus">
- * https://docs.kraken.com/rest/#tag/Market-Data/operation/getSystemStatus</a>
+ * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getServerTime">
+ * Get Server Time</a>
  **/
 public class ServerTime extends KrakenManager.KrakenResponse {
 

@@ -11,8 +11,8 @@ import static com.tecknobit.apimanager.trading.TradingTools.roundValue;
  * The {@code Spreads} class is useful to format Spreads object
  *
  * @author N7ghtm4r3 - Tecknobit
- * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getRecentSpreads">
- * https://docs.kraken.com/rest/#tag/Market-Data/operation/getRecentSpreads</a>
+ * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getRecentSpreads">
+ * Get Recent Spreads</a>
  **/
 public class Spreads extends MarketList {
 

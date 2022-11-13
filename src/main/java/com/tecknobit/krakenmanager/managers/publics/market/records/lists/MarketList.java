@@ -8,19 +8,19 @@ import java.util.ArrayList;
 
 /**
  * The {@code MarketList} class is useful to format list object
- * @apiNote see official documentation at:
+ * @apiNote see the official documentation at:
  * <ul>
  *    <li>
  *        <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getOHLCData">
- *           https://docs.kraken.com/rest/#tag/Market-Data/operation/getOHLCData</a>
+ *           Get OHLC Data</a>
  *    </li>
  *    <li>
  *        <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getRecentTrades">
- *           https://docs.kraken.com/rest/#tag/Market-Data/operation/getRecentTrades</a>
+ *           Get Recent Trades</a>
  *    </li>
  *    <li>
  *        <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getRecentSpreads">
- *           https://docs.kraken.com/rest/#tag/Market-Data/operation/getRecentSpreads</a>
+ *           Get Recent Spreads</a>
  *    </li>
  * </ul>
  * @author N7ghtm4r3 - Tecknobit

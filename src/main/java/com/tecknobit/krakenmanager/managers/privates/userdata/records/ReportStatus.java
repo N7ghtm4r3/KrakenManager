@@ -5,23 +5,23 @@ import org.json.JSONObject;
 
 /**
  * The {@code ReportStatus} class is useful to format report object
- * @apiNote see official documentation at:
+ * @apiNote see the official documentation at:
  * <ul>
  *    <li>
  *        <a href="https://docs.kraken.com/rest/#tag/User-Data/operation/addExport">
- *           https://docs.kraken.com/rest/#tag/User-Data/operation/addExport</a>
+ *           Request Export Report</a>
  *    </li>
  *    <li>
  *        <a href="https://docs.kraken.com/rest/#tag/User-Data/operation/exportStatus">
- *           https://docs.kraken.com/rest/#tag/User-Data/operation/exportStatus</a>
+ *           Get Export Report Status</a>
  *    </li>
  *    <li>
  *        <a href="https://docs.kraken.com/rest/#tag/User-Data/operation/retrieveExport">
- *           https://docs.kraken.com/rest/#tag/User-Data/operation/retrieveExport</a>
+ *           Retrieve Data Export</a>
  *    </li>
  *    <li>
  *        <a href="https://docs.kraken.com/rest/#tag/User-Data/operation/removeExport">
- *           https://docs.kraken.com/rest/#tag/User-Data/operation/removeExport</a>
+ *           Delete Export Report</a>
  *    </li>
  * </ul>
  * @author N7ghtm4r3 - Tecknobit
@@ -54,39 +54,31 @@ public class ReportStatus extends KrakenManager.KrakenResponse {
     public static final String LEDGERS_FIELDS = LEDGERS_REPORT;
 
     /**
-     * {@code CANCEL_DELETION_TYPE} is constant for cancel deletion type
-     * **/
-    public static final String CANCEL_DELETION_TYPE = "cancel";
-
+     * {@code format} is instance that memorizes format value
+     **/
+    private final ReportFormat format;
     /**
-     * {@code DELETE_DELETION_TYPE} is constant for cancel delete type
-     * **/
-    public static final String DELETE_DELETION_TYPE = "delete";
-
+     * {@code createTimestamp} is instance that memorizes {@code "UNIX"} timestamp of report request
+     **/
+    private final long createTimestamp;
     /**
-     * {@code CSV_FORMAT_TYPE} is constant for csv format type
-     * **/
-    public static final String CSV_FORMAT_TYPE = "CSV";
-
-    /**
-     * {@code TSV_FORMAT_TYPE} is constant for tsv format type
-     * **/
-    public static final String TSV_FORMAT_TYPE = "TSV";
+     * {@code startTimestamp} is instance that memorizes {@code "UNIX"} timestamp report processing began
+     **/
+    private final long startTimestamp;
 
     /**
      * {@code reportId} is instance that memorizes report identifier value
-     * **/
+     **/
     private final String reportId;
 
     /**
      * {@code description} is instance that memorizes description value
-     * **/
+     **/
     private final String description;
-
     /**
-     * {@code format} is instance that memorizes format value
-     * **/
-    private final String format;
+     * {@code completedTimestamp} is instance that memorizes {@code "UNIX"} timestamp report processing finished
+     **/
+    private final long completedTimestamp;
 
     /**
      * {@code report} is instance that memorizes report value
@@ -107,36 +99,14 @@ public class ReportStatus extends KrakenManager.KrakenResponse {
      * {@code fields} is instance that memorizes fields value
      * **/
     private final String fields;
-
     /**
-     * {@code createTimestamp} is instance that memorizes UNIX timestamp of report request
-     * **/
-    private final long createTimestamp;
-
-    /**
-     * {@code startTimestamp} is instance that memorizes UNIX timestamp report processing began
-     * **/
-    private final long startTimestamp;
-
-    /**
-     * {@code completedTimestamp} is instance that memorizes UNIX timestamp report processing finished
-     * **/
-    private final long completedTimestamp;
-
-    /**
-     * {@code dataStartTimestamp} is instance that memorizes UNIX timestamp of the report data start time
+     * {@code dataStartTimestamp} is instance that memorizes {@code "UNIX"} timestamp of the report data start time
      * **/
     private final long dataStartTimestamp;
-
     /**
-     * {@code dataEndTimestamp} is instance that memorizes UNIX timestamp of the report data end time
+     * {@code dataEndTimestamp} is instance that memorizes {@code "UNIX"} timestamp of the report data end time
      * **/
     private final long dataEndTimestamp;
-
-    /**
-     * {@code asset} is instance that memorizes asset value
-     * **/
-    private final String asset;
 
     /** Constructor to init a {@link ReportStatus} object
      * @param reportId: report identifier value
@@ -146,15 +116,15 @@ public class ReportStatus extends KrakenManager.KrakenResponse {
      * @param subtype: subtype value
      * @param status: status of the report
      * @param fields: fields value
-     * @param createTimestamp:  UNIX timestamp of report request
-     * @param startTimestamp: UNIX timestamp report processing began
-     * @param completedTimestamp: UNIX timestamp report processing finished
-     * @param dataStartTimestamp: UNIX timestamp of the report data start time
-     * @param dataEndTimestamp: UNIX timestamp of the report data end time
+     * @param createTimestamp:  {@code "UNIX"} timestamp of report request
+     * @param startTimestamp: {@code "UNIX"} timestamp report processing began
+     * @param completedTimestamp: {@code "UNIX"} timestamp report processing finished
+     * @param dataStartTimestamp: {@code "UNIX"} timestamp of the report data start time
+     * @param dataEndTimestamp: {@code "UNIX"} timestamp of the report data end time
      * @param asset: asset value
      **/
-    public ReportStatus(String reportId, String description, String format, String report, String subtype, String status,
-                        String fields, long createTimestamp, long startTimestamp, long completedTimestamp,
+    public ReportStatus(String reportId, String description, ReportFormat format, String report, String subtype,
+                        String status, String fields, long createTimestamp, long startTimestamp, long completedTimestamp,
                         long dataStartTimestamp, long dataEndTimestamp, String asset) {
         super(null);
         this.reportId = reportId;
@@ -179,7 +149,7 @@ public class ReportStatus extends KrakenManager.KrakenResponse {
         super(jsonResponse);
         reportId = result.getString("id");
         description = result.getString("descr");
-        format = result.getString("format");
+        format = ReportFormat.valueOf(result.getString("format", ReportFormat.CSV.name()));
         report = result.getString("report");
         subtype = result.getString("subtype");
         status = result.getString("status");
@@ -190,6 +160,55 @@ public class ReportStatus extends KrakenManager.KrakenResponse {
         dataStartTimestamp = result.getLong("datastarttm", 0);
         dataEndTimestamp = result.getLong("dataendtm", 0);
         asset = result.getString("asset");
+    }
+
+    /**
+     * Method to get {@link #format} instance <br>
+     * Any params required
+     *
+     * @return {@link #format} instance as {@link String}
+     **/
+    public ReportFormat getFormat() {
+        return format;
+    }
+
+    /**
+     * {@code asset} is instance that memorizes asset value
+     **/
+    private final String asset;
+
+    /**
+     * {@code "DeletionType"} list of deletion type for a report
+     **/
+    public enum DeletionType {
+
+        /**
+         * {@code "cancel"} can only be used for queued or processing reports
+         **/
+        cancel,
+
+        /**
+         * {@code "delete"} can only be used for reports that have already been processed
+         **/
+        delete
+
+    }
+
+    /**
+     * {@code ReportType} list for report types
+     **/
+    public enum ReportType {
+
+        /**
+         * {@code "trades"} report type
+         **/
+        trades,
+
+        /**
+         * {@code "ledgers"} report type
+         **/
+        ledgers
+
     }
 
     /**
@@ -213,13 +232,20 @@ public class ReportStatus extends KrakenManager.KrakenResponse {
     }
 
     /**
-     * Method to get {@link #format} instance <br>
-     * Any params required
-     *
-     * @return {@link #format} instance as {@link String}
-     **/
-    public String getFormat() {
-        return format;
+     * {@code ReportFormat} list for format types
+     * **/
+    public enum ReportFormat {
+
+        /**
+         * {@code "CSV"} format type
+         **/
+        CSV,
+
+        /**
+         * {@code "TSV"} format type
+         **/
+        TSV
+
     }
 
     /**

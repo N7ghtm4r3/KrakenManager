@@ -20,7 +20,7 @@ import static com.tecknobit.apimanager.trading.TradingTools.textualizeAssetPerce
  * giving basics methods for others Kraken's managers and basics endpoints for API requests
  *
  * @author N7ghtm4r3 - Tecknobit
- * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#section/General-Usage">
+ * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#section/General-Usage">
  * https://docs.kraken.com/rest/#section/General-Usage</a>
  **/
 public class KrakenManager {

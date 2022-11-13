@@ -5,10 +5,11 @@ import org.json.JSONObject;
 
 /**
  * The {@code SystemStatus} class is useful to format SystemStatus data object
- * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getSystemStatus">
- *     https://docs.kraken.com/rest/#tag/Market-Data/operation/getSystemStatus</a>
+ *
  * @author N7ghtm4r3 - Tecknobit
- * **/
+ * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getSystemStatus">
+ * Get System Status</a>
+ **/
 public class SystemStatus extends KrakenManager.KrakenResponse {
 
     /**

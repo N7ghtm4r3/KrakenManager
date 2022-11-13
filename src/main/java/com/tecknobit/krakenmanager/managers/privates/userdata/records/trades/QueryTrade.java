@@ -4,10 +4,11 @@ import org.json.JSONObject;
 
 /**
  * The {@code QueryTrade} class is useful to format query trade object
- * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Data/operation/getTradesInfo">
- *     https://docs.kraken.com/rest/#tag/User-Data/operation/getTradesInfo</a>
+ *
  * @author N7ghtm4r3 - Tecknobit
- * **/
+ * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Data/operation/getTradesInfo">
+ * Get Trades Info</a>
+ **/
 public class QueryTrade extends Trade {
 
     /**
@@ -41,10 +42,9 @@ public class QueryTrade extends Trade {
      * Constructor to init a {@link QueryTrade} object
      *
      * @param jsonResponse: base json response
-     * @param tradeId:      trade identifier value
      **/
-    public QueryTrade(JSONObject jsonResponse, String tradeId) {
-        super(jsonResponse, tradeId);
+    public QueryTrade(JSONObject jsonResponse) {
+        super(jsonResponse);
         postTradeId = result.getString("postxid");
     }
 

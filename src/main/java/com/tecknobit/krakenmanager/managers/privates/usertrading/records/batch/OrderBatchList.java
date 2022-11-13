@@ -11,10 +11,11 @@ import static com.tecknobit.krakenmanager.managers.privates.usertrading.records.
 
 /**
  * The {@code OrderBatchList} class is useful to assemble order batch list object
- * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/addOrderBatch">
- *     https://docs.kraken.com/rest/#tag/User-Trading/operation/addOrderBatch</a>
+ *
  * @author N7ghtm4r3 - Tecknobit
- * **/
+ * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/addOrderBatch">
+ * https://docs.kraken.com/rest/#tag/User-Trading/operation/addOrderBatch</a>
+ **/
 public class OrderBatchList {
 
     /**

@@ -11,8 +11,8 @@ import static com.tecknobit.apimanager.trading.TradingTools.roundValue;
  * The {@code HistoryTrade} class is useful to format history trade object
  *
  * @author N7ghtm4r3 - Tecknobit
- * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Data/operation/getTradeHistory">
- * https://docs.kraken.com/rest/#tag/User-Data/operation/getTradeHistory</a>
+ * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Data/operation/getTradeHistory">
+ * Get Trade History</a>
  **/
 public class HistoryTrade extends Trade {
 
@@ -94,13 +94,13 @@ public class HistoryTrade extends Trade {
         this.trades = trades;
     }
 
-    // TODO: 12/11/2022 CHECK
-    /** Constructor to init a {@link HistoryTrade} object
+    /**
+     * Constructor to init a {@link HistoryTrade} object
+     *
      * @param jsonResponse: base json response
-     * @param tradeId: trade identifier value
      **/
-    public HistoryTrade(JSONObject jsonResponse, String tradeId) {
-        super(jsonResponse, tradeId);
+    public HistoryTrade(JSONObject jsonResponse) {
+        super(jsonResponse);
         postStatus = result.getString("posstatus");
         cPrice = result.getDouble("cprice", 0);
         cCost = result.getDouble("ccost", 0);

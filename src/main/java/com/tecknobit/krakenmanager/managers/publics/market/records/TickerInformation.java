@@ -13,10 +13,11 @@ import static com.tecknobit.krakenmanager.managers.publics.market.records.Ticker
 
 /**
  * The {@code TickerInformation} class is useful to format Ticker information object
- * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getOHLCData">
- *     https://docs.kraken.com/rest/#tag/Market-Data/operation/getOHLCData</a>
+ *
  * @author N7ghtm4r3 - Tecknobit
- * **/
+ * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getTickerInformation">
+ * Get Ticker Information</a>
+ **/
 public class TickerInformation extends KrakenManager.KrakenResponse {
 
     /**

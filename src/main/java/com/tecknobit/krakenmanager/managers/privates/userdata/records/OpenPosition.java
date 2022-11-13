@@ -9,8 +9,8 @@ import static com.tecknobit.apimanager.trading.TradingTools.roundValue;
  * The {@code OpenPosition} class is useful to format an open positions object
  *
  * @author N7ghtm4r3 - Tecknobit
- * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Data/operation/getOpenPositions">
- * https://docs.kraken.com/rest/#tag/User-Data/operation/getOpenPositions</a>
+ * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Data/operation/getOpenPositions">
+ * Get Open Positions</a>
  **/
 public class OpenPosition extends KrakenManager.KrakenResponse {
 
@@ -35,8 +35,8 @@ public class OpenPosition extends KrakenManager.KrakenResponse {
     private final String pair;
 
     /**
-     * {@code time} is instance that memorizes UNIX timestamp of trade
-     * **/
+     * {@code time} is instance that memorizes {@code "UNIX"} timestamp of trade
+     **/
     private final long time;
 
     /**
@@ -80,7 +80,7 @@ public class OpenPosition extends KrakenManager.KrakenResponse {
     private final double value;
 
     /**
-     * {@code net} is instance that memorizes unrealised P&L of remaining position (if docalcs requested)
+     * {@code net} is instance that memorizes unrealised {@code "{@code "P&L"}"} of remaining position (if docalcs requested)
      * **/
     private final double net;
 
@@ -109,7 +109,7 @@ public class OpenPosition extends KrakenManager.KrakenResponse {
      * @param orderTransactionId: order id responsible for the position
      * @param postStatus: position status
      * @param pair: asset pair value
-     * @param time: UNIX timestamp of trade
+     * @param time: {@code "UNIX"} timestamp of trade
      * @param type: direction (buy/sell) of position
      * @param orderType: order type used to open position
      * @param cost: opening cost of position (in quote currency)
@@ -118,7 +118,7 @@ public class OpenPosition extends KrakenManager.KrakenResponse {
      * @param volClosed: quantity closed (in base currency)
      * @param margin: initial margin consumed (in quote currency)
      * @param value: current value of remaining position (if docalcs requested)
-     * @param net: unrealised P&L of remaining position (if docalcs requested)
+     * @param net: unrealised {@code "P&L"} of remaining position (if docalcs requested)
      * @param terms: funding cost and term of position
      * @param rolloverTerm: timestamp of next margin rollover fee
      * @param misc: comma delimited list of add'l info
@@ -148,15 +148,12 @@ public class OpenPosition extends KrakenManager.KrakenResponse {
         this.oFlags = oFlags;
     }
 
-    // TODO: 12/11/2022 CHECK TO REMOVE ID 
-
     /** Constructor to init a {@link OpenPosition} object
      * @param jsonResponse: base json response
-     * @param positionId: position identifier value
      **/
-    public OpenPosition(JSONObject jsonResponse, String positionId) {
+    public OpenPosition(JSONObject jsonResponse) {
         super(jsonResponse);
-        this.positionId = positionId;
+        positionId = result.getString("positionId");
         orderTransactionId = result.getString("ordertxid");
         postStatus = result.getString("posstatus");
         pair = result.getString("pair");

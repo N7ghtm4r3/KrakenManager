@@ -12,10 +12,11 @@ import static com.tecknobit.apimanager.formatters.ScientificNotationParser.sNota
 
 /**
  * The {@code OrderAdded} class is useful to assemble order added object
- * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/addOrder">
- *    https://docs.kraken.com/rest/#tag/User-Trading/operation/addOrder</a>
+ *
  * @author N7ghtm4r3 - Tecknobit
- * **/
+ * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/addOrder">
+ * https://docs.kraken.com/rest/#tag/User-Trading/operation/addOrder</a>
+ **/
 public class OrderAdded extends KrakenManager.KrakenResponse {
 
     /**

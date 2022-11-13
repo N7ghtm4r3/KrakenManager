@@ -7,7 +7,7 @@ import org.json.JSONObject;
  * The {@code OrderCancelled} class is useful to format an order that has been cancelled
  *
  * @author N7ghtm4r3 - Tecknobit
- * @apiNote see official documentation at:
+ * @apiNote see the official documentation at:
  * <ul>
  *    <li>
  *        <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/cancelAllOrders">

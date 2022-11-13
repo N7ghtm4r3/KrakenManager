@@ -7,75 +7,17 @@ import static com.tecknobit.apimanager.trading.TradingTools.roundValue;
 
 /**
  * The {@code Ledger} class is useful to format ledger object
- * @apiNote see official documentation at:
- * <ul>
- * <li>
- * <a href="https://docs.kraken.com/rest/#tag/User-Data/operation/getLedgers">
- *      https://docs.kraken.com/rest/#tag/User-Data/operation/getLedgers</a>
- * </li>
- * <li>
- * <a href="https://docs.kraken.com/rest/#tag/User-Data/operation/getLedgersInfo">
- *     https://docs.kraken.com/rest/#tag/User-Data/operation/getLedgersInfo</a>
- *    </li>
- * </ul>
+ *
  * @author N7ghtm4r3 - Tecknobit
- * **/
+ * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Data/operation/getLedgers">
+ * Query Ledgers</a>
+ **/
 public class Ledger extends KrakenManager.KrakenResponse {
 
     /**
-     * {@code ALL_TYPE} is constant for all ledger type
+     * {@code time} is instance that memorizes {@code "UNIX"} timestamp of ledger
      * **/
-    public static final String ALL_TYPE = "all";
-
-    /**
-     * {@code DEPOSIT_TYPE} is constant for deposit ledger type
-     * **/
-    public static final String DEPOSIT_TYPE = "deposit";
-
-    /**
-     * {@code WITHDRAWAL_TYPE} is constant for withdrawal ledger type
-     * **/
-    public static final String WITHDRAWAL_TYPE = "withdrawal";
-
-    /**
-     * {@code TRADE_TYPE} is constant for trade ledger type
-     * **/
-    public static final String TRADE_TYPE = "trade";
-
-    /**
-     * {@code MARGIN_TYPE} is constant for all margin type
-     * **/
-    public static final String MARGIN_TYPE = "margin";
-
-    /**
-     * {@code ROLLOVER_TYPE} is constant for rollover ledger type
-     * **/
-    public static final String ROLLOVER_TYPE = "rollover";
-
-    /**
-     * {@code CREDIT_TYPE} is constant for credit ledger type
-     * **/
-    public static final String CREDIT_TYPE = "credit";
-
-    /**
-     * {@code TRANSFER_TYPE} is constant for transfer ledger type
-     * **/
-    public static final String TRANSFER_TYPE = "transfer";
-
-    /**
-     * {@code SETTLED_TYPE} is constant for settled ledger type
-     * **/
-    public static final String SETTLED_TYPE = "settled";
-
-    /**
-     * {@code STAKING_TYPE} is constant for staking ledger type
-     * **/
-    public static final String STAKING_TYPE = "staking";
-
-    /**
-     * {@code SALE_TYPE} is constant for sale ledger type
-     * **/
-    public static final String SALE_TYPE = "sale";
+    private final long time;
 
     /**
      * {@code ledgerId} is instance that memorizes ledger identifier value
@@ -86,46 +28,10 @@ public class Ledger extends KrakenManager.KrakenResponse {
      * {@code refId} is instance that memorizes reference id value
      * **/
     private final String refId;
-
-    /**
-     * {@code time} is instance that memorizes UNIX timestamp of ledger
-     * **/
-    private final long time;
-
     /**
      * {@code type} is instance that memorizes type of ledger entry
-     * **/
-    private final String type;
-
-    /**
-     * {@code subType} is instance that memorizes additional info relating to the ledger entry type, where applicable
-     * **/
-    private final String subType;
-
-    /**
-     * {@code aClass} is instance that memorizes asset class value
-     * **/
-    private final String aClass;
-
-    /**
-     * {@code asset} is instance that memorizes asset value
-     * **/
-    private final String asset;
-
-    /**
-     * {@code amount} is instance that memorizes transaction amount value
-     * **/
-    private final double amount;
-
-    /**
-     * {@code fee} is instance that memorizes transaction fee value
-     * **/
-    private final double fee;
-
-    /**
-     * {@code balance} is instance that memorizes resulting balance value
-     * **/
-    private final double balance;
+     **/
+    private final LedgerType type;
 
     /** Constructor to init a {@link Ledger} object
      * @param ledgerId: ledger identifier value
@@ -139,7 +45,7 @@ public class Ledger extends KrakenManager.KrakenResponse {
      * @param fee: transaction fee value
      * @param balance: resulting balance value
      **/
-    public Ledger(String ledgerId, String refId, long time, String type, String subType, String aClass, String asset,
+    public Ledger(String ledgerId, String refId, long time, LedgerType type, String subType, String aClass, String asset,
                   double amount, double fee, double balance) {
         super(null);
         this.ledgerId = ledgerId;
@@ -154,23 +60,63 @@ public class Ledger extends KrakenManager.KrakenResponse {
         this.balance = balance;
     }
 
-    // TODO: 12/11/2022 CHECK TO REMOVE ID 
-    /** Constructor to init a {@link Ledger} object
-     * @param jsonResponse: base json response
-     * @param ledgerId: ledger identifier value
+    /**
+     * {@code subType} is instance that memorizes additional info relating to the ledger entry type, where applicable
      **/
-    public Ledger(JSONObject jsonResponse, String ledgerId) {
+    private final String subType;
+
+    /**
+     * {@code aClass} is instance that memorizes asset class value
+     **/
+    private final String aClass;
+
+    /**
+     * {@code asset} is instance that memorizes asset value
+     **/
+    private final String asset;
+
+    /**
+     * {@code amount} is instance that memorizes transaction amount value
+     **/
+    private final double amount;
+
+    /**
+     * {@code fee} is instance that memorizes transaction fee value
+     **/
+    private final double fee;
+
+    /**
+     * {@code balance} is instance that memorizes resulting balance value
+     **/
+    private final double balance;
+
+    /**
+     * Constructor to init a {@link Ledger} object
+     *
+     * @param jsonResponse: base json response
+     **/
+    public Ledger(JSONObject jsonResponse) {
         super(jsonResponse);
-        this.ledgerId = ledgerId;
+        ledgerId = result.getString("ledgerId");
         refId = result.getString("refid");
         time = result.getLong("time", 0);
-        type = result.getString("type");
+        type = LedgerType.valueOf(result.getString("type", LedgerType.all.name()));
         subType = result.getString("subtype");
         aClass = result.getString("aclass");
         asset = result.getString("asset");
         amount = result.getDouble("amount", 0);
         fee = result.getDouble("fee", 0);
         balance = result.getDouble("balance", 0);
+    }
+
+    /**
+     * Method to get {@link #type} instance <br>
+     * Any params required
+     *
+     * @return {@link #type} instance as {@link String}
+     **/
+    public LedgerType getType() {
+        return type;
     }
 
     /**
@@ -204,13 +150,65 @@ public class Ledger extends KrakenManager.KrakenResponse {
     }
 
     /**
-     * Method to get {@link #type} instance <br>
-     * Any params required
-     *
-     * @return {@link #type} instance as {@link String}
-     **/
-    public String getType() {
-        return type;
+     * {@code "LedgerType"} list of types for ledger
+     * **/
+    public enum LedgerType {
+
+        /**
+         * {@code "all"} ledger type
+         **/
+        all,
+
+        /**
+         * {@code "deposit"} ledger type
+         **/
+        deposit,
+
+        /**
+         * {@code "withdrawal"} ledger type
+         **/
+        withdrawal,
+
+        /**
+         * {@code "trade"} ledger type
+         **/
+        trade,
+
+        /**
+         * {@code "margin"} ledger type
+         **/
+        margin,
+
+        /**
+         * {@code "rollover"} ledger type
+         **/
+        rollover,
+
+        /**
+         * {@code "credit"} ledger type
+         **/
+        credit,
+
+        /**
+         * {@code "transfer"} ledger type
+         **/
+        transfer,
+
+        /**
+         * {@code "settled"} ledger type
+         **/
+        settled,
+
+        /**
+         * {@code "staking"} ledger type
+         **/
+        staking,
+
+        /**
+         * {@code "sale"} ledger type
+         **/
+        sale,
+
     }
 
     /**

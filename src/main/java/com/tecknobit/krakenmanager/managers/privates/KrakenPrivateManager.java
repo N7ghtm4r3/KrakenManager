@@ -12,12 +12,13 @@ import static com.tecknobit.apimanager.apis.APIRequest.*;
 import static com.tecknobit.apimanager.formatters.JsonHelper.getJSONObject;
 
 /**
- *  The {@code KrakenPrivateManager} class is useful to manage all private KrakenManager's endpoints
- *  giving basics methods for others public Kraken's managers and basics endpoints for API requests
- *  @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#section/General-Usage">
- *      https://docs.kraken.com/rest/#section/General-Usage</a>
- *  @author N7ghtm4r3 - Tecknobit
- * **/
+ * The {@code KrakenPrivateManager} class is useful to manage all private KrakenManager's endpoints
+ * giving basics methods for others public Kraken's managers and basics endpoints for API requests
+ *
+ * @author N7ghtm4r3 - Tecknobit
+ * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#section/General-Usage">
+ * General-Usage</a>
+ **/
 public class KrakenPrivateManager extends KrakenManager {
 
     /**

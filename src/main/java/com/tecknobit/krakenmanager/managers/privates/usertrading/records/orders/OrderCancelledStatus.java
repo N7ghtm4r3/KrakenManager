@@ -4,10 +4,11 @@ import org.json.JSONObject;
 
 /**
  * The {@code OrderCancelledStatus} class is useful to assemble an order that has been cancelled
- * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/cancelOrder">
- *   https://docs.kraken.com/rest/#tag/User-Trading/operation/cancelOrder</a>
+ *
  * @author N7ghtm4r3 - Tecknobit
- * **/
+ * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/cancelOrder">
+ * https://docs.kraken.com/rest/#tag/User-Trading/operation/cancelOrder</a>
+ **/
 public class OrderCancelledStatus extends OrderCancelled {
 
     /**

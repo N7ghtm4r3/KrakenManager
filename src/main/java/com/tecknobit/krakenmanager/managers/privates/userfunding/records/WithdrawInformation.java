@@ -9,7 +9,7 @@ import static com.tecknobit.apimanager.trading.TradingTools.roundValue;
  * The {@code WithdrawInformation} class is useful to format a deposit method
  *
  * @author N7ghtm4r3 - Tecknobit
- * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Funding/operation/getWithdrawalInformation">
+ * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Funding/operation/getWithdrawalInformation">
  * https://docs.kraken.com/rest/#tag/User-Funding/operation/getWithdrawalInformation</a>
  **/
 public class WithdrawInformation extends KrakenManager.KrakenResponse {

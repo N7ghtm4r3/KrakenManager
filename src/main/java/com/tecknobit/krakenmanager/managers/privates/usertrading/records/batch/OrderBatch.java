@@ -5,10 +5,11 @@ import org.json.JSONObject;
 
 /**
  * The {@code OrderBatch} class is useful to format order batch object
- * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/addOrderBatch">
- *     https://docs.kraken.com/rest/#tag/User-Trading/operation/addOrderBatch</a>
+ *
  * @author N7ghtm4r3 - Tecknobit
- * **/
+ * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/addOrderBatch">
+ * https://docs.kraken.com/rest/#tag/User-Trading/operation/addOrderBatch</a>
+ **/
 public class OrderBatch extends KrakenManager.KrakenResponse {
 
     /**

@@ -8,10 +8,11 @@ import java.util.Date;
 
 /**
  * The {@code OrderCancelledAfter} class is useful to assemble an order that has been cancelled in {@code after} mode
- * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/cancelAllOrdersAfter">
- *     https://docs.kraken.com/rest/#tag/User-Trading/operation/cancelAllOrdersAfter</a>
+ *
  * @author N7ghtm4r3 - Tecknobit
- * **/
+ * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/cancelAllOrdersAfter">
+ * https://docs.kraken.com/rest/#tag/User-Trading/operation/cancelAllOrdersAfter</a>
+ **/
 public class OrderCancelledAfter extends KrakenManager.KrakenResponse {
 
     /**

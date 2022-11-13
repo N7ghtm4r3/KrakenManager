@@ -14,11 +14,12 @@ import static com.tecknobit.apimanager.formatters.ScientificNotationParser.sNota
 import static com.tecknobit.krakenmanager.constants.EndpointsList.*;
 
 /**
- *  The {@code KrakenUserFundingManager} class is useful to manage all user funding endpoints
- *  @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Funding">
- *      https://docs.kraken.com/rest/#tag/User-Funding</a>
- *  @author N7ghtm4r3 - Tecknobit
- * **/
+ * The {@code KrakenUserFundingManager} class is useful to manage all user funding endpoints
+ *
+ * @author N7ghtm4r3 - Tecknobit
+ * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Funding">
+ * https://docs.kraken.com/rest/#tag/User-Funding</a>
+ **/
 public class KrakenUserFundingManager extends KrakenPrivateManager {
 
     /**
@@ -108,7 +109,7 @@ public class KrakenUserFundingManager extends KrakenPrivateManager {
      *                           {@link #printErrorResponse()}
      *                       </li>
      *                   </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
-     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Funding/operation/getDepositMethods">
+     * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Funding/operation/getDepositMethods">
      * https://docs.kraken.com/rest/#tag/User-Funding/operation/getDepositMethods</a>
      **/
     public String getDepositMethods(String asset) throws Exception {
@@ -134,7 +135,7 @@ public class KrakenUserFundingManager extends KrakenPrivateManager {
      *                           {@link #printErrorResponse()}
      *                       </li>
      *                   </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
-     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Funding/operation/getDepositMethods">
+     * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Funding/operation/getDepositMethods">
      * https://docs.kraken.com/rest/#tag/User-Funding/operation/getDepositMethods</a>
      **/
     public JSONObject getDepositMethodsJSON(String asset) throws Exception {
@@ -155,7 +156,7 @@ public class KrakenUserFundingManager extends KrakenPrivateManager {
      *                             {@link #printErrorResponse()}
      *                         </li>
      *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
-     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Funding/operation/getDepositMethods">
+     * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Funding/operation/getDepositMethods">
      *     https://docs.kraken.com/rest/#tag/User-Funding/operation/getDepositMethods</a>
      * @return methods available as {@link ArrayList} of {@link DepositMethod} custom object
      * **/
@@ -186,7 +187,7 @@ public class KrakenUserFundingManager extends KrakenPrivateManager {
      *                             {@link #printErrorResponse()}
      *                         </li>
      *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
-     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Funding/operation/getDepositAddresses">
+     * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Funding/operation/getDepositAddresses">
      * https://docs.kraken.com/rest/#tag/User-Funding/operation/getDepositAddresses</a>
      **/
     public String getDepositAddresses(String asset, String method, boolean newAddress) throws Exception {
@@ -214,7 +215,7 @@ public class KrakenUserFundingManager extends KrakenPrivateManager {
      *                             {@link #printErrorResponse()}
      *                         </li>
      *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
-     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Funding/operation/getDepositAddresses">
+     * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Funding/operation/getDepositAddresses">
      *     https://docs.kraken.com/rest/#tag/User-Funding/operation/getDepositAddresses</a>
      * @return deposit addresses as {@link JSONObject}
      * **/
@@ -238,7 +239,7 @@ public class KrakenUserFundingManager extends KrakenPrivateManager {
      *                             {@link #printErrorResponse()}
      *                         </li>
      *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
-     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Funding/operation/getDepositAddresses">
+     * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Funding/operation/getDepositAddresses">
      *     https://docs.kraken.com/rest/#tag/User-Funding/operation/getDepositAddresses</a>
      * @return deposit addresses as {@link ArrayList} of {@link DepositAddress} custom object
      * **/
@@ -264,7 +265,7 @@ public class KrakenUserFundingManager extends KrakenPrivateManager {
      *                             {@link #printErrorResponse()}
      *                         </li>
      *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
-     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Funding/operation/getStatusRecentDeposits">
+     * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Funding/operation/getStatusRecentDeposits">
      *     https://docs.kraken.com/rest/#tag/User-Funding/operation/getStatusRecentDeposits</a>
      * @return recent deposits made as {@link String}
      * **/
@@ -288,7 +289,7 @@ public class KrakenUserFundingManager extends KrakenPrivateManager {
      *                             {@link #printErrorResponse()}
      *                         </li>
      *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
-     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Funding/operation/getStatusRecentDeposits">
+     * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Funding/operation/getStatusRecentDeposits">
      *     https://docs.kraken.com/rest/#tag/User-Funding/operation/getStatusRecentDeposits</a>
      * @return recent deposits made as {@link JSONObject}
      * **/
@@ -310,7 +311,7 @@ public class KrakenUserFundingManager extends KrakenPrivateManager {
      *                             {@link #printErrorResponse()}
      *                         </li>
      *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
-     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Funding/operation/getStatusRecentDeposits">
+     * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Funding/operation/getStatusRecentDeposits">
      *     https://docs.kraken.com/rest/#tag/User-Funding/operation/getStatusRecentDeposits</a>
      * @return recent deposits made as {@link ArrayList} of {@link OperationStatus} custom object
      * **/
@@ -333,7 +334,7 @@ public class KrakenUserFundingManager extends KrakenPrivateManager {
      *                             {@link #printErrorResponse()}
      *                         </li>
      *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
-     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Funding/operation/getStatusRecentDeposits">
+     * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Funding/operation/getStatusRecentDeposits">
      *     https://docs.kraken.com/rest/#tag/User-Funding/operation/getStatusRecentDeposits</a>
      * @return recent deposits made as {@link String}
      * **/
@@ -359,7 +360,7 @@ public class KrakenUserFundingManager extends KrakenPrivateManager {
      *                             {@link #printErrorResponse()}
      *                         </li>
      *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
-     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Funding/operation/getStatusRecentDeposits">
+     * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Funding/operation/getStatusRecentDeposits">
      *     https://docs.kraken.com/rest/#tag/User-Funding/operation/getStatusRecentDeposits</a>
      * @return recent deposits made as {@link JSONObject}
      * **/
@@ -382,7 +383,7 @@ public class KrakenUserFundingManager extends KrakenPrivateManager {
      *                             {@link #printErrorResponse()}
      *                         </li>
      *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
-     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Funding/operation/getStatusRecentDeposits">
+     * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Funding/operation/getStatusRecentDeposits">
      *     https://docs.kraken.com/rest/#tag/User-Funding/operation/getStatusRecentDeposits</a>
      * @return recent deposits made as {@link ArrayList} of {@link OperationStatus} custom object
      * **/
@@ -418,7 +419,7 @@ public class KrakenUserFundingManager extends KrakenPrivateManager {
      *                             {@link #printErrorResponse()}
      *                         </li>
      *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
-     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Funding/operation/getWithdrawalInformation">
+     * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Funding/operation/getWithdrawalInformation">
      *     https://docs.kraken.com/rest/#tag/User-Funding/operation/getWithdrawalInformation</a>
      * @return potential withdrawals for a particular asset, key and amount as {@link String}
      * **/
@@ -446,7 +447,7 @@ public class KrakenUserFundingManager extends KrakenPrivateManager {
      *                             {@link #printErrorResponse()}
      *                         </li>
      *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
-     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Funding/operation/getWithdrawalInformation">
+     * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Funding/operation/getWithdrawalInformation">
      *     https://docs.kraken.com/rest/#tag/User-Funding/operation/getWithdrawalInformation</a>
      * @return potential withdrawals for a particular asset, key and amount as {@link JSONObject}
      * **/
@@ -470,7 +471,7 @@ public class KrakenUserFundingManager extends KrakenPrivateManager {
      *                             {@link #printErrorResponse()}
      *                         </li>
      *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
-     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Funding/operation/getWithdrawalInformation">
+     * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Funding/operation/getWithdrawalInformation">
      *     https://docs.kraken.com/rest/#tag/User-Funding/operation/getWithdrawalInformation</a>
      * @return potential withdrawals for a particular asset, key and amount as {@link WithdrawInformation} custom object
      * **/
@@ -494,7 +495,7 @@ public class KrakenUserFundingManager extends KrakenPrivateManager {
      *                             {@link #printErrorResponse()}
      *                         </li>
      *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
-     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Funding/operation/withdrawFunds">
+     * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Funding/operation/withdrawFunds">
      *     https://docs.kraken.com/rest/#tag/User-Funding/operation/withdrawFunds</a>
      * @return withdrawal request result as {@link String}
      * **/
@@ -522,7 +523,7 @@ public class KrakenUserFundingManager extends KrakenPrivateManager {
      *                             {@link #printErrorResponse()}
      *                         </li>
      *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
-     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Funding/operation/withdrawFunds">
+     * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Funding/operation/withdrawFunds">
      *     https://docs.kraken.com/rest/#tag/User-Funding/operation/withdrawFunds</a>
      * @return withdrawal request result as {@link JSONObject}
      * **/
@@ -546,7 +547,7 @@ public class KrakenUserFundingManager extends KrakenPrivateManager {
      *                             {@link #printErrorResponse()}
      *                         </li>
      *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
-     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Funding/operation/withdrawFunds">
+     * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Funding/operation/withdrawFunds">
      *     https://docs.kraken.com/rest/#tag/User-Funding/operation/withdrawFunds</a>
      * @return withdrawal request identifier as {@link JSONObject}
      * **/
@@ -568,7 +569,7 @@ public class KrakenUserFundingManager extends KrakenPrivateManager {
      *                             {@link #printErrorResponse()}
      *                         </li>
      *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
-     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Funding/operation/getStatusRecentWithdrawals">
+     * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Funding/operation/getStatusRecentWithdrawals">
      *     https://docs.kraken.com/rest/#tag/User-Funding/operation/getStatusRecentWithdrawals</a>
      * @return information about recently requests withdrawals as {@link String}
      * **/
@@ -592,7 +593,7 @@ public class KrakenUserFundingManager extends KrakenPrivateManager {
      *                             {@link #printErrorResponse()}
      *                         </li>
      *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
-     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Funding/operation/getStatusRecentWithdrawals">
+     * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Funding/operation/getStatusRecentWithdrawals">
      *     https://docs.kraken.com/rest/#tag/User-Funding/operation/getStatusRecentWithdrawals</a>
      * @return information about recently requests withdrawals as {@link JSONObject}
      * **/
@@ -614,7 +615,7 @@ public class KrakenUserFundingManager extends KrakenPrivateManager {
      *                             {@link #printErrorResponse()}
      *                         </li>
      *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
-     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Funding/operation/getStatusRecentWithdrawals">
+     * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Funding/operation/getStatusRecentWithdrawals">
      *     https://docs.kraken.com/rest/#tag/User-Funding/operation/getStatusRecentWithdrawals</a>
      * @return information about recently requests withdrawals as {@link ArrayList} of {@link OperationStatus} custom object
      * **/
@@ -637,7 +638,7 @@ public class KrakenUserFundingManager extends KrakenPrivateManager {
      *                             {@link #printErrorResponse()}
      *                         </li>
      *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
-     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Funding/operation/getStatusRecentWithdrawals">
+     * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Funding/operation/getStatusRecentWithdrawals">
      *     https://docs.kraken.com/rest/#tag/User-Funding/operation/getStatusRecentWithdrawals</a>
      * @return information about recently requests withdrawals as {@link String}
      * **/
@@ -663,7 +664,7 @@ public class KrakenUserFundingManager extends KrakenPrivateManager {
      *                             {@link #printErrorResponse()}
      *                         </li>
      *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
-     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Funding/operation/getStatusRecentWithdrawals">
+     * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Funding/operation/getStatusRecentWithdrawals">
      *     https://docs.kraken.com/rest/#tag/User-Funding/operation/getStatusRecentWithdrawals</a>
      * @return information about recently requests withdrawals as {@link JSONObject}
      * **/
@@ -686,7 +687,7 @@ public class KrakenUserFundingManager extends KrakenPrivateManager {
      *                             {@link #printErrorResponse()}
      *                         </li>
      *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
-     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Funding/operation/getStatusRecentWithdrawals">
+     * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Funding/operation/getStatusRecentWithdrawals">
      *     https://docs.kraken.com/rest/#tag/User-Funding/operation/getStatusRecentWithdrawals</a>
      * @return information about recently requests withdrawals as {@link ArrayList} of {@link OperationStatus} custom object
      * **/
@@ -709,7 +710,7 @@ public class KrakenUserFundingManager extends KrakenPrivateManager {
      *                             {@link #printErrorResponse()}
      *                         </li>
      *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
-     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Funding/operation/cancelWithdrawal">
+     * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Funding/operation/cancelWithdrawal">
      *     https://docs.kraken.com/rest/#tag/User-Funding/operation/cancelWithdrawal</a>
      * @return withdrawal cancellation result as {@link String}
      * **/
@@ -735,7 +736,7 @@ public class KrakenUserFundingManager extends KrakenPrivateManager {
      *                             {@link #printErrorResponse()}
      *                         </li>
      *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
-     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Funding/operation/cancelWithdrawal">
+     * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Funding/operation/cancelWithdrawal">
      *     https://docs.kraken.com/rest/#tag/User-Funding/operation/cancelWithdrawal</a>
      * @return withdrawal cancellation result as {@link JSONObject}
      * **/
@@ -758,7 +759,7 @@ public class KrakenUserFundingManager extends KrakenPrivateManager {
      *                             {@link #printErrorResponse()}
      *                         </li>
      *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
-     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Funding/operation/cancelWithdrawal">
+     * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Funding/operation/cancelWithdrawal">
      *     https://docs.kraken.com/rest/#tag/User-Funding/operation/cancelWithdrawal</a>
      * @return withdrawal cancellation result as boolean
      * **/
@@ -784,7 +785,7 @@ public class KrakenUserFundingManager extends KrakenPrivateManager {
      *                             {@link #printErrorResponse()}
      *                         </li>
      *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
-     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Funding/operation/cancelWithdrawal">
+     * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Funding/operation/cancelWithdrawal">
      *     https://docs.kraken.com/rest/#tag/User-Funding/operation/cancelWithdrawal</a>
      * @return transfer result as {@link String}
      * **/
@@ -815,7 +816,7 @@ public class KrakenUserFundingManager extends KrakenPrivateManager {
      *                             {@link #printErrorResponse()}
      *                         </li>
      *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
-     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Funding/operation/cancelWithdrawal">
+     * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Funding/operation/cancelWithdrawal">
      *     https://docs.kraken.com/rest/#tag/User-Funding/operation/cancelWithdrawal</a>
      * @return transfer result as {@link JSONObject}
      * **/
@@ -841,7 +842,7 @@ public class KrakenUserFundingManager extends KrakenPrivateManager {
      *                             {@link #printErrorResponse()}
      *                         </li>
      *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
-     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Funding/operation/cancelWithdrawal">
+     * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Funding/operation/cancelWithdrawal">
      *     https://docs.kraken.com/rest/#tag/User-Funding/operation/cancelWithdrawal</a>
      * @return transfer identifier as {@link JSONObject}
      * **/

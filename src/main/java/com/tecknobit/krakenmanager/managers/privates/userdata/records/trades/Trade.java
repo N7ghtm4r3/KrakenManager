@@ -9,28 +9,49 @@ import static com.tecknobit.apimanager.trading.TradingTools.roundValue;
  * The {@code Trade} class is useful to format trade object and give base trade instances
  *
  * @author N7ghtm4r3 - Tecknobit
- * @apiNote see official documentation at:
+ * @apiNote see the official documentation at:
  * <ul>
  * <li>
- * <a href="https://docs.kraken.com/rest/#tag/User-Data/operation/getTradesInfo">
- * https://docs.kraken.com/rest/#tag/User-Data/operation/getTradesInfo</a>
+ * <a href="https://docs.kraken.com/rest/#tag/User-Data/operation/getTradeHistory">
+ * Get Trade History</a>
  * </li>
  * <li>
- * <a href="https://docs.kraken.com/rest/#tag/User-Data/operation/getTradeHistory">
- * https://docs.kraken.com/rest/#tag/User-Data/operation/getTradeHistory</a>
+ * <a href="https://docs.kraken.com/rest/#tag/User-Data/operation/getTradesInfo">
+ *   Get Trades Info</a>
  * </li>
  * </ul>
  **/
 public abstract class Trade extends KrakenManager.KrakenResponse {
 
     /**
+     * Constructor to init a {@link Trade} object
+     *
+     * @param jsonResponse: base json response
+     **/
+    public Trade(JSONObject jsonResponse) {
+        super(jsonResponse);
+        tradeId = result.getString("tradeId");
+        orderTransactionId = result.getString("ordertxid");
+        pair = result.getString("pair");
+        time = result.getLong("time", 0);
+        type = result.getString("type");
+        orderType = result.getString("ordertype");
+        price = result.getDouble("price", 0);
+        cost = result.getDouble("cost", 0);
+        fee = result.getDouble("fee", 0);
+        vol = result.getDouble("vol", 0);
+        margin = result.getDouble("margin", 0);
+        misc = result.getString("misc");
+    }
+
+    /**
      * {@code tradeId} is instance that memorizes trade identifier value
-     * **/
+     **/
     protected final String tradeId;
 
     /**
      * {@code orderTransactionId} is instance that memorizes order transaction identifier value
-     * **/
+     **/
     protected final String orderTransactionId;
 
     /**
@@ -115,25 +136,61 @@ public abstract class Trade extends KrakenManager.KrakenResponse {
         this.misc = misc;
     }
 
-    // TODO: 12/11/2022 CHECK TO REMOVE ID
-    /** Constructor to init a {@link Trade} object
-     * @param jsonResponse: base json response
-     * @param tradeId: trade identifier value
+    /**
+     * {@code "TradeType"} list of types for trade
      **/
-    public Trade(JSONObject jsonResponse, String tradeId) {
-        super(jsonResponse);
-        this.tradeId = tradeId;
-        orderTransactionId = result.getString("ordertxid");
-        pair = result.getString("pair");
-        time = result.getLong("time", 0);
-        type = result.getString("type");
-        orderType = result.getString("ordertype");
-        price = result.getDouble("price", 0);
-        cost = result.getDouble("cost", 0);
-        fee = result.getDouble("fee", 0);
-        vol = result.getDouble("vol", 0);
-        margin = result.getDouble("margin", 0);
-        misc = result.getString("misc");
+    public enum TradeType {
+
+        /**
+         * {@code "all"} trade type
+         **/
+        all("all"),
+
+        /**
+         * {@code "any_position"} trade type
+         **/
+        any_position("any position"),
+
+        /**
+         * {@code "closed_position"} trade type
+         **/
+        closed_position("closed position"),
+
+        /**
+         * {@code "closing_position"} trade type
+         **/
+        closing_position("closing position"),
+
+        /**
+         * {@code "no_position"} trade type
+         **/
+        no_position("no position");
+
+        /**
+         * {@code "type"} trade type
+         **/
+        private final String type;
+
+        /**
+         * Constructor to init a {@link TradeType}
+         *
+         * @param type: trade type value
+         **/
+        TradeType(String type) {
+            this.type = type;
+        }
+
+        /**
+         * Method to get {@link #type} instance <br>
+         * Any params required
+         *
+         * @return {@link #type} instance as {@link String}
+         **/
+        @Override
+        public String toString() {
+            return type;
+        }
+
     }
 
     /**

@@ -9,7 +9,7 @@ import static com.tecknobit.apimanager.trading.TradingTools.roundValue;
  * The {@code StakingTransaction} class is useful to format a staking transaction
  *
  * @author N7ghtm4r3 - Tecknobit
- * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Staking/operation/getStakingPendingDeposits">
+ * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Staking/operation/getStakingPendingDeposits">
  * https://docs.kraken.com/rest/#tag/User-Staking/operation/getStakingPendingDeposits</a>
  **/
 public class StakingTransaction extends KrakenManager.KrakenResponse {

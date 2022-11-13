@@ -16,11 +16,12 @@ import static com.tecknobit.krakenmanager.managers.privates.usertrading.records.
 import static com.tecknobit.krakenmanager.managers.privates.usertrading.records.orders.OrderEdited.addBaseEditParameters;
 
 /**
- *  The {@code KrakenUserTradingManager} class is useful to manage all user trading endpoints
- *  @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading">
- *      https://docs.kraken.com/rest/#tag/User-Trading</a>
- *  @author N7ghtm4r3 - Tecknobit
- * **/
+ * The {@code KrakenUserTradingManager} class is useful to manage all user trading endpoints
+ *
+ * @author N7ghtm4r3 - Tecknobit
+ * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading">
+ * https://docs.kraken.com/rest/#tag/User-Trading</a>
+ **/
 public class KrakenUserTradingManager extends KrakenPrivateManager {
 
     /** Constructor to init a {@link KrakenUserTradingManager}
@@ -103,7 +104,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      *                           {@link #printErrorResponse()}
      *                       </li>
      *                   </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
-     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/addOrder">
+     * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/addOrder">
      * https://docs.kraken.com/rest/#tag/User-Trading/operation/addOrder</a>
      * @implNote keys for params accepted are: userref,leverage,stp_type,oflags,timeinforce,starttm,expiretm,close[ordertype],
      * close[price],close[price2],deadline or validate
@@ -132,7 +133,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      *                           {@link #printErrorResponse()}
      *                       </li>
      *                   </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
-     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/addOrder">
+     * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/addOrder">
      * https://docs.kraken.com/rest/#tag/User-Trading/operation/addOrder</a>
      * @implNote keys for params accepted are: userref,leverage,stp_type,oflags,timeinforce,starttm,expiretm,close[ordertype],
      * close[price],close[price2],deadline or validate
@@ -158,7 +159,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      *                             {@link #printErrorResponse()}
      *                         </li>
      *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
-     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/addOrder">
+     * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/addOrder">
      *     https://docs.kraken.com/rest/#tag/User-Trading/operation/addOrder</a>
      * @implNote keys for params accepted are: userref,leverage,stp_type,oflags,timeinforce,starttm,expiretm,close[ordertype],
      * close[price],close[price2],deadline or validate
@@ -184,7 +185,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      *                             {@link #printErrorResponse()}
      *                         </li>
      *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
-     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/addOrder">
+     * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/addOrder">
      *     https://docs.kraken.com/rest/#tag/User-Trading/operation/addOrder</a>
      * @return market order result as {@link String}
      * **/
@@ -208,7 +209,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      *                             {@link #printErrorResponse()}
      *                         </li>
      *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
-     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/addOrder">
+     * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/addOrder">
      *     https://docs.kraken.com/rest/#tag/User-Trading/operation/addOrder</a>
      * @return market order result as {@link JSONObject}
      * **/
@@ -232,7 +233,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      *                             {@link #printErrorResponse()}
      *                         </li>
      *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
-     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/addOrder">
+     * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/addOrder">
      *     https://docs.kraken.com/rest/#tag/User-Trading/operation/addOrder</a>
      * @return market order result as {@link OrderAdded} custom object
      * **/
@@ -258,7 +259,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      *                             {@link #printErrorResponse()}
      *                         </li>
      *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
-     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/addOrder">
+     * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/addOrder">
      *     https://docs.kraken.com/rest/#tag/User-Trading/operation/addOrder</a>
      * @implNote keys for params accepted are: userref,leverage,stp_type,oflags,timeinforce,starttm,expiretm,close[ordertype],
      * close[price],close[price2],deadline or validate
@@ -289,7 +290,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      *                             {@link #printErrorResponse()}
      *                         </li>
      *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
-     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/addOrder">
+     * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/addOrder">
      *     https://docs.kraken.com/rest/#tag/User-Trading/operation/addOrder</a>
      * @implNote keys for params accepted are: userref,leverage,stp_type,oflags,timeinforce,starttm,expiretm,close[ordertype],
      * close[price],close[price2],deadline or validate
@@ -317,7 +318,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      *                             {@link #printErrorResponse()}
      *                         </li>
      *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
-     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/addOrder">
+     * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/addOrder">
      *     https://docs.kraken.com/rest/#tag/User-Trading/operation/addOrder</a>
      * @implNote keys for params accepted are: userref,leverage,stp_type,oflags,timeinforce,starttm,expiretm,close[ordertype],
      * close[price],close[price2],deadline or validate
@@ -344,7 +345,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      *                             {@link #printErrorResponse()}
      *                         </li>
      *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
-     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/addOrder">
+     * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/addOrder">
      *     https://docs.kraken.com/rest/#tag/User-Trading/operation/addOrder</a>
      * @return limit order result as {@link String}
      * **/
@@ -369,7 +370,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      *                             {@link #printErrorResponse()}
      *                         </li>
      *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
-     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/addOrder">
+     * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/addOrder">
      *     https://docs.kraken.com/rest/#tag/User-Trading/operation/addOrder</a>
      * @return limit order result as {@link JSONObject}
      * **/
@@ -394,7 +395,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      *                             {@link #printErrorResponse()}
      *                         </li>
      *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
-     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/addOrder">
+     * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/addOrder">
      *     https://docs.kraken.com/rest/#tag/User-Trading/operation/addOrder</a>
      * @return limit order result as {@link OrderAdded} custom object
      * **/
@@ -421,7 +422,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      *                             {@link #printErrorResponse()}
      *                         </li>
      *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
-     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/addOrder">
+     * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/addOrder">
      *     https://docs.kraken.com/rest/#tag/User-Trading/operation/addOrder</a>
      * @implNote keys for params accepted are: userref,leverage,stp_type,oflags,timeinforce,starttm,expiretm,close[ordertype],
      * close[price],close[price2],deadline or validate
@@ -451,7 +452,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      *                             {@link #printErrorResponse()}
      *                         </li>
      *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
-     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/addOrder">
+     * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/addOrder">
      *     https://docs.kraken.com/rest/#tag/User-Trading/operation/addOrder</a>
      * @implNote keys for params accepted are: userref,leverage,stp_type,oflags,timeinforce,starttm,expiretm,close[ordertype],
      * close[price],close[price2],deadline or validate
@@ -481,7 +482,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      *                             {@link #printErrorResponse()}
      *                         </li>
      *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
-     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/addOrder">
+     * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/addOrder">
      *     https://docs.kraken.com/rest/#tag/User-Trading/operation/addOrder</a>
      * @implNote keys for params accepted are: userref,leverage,stp_type,oflags,timeinforce,starttm,expiretm,close[ordertype],
      * close[price],close[price2],deadline or validate
@@ -510,7 +511,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      *                             {@link #printErrorResponse()}
      *                         </li>
      *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
-     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/addOrder">
+     * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/addOrder">
      *     https://docs.kraken.com/rest/#tag/User-Trading/operation/addOrder</a>
      * @return limit stop loss result as {@link String}
      * **/
@@ -536,7 +537,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      *                             {@link #printErrorResponse()}
      *                         </li>
      *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
-     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/addOrder">
+     * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/addOrder">
      *     https://docs.kraken.com/rest/#tag/User-Trading/operation/addOrder</a>
      * @return limit stop loss result as {@link JSONObject}
      * **/
@@ -563,7 +564,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      *                             {@link #printErrorResponse()}
      *                         </li>
      *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
-     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/addOrder">
+     * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/addOrder">
      *     https://docs.kraken.com/rest/#tag/User-Trading/operation/addOrder</a>
      * @return limit stop loss result as {@link OrderAdded} custom object
      * **/
@@ -593,7 +594,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      *                             {@link #printErrorResponse()}
      *                         </li>
      *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
-     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/addOrder">
+     * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/addOrder">
      *     https://docs.kraken.com/rest/#tag/User-Trading/operation/addOrder</a>
      * @implNote keys for params accepted are: userref,leverage,stp_type,oflags,timeinforce,starttm,expiretm,close[ordertype],
      * close[price],close[price2],deadline or validate
@@ -626,7 +627,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      *                             {@link #printErrorResponse()}
      *                         </li>
      *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
-     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/addOrder">
+     * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/addOrder">
      *     https://docs.kraken.com/rest/#tag/User-Trading/operation/addOrder</a>
      * @implNote keys for params accepted are: userref,leverage,stp_type,oflags,timeinforce,starttm,expiretm,close[ordertype],
      * close[price],close[price2],deadline or validate
@@ -658,7 +659,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      *                             {@link #printErrorResponse()}
      *                         </li>
      *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
-     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/addOrder">
+     * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/addOrder">
      *     https://docs.kraken.com/rest/#tag/User-Trading/operation/addOrder</a>
      * @implNote keys for params accepted are: userref,leverage,stp_type,oflags,timeinforce,starttm,expiretm,close[ordertype],
      * close[price],close[price2],deadline or validate
@@ -689,7 +690,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      *                             {@link #printErrorResponse()}
      *                         </li>
      *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
-     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/addOrder">
+     * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/addOrder">
      *     https://docs.kraken.com/rest/#tag/User-Trading/operation/addOrder</a>
      * @return stop loss limit result as {@link String}
      * **/
@@ -718,7 +719,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      *                             {@link #printErrorResponse()}
      *                         </li>
      *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
-     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/addOrder">
+     * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/addOrder">
      *     https://docs.kraken.com/rest/#tag/User-Trading/operation/addOrder</a>
      * @return stop loss limit result as {@link JSONObject}
      * **/
@@ -747,7 +748,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      *                             {@link #printErrorResponse()}
      *                         </li>
      *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
-     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/addOrder">
+     * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/addOrder">
      *     https://docs.kraken.com/rest/#tag/User-Trading/operation/addOrder</a>
      * @return stop loss limit result as {@link OrderAdded} custom object
      * **/
@@ -775,7 +776,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      *                             {@link #printErrorResponse()}
      *                         </li>
      *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
-     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/addOrder">
+     * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/addOrder">
      *     https://docs.kraken.com/rest/#tag/User-Trading/operation/addOrder</a>
      * @implNote keys for params accepted are: userref,leverage,stp_type,oflags,timeinforce,starttm,expiretm,close[ordertype],
      * close[price],close[price2],deadline or validate
@@ -805,7 +806,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      *                             {@link #printErrorResponse()}
      *                         </li>
      *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
-     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/addOrder">
+     * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/addOrder">
      *     https://docs.kraken.com/rest/#tag/User-Trading/operation/addOrder</a>
      * @implNote keys for params accepted are: userref,leverage,stp_type,oflags,timeinforce,starttm,expiretm,close[ordertype],
      * close[price],close[price2],deadline or validate
@@ -835,7 +836,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      *                             {@link #printErrorResponse()}
      *                         </li>
      *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
-     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/addOrder">
+     * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/addOrder">
      *     https://docs.kraken.com/rest/#tag/User-Trading/operation/addOrder</a>
      * @implNote keys for params accepted are: userref,leverage,stp_type,oflags,timeinforce,starttm,expiretm,close[ordertype],
      * close[price],close[price2],deadline or validate
@@ -864,7 +865,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      *                             {@link #printErrorResponse()}
      *                         </li>
      *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
-     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/addOrder">
+     * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/addOrder">
      *     https://docs.kraken.com/rest/#tag/User-Trading/operation/addOrder</a>
      * @return take profit order result as {@link String}
      * **/
@@ -890,7 +891,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      *                             {@link #printErrorResponse()}
      *                         </li>
      *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
-     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/addOrder">
+     * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/addOrder">
      *     https://docs.kraken.com/rest/#tag/User-Trading/operation/addOrder</a>
      * @return take profit order result as {@link JSONObject}
      * **/
@@ -917,7 +918,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      *                             {@link #printErrorResponse()}
      *                         </li>
      *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
-     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/addOrder">
+     * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/addOrder">
      *     https://docs.kraken.com/rest/#tag/User-Trading/operation/addOrder</a>
      * @return take profit order result as {@link OrderAdded} custom object
      * **/
@@ -947,7 +948,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      *                             {@link #printErrorResponse()}
      *                         </li>
      *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
-     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/addOrder">
+     * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/addOrder">
      *     https://docs.kraken.com/rest/#tag/User-Trading/operation/addOrder</a>
      * @implNote keys for params accepted are: userref,leverage,stp_type,oflags,timeinforce,starttm,expiretm,close[ordertype],
      * close[price],close[price2],deadline or validate
@@ -980,7 +981,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      *                             {@link #printErrorResponse()}
      *                         </li>
      *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
-     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/addOrder">
+     * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/addOrder">
      *     https://docs.kraken.com/rest/#tag/User-Trading/operation/addOrder</a>
      * @implNote keys for params accepted are: userref,leverage,stp_type,oflags,timeinforce,starttm,expiretm,close[ordertype],
      * close[price],close[price2],deadline or validate
@@ -1012,7 +1013,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      *                             {@link #printErrorResponse()}
      *                         </li>
      *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
-     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/addOrder">
+     * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/addOrder">
      *     https://docs.kraken.com/rest/#tag/User-Trading/operation/addOrder</a>
      * @implNote keys for params accepted are: userref,leverage,stp_type,oflags,timeinforce,starttm,expiretm,close[ordertype],
      * close[price],close[price2],deadline or validate
@@ -1043,7 +1044,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      *                             {@link #printErrorResponse()}
      *                         </li>
      *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
-     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/addOrder">
+     * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/addOrder">
      *     https://docs.kraken.com/rest/#tag/User-Trading/operation/addOrder</a>
      * @return take profit limit order result as {@link String}
      * **/
@@ -1072,7 +1073,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      *                             {@link #printErrorResponse()}
      *                         </li>
      *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
-     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/addOrder">
+     * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/addOrder">
      *     https://docs.kraken.com/rest/#tag/User-Trading/operation/addOrder</a>
      * @return take profit limit order result as {@link JSONObject}
      * **/
@@ -1101,7 +1102,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      *                             {@link #printErrorResponse()}
      *                         </li>
      *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
-     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/addOrder">
+     * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/addOrder">
      *     https://docs.kraken.com/rest/#tag/User-Trading/operation/addOrder</a>
      * @return take profit limit order result as {@link OrderAdded} custom object
      * **/
@@ -1176,7 +1177,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      *                             {@link #printErrorResponse()}
      *                         </li>
      *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
-     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/addOrderBatch">
+     * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/addOrderBatch">
      *     https://docs.kraken.com/rest/#tag/User-Trading/operation/addOrderBatch</a>
      * @implNote keys for params accepted are: deadline or validate
      * @return batch order result as {@link String}
@@ -1206,7 +1207,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      *                             {@link #printErrorResponse()}
      *                         </li>
      *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
-     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/addOrderBatch">
+     * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/addOrderBatch">
      *     https://docs.kraken.com/rest/#tag/User-Trading/operation/addOrderBatch</a>
      * @implNote keys for params accepted are: deadline or validate
      * @return batch order result as {@link JSONObject}
@@ -1230,7 +1231,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      *                             {@link #printErrorResponse()}
      *                         </li>
      *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
-     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/addOrderBatch">
+     * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/addOrderBatch">
      *     https://docs.kraken.com/rest/#tag/User-Trading/operation/addOrderBatch</a>
      * @implNote keys for params accepted are: deadline or validate
      * @implSpec return type change by Kraken's response given
@@ -1254,7 +1255,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      *                             {@link #printErrorResponse()}
      *                         </li>
      *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
-     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/addOrderBatch">
+     * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/addOrderBatch">
      *     https://docs.kraken.com/rest/#tag/User-Trading/operation/addOrderBatch</a>
      * @return batch order result as {@link String}
      * **/
@@ -1276,7 +1277,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      *                             {@link #printErrorResponse()}
      *                         </li>
      *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
-     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/addOrderBatch">
+     * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/addOrderBatch">
      *     https://docs.kraken.com/rest/#tag/User-Trading/operation/addOrderBatch</a>
      * @return batch order result as {@link JSONObject}
      * **/
@@ -1298,7 +1299,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      *                             {@link #printErrorResponse()}
      *                         </li>
      *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
-     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/addOrderBatch">
+     * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/addOrderBatch">
      *     https://docs.kraken.com/rest/#tag/User-Trading/operation/addOrderBatch</a>
      * @implNote keys for params accepted are: deadline or validate
      * @return list of {@link OrderBatch} as {@link ArrayList} or {@link OrderAdded} custom object
@@ -1340,7 +1341,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      *                             {@link #printErrorResponse()}
      *                         </li>
      *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
-     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/editOrder">
+     * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/editOrder">
      *     https://docs.kraken.com/rest/#tag/User-Trading/operation/editOrder</a>
      * @return edit market order result as {@link String}
      * **/
@@ -1366,7 +1367,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      *                             {@link #printErrorResponse()}
      *                         </li>
      *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
-     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/editOrder">
+     * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/editOrder">
      *     https://docs.kraken.com/rest/#tag/User-Trading/operation/editOrder</a>
      * @return edit market order result as {@link JSONObject}
      * **/
@@ -1392,7 +1393,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      *                             {@link #printErrorResponse()}
      *                         </li>
      *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
-     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/editOrder">
+     * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/editOrder">
      *     https://docs.kraken.com/rest/#tag/User-Trading/operation/editOrder</a>
      * @return edit market order result as {@link OrderEdited} custom object
      * **/
@@ -1416,7 +1417,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      *                             {@link #printErrorResponse()}
      *                         </li>
      *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
-     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/editOrder">
+     * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/editOrder">
      *     https://docs.kraken.com/rest/#tag/User-Trading/operation/editOrder</a>
      * @return edit market order result as {@link String}
      * **/
@@ -1440,7 +1441,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      *                             {@link #printErrorResponse()}
      *                         </li>
      *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
-     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/editOrder">
+     * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/editOrder">
      *     https://docs.kraken.com/rest/#tag/User-Trading/operation/editOrder</a>
      * @return edit market order result as {@link JSONObject}
      * **/
@@ -1464,7 +1465,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      *                             {@link #printErrorResponse()}
      *                         </li>
      *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
-     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/editOrder">
+     * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/editOrder">
      *     https://docs.kraken.com/rest/#tag/User-Trading/operation/editOrder</a>
      * @return edit market order result as {@link OrderEdited} custom object
      * **/
@@ -1491,7 +1492,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      *                             {@link #printErrorResponse()}
      *                         </li>
      *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
-     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/editOrder">
+     * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/editOrder">
      *     https://docs.kraken.com/rest/#tag/User-Trading/operation/editOrder</a>
      * @return edit limit order result as {@link String}
      * **/
@@ -1518,7 +1519,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      *                             {@link #printErrorResponse()}
      *                         </li>
      *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
-     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/editOrder">
+     * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/editOrder">
      *     https://docs.kraken.com/rest/#tag/User-Trading/operation/editOrder</a>
      * @return edit limit order result as {@link JSONObject}
      * **/
@@ -1546,7 +1547,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      *                             {@link #printErrorResponse()}
      *                         </li>
      *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
-     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/editOrder">
+     * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/editOrder">
      *     https://docs.kraken.com/rest/#tag/User-Trading/operation/editOrder</a>
      * @return edit limit order result as {@link OrderEdited} custom object
      * **/
@@ -1572,7 +1573,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      *                             {@link #printErrorResponse()}
      *                         </li>
      *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
-     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/editOrder">
+     * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/editOrder">
      *     https://docs.kraken.com/rest/#tag/User-Trading/operation/editOrder</a>
      * @return edit limit order result as {@link String}
      * **/
@@ -1597,7 +1598,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      *                             {@link #printErrorResponse()}
      *                         </li>
      *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
-     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/editOrder">
+     * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/editOrder">
      *     https://docs.kraken.com/rest/#tag/User-Trading/operation/editOrder</a>
      * @return edit limit order result as {@link JSONObject}
      * **/
@@ -1622,7 +1623,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      *                             {@link #printErrorResponse()}
      *                         </li>
      *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
-     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/editOrder">
+     * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/editOrder">
      *     https://docs.kraken.com/rest/#tag/User-Trading/operation/editOrder</a>
      * @return edit limit order result as {@link OrderEdited} custom object
      * **/
@@ -1649,7 +1650,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      *                             {@link #printErrorResponse()}
      *                         </li>
      *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
-     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/editOrder">
+     * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/editOrder">
      *     https://docs.kraken.com/rest/#tag/User-Trading/operation/editOrder</a>
      * @return edit stop loss order result as {@link String}
      * **/
@@ -1676,7 +1677,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      *                             {@link #printErrorResponse()}
      *                         </li>
      *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
-     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/editOrder">
+     * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/editOrder">
      *     https://docs.kraken.com/rest/#tag/User-Trading/operation/editOrder</a>
      * @return edit stop loss order result as {@link JSONObject}
      * **/
@@ -1704,7 +1705,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      *                             {@link #printErrorResponse()}
      *                         </li>
      *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
-     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/editOrder">
+     * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/editOrder">
      *     https://docs.kraken.com/rest/#tag/User-Trading/operation/editOrder</a>
      * @return edit stop loss order result as {@link OrderEdited} custom object
      * **/
@@ -1730,7 +1731,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      *                             {@link #printErrorResponse()}
      *                         </li>
      *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
-     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/editOrder">
+     * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/editOrder">
      *     https://docs.kraken.com/rest/#tag/User-Trading/operation/editOrder</a>
      * @return edit stop loss order result as {@link String}
      * **/
@@ -1755,7 +1756,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      *                             {@link #printErrorResponse()}
      *                         </li>
      *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
-     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/editOrder">
+     * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/editOrder">
      *     https://docs.kraken.com/rest/#tag/User-Trading/operation/editOrder</a>
      * @return edit stop loss order result as {@link JSONObject}
      * **/
@@ -1780,7 +1781,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      *                             {@link #printErrorResponse()}
      *                         </li>
      *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
-     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/editOrder">
+     * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/editOrder">
      *     https://docs.kraken.com/rest/#tag/User-Trading/operation/editOrder</a>
      * @return edit stop loss order result as {@link OrderEdited} custom object
      * **/
@@ -1809,7 +1810,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      *                             {@link #printErrorResponse()}
      *                         </li>
      *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
-     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/editOrder">
+     * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/editOrder">
      *     https://docs.kraken.com/rest/#tag/User-Trading/operation/editOrder</a>
      * @return edit stop loss limit order result as {@link String}
      * **/
@@ -1839,7 +1840,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      *                             {@link #printErrorResponse()}
      *                         </li>
      *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
-     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/editOrder">
+     * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/editOrder">
      *     https://docs.kraken.com/rest/#tag/User-Trading/operation/editOrder</a>
      * @return edit stop loss limit order result as {@link JSONObject}
      * **/
@@ -1869,7 +1870,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      *                             {@link #printErrorResponse()}
      *                         </li>
      *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
-     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/editOrder">
+     * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/editOrder">
      *     https://docs.kraken.com/rest/#tag/User-Trading/operation/editOrder</a>
      * @return edit stop loss limit order result as {@link OrderEdited} custom object
      * **/
@@ -1897,7 +1898,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      *                             {@link #printErrorResponse()}
      *                         </li>
      *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
-     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/editOrder">
+     * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/editOrder">
      *     https://docs.kraken.com/rest/#tag/User-Trading/operation/editOrder</a>
      * @return edit stop loss limit order result as {@link String}
      * **/
@@ -1925,7 +1926,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      *                             {@link #printErrorResponse()}
      *                         </li>
      *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
-     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/editOrder">
+     * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/editOrder">
      *     https://docs.kraken.com/rest/#tag/User-Trading/operation/editOrder</a>
      * @return edit stop loss limit order result as {@link JSONObject}
      * **/
@@ -1953,7 +1954,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      *                             {@link #printErrorResponse()}
      *                         </li>
      *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
-     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/editOrder">
+     * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/editOrder">
      *     https://docs.kraken.com/rest/#tag/User-Trading/operation/editOrder</a>
      * @return edit stop loss limit order result as {@link OrderEdited} custom object
      * **/
@@ -1981,7 +1982,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      *                             {@link #printErrorResponse()}
      *                         </li>
      *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
-     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/editOrder">
+     * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/editOrder">
      *     https://docs.kraken.com/rest/#tag/User-Trading/operation/editOrder</a>
      * @return edit take profit order result as {@link String}
      * **/
@@ -2008,7 +2009,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      *                             {@link #printErrorResponse()}
      *                         </li>
      *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
-     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/editOrder">
+     * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/editOrder">
      *     https://docs.kraken.com/rest/#tag/User-Trading/operation/editOrder</a>
      * @return edit take profit order result as {@link JSONObject}
      * **/
@@ -2036,7 +2037,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      *                             {@link #printErrorResponse()}
      *                         </li>
      *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
-     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/editOrder">
+     * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/editOrder">
      *     https://docs.kraken.com/rest/#tag/User-Trading/operation/editOrder</a>
      * @return edit take profit order result as {@link OrderEdited} custom object
      * **/
@@ -2062,7 +2063,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      *                             {@link #printErrorResponse()}
      *                         </li>
      *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
-     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/editOrder">
+     * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/editOrder">
      *     https://docs.kraken.com/rest/#tag/User-Trading/operation/editOrder</a>
      * @return edit take profit order result as {@link String}
      * **/
@@ -2087,7 +2088,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      *                             {@link #printErrorResponse()}
      *                         </li>
      *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
-     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/editOrder">
+     * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/editOrder">
      *     https://docs.kraken.com/rest/#tag/User-Trading/operation/editOrder</a>
      * @return edit take profit order result as {@link JSONObject}
      * **/
@@ -2112,7 +2113,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      *                             {@link #printErrorResponse()}
      *                         </li>
      *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
-     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/editOrder">
+     * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/editOrder">
      *     https://docs.kraken.com/rest/#tag/User-Trading/operation/editOrder</a>
      * @return edit take profit order result as {@link OrderEdited} custom object
      * **/
@@ -2141,7 +2142,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      *                             {@link #printErrorResponse()}
      *                         </li>
      *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
-     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/editOrder">
+     * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/editOrder">
      *     https://docs.kraken.com/rest/#tag/User-Trading/operation/editOrder</a>
      * @return edit take profit limit order result as {@link String}
      * **/
@@ -2171,7 +2172,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      *                             {@link #printErrorResponse()}
      *                         </li>
      *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
-     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/editOrder">
+     * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/editOrder">
      *     https://docs.kraken.com/rest/#tag/User-Trading/operation/editOrder</a>
      * @return edit take profit limit order result as {@link JSONObject}
      * **/
@@ -2201,7 +2202,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      *                             {@link #printErrorResponse()}
      *                         </li>
      *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
-     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/editOrder">
+     * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/editOrder">
      *     https://docs.kraken.com/rest/#tag/User-Trading/operation/editOrder</a>
      * @return edit take profit limit order result as {@link OrderEdited} custom object
      * **/
@@ -2229,7 +2230,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      *                             {@link #printErrorResponse()}
      *                         </li>
      *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
-     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/editOrder">
+     * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/editOrder">
      *     https://docs.kraken.com/rest/#tag/User-Trading/operation/editOrder</a>
      * @return edit take profit limit order result as {@link String}
      * **/
@@ -2257,7 +2258,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      *                             {@link #printErrorResponse()}
      *                         </li>
      *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
-     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/editOrder">
+     * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/editOrder">
      *     https://docs.kraken.com/rest/#tag/User-Trading/operation/editOrder</a>
      * @return edit take profit limit order result as {@link JSONObject}
      * **/
@@ -2285,7 +2286,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      *                             {@link #printErrorResponse()}
      *                         </li>
      *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
-     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/editOrder">
+     * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/editOrder">
      *     https://docs.kraken.com/rest/#tag/User-Trading/operation/editOrder</a>
      * @return edit take profit limit order result as {@link OrderEdited} custom object
      * **/
@@ -2354,7 +2355,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      *                             {@link #printErrorResponse()}
      *                         </li>
      *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
-     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/cancelOrder">
+     * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/cancelOrder">
      *     https://docs.kraken.com/rest/#tag/User-Trading/operation/cancelOrder</a>
      * @return result of order cancellation as {@link String}
      * **/
@@ -2381,7 +2382,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      *                             {@link #printErrorResponse()}
      *                         </li>
      *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
-     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/cancelOrder">
+     * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/cancelOrder">
      *     https://docs.kraken.com/rest/#tag/User-Trading/operation/cancelOrder</a>
      * @return result of order cancellation as {@link JSONObject}
      * **/
@@ -2403,7 +2404,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      *                             {@link #printErrorResponse()}
      *                         </li>
      *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
-     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/cancelOrder">
+     * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/cancelOrder">
      *     https://docs.kraken.com/rest/#tag/User-Trading/operation/cancelOrder</a>
      * @return result of order cancellation as {@link OrderCancelledStatus} custom object
      * **/
@@ -2425,7 +2426,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      *                             {@link #printErrorResponse()}
      *                         </li>
      *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
-     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/cancelAllOrders">
+     * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/cancelAllOrders">
      *     https://docs.kraken.com/rest/#tag/User-Trading/operation/cancelAllOrders</a>
      * @return result of all orders cancellation as {@link String}
      * **/
@@ -2447,7 +2448,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      *                             {@link #printErrorResponse()}
      *                         </li>
      *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
-     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/cancelAllOrders">
+     * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/cancelAllOrders">
      *     https://docs.kraken.com/rest/#tag/User-Trading/operation/cancelAllOrders</a>
      * @return result of all orders cancellation as {@link JSONObject}
      * **/
@@ -2469,7 +2470,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      *                             {@link #printErrorResponse()}
      *                         </li>
      *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
-     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/cancelAllOrders">
+     * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/cancelAllOrders">
      *     https://docs.kraken.com/rest/#tag/User-Trading/operation/cancelAllOrders</a>
      * @return result of all orders cancellation as {@link OrderCancelled} custom object
      * **/
@@ -2491,7 +2492,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      *                             {@link #printErrorResponse()}
      *                         </li>
      *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
-     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/cancelAllOrdersAfter">
+     * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/cancelAllOrdersAfter">
      *     https://docs.kraken.com/rest/#tag/User-Trading/operation/cancelAllOrdersAfter</a>
      * @return result of orders cancellation as {@link String}
      * **/
@@ -2515,7 +2516,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      *                             {@link #printErrorResponse()}
      *                         </li>
      *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
-     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/cancelAllOrdersAfter">
+     * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/cancelAllOrdersAfter">
      *     https://docs.kraken.com/rest/#tag/User-Trading/operation/cancelAllOrdersAfter</a>
      * @return result of orders cancellation as {@link JSONObject}
      * **/
@@ -2537,7 +2538,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      *                             {@link #printErrorResponse()}
      *                         </li>
      *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
-     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/cancelAllOrdersAfter">
+     * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/cancelAllOrdersAfter">
      *     https://docs.kraken.com/rest/#tag/User-Trading/operation/cancelAllOrdersAfter</a>
      * @return result of orders cancellation as {@link OrderCancelledAfter} custom object
      * **/
@@ -2559,7 +2560,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      *                             {@link #printErrorResponse()}
      *                         </li>
      *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
-     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/cancelOrderBatch">
+     * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/cancelOrderBatch">
      *     https://docs.kraken.com/rest/#tag/User-Trading/operation/cancelOrderBatch</a>
      * @return result of batch order cancellation as {@link String}
      * **/
@@ -2583,7 +2584,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      *                             {@link #printErrorResponse()}
      *                         </li>
      *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
-     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/cancelOrderBatch">
+     * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/cancelOrderBatch">
      *     https://docs.kraken.com/rest/#tag/User-Trading/operation/cancelOrderBatch</a>
      * @return result of batch order cancellation as {@link JSONObject}
      * **/
@@ -2605,7 +2606,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      *                             {@link #printErrorResponse()}
      *                         </li>
      *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
-     * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/cancelOrderBatch">
+     * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/cancelOrderBatch">
      *     https://docs.kraken.com/rest/#tag/User-Trading/operation/cancelOrderBatch</a>
      * @return result of batch order cancellation as {@link OrderCancelled} custom object
      * **/

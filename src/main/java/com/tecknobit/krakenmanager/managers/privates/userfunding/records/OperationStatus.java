@@ -8,7 +8,7 @@ import static java.lang.Double.parseDouble;
 
 /**
  * The {@code OperationStatus} class is useful to format deposit and withdrawal objects
- * @apiNote see official documentation at:
+ * @apiNote see the official documentation at:
  * <ul>
  *    <li>
  *        <a href="https://docs.kraken.com/rest/#tag/User-Funding/operation/getStatusRecentDeposits">

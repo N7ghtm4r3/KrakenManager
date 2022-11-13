@@ -7,7 +7,7 @@ import org.json.JSONObject;
  * The {@code StakeableAsset} class is useful to format a websockets token object
  *
  * @author N7ghtm4r3 - Tecknobit
- * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/Websockets-Authentication/operation/getWebsocketsToken">
+ * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/Websockets-Authentication/operation/getWebsocketsToken">
  * https://docs.kraken.com/rest/#tag/Websockets-Authentication/operation/getWebsocketsToken</a>
  **/
 public class WebsocketsToken extends KrakenManager.KrakenResponse {

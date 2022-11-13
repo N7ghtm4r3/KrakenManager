@@ -9,8 +9,8 @@ import static com.tecknobit.apimanager.trading.TradingTools.roundValue;
  * The {@code TradeBalance} class is useful to format trade balance data object
  *
  * @author N7ghtm4r3 - Tecknobit
- * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Data/operation/getTradeBalance">
- * https://docs.kraken.com/rest/#tag/User-Data/operation/getTradeBalance</a>
+ * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Data/operation/getTradeBalance">
+ * Get Trade Balance</a>
  **/
 public class TradeBalance extends KrakenManager.KrakenResponse {
 

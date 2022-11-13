@@ -11,8 +11,8 @@ import static com.tecknobit.apimanager.trading.TradingTools.roundValue;
  * The {@code Trades} class is useful to format Trades object
  *
  * @author N7ghtm4r3 - Tecknobit
- * @apiNote see official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getRecentTrades">
- * https://docs.kraken.com/rest/#tag/Market-Data/operation/getRecentTrades</a>
+ * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getRecentTrades">
+ * Get Recent Trades</a>
  **/
 public class Trades extends MarketList {
 
