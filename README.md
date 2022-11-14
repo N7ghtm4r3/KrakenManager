@@ -60,11 +60,11 @@ dependencies {
 ```java
 
 // init a Kraken manager
-try{
-        KrakenMarketManager manager=new KrakenMarketManager();
-        }catch(Exception e){
-        e.printStackTrace();
-        }
+try {
+    KrakenMarketManager manager=new KrakenMarketManager();
+} catch(Exception e) {
+    e.printStackTrace();
+}
 ```
 
 To avoid re-entering credentials for each manager, you can instantiate managers like this:
@@ -92,9 +92,9 @@ Library give to you the opportunity to customize the return object after a reque
 // choose the manager for example: Gmail, etc 
 KrakenManager manager=new KrakenManager(/* params of the constructor chosen */);
 // method to return directly a library given by library
-        manager.someRequest(); // in this case will be returned directly a LIBRARY_OBJECT
+manager.someRequest(); // in this case will be returned directly a LIBRARY_OBJECT
 // method to customize the format of the return 
-        manager.someRequest(ReturnFormat.JSON); // in this case will be returned response in JSON format
+manager.someRequest(ReturnFormat.JSON); // in this case will be returned response in JSON format
 ```
 
 ### Errors handling
