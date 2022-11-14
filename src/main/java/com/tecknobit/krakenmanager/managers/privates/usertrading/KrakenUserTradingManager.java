@@ -2,7 +2,6 @@ package com.tecknobit.krakenmanager.managers.privates.usertrading;
 
 import com.tecknobit.apimanager.annotations.RequestPath;
 import com.tecknobit.apimanager.annotations.Returner;
-import com.tecknobit.apimanager.annotations.Returner.ReturnFormat;
 import com.tecknobit.apimanager.annotations.WrappedRequest;
 import com.tecknobit.apimanager.formatters.JsonHelper;
 import com.tecknobit.krakenmanager.managers.privates.KrakenPrivateManager;
@@ -19,8 +18,8 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-import static com.tecknobit.apimanager.annotations.Returner.ReturnFormat.LIBRARY_OBJECT;
 import static com.tecknobit.krakenmanager.constants.EndpointsList.*;
+import static com.tecknobit.krakenmanager.managers.KrakenManager.ReturnFormat.LIBRARY_OBJECT;
 import static com.tecknobit.krakenmanager.managers.privates.userdata.records.orders.Order.*;
 import static com.tecknobit.krakenmanager.managers.privates.userdata.records.orders.Order.OrderType.*;
 import static com.tecknobit.krakenmanager.managers.privates.usertrading.records.orders.OrderAdded.addBaseOrderParameters;

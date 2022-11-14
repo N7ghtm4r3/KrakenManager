@@ -2,7 +2,6 @@ package com.tecknobit.krakenmanager.managers.privates.userstaking;
 
 import com.tecknobit.apimanager.annotations.RequestPath;
 import com.tecknobit.apimanager.annotations.Returner;
-import com.tecknobit.apimanager.annotations.Returner.ReturnFormat;
 import com.tecknobit.krakenmanager.managers.privates.KrakenPrivateManager;
 import com.tecknobit.krakenmanager.managers.privates.userstaking.records.StakeableAsset;
 import com.tecknobit.krakenmanager.managers.privates.userstaking.records.StakingTransaction;
@@ -11,9 +10,9 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-import static com.tecknobit.apimanager.annotations.Returner.ReturnFormat.LIBRARY_OBJECT;
 import static com.tecknobit.apimanager.formatters.ScientificNotationParser.sNotationParse;
 import static com.tecknobit.krakenmanager.constants.EndpointsList.*;
+import static com.tecknobit.krakenmanager.managers.KrakenManager.ReturnFormat.LIBRARY_OBJECT;
 
 /**
  * The {@code KrakenUserStakingManager} class is useful to manage all user staking endpoints

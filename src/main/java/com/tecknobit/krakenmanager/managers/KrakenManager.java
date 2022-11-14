@@ -26,7 +26,7 @@ import static com.tecknobit.apimanager.trading.TradingTools.textualizeAssetPerce
 public class KrakenManager {
 
     /**
-     * {@code formatters} is the instance to pass in {@link Returner} methods to format as you want the response by
+     * {@code ReturnFormat} is the instance to pass in {@link Returner} methods to format as you want the response by
      * {@code "Kraken"}
      *
      * @apiNote you can choose between:
@@ -42,7 +42,13 @@ public class KrakenManager {
      * </li>
      * </ul>
      **/
-    public static Returner.ReturnFormat formatters;
+    public enum ReturnFormat {
+
+        STRING,
+        JSON,
+        LIBRARY_OBJECT
+
+    }
 
     /**
      * {@code properties} is a local instance used to instantiate a new {@link KrakenPrivateManager}'s manager without

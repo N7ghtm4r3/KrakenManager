@@ -33,9 +33,8 @@ import java.util.Arrays;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipOutputStream;
 
-import static com.tecknobit.apimanager.annotations.Returner.ReturnFormat;
-import static com.tecknobit.apimanager.annotations.Returner.ReturnFormat.LIBRARY_OBJECT;
 import static com.tecknobit.krakenmanager.constants.EndpointsList.*;
+import static com.tecknobit.krakenmanager.managers.KrakenManager.ReturnFormat.LIBRARY_OBJECT;
 
 /**
  * The {@code KrakenUserDataManager} class is useful to manage all user data endpoints

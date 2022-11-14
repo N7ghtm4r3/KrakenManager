@@ -14,11 +14,10 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Set;
 
-import static com.tecknobit.apimanager.annotations.Returner.ReturnFormat;
-import static com.tecknobit.apimanager.annotations.Returner.ReturnFormat.LIBRARY_OBJECT;
-import static com.tecknobit.apimanager.annotations.Returner.ReturnFormat.STRING;
 import static com.tecknobit.apimanager.trading.TradingTools.computeTPTOPIndex;
 import static com.tecknobit.krakenmanager.constants.EndpointsList.*;
+import static com.tecknobit.krakenmanager.managers.KrakenManager.ReturnFormat.LIBRARY_OBJECT;
+import static com.tecknobit.krakenmanager.managers.KrakenManager.ReturnFormat.STRING;
 
 /**
  * The {@code KrakenMarketManager} class is useful to manage all market endpoints

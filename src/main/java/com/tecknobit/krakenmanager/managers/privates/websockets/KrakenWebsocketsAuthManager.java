@@ -2,13 +2,12 @@ package com.tecknobit.krakenmanager.managers.privates.websockets;
 
 import com.tecknobit.apimanager.annotations.RequestPath;
 import com.tecknobit.apimanager.annotations.Returner;
-import com.tecknobit.apimanager.annotations.Returner.ReturnFormat;
 import com.tecknobit.krakenmanager.managers.privates.KrakenPrivateManager;
 import com.tecknobit.krakenmanager.managers.privates.websockets.records.WebsocketsToken;
 import org.json.JSONObject;
 
-import static com.tecknobit.apimanager.annotations.Returner.ReturnFormat.LIBRARY_OBJECT;
 import static com.tecknobit.krakenmanager.constants.EndpointsList.GET_WEBSOCKETS_TOKEN_ENDPOINT;
+import static com.tecknobit.krakenmanager.managers.KrakenManager.ReturnFormat.LIBRARY_OBJECT;
 
 /**
  * The {@code KrakenWebsocketsAuthManager} class is useful to manage all websockets endpoints
