@@ -27,219 +27,9 @@ import static com.tecknobit.apimanager.trading.TradingTools.roundValue;
 public class Order extends KrakenManager.KrakenResponse {
 
     /**
-     * {@code BUY_TYPE} is constant for buy side
-     * **/
-    public static final String BUY_TYPE = "buy";
-
-    /**
-     * {@code SELL_TYPE} is constant for sell side
-     * **/
-    public static final String SELL_TYPE = "sell";
-
-    /**
-     * {@code MARKET_ORDER_TYPE} is constant for market order type
-     * **/
-    public static final String MARKET_ORDER_TYPE = "market";
-
-    /**
-     * {@code LIMIT_ORDER_TYPE} is constant for limit order type
-     * **/
-    public static final String LIMIT_ORDER_TYPE = "limit";
-
-    /**
-     * {@code STOP_LOSS_ORDER_TYPE} is constant for stop loss order type
-     * **/
-    public static final String STOP_LOSS_ORDER_TYPE = "stop-loss";
-
-    /**
-     * {@code TAKE_PROFIT_ORDER_TYPE} is constant for take profit order type
-     * **/
-    public static final String TAKE_PROFIT_ORDER_TYPE = "take-profit";
-
-    /**
-     * {@code STOP_LOSS_LIMIT_ORDER_TYPE} is constant for stop loss limit order type
-     * **/
-    public static final String STOP_LOSS_LIMIT_ORDER_TYPE = "stop-loss-limit";
-
-    /**
-     * {@code TAKE_PROFIT_LIMIT_ORDER_TYPE} is constant for take profit limit order type
-     * **/
-    public static final String TAKE_PROFIT_LIMIT_ORDER_TYPE = "take-profit-limit";
-
-    /**
-     * {@code SETTLE_POSITION_ORDER_TYPE} is constant for settle position order type
-     * **/
-    public static final String SETTLE_POSITION_ORDER_TYPE = "settle-position";
-
-    /**
-     * {@code PENDING_STATUS} is constant for pending status
-     * **/
-    public static final String PENDING_STATUS = "pending";
-
-    /**
-     * {@code OPEN_STATUS} is constant for open status
-     * **/
-    public static final String OPEN_STATUS = "open";
-
-    /**
-     * {@code CLOSES_STATUS} is constant for closed status
-     * **/
-    public static final String CLOSES_STATUS = "closed";
-
-    /**
-     * {@code CANCELED_STATUS} is constant for canceled status
-     * **/
-    public static final String CANCELED_STATUS = "canceled";
-
-    /**
-     * {@code EXPIRED_STATUS} is constant for expired status
-     * **/
-    public static final String EXPIRED_STATUS = "expired";
-
-    /**
-     * {@code TRIGGER_LAST} is constant for last trigger type
-     * **/
-    public static final String TRIGGER_LAST = "last";
-
-    /**
-     * {@code TRIGGER_INDEX} is constant for index trigger type
-     * **/
-    public static final String TRIGGER_INDEX = "index";
-
-    /**
-     * {@code MISC_STOPPED} is constant for stopped misc type
-     * **/
-    public static final String MISC_STOPPED = "stopped";
-
-    /**
-     * {@code MISC_TOUCHED} is constant for touched misc type
-     * **/
-    public static final String MISC_TOUCHED = "touched";
-
-    /**
-     * {@code MISC_LIQUIDATED} is constant for liquidated misc type
-     * **/
-    public static final String MISC_LIQUIDATED = "liquidated";
-
-    /**
-     * {@code MISC_PARTIAL} is constant for partial misc type
-     * **/
-    public static final String MISC_PARTIAL = "partial";
-
-    /**
-     * {@code OFLAG_POST} is constant for post oflag type
-     * **/
-    public static final String OFLAG_POST = "post";
-
-    /**
-     * {@code OFLAG_FCIB} is constant for fcib oflag type
-     * **/
-    public static final String OFLAG_FCIB = "fcib";
-
-    /**
-     * {@code OFLAG_FCIQ} is constant for fciq oflag type
-     * **/
-    public static final String OFLAG_FCIQ = "fciq";
-
-    /**
-     * {@code OFLAG_NOMPP} is constant for nompp oflag type
-     * **/
-    public static final String OFLAG_NOMPP = "nompp";
-
-    /**
-     * {@code OFLAG_VIQC} is constant for nompp viqc type
-     * **/
-    public static final String OFLAG_VIQC = "viqc";
-
-    /**
-     * {@code refId} is instance that memorizes referral order transaction id
-     * **/
-    protected final long refId;
-
-    /**
-     * {@code userRef} is instance that memorizes user reference id
-     * **/
-    protected final long userRef;
-
-    /**
      * {@code status} is instance that memorizes status value
-     * **/
-    protected final String status;
-
-    /**
-     * {@code openTime} is instance that memorizes open time value
-     * **/
-    protected final long openTime;
-
-    /**
-     * {@code startTime} is instance that memorizes start time value
-     * **/
-    protected final long startTime;
-
-    /**
-     * {@code expireTime} is instance that memorizes expire time value
-     * **/
-    protected final long expireTime;
-
-    /**
-     * {@code orderDescription} is instance that memorizes order description value
-     * **/
-    protected final OrderDescription orderDescription;
-
-    /**
-     * {@code volume} is instance that memorizes volume value
-     * **/
-    protected final double volume;
-
-    /**
-     * {@code executedVolume} is instance that memorizes executed volume value
-     * **/
-    protected final double executedVolume;
-
-    /**
-     * {@code cost} is instance that memorizes cost value
-     * **/
-    protected final double cost;
-
-    /**
-     * {@code fee} is instance that memorizes fee value
-     * **/
-    private final double fee;
-
-    /**
-     * {@code price} is instance that memorizes price value
-     * **/
-    protected final double price;
-
-    /**
-     * {@code stopPrice} is instance that memorizes stop price value
-     * **/
-    protected final double stopPrice;
-
-    /**
-     * {@code limitPrice} is instance that memorizes limit price value
-     * **/
-    protected final double limitPrice;
-
-    /**
-     * {@code trigger} is instance that memorizes trigger value
-     * **/
-    protected final String trigger;
-
-    /**
-     * {@code misc} is instance that memorizes misc value
-     * **/
-    protected final String misc;
-
-    /**
-     * {@code oFlags} is instance that memorizes order flags value
-     * **/
-    protected final String oFlags;
-
-    /**
-     * {@code trades} is instance that memorizes list of trades id
-     * **/
-    protected final ArrayList<Long> trades;
+     **/
+    protected final OrderStatus status;
 
     /** Constructor to init a {@link Order} object
      * @param refId: referral order transaction id
@@ -261,7 +51,7 @@ public class Order extends KrakenManager.KrakenResponse {
      * @param oFlags: order flags value
      * @param trades: list of trades id
      **/
-    public Order(long refId, long userRef, String status, long openTime, long startTime, long expireTime,
+    public Order(long refId, long userRef, OrderStatus status, long openTime, long startTime, long expireTime,
                  OrderDescription orderDescription, double volume, double executedVolume, double cost, double fee,
                  double price, double stopPrice, double limitPrice, String trigger, String misc, String oFlags,
                  ArrayList<Long> trades) {
@@ -293,7 +83,7 @@ public class Order extends KrakenManager.KrakenResponse {
         super(jsonResponse);
         refId = result.getLong("refid", 0);
         userRef = result.getLong("userref", 0);
-        status = result.getString("status");
+        status = OrderStatus.valueOf(result.getString("status", OrderStatus.open.toString()));
         openTime = result.getLong("opentm", 0);
         startTime = result.getLong("starttm", 0);
         expireTime = result.getLong("expiretm", 0);
@@ -312,6 +102,261 @@ public class Order extends KrakenManager.KrakenResponse {
         trades = new ArrayList<>();
         for (int j = 0; j < jsonTrades.length(); j++)
             trades.add(jsonTrades.getLong(j));
+    }
+
+    /**
+     * Method to get {@link #status} instance <br>
+     * Any params required
+     *
+     * @return {@link #status} instance as {@link String}
+     **/
+    public OrderStatus getStatus() {
+        return status;
+    }
+
+    /**
+     * {@code Side} sides for an order
+     **/
+    public enum Side {
+
+        /**
+         * {@code "buy"} side
+         **/
+        buy,
+
+        /**
+         * {@code "sell"} side
+         **/
+        sell
+
+    }
+
+    /**
+     * {@code OrderType} list of order types
+     **/
+    public enum OrderType {
+
+        /**
+         * {@code "market"} order type
+         **/
+        market("market"),
+
+        /**
+         * {@code "limit"} order type
+         **/
+        limit("limit"),
+
+        /**
+         * {@code "stop_loss"} order type
+         **/
+        stop_loss("stop-loss"),
+
+        /**
+         * {@code "take_profit"} order type
+         **/
+        take_profit("take-profit"),
+
+        /**
+         * {@code "stop_loss_limit"} order type
+         **/
+        stop_loss_limit("stop-loss-limit"),
+
+        /**
+         * {@code "take_profit_limit"} order type
+         **/
+        take_profit_limit("take-profit-limit"),
+
+        /**
+         * {@code "settle_position"} order type
+         **/
+        settle_position("settle-position");
+
+        /**
+         * {@code type} type of the order
+         **/
+        private final String type;
+
+        /**
+         * Constructor to init a {@link OrderType} object
+         *
+         * @param type: type of the order
+         **/
+        OrderType(String type) {
+            this.type = type;
+        }
+
+        /**
+         * Method to get {@link #type} instance <br>
+         * Any params required
+         *
+         * @return {@link #type} instance as {@link String}
+         **/
+        @Override
+        public String toString() {
+            return type;
+        }
+
+    }
+
+    /**
+     * {@code refId} is instance that memorizes referral order transaction id
+     **/
+    protected final long refId;
+
+    /**
+     * {@code userRef} is instance that memorizes user reference id
+     **/
+    protected final long userRef;
+
+    /**
+     * {@code OrderStatus} statuses list for an order
+     **/
+    public enum OrderStatus {
+
+        /**
+         * {@code "pending"} status
+         **/
+        pending,
+
+        /**
+         * {@code "open"} status
+         **/
+        open,
+
+        /**
+         * {@code "closed"} status
+         **/
+        closed,
+
+        /**
+         * {@code "canceled"} status
+         **/
+        canceled,
+
+        /**
+         * {@code "expired"} status
+         **/
+        expired,
+
+    }
+
+    /**
+     * {@code openTime} is instance that memorizes open time value
+     **/
+    protected final long openTime;
+
+    /**
+     * {@code startTime} is instance that memorizes start time value
+     **/
+    protected final long startTime;
+
+    /**
+     * {@code expireTime} is instance that memorizes expire time value
+     **/
+    protected final long expireTime;
+
+    /**
+     * {@code orderDescription} is instance that memorizes order description value
+     **/
+    protected final OrderDescription orderDescription;
+
+    /**
+     * {@code volume} is instance that memorizes volume value
+     **/
+    protected final double volume;
+
+    /**
+     * {@code executedVolume} is instance that memorizes executed volume value
+     **/
+    protected final double executedVolume;
+
+    /**
+     * {@code cost} is instance that memorizes cost value
+     **/
+    protected final double cost;
+
+    /**
+     * {@code fee} is instance that memorizes fee value
+     **/
+    private final double fee;
+
+    /**
+     * {@code price} is instance that memorizes price value
+     **/
+    protected final double price;
+
+    /**
+     * {@code stopPrice} is instance that memorizes stop price value
+     **/
+    protected final double stopPrice;
+
+    /**
+     * {@code limitPrice} is instance that memorizes limit price value
+     **/
+    protected final double limitPrice;
+
+    /**
+     * {@code trigger} is instance that memorizes trigger value
+     **/
+    protected final String trigger;
+
+    /**
+     * {@code misc} is instance that memorizes misc value
+     **/
+    protected final String misc;
+
+    /**
+     * {@code oFlags} is instance that memorizes order flags value
+     **/
+    protected final String oFlags;
+
+    /**
+     * {@code trades} is instance that memorizes list of trades id
+     **/
+    protected final ArrayList<Long> trades;
+
+    /**
+     * {@code Trigger} triggers list for an order
+     **/
+    public enum Trigger {
+
+        /**
+         * {@code "last"} trigger
+         **/
+        last,
+
+        /**
+         * {@code "index"} trigger
+         **/
+        index
+
+    }
+
+    /**
+     * {@code Misc} misc list for an order
+     **/
+    public enum Misc {
+
+        /**
+         * {@code "stopped"} misc
+         **/
+        stopped,
+
+        /**
+         * {@code "touched"} trigger
+         **/
+        touched,
+
+        /**
+         * {@code "liquidated"} misc
+         **/
+        liquidated,
+
+        /**
+         * {@code "partial"} misc
+         **/
+        partial
+
     }
 
     /**
@@ -335,13 +380,35 @@ public class Order extends KrakenManager.KrakenResponse {
     }
 
     /**
-     * Method to get {@link #status} instance <br>
-     * Any params required
-     *
-     * @return {@link #status} instance as {@link String}
-     **/
-    public String getStatus() {
-        return status;
+     * {@code OFlag} oflags list for an order
+     * **/
+    public enum OFlag {
+
+        /**
+         * {@code "post"} post-only order (available when ordertype = limit)
+         **/
+        post,
+
+        /**
+         * {@code "fcib"} prefer fee in base currency (default if selling)
+         **/
+        fcib,
+
+        /**
+         * {@code "fciq"} prefer fee in quote currency (default if buying, mutually exclusive with {@code "fcib"})
+         **/
+        fciq,
+
+        /**
+         * {@code "nompp"} disable market price protection for market orders
+         **/
+        nompp,
+
+        /**
+         * {@code "viqc"} order volume expressed in quote currency. This is supported only for market orders
+         **/
+        viqc
+
     }
 
     /**
@@ -568,7 +635,7 @@ public class Order extends KrakenManager.KrakenResponse {
         /**
          * {@code orderType} is instance that memorizes order type value
          * **/
-        private final String orderType;
+        private final OrderType orderType;
 
         /**
          * {@code price} is instance that memorizes price value
@@ -606,7 +673,7 @@ public class Order extends KrakenManager.KrakenResponse {
          * @param order: order value
          * @param close: close value
          **/
-        public OrderDescription(String pair, String type, String orderType, double price, double secondPrice,
+        public OrderDescription(String pair, String type, OrderType orderType, double price, double secondPrice,
                                 String leverage, String order, String close) {
             this.pair = pair;
             this.type = type;
@@ -627,7 +694,7 @@ public class Order extends KrakenManager.KrakenResponse {
             JsonHelper orderDescription = new JsonHelper(jsonOrder);
             pair = orderDescription.getString("pair");
             type = orderDescription.getString("type");
-            orderType = orderDescription.getString("ordertype");
+            orderType = OrderType.valueOf(orderDescription.getString("ordertype", OrderType.market.toString()));
             price = orderDescription.getDouble("price");
             secondPrice = orderDescription.getDouble("price2");
             leverage = orderDescription.getString("leverage");
@@ -659,9 +726,9 @@ public class Order extends KrakenManager.KrakenResponse {
          * Method to get {@link #orderType} instance <br>
          * Any params required
          *
-         * @return {@link #orderType} instance as {@link String}
+         * @return {@link #orderType} instance as {@link OrderType}
          **/
-        public String getOrderType() {
+        public OrderType getOrderType() {
             return orderType;
         }
 

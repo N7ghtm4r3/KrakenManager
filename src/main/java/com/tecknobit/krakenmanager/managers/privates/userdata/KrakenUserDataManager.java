@@ -460,7 +460,7 @@ public class KrakenUserDataManager extends KrakenPrivateManager {
      *                        {@code "ofs"} -> result offset for pagination - [integer]
      *                    </li>
      *                    <li>
-     *                        {@code "closetime"} -> which time to use to search, constants available: {@link CloseTime}
+     *                        {@code "closetime"} -> which time to use to search, constants available at {@link CloseTime}
      *                        - [string, default both]
      *                    </li>
      *                </ul>
@@ -507,7 +507,7 @@ public class KrakenUserDataManager extends KrakenPrivateManager {
      *                        {@code "ofs"} -> result offset for pagination - [integer]
      *                    </li>
      *                    <li>
-     *                        {@code "closetime"} -> which time to use to search, constants available: {@link CloseTime}
+     *                        {@code "closetime"} -> which time to use to search, constants available at {@link CloseTime}
      *                        - [string, default both]
      *                    </li>
      *                </ul>
@@ -869,7 +869,7 @@ public class KrakenUserDataManager extends KrakenPrivateManager {
      * @param params: custom params for the request, keys accepted are:
      *                <ul>
      *                    <li>
-     *                        {@code "type"} -> type of trade, constants available: {@link TradeType} - [string, default all]
+     *                        {@code "type"} -> type of trade, constants available at {@link TradeType} - [string, default all]
      *                    </li>
      *                    <li>
      *                        {@code "trades"} -> whether or not to include trades related to position in output - [boolean, default false]
@@ -912,7 +912,7 @@ public class KrakenUserDataManager extends KrakenPrivateManager {
      * @param params: custom params for the request, keys accepted are:
      *                <ul>
      *                    <li>
-     *                        {@code "type"} -> type of trade, constants available: {@link TradeType} - [string, default all]
+     *                        {@code "type"} -> type of trade, constants available at {@link TradeType} - [string, default all]
      *                    </li>
      *                    <li>
      *                        {@code "trades"} -> whether or not to include trades related to position in output - [boolean, default false]
@@ -1402,7 +1402,7 @@ public class KrakenUserDataManager extends KrakenPrivateManager {
      *                        {@code "aclass"} -> asset class - [string, default currency]
      *                    </li>
      *                    <li>
-     *                        {@code "type"} -> type of ledger, constants available: {@link LedgerType} - [string, default all]
+     *                        {@code "type"} -> type of ledger, constants available at {@link LedgerType} - [string, default all]
      *                    </li>
      *                    <li>
      *                        {@code "start"} -> starting unix timestamp or order tx ID of results (exclusive) - [integer]
@@ -1449,7 +1449,7 @@ public class KrakenUserDataManager extends KrakenPrivateManager {
      *                        {@code "aclass"} -> asset class - [string, default currency]
      *                    </li>
      *                    <li>
-     *                        {@code "type"} -> type of ledger, constants available: {@link LedgerType} - [string, default all]
+     *                        {@code "type"} -> type of ledger, constants available at {@link LedgerType} - [string, default all]
      *                    </li>
      *                    <li>
      *                        {@code "start"} -> starting unix timestamp or order tx ID of results (exclusive) - [integer]
@@ -1610,7 +1610,7 @@ public class KrakenUserDataManager extends KrakenPrivateManager {
      *                      {@code "aclass"} -> asset class - [string, default currency]
      *                  </li>
      *                  <li>
-     *                      {@code "type"} -> type of ledger, constants available: {@link LedgerType} - [string, default all]
+     *                      {@code "type"} -> type of ledger, constants available at {@link LedgerType} - [string, default all]
      *                  </li>
      *                  <li>
      *                      {@code "start"} -> starting unix timestamp or order tx ID of results (exclusive) - [integer]
@@ -1656,7 +1656,7 @@ public class KrakenUserDataManager extends KrakenPrivateManager {
      *                      {@code "aclass"} -> asset class - [string, default currency]
      *                  </li>
      *                  <li>
-     *                      {@code "type"} -> type of ledger, constants available: {@link LedgerType} - [string, default all]
+     *                      {@code "type"} -> type of ledger, constants available at {@link LedgerType} - [string, default all]
      *                  </li>
      *                  <li>
      *                      {@code "start"} -> starting unix timestamp or order tx ID of results (exclusive) - [integer]
@@ -1705,7 +1705,7 @@ public class KrakenUserDataManager extends KrakenPrivateManager {
      *                              {@code "aclass"} -> asset class - [string, default currency]
      *                          </li>
      *                          <li>
-     *                              {@code "type"} -> type of ledger, constants available: {@link LedgerType} - [string, default all]
+     *                              {@code "type"} -> type of ledger, constants available at {@link LedgerType} - [string, default all]
      *                          </li>
      *                          <li>
      *                              {@code "start"} -> starting unix timestamp or order tx ID of results (exclusive) - [integer]
@@ -1752,7 +1752,7 @@ public class KrakenUserDataManager extends KrakenPrivateManager {
      *                              {@code "aclass"} -> asset class - [string, default currency]
      *                          </li>
      *                          <li>
-     *                              {@code "type"} -> type of ledger, constants available: {@link LedgerType} - [string, default all]
+     *                              {@code "type"} -> type of ledger, constants available at {@link LedgerType} - [string, default all]
      *                          </li>
      *                          <li>
      *                              {@code "start"} -> starting unix timestamp or order tx ID of results (exclusive) - [integer]
@@ -2227,7 +2227,7 @@ public class KrakenUserDataManager extends KrakenPrivateManager {
      * @param params: custom params for the request, keys accepted are:
      *              <ul>
      *                  <li>
-     *                      {@code "format"} -> file format to export, constants available: {@link ReportFormat} - [string, default CSV]
+     *                      {@code "format"} -> file format to export, constants available at {@link ReportFormat} - [string, default CSV]
      *                  </li>
      *                  <li>
      *                      {@code "fields"} -> comma-delimited list of fields to include - [string, default all]
@@ -2276,7 +2276,7 @@ public class KrakenUserDataManager extends KrakenPrivateManager {
      * @param params:      custom params for the request, keys accepted are:
      *                     <ul>
      *                         <li>
-     *                             {@code "format"} -> file format to export, constants available: {@link ReportFormat} - [string, default CSV]
+     *                             {@code "format"} -> file format to export, constants available at {@link ReportFormat} - [string, default CSV]
      *                         </li>
      *                         <li>
      *                             {@code "fields"} -> comma-delimited list of fields to include - [string, default all]

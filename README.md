@@ -1,5 +1,5 @@
 # KrakenManager
-**v1.0.3**
+**v1.0.4**
 
 This is a Java Based library useful to work with Kraken's API service.
 
@@ -23,7 +23,7 @@ allprojects {
 
 ```gradle
 dependencies {
-    implementation 'com.github.N7ghtm4r3:KrakenManager:1.0.3'
+    implementation 'com.github.N7ghtm4r3:KrakenManager:1.0.4'
 }
 ```
 
@@ -45,25 +45,26 @@ dependencies {
 <dependency>
     <groupId>com.github.N7ghtm4r3</groupId>
     <artifactId>KrakenManager</artifactId>
-    <version>1.0.3</version>
+    <version>1.0.4</version>
 </dependency>
 ```
 
 ## 🛠 Skills
+
 - Java
 
-The other endpoints managers will be gradually released
-
 ## Usage/Examples
+
+#### Execution
 
 ```java
 
 // init a Kraken manager
-try {
-   KrakenMarketManager manager = new KrakenMarketManager();
-} catch(Exception e) {
-   e.printStackTrace();
-}
+try{
+        KrakenMarketManager manager=new KrakenMarketManager();
+        }catch(Exception e){
+        e.printStackTrace();
+        }
 ```
 
 To avoid re-entering credentials for each manager, you can instantiate managers like this:
@@ -79,47 +80,21 @@ KrakenPrivateManager secondManager = new KrakenPrivateManager(); // same credent
 secondManager.makeSomething();
 ```
 
-### Responses
+#### Responses
 
-- String: will return response formatted as String object
+Library give to you the opportunity to customize the return object after a request, the possibilities are:
 
-```java
-try {
-   System.out.println(manager.getAsset("BTCEUR"));
-} catch(Exception e) {
-   e.printStackTrace();
-}
-```
-
-- JSON: will return response formatted as JSON (JSONObject or JSONArray)
+- **JSON:** return response formatted as **JSON** (**org.json.JSONObject** or **org.json.JSONArray**)
+- **STRING:** return response formatted as **String**
+- **LIBRARY_OBJECT:** return response formatted as custom object offered by the library
 
 ```java
-try {
-    System.out.println(manager.getAssetJSON("BTCEUR"));
-} catch (Exception e) {
-    e.printStackTrace();
-}
-```
-
-- Custom-object: will return response formatted as custom object provided by library
-
-```java
-try {
-    System.out.println(manager.getAssetObject("BTCEUR"));
-} catch (Exception e) {
-    e.printStackTrace();
-}
-```
-
-- Primitives: some requests will return primitive types like boolean, long, double
-
-```java
-// it return double type es. 1.544
-try {
-    System.out.println(manager.roundValue(1.544242, 3));
-} catch (Exception e) {
-    e.printStackTrace();
-}
+// choose the manager for example: Gmail, etc 
+KrakenManager manager=new KrakenManager(/* params of the constructor chosen */);
+// method to return directly a library given by library
+        manager.someRequest(); // in this case will be returned directly a LIBRARY_OBJECT
+// method to customize the format of the return 
+        manager.someRequest(ReturnFormat.JSON); // in this case will be returned response in JSON format
 ```
 
 ### Errors handling

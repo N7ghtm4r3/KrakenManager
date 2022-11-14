@@ -11,7 +11,7 @@ import java.util.Date;
  *
  * @author N7ghtm4r3 - Tecknobit
  * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/cancelAllOrdersAfter">
- * https://docs.kraken.com/rest/#tag/User-Trading/operation/cancelAllOrdersAfter</a>
+ * Cancel All Orders After X</a>
  **/
 public class OrderCancelledAfter extends KrakenManager.KrakenResponse {
 

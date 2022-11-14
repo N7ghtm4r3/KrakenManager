@@ -7,14 +7,15 @@ import org.json.JSONObject;
 
 import static com.tecknobit.apimanager.apis.APIRequest.Params;
 import static com.tecknobit.krakenmanager.managers.privates.userdata.records.orders.Order.*;
+import static com.tecknobit.krakenmanager.managers.privates.userdata.records.orders.Order.OrderType.*;
 import static com.tecknobit.krakenmanager.managers.privates.usertrading.records.orders.OrderAdded.*;
 
 /**
- * The {@code OrderBatchList} class is useful to assemble order batch list object
+ * The {@code OrderBatchList} class is useful to assemble an orders list for a batch order
  *
  * @author N7ghtm4r3 - Tecknobit
  * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/addOrderBatch">
- * https://docs.kraken.com/rest/#tag/User-Trading/operation/addOrderBatch</a>
+ * Add Order Batch</a>
  **/
 public class OrderBatchList {
 
@@ -42,100 +43,116 @@ public class OrderBatchList {
         this.pair = pair;
     }
 
-    /** Method to add a market order type
-     * @param type: order direction -> buy or sell
+    /**
+     * Method to add a market order type
+     *
+     * @param type:   order direction -> buy or sell
      * @param volume: order quantity in terms of the base asset
-     * **/
-    public void addMarkeOrder(String type, double volume) {
-        addMarkeOrder(type, volume, params);
+     **/
+    public void addMarketOrder(Side type, double volume) {
+        addMarketOrder(type, volume, params);
     }
 
-    /** Method to add a market order type
-     * @param type: order direction -> buy or sell
+    /**
+     * Method to add a market order type
+     *
+     * @param type:   order direction -> buy or sell
      * @param volume: order quantity in terms of the base asset
      * @param params: extra order details
      * @implNote keys for params accepted are: userref,leverage,stp_type,oflags,timeinforce,starttm,expiretm,deadline or validate
-     * **/
-    public void addMarkeOrder(String type, double volume, Params params) {
-        orders.put(createBaseOrder(MARKET_ORDER_TYPE, type, volume, params));
+     **/
+    public void addMarketOrder(Side type, double volume, Params params) {
+        orders.put(createBaseOrder(market, type, volume, params));
     }
 
-    /** Method to add a limit order type
-     * @param type: order direction -> buy or sell
+    /**
+     * Method to add a limit order type
+     *
+     * @param type:   order direction -> buy or sell
      * @param volume: order quantity in terms of the base asset
-     * @param price: price value
-     * **/
-    public void addLimitOrder(String type, double volume, double price) {
+     * @param price:  price value
+     **/
+    public void addLimitOrder(Side type, double volume, double price) {
         addLimitOrder(type, volume, price, params);
     }
 
-    /** Method to add a limit order type
-     * @param type: order direction -> buy or sell
+    /**
+     * Method to add a limit order type
+     *
+     * @param type:   order direction -> buy or sell
      * @param volume: order quantity in terms of the base asset
-     * @param price: price value
+     * @param price:  price value
      * @param params: extra order details
      * @implNote keys for params accepted are: userref,leverage,stp_type,oflags,timeinforce,starttm,expiretm,deadline,validate
      * and close
-     * **/
-    public void addLimitOrder(String type, double volume, double price, Params params) {
-        JSONObject limitOrder = createBaseOrder(LIMIT_ORDER_TYPE, type, volume, params);
-        if(price < 0)
+     **/
+    public void addLimitOrder(Side type, double volume, double price, Params params) {
+        JSONObject limitOrder = createBaseOrder(limit, type, volume, params);
+        if (price < 0)
             throw new IllegalArgumentException("Price value cannot be smaller than 0");
         else
             limitOrder.put("price", price);
         orders.put(limitOrder);
     }
 
-    /** Method to add a stop-loss order type
-     * @param type: order direction -> buy or sell
-     * @param volume: order quantity in terms of the base asset
-     * @param price: price value
+    /**
+     * Method to add a stop-loss order type
+     *
+     * @param type:    order direction -> buy or sell
+     * @param volume:  order quantity in terms of the base asset
+     * @param price:   price value
      * @param trigger: price signal used to trigger
-     * **/
-    public void addStopLossOrder(String type, double volume, double price, String trigger) {
+     **/
+    public void addStopLossOrder(Side type, double volume, double price, Trigger trigger) {
         addStopLossOrder(type, volume, price, trigger, params);
     }
 
-    /** Method to add a stop-loss order type
-     * @param type: order direction -> buy or sell
-     * @param volume: order quantity in terms of the base asset
-     * @param price: price value
+    /**
+     * Method to add a stop-loss order type
+     *
+     * @param type:    order direction -> buy or sell
+     * @param volume:  order quantity in terms of the base asset
+     * @param price:   price value
      * @param trigger: price signal used to trigger
-     * @param params: extra order details
+     * @param params:  extra order details
      * @implNote keys for params accepted are: userref,leverage,stp_type,oflags,timeinforce,starttm,expiretm,deadline,validate
      * and close
-     * **/
-    public void addStopLossOrder(String type, double volume, double price, String trigger, Params params) {
-        addLevelOrder(STOP_LOSS_ORDER_TYPE, type, volume, price, trigger, params);
+     **/
+    public void addStopLossOrder(Side type, double volume, double price, Trigger trigger, Params params) {
+        addLevelOrder(stop_loss, type, volume, price, trigger, params);
     }
 
-    /** Method to add a stop-loss-limit order type
-     * @param type: order direction -> buy or sell
-     * @param volume: order quantity in terms of the base asset
-     * @param price: price value
-     * @param price2: secondary price value
-     * @param trigger: price signal used to trigger
+    /**
+     * Method to add a stop-loss-limit order type
+     *
+     * @param type:       order direction -> buy or sell
+     * @param volume:     order quantity in terms of the base asset
+     * @param price:      price value
+     * @param price2:     secondary price value
+     * @param trigger:    price signal used to trigger
      * @param offsetType: +, - , # or % -> constants in {@link OrderAdded} class
-     * **/
-    public void addStopLossLimitOrder(String type, double volume, double price, double price2, String trigger,
+     **/
+    public void addStopLossLimitOrder(Side type, double volume, double price, double price2, Trigger trigger,
                                       String offsetType) {
         addStopLossLimitOrder(type, volume, price, price2, trigger, offsetType, params);
     }
 
-    /** Method to add a stop-loss-limit order type
-     * @param type: order direction -> buy or sell
-     * @param volume: order quantity in terms of the base asset
-     * @param price: price value
-     * @param price2: secondary price value
-     * @param trigger: price signal used to trigger
+    /**
+     * Method to add a stop-loss-limit order type
+     *
+     * @param type:       order direction -> buy or sell
+     * @param volume:     order quantity in terms of the base asset
+     * @param price:      price value
+     * @param price2:     secondary price value
+     * @param trigger:    price signal used to trigger
      * @param offsetType: +, - , # or % -> constants in {@link OrderAdded} class
-     * @param params: extra order details
+     * @param params:     extra order details
      * @implNote keys for params accepted are: userref,leverage,stp_type,oflags,timeinforce,starttm,expiretm,deadline,validate
      * and close
-     * **/
-    public void addStopLossLimitOrder(String type, double volume, double price, double price2, String trigger,
+     **/
+    public void addStopLossLimitOrder(Side type, double volume, double price, double price2, Trigger trigger,
                                       String offsetType, Params params) {
-        addLevelLimitOrder(STOP_LOSS_LIMIT_ORDER_TYPE, type, volume, price, price2, trigger, offsetType, params);
+        addLevelLimitOrder(stop_loss_limit, type, volume, price, price2, trigger, offsetType, params);
     }
 
     /** Method to add a take-profit order type
@@ -144,99 +161,103 @@ public class OrderBatchList {
      * @param price: price value
      * @param trigger: price signal used to trigger
      * **/
-    public void addTakeProfitOrder(String type, double volume, double price, String trigger) {
+    public void addTakeProfitOrder(Side type, double volume, double price, Trigger trigger) {
         addTakeProfitOrder(type, volume, price, trigger, params);
     }
 
-    /** Method to add a take-profit order type
-     * @param type: order direction -> buy or sell
-     * @param volume: order quantity in terms of the base asset
-     * @param price: price value
+    /**
+     * Method to add a take-profit order type
+     *
+     * @param type:    order direction -> buy or sell
+     * @param volume:  order quantity in terms of the base asset
+     * @param price:   price value
      * @param trigger: price signal used to trigger
-     * @param params: extra order details
+     * @param params:  extra order details
      * @implNote keys for params accepted are: userref,leverage,stp_type,oflags,timeinforce,starttm,expiretm,deadline,validate
      * and close
-     * **/
-    public void addTakeProfitOrder(String type, double volume, double price, String trigger, Params params) {
-        addLevelOrder(TAKE_PROFIT_ORDER_TYPE, type, volume, price, trigger, params);
+     **/
+    public void addTakeProfitOrder(Side type, double volume, double price, Trigger trigger, Params params) {
+        addLevelOrder(take_profit, type, volume, price, trigger, params);
     }
 
-    /** Method to add a take-profit-limit order type
-     * @param type: order direction -> buy or sell
-     * @param volume: order quantity in terms of the base asset
-     * @param price: price value
-     * @param price2: secondary price value
-     * @param trigger: price signal used to trigger
+    /**
+     * Method to add a take-profit-limit order type
+     *
+     * @param type:       order direction -> buy or sell
+     * @param volume:     order quantity in terms of the base asset
+     * @param price:      price value
+     * @param price2:     secondary price value
+     * @param trigger:    price signal used to trigger
      * @param offsetType: +, - , # or % -> constants in {@link OrderAdded} class
-     * **/
-    public void addTakeProfitLimitOrder(String type, double volume, double price, double price2, String trigger,
-                                      String offsetType) {
+     **/
+    public void addTakeProfitLimitOrder(Side type, double volume, double price, double price2, Trigger trigger,
+                                        String offsetType) {
         addTakeProfitLimitOrder(type, volume, price, price2, trigger, offsetType, params);
     }
 
-    /** Method to add a take-profit-limit order type
-     * @param type: order direction -> buy or sell
-     * @param volume: order quantity in terms of the base asset
-     * @param price: price value
-     * @param price2: secondary price value
-     * @param trigger: price signal used to trigger
+    /**
+     * Method to add a take-profit-limit order type
+     *
+     * @param type:       order direction -> buy or sell
+     * @param volume:     order quantity in terms of the base asset
+     * @param price:      price value
+     * @param price2:     secondary price value
+     * @param trigger:    price signal used to trigger
      * @param offsetType: +, - , # or % -> constants in {@link OrderAdded} class
-     * @param params: extra order details
+     * @param params:     extra order details
      * @implNote keys for params accepted are: userref,leverage,stp_type,oflags,timeinforce,starttm,expiretm,deadline,validate
      * and close
-     * **/
-    public void addTakeProfitLimitOrder(String type, double volume, double price, double price2, String trigger,
-                                      String offsetType, Params params) {
-        addLevelLimitOrder(TAKE_PROFIT_LIMIT_ORDER_TYPE, type, volume, price, price2, trigger, offsetType, params);
+     **/
+    public void addTakeProfitLimitOrder(Side type, double volume, double price, double price2, Trigger trigger,
+                                        String offsetType, Params params) {
+        addLevelLimitOrder(take_profit_limit, type, volume, price, price2, trigger, offsetType, params);
     }
 
-    /** Method to add level order
+    /**
+     * Method to add level order
+     *
      * @param orderType: stop-loss or take-profit order type -> constants in {@link Order} class
-     * @param type: order direction -> buy or sell
-     * @param volume: order quantity in terms of the base asset
-     * @param price: price value
-     * @param trigger: price signal used to trigger
-     * @param params: extra order details
+     * @param type:      order direction -> buy or sell
+     * @param volume:    order quantity in terms of the base asset
+     * @param price:     price value
+     * @param trigger:   price signal used to trigger
+     * @param params:    extra order details
      * @implNote keys for params accepted are: userref,leverage,stp_type,oflags,timeinforce,starttm,expiretm,deadline,validate
      * and close
-     * **/
-    private void addLevelOrder(String orderType, String type, double volume, double price, String trigger, Params params) {
+     **/
+    private void addLevelOrder(OrderType orderType, Side type, double volume, double price, Trigger trigger,
+                               Params params) {
         JSONObject levelOrder = createBaseOrder(orderType, type, volume, params);
         if(price < 0)
             throw new IllegalArgumentException("Price value cannot be smaller than 0");
         else
             levelOrder.put("price", price);
-        if(!isTriggerValid(trigger))
-            throw new IllegalArgumentException("Trigger value must be last or index");
-        else
-            levelOrder.put("trigger", trigger);
+        levelOrder.put("trigger", trigger);
         orders.put(levelOrder);
     }
 
-    /** Method to add level limit order
-     * @param orderType: stop-loss-limit or take-profit-limit order type -> constants in {@link Order} class
-     * @param type: order direction -> buy or sell
-     * @param volume: order quantity in terms of the base asset
-     * @param price: price value
-     * @param price2: secondary price value
-     * @param trigger: price signal used to trigger
+    /**
+     * Method to add level limit order
+     *
+     * @param orderType:  stop-loss-limit or take-profit-limit order type -> constants in {@link Order} class
+     * @param type:       order direction -> buy or sell
+     * @param volume:     order quantity in terms of the base asset
+     * @param price:      price value
+     * @param price2:     secondary price value
+     * @param trigger:    price signal used to trigger
      * @param offsetType: +, - , # or % -> constants in {@link OrderAdded} class
-     * @param params: extra order details
+     * @param params:     extra order details
      * @implNote keys for params accepted are: userref,leverage,stp_type,oflags,timeinforce,starttm,expiretm,deadline,validate
      * and close
-     * **/
-    private void addLevelLimitOrder(String orderType, String type, double volume, double price, double price2,
-                                    String trigger, String offsetType, Params params) {
+     **/
+    private void addLevelLimitOrder(OrderType orderType, Side type, double volume, double price, double price2,
+                                    Trigger trigger, String offsetType, Params params) {
         JSONObject levelLimitOrder = createBaseOrder(orderType, type, volume, params);
-        if(price < 0)
+        if (price < 0)
             throw new IllegalArgumentException("Price value cannot be smaller than 0");
         else
             levelLimitOrder.put("price", price);
-        if(!isTriggerValid(trigger))
-            throw new IllegalArgumentException("Trigger value must be last or index");
-        else
-            levelLimitOrder.put("trigger", trigger);
-        if(price2 < 0)
+        if (price2 < 0)
             throw new IllegalArgumentException("Price 2 value cannot be smaller than 0");
         else{
             if(!offsetType.equals(ADD_OFFSET_AMOUNT) && !offsetType.equals(SUBSTRACS_OFFSET_AMOUNT)
@@ -245,21 +266,22 @@ public class OrderBatchList {
             else
                 levelLimitOrder.put("price2", offsetType + price2);
         }
+        levelLimitOrder.put("trigger", trigger);
         orders.put(levelLimitOrder);
     }
 
-    /** Method to create base order details
+    /**
+     * Method to create base order details
+     *
      * @param orderType: order type -> all constants in {@link Order} class
-     * @param type: order direction -> buy or sell
-     * @param volume: order quantity in terms of the base asset
-     * @param params: extra order details
+     * @param type:      order direction -> buy or sell
+     * @param volume:    order quantity in terms of the base asset
+     * @param params:    extra order details
+     * @return base order details as {@link JSONObject}
      * @implNote keys for params accepted are: userref,leverage,stp_type,oflags,timeinforce,starttm,expiretm,deadline,validate
      * and close
-     * @return base order details as {@link JSONObject}
-     * **/
-    private JSONObject createBaseOrder(String orderType, String type, double volume, Params params) {
-        if(!type.equals(BUY_TYPE) && !type.equals(SELL_TYPE))
-            throw new IllegalArgumentException("Order type must be buy or sell");
+     **/
+    private JSONObject createBaseOrder(OrderType orderType, Side type, double volume, Params params) {
         if (volume < 0)
             throw new IllegalArgumentException("Volume value cannot be smaller than 0");
         addBaseOrderParameters(orderType, type, volume, pair, params);
@@ -267,16 +289,6 @@ public class OrderBatchList {
         for (String key : params.getParamsKeys())
             baseOrder.put(key, (Object) params.getParam(key));
         return baseOrder;
-    }
-
-    /**
-     * Method to check validity of a trigger
-     *
-     * @param trigger: price signal used to trigger
-     * @return validity of trigger as boolean
-     **/
-    private boolean isTriggerValid(String trigger) {
-        return trigger.equals(TRIGGER_LAST) || trigger.equals(TRIGGER_INDEX);
     }
 
     /**

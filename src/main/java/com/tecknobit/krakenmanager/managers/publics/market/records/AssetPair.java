@@ -130,6 +130,11 @@ public class AssetPair extends KrakenManager.KrakenResponse {
     private final double minCost;
 
     /**
+     * {@code tickSize} minimum increment between valid price levels
+     **/
+    private final double tickSize;
+
+    /**
      * Constructor to init an {@link AssetPair} object
      *
      * @param altName           : alt name value
@@ -146,11 +151,12 @@ public class AssetPair extends KrakenManager.KrakenResponse {
      * @param marginStop        : margin stop value
      * @param minOrder          : minimum order value
      * @param pairIndex         : symbol of pairs es. BTCEUR
-     * @param minCost:          minimum order cost (in terms of quote currency)
+     * @param minCost           :          minimum order cost (in terms of quote currency)
+     * @param tickSize:         minimum increment between valid price levels
      **/
     public AssetPair(String altName, String wsName, String aClassBase, String base, String aClassQuote, String quote,
                      int pairDecimals, int lotDecimals, int lotMultiplier, String feeVolumeCurrency, double marginCall,
-                     double marginStop, double minOrder, String pairIndex, double minCost) {
+                     double marginStop, double minOrder, String pairIndex, double minCost, double tickSize) {
         super(null);
         this.altName = altName;
         this.wsName = wsName;
@@ -162,6 +168,7 @@ public class AssetPair extends KrakenManager.KrakenResponse {
         this.lotDecimals = lotDecimals;
         this.lotMultiplier = lotMultiplier;
         this.minCost = minCost;
+        this.tickSize = tickSize;
         JSONObject assetPair = getResult();
         assetPair = assetPair.getJSONObject(pairIndex);
         if(assetPair != null){
@@ -202,12 +209,13 @@ public class AssetPair extends KrakenManager.KrakenResponse {
      * @param marginCall        : margin call value
      * @param marginStop        : margin stop value
      * @param minOrder          : minimum order value
-     * @param minCost:          minimum order cost (in terms of quote currency)
+     * @param minCost           :          minimum order cost (in terms of quote currency)
+     * @param tickSize: minimum increment between valid price levels
      **/
     public AssetPair(String altName, String wsName, String aClassBase, String base, String aClassQuote, String quote,
                      int pairDecimals, int lotDecimals, int lotMultiplier, int[] leverageBuy, int[] leverageSell,
                      ArrayList<Fee> fees, ArrayList<Fee> makerFees, String feeVolumeCurrency, double marginCall,
-                     double marginStop, double minOrder, double minCost) {
+                     double marginStop, double minOrder, double minCost, double tickSize) {
         super(null);
         this.altName = altName;
         this.wsName = wsName;
@@ -227,6 +235,7 @@ public class AssetPair extends KrakenManager.KrakenResponse {
         this.marginStop = marginStop;
         this.minOrder = minOrder;
         this.minCost = minCost;
+        this.tickSize = tickSize;
     }
 
     /**
@@ -254,6 +263,7 @@ public class AssetPair extends KrakenManager.KrakenResponse {
         marginStop = result.getDouble("margin_stop", 0);
         minOrder = result.getDouble("ordermin", 0);
         minCost = result.getDouble("costmin", 0);
+        tickSize = result.getDouble("tick_size", 0);
     }
 
     /**
@@ -510,6 +520,27 @@ public class AssetPair extends KrakenManager.KrakenResponse {
      **/
     public double getMinCost(int decimals) {
         return roundValue(minCost, decimals);
+    }
+
+    /**
+     * Method to get {@link #tickSize} instance <br>
+     * Any params required
+     *
+     * @return {@link #tickSize} instance as double
+     **/
+    public double getTickSize() {
+        return tickSize;
+    }
+
+    /**
+     * Method to get {@link #tickSize} instance
+     *
+     * @param decimals: number of digits to round final value
+     * @return {@link #tickSize} instance rounded with decimal digits inserted
+     * @throws IllegalArgumentException if decimalDigits is negative
+     **/
+    public double getTickSize(int decimals) {
+        return roundValue(tickSize, decimals);
     }
 
     /**

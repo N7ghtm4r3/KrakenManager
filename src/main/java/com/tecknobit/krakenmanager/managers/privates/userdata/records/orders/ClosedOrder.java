@@ -68,7 +68,7 @@ public class ClosedOrder extends Order {
      * @param closeTime: close time value
      * @param reason: reason value
      **/
-    public ClosedOrder(long refId, long userRef, String status, long openTime, long startTime, long expireTime,
+    public ClosedOrder(long refId, long userRef, OrderStatus status, long openTime, long startTime, long expireTime,
                        OrderDescription orderDescription, double volume, double executedVolume, double cost, double fee,
                        double price, double stopPrice, double limitPrice, String trigger, String misc, String oFlags,
                        ArrayList<Long> trades, long closeTime, String reason) {

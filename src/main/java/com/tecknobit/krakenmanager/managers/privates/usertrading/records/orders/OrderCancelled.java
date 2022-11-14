@@ -11,11 +11,11 @@ import org.json.JSONObject;
  * <ul>
  *    <li>
  *        <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/cancelAllOrders">
- *           https://docs.kraken.com/rest/#tag/User-Trading/operation/cancelAllOrders</a>
+ *           Cancel All Orders</a>
  *    </li>
  *    <li>
  *        <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/cancelOrderBatch">
- *           https://docs.kraken.com/rest/#tag/User-Trading/operation/cancelOrderBatch</a>
+ *           Cancel Order Batch</a>
  *    </li>
  * </ul>
  **/
@@ -29,7 +29,7 @@ public class OrderCancelled extends KrakenManager.KrakenResponse {
     /**
      * Constructor to init a {@link OrderCancelled} object
      *
-     * @param count: count of the orders cancelled
+     * @param count: count value
      **/
     public OrderCancelled(int count) {
         super(null);

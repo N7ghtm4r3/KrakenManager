@@ -10,7 +10,7 @@ import static com.tecknobit.apimanager.trading.TradingTools.roundValue;
  *
  * @author N7ghtm4r3 - Tecknobit
  * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Staking/operation/getStakingPendingDeposits">
- * https://docs.kraken.com/rest/#tag/User-Staking/operation/getStakingPendingDeposits</a>
+ * Get Pending Staking Transactions</a>
  **/
 public class StakingTransaction extends KrakenManager.KrakenResponse {
 

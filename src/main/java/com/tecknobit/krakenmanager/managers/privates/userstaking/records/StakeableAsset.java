@@ -15,7 +15,7 @@ import static com.tecknobit.apimanager.trading.TradingTools.roundValue;
  *
  * @author N7ghtm4r3 - Tecknobit
  * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Staking/operation/getStakingAssetInfo">
- * https://docs.kraken.com/rest/#tag/User-Staking/operation/getStakingAssetInfo</a>
+ * List of Stakeable Assets</a>
  **/
 public class StakeableAsset extends KrakenManager.KrakenResponse {
 

@@ -13,7 +13,7 @@ import static com.tecknobit.apimanager.trading.TradingTools.roundValue;
  *
  * @author N7ghtm4r3 - Tecknobit
  * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/editOrder">
- * https://docs.kraken.com/rest/#tag/User-Trading/operation/editOrder</a>
+ * Edit Order</a>
  **/
 public class OrderEdited extends KrakenManager.KrakenResponse{
 
@@ -100,7 +100,7 @@ public class OrderEdited extends KrakenManager.KrakenResponse{
     /**
      * Method to add base parameters for edit operation
      *
-     * @param orderId: order identifier can be string for {@code txid} use or long for {@code userref} use
+     * @param orderId: order identifier can be string for {@code "txid"} use or long for {@code "userref"} use
      * @param pair:    pair value
      * @param volume:  volume value
      * @param params:  extra order details

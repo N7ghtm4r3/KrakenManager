@@ -2,6 +2,8 @@ package com.tecknobit.krakenmanager.managers.privates.usertrading.records.orders
 
 import com.tecknobit.krakenmanager.managers.KrakenManager;
 import com.tecknobit.krakenmanager.managers.privates.userdata.records.orders.Order;
+import com.tecknobit.krakenmanager.managers.privates.userdata.records.orders.Order.OrderType;
+import com.tecknobit.krakenmanager.managers.privates.userdata.records.orders.Order.Side;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -15,39 +17,74 @@ import static com.tecknobit.apimanager.formatters.ScientificNotationParser.sNota
  *
  * @author N7ghtm4r3 - Tecknobit
  * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/addOrder">
- * https://docs.kraken.com/rest/#tag/User-Trading/operation/addOrder</a>
+ * Add Order</a>
  **/
 public class OrderAdded extends KrakenManager.KrakenResponse {
 
     /**
-     * {@code STP_CANCEL_NEWEST_TYPE} is constant for cancel-newest self trade prevention type
-     * **/
-    public static final String STP_CANCEL_NEWEST_TYPE = "cancel-newest";
+     * Method to add base order paramaters
+     *
+     * @param orderType: order type -> all constants in {@link Order} class
+     * @param type:      order direction -> buy or sell
+     * @param volume:    order quantity in terms of the base asset
+     * @param pair:      pair value
+     * @param params:    extra order details
+     **/
+    public static void addBaseOrderParameters(OrderType orderType, Side type, double volume, String pair, Params params) {
+        if (params == null)
+            params = new Params();
+        params.addParam("ordertype", orderType);
+        params.addParam("type", type);
+        params.addParam("volume", sNotationParse(8, volume));
+        params.addParam("pair", pair);
+    }
 
     /**
-     * {@code STP_CANCEL_OLDEST_TYPE} is constant for cancel-oldest self trade prevention type
-     * **/
-    public static final String STP_CANCEL_OLDEST_TYPE = "cancel-oldest";
+     * {@code StpType} list for self trade prevention types
+     **/
+    public enum StpType {
 
-    /**
-     * {@code STP_CANCEL_BOTH_TYPE} is constant for cancel-both self trade prevention type
-     * **/
-    public static final String STP_CANCEL_BOTH_TYPE = "cancel-both";
+        /**
+         * {@code "cancel_newest"} if self trade is triggered, arriving order will be canceled
+         **/
+        cancel_newest("cancel-newest"),
 
-    /**
-     * {@code GTC_TIME_IN_FORCE} is constant for GTC time in force type
-     * **/
-    public static final String GTC_TIME_IN_FORCE = "GTC";
+        /**
+         * {@code "cancel_oldest"} if self trade is triggered, resting order will be canceled
+         **/
+        cancel_oldest("cancel-oldest"),
 
-    /**
-     * {@code IOC_TIME_IN_FORCE} is constant for IOC time in force type
-     * **/
-    public static final String IOC_TIME_IN_FORCE = "IOC";
+        /**
+         * {@code "cancel_both"} if self trade is triggered, both arriving and resting orders will be canceled
+         **/
+        cancel_both("cancel-both");
 
-    /**
-     * {@code GTD_TIME_IN_FORCE} is constant for GTD time in force type
-     * **/
-    public static final String GTD_TIME_IN_FORCE = "GTD";
+        /**
+         * {@code type} self trade prevention type
+         **/
+        private final String type;
+
+        /**
+         * Constructor to init a {@link StpType} object
+         *
+         * @param type: self trade prevention type
+         **/
+        StpType(String type) {
+            this.type = type;
+        }
+
+        /**
+         * Method to get {@link #type} instance <br>
+         * Any params required
+         *
+         * @return {@link #type} instance as {@link String}
+         **/
+        @Override
+        public String toString() {
+            return type;
+        }
+
+    }
 
     /**
      * {@code DEFAULT_SCHEDULED_TIME} is constant for default scheduled time type
@@ -120,21 +157,25 @@ public class OrderAdded extends KrakenManager.KrakenResponse {
     }
 
     /**
-     * Method to add base order paramaters
-     *
-     * @param orderType: order type -> all constants in {@link Order} class
-     * @param type:      order direction -> buy or sell
-     * @param volume:    order quantity in terms of the base asset
-     * @param pair:      pair value
-     * @param params:    extra order details
+     * {@code TimeInForce} list for time in force types
      **/
-    public static void addBaseOrderParameters(String orderType, String type, double volume, String pair, Params params) {
-        if (params == null)
-            params = new Params();
-        params.addParam("ordertype", orderType);
-        params.addParam("type", type);
-        params.addParam("volume", sNotationParse(8, volume));
-        params.addParam("pair", pair);
+    public enum TimeInForce {
+
+        /**
+         * {@code "GTC"} time in force type
+         **/
+        GTC,
+
+        /**
+         * {@code "IOC"} time in force type
+         **/
+        IOC,
+
+        /**
+         * {@code "GTD"} time in force type
+         **/
+        GTD
+
     }
 
     /**

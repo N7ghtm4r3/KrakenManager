@@ -8,7 +8,7 @@ import org.json.JSONObject;
  *
  * @author N7ghtm4r3 - Tecknobit
  * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/addOrderBatch">
- * https://docs.kraken.com/rest/#tag/User-Trading/operation/addOrderBatch</a>
+ * Add Order Batch</a>
  **/
 public class OrderBatch extends KrakenManager.KrakenResponse {
 
