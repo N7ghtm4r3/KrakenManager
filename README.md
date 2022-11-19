@@ -67,7 +67,7 @@ try {
 }
 ```
 
-To avoid re-entering credentials for each manager, you can instantiate managers like this:
+To avoid re-entering credentials for each manager, you can instantiate managers like this with the **ARCS**:
 
 ```java
 // choose the manager for example: KrakenUserDataManager, KrakenUserTradingManager, etc 
