@@ -61,7 +61,7 @@ dependencies {
 
 // init a Kraken manager
 try {
-    KrakenMarketManager manager=new KrakenMarketManager();
+    KrakenMarketManager manager = new KrakenMarketManager();
 } catch(Exception e) {
     e.printStackTrace();
 }
