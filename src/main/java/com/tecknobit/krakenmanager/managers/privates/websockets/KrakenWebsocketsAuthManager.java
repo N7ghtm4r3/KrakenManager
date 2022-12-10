@@ -2,10 +2,12 @@ package com.tecknobit.krakenmanager.managers.privates.websockets;
 
 import com.tecknobit.apimanager.annotations.RequestPath;
 import com.tecknobit.apimanager.annotations.Returner;
+import com.tecknobit.apimanager.annotations.Wrapper;
 import com.tecknobit.krakenmanager.managers.privates.KrakenPrivateManager;
 import com.tecknobit.krakenmanager.managers.privates.websockets.records.WebsocketsToken;
 import org.json.JSONObject;
 
+import static com.tecknobit.apimanager.apis.APIRequest.RequestMethod.POST;
 import static com.tecknobit.krakenmanager.constants.EndpointsList.GET_WEBSOCKETS_TOKEN_ENDPOINT;
 import static com.tecknobit.krakenmanager.managers.KrakenManager.ReturnFormat.LIBRARY_OBJECT;
 
@@ -62,7 +64,7 @@ public class KrakenWebsocketsAuthManager extends KrakenPrivateManager {
      * Constructor to init a {@link KrakenWebsocketsAuthManager} <br>
      * Any params required
      *
-     * @throws IllegalArgumentException when a parameterized constructor has not been called before this constructur
+     * @throws IllegalArgumentException when a parameterized constructor has not been called before this constructor
      * @apiNote this constructor is useful to instantiate a new {@link KrakenPrivateManager}'s manager without re-insert
      * the credentials and is useful in those cases if you need to use different manager at the same time:
      * <pre>
@@ -102,7 +104,8 @@ public class KrakenWebsocketsAuthManager extends KrakenPrivateManager {
      * Websockets connection and private subscription has been made and is maintained
      * @implSpec the 'Access WebSockets API' permission must be enabled for the API key in order to generate the authentication token.
      **/
-    @RequestPath(path = "https://api.kraken.com/0/private/GetWebSocketsToken")
+    @Wrapper
+    @RequestPath(method = POST, path = "https://api.kraken.com/0/private/GetWebSocketsToken")
     public WebsocketsToken getWebsocketsToken() throws Exception {
         return getWebsocketsToken(LIBRARY_OBJECT);
     }
@@ -132,7 +135,7 @@ public class KrakenWebsocketsAuthManager extends KrakenPrivateManager {
      * @implSpec the 'Access WebSockets API' permission must be enabled for the API key in order to generate the authentication token.
      **/
     @Returner
-    @RequestPath(path = "https://api.kraken.com/0/private/GetWebSocketsToken")
+    @RequestPath(method = POST, path = "https://api.kraken.com/0/private/GetWebSocketsToken")
     public <T> T getWebsocketsToken(ReturnFormat format) throws Exception {
         String webSocketToken = sendPostRequest(GET_WEBSOCKETS_TOKEN_ENDPOINT, null);
         switch (format) {

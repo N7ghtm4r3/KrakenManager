@@ -5,7 +5,7 @@ import org.json.JSONObject;
 
 import java.io.IOException;
 
-import static com.tecknobit.apimanager.apis.APIRequest.GET_METHOD;
+import static com.tecknobit.apimanager.apis.APIRequest.RequestMethod.GET;
 import static com.tecknobit.apimanager.formatters.JsonHelper.getJSONObject;
 
 /**
@@ -52,9 +52,9 @@ public class KrakenPublicManager extends KrakenManager {
      * @return response as {@link String}
      * **/
     public String sendGetRequest(String endpoint) throws IOException {
-        apiRequest.sendAPIRequest(BASE_ENDPOINT + "/public/" + endpoint, GET_METHOD);
-        JSONObject response = new JSONObject(apiRequest.getResponse());
-        if(getJSONObject(response, "result") == null) {
+        apiRequest.sendAPIRequest(BASE_ENDPOINT + "/public/" + endpoint, GET);
+        JSONObject response = apiRequest.getJSONResponse();
+        if (getJSONObject(response, "result") == null) {
             errorResponse = response.getJSONArray("error").toString();
             throw new IOException();
         }

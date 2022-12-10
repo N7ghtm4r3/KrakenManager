@@ -3,6 +3,7 @@ package com.tecknobit.krakenmanager.managers.privates.usertrading;
 import com.tecknobit.apimanager.annotations.RequestPath;
 import com.tecknobit.apimanager.annotations.Returner;
 import com.tecknobit.apimanager.annotations.WrappedRequest;
+import com.tecknobit.apimanager.annotations.Wrapper;
 import com.tecknobit.apimanager.formatters.JsonHelper;
 import com.tecknobit.krakenmanager.managers.privates.KrakenPrivateManager;
 import com.tecknobit.krakenmanager.managers.privates.userdata.records.orders.Order;
@@ -18,6 +19,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+import static com.tecknobit.apimanager.apis.APIRequest.RequestMethod.POST;
 import static com.tecknobit.krakenmanager.constants.EndpointsList.*;
 import static com.tecknobit.krakenmanager.managers.KrakenManager.ReturnFormat.LIBRARY_OBJECT;
 import static com.tecknobit.krakenmanager.managers.privates.userdata.records.orders.Order.*;
@@ -78,7 +80,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      * Constructor to init a {@link KrakenUserTradingManager} <br>
      * Any params required
      *
-     * @throws IllegalArgumentException when a parameterized constructor has not been called before this constructur
+     * @throws IllegalArgumentException when a parameterized constructor has not been called before this constructor
      * @apiNote this constructor is useful to instantiate a new {@link KrakenPrivateManager}'s manager without re-insert
      * the credentials and is useful in those cases if you need to use different manager at the same time:
      * <pre>
@@ -116,8 +118,9 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/addOrder">
      * Add Order</a>
      **/
+    @Wrapper
     @WrappedRequest
-    @RequestPath(path = "https://api.kraken.com/0/private/AddOrder")
+    @RequestPath(method = POST, path = "https://api.kraken.com/0/private/AddOrder")
     public OrderAdded addMarketOrder(Side type, double volume, AssetPair pair) throws Exception {
         return addOrder(market, type, volume, pair.getAltName(), null, LIBRARY_OBJECT);
     }
@@ -146,7 +149,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      * Add Order</a>
      **/
     @WrappedRequest
-    @RequestPath(path = "https://api.kraken.com/0/private/AddOrder")
+    @RequestPath(method = POST, path = "https://api.kraken.com/0/private/AddOrder")
     public <T> T addMarketOrder(Side type, double volume, AssetPair pair, ReturnFormat format) throws Exception {
         return addOrder(market, type, volume, pair.getAltName(), null, format);
     }
@@ -171,7 +174,8 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      *    Add Order</a>
      * @return market order result as {@link OrderAdded} custom object
      * **/
-    @RequestPath(path = "https://api.kraken.com/0/private/AddOrder")
+    @Wrapper
+    @RequestPath(method = POST, path = "https://api.kraken.com/0/private/AddOrder")
     public OrderAdded addMarketOrder(Side type, double volume, String pair) throws Exception {
         return addOrder(market, type, volume, pair, null, LIBRARY_OBJECT);
     }
@@ -197,7 +201,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      *    Add Order</a>
      * @return market order result as {@code "format"} defines
      * **/
-    @RequestPath(path = "https://api.kraken.com/0/private/AddOrder")
+    @RequestPath(method = POST, path = "https://api.kraken.com/0/private/AddOrder")
     public <T> T addMarketOrder(Side type, double volume, String pair, ReturnFormat format) throws Exception {
         return addOrder(market, type, volume, pair, null, format);
     }
@@ -289,8 +293,9 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      *    Add Order</a>
      * @return market order result as {@link OrderAdded} custom object
      * **/
+    @Wrapper
     @WrappedRequest
-    @RequestPath(path = "https://api.kraken.com/0/private/AddOrder")
+    @RequestPath(method = POST, path = "https://api.kraken.com/0/private/AddOrder")
     public OrderAdded addMarketOrder(Side type, double volume, AssetPair pair, Params params) throws Exception {
         return addOrder(market, type, volume, pair.getAltName(), params, LIBRARY_OBJECT);
     }
@@ -386,7 +391,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      * Add Order</a>
      **/
     @WrappedRequest
-    @RequestPath(path = "https://api.kraken.com/0/private/AddOrder")
+    @RequestPath(method = POST, path = "https://api.kraken.com/0/private/AddOrder")
     public <T> T addMarketOrder(Side type, double volume, AssetPair pair, Params params,
                                 ReturnFormat format) throws Exception {
         return addOrder(market, type, volume, pair.getAltName(), params, format);
@@ -483,7 +488,8 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      * @implNote keys for params accepted are: userref,leverage,stp_type,oflags,timeinforce,starttm,expiretm,close[ordertype],
      * close[price],close[price2],deadline or validate
      **/
-    @RequestPath(path = "https://api.kraken.com/0/private/AddOrder")
+    @Wrapper
+    @RequestPath(method = POST, path = "https://api.kraken.com/0/private/AddOrder")
     public OrderAdded addMarketOrder(Side type, double volume, String pair, Params params) throws Exception {
         return addOrder(market, type, volume, pair, params, LIBRARY_OBJECT);
     }
@@ -578,7 +584,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/addOrder">
      * Add Order</a>
      **/
-    @RequestPath(path = "https://api.kraken.com/0/private/AddOrder")
+    @RequestPath(method = POST, path = "https://api.kraken.com/0/private/AddOrder")
     public <T> T addMarketOrder(Side type, double volume, String pair, Params params,
                                 ReturnFormat format) throws Exception {
         return addOrder(market, type, volume, pair, params, format);
@@ -605,8 +611,9 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      *    Add Order</a>
      * @return limit order result as {@link OrderAdded} custom object
      * **/
+    @Wrapper
     @WrappedRequest
-    @RequestPath(path = "https://api.kraken.com/0/private/AddOrder")
+    @RequestPath(method = POST, path = "https://api.kraken.com/0/private/AddOrder")
     public OrderAdded addLimitOrder(Side type, double volume, AssetPair pair, double price) throws Exception {
         return addLimitOrder(type, volume, pair.getAltName(), price, LIBRARY_OBJECT);
     }
@@ -634,7 +641,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      * @return limit order result as {@code "format"} defines
      * **/
     @WrappedRequest
-    @RequestPath(path = "https://api.kraken.com/0/private/AddOrder")
+    @RequestPath(method = POST, path = "https://api.kraken.com/0/private/AddOrder")
     public <T> T addLimitOrder(Side type, double volume, AssetPair pair, double price, ReturnFormat format) throws Exception {
         return addLimitOrder(type, volume, pair.getAltName(), price, format);
     }
@@ -662,7 +669,8 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/addOrder">
      * Add Order</a>
      **/
-    @RequestPath(path = "https://api.kraken.com/0/private/AddOrder")
+    @Wrapper
+    @RequestPath(method = POST, path = "https://api.kraken.com/0/private/AddOrder")
     public OrderAdded addLimitOrder(Side type, double volume, String pair, double price) throws Exception {
         return addLimitOrder(type, volume, pair, price, LIBRARY_OBJECT);
     }
@@ -689,7 +697,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      *    Add Order</a>
      * @return limit order result as {@code "format"} defines
      * **/
-    @RequestPath(path = "https://api.kraken.com/0/private/AddOrder")
+    @RequestPath(method = POST, path = "https://api.kraken.com/0/private/AddOrder")
     public <T> T addLimitOrder(Side type, double volume, String pair, double price, ReturnFormat format) throws Exception {
         Params params = new Params();
         params.addParam("price", price);
@@ -784,8 +792,9 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      *    Add Order</a>
      * @return limit order result as {@link OrderAdded} custom object
      * **/
+    @Wrapper
     @WrappedRequest
-    @RequestPath(path = "https://api.kraken.com/0/private/AddOrder")
+    @RequestPath(method = POST, path = "https://api.kraken.com/0/private/AddOrder")
     public OrderAdded addLimitOrder(Side type, double volume, AssetPair pair, double price, Params params) throws Exception {
         return addLimitOrder(type, volume, pair.getAltName(), price, params, LIBRARY_OBJECT);
     }
@@ -880,7 +889,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      * @return limit order result as {@code "format"} defines
      * **/
     @WrappedRequest
-    @RequestPath(path = "https://api.kraken.com/0/private/AddOrder")
+    @RequestPath(method = POST, path = "https://api.kraken.com/0/private/AddOrder")
     public <T> T addLimitOrder(Side type, double volume, AssetPair pair, double price, Params params,
                                ReturnFormat format) throws Exception {
         return addLimitOrder(type, volume, pair.getAltName(), price, params, format);
@@ -976,7 +985,8 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/addOrder">
      * Add Order</a>
      **/
-    @RequestPath(path = "https://api.kraken.com/0/private/AddOrder")
+    @Wrapper
+    @RequestPath(method = POST, path = "https://api.kraken.com/0/private/AddOrder")
     public OrderAdded addLimitOrder(Side type, double volume, String pair, double price, Params params) throws Exception {
         return addLimitOrder(type, volume, pair, price, params, LIBRARY_OBJECT);
     }
@@ -1072,7 +1082,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/addOrder">
      * Add Order</a>
      **/
-    @RequestPath(path = "https://api.kraken.com/0/private/AddOrder")
+    @RequestPath(method = POST, path = "https://api.kraken.com/0/private/AddOrder")
     public <T> T addLimitOrder(Side type, double volume, String pair, double price, Params params,
                                ReturnFormat format) throws Exception {
         if (params == null)
@@ -1105,8 +1115,9 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/addOrder">
      * Add Order</a>
      **/
+    @Wrapper
     @WrappedRequest
-    @RequestPath(path = "https://api.kraken.com/0/private/AddOrder")
+    @RequestPath(method = POST, path = "https://api.kraken.com/0/private/AddOrder")
     public OrderAdded addStopLossOrder(Side type, double volume, AssetPair pair, double price,
                                        Trigger trigger) throws Exception {
         return addLevelOrder(stop_loss, type, volume, pair.getAltName(), price, trigger, null, LIBRARY_OBJECT);
@@ -1136,7 +1147,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      * @return limit stop loss result as {@code "format"} defines
      * **/
     @WrappedRequest
-    @RequestPath(path = "https://api.kraken.com/0/private/AddOrder")
+    @RequestPath(method = POST, path = "https://api.kraken.com/0/private/AddOrder")
     public <T> T addStopLossOrder(Side type, double volume, AssetPair pair, double price, Trigger trigger,
                                   ReturnFormat format) throws Exception {
         return addLevelOrder(stop_loss, type, volume, pair.getAltName(), price, trigger, null, format);
@@ -1166,7 +1177,8 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/addOrder">
      * Add Order</a>
      **/
-    @RequestPath(path = "https://api.kraken.com/0/private/AddOrder")
+    @Wrapper
+    @RequestPath(method = POST, path = "https://api.kraken.com/0/private/AddOrder")
     public OrderAdded addStopLossOrder(Side type, double volume, String pair, double price, Trigger trigger) throws Exception {
         return addLevelOrder(stop_loss, type, volume, pair, price, trigger, null, LIBRARY_OBJECT);
     }
@@ -1194,7 +1206,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      *    Add Order</a>
      * @return limit stop loss result as {@code "format"} defines
      * **/
-    @RequestPath(path = "https://api.kraken.com/0/private/AddOrder")
+    @RequestPath(method = POST, path = "https://api.kraken.com/0/private/AddOrder")
     public <T> T addStopLossOrder(Side type, double volume, String pair, double price, Trigger trigger,
                                   ReturnFormat format) throws Exception {
         return addLevelOrder(stop_loss, type, volume, pair, price, trigger, null, format);
@@ -1289,8 +1301,9 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      *    Add Order</a>
      * @return limit stop loss result as {@link OrderAdded} custom object
      * **/
+    @Wrapper
     @WrappedRequest
-    @RequestPath(path = "https://api.kraken.com/0/private/AddOrder")
+    @RequestPath(method = POST, path = "https://api.kraken.com/0/private/AddOrder")
     public OrderAdded addStopLossOrder(Side type, double volume, AssetPair pair, double price, Trigger trigger,
                                        Params params) throws Exception {
         return addLevelOrder(stop_loss, type, volume, pair.getAltName(), price, trigger, params, LIBRARY_OBJECT);
@@ -1389,7 +1402,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      * Add Order</a>
      **/
     @WrappedRequest
-    @RequestPath(path = "https://api.kraken.com/0/private/AddOrder")
+    @RequestPath(method = POST, path = "https://api.kraken.com/0/private/AddOrder")
     public <T> T addStopLossOrder(Side type, double volume, AssetPair pair, double price, Trigger trigger,
                                   Params params, ReturnFormat format) throws Exception {
         return addLevelOrder(stop_loss, type, volume, pair.getAltName(), price, trigger, params, format);
@@ -1484,7 +1497,8 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      *    Add Order</a>
      * @return limit stop loss result as {@link OrderAdded} custom object
      * **/
-    @RequestPath(path = "https://api.kraken.com/0/private/AddOrder")
+    @Wrapper
+    @RequestPath(method = POST, path = "https://api.kraken.com/0/private/AddOrder")
     public OrderAdded addStopLossOrder(Side type, double volume, String pair, double price, Trigger trigger,
                                        Params params) throws Exception {
         return addLevelOrder(stop_loss, type, volume, pair, price, trigger, params, LIBRARY_OBJECT);
@@ -1580,7 +1594,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      *    Add Order</a>
      * @return limit stop loss result as {@code "format"} defines
      * **/
-    @RequestPath(path = "https://api.kraken.com/0/private/AddOrder")
+    @RequestPath(method = POST, path = "https://api.kraken.com/0/private/AddOrder")
     public <T> T addStopLossOrder(Side type, double volume, String pair, double price, Trigger trigger,
                                   Params params, ReturnFormat format) throws Exception {
         return addLevelOrder(stop_loss, type, volume, pair, price, trigger, params, format);
@@ -1612,8 +1626,9 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/addOrder">
      * Add Order</a>
      **/
+    @Wrapper
     @WrappedRequest
-    @RequestPath(path = "https://api.kraken.com/0/private/AddOrder")
+    @RequestPath(method = POST, path = "https://api.kraken.com/0/private/AddOrder")
     public OrderAdded addStopLossLimitOrder(Side type, double volume, AssetPair pair, double price, double price2,
                                             Trigger trigger, String offsetType) throws Exception {
         return addLevelLimitOrder(stop_loss_limit, type, volume, pair.getAltName(), price, price2, trigger,
@@ -1646,7 +1661,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      * @return stop loss limit result as {@code "format"} defines
      * **/
     @WrappedRequest
-    @RequestPath(path = "https://api.kraken.com/0/private/AddOrder")
+    @RequestPath(method = POST, path = "https://api.kraken.com/0/private/AddOrder")
     public <T> T addStopLossLimitOrder(Side type, double volume, AssetPair pair, double price, double price2,
                                        Trigger trigger, String offsetType, ReturnFormat format) throws Exception {
         return addLevelLimitOrder(stop_loss_limit, type, volume, pair.getAltName(), price, price2, trigger,
@@ -1677,7 +1692,8 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      *    Add Order</a>
      * @return stop loss limit result as {@link OrderAdded} custom object
      * **/
-    @RequestPath(path = "https://api.kraken.com/0/private/AddOrder")
+    @Wrapper
+    @RequestPath(method = POST, path = "https://api.kraken.com/0/private/AddOrder")
     public OrderAdded addStopLossLimitOrder(Side type, double volume, String pair, double price, double price2,
                                             Trigger trigger, String offsetType) throws Exception {
         return addLevelLimitOrder(stop_loss_limit, type, volume, pair, price, price2, trigger,
@@ -1709,7 +1725,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      *    Add Order</a>
      * @return stop loss limit result as {@code "format"} defines
      * **/
-    @RequestPath(path = "https://api.kraken.com/0/private/AddOrder")
+    @RequestPath(method = POST, path = "https://api.kraken.com/0/private/AddOrder")
     public <T> T addStopLossLimitOrder(Side type, double volume, String pair, double price, double price2,
                                        Trigger trigger, String offsetType, ReturnFormat format) throws Exception {
         return addLevelLimitOrder(stop_loss_limit, type, volume, pair, price, price2, trigger,
@@ -1809,8 +1825,9 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/addOrder">
      * Add Order</a>
      **/
+    @Wrapper
     @WrappedRequest
-    @RequestPath(path = "https://api.kraken.com/0/private/AddOrder")
+    @RequestPath(method = POST, path = "https://api.kraken.com/0/private/AddOrder")
     public OrderAdded addStopLossLimitOrder(Side type, double volume, AssetPair pair, double price, double price2,
                                             Trigger trigger, String offsetType, Params params) throws Exception {
         return addLevelLimitOrder(stop_loss_limit, type, volume, pair.getAltName(), price, price2, trigger, offsetType,
@@ -1910,7 +1927,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      * @return stop loss limit result as {@code "format"} defines
      * **/
     @WrappedRequest
-    @RequestPath(path = "https://api.kraken.com/0/private/AddOrder")
+    @RequestPath(method = POST, path = "https://api.kraken.com/0/private/AddOrder")
     public <T> T addStopLossLimitOrder(Side type, double volume, AssetPair pair, double price, double price2,
                                        Trigger trigger, String offsetType, Params params,
                                        ReturnFormat format) throws Exception {
@@ -2009,7 +2026,8 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      *    Add Order</a>
      * @return stop loss limit result as {@link OrderAdded} custom object
      * **/
-    @RequestPath(path = "https://api.kraken.com/0/private/AddOrder")
+    @Wrapper
+    @RequestPath(method = POST, path = "https://api.kraken.com/0/private/AddOrder")
     public OrderAdded addStopLossLimitOrder(Side type, double volume, String pair, double price, double price2,
                                             Trigger trigger, String offsetType, Params params) throws Exception {
         return addLevelLimitOrder(stop_loss_limit, type, volume, pair, price, price2, trigger, offsetType, params,
@@ -2110,7 +2128,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/addOrder">
      * Add Order</a>
      **/
-    @RequestPath(path = "https://api.kraken.com/0/private/AddOrder")
+    @RequestPath(method = POST, path = "https://api.kraken.com/0/private/AddOrder")
     public <T> T addStopLossLimitOrder(Side type, double volume, String pair, double price, double price2,
                                        Trigger trigger, String offsetType, Params params,
                                        ReturnFormat format) throws Exception {
@@ -2142,8 +2160,9 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/addOrder">
      * Add Order</a>
      **/
+    @Wrapper
     @WrappedRequest
-    @RequestPath(path = "https://api.kraken.com/0/private/AddOrder")
+    @RequestPath(method = POST, path = "https://api.kraken.com/0/private/AddOrder")
     public OrderAdded addTakeProfitOrder(Side type, double volume, AssetPair pair, double price,
                                          Trigger trigger) throws Exception {
         return addLevelOrder(take_profit, type, volume, pair.getAltName(), price, trigger, null, LIBRARY_OBJECT);
@@ -2175,7 +2194,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      * Add Order</a>
      **/
     @WrappedRequest
-    @RequestPath(path = "https://api.kraken.com/0/private/AddOrder")
+    @RequestPath(method = POST, path = "https://api.kraken.com/0/private/AddOrder")
     public <T> T addTakeProfitOrder(Side type, double volume, AssetPair pair, double price, Trigger trigger,
                                     ReturnFormat format) throws Exception {
         return addLevelOrder(take_profit, type, volume, pair.getAltName(), price, trigger, null, format);
@@ -2203,7 +2222,8 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      *    Add Order</a>
      * @return take profit order result as {@link OrderAdded} custom object
      * **/
-    @RequestPath(path = "https://api.kraken.com/0/private/AddOrder")
+    @Wrapper
+    @RequestPath(method = POST, path = "https://api.kraken.com/0/private/AddOrder")
     public OrderAdded addTakeProfitOrder(Side type, double volume, String pair, double price,
                                          Trigger trigger) throws Exception {
         return addLevelOrder(take_profit, type, volume, pair, price, trigger, null, LIBRARY_OBJECT);
@@ -2232,7 +2252,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      *    Add Order</a>
      * @return take profit order result as {@code "format"} defines
      * **/
-    @RequestPath(path = "https://api.kraken.com/0/private/AddOrder")
+    @RequestPath(method = POST, path = "https://api.kraken.com/0/private/AddOrder")
     public <T> T addTakeProfitOrder(Side type, double volume, String pair, double price, Trigger trigger,
                                     ReturnFormat format) throws Exception {
         return addLevelOrder(take_profit, type, volume, pair, price, trigger, null, format);
@@ -2329,8 +2349,9 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/addOrder">
      * Add Order</a>
      **/
+    @Wrapper
     @WrappedRequest
-    @RequestPath(path = "https://api.kraken.com/0/private/AddOrder")
+    @RequestPath(method = POST, path = "https://api.kraken.com/0/private/AddOrder")
     public OrderAdded addTakeProfitOrder(Side type, double volume, AssetPair pair, double price, Trigger trigger,
                                          Params params) throws Exception {
         return addLevelOrder(take_profit, type, volume, pair.getAltName(), price, trigger, params, LIBRARY_OBJECT);
@@ -2429,7 +2450,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      * Add Order</a>
      **/
     @WrappedRequest
-    @RequestPath(path = "https://api.kraken.com/0/private/AddOrder")
+    @RequestPath(method = POST, path = "https://api.kraken.com/0/private/AddOrder")
     public <T> T addTakeProfitOrder(Side type, double volume, AssetPair pair, double price, Trigger trigger,
                                     Params params, ReturnFormat format) throws Exception {
         return addLevelOrder(take_profit, type, volume, pair.getAltName(), price, trigger, params, format);
@@ -2524,7 +2545,8 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      *    Add Order</a>
      * @return take profit order result as {@code "format"} defines
      * **/
-    @RequestPath(path = "https://api.kraken.com/0/private/AddOrder")
+    @Wrapper
+    @RequestPath(method = POST, path = "https://api.kraken.com/0/private/AddOrder")
     public OrderAdded addTakeProfitOrder(Side type, double volume, String pair, double price, Trigger trigger,
                                          Params params) throws Exception {
         return addLevelOrder(take_profit, type, volume, pair, price, trigger, params, LIBRARY_OBJECT);
@@ -2620,7 +2642,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      *    Add Order</a>
      * @return take profit order result as {@code "format"} defines
      * **/
-    @RequestPath(path = "https://api.kraken.com/0/private/AddOrder")
+    @RequestPath(method = POST, path = "https://api.kraken.com/0/private/AddOrder")
     public <T> T addTakeProfitOrder(Side type, double volume, String pair, double price, Trigger trigger,
                                     Params params, ReturnFormat format) throws Exception {
         return addLevelOrder(take_profit, type, volume, pair, price, trigger, params, format);
@@ -2652,8 +2674,9 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/addOrder">
      * Add Order</a>
      **/
+    @Wrapper
     @WrappedRequest
-    @RequestPath(path = "https://api.kraken.com/0/private/AddOrder")
+    @RequestPath(method = POST, path = "https://api.kraken.com/0/private/AddOrder")
     public OrderAdded addTakeProfitLimitOrder(Side type, double volume, AssetPair pair, double price, double price2,
                                               Trigger trigger, String offsetType) throws Exception {
         return addLevelLimitOrder(take_profit_limit, type, volume, pair.getAltName(), price, price2, trigger, offsetType,
@@ -2688,7 +2711,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      * Add Order</a>
      **/
     @WrappedRequest
-    @RequestPath(path = "https://api.kraken.com/0/private/AddOrder")
+    @RequestPath(method = POST, path = "https://api.kraken.com/0/private/AddOrder")
     public <T> T addTakeProfitLimitOrder(Side type, double volume, AssetPair pair, double price, double price2,
                                          Trigger trigger, String offsetType, ReturnFormat format) throws Exception {
         return addLevelLimitOrder(take_profit_limit, type, volume, pair.getAltName(), price, price2, trigger, offsetType,
@@ -2719,7 +2742,8 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      *    Add Order</a>
      * @return take profit limit order result as {@link OrderAdded} custom object
      * **/
-    @RequestPath(path = "https://api.kraken.com/0/private/AddOrder")
+    @Wrapper
+    @RequestPath(method = POST, path = "https://api.kraken.com/0/private/AddOrder")
     public OrderAdded addTakeProfitLimitOrder(Side type, double volume, String pair, double price, double price2,
                                               Trigger trigger, String offsetType) throws Exception {
         return addLevelLimitOrder(take_profit_limit, type, volume, pair, price, price2, trigger, offsetType, null,
@@ -2753,7 +2777,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/addOrder">
      * Add Order</a>
      **/
-    @RequestPath(path = "https://api.kraken.com/0/private/AddOrder")
+    @RequestPath(method = POST, path = "https://api.kraken.com/0/private/AddOrder")
     public <T> T addTakeProfitLimitOrder(Side type, double volume, String pair, double price, double price2,
                                          Trigger trigger, String offsetType, ReturnFormat format) throws Exception {
         return addLevelLimitOrder(take_profit_limit, type, volume, pair, price, price2, trigger, offsetType, null,
@@ -2851,7 +2875,8 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      *    Add Order</a>
      * @return take profit limit order result as {@link OrderAdded} custom object
      * **/
-    @RequestPath(path = "https://api.kraken.com/0/private/AddOrder")
+    @Wrapper
+    @RequestPath(method = POST, path = "https://api.kraken.com/0/private/AddOrder")
     public OrderAdded addTakeProfitLimitOrder(Side type, double volume, AssetPair pair, double price, double price2,
                                               Trigger trigger, String offsetType, Params params) throws Exception {
         return addLevelLimitOrder(take_profit_limit, type, volume, pair.getAltName(), price, price2, trigger, offsetType,
@@ -2950,7 +2975,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      *    Add Order</a>
      * @return take profit limit order result as {@code "format"} defines
      * **/
-    @RequestPath(path = "https://api.kraken.com/0/private/AddOrder")
+    @RequestPath(method = POST, path = "https://api.kraken.com/0/private/AddOrder")
     public <T> T addTakeProfitLimitOrder(Side type, double volume, AssetPair pair, double price, double price2,
                                          Trigger trigger, String offsetType, Params params,
                                          ReturnFormat format) throws Exception {
@@ -3049,7 +3074,8 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      *    Add Order</a>
      * @return take profit limit order result as {@link OrderAdded} custom object
      * **/
-    @RequestPath(path = "https://api.kraken.com/0/private/AddOrder")
+    @Wrapper
+    @RequestPath(method = POST, path = "https://api.kraken.com/0/private/AddOrder")
     public OrderAdded addTakeProfitLimitOrder(Side type, double volume, String pair, double price, double price2,
                                               Trigger trigger, String offsetType, Params params) throws Exception {
         return addLevelLimitOrder(take_profit_limit, type, volume, pair, price, price2, trigger, offsetType, params,
@@ -3150,7 +3176,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/addOrder">
      * Add Order</a>
      **/
-    @RequestPath(path = "https://api.kraken.com/0/private/AddOrder")
+    @RequestPath(method = POST, path = "https://api.kraken.com/0/private/AddOrder")
     public <T> T addTakeProfitLimitOrder(Side type, double volume, String pair, double price, double price2,
                                          Trigger trigger, String offsetType, Params params,
                                          ReturnFormat format) throws Exception {
@@ -3447,9 +3473,10 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      * Add Order Batch</a>
      * @implNote keys for params accepted are: deadline or validate
      **/
+    @Wrapper
     @WrappedRequest
-    @RequestPath(path = "https://api.kraken.com/0/private/AddOrderBatch")
-    public <T> T addOrderBatch(OrderBatchList orderBatchList, ReturnFormat format) throws Exception {
+    @RequestPath(method = POST, path = "https://api.kraken.com/0/private/AddOrderBatch")
+    public ArrayList<OrderBatch> addOrderBatch(OrderBatchList orderBatchList, ReturnFormat format) throws Exception {
         return addOrderBatch(orderBatchList, null, format);
     }
 
@@ -3489,7 +3516,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      **/
     @Returner
     @WrappedRequest
-    @RequestPath(path = "https://api.kraken.com/0/private/AddOrderBatch")
+    @RequestPath(method = POST, path = "https://api.kraken.com/0/private/AddOrderBatch")
     public <T> T addOrderBatch(OrderBatchList orderBatchList, Params params, ReturnFormat format) throws Exception {
         if (orderBatchList == null)
             throw new IllegalArgumentException("Order batch list cannot be null");
@@ -3535,8 +3562,9 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      *     Edit Order</a>
      * @return edit market order result as {@link OrderEdited} custom object
      * **/
+    @Wrapper
     @WrappedRequest
-    @RequestPath(path = "https://api.kraken.com/0/private/EditOrder")
+    @RequestPath(method = POST, path = "https://api.kraken.com/0/private/EditOrder")
     public <T> OrderEdited editMarketOrder(T orderId, AssetPair pair, double volume) throws Exception {
         return (OrderEdited) editOrder(orderId, pair.getAltName(), volume, null, LIBRARY_OBJECT);
     }
@@ -3565,7 +3593,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      * Edit Order</a>
      **/
     @WrappedRequest
-    @RequestPath(path = "https://api.kraken.com/0/private/EditOrder")
+    @RequestPath(method = POST, path = "https://api.kraken.com/0/private/EditOrder")
     public <T> T editMarketOrder(T orderId, AssetPair pair, double volume, ReturnFormat format) throws Exception {
         return editOrder(orderId, pair.getAltName(), volume, null, format);
     }
@@ -3592,7 +3620,8 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/editOrder">
      * Edit Order</a>
      **/
-    @RequestPath(path = "https://api.kraken.com/0/private/EditOrder")
+    @Wrapper
+    @RequestPath(method = POST, path = "https://api.kraken.com/0/private/EditOrder")
     public <T> OrderEdited editMarketOrder(T orderId, String pair, double volume) throws Exception {
         return (OrderEdited) editOrder(orderId, pair, volume, null, LIBRARY_OBJECT);
     }
@@ -3620,7 +3649,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/editOrder">
      * Edit Order</a>
      **/
-    @RequestPath(path = "https://api.kraken.com/0/private/EditOrder")
+    @RequestPath(method = POST, path = "https://api.kraken.com/0/private/EditOrder")
     public <T> T editMarketOrder(T orderId, String pair, double volume, ReturnFormat format) throws Exception {
         return editOrder(orderId, pair, volume, null, format);
     }
@@ -3712,8 +3741,9 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      *     Edit Order</a>
      * @return edit market order result as {@link OrderEdited} custom object
      * **/
+    @Wrapper
     @WrappedRequest
-    @RequestPath(path = "https://api.kraken.com/0/private/EditOrder")
+    @RequestPath(method = POST, path = "https://api.kraken.com/0/private/EditOrder")
     public <T> OrderEdited editMarketOrder(T orderId, AssetPair pair, double volume, Params params) throws Exception {
         return (OrderEdited) editOrder(orderId, pair.getAltName(), volume, params, LIBRARY_OBJECT);
     }
@@ -3807,7 +3837,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      * @return edit market order result as {@code "format"} defines
      * **/
     @WrappedRequest
-    @RequestPath(path = "https://api.kraken.com/0/private/EditOrder")
+    @RequestPath(method = POST, path = "https://api.kraken.com/0/private/EditOrder")
     public <T> T editMarketOrder(T orderId, AssetPair pair, double volume, Params params,
                                  ReturnFormat format) throws Exception {
         return editOrder(orderId, pair.getAltName(), volume, params, format);
@@ -3900,7 +3930,8 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      *     Edit Order</a>
      * @return edit market order result as {@link OrderEdited} custom object
      * **/
-    @RequestPath(path = "https://api.kraken.com/0/private/EditOrder")
+    @Wrapper
+    @RequestPath(method = POST, path = "https://api.kraken.com/0/private/EditOrder")
     public <T> OrderEdited editMarketOrder(T orderId, String pair, double volume, Params params) throws Exception {
         return (OrderEdited) editOrder(orderId, pair, volume, params, LIBRARY_OBJECT);
     }
@@ -3993,7 +4024,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      *     Edit Order</a>
      * @return edit market order result as {@code "format"} defines
      * **/
-    @RequestPath(path = "https://api.kraken.com/0/private/EditOrder")
+    @RequestPath(method = POST, path = "https://api.kraken.com/0/private/EditOrder")
     public <T> T editMarketOrder(T orderId, String pair, double volume, Params params, ReturnFormat format) throws Exception {
         return editOrder(orderId, pair, volume, params, format);
     }
@@ -4021,8 +4052,9 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/editOrder">
      * Edit Order</a>
      **/
+    @Wrapper
     @WrappedRequest
-    @RequestPath(path = "https://api.kraken.com/0/private/EditOrder")
+    @RequestPath(method = POST, path = "https://api.kraken.com/0/private/EditOrder")
     public <T> OrderEdited editLimitOrder(T orderId, AssetPair pair, double volume, double price) throws Exception {
         return (OrderEdited) editPriceOrder(orderId, pair.getAltName(), volume, price, null, LIBRARY_OBJECT);
     }
@@ -4052,7 +4084,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      * Edit Order</a>
      **/
     @WrappedRequest
-    @RequestPath(path = "https://api.kraken.com/0/private/EditOrder")
+    @RequestPath(method = POST, path = "https://api.kraken.com/0/private/EditOrder")
     public <T> T editLimitOrder(T orderId, AssetPair pair, double volume, double price,
                                 ReturnFormat format) throws Exception {
         return editPriceOrder(orderId, pair.getAltName(), volume, price, null, format);
@@ -4081,7 +4113,8 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/editOrder">
      * Edit Order</a>
      **/
-    @RequestPath(path = "https://api.kraken.com/0/private/EditOrder")
+    @Wrapper
+    @RequestPath(method = POST, path = "https://api.kraken.com/0/private/EditOrder")
     public <T> OrderEdited editLimitOrder(T orderId, String pair, double volume, double price) throws Exception {
         return (OrderEdited) editPriceOrder(orderId, pair, volume, price, null, LIBRARY_OBJECT);
     }
@@ -4110,7 +4143,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/editOrder">
      * Edit Order</a>
      **/
-    @RequestPath(path = "https://api.kraken.com/0/private/EditOrder")
+    @RequestPath(method = POST, path = "https://api.kraken.com/0/private/EditOrder")
     public <T> T editLimitOrder(T orderId, String pair, double volume, double price, ReturnFormat format) throws Exception {
         return editPriceOrder(orderId, pair, volume, price, null, format);
     }
@@ -4203,7 +4236,8 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      *     Edit Order</a>
      * @return edit limit order result as {@link OrderEdited} custom object
      * **/
-    @RequestPath(path = "https://api.kraken.com/0/private/EditOrder")
+    @Wrapper
+    @RequestPath(method = POST, path = "https://api.kraken.com/0/private/EditOrder")
     public <T> OrderEdited editLimitOrder(T orderId, AssetPair pair, double volume, double price,
                                           Params params) throws Exception {
         return (OrderEdited) editPriceOrder(orderId, pair.getAltName(), volume, price, params, LIBRARY_OBJECT);
@@ -4298,7 +4332,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      *     Edit Order</a>
      * @return edit limit order result as {@code "format"} defines
      * **/
-    @RequestPath(path = "https://api.kraken.com/0/private/EditOrder")
+    @RequestPath(method = POST, path = "https://api.kraken.com/0/private/EditOrder")
     public <T> T editLimitOrder(T orderId, AssetPair pair, double volume, double price, Params params,
                                 ReturnFormat format) throws Exception {
         return editPriceOrder(orderId, pair.getAltName(), volume, price, params, format);
@@ -4392,7 +4426,8 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      *     Edit Order</a>
      * @return edit limit order result as {@code "format"} defines
      * **/
-    @RequestPath(path = "https://api.kraken.com/0/private/EditOrder")
+    @Wrapper
+    @RequestPath(method = POST, path = "https://api.kraken.com/0/private/EditOrder")
     public <T> OrderEdited editLimitOrder(T orderId, String pair, double volume, double price,
                                           Params params) throws Exception {
         return (OrderEdited) editPriceOrder(orderId, pair, volume, price, params, LIBRARY_OBJECT);
@@ -4487,7 +4522,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      *     Edit Order</a>
      * @return edit limit order result as {@link OrderEdited} custom object
      * **/
-    @RequestPath(path = "https://api.kraken.com/0/private/EditOrder")
+    @RequestPath(method = POST, path = "https://api.kraken.com/0/private/EditOrder")
     public <T> T editLimitOrder(T orderId, String pair, double volume, double price, Params params,
                                 ReturnFormat format) throws Exception {
         return editPriceOrder(orderId, pair, volume, price, params, format);
@@ -4516,8 +4551,9 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/editOrder">
      * Edit Order</a>
      **/
+    @Wrapper
     @WrappedRequest
-    @RequestPath(path = "https://api.kraken.com/0/private/EditOrder")
+    @RequestPath(method = POST, path = "https://api.kraken.com/0/private/EditOrder")
     public <T> OrderEdited editStopLossOrder(T orderId, AssetPair pair, double volume, double price) throws Exception {
         return (OrderEdited) editPriceOrder(orderId, pair.getAltName(), volume, price, null, LIBRARY_OBJECT);
     }
@@ -4547,7 +4583,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      * Edit Order</a>
      **/
     @WrappedRequest
-    @RequestPath(path = "https://api.kraken.com/0/private/EditOrder")
+    @RequestPath(method = POST, path = "https://api.kraken.com/0/private/EditOrder")
     public <T> T editStopLossOrder(T orderId, AssetPair pair, double volume, double price,
                                    ReturnFormat format) throws Exception {
         return editPriceOrder(orderId, pair.getAltName(), volume, price, null, format);
@@ -4574,7 +4610,8 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      *     Edit Order</a>
      * @return edit stop loss order result as {@link OrderEdited} custom object
      * **/
-    @RequestPath(path = "https://api.kraken.com/0/private/EditOrder")
+    @Wrapper
+    @RequestPath(method = POST, path = "https://api.kraken.com/0/private/EditOrder")
     public <T> OrderEdited editStopLossOrderObject(T orderId, String pair, double volume, double price) throws Exception {
         return (OrderEdited) editPriceOrder(orderId, pair, volume, price, null, LIBRARY_OBJECT);
     }
@@ -4601,7 +4638,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      *     Edit Order</a>
      * @return edit stop loss order result as {@code "format"} defines
      * **/
-    @RequestPath(path = "https://api.kraken.com/0/private/EditOrder")
+    @RequestPath(method = POST, path = "https://api.kraken.com/0/private/EditOrder")
     public <T> T editStopLossOrderObject(T orderId, String pair, double volume, double price,
                                          ReturnFormat format) throws Exception {
         return editPriceOrder(orderId, pair, volume, price, null, format);
@@ -4695,8 +4732,9 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      *     Edit Order</a>
      * @return edit stop loss order result as {@link OrderEdited} custom object
      * **/
+    @Wrapper
     @WrappedRequest
-    @RequestPath(path = "https://api.kraken.com/0/private/EditOrder")
+    @RequestPath(method = POST, path = "https://api.kraken.com/0/private/EditOrder")
     public <T> OrderEdited editStopLossOrder(T orderId, AssetPair pair, double volume, double price,
                                              Params params) throws Exception {
         return (OrderEdited) editPriceOrder(orderId, pair.getAltName(), volume, price, params, LIBRARY_OBJECT);
@@ -4792,7 +4830,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      * @return edit stop loss order result as {@code "format"} defines
      * **/
     @WrappedRequest
-    @RequestPath(path = "https://api.kraken.com/0/private/EditOrder")
+    @RequestPath(method = POST, path = "https://api.kraken.com/0/private/EditOrder")
     public <T> T editStopLossOrder(T orderId, AssetPair pair, double volume, double price, Params params,
                                    ReturnFormat format) throws Exception {
         return editPriceOrder(orderId, pair.getAltName(), volume, price, params, format);
@@ -4886,7 +4924,8 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      *     Edit Order</a>
      * @return edit stop loss order result as {@link OrderEdited} custom object
      * **/
-    @RequestPath(path = "https://api.kraken.com/0/private/EditOrder")
+    @Wrapper
+    @RequestPath(method = POST, path = "https://api.kraken.com/0/private/EditOrder")
     public <T> OrderEdited editStopLossOrder(T orderId, String pair, double volume, double price,
                                              Params params) throws Exception {
         return (OrderEdited) editPriceOrder(orderId, pair, volume, price, params, LIBRARY_OBJECT);
@@ -4983,7 +5022,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/editOrder">
      * Edit Order</a>
      **/
-    @RequestPath(path = "https://api.kraken.com/0/private/EditOrder")
+    @RequestPath(method = POST, path = "https://api.kraken.com/0/private/EditOrder")
     public <T> T editStopLossOrder(T orderId, String pair, double volume, double price, Params params,
                                    ReturnFormat format) throws Exception {
         return editPriceOrder(orderId, pair, volume, price, params, format);
@@ -5014,8 +5053,9 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/editOrder">
      * Edit Order</a>
      **/
+    @Wrapper
     @WrappedRequest
-    @RequestPath(path = "https://api.kraken.com/0/private/EditOrder")
+    @RequestPath(method = POST, path = "https://api.kraken.com/0/private/EditOrder")
     public <T> OrderEdited editStopLossLimitOrder(T orderId, AssetPair pair, double volume, double price, double price2,
                                                   String offsetType) throws Exception {
         return (OrderEdited) editPriceLimitOrder(orderId, pair.getAltName(), volume, price, price2, offsetType,
@@ -5049,7 +5089,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      * Edit Order</a>
      **/
     @WrappedRequest
-    @RequestPath(path = "https://api.kraken.com/0/private/EditOrder")
+    @RequestPath(method = POST, path = "https://api.kraken.com/0/private/EditOrder")
     public <T> T editStopLossLimitOrder(T orderId, AssetPair pair, double volume, double price, double price2,
                                         String offsetType, ReturnFormat format) throws Exception {
         return editPriceLimitOrder(orderId, pair.getAltName(), volume, price, price2, offsetType, null, format);
@@ -5080,7 +5120,8 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/editOrder">
      * Edit Order</a>
      **/
-    @RequestPath(path = "https://api.kraken.com/0/private/EditOrder")
+    @Wrapper
+    @RequestPath(method = POST, path = "https://api.kraken.com/0/private/EditOrder")
     public <T> OrderEdited editStopLossLimitOrder(T orderId, String pair, double volume, double price, double price2,
                                                   String offsetType) throws Exception {
         return (OrderEdited) editPriceLimitOrder(orderId, pair, volume, price, price2, offsetType, null,
@@ -5111,7 +5152,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      *     Edit Order</a>
      * @return edit stop loss limit order result as {@code "format"} defines
      * **/
-    @RequestPath(path = "https://api.kraken.com/0/private/EditOrder")
+    @RequestPath(method = POST, path = "https://api.kraken.com/0/private/EditOrder")
     public <T> T editStopLossLimitOrder(T orderId, String pair, double volume, double price, double price2,
                                         String offsetType, ReturnFormat format) throws Exception {
         return editPriceLimitOrder(orderId, pair, volume, price, price2, offsetType, null, format);
@@ -5207,8 +5248,9 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      *     Edit Order</a>
      * @return edit stop loss limit order result as {@link OrderEdited} custom object
      * **/
+    @Wrapper
     @WrappedRequest
-    @RequestPath(path = "https://api.kraken.com/0/private/EditOrder")
+    @RequestPath(method = POST, path = "https://api.kraken.com/0/private/EditOrder")
     public <T> OrderEdited editStopLossLimitOrder(T orderId, AssetPair pair, double volume, double price, double price2,
                                                   String offsetType, Params params) throws Exception {
         return (OrderEdited) editPriceLimitOrder(orderId, pair.getAltName(), volume, price, price2, offsetType, params,
@@ -5309,7 +5351,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      * Edit Order</a>
      **/
     @WrappedRequest
-    @RequestPath(path = "https://api.kraken.com/0/private/EditOrder")
+    @RequestPath(method = POST, path = "https://api.kraken.com/0/private/EditOrder")
     public <T> T editStopLossLimitOrder(T orderId, AssetPair pair, double volume, double price, double price2,
                                         String offsetType, Params params, ReturnFormat format) throws Exception {
         return editPriceLimitOrder(orderId, pair.getAltName(), volume, price, price2, offsetType, params, format);
@@ -5407,7 +5449,8 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/editOrder">
      * Edit Order</a>
      **/
-    @RequestPath(path = "https://api.kraken.com/0/private/EditOrder")
+    @Wrapper
+    @RequestPath(method = POST, path = "https://api.kraken.com/0/private/EditOrder")
     public <T> OrderEdited editStopLossLimitOrder(T orderId, String pair, double volume, double price, double price2,
                                                   String offsetType, Params params) throws Exception {
         return (OrderEdited) editPriceLimitOrder(orderId, pair, volume, price, price2, offsetType, params, LIBRARY_OBJECT);
@@ -5506,7 +5549,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/editOrder">
      * Edit Order</a>
      **/
-    @RequestPath(path = "https://api.kraken.com/0/private/EditOrder")
+    @RequestPath(method = POST, path = "https://api.kraken.com/0/private/EditOrder")
     public <T> T editStopLossLimitOrder(T orderId, String pair, double volume, double price, double price2,
                                         String offsetType, Params params, ReturnFormat format) throws Exception {
         return editPriceLimitOrder(orderId, pair, volume, price, price2, offsetType, params, format);
@@ -5535,7 +5578,8 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/editOrder">
      * Edit Order</a>
      **/
-    @RequestPath(path = "https://api.kraken.com/0/private/EditOrder")
+    @Wrapper
+    @RequestPath(method = POST, path = "https://api.kraken.com/0/private/EditOrder")
     public <T> OrderEdited editTakeProfitOrder(T orderId, AssetPair pair, double volume, double price) throws Exception {
         return (OrderEdited) editPriceOrder(orderId, pair.getAltName(), volume, price, null, LIBRARY_OBJECT);
     }
@@ -5565,7 +5609,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      * Edit Order</a>
      **/
     @WrappedRequest
-    @RequestPath(path = "https://api.kraken.com/0/private/EditOrder")
+    @RequestPath(method = POST, path = "https://api.kraken.com/0/private/EditOrder")
     public <T> T editTakeProfitOrder(T orderId, AssetPair pair, double volume, double price,
                                      ReturnFormat format) throws Exception {
         return editPriceOrder(orderId, pair.getAltName(), volume, price, null, format);
@@ -5594,7 +5638,8 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/editOrder">
      * Edit Order</a>
      **/
-    @RequestPath(path = "https://api.kraken.com/0/private/EditOrder")
+    @Wrapper
+    @RequestPath(method = POST, path = "https://api.kraken.com/0/private/EditOrder")
     public <T> OrderEdited editTakeProfitOrder(T orderId, String pair, double volume, double price) throws Exception {
         return (OrderEdited) editPriceOrder(orderId, pair, volume, price, null, LIBRARY_OBJECT);
     }
@@ -5623,7 +5668,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/editOrder">
      * Edit Order</a>
      **/
-    @RequestPath(path = "https://api.kraken.com/0/private/EditOrder")
+    @RequestPath(method = POST, path = "https://api.kraken.com/0/private/EditOrder")
     public <T> T editTakeProfitOrder(T orderId, String pair, double volume, double price,
                                      ReturnFormat format) throws Exception {
         return editPriceOrder(orderId, pair, volume, price, null, format);
@@ -5717,8 +5762,9 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      *     Edit Order</a>
      * @return edit take profit order result as {@link OrderEdited} custom object
      * **/
+    @Wrapper
     @WrappedRequest
-    @RequestPath(path = "https://api.kraken.com/0/private/EditOrder")
+    @RequestPath(method = POST, path = "https://api.kraken.com/0/private/EditOrder")
     public <T> OrderEdited editTakeProfitOrder(T orderId, AssetPair pair, double volume, double price,
                                                Params params) throws Exception {
         return (OrderEdited) editPriceOrder(orderId, pair.getAltName(), volume, price, params, LIBRARY_OBJECT);
@@ -5814,7 +5860,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      * @return edit take profit order result as {@code "format"} defines
      * **/
     @WrappedRequest
-    @RequestPath(path = "https://api.kraken.com/0/private/EditOrder")
+    @RequestPath(method = POST, path = "https://api.kraken.com/0/private/EditOrder")
     public <T> T editTakeProfitOrder(T orderId, AssetPair pair, double volume, double price, Params params,
                                      ReturnFormat format) throws Exception {
         return editPriceOrder(orderId, pair.getAltName(), volume, price, params, format);
@@ -5908,7 +5954,8 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      *     Edit Order</a>
      * @return edit take profit order result as {@link OrderEdited} custom object
      * **/
-    @RequestPath(path = "https://api.kraken.com/0/private/EditOrder")
+    @Wrapper
+    @RequestPath(method = POST, path = "https://api.kraken.com/0/private/EditOrder")
     public <T> OrderEdited editTakeProfitOrder(T orderId, String pair, double volume, double price,
                                                Params params) throws Exception {
         return (OrderEdited) editPriceOrder(orderId, pair, volume, price, params, LIBRARY_OBJECT);
@@ -6003,7 +6050,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      *     Edit Order</a>
      * @return edit take profit order result as {@code "format"} defines
      * **/
-    @RequestPath(path = "https://api.kraken.com/0/private/EditOrder")
+    @RequestPath(method = POST, path = "https://api.kraken.com/0/private/EditOrder")
     public <T> T editTakeProfitOrder(T orderId, String pair, double volume, double price, Params params,
                                      ReturnFormat format) throws Exception {
         return editPriceOrder(orderId, pair, volume, price, params, format);
@@ -6034,8 +6081,9 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/editOrder">
      * Edit Order</a>
      **/
+    @Wrapper
     @WrappedRequest
-    @RequestPath(path = "https://api.kraken.com/0/private/EditOrder")
+    @RequestPath(method = POST, path = "https://api.kraken.com/0/private/EditOrder")
     public <T> OrderEdited editTakeProfitLimitOrder(T orderId, AssetPair pair, double volume, double price,
                                                     double price2, String offsetType) throws Exception {
         return (OrderEdited) editPriceLimitOrder(orderId, pair.getAltName(), volume, price, price2, offsetType, null,
@@ -6069,7 +6117,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      * Edit Order</a>
      **/
     @WrappedRequest
-    @RequestPath(path = "https://api.kraken.com/0/private/EditOrder")
+    @RequestPath(method = POST, path = "https://api.kraken.com/0/private/EditOrder")
     public <T> T editTakeProfitLimitOrder(T orderId, AssetPair pair, double volume, double price, double price2,
                                           String offsetType, ReturnFormat format) throws Exception {
         return editPriceLimitOrder(orderId, pair.getAltName(), volume, price, price2, offsetType, null, format);
@@ -6100,7 +6148,8 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/editOrder">
      * Edit Order</a>
      **/
-    @RequestPath(path = "https://api.kraken.com/0/private/EditOrder")
+    @Wrapper
+    @RequestPath(method = POST, path = "https://api.kraken.com/0/private/EditOrder")
     public <T> OrderEdited editTakeProfitLimitOrder(T orderId, String pair, double volume, double price, double price2,
                                                     String offsetType) throws Exception {
         return (OrderEdited) editPriceLimitOrder(orderId, pair, volume, price, price2, offsetType, null,
@@ -6133,7 +6182,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/editOrder">
      * Edit Order</a>
      **/
-    @RequestPath(path = "https://api.kraken.com/0/private/EditOrder")
+    @RequestPath(method = POST, path = "https://api.kraken.com/0/private/EditOrder")
     public <T> T editTakeProfitLimitOrder(T orderId, String pair, double volume, double price, double price2,
                                           String offsetType, ReturnFormat format) throws Exception {
         return editPriceLimitOrder(orderId, pair, volume, price, price2, offsetType, null, format);
@@ -6231,8 +6280,9 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/editOrder">
      * Edit Order</a>
      **/
+    @Wrapper
     @WrappedRequest
-    @RequestPath(path = "https://api.kraken.com/0/private/EditOrder")
+    @RequestPath(method = POST, path = "https://api.kraken.com/0/private/EditOrder")
     public <T> OrderEdited editTakeProfitLimitOrder(T orderId, AssetPair pair, double volume, double price, double price2,
                                                     String offsetType, Params params) throws Exception {
         return (OrderEdited) editPriceLimitOrder(orderId, pair.getAltName(), volume, price, price2, offsetType, params,
@@ -6331,7 +6381,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      * @return edit take profit limit order result as {@code "format"} defines
      * **/
     @WrappedRequest
-    @RequestPath(path = "https://api.kraken.com/0/private/EditOrder")
+    @RequestPath(method = POST, path = "https://api.kraken.com/0/private/EditOrder")
     public <T> T editTakeProfitLimitOrder(T orderId, AssetPair pair, double volume, double price, double price2,
                                           String offsetType, Params params, ReturnFormat format) throws Exception {
         return editPriceLimitOrder(orderId, pair.getAltName(), volume, price, price2, offsetType, params, format);
@@ -6427,7 +6477,8 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      *     Edit Order</a>
      * @return edit take profit limit order result as {@link OrderEdited} custom object
      * **/
-    @RequestPath(path = "https://api.kraken.com/0/private/EditOrder")
+    @Wrapper
+    @RequestPath(method = POST, path = "https://api.kraken.com/0/private/EditOrder")
     public <T> OrderEdited editTakeProfitLimitOrder(T orderId, String pair, double volume, double price, double price2,
                                                     String offsetType, Params params) throws Exception {
         return (OrderEdited) editPriceLimitOrder(orderId, pair, volume, price, price2, offsetType, params, LIBRARY_OBJECT);
@@ -6524,7 +6575,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      *     Edit Order</a>
      * @return edit take profit limit order result as {@code "format"} defines
      * **/
-    @RequestPath(path = "https://api.kraken.com/0/private/EditOrder")
+    @RequestPath(method = POST, path = "https://api.kraken.com/0/private/EditOrder")
     public <T> T editTakeProfitLimitOrder(T orderId, String pair, double volume, double price, double price2,
                                           String offsetType, Params params, ReturnFormat format) throws Exception {
         return editPriceLimitOrder(orderId, pair, volume, price, price2, offsetType, params, format);
@@ -6746,7 +6797,8 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/cancelOrder">
      * Cancel Order</a>
      **/
-    @RequestPath(path = "https://api.kraken.com/0/private/CancelOrder")
+    @Wrapper
+    @RequestPath(method = POST, path = "https://api.kraken.com/0/private/CancelOrder")
     public <T> OrderCancelledStatus cancelOrder(T orderId) throws Exception {
         return (OrderCancelledStatus) cancelOrder(orderId, LIBRARY_OBJECT);
     }
@@ -6773,7 +6825,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      * Cancel Order</a>
      **/
     @Returner
-    @RequestPath(path = "https://api.kraken.com/0/private/CancelOrder")
+    @RequestPath(method = POST, path = "https://api.kraken.com/0/private/CancelOrder")
     public <T> T cancelOrder(T orderId, ReturnFormat format) throws Exception {
         String idKey = "txid";
         if (orderId instanceof Number)
@@ -6811,7 +6863,8 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/cancelAllOrders">
      * Cancel All Orders</a>
      **/
-    @RequestPath(path = "https://api.kraken.com/0/private/CancelAll")
+    @Wrapper
+    @RequestPath(method = POST, path = "https://api.kraken.com/0/private/CancelAll")
     public OrderCancelled cancelAllOrders() throws Exception {
         return returnOrderCancelled(sendPostRequest(CANCEL_ALL_ORDERS_ENDPOINT, null), LIBRARY_OBJECT);
     }
@@ -6836,7 +6889,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/cancelAllOrders">
      * Cancel All Orders</a>
      **/
-    @RequestPath(path = "https://api.kraken.com/0/private/CancelAll")
+    @RequestPath(method = POST, path = "https://api.kraken.com/0/private/CancelAll")
     public <T> T cancelAllOrders(ReturnFormat format) throws Exception {
         return returnOrderCancelled(sendPostRequest(CANCEL_ALL_ORDERS_ENDPOINT, null), format);
     }
@@ -6861,6 +6914,8 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/cancelAllOrdersAfter">
      * Cancel All Orders After X</a>
      **/
+    @Wrapper
+    @RequestPath(method = POST, path = "https://api.kraken.com/0/private/CancelAllOrdersAfter")
     public OrderCancelledAfter cancelAllOrdersAfter(int timeout) throws Exception {
         return cancelAllOrdersAfter(timeout, LIBRARY_OBJECT);
     }
@@ -6884,7 +6939,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      *     Cancel All Orders After X</a>
      * @return result of orders cancellation as {@code "format"} defines
      * **/
-    @RequestPath(path = "https://api.kraken.com/0/private/CancelAllOrdersAfter")
+    @RequestPath(method = POST, path = "https://api.kraken.com/0/private/CancelAllOrdersAfter")
     public <T> T cancelAllOrdersAfter(int timeout, ReturnFormat format) throws Exception {
         Params params = new Params();
         params.addParam("timeout", timeout);
@@ -6912,8 +6967,9 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/cancelOrderBatch">
      * Cancel Order Batch</a>
      **/
+    @Wrapper
     @WrappedRequest
-    @RequestPath(path = "https://api.kraken.com/0/private/CancelOrderBatch")
+    @RequestPath(method = POST, path = "https://api.kraken.com/0/private/CancelOrderBatch")
     public <T> OrderCancelled cancelOrderBatch(ArrayList<T> orderBatchIds) throws Exception {
         return (OrderCancelled) cancelOrderBatch(orderBatchIds, LIBRARY_OBJECT);
     }
@@ -6939,7 +6995,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      * @return result of batch order cancellation as {"format"} defines
      * **/
     @WrappedRequest
-    @RequestPath(path = "https://api.kraken.com/0/private/CancelOrderBatch")
+    @RequestPath(method = POST, path = "https://api.kraken.com/0/private/CancelOrderBatch")
     public <T> T cancelOrderBatch(ArrayList<T> orderBatchIds, ReturnFormat format) throws Exception {
         String key = "txid";
         Params params = new Params();

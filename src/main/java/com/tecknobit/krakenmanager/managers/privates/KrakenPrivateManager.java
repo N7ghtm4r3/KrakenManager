@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.util.Base64;
 
 import static com.tecknobit.apimanager.apis.APIRequest.*;
+import static com.tecknobit.apimanager.apis.APIRequest.RequestMethod.POST;
 import static com.tecknobit.apimanager.formatters.JsonHelper.getJSONObject;
 
 /**
@@ -171,8 +172,8 @@ public class KrakenPrivateManager extends KrakenManager {
             bodyParams = new Params();
         bodyParams.addParam("nonce", System.currentTimeMillis());
         headers.addHeader(API_SIGN_HEADER, getSignature(endpoint, bodyParams));
-        apiRequest.sendPayloadedAPIRequest(BASE_ENDPOINT + "/private/" + endpoint, POST_METHOD, headers, bodyParams);
-        JSONObject response = new JSONObject(apiRequest.getResponse());
+        apiRequest.sendPayloadedAPIRequest(BASE_ENDPOINT + "/private/" + endpoint, POST, headers, bodyParams);
+        JSONObject response = apiRequest.getJSONResponse();
         if (getJSONObject(response, "result") == null) {
             errorResponse = response.getJSONArray("error").toString();
             throw new IOException();

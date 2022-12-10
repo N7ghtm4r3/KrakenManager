@@ -3,6 +3,7 @@ package com.tecknobit.krakenmanager.managers.privates.userdata;
 import com.tecknobit.apimanager.annotations.RequestPath;
 import com.tecknobit.apimanager.annotations.Returner;
 import com.tecknobit.apimanager.annotations.WrappedRequest;
+import com.tecknobit.apimanager.annotations.Wrapper;
 import com.tecknobit.krakenmanager.managers.privates.KrakenPrivateManager;
 import com.tecknobit.krakenmanager.managers.privates.userdata.records.Ledger;
 import com.tecknobit.krakenmanager.managers.privates.userdata.records.Ledger.LedgerType;
@@ -33,6 +34,7 @@ import java.util.Arrays;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipOutputStream;
 
+import static com.tecknobit.apimanager.apis.APIRequest.RequestMethod.POST;
 import static com.tecknobit.krakenmanager.constants.EndpointsList.*;
 import static com.tecknobit.krakenmanager.managers.KrakenManager.ReturnFormat.LIBRARY_OBJECT;
 
@@ -123,7 +125,8 @@ public class KrakenUserDataManager extends KrakenPrivateManager {
      *     Get Account Balance</a>
      * @return account balance as {@link AccountBalance} custom object
      * **/
-    @RequestPath(path = "https://api.kraken.com/0/private/Balance")
+    @Wrapper
+    @RequestPath(method = POST, path = "https://api.kraken.com/0/private/Balance")
     public AccountBalance getAccountBalance() throws Exception {
         return getAccountBalance(LIBRARY_OBJECT);
     }
@@ -149,7 +152,7 @@ public class KrakenUserDataManager extends KrakenPrivateManager {
      * Get Account Balance</a>
      **/
     @Returner
-    @RequestPath(path = "https://api.kraken.com/0/private/Balance")
+    @RequestPath(method = POST, path = "https://api.kraken.com/0/private/Balance")
     public <T> T getAccountBalance(ReturnFormat format) throws Exception {
         String accountBalanceResponse = sendPostRequest(GET_ACCOUNT_BALANCE_ENDPOINT, null);
         switch (format) {
@@ -180,7 +183,8 @@ public class KrakenUserDataManager extends KrakenPrivateManager {
      *     Get Trade Balance</a>
      * @return trade balance as {@link TradeBalance} custom object
      * **/
-    @RequestPath(path = "https://api.kraken.com/0/private/TradeBalance")
+    @Wrapper
+    @RequestPath(method = POST, path = "https://api.kraken.com/0/private/TradeBalance")
     public TradeBalance getTradeBalance() throws Exception {
         return getTradeBalance(LIBRARY_OBJECT);
     }
@@ -203,7 +207,7 @@ public class KrakenUserDataManager extends KrakenPrivateManager {
      *     Get Trade Balance</a>
      * @return trade balance as {"format"} defines
      * **/
-    @RequestPath(path = "https://api.kraken.com/0/private/TradeBalance")
+    @RequestPath(method = POST, path = "https://api.kraken.com/0/private/TradeBalance")
     public <T> T getTradeBalance(ReturnFormat format) throws Exception {
         return returnTradeBalance(sendPostRequest(GET_TRADE_BALANCE_ENDPOINT, null), format);
     }
@@ -226,7 +230,8 @@ public class KrakenUserDataManager extends KrakenPrivateManager {
      *     Get Trade Balance</a>
      * @return trade balance as {@link TradeBalance} custom object
      * **/
-    @RequestPath(path = "https://api.kraken.com/0/private/TradeBalance")
+    @Wrapper
+    @RequestPath(method = POST, path = "https://api.kraken.com/0/private/TradeBalance")
     public TradeBalance getTradeBalance(String asset) throws Exception {
         return getTradeBalance(asset, LIBRARY_OBJECT);
     }
@@ -250,7 +255,7 @@ public class KrakenUserDataManager extends KrakenPrivateManager {
      *     Get Trade Balance</a>
      * @return trade balance as {"format"} defines
      * **/
-    @RequestPath(path = "https://api.kraken.com/0/private/TradeBalance")
+    @RequestPath(method = POST, path = "https://api.kraken.com/0/private/TradeBalance")
     public <T> T getTradeBalance(String asset, ReturnFormat format) throws Exception {
         Params params = new Params();
         params.addParam("asset", asset);
@@ -296,7 +301,8 @@ public class KrakenUserDataManager extends KrakenPrivateManager {
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Data/operation/getOpenOrders">
      * Get Open Orders</a>
      **/
-    @RequestPath(path = "https://api.kraken.com/0/private/OpenOrders")
+    @Wrapper
+    @RequestPath(method = POST, path = "https://api.kraken.com/0/private/OpenOrders")
     public ArrayList<Order> getOpenOrdersList(boolean insertTrades) throws Exception {
         return getOpenOrdersList(insertTrades, LIBRARY_OBJECT);
     }
@@ -322,7 +328,7 @@ public class KrakenUserDataManager extends KrakenPrivateManager {
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Data/operation/getOpenOrders">
      * Get Open Orders</a>
      **/
-    @RequestPath(path = "https://api.kraken.com/0/private/OpenOrders")
+    @RequestPath(method = POST, path = "https://api.kraken.com/0/private/OpenOrders")
     public <T> T getOpenOrdersList(boolean insertTrades, ReturnFormat format) throws Exception {
         Params params = new Params();
         if (insertTrades)
@@ -349,7 +355,8 @@ public class KrakenUserDataManager extends KrakenPrivateManager {
      *     Get Open Orders</a>
      * @return open orders as {@link ArrayList} of {@link Order} custom object
      * **/
-    @RequestPath(path = "https://api.kraken.com/0/private/OpenOrders")
+    @Wrapper
+    @RequestPath(method = POST, path = "https://api.kraken.com/0/private/OpenOrders")
     public ArrayList<Order> getOpenOrdersList(boolean insertTrades, long userRef) throws Exception {
         return getOpenOrdersList(insertTrades, userRef, LIBRARY_OBJECT);
     }
@@ -375,7 +382,7 @@ public class KrakenUserDataManager extends KrakenPrivateManager {
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Data/operation/getOpenOrders">
      * Get Open Orders</a>
      **/
-    @RequestPath(path = "https://api.kraken.com/0/private/OpenOrders")
+    @RequestPath(method = POST, path = "https://api.kraken.com/0/private/OpenOrders")
     public <T> T getOpenOrdersList(boolean insertTrades, long userRef, ReturnFormat format) throws Exception {
         Params params = new Params();
         if (insertTrades)
@@ -405,7 +412,8 @@ public class KrakenUserDataManager extends KrakenPrivateManager {
      * Get Closed Orders</a>
      * @implSpec count value is retrievable with size() method of {@link ArrayList} value returned
      **/
-    @RequestPath(path = "https://api.kraken.com/0/private/ClosedOrders")
+    @Wrapper
+    @RequestPath(method = POST, path = "https://api.kraken.com/0/private/ClosedOrders")
     public ArrayList<ClosedOrder> getClosedOrdersList(boolean insertTrades) throws Exception {
         return getClosedOrdersList(insertTrades, LIBRARY_OBJECT);
     }
@@ -430,7 +438,7 @@ public class KrakenUserDataManager extends KrakenPrivateManager {
      * @implSpec count value is retrievable with size() method of {@link ArrayList} value returned
      * @return closed orders list as {"format"} defines
      * **/
-    @RequestPath(path = "https://api.kraken.com/0/private/ClosedOrders")
+    @RequestPath(method = POST, path = "https://api.kraken.com/0/private/ClosedOrders")
     public <T> T getClosedOrdersList(boolean insertTrades, ReturnFormat format) throws Exception {
         Params params = new Params();
         if (insertTrades)
@@ -480,7 +488,8 @@ public class KrakenUserDataManager extends KrakenPrivateManager {
      * Get Closed Orders</a>
      * @implSpec count value is retrievable with size() method of {@link ArrayList} value returned
      **/
-    @RequestPath(path = "https://api.kraken.com/0/private/ClosedOrders")
+    @Wrapper
+    @RequestPath(method = POST, path = "https://api.kraken.com/0/private/ClosedOrders")
     public ArrayList<ClosedOrder> getClosedOrdersList(Params params) throws Exception {
         return getClosedOrdersList(params, LIBRARY_OBJECT);
     }
@@ -528,7 +537,7 @@ public class KrakenUserDataManager extends KrakenPrivateManager {
      * Get Closed Orders</a>
      * @implSpec count value is retrievable with size() method of {@link ArrayList} value returned
      **/
-    @RequestPath(path = "https://api.kraken.com/0/private/ClosedOrders")
+    @RequestPath(method = POST, path = "https://api.kraken.com/0/private/ClosedOrders")
     public <T> T getClosedOrdersList(Params params, ReturnFormat format) throws Exception {
         return returnClosedOrders(sendPostRequest(GET_CLOSED_ORDERS_ENDPOINT, params), format);
     }
@@ -579,9 +588,10 @@ public class KrakenUserDataManager extends KrakenPrivateManager {
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Data/operation/getOrdersInfo">
      * Query Orders Info</a>
      **/
-    @RequestPath(path = "https://api.kraken.com/0/private/QueryOrders")
-    public ArrayList<Order> getQueryOrdersInfoList(boolean insertTrades, ArrayList<Long> txId) throws Exception {
-        return getQueryOrdersInfoList(insertTrades, txId.toArray(new Long[0]), LIBRARY_OBJECT);
+    @Wrapper
+    @RequestPath(method = POST, path = "https://api.kraken.com/0/private/QueryOrders")
+    public ArrayList<Order> queryOrdersInfoList(boolean insertTrades, ArrayList<Long> txId) throws Exception {
+        return queryOrdersInfoList(insertTrades, txId.toArray(new Long[0]), LIBRARY_OBJECT);
     }
 
     /**
@@ -607,9 +617,9 @@ public class KrakenUserDataManager extends KrakenPrivateManager {
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Data/operation/getOrdersInfo">
      * Query Orders Info</a>
      **/
-    @RequestPath(path = "https://api.kraken.com/0/private/QueryOrders")
-    public <T> T getQueryOrdersInfoList(boolean insertTrades, ArrayList<Long> txId, ReturnFormat format) throws Exception {
-        return getQueryOrdersInfoList(insertTrades, txId.toArray(txId.toArray(new Long[0])), format);
+    @RequestPath(method = POST, path = "https://api.kraken.com/0/private/QueryOrders")
+    public <T> T queryOrdersInfoList(boolean insertTrades, ArrayList<Long> txId, ReturnFormat format) throws Exception {
+        return queryOrdersInfoList(insertTrades, txId.toArray(txId.toArray(new Long[0])), format);
     }
 
     /**
@@ -633,9 +643,10 @@ public class KrakenUserDataManager extends KrakenPrivateManager {
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Data/operation/getOrdersInfo">
      * Query Orders Info</a>
      **/
-    @RequestPath(path = "https://api.kraken.com/0/private/QueryOrders")
-    public ArrayList<Order> getQueryOrdersInfoList(boolean insertTrades, Long[] txId) throws Exception {
-        return getQueryOrdersInfoList(insertTrades, txId, LIBRARY_OBJECT);
+    @Wrapper
+    @RequestPath(method = POST, path = "https://api.kraken.com/0/private/QueryOrders")
+    public ArrayList<Order> queryOrdersInfoList(boolean insertTrades, Long[] txId) throws Exception {
+        return queryOrdersInfoList(insertTrades, txId, LIBRARY_OBJECT);
     }
 
     /**
@@ -660,8 +671,8 @@ public class KrakenUserDataManager extends KrakenPrivateManager {
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Data/operation/getOrdersInfo">
      * Query Orders Info</a>
      **/
-    @RequestPath(path = "https://api.kraken.com/0/private/QueryOrders")
-    public <T> T getQueryOrdersInfoList(boolean insertTrades, Long[] txId, ReturnFormat format) throws Exception {
+    @RequestPath(method = POST, path = "https://api.kraken.com/0/private/QueryOrders")
+    public <T> T queryOrdersInfoList(boolean insertTrades, Long[] txId, ReturnFormat format) throws Exception {
         Params params = new Params();
         if (insertTrades)
             params.addParam("trades", true);
@@ -690,9 +701,9 @@ public class KrakenUserDataManager extends KrakenPrivateManager {
      * Query Orders Info</a>
      * @return query orders info list as {@link ArrayList} of {@link Order} custom object
      * **/
-    @RequestPath(path = "https://api.kraken.com/0/private/QueryOrders")
-    public ArrayList<Order> getQueryOrdersInfoList(boolean insertTrades, long userRef, ArrayList<Long> txId) throws Exception {
-        return getQueryOrdersInfoList(insertTrades, userRef, txId.toArray(new Long[0]), LIBRARY_OBJECT);
+    @RequestPath(method = POST, path = "https://api.kraken.com/0/private/QueryOrders")
+    public ArrayList<Order> queryOrdersInfoList(boolean insertTrades, long userRef, ArrayList<Long> txId) throws Exception {
+        return queryOrdersInfoList(insertTrades, userRef, txId.toArray(new Long[0]), LIBRARY_OBJECT);
     }
 
     /** Request to get query orders info
@@ -717,10 +728,10 @@ public class KrakenUserDataManager extends KrakenPrivateManager {
      * Query Orders Info</a>
      * @return orders list as {"format"} defines
      * **/
-    @RequestPath(path = "https://api.kraken.com/0/private/QueryOrders")
-    public <T> T getQueryOrdersInfoList(boolean insertTrades, long userRef, ArrayList<Long> txId,
-                                        ReturnFormat format) throws Exception {
-        return getQueryOrdersInfoList(insertTrades, userRef, txId.toArray(new Long[0]), format);
+    @RequestPath(method = POST, path = "https://api.kraken.com/0/private/QueryOrders")
+    public <T> T queryOrdersInfoList(boolean insertTrades, long userRef, ArrayList<Long> txId,
+                                     ReturnFormat format) throws Exception {
+        return queryOrdersInfoList(insertTrades, userRef, txId.toArray(new Long[0]), format);
     }
 
     /**
@@ -745,9 +756,10 @@ public class KrakenUserDataManager extends KrakenPrivateManager {
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Data/operation/getOrdersInfo">
      * Query Orders Info</a>
      **/
-    @RequestPath(path = "https://api.kraken.com/0/private/QueryOrders")
-    public ArrayList<Order> getQueryOrdersInfoList(boolean insertTrades, long userRef, Long[] txId) throws Exception {
-        return getQueryOrdersInfoList(insertTrades, userRef, txId, LIBRARY_OBJECT);
+    @Wrapper
+    @RequestPath(method = POST, path = "https://api.kraken.com/0/private/QueryOrders")
+    public ArrayList<Order> queryOrdersInfoList(boolean insertTrades, long userRef, Long[] txId) throws Exception {
+        return queryOrdersInfoList(insertTrades, userRef, txId, LIBRARY_OBJECT);
     }
 
     /** Request to get query orders info
@@ -771,8 +783,8 @@ public class KrakenUserDataManager extends KrakenPrivateManager {
      * Query Orders Info</a>
      * @return orders list as {"format"} defines
      * **/
-    @RequestPath(path = "https://api.kraken.com/0/private/QueryOrders")
-    public <T> T getQueryOrdersInfoList(boolean insertTrades, long userRef, Long[] txId, ReturnFormat format) throws Exception {
+    @RequestPath(method = POST, path = "https://api.kraken.com/0/private/QueryOrders")
+    public <T> T queryOrdersInfoList(boolean insertTrades, long userRef, Long[] txId, ReturnFormat format) throws Exception {
         Params params = new Params();
         if (insertTrades)
             params.addParam("trades", true);
@@ -827,7 +839,8 @@ public class KrakenUserDataManager extends KrakenPrivateManager {
      * Get Trades History</a>
      * @implSpec count value is retrievable with size() method of {@link ArrayList} value returned
      **/
-    @RequestPath(path = "https://api.kraken.com/0/private/TradesHistory")
+    @Wrapper
+    @RequestPath(method = POST, path = "https://api.kraken.com/0/private/TradesHistory")
     public ArrayList<HistoryTrade> getTradesHistory(boolean insertTrades) throws Exception {
         return getTradesHistory(insertTrades, LIBRARY_OBJECT);
     }
@@ -854,7 +867,7 @@ public class KrakenUserDataManager extends KrakenPrivateManager {
      * Get Trades History</a>
      * @implSpec count value is retrievable with size() method of {@link ArrayList} value returned
      **/
-    @RequestPath(path = "https://api.kraken.com/0/private/TradesHistory")
+    @RequestPath(method = POST, path = "https://api.kraken.com/0/private/TradesHistory")
     public <T> T getTradesHistory(boolean insertTrades, ReturnFormat format) throws Exception {
         Params params = new Params();
         if (insertTrades)
@@ -900,7 +913,8 @@ public class KrakenUserDataManager extends KrakenPrivateManager {
      * Get Trades History</a>
      * @implSpec count value is retrievable with size() method of {@link ArrayList} value returned
      **/
-    @RequestPath(path = "https://api.kraken.com/0/private/TradesHistory")
+    @Wrapper
+    @RequestPath(method = POST, path = "https://api.kraken.com/0/private/TradesHistory")
     public ArrayList<HistoryTrade> getTradesHistory(Params params) throws Exception {
         return getTradesHistory(params, LIBRARY_OBJECT);
     }
@@ -944,7 +958,7 @@ public class KrakenUserDataManager extends KrakenPrivateManager {
      * Get Trades History</a>
      * @implSpec count value is retrievable with size() method of {@link ArrayList} value returned
      **/
-    @RequestPath(path = "https://api.kraken.com/0/private/TradesHistory")
+    @RequestPath(method = POST, path = "https://api.kraken.com/0/private/TradesHistory")
     public <T> T getTradesHistory(Params params, ReturnFormat format) throws Exception {
         return returnHistoryTrades(sendPostRequest(GET_TRADES_HISTORY_ENDPOINT, params), format);
     }
@@ -993,7 +1007,8 @@ public class KrakenUserDataManager extends KrakenPrivateManager {
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Data/operation/getTradesInfo">
      * Query Trades Info</a>
      **/
-    @RequestPath(path = "https://api.kraken.com/0/private/QueryTrades")
+    @Wrapper
+    @RequestPath(method = POST, path = "https://api.kraken.com/0/private/QueryTrades")
     public ArrayList<QueryTrade> getQueryTradesInfo(boolean insertTrades) throws Exception {
         return getQueryTradesInfo(insertTrades, LIBRARY_OBJECT);
     }
@@ -1017,7 +1032,7 @@ public class KrakenUserDataManager extends KrakenPrivateManager {
      *     Query Trades Info</a>
      * @return query trades list as {"format"} defines
      * **/
-    @RequestPath(path = "https://api.kraken.com/0/private/QueryTrades")
+    @RequestPath(method = POST, path = "https://api.kraken.com/0/private/QueryTrades")
     public <T> T getQueryTradesInfo(boolean insertTrades, ReturnFormat format) throws Exception {
         Params params = new Params();
         if (insertTrades)
@@ -1045,7 +1060,8 @@ public class KrakenUserDataManager extends KrakenPrivateManager {
      *     Query Trades Info</a>
      * @return query trades info list as {@link ArrayList} of {@link QueryTrade} custom object
      * **/
-    @RequestPath(path = "https://api.kraken.com/0/private/QueryTrades")
+    @Wrapper
+    @RequestPath(method = POST, path = "https://api.kraken.com/0/private/QueryTrades")
     public ArrayList<QueryTrade> getQueryTradesInfo(boolean insertTrades, ArrayList<String> txId) throws Exception {
         return getQueryTradesInfo(insertTrades, txId.toArray(new String[0]), LIBRARY_OBJECT);
     }
@@ -1071,7 +1087,7 @@ public class KrakenUserDataManager extends KrakenPrivateManager {
      *     Query Trades Info</a>
      * @return query trades list as {"format"} defines
      * **/
-    @RequestPath(path = "https://api.kraken.com/0/private/QueryTrades")
+    @RequestPath(method = POST, path = "https://api.kraken.com/0/private/QueryTrades")
     public <T> T getQueryTradesInfo(boolean insertTrades, ArrayList<String> txId, ReturnFormat format) throws Exception {
         return getQueryTradesInfo(insertTrades, txId.toArray(new String[0]), format);
     }
@@ -1095,7 +1111,8 @@ public class KrakenUserDataManager extends KrakenPrivateManager {
      *     Query Trades Info</a>
      * @return query trades info list as {@link ArrayList} of {@link QueryTrade} custom object
      * **/
-    @RequestPath(path = "https://api.kraken.com/0/private/QueryTrades")
+    @Wrapper
+    @RequestPath(method = POST, path = "https://api.kraken.com/0/private/QueryTrades")
     public ArrayList<QueryTrade> getQueryTradesInfo(boolean insertTrades, String[] txId) throws Exception {
         return getQueryTradesInfo(insertTrades, txId, LIBRARY_OBJECT);
     }
@@ -1120,7 +1137,7 @@ public class KrakenUserDataManager extends KrakenPrivateManager {
      *     Query Trades Info</a>
      * @return query trades list as {"format"} defines
      * **/
-    @RequestPath(path = "https://api.kraken.com/0/private/QueryTrades")
+    @RequestPath(method = POST, path = "https://api.kraken.com/0/private/QueryTrades")
     public <T> T getQueryTradesInfo(boolean insertTrades, String[] txId, ReturnFormat format) throws Exception {
         Params params = new Params();
         if (insertTrades)
@@ -1172,7 +1189,8 @@ public class KrakenUserDataManager extends KrakenPrivateManager {
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Data/operation/getOpenPositions">
      * Get Open Positions</a>
      **/
-    @RequestPath(path = "https://api.kraken.com/0/private/OpenPositions")
+    @Wrapper
+    @RequestPath(method = POST, path = "https://api.kraken.com/0/private/OpenPositions")
     public ArrayList<OpenPosition> getOpenPositions(boolean doCalcs) throws Exception {
         return getOpenPositions(doCalcs, LIBRARY_OBJECT);
     }
@@ -1198,7 +1216,7 @@ public class KrakenUserDataManager extends KrakenPrivateManager {
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Data/operation/getOpenPositions">
      * Get Open Positions</a>
      **/
-    @RequestPath(path = "https://api.kraken.com/0/private/OpenPositions")
+    @RequestPath(method = POST, path = "https://api.kraken.com/0/private/OpenPositions")
     public <T> T getOpenPositions(boolean doCalcs, ReturnFormat format) throws Exception {
         Params params = new Params();
         if (doCalcs)
@@ -1225,7 +1243,8 @@ public class KrakenUserDataManager extends KrakenPrivateManager {
      *     Get Open Positions</a>
      * @return open positions list as {@link ArrayList} of {@link OpenPosition} custom object
      * **/
-    @RequestPath(path = "https://api.kraken.com/0/private/OpenPositions")
+    @Wrapper
+    @RequestPath(method = POST, path = "https://api.kraken.com/0/private/OpenPositions")
     public ArrayList<OpenPosition> getOpenPositions(boolean doCalcs, ArrayList<String> txId) throws Exception {
         return getOpenPositions(doCalcs, txId.toArray(new String[0]), LIBRARY_OBJECT);
     }
@@ -1250,7 +1269,7 @@ public class KrakenUserDataManager extends KrakenPrivateManager {
      *     Get Open Positions</a>
      * @return open positions list as {"format"} defines
      * **/
-    @RequestPath(path = "https://api.kraken.com/0/private/OpenPositions")
+    @RequestPath(method = POST, path = "https://api.kraken.com/0/private/OpenPositions")
     public <T> T getOpenPositions(boolean doCalcs, ArrayList<String> txId, ReturnFormat format) throws Exception {
         return getOpenPositions(doCalcs, txId.toArray(new String[0]), format);
     }
@@ -1276,7 +1295,8 @@ public class KrakenUserDataManager extends KrakenPrivateManager {
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Data/operation/getOpenPositions">
      * Get Open Positions</a>
      **/
-    @RequestPath(path = "https://api.kraken.com/0/private/OpenPositions")
+    @Wrapper
+    @RequestPath(method = POST, path = "https://api.kraken.com/0/private/OpenPositions")
     public ArrayList<OpenPosition> getOpenPositions(boolean doCalcs, String[] txId) throws Exception {
         return getOpenPositions(doCalcs, txId, LIBRARY_OBJECT);
     }
@@ -1301,7 +1321,7 @@ public class KrakenUserDataManager extends KrakenPrivateManager {
      *     Get Open Positions</a>
      * @return open positions list as {"format"} defines
      * **/
-    @RequestPath(path = "https://api.kraken.com/0/private/OpenPositions")
+    @RequestPath(method = POST, path = "https://api.kraken.com/0/private/OpenPositions")
     public <T> T getOpenPositions(boolean doCalcs, String[] txId, ReturnFormat format) throws Exception {
         Params params = new Params();
         if (doCalcs)
@@ -1354,7 +1374,8 @@ public class KrakenUserDataManager extends KrakenPrivateManager {
      * Query Ledgers</a>
      * @implSpec count value is retrievable with size() method of {@link ArrayList} value returned
      **/
-    @RequestPath(path = "https://api.kraken.com/0/private/QueryLedgers")
+    @Wrapper
+    @RequestPath(method = POST, path = "https://api.kraken.com/0/private/QueryLedgers")
     public ArrayList<Ledger> getLedgersInfo(boolean insertTrades) throws Exception {
         return getLedgersInfo(insertTrades, LIBRARY_OBJECT);
     }
@@ -1381,7 +1402,7 @@ public class KrakenUserDataManager extends KrakenPrivateManager {
      * Query Ledgers</a>
      * @implSpec count value is retrievable with size() method of {@link ArrayList} value returned
      **/
-    @RequestPath(path = "https://api.kraken.com/0/private/QueryLedgers")
+    @RequestPath(method = POST, path = "https://api.kraken.com/0/private/QueryLedgers")
     public <T> T getLedgersInfo(boolean insertTrades, ReturnFormat format) throws Exception {
         Params params = new Params();
         if (insertTrades)
@@ -1431,7 +1452,8 @@ public class KrakenUserDataManager extends KrakenPrivateManager {
      * @implSpec count value is retrievable with size() method of {@link ArrayList} value returned
      * @implNote keys for params accepted are: asset,aclass,type,start,end and ofs
      **/
-    @RequestPath(path = "https://api.kraken.com/0/private/QueryLedgers")
+    @Wrapper
+    @RequestPath(method = POST, path = "https://api.kraken.com/0/private/QueryLedgers")
     public ArrayList<Ledger> getLedgersInfo(Params params) throws Exception {
         return returnLedgers(sendPostRequest(GET_LEDGERS_ENDPOINT, params), LIBRARY_OBJECT);
     }
@@ -1479,7 +1501,7 @@ public class KrakenUserDataManager extends KrakenPrivateManager {
      * @implSpec count value is retrievable with size() method of {@link ArrayList} value returned
      * @implNote keys for params accepted are: asset,aclass,type,start,end and ofs
      **/
-    @RequestPath(path = "https://api.kraken.com/0/private/QueryLedgers")
+    @RequestPath(method = POST, path = "https://api.kraken.com/0/private/QueryLedgers")
     public <T> T getLedgersInfo(Params params, ReturnFormat format) throws Exception {
         return returnLedgers(sendPostRequest(GET_LEDGERS_ENDPOINT, params), format);
     }
@@ -1506,7 +1528,8 @@ public class KrakenUserDataManager extends KrakenPrivateManager {
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Data/operation/getLedgersInfo">
      * https://docs.kraken.com/rest/#tag/User-Data/operation/getLedgersInfo</a>
      **/
-    @RequestPath(path = "https://api.kraken.com/0/private/QueryLedgers")
+    @Wrapper
+    @RequestPath(method = POST, path = "https://api.kraken.com/0/private/QueryLedgers")
     public ArrayList<Ledger> getLedgersInfo(boolean insertTrades, ArrayList<String> ids) throws Exception {
         return getLedgersInfo(insertTrades, LIBRARY_OBJECT, ids.toArray(new String[0]));
     }
@@ -1534,7 +1557,7 @@ public class KrakenUserDataManager extends KrakenPrivateManager {
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Data/operation/getLedgersInfo">
      * https://docs.kraken.com/rest/#tag/User-Data/operation/getLedgersInfo</a>
      **/
-    @RequestPath(path = "https://api.kraken.com/0/private/QueryLedgers")
+    @RequestPath(method = POST, path = "https://api.kraken.com/0/private/QueryLedgers")
     public <T> T getLedgersInfo(boolean insertTrades, ArrayList<String> ids, ReturnFormat format) throws Exception {
         return getLedgersInfo(insertTrades, format, ids.toArray(new String[0]));
     }
@@ -1560,7 +1583,8 @@ public class KrakenUserDataManager extends KrakenPrivateManager {
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Data/operation/getLedgersInfo">
      * https://docs.kraken.com/rest/#tag/User-Data/operation/getLedgersInfo</a>
      **/
-    @RequestPath(path = "https://api.kraken.com/0/private/QueryLedgers")
+    @Wrapper
+    @RequestPath(method = POST, path = "https://api.kraken.com/0/private/QueryLedgers")
     public ArrayList<Ledger> getLedgersInfo(boolean insertTrades, String... ids) throws Exception {
         return getLedgersInfo(insertTrades, LIBRARY_OBJECT, ids);
     }
@@ -1587,7 +1611,7 @@ public class KrakenUserDataManager extends KrakenPrivateManager {
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Data/operation/getLedgersInfo">
      * https://docs.kraken.com/rest/#tag/User-Data/operation/getLedgersInfo</a>
      **/
-    @RequestPath(path = "https://api.kraken.com/0/private/QueryLedgers")
+    @RequestPath(method = POST, path = "https://api.kraken.com/0/private/QueryLedgers")
     public <T> T getLedgersInfo(boolean insertTrades, ReturnFormat format, String... ids) throws Exception {
         Params params = new Params();
         if (insertTrades)
@@ -1637,7 +1661,8 @@ public class KrakenUserDataManager extends KrakenPrivateManager {
      *     https://docs.kraken.com/rest/#tag/User-Data/operation/getLedgersInfo</a>
      * @return query ledgers list as {@link ArrayList} of {@link Ledger} custom object
      * **/
-    @RequestPath(path = "https://api.kraken.com/0/private/QueryLedgers")
+    @Wrapper
+    @RequestPath(method = POST, path = "https://api.kraken.com/0/private/QueryLedgers")
     public ArrayList<Ledger> getLedgersInfo(boolean insertTrades, ArrayList<String> ids, Params params) throws Exception {
         return getLedgersInfo(insertTrades, params, LIBRARY_OBJECT, ids.toArray(new String[0]));
     }
@@ -1684,7 +1709,7 @@ public class KrakenUserDataManager extends KrakenPrivateManager {
      *     https://docs.kraken.com/rest/#tag/User-Data/operation/getLedgersInfo</a>
      * @return ledgers list as {"format"} defines
      * **/
-    @RequestPath(path = "https://api.kraken.com/0/private/QueryLedgers")
+    @RequestPath(method = POST, path = "https://api.kraken.com/0/private/QueryLedgers")
     public <T> T getLedgersInfo(boolean insertTrades, ArrayList<String> ids, Params params,
                                 ReturnFormat format) throws Exception {
         return getLedgersInfo(insertTrades, params, format, ids.toArray(new String[0]));
@@ -1732,7 +1757,8 @@ public class KrakenUserDataManager extends KrakenPrivateManager {
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Data/operation/getLedgersInfo">
      * https://docs.kraken.com/rest/#tag/User-Data/operation/getLedgersInfo</a>
      **/
-    @RequestPath(path = "https://api.kraken.com/0/private/QueryLedgers")
+    @Wrapper
+    @RequestPath(method = POST, path = "https://api.kraken.com/0/private/QueryLedgers")
     public ArrayList<Ledger> getLedgersInfo(boolean insertTrades, Params params, String... ids) throws Exception {
         return getLedgersInfo(insertTrades, params, LIBRARY_OBJECT, ids);
     }
@@ -1780,7 +1806,7 @@ public class KrakenUserDataManager extends KrakenPrivateManager {
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Data/operation/getLedgersInfo">
      * https://docs.kraken.com/rest/#tag/User-Data/operation/getLedgersInfo</a>
      **/
-    @RequestPath(path = "https://api.kraken.com/0/private/QueryLedgers")
+    @RequestPath(method = POST, path = "https://api.kraken.com/0/private/QueryLedgers")
     public <T> T getLedgersInfo(boolean insertTrades, Params params, ReturnFormat format, String... ids) throws Exception {
         if (insertTrades)
             params.addParam("trades", true);
@@ -1832,8 +1858,9 @@ public class KrakenUserDataManager extends KrakenPrivateManager {
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Data/operation/getTradeVolume">
      * Get Trade Volume</a>
      **/
+    @Wrapper
     @WrappedRequest
-    @RequestPath(path = "https://api.kraken.com/0/private/TradeVolume?pair={pair}")
+    @RequestPath(method = POST, path = "https://api.kraken.com/0/private/TradeVolume?pair={pair}")
     public TradeVolume getTradeVolume(AssetPair pair, boolean insertFeeInfo) throws Exception {
         return getTradeVolume(pair.getAltName(), insertFeeInfo, LIBRARY_OBJECT);
     }
@@ -1859,7 +1886,7 @@ public class KrakenUserDataManager extends KrakenPrivateManager {
      * @return trade volume as {"format"} defines
      * **/
     @WrappedRequest
-    @RequestPath(path = "https://api.kraken.com/0/private/TradeVolume?pair={pair}")
+    @RequestPath(method = POST, path = "https://api.kraken.com/0/private/TradeVolume?pair={pair}")
     public <T> T getTradeVolume(AssetPair pair, boolean insertFeeInfo, ReturnFormat format) throws Exception {
         return getTradeVolume(pair.getAltName(), insertFeeInfo, format);
     }
@@ -1883,7 +1910,8 @@ public class KrakenUserDataManager extends KrakenPrivateManager {
      *     Get Trade Volume</a>
      * @return trade volume as {@link TradeVolume} custom object
      * **/
-    @RequestPath(path = "https://api.kraken.com/0/private/TradeVolume?pair={pair}")
+    @Wrapper
+    @RequestPath(method = POST, path = "https://api.kraken.com/0/private/TradeVolume?pair={pair}")
     public TradeVolume getTradeVolume(String pair, boolean insertFeeInfo) throws Exception {
         return getTradeVolume(pair, insertFeeInfo, LIBRARY_OBJECT);
     }
@@ -1910,7 +1938,7 @@ public class KrakenUserDataManager extends KrakenPrivateManager {
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Data/operation/getTradeVolume">
      * Get Trade Volume</a>
      **/
-    @RequestPath(path = "https://api.kraken.com/0/private/TradeVolume?pair={pair}")
+    @RequestPath(method = POST, path = "https://api.kraken.com/0/private/TradeVolume?pair={pair}")
     public <T> T getTradeVolume(String pair, boolean insertFeeInfo, ReturnFormat format) throws Exception {
         Params params = new Params();
         if(insertFeeInfo)
@@ -1938,8 +1966,9 @@ public class KrakenUserDataManager extends KrakenPrivateManager {
      *     Get Trade Volume</a>
      * @return trade volume as {@link TradeVolume} custom object
      * **/
+    @Wrapper
     @WrappedRequest
-    @RequestPath(path = "https://api.kraken.com/0/private/TradeVolume?pair={pair}")
+    @RequestPath(method = POST, path = "https://api.kraken.com/0/private/TradeVolume?pair={pair}")
     public TradeVolume getTradeVolume(AssetPair pair, boolean insertFeeInfo, String... pairs) throws Exception {
         return getTradeVolume(pair.getAltName(), insertFeeInfo, LIBRARY_OBJECT, pairs);
     }
@@ -1968,7 +1997,7 @@ public class KrakenUserDataManager extends KrakenPrivateManager {
      * Get Trade Volume</a>
      **/
     @WrappedRequest
-    @RequestPath(path = "https://api.kraken.com/0/private/TradeVolume?pair={pair}")
+    @RequestPath(method = POST, path = "https://api.kraken.com/0/private/TradeVolume?pair={pair}")
     public <T> T getTradeVolume(AssetPair pair, boolean insertFeeInfo, ReturnFormat format,
                                 String... pairs) throws Exception {
         return getTradeVolume(pair.getAltName(), insertFeeInfo, format, pairs);
@@ -1995,8 +2024,9 @@ public class KrakenUserDataManager extends KrakenPrivateManager {
      *     Get Trade Volume</a>
      * @return trade volume as {@link TradeVolume} custom object
      * **/
+    @Wrapper
     @WrappedRequest
-    @RequestPath(path = "https://api.kraken.com/0/private/TradeVolume?pair={pair}")
+    @RequestPath(method = POST, path = "https://api.kraken.com/0/private/TradeVolume?pair={pair}")
     public TradeVolume getTradeVolume(AssetPair pair, boolean insertFeeInfo, ArrayList<String> pairs) throws Exception {
         return getTradeVolume(pair.getAltName(), insertFeeInfo, LIBRARY_OBJECT, pairs.toArray(new String[0]));
     }
@@ -2026,7 +2056,7 @@ public class KrakenUserDataManager extends KrakenPrivateManager {
      * Get Trade Volume</a>
      **/
     @WrappedRequest
-    @RequestPath(path = "https://api.kraken.com/0/private/TradeVolume?pair={pair}")
+    @RequestPath(method = POST, path = "https://api.kraken.com/0/private/TradeVolume?pair={pair}")
     public <T> T getTradeVolume(AssetPair pair, boolean insertFeeInfo, ArrayList<String> pairs,
                                 ReturnFormat format) throws Exception {
         return getTradeVolume(pair.getAltName(), insertFeeInfo, LIBRARY_OBJECT, pairs.toArray(new String[0]));
@@ -2053,7 +2083,8 @@ public class KrakenUserDataManager extends KrakenPrivateManager {
      *     Get Trade Volume</a>
      * @return trade volume as {@link TradeVolume} custom object
      * **/
-    @RequestPath(path = "https://api.kraken.com/0/private/TradeVolume?pair={pair}")
+    @Wrapper
+    @RequestPath(method = POST, path = "https://api.kraken.com/0/private/TradeVolume?pair={pair}")
     public TradeVolume getTradeVolume(String pair, boolean insertFeeInfo, ArrayList<String> pairs) throws Exception {
         return getTradeVolume(pair, insertFeeInfo, LIBRARY_OBJECT, pairs.toArray(new String[0]));
     }
@@ -2082,7 +2113,7 @@ public class KrakenUserDataManager extends KrakenPrivateManager {
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Data/operation/getTradeVolume">
      * Get Trade Volume</a>
      **/
-    @RequestPath(path = "https://api.kraken.com/0/private/TradeVolume?pair={pair}")
+    @RequestPath(method = POST, path = "https://api.kraken.com/0/private/TradeVolume?pair={pair}")
     public <T> T getTradeVolume(String pair, boolean insertFeeInfo, ArrayList<String> pairs,
                                 ReturnFormat format) throws Exception {
         return getTradeVolume(pair, insertFeeInfo, LIBRARY_OBJECT, pairs.toArray(new String[0]));
@@ -2110,7 +2141,8 @@ public class KrakenUserDataManager extends KrakenPrivateManager {
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Data/operation/getTradeVolume">
      * Get Trade Volume</a>
      **/
-    @RequestPath(path = "https://api.kraken.com/0/private/TradeVolume?pair={pair}")
+    @Wrapper
+    @RequestPath(method = POST, path = "https://api.kraken.com/0/private/TradeVolume?pair={pair}")
     public TradeVolume getTradeVolume(String pair, boolean insertFeeInfo, String... pairs) throws Exception {
         return getTradeVolume(pair, insertFeeInfo, LIBRARY_OBJECT, pairs);
     }
@@ -2138,7 +2170,7 @@ public class KrakenUserDataManager extends KrakenPrivateManager {
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Data/operation/getTradeVolume">
      * Get Trade Volume</a>
      **/
-    @RequestPath(path = "https://api.kraken.com/0/private/TradeVolume?pair={pair}")
+    @RequestPath(method = POST, path = "https://api.kraken.com/0/private/TradeVolume?pair={pair}")
     public <T> T getTradeVolume(String pair, boolean insertFeeInfo, ReturnFormat format, String... pairs) throws Exception {
         Params params = new Params();
         if (insertFeeInfo)
@@ -2185,7 +2217,8 @@ public class KrakenUserDataManager extends KrakenPrivateManager {
      *     Request Export Report</a>
      * @return export as {@link String}
      * **/
-    @RequestPath(path = "https://api.kraken.com/0/private/AddExport")
+    @Wrapper
+    @RequestPath(method = POST, path = "https://api.kraken.com/0/private/AddExport")
     public String addExport(ReportType report, String description) throws Exception {
         return addExport(report, description, LIBRARY_OBJECT);
     }
@@ -2212,7 +2245,7 @@ public class KrakenUserDataManager extends KrakenPrivateManager {
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Data/operation/addExport">
      * Request Export Report</a>
      **/
-    @RequestPath(path = "https://api.kraken.com/0/private/AddExport")
+    @RequestPath(method = POST, path = "https://api.kraken.com/0/private/AddExport")
     public <T> T addExport(ReportType report, String description, ReturnFormat format) throws Exception {
         Params params = new Params();
         params.addParam("report", report);
@@ -2262,7 +2295,8 @@ public class KrakenUserDataManager extends KrakenPrivateManager {
      *     Request Export Report</a>
      * @return export as {@link String}
      * **/
-    @RequestPath(path = "https://api.kraken.com/0/private/AddExport")
+    @Wrapper
+    @RequestPath(method = POST, path = "https://api.kraken.com/0/private/AddExport")
     public String addExport(ReportType report, String description, Params params) throws Exception {
         return addExport(report, description, params, LIBRARY_OBJECT);
     }
@@ -2312,7 +2346,7 @@ public class KrakenUserDataManager extends KrakenPrivateManager {
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Data/operation/addExport">
      * Request Export Report</a>
      **/
-    @RequestPath(path = "https://api.kraken.com/0/private/AddExport")
+    @RequestPath(method = POST, path = "https://api.kraken.com/0/private/AddExport")
     public <T> T addExport(ReportType report, String description, Params params, ReturnFormat format) throws Exception {
         params.addParam("report", report);
         params.addParam("description", description);
@@ -2358,7 +2392,8 @@ public class KrakenUserDataManager extends KrakenPrivateManager {
      *     Get Export Report Status</a>
      * @return export status as {@link String}
      * **/
-    @RequestPath(path = "https://api.kraken.com/0/private/ExportStatus")
+    @Wrapper
+    @RequestPath(method = POST, path = "https://api.kraken.com/0/private/ExportStatus")
     public ArrayList<ReportStatus> getExportStatus(ReportType report) throws Exception {
         return getExportStatus(report, LIBRARY_OBJECT);
     }
@@ -2385,7 +2420,7 @@ public class KrakenUserDataManager extends KrakenPrivateManager {
      * Get Export Report Status</a>
      **/
     @Returner
-    @RequestPath(path = "https://api.kraken.com/0/private/ExportStatus")
+    @RequestPath(method = POST, path = "https://api.kraken.com/0/private/ExportStatus")
     public <T> T getExportStatus(ReportType report, ReturnFormat format) throws Exception {
         Params params = new Params();
         params.addParam("report", report);
@@ -2434,7 +2469,8 @@ public class KrakenUserDataManager extends KrakenPrivateManager {
      * </pre></code> hide personal data, and write about error that has been thrown. Thank you for help!
      * @return an export report as zipped {@link File}
      * **/
-    @RequestPath(path = "https://api.kraken.com/0/private/RetrieveExport")
+    @Wrapper
+    @RequestPath(method = POST, path = "https://api.kraken.com/0/private/RetrieveExport")
     public File retrieveDataExport(String id, String reportName) throws Exception {
         Params params = new Params();
         params.addParam("id", id);
@@ -2442,7 +2478,7 @@ public class KrakenUserDataManager extends KrakenPrivateManager {
         StringBuilder chunksBuilder = new StringBuilder();
         for (int j = 0; j < chunks.length(); j++)
             chunksBuilder.append(chunks.getString(j));
-        if(!reportName.contains(".zip"))
+        if (!reportName.contains(".zip"))
             reportName += ".zip";
         File fileToZip = new File(reportName);
         FileWriter fileWriter = new FileWriter(fileToZip.getName());
@@ -2479,7 +2515,8 @@ public class KrakenUserDataManager extends KrakenPrivateManager {
      *     Delete Export Report</a>
      * @return result of the operation as {@link String}
      * **/
-    @RequestPath(path = "https://api.kraken.com/0/private/RemoveExport")
+    @Wrapper
+    @RequestPath(method = POST, path = "https://api.kraken.com/0/private/RemoveExport")
     public boolean deleteExportReport(String id, DeletionType type) throws Exception {
         return Boolean.parseBoolean(deleteExportReport(id, type, LIBRARY_OBJECT));
     }
@@ -2507,7 +2544,7 @@ public class KrakenUserDataManager extends KrakenPrivateManager {
      * as boolean
      **/
     @Returner
-    @RequestPath(path = "https://api.kraken.com/0/private/RemoveExport")
+    @RequestPath(method = POST, path = "https://api.kraken.com/0/private/RemoveExport")
     public <T> T deleteExportReport(String id, DeletionType type, ReturnFormat format) throws Exception {
         Params params = new Params();
         params.addParam("id", id);

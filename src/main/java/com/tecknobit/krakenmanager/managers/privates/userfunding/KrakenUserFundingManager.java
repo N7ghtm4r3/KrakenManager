@@ -2,6 +2,7 @@ package com.tecknobit.krakenmanager.managers.privates.userfunding;
 
 import com.tecknobit.apimanager.annotations.RequestPath;
 import com.tecknobit.apimanager.annotations.Returner;
+import com.tecknobit.apimanager.annotations.Wrapper;
 import com.tecknobit.krakenmanager.managers.privates.KrakenPrivateManager;
 import com.tecknobit.krakenmanager.managers.privates.userfunding.records.DepositAddress;
 import com.tecknobit.krakenmanager.managers.privates.userfunding.records.DepositMethod;
@@ -12,6 +13,7 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
+import static com.tecknobit.apimanager.apis.APIRequest.RequestMethod.POST;
 import static com.tecknobit.apimanager.formatters.ScientificNotationParser.sNotationParse;
 import static com.tecknobit.krakenmanager.constants.EndpointsList.*;
 import static com.tecknobit.krakenmanager.managers.KrakenManager.ReturnFormat.LIBRARY_OBJECT;
@@ -79,7 +81,7 @@ public class KrakenUserFundingManager extends KrakenPrivateManager {
      * Constructor to init a {@link KrakenUserFundingManager} <br>
      * Any params required
      *
-     * @throws IllegalArgumentException when a parameterized constructor has not been called before this constructur
+     * @throws IllegalArgumentException when a parameterized constructor has not been called before this constructor
      * @apiNote this constructor is useful to instantiate a new {@link KrakenPrivateManager}'s manager without re-insert
      * the credentials and is useful in those cases if you need to use different manager at the same time:
      * <pre>
@@ -113,7 +115,8 @@ public class KrakenUserFundingManager extends KrakenPrivateManager {
      *     Get Deposit Methods</a>
      * @return methods available as {@link ArrayList} of {@link DepositMethod} custom object
      * **/
-    @RequestPath(path = "https://api.kraken.com/0/private/DepositMethods")
+    @Wrapper
+    @RequestPath(method = POST, path = "https://api.kraken.com/0/private/DepositMethods")
     public ArrayList<DepositMethod> getDepositMethods(String asset) throws Exception {
         return getDepositMethods(asset, LIBRARY_OBJECT);
     }
@@ -140,7 +143,7 @@ public class KrakenUserFundingManager extends KrakenPrivateManager {
      * Get Deposit Methods</a>
      **/
     @Returner
-    @RequestPath(path = "https://api.kraken.com/0/private/DepositMethods")
+    @RequestPath(method = POST, path = "https://api.kraken.com/0/private/DepositMethods")
     public <T> T getDepositMethods(String asset, ReturnFormat format) throws Exception {
         Params params = new Params();
         params.addParam("asset", asset);
@@ -179,7 +182,8 @@ public class KrakenUserFundingManager extends KrakenPrivateManager {
      *     Get Deposit Addresses</a>
      * @return deposit addresses as {@link ArrayList} of {@link DepositAddress} custom object
      * **/
-    @RequestPath(path = "https://api.kraken.com/0/private/DepositAddresses")
+    @Wrapper
+    @RequestPath(method = POST, path = "https://api.kraken.com/0/private/DepositAddresses")
     public ArrayList<DepositAddress> getDepositAddresses(String asset, String method, boolean newAddress) throws Exception {
         return getDepositAddresses(asset, method, newAddress, LIBRARY_OBJECT);
     }
@@ -206,7 +210,7 @@ public class KrakenUserFundingManager extends KrakenPrivateManager {
      * @return deposit addresses as {@code "format"} defines
      * **/
     @Returner
-    @RequestPath(path = "https://api.kraken.com/0/private/DepositAddresses")
+    @RequestPath(method = POST, path = "https://api.kraken.com/0/private/DepositAddresses")
     public <T> T getDepositAddresses(String asset, String method, boolean newAddress, ReturnFormat format) throws Exception {
         Params params = new Params();
         params.addParam("asset", asset);
@@ -246,7 +250,8 @@ public class KrakenUserFundingManager extends KrakenPrivateManager {
      *    Get Status of Recent Deposits</a>
      * @return recent deposits as {@link ArrayList} of {@link OperationStatus} custom object
      * **/
-    @RequestPath(path = "https://api.kraken.com/0/private/DepositStatus")
+    @Wrapper
+    @RequestPath(method = POST, path = "https://api.kraken.com/0/private/DepositStatus")
     public ArrayList<OperationStatus> getRecentDepositsStatus(String asset) throws Exception {
         return getRecentDepositsStatus(asset, LIBRARY_OBJECT);
     }
@@ -270,7 +275,7 @@ public class KrakenUserFundingManager extends KrakenPrivateManager {
      *    Get Status of Recent Deposits</a>
      * @return recent deposits as {"format"} defines
      * **/
-    @RequestPath(path = "https://api.kraken.com/0/private/DepositStatus")
+    @RequestPath(method = POST, path = "https://api.kraken.com/0/private/DepositStatus")
     public <T> T getRecentDepositsStatus(String asset, ReturnFormat format) throws Exception {
         Params params = new Params();
         params.addParam("asset", asset);
@@ -296,7 +301,8 @@ public class KrakenUserFundingManager extends KrakenPrivateManager {
      *    Get Status of Recent Deposits</a>
      * @return recent deposits as {@link ArrayList} of {@link OperationStatus} custom object
      * **/
-    @RequestPath(path = "https://api.kraken.com/0/private/DepositStatus")
+    @Wrapper
+    @RequestPath(method = POST, path = "https://api.kraken.com/0/private/DepositStatus")
     public ArrayList<OperationStatus> getRecentDepositsStatus(String asset, String method) throws Exception {
         return getRecentDepositsStatus(asset, method, LIBRARY_OBJECT);
     }
@@ -321,7 +327,7 @@ public class KrakenUserFundingManager extends KrakenPrivateManager {
      *    Get Status of Recent Deposits</a>
      * @return recent deposits as {"format"} defines
      * **/
-    @RequestPath(path = "https://api.kraken.com/0/private/DepositStatus")
+    @RequestPath(method = POST, path = "https://api.kraken.com/0/private/DepositStatus")
     public <T> T getRecentDepositsStatus(String asset, String method, ReturnFormat format) throws Exception {
         Params params = new Params();
         params.addParam("asset", asset);
@@ -349,7 +355,8 @@ public class KrakenUserFundingManager extends KrakenPrivateManager {
      *     Get Withdrawal Information</a>
      * @return potential withdrawals for a particular asset, key and amount as {@link WithdrawInformation} custom object
      * **/
-    @RequestPath(path = "https://api.kraken.com/0/private/WithdrawInfo")
+    @Wrapper
+    @RequestPath(method = POST, path = "https://api.kraken.com/0/private/WithdrawInfo")
     public WithdrawInformation getWithdrawalInformation(String asset, String key, double amount) throws Exception {
         return getWithdrawalInformation(asset, key, amount, LIBRARY_OBJECT);
     }
@@ -376,7 +383,7 @@ public class KrakenUserFundingManager extends KrakenPrivateManager {
      * @return potential withdrawals for a particular asset, key and amount as {"format"} defines
      * **/
     @Returner
-    @RequestPath(path = "https://api.kraken.com/0/private/WithdrawInfo")
+    @RequestPath(method = POST, path = "https://api.kraken.com/0/private/WithdrawInfo")
     public <T> T getWithdrawalInformation(String asset, String key, double amount, ReturnFormat format) throws Exception {
         Params params = new Params();
         params.addParam("asset", asset);
@@ -413,7 +420,8 @@ public class KrakenUserFundingManager extends KrakenPrivateManager {
      *    Withdraw Funds</a>
      * @return withdrawal request result as {@link String}
      * **/
-    @RequestPath(path = "https://api.kraken.com/0/private/Withdraw")
+    @Wrapper
+    @RequestPath(method = POST, path = "https://api.kraken.com/0/private/Withdraw")
     public String sendWithdraw(String asset, String key, double amount) throws Exception {
         return sendWithdraw(asset, key, amount, LIBRARY_OBJECT);
     }
@@ -442,7 +450,7 @@ public class KrakenUserFundingManager extends KrakenPrivateManager {
      * withdrawal made
      * **/
     @Returner
-    @RequestPath(path = "https://api.kraken.com/0/private/Withdraw")
+    @RequestPath(method = POST, path = "https://api.kraken.com/0/private/Withdraw")
     public <T> T sendWithdraw(String asset, String key, double amount, ReturnFormat format) throws Exception {
         Params params = new Params();
         params.addParam("asset", asset);
@@ -477,7 +485,8 @@ public class KrakenUserFundingManager extends KrakenPrivateManager {
      *     Get Status of Recent Withdrawals</a>
      * @return information about recently requests withdrawals as {@link ArrayList} of {@link OperationStatus} custom object
      * **/
-    @RequestPath(path = "https://api.kraken.com/0/private/WithdrawStatus")
+    @Wrapper
+    @RequestPath(method = POST, path = "https://api.kraken.com/0/private/WithdrawStatus")
     public ArrayList<OperationStatus> getRecentWithdrawalsStatus(String asset) throws Exception {
         return getRecentWithdrawalsStatus(asset, LIBRARY_OBJECT);
     }
@@ -501,7 +510,7 @@ public class KrakenUserFundingManager extends KrakenPrivateManager {
      *     Get Status of Recent Withdrawals</a>
      * @return information about recently requests withdrawals as {"format"} defines
      * **/
-    @RequestPath(path = "https://api.kraken.com/0/private/WithdrawStatus")
+    @RequestPath(method = POST, path = "https://api.kraken.com/0/private/WithdrawStatus")
     public <T> T getRecentWithdrawalsStatus(String asset, ReturnFormat format) throws Exception {
         Params params = new Params();
         params.addParam("asset", asset);
@@ -527,7 +536,8 @@ public class KrakenUserFundingManager extends KrakenPrivateManager {
      *     Get Status of Recent Withdrawals</a>
      * @return information about recently requests withdrawals as {@link ArrayList} of {@link OperationStatus} custom object
      * **/
-    @RequestPath(path = "https://api.kraken.com/0/private/WithdrawStatus")
+    @Wrapper
+    @RequestPath(method = POST, path = "https://api.kraken.com/0/private/WithdrawStatus")
     public ArrayList<OperationStatus> getRecentWithdrawalsStatus(String asset, String method) throws Exception {
         return getRecentWithdrawalsStatus(asset, method, LIBRARY_OBJECT);
     }
@@ -552,7 +562,7 @@ public class KrakenUserFundingManager extends KrakenPrivateManager {
      *     Get Status of Recent Withdrawals</a>
      * @return information about recently requests withdrawals as {"format"} defines
      * **/
-    @RequestPath(path = "https://api.kraken.com/0/private/WithdrawStatus")
+    @RequestPath(method = POST, path = "https://api.kraken.com/0/private/WithdrawStatus")
     public <T> T getRecentWithdrawalsStatus(String asset, String method, ReturnFormat format) throws Exception {
         Params params = new Params();
         params.addParam("asset", asset);
@@ -602,9 +612,10 @@ public class KrakenUserFundingManager extends KrakenPrivateManager {
      *                       </li>
      *                   </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Funding/operation/cancelWithdrawal">
-     * Request Withdrawal Cancelation</a>
+     * Request Withdrawal Cancellation</a>
      **/
-    @RequestPath(path = "https://api.kraken.com/0/private/WithdrawCancel")
+    @Wrapper
+    @RequestPath(method = POST, path = "https://api.kraken.com/0/private/WithdrawCancel")
     public boolean cancelWithdrawal(String asset, String refId) throws Exception {
         return Boolean.parseBoolean(cancelWithdrawal(asset, refId, LIBRARY_OBJECT));
     }
@@ -626,13 +637,13 @@ public class KrakenUserFundingManager extends KrakenPrivateManager {
      *                         </li>
      *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Funding/operation/cancelWithdrawal">
-     *    Request Withdrawal Cancelation</a>
+     *    Request Withdrawal Cancellation</a>
      * @return withdrawal cancellation result as {"format"} defines
      * @implSpec the {@link ReturnFormat#LIBRARY_OBJECT} format type in this case will return whether cancellation has
      * been successful as boolean
      * **/
     @Returner
-    @RequestPath(path = "https://api.kraken.com/0/private/WithdrawCancel")
+    @RequestPath(method = POST, path = "https://api.kraken.com/0/private/WithdrawCancel")
     public <T> T cancelWithdrawal(String asset, String refId, ReturnFormat format) throws Exception {
         Params params = new Params();
         params.addParam("asset", asset);
@@ -670,7 +681,8 @@ public class KrakenUserFundingManager extends KrakenPrivateManager {
      *    Request Wallet Transfer</a>
      * @return transfer result as {@link String}
      * **/
-    @RequestPath(path = "https://api.kraken.com/0/private/WalletTransfer")
+    @Wrapper
+    @RequestPath(method = POST, path = "https://api.kraken.com/0/private/WalletTransfer")
     public String requestWalletTransfer(String asset, String from, String to, double amount) throws Exception {
         return requestWalletTransfer(asset, from, to, amount, LIBRARY_OBJECT);
     }
@@ -701,7 +713,7 @@ public class KrakenUserFundingManager extends KrakenPrivateManager {
      * @return transfer result as {"format"} defines
      * **/
     @Returner
-    @RequestPath(path = "https://api.kraken.com/0/private/WalletTransfer")
+    @RequestPath(method = POST, path = "https://api.kraken.com/0/private/WalletTransfer")
     public <T> T requestWalletTransfer(String asset, String from, String to, double amount,
                                        ReturnFormat format) throws Exception {
         Params params = new Params();
