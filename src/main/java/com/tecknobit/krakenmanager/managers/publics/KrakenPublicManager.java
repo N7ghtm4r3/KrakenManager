@@ -33,24 +33,29 @@ public class KrakenPublicManager extends KrakenManager {
         super(defaultErrorMessage);
     }
 
-    /** Constructor to init a {@link KrakenPublicManager}
+    /**
+     * Constructor to init a {@link KrakenPublicManager}
+     *
      * @param requestTimeout: custom timeout for request
-     * **/
+     **/
     public KrakenPublicManager(int requestTimeout) {
         super(requestTimeout);
     }
 
-    /** Constructor to init a {@link KrakenPublicManager} <br>
-     * Any params required
-     * **/
+    /**
+     * Constructor to init a {@link KrakenPublicManager} <br>
+     * No-any params required
+     **/
     public KrakenPublicManager() {
         super();
     }
 
-    /** Method to send a GET request<br>
+    /**
+     * Method to send a GET request<br>
+     *
      * @param endpoint: endpoint of API request
      * @return response as {@link String}
-     * **/
+     **/
     public String sendGetRequest(String endpoint) throws IOException {
         apiRequest.sendAPIRequest(BASE_ENDPOINT + "/public/" + endpoint, GET);
         JSONObject response = apiRequest.getJSONResponse();

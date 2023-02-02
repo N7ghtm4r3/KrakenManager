@@ -64,7 +64,7 @@ public class DepositMethod extends KrakenManager.KrakenResponse {
 
     /**
      * Method to get {@link #method} instance <br>
-     * Any params required
+     * No-any params required
      *
      * @return {@link #method} instance as {@link String}
      **/
@@ -74,7 +74,7 @@ public class DepositMethod extends KrakenManager.KrakenResponse {
 
     /**
      * Method to get {@link #fee} instance <br>
-     * Any params required
+     * No-any params required
      *
      * @return {@link #fee} instance as double
      **/
@@ -95,7 +95,7 @@ public class DepositMethod extends KrakenManager.KrakenResponse {
 
     /**
      * Method to get {@link #addressSetupFee} instance <br>
-     * Any params required
+     * No-any params required
      *
      * @return {@link #addressSetupFee} instance as {@link String}
      **/
@@ -105,7 +105,7 @@ public class DepositMethod extends KrakenManager.KrakenResponse {
 
     /**
      * Method to get {@link #genAddress} instance <br>
-     * Any params required
+     * No-any params required
      *
      * @return {@link #genAddress} instance as boolean
      **/

@@ -56,7 +56,7 @@ public class DepositAddress extends KrakenManager.KrakenResponse {
 
     /**
      * Method to get {@link #address} instance <br>
-     * Any params required
+     * No-any params required
      *
      * @return {@link #address} instance as {@link String}
      **/
@@ -66,7 +66,7 @@ public class DepositAddress extends KrakenManager.KrakenResponse {
 
     /**
      * Method to get {@link #expireTime} instance <br>
-     * Any params required
+     * No-any params required
      *
      * @return {@link #expireTime} instance as long
      **/
@@ -76,7 +76,7 @@ public class DepositAddress extends KrakenManager.KrakenResponse {
 
     /**
      * Method to get {@link #newAddress} instance <br>
-     * Any params required
+     * No-any params required
      *
      * @return {@link #newAddress} instance as boolean
      **/
@@ -86,7 +86,7 @@ public class DepositAddress extends KrakenManager.KrakenResponse {
 
     /**
      * Returns a string representation of the object <br>
-     * Any params required
+     * No-any params required
      *
      * @return a string representation of the object as {@link String}
      */

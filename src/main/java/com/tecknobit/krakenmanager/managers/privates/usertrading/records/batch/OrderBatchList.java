@@ -293,7 +293,7 @@ public class OrderBatchList {
 
     /**
      * Method to get {@link #pair} instance <br>
-     * Any params required
+     * No-any params required
      *
      * @return {@link #pair} instance as {@link String}
      **/
@@ -303,7 +303,7 @@ public class OrderBatchList {
 
     /**
      * Method to get {@link #orders} instance <br>
-     * Any params required
+     * No-any params required
      *
      * @return {@link #orders} instance as {@link JSONArray}
      **/
@@ -313,7 +313,7 @@ public class OrderBatchList {
 
     /**
      * Returns a string representation of the object <br>
-     * Any params required
+     * No-any params required
      *
      * @return a string representation of the object as {@link String}
      */

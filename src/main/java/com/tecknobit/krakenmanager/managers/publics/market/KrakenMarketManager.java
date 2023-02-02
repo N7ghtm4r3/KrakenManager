@@ -59,7 +59,7 @@ public class KrakenMarketManager extends KrakenPublicManager {
 
     /**
      * Constructor to init a {@link KrakenMarketManager} <br>
-     * Any params required
+     * No-any params required
      **/
     public KrakenMarketManager() {
         super();
@@ -67,7 +67,7 @@ public class KrakenMarketManager extends KrakenPublicManager {
 
     /**
      * Request to get server time<br>
-     * Any params required
+     * No-any params required
      *
      * @return server time as {@link String}
      * @throws IOException when request has been go wrong -> you can use these methods to get more details about error:
@@ -93,7 +93,7 @@ public class KrakenMarketManager extends KrakenPublicManager {
 
     /**
      * Custom request to get server time value <br>
-     * Any params required
+     * No-any params required
      *
      * @return server time value as long
      * @throws IOException when request has been go wrong -> you can use these methods to get more details about error:
@@ -166,7 +166,7 @@ public class KrakenMarketManager extends KrakenPublicManager {
 
     /**
      * Request to get system status<br>
-     * Any params required
+     * No-any params required
      *
      * @return system status as {@link String}
      * @throws IOException when request has been go wrong -> you can use these methods to get more details about error:
@@ -192,7 +192,7 @@ public class KrakenMarketManager extends KrakenPublicManager {
 
     /**
      * Custom request to get system status value<br>
-     * Any params required
+     * No-any params required
      *
      * @return system status value as {@link String}
      * @throws IOException when request has been go wrong -> you can use these methods to get more details about error:
@@ -265,7 +265,7 @@ public class KrakenMarketManager extends KrakenPublicManager {
 
     /**
      * Request to get assets list<br>
-     * Any params required
+     * No-any params required
      *
      * @return assets list as {@link ArrayList} of {@link Asset} custom object
      * @throws IOException when request has been go wrong -> you can use these methods to get more details about error:
@@ -725,7 +725,7 @@ public class KrakenMarketManager extends KrakenPublicManager {
 
     /**
      * Request to get assets pairs list<br>
-     * Any params required
+     * No-any params required
      *
      * @return assets pairs list as {@link ArrayList} of {@link AssetPair} custom object
      * @throws IOException when request has been go wrong -> you can use these methods to get more details about error:

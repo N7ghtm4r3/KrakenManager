@@ -34,7 +34,7 @@ public class AccountBalance extends KrakenManager.KrakenResponse {
 
     /**
      * Method to get {@link #wallet} instance <br>
-     * Any params required
+     * No-any params required
      *
      * @return {@link #wallet} instance as {@link Wallet}
      **/
@@ -72,27 +72,33 @@ public class AccountBalance extends KrakenManager.KrakenResponse {
             wallet.put(asset, new BalanceAsset(asset, balance));
         }
 
-        /** Method to refresh value of {@link BalanceAsset} already in list
-         * @param asset: asset name es. ZUSD
+        /**
+         * Method to refresh value of {@link BalanceAsset} already in list
+         *
+         * @param asset:            asset name es. ZUSD
          * @param balanceRefreshed: new balance value of asset's address
          * @throws IllegalArgumentException when balance value is a negative value
-         * **/
-        public void refreshAssetBalance(String asset, double balanceRefreshed){
+         **/
+        public void refreshAssetBalance(String asset, double balanceRefreshed) {
             wallet.replace(asset, new BalanceAsset(asset, balanceRefreshed));
         }
 
-        /** Method to remove a {@link BalanceAsset} from list
+        /**
+         * Method to remove a {@link BalanceAsset} from list
+         *
          * @param assetToRemove: asset name to remove from assets list es ZUSD
-         * **/
-        public void removeAsset(String assetToRemove){
+         **/
+        public void removeAsset(String assetToRemove) {
             wallet.remove(assetToRemove);
         }
 
-        /** Method to get {@link BalanceAsset}'s list<br>
-         * Any params required
+        /**
+         * Method to get {@link BalanceAsset}'s list<br>
+         * No-any params required
+         *
          * @return balances of assets as {@link ArrayList} of {@link BalanceAsset} custom object
-         * **/
-        public ArrayList<BalanceAsset> getAssets(){
+         **/
+        public ArrayList<BalanceAsset> getAssets() {
             ArrayList<BalanceAsset> balanceAssets = new ArrayList<>();
             for (String asset : wallet.keySet())
                 balanceAssets.add(wallet.get(asset));
@@ -111,7 +117,7 @@ public class AccountBalance extends KrakenManager.KrakenResponse {
         }
 
         /** Method to total balance of user's account <br>
-         * Any params required
+         * No-any params required
          * @return total balance as double
          * **/
         public double getTotalBalance() {
@@ -134,7 +140,7 @@ public class AccountBalance extends KrakenManager.KrakenResponse {
 
         /**
          * Returns a string representation of the object <br>
-         * Any params required
+         * No-any params required
          *
          * @return a string representation of the object as {@link String}
          */
@@ -174,7 +180,7 @@ public class AccountBalance extends KrakenManager.KrakenResponse {
 
             /**
              * Method to get {@link #asset} instance <br>
-             * Any params required
+             * No-any params required
              *
              * @return {@link #asset} instance as {@link String}
              **/
@@ -184,7 +190,7 @@ public class AccountBalance extends KrakenManager.KrakenResponse {
 
             /**
              * Method to get {@link #balance} instance <br>
-             * Any params required
+             * No-any params required
              *
              * @return {@link #balance} instance as double
              **/
@@ -217,7 +223,7 @@ public class AccountBalance extends KrakenManager.KrakenResponse {
 
             /**
              * Returns a string representation of the object <br>
-             * Any params required
+             * No-any params required
              *
              * @return a string representation of the object as {@link String}
              */

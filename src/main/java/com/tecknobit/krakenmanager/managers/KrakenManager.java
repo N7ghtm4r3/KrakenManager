@@ -88,17 +88,20 @@ public class KrakenManager {
         storeProperties(defaultErrorMessage, -1);
     }
 
-    /** Constructor to init a {@link KrakenManager}
+    /**
+     * Constructor to init a {@link KrakenManager}
+     *
      * @param requestTimeout: custom timeout for request
-     * **/
+     **/
     public KrakenManager(int requestTimeout) {
         apiRequest = new APIRequest(requestTimeout);
         storeProperties(null, requestTimeout);
     }
 
-    /** Constructor to init a {@link KrakenManager} <br>
-     * Any params required
-     * **/
+    /**
+     * Constructor to init a {@link KrakenManager} <br>
+     * No-any params required
+     **/
     public KrakenManager() {
         String defaultErrorMessage = properties.getProperty("defaultErrorMessage");
         int requestTimeout;
@@ -133,7 +136,7 @@ public class KrakenManager {
 
     /**
      * Method to get status code of request response <br>
-     * Any params required
+     * No-any params required
      *
      * @return status code of request response
      **/
@@ -143,7 +146,7 @@ public class KrakenManager {
 
     /**
      * Method to get error response of request <br>
-     * Any params required
+     * No-any params required
      *
      * @return error of the response as {@link String}
      **/
@@ -155,7 +158,7 @@ public class KrakenManager {
 
     /**
      * Method to get the error response of the request <br>
-     * Any params required
+     * No-any params required
      *
      * @return error response of the request formatted as {@code "JSON"}
      **/
@@ -165,7 +168,7 @@ public class KrakenManager {
 
     /**
      * Method to print error response of request <br>
-     * Any params required
+     * No-any params required
      **/
     public void printErrorResponse() {
         System.out.println(getErrorResponse());
@@ -286,7 +289,7 @@ public class KrakenManager {
 
         /**
          * Method to get result response <br>
-         * Any params required
+         * No-any params required
          *
          * @return result response as {@link T}
          **/
@@ -296,7 +299,7 @@ public class KrakenManager {
 
         /**
          * Method to get {@link #errors} instance <br>
-         * Any params required
+         * No-any params required
          *
          * @return {@link #errors} instance as array of {@link String}
          **/
@@ -306,7 +309,7 @@ public class KrakenManager {
 
         /**
          * Returns a string representation of the object <br>
-         * Any params required
+         * No-any params required
          *
          * @return a string representation of the object as {@link String}
          */

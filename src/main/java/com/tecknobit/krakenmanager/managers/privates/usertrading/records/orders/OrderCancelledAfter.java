@@ -50,7 +50,7 @@ public class OrderCancelledAfter extends KrakenManager.KrakenResponse {
 
     /**
      * Method to get {@link #currentTime} instance <br>
-     * Any params required
+     * No-any params required
      *
      * @return {@link #currentTime} instance as long
      **/
@@ -60,7 +60,7 @@ public class OrderCancelledAfter extends KrakenManager.KrakenResponse {
 
     /**
      * Method to get {@link #triggerTime} instance <br>
-     * Any params required
+     * No-any params required
      *
      * @return {@link #triggerTime} instance as long
      **/
@@ -70,7 +70,7 @@ public class OrderCancelledAfter extends KrakenManager.KrakenResponse {
 
     /**
      * Method to transform {@link #currentTime} time value in {@link Date} <br>
-     * Any params required
+     * No-any params required
      *
      * @return {@link #currentTime} as {@link Date}
      **/
@@ -80,7 +80,7 @@ public class OrderCancelledAfter extends KrakenManager.KrakenResponse {
 
     /**
      * Method to transform {@link #triggerTime} time value in {@link Date} <br>
-     * Any params required
+     * No-any params required
      *
      * @return {@link #triggerTime} as {@link Date}
      **/

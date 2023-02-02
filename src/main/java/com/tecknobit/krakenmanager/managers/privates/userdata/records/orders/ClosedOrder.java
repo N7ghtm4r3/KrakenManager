@@ -91,7 +91,7 @@ public class ClosedOrder extends Order {
 
     /**
      * Method to get {@link #closeTime} instance <br>
-     * Any params required
+     * No-any params required
      *
      * @return {@link #closeTime} instance as long
      **/
@@ -101,7 +101,7 @@ public class ClosedOrder extends Order {
 
     /**
      * Method to get {@link #reason} instance <br>
-     * Any params required
+     * No-any params required
      *
      * @return {@link #reason} instance as {@link String}
      **/

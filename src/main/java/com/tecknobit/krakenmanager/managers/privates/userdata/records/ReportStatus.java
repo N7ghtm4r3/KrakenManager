@@ -164,7 +164,7 @@ public class ReportStatus extends KrakenManager.KrakenResponse {
 
     /**
      * Method to get {@link #format} instance <br>
-     * Any params required
+     * No-any params required
      *
      * @return {@link #format} instance as {@link String}
      **/
@@ -213,7 +213,7 @@ public class ReportStatus extends KrakenManager.KrakenResponse {
 
     /**
      * Method to get {@link #reportId} instance <br>
-     * Any params required
+     * No-any params required
      *
      * @return {@link #reportId} instance as {@link String}
      **/
@@ -223,7 +223,7 @@ public class ReportStatus extends KrakenManager.KrakenResponse {
 
     /**
      * Method to get {@link #description} instance <br>
-     * Any params required
+     * No-any params required
      *
      * @return {@link #description} instance as {@link String}
      **/
@@ -250,7 +250,7 @@ public class ReportStatus extends KrakenManager.KrakenResponse {
 
     /**
      * Method to get {@link #report} instance <br>
-     * Any params required
+     * No-any params required
      *
      * @return {@link #report} instance as {@link String}
      **/
@@ -260,7 +260,7 @@ public class ReportStatus extends KrakenManager.KrakenResponse {
 
     /**
      * Method to get {@link #subtype} instance <br>
-     * Any params required
+     * No-any params required
      *
      * @return {@link #subtype} instance as {@link String}
      **/
@@ -270,7 +270,7 @@ public class ReportStatus extends KrakenManager.KrakenResponse {
 
     /**
      * Method to get {@link #status} instance <br>
-     * Any params required
+     * No-any params required
      *
      * @return {@link #status} instance as {@link String}
      **/
@@ -280,7 +280,7 @@ public class ReportStatus extends KrakenManager.KrakenResponse {
 
     /**
      * Method to get {@link #fields} instance <br>
-     * Any params required
+     * No-any params required
      *
      * @return {@link #fields} instance as {@link String}
      **/
@@ -290,7 +290,7 @@ public class ReportStatus extends KrakenManager.KrakenResponse {
 
     /**
      * Method to get {@link #createTimestamp} instance <br>
-     * Any params required
+     * No-any params required
      *
      * @return {@link #createTimestamp} instance as long
      **/
@@ -300,7 +300,7 @@ public class ReportStatus extends KrakenManager.KrakenResponse {
 
     /**
      * Method to get {@link #startTimestamp} instance <br>
-     * Any params required
+     * No-any params required
      *
      * @return {@link #startTimestamp} instance as long
      **/
@@ -310,7 +310,7 @@ public class ReportStatus extends KrakenManager.KrakenResponse {
 
     /**
      * Method to get {@link #completedTimestamp} instance <br>
-     * Any params required
+     * No-any params required
      *
      * @return {@link #completedTimestamp} instance as long
      **/
@@ -320,7 +320,7 @@ public class ReportStatus extends KrakenManager.KrakenResponse {
 
     /**
      * Method to get {@link #dataStartTimestamp} instance <br>
-     * Any params required
+     * No-any params required
      *
      * @return {@link #dataStartTimestamp} instance as long
      **/
@@ -330,7 +330,7 @@ public class ReportStatus extends KrakenManager.KrakenResponse {
 
     /**
      * Method to get {@link #dataEndTimestamp} instance <br>
-     * Any params required
+     * No-any params required
      *
      * @return {@link #dataEndTimestamp} instance as long
      **/
@@ -340,7 +340,7 @@ public class ReportStatus extends KrakenManager.KrakenResponse {
 
     /**
      * Method to get {@link #asset} instance <br>
-     * Any params required
+     * No-any params required
      *
      * @return {@link #asset} instance as {@link String}
      **/

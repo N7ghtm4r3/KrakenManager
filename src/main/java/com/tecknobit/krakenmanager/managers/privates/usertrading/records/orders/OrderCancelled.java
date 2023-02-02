@@ -48,7 +48,7 @@ public class OrderCancelled extends KrakenManager.KrakenResponse {
 
     /**
      * Method to get {@link #count} instance <br>
-     * Any params required
+     * No-any params required
      *
      * @return {@link #count} instance as int
      **/

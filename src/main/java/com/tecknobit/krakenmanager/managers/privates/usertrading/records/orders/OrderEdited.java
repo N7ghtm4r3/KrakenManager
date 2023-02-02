@@ -119,7 +119,7 @@ public class OrderEdited extends KrakenManager.KrakenResponse{
 
     /**
      * Method to get {@link #status} instance <br>
-     * Any params required
+     * No-any params required
      *
      * @return {@link #status} instance as {@link String}
      **/
@@ -129,7 +129,7 @@ public class OrderEdited extends KrakenManager.KrakenResponse{
 
     /**
      * Method to get {@link #txId} instance <br>
-     * Any params required
+     * No-any params required
      *
      * @return {@link #txId} instance as {@link String}
      **/
@@ -139,7 +139,7 @@ public class OrderEdited extends KrakenManager.KrakenResponse{
 
     /**
      * Method to get {@link #originalTxId} instance <br>
-     * Any params required
+     * No-any params required
      *
      * @return {@link #originalTxId} instance as {@link String}
      **/
@@ -160,7 +160,7 @@ public class OrderEdited extends KrakenManager.KrakenResponse{
 
     /**
      * Method to get {@link #volume} instance <br>
-     * Any params required
+     * No-any params required
      *
      * @return {@link #volume} instance as double
      **/
@@ -181,7 +181,7 @@ public class OrderEdited extends KrakenManager.KrakenResponse{
 
     /**
      * Method to get {@link #price} instance <br>
-     * Any params required
+     * No-any params required
      *
      * @return {@link #price} instance as double
      **/
@@ -202,7 +202,7 @@ public class OrderEdited extends KrakenManager.KrakenResponse{
 
     /**
      * Method to get {@link #price2} instance <br>
-     * Any params required
+     * No-any params required
      *
      * @return {@link #price2} instance as double
      **/
@@ -212,7 +212,7 @@ public class OrderEdited extends KrakenManager.KrakenResponse{
 
     /**
      * Method to get {@link #ordersCancelled} instance <br>
-     * Any params required
+     * No-any params required
      *
      * @return {@link #ordersCancelled} instance as int
      **/
@@ -222,7 +222,7 @@ public class OrderEdited extends KrakenManager.KrakenResponse{
 
     /**
      * Method to get {@link #orderDescription} instance <br>
-     * Any params required
+     * No-any params required
      *
      * @return {@link #orderDescription} instance as {@link OrderDescription}
      **/

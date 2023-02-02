@@ -352,7 +352,7 @@ public class StakeableAsset extends KrakenManager.KrakenResponse {
 
     /**
      * Method to get {@link #method} instance <br>
-     * Any params required
+     * No-any params required
      *
      * @return {@link #method} instance as {@link String}
      **/
@@ -362,7 +362,7 @@ public class StakeableAsset extends KrakenManager.KrakenResponse {
 
     /**
      * Method to get {@link #asset} instance <br>
-     * Any params required
+     * No-any params required
      *
      * @return {@link #asset} instance as {@link String}
      **/
@@ -372,7 +372,7 @@ public class StakeableAsset extends KrakenManager.KrakenResponse {
 
     /**
      * Method to get {@link #stakingAsset} instance <br>
-     * Any params required
+     * No-any params required
      *
      * @return {@link #stakingAsset} instance as {@link String}
      **/
@@ -382,7 +382,7 @@ public class StakeableAsset extends KrakenManager.KrakenResponse {
 
     /**
      * Method to get {@link #rewards} instance <br>
-     * Any params required
+     * No-any params required
      *
      * @return {@link #rewards} instance as {@link Rewards}
      **/
@@ -392,7 +392,7 @@ public class StakeableAsset extends KrakenManager.KrakenResponse {
 
     /**
      * Method to get {@link #onChain} instance <br>
-     * Any params required
+     * No-any params required
      *
      * @return {@link #onChain} instance as boolean
      **/
@@ -402,7 +402,7 @@ public class StakeableAsset extends KrakenManager.KrakenResponse {
 
     /**
      * Method to get {@link #canStake} instance <br>
-     * Any params required
+     * No-any params required
      *
      * @return {@link #canStake} instance as boolean
      **/
@@ -412,7 +412,7 @@ public class StakeableAsset extends KrakenManager.KrakenResponse {
 
     /**
      * Method to get {@link #canUnstake} instance <br>
-     * Any params required
+     * No-any params required
      *
      * @return {@link #canUnstake} instance as boolean
      **/
@@ -422,7 +422,7 @@ public class StakeableAsset extends KrakenManager.KrakenResponse {
 
     /**
      * Method to get {@link #minimumAmount} instance <br>
-     * Any params required
+     * No-any params required
      *
      * @return {@link #minimumAmount} instance as {@link MinimumAmount}
      **/
@@ -432,7 +432,7 @@ public class StakeableAsset extends KrakenManager.KrakenResponse {
 
     /**
      * Method to get {@link #enabledForUser} instance <br>
-     * Any params required
+     * No-any params required
      *
      * @return {@link #enabledForUser} instance as boolean
      **/
@@ -442,7 +442,7 @@ public class StakeableAsset extends KrakenManager.KrakenResponse {
 
     /**
      * Method to get {@link #disabled} instance <br>
-     * Any params required
+     * No-any params required
      *
      * @return {@link #disabled} instance as boolean
      **/
@@ -452,7 +452,7 @@ public class StakeableAsset extends KrakenManager.KrakenResponse {
 
     /**
      * Method to get {@link #unstaking} instance <br>
-     * Any params required
+     * No-any params required
      *
      * @return {@link #unstaking} instance as {@link ArrayList} of {@link Lock}
      **/
@@ -462,7 +462,7 @@ public class StakeableAsset extends KrakenManager.KrakenResponse {
 
     /**
      * Method to get {@link #staking} instance <br>
-     * Any params required
+     * No-any params required
      *
      * @return {@link #staking} instance as {@link ArrayList} of {@link Lock}
      **/
@@ -472,7 +472,7 @@ public class StakeableAsset extends KrakenManager.KrakenResponse {
 
     /**
      * Method to get {@link #lockup} instance <br>
-     * Any params required
+     * No-any params required
      *
      * @return {@link #lockup} instance as {@link ArrayList} of {@link Lock}
      **/
@@ -482,7 +482,7 @@ public class StakeableAsset extends KrakenManager.KrakenResponse {
 
     /**
      * Returns a string representation of the object <br>
-     * Any params required
+     * No-any params required
      *
      * @return a string representation of the object as {@link String}
      */
@@ -530,7 +530,7 @@ public class StakeableAsset extends KrakenManager.KrakenResponse {
 
         /**
          * Method to get {@link #reward} instance <br>
-         * Any params required
+         * No-any params required
          *
          * @return {@link #reward} instance as double
          **/
@@ -551,7 +551,7 @@ public class StakeableAsset extends KrakenManager.KrakenResponse {
 
         /**
          * Method to get {@link #type} instance <br>
-         * Any params required
+         * No-any params required
          *
          * @return {@link #type} instance as {@link String}
          **/
@@ -561,7 +561,7 @@ public class StakeableAsset extends KrakenManager.KrakenResponse {
 
         /**
          * Returns a string representation of the object <br>
-         * Any params required
+         * No-any params required
          *
          * @return a string representation of the object as {@link String}
          */
@@ -611,7 +611,7 @@ public class StakeableAsset extends KrakenManager.KrakenResponse {
 
         /**
          * Method to get {@link #staking} instance <br>
-         * Any params required
+         * No-any params required
          *
          * @return {@link #staking} instance as double
          **/
@@ -632,7 +632,7 @@ public class StakeableAsset extends KrakenManager.KrakenResponse {
 
         /**
          * Method to get {@link #unstaking} instance <br>
-         * Any params required
+         * No-any params required
          *
          * @return {@link #unstaking} instance as double
          **/
@@ -653,7 +653,7 @@ public class StakeableAsset extends KrakenManager.KrakenResponse {
 
         /**
          * Returns a string representation of the object <br>
-         * Any params required
+         * No-any params required
          *
          * @return a string representation of the object as {@link String}
          */
@@ -703,7 +703,7 @@ public class StakeableAsset extends KrakenManager.KrakenResponse {
 
         /**
          * Method to get {@link #days} instance <br>
-         * Any params required
+         * No-any params required
          *
          * @return {@link #days} instance as int
          **/
@@ -713,7 +713,7 @@ public class StakeableAsset extends KrakenManager.KrakenResponse {
 
         /**
          * Method to get {@link #percentage} instance <br>
-         * Any params required
+         * No-any params required
          *
          * @return {@link #percentage} instance as double
          **/
@@ -734,7 +734,7 @@ public class StakeableAsset extends KrakenManager.KrakenResponse {
 
         /**
          * Returns a string representation of the object <br>
-         * Any params required
+         * No-any params required
          *
          * @return a string representation of the object as {@link String}
          */

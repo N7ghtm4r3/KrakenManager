@@ -71,7 +71,7 @@ To avoid re-entering credentials for each manager, you can instantiate managers 
 
 ```java
 // choose the manager for example: KrakenUserDataManager, KrakenUserTradingManager, etc 
-KrakenPrivateManager firstManager = new KrakenPrivateManager( /* params of the constructor chosen */,"apiKey","apiSign");
+KrakenPrivateManager firstManager = new KrakenPrivateManager(/* params of the constructor chosen */,"apiKey","apiSign");
 // and then use it 
 firstManager.makeSomething();
 // you don't need to insert all credentials to make manager work
@@ -143,4 +143,4 @@ If you want support project and developer with crypto: **0x5f63cc6d13b16dcf39cd8
 If you want support project and developer with <a href="https://www.paypal.com/donate/?hosted_button_id=5QMN5UQH7LDT4">PayPal</a>
 
 
-Copyright © 2022 Tecknobit
+Copyright © 2023 Tecknobit

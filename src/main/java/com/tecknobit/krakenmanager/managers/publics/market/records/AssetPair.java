@@ -300,7 +300,7 @@ public class AssetPair extends KrakenManager.KrakenResponse {
 
     /**
      * Method to get {@link #altName} instance <br>
-     * Any params required
+     * No-any params required
      *
      * @return {@link #altName} instance as {@link String}
      **/
@@ -310,7 +310,7 @@ public class AssetPair extends KrakenManager.KrakenResponse {
 
     /**
      * Method to get {@link #wsName} instance <br>
-     * Any params required
+     * No-any params required
      *
      * @return {@link #wsName} instance as {@link String}
      **/
@@ -320,7 +320,7 @@ public class AssetPair extends KrakenManager.KrakenResponse {
 
     /**
      * Method to get {@link #aClassBase} instance <br>
-     * Any params required
+     * No-any params required
      *
      * @return {@link #aClassBase} instance as {@link String}
      **/
@@ -330,7 +330,7 @@ public class AssetPair extends KrakenManager.KrakenResponse {
 
     /**
      * Method to get {@link #base} instance <br>
-     * Any params required
+     * No-any params required
      *
      * @return {@link #base} instance as {@link String}
      **/
@@ -340,7 +340,7 @@ public class AssetPair extends KrakenManager.KrakenResponse {
 
     /**
      * Method to get {@link #aClassQuote} instance <br>
-     * Any params required
+     * No-any params required
      *
      * @return {@link #aClassQuote} instance as {@link String}
      **/
@@ -350,7 +350,7 @@ public class AssetPair extends KrakenManager.KrakenResponse {
 
     /**
      * Method to get {@link #quote} instance <br>
-     * Any params required
+     * No-any params required
      *
      * @return {@link #quote} instance as {@link String}
      **/
@@ -360,7 +360,7 @@ public class AssetPair extends KrakenManager.KrakenResponse {
 
     /**
      * Method to get {@link #pairDecimals} instance <br>
-     * Any params required
+     * No-any params required
      *
      * @return {@link #pairDecimals} instance as int
      **/
@@ -370,7 +370,7 @@ public class AssetPair extends KrakenManager.KrakenResponse {
 
     /**
      * Method to get {@link #lotDecimals} instance <br>
-     * Any params required
+     * No-any params required
      *
      * @return {@link #lotDecimals} instance as int
      **/
@@ -380,7 +380,7 @@ public class AssetPair extends KrakenManager.KrakenResponse {
 
     /**
      * Method to get {@link #lotMultiplier} instance <br>
-     * Any params required
+     * No-any params required
      *
      * @return {@link #lotMultiplier} instance as int
      **/
@@ -390,7 +390,7 @@ public class AssetPair extends KrakenManager.KrakenResponse {
 
     /**
      * Method to get {@link #leverageBuy} instance <br>
-     * Any params required
+     * No-any params required
      *
      * @return {@link #leverageBuy} instance as array of int
      **/
@@ -400,7 +400,7 @@ public class AssetPair extends KrakenManager.KrakenResponse {
 
     /**
      * Method to get {@link #leverageSell} instance <br>
-     * Any params required
+     * No-any params required
      *
      * @return {@link #leverageSell} instance as array of int
      **/
@@ -410,7 +410,7 @@ public class AssetPair extends KrakenManager.KrakenResponse {
 
     /**
      * Method to get {@link #fees} instance <br>
-     * Any params required
+     * No-any params required
      *
      * @return {@link #fees} instance as {@link ArrayList} of {@link Fee}
      **/
@@ -420,7 +420,7 @@ public class AssetPair extends KrakenManager.KrakenResponse {
 
     /**
      * Method to get {@link #makerFees} instance <br>
-     * Any params required
+     * No-any params required
      *
      * @return {@link #makerFees} instance as {@link ArrayList} of {@link Fee}
      **/
@@ -430,7 +430,7 @@ public class AssetPair extends KrakenManager.KrakenResponse {
 
     /**
      * Method to get {@link #feeVolumeCurrency} instance <br>
-     * Any params required
+     * No-any params required
      *
      * @return {@link #feeVolumeCurrency} instance as {@link String}
      **/
@@ -440,7 +440,7 @@ public class AssetPair extends KrakenManager.KrakenResponse {
 
     /**
      * Method to get {@link #marginCall} instance <br>
-     * Any params required
+     * No-any params required
      *
      * @return {@link #marginCall} instance as double
      **/
@@ -461,7 +461,7 @@ public class AssetPair extends KrakenManager.KrakenResponse {
 
     /**
      * Method to get {@link #marginStop} instance <br>
-     * Any params required
+     * No-any params required
      *
      * @return {@link #marginStop} instance as double
      **/
@@ -482,7 +482,7 @@ public class AssetPair extends KrakenManager.KrakenResponse {
 
     /**
      * Method to get {@link #minOrder} instance <br>
-     * Any params required
+     * No-any params required
      *
      * @return {@link #minOrder} instance as double
      **/
@@ -503,7 +503,7 @@ public class AssetPair extends KrakenManager.KrakenResponse {
 
     /**
      * Method to get {@link #minCost} instance <br>
-     * Any params required
+     * No-any params required
      *
      * @return {@link #minCost} instance as double
      **/
@@ -524,7 +524,7 @@ public class AssetPair extends KrakenManager.KrakenResponse {
 
     /**
      * Method to get {@link #tickSize} instance <br>
-     * Any params required
+     * No-any params required
      *
      * @return {@link #tickSize} instance as double
      **/
@@ -567,7 +567,7 @@ public class AssetPair extends KrakenManager.KrakenResponse {
 
         /**
          * Method to get {@link #fees} instance <br>
-         * Any params required
+         * No-any params required
          *
          * @return {@link #fees} instance as array of int
          **/
@@ -577,7 +577,7 @@ public class AssetPair extends KrakenManager.KrakenResponse {
 
         /**
          * Returns a string representation of the object <br>
-         * Any params required
+         * No-any params required
          *
          * @return a string representation of the object as {@link String}
          */

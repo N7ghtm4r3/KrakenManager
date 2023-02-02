@@ -75,7 +75,7 @@ public class OrderAdded extends KrakenManager.KrakenResponse {
 
         /**
          * Method to get {@link #type} instance <br>
-         * Any params required
+         * No-any params required
          *
          * @return {@link #type} instance as {@link String}
          **/
@@ -180,7 +180,7 @@ public class OrderAdded extends KrakenManager.KrakenResponse {
 
     /**
      * Method to get {@link #txIds} instance <br>
-     * Any params required
+     * No-any params required
      *
      * @return {@link #txIds} instance as {@link String}
      **/
@@ -190,7 +190,7 @@ public class OrderAdded extends KrakenManager.KrakenResponse {
 
     /**
      * Method to get {@link #description} instance <br>
-     * Any params required
+     * No-any params required
      *
      * @return {@link #description} instance as {@link Order.OrderDescription}
      **/

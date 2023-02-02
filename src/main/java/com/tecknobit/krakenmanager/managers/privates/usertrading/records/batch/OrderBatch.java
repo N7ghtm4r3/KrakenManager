@@ -54,7 +54,7 @@ public class OrderBatch extends KrakenManager.KrakenResponse {
 
     /**
      * Method to get {@link #order} instance <br>
-     * Any params required
+     * No-any params required
      *
      * @return {@link #order} instance as {@link String}
      **/
@@ -64,7 +64,7 @@ public class OrderBatch extends KrakenManager.KrakenResponse {
 
     /**
      * Method to get {@link #txId} instance <br>
-     * Any params required
+     * No-any params required
      *
      * @return {@link #txId} instance as {@link String}
      **/
@@ -74,7 +74,7 @@ public class OrderBatch extends KrakenManager.KrakenResponse {
 
     /**
      * Method to get {@link #close} instance <br>
-     * Any params required
+     * No-any params required
      *
      * @return {@link #close} instance as {@link String}
      **/

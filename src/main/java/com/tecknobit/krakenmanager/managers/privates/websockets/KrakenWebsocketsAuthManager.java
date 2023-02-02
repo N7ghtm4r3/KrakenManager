@@ -62,7 +62,7 @@ public class KrakenWebsocketsAuthManager extends KrakenPrivateManager {
 
     /**
      * Constructor to init a {@link KrakenWebsocketsAuthManager} <br>
-     * Any params required
+     * No-any params required
      *
      * @throws IllegalArgumentException when a parameterized constructor has not been called before this constructor
      * @apiNote this constructor is useful to instantiate a new {@link KrakenPrivateManager}'s manager without re-insert
@@ -82,7 +82,7 @@ public class KrakenWebsocketsAuthManager extends KrakenPrivateManager {
 
     /**
      * Request to get websockets auth token <br>
-     * Any params required
+     * No-any params required
      *
      * @return websockets auth token as {@link WebsocketsToken} custom object
      * @throws Exception when request has been go wrong -> you can use these methods to get more details about error:

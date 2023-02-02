@@ -50,7 +50,7 @@ public class SystemStatus extends KrakenManager.KrakenResponse {
 
     /**
      * Method to get {@link #status} instance <br>
-     * Any params required
+     * No-any params required
      *
      * @return {@link #status} instance as {@link String}
      **/
@@ -60,7 +60,7 @@ public class SystemStatus extends KrakenManager.KrakenResponse {
 
     /**
      * Method to get {@link #timestamp} instance <br>
-     * Any params required
+     * No-any params required
      *
      * @return {@link #timestamp} instance as {@link String}
      **/

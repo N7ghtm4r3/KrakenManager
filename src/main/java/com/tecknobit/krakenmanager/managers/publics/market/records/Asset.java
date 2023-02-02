@@ -71,7 +71,7 @@ public class Asset extends KrakenManager.KrakenResponse {
 
     /**
      * Method to get {@link #aClass} instance <br>
-     * Any params required
+     * No-any params required
      *
      * @return {@link #aClass} instance as {@link String}
      **/
@@ -81,7 +81,7 @@ public class Asset extends KrakenManager.KrakenResponse {
 
     /**
      * Method to get {@link #altName} instance <br>
-     * Any params required
+     * No-any params required
      *
      * @return {@link #altName} instance as {@link String}
      **/
@@ -91,7 +91,7 @@ public class Asset extends KrakenManager.KrakenResponse {
 
     /**
      * Method to get {@link #decimals} instance <br>
-     * Any params required
+     * No-any params required
      *
      * @return {@link #decimals} instance as int
      **/
@@ -101,7 +101,7 @@ public class Asset extends KrakenManager.KrakenResponse {
 
     /**
      * Method to get {@link #displayDecimals} instance <br>
-     * Any params required
+     * No-any params required
      *
      * @return {@link #displayDecimals} instance as int
      **/

@@ -113,7 +113,7 @@ public class KrakenPrivateManager extends KrakenManager {
 
     /**
      * Constructor to init a {@link KrakenPrivateManager} <br>
-     * Any params required
+     * No-any params required
      *
      * @throws IllegalArgumentException when a parameterized constructor has not been called before this constructur
      * @apiNote this constructor is useful to instantiate a new {@link KrakenPrivateManager}'s manager without re-insert
@@ -154,7 +154,7 @@ public class KrakenPrivateManager extends KrakenManager {
 
     /**
      * Method to set base headers for request<br>
-     * Any params required
+     * No-any params required
      **/
     private void setHeaders() {
         headers.addHeader(API_KEY_HEADER, apiKey);
@@ -192,24 +192,28 @@ public class KrakenPrivateManager extends KrakenManager {
             mac.init(new SecretKeySpec(Base64.getDecoder().decode(apiSign.getBytes()), HMAC_SHA512_ALGORITHM));
             mac.update(("/0/private/" + path).getBytes());
             return new String(Base64.getEncoder().encode(mac.doFinal(digest(data.getParam("nonce")
-                            + apiRequest.encodeBodyParams(data), SHA256_ALGORITHM))));
+                    + apiRequest.encodeBodyParams(data), SHA256_ALGORITHM))));
         } catch (Exception e) {
             return null;
         }
     }
 
-    /** Method to get Kraken api key <br>
-     * Any params required
+    /**
+     * Method to get Kraken api key <br>
+     * No-any params required
+     *
      * @return api key as {@link String}
-     * **/
+     **/
     public String getApiKey() {
         return apiKey;
     }
 
-    /** Method to get Kraken api sign <br>
-     * Any params required
+    /**
+     * Method to get Kraken api sign <br>
+     * No-any params required
+     *
      * @return api sign as {@link String}
-     * **/
+     **/
     public String getApiSign() {
         return apiSign;
     }

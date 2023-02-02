@@ -44,7 +44,7 @@ public class WebsocketsToken extends KrakenManager.KrakenResponse {
 
     /**
      * Method to get {@link #token} instance <br>
-     * Any params required
+     * No-any params required
      *
      * @return {@link #token} instance as {@link String}
      **/
@@ -54,7 +54,7 @@ public class WebsocketsToken extends KrakenManager.KrakenResponse {
 
     /**
      * Method to get {@link #expires} instance <br>
-     * Any params required
+     * No-any params required
      *
      * @return {@link #expires} instance as int
      **/

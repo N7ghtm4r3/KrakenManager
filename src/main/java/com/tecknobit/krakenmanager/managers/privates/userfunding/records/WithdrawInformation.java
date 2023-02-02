@@ -64,7 +64,7 @@ public class WithdrawInformation extends KrakenManager.KrakenResponse {
 
     /**
      * Method to get {@link #method} instance <br>
-     * Any params required
+     * No-any params required
      *
      * @return {@link #method} instance as {@link String}
      **/
@@ -74,7 +74,7 @@ public class WithdrawInformation extends KrakenManager.KrakenResponse {
 
     /**
      * Method to get {@link #limit} instance <br>
-     * Any params required
+     * No-any params required
      *
      * @return {@link #limit} instance as double
      **/
@@ -95,7 +95,7 @@ public class WithdrawInformation extends KrakenManager.KrakenResponse {
 
     /**
      * Method to get {@link #amount} instance <br>
-     * Any params required
+     * No-any params required
      *
      * @return {@link #amount} instance as double
      **/
@@ -116,7 +116,7 @@ public class WithdrawInformation extends KrakenManager.KrakenResponse {
 
     /**
      * Method to get {@link #fee} instance <br>
-     * Any params required
+     * No-any params required
      *
      * @return {@link #fee} instance as double
      **/

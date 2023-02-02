@@ -50,7 +50,7 @@ public class ServerTime extends KrakenManager.KrakenResponse {
 
     /**
      * Method to get {@link #unixTime} instance <br>
-     * Any params required
+     * No-any params required
      *
      * @return {@link #unixTime} instance as long
      **/
@@ -60,7 +60,7 @@ public class ServerTime extends KrakenManager.KrakenResponse {
 
     /**
      * Method to get {@link #rfc1123} instance <br>
-     * Any params required
+     * No-any params required
      *
      * @return {@link #rfc1123} instance as {@link String}
      **/

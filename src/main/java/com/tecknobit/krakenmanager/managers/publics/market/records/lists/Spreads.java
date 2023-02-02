@@ -56,7 +56,7 @@ public class Spreads extends MarketList {
 
     /**
      * Method to get {@link #recentSpreads} instance <br>
-     * Any params required
+     * No-any params required
      *
      * @return {@link #recentSpreads} instance as {@link ArrayList} of {@link Spread}
      **/
@@ -112,7 +112,7 @@ public class Spreads extends MarketList {
 
         /**
          * Method to get {@link #timestamp} instance <br>
-         * Any params required
+         * No-any params required
          *
          * @return {@link #timestamp} instance as long
          **/
@@ -122,7 +122,7 @@ public class Spreads extends MarketList {
 
         /**
          * Method to get {@link #doubleOne} instance <br>
-         * Any params required
+         * No-any params required
          *
          * @return {@link #doubleOne} instance as double
          **/
@@ -143,7 +143,7 @@ public class Spreads extends MarketList {
 
         /**
          * Method to get {@link #doubleTwo} instance <br>
-         * Any params required
+         * No-any params required
          *
          * @return {@link #doubleTwo} instance as double
          **/
@@ -164,7 +164,7 @@ public class Spreads extends MarketList {
 
         /**
          * Returns a string representation of the object <br>
-         * Any params required
+         * No-any params required
          *
          * @return a string representation of the object as {@link String}
          */

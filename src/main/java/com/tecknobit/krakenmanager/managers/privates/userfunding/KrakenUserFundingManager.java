@@ -79,7 +79,7 @@ public class KrakenUserFundingManager extends KrakenPrivateManager {
 
     /**
      * Constructor to init a {@link KrakenUserFundingManager} <br>
-     * Any params required
+     * No-any params required
      *
      * @throws IllegalArgumentException when a parameterized constructor has not been called before this constructor
      * @apiNote this constructor is useful to instantiate a new {@link KrakenPrivateManager}'s manager without re-insert
@@ -232,32 +232,34 @@ public class KrakenUserFundingManager extends KrakenPrivateManager {
         }
     }
 
-    /** Request to retrieve information about recent deposits made
-     * @param asset: asset being deposited
-     * @throws Exception when request has been go wrong -> you can use these methods to get more details about error:
-     *                     <ul>
-     *                         <li>
-     *                             {@link #getErrorResponse()}
-     *                         </li>
-     *                         <li>
-     *                             {@link #getJSONErrorResponse()}
-     *                         </li>
-     *                         <li>
-     *                             {@link #printErrorResponse()}
-     *                         </li>
-     *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
-     * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Funding/operation/getStatusRecentDeposits">
-     *    Get Status of Recent Deposits</a>
+    /**
+     * Request to retrieve information about recent deposits made <br>
+     * No-any params required
+     *
      * @return recent deposits as {@link ArrayList} of {@link OperationStatus} custom object
-     * **/
+     * @throws Exception when request has been go wrong -> you can use these methods to get more details about error:
+     *                   <ul>
+     *                       <li>
+     *                           {@link #getErrorResponse()}
+     *                       </li>
+     *                       <li>
+     *                           {@link #getJSONErrorResponse()}
+     *                       </li>
+     *                       <li>
+     *                           {@link #printErrorResponse()}
+     *                       </li>
+     *                   </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
+     * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Funding/operation/getStatusRecentDeposits">
+     * Get Status of Recent Deposits</a>
+     **/
     @Wrapper
     @RequestPath(method = POST, path = "https://api.kraken.com/0/private/DepositStatus")
-    public ArrayList<OperationStatus> getRecentDepositsStatus(String asset) throws Exception {
-        return getRecentDepositsStatus(asset, LIBRARY_OBJECT);
+    public ArrayList<OperationStatus> getRecentDepositsStatus() throws Exception {
+        return getRecentDepositsStatus(LIBRARY_OBJECT);
     }
 
     /** Request to retrieve information about recent deposits made
-     * @param asset: asset being deposited
+     *
      * @param format:              return type formatter -> {@link ReturnFormat}
      * @throws Exception when request has been go wrong -> you can use these methods to get more details about error:
      *                     <ul>
@@ -276,62 +278,75 @@ public class KrakenUserFundingManager extends KrakenPrivateManager {
      * @return recent deposits as {"format"} defines
      * **/
     @RequestPath(method = POST, path = "https://api.kraken.com/0/private/DepositStatus")
-    public <T> T getRecentDepositsStatus(String asset, ReturnFormat format) throws Exception {
-        Params params = new Params();
-        params.addParam("asset", asset);
-        return returnOperationsList(sendPostRequest(DEPOSIT_STATUS_ENDPOINT, params), format);
+    public <T> T getRecentDepositsStatus(ReturnFormat format) throws Exception {
+        return returnOperationsList(sendPostRequest(DEPOSIT_STATUS_ENDPOINT, null), format);
     }
 
-    /** Request to retrieve information about recent deposits made
-     * @param asset: asset being deposited
-     * @param method: name of the deposit method
-     * @throws Exception when request has been go wrong -> you can use these methods to get more details about error:
-     *                     <ul>
-     *                         <li>
-     *                             {@link #getErrorResponse()}
-     *                         </li>
-     *                         <li>
-     *                             {@link #getJSONErrorResponse()}
-     *                         </li>
-     *                         <li>
-     *                             {@link #printErrorResponse()}
-     *                         </li>
-     *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
-     * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Funding/operation/getStatusRecentDeposits">
-     *    Get Status of Recent Deposits</a>
+    /**
+     * Request to retrieve information about recent deposits made
+     *
+     * @param params: extra order details, keys accepted are:
+     *                <ul>
+     *                    <li>
+     *                        {@code "asset"} -> filter for specific asset being deposited - [string]
+     *                    </li>
+     *                    <li>
+     *                        {@code "method"} -> filter for specific name of deposit method - [string]
+     *                    </li>
+     *                </ul>
      * @return recent deposits as {@link ArrayList} of {@link OperationStatus} custom object
-     * **/
+     * @throws Exception when request has been go wrong -> you can use these methods to get more details about error:
+     *                   <ul>
+     *                       <li>
+     *                           {@link #getErrorResponse()}
+     *                       </li>
+     *                       <li>
+     *                           {@link #getJSONErrorResponse()}
+     *                       </li>
+     *                       <li>
+     *                           {@link #printErrorResponse()}
+     *                       </li>
+     *                   </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
+     * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Funding/operation/getStatusRecentDeposits">
+     * Get Status of Recent Deposits</a>
+     **/
     @Wrapper
     @RequestPath(method = POST, path = "https://api.kraken.com/0/private/DepositStatus")
-    public ArrayList<OperationStatus> getRecentDepositsStatus(String asset, String method) throws Exception {
-        return getRecentDepositsStatus(asset, method, LIBRARY_OBJECT);
+    public ArrayList<OperationStatus> getRecentDepositsStatus(Params params) throws Exception {
+        return getRecentDepositsStatus(params, LIBRARY_OBJECT);
     }
 
-    /** Request to retrieve information about recent deposits made
-     * @param asset: asset being deposited
-     * @param method: name of the deposit method
-     * @param format:              return type formatter -> {@link ReturnFormat}
-     * @throws Exception when request has been go wrong -> you can use these methods to get more details about error:
-     *                     <ul>
-     *                         <li>
-     *                             {@link #getErrorResponse()}
-     *                         </li>
-     *                         <li>
-     *                             {@link #getJSONErrorResponse()}
-     *                         </li>
-     *                         <li>
-     *                             {@link #printErrorResponse()}
-     *                         </li>
-     *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
-     * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Funding/operation/getStatusRecentDeposits">
-     *    Get Status of Recent Deposits</a>
+    /**
+     * Request to retrieve information about recent deposits made
+     *
+     * @param params: extra order details, keys accepted are:
+     *                <ul>
+     *                    <li>
+     *                        {@code "asset"} -> filter for specific asset being deposited - [string]
+     *                    </li>
+     *                    <li>
+     *                        {@code "method"} -> filter for specific name of deposit method - [string]
+     *                    </li>
+     *                </ul>
+     * @param format: return type formatter -> {@link ReturnFormat}
      * @return recent deposits as {"format"} defines
-     * **/
+     * @throws Exception when request has been go wrong -> you can use these methods to get more details about error:
+     *                   <ul>
+     *                       <li>
+     *                           {@link #getErrorResponse()}
+     *                       </li>
+     *                       <li>
+     *                           {@link #getJSONErrorResponse()}
+     *                       </li>
+     *                       <li>
+     *                           {@link #printErrorResponse()}
+     *                       </li>
+     *                   </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
+     * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Funding/operation/getStatusRecentDeposits">
+     * Get Status of Recent Deposits</a>
+     **/
     @RequestPath(method = POST, path = "https://api.kraken.com/0/private/DepositStatus")
-    public <T> T getRecentDepositsStatus(String asset, String method, ReturnFormat format) throws Exception {
-        Params params = new Params();
-        params.addParam("asset", asset);
-        params.addParam("method", method);
+    public <T> T getRecentDepositsStatus(Params params, ReturnFormat format) throws Exception {
         return returnOperationsList(sendPostRequest(DEPOSIT_STATUS_ENDPOINT, params), format);
     }
 
@@ -467,32 +482,34 @@ public class KrakenUserFundingManager extends KrakenPrivateManager {
         }
     }
 
-    /** Request to retrieve information about recently requests withdrawals
-     * @param asset: asset being withdrawn
-     * @throws Exception when request has been go wrong -> you can use these methods to get more details about error:
-     *                     <ul>
-     *                         <li>
-     *                             {@link #getErrorResponse()}
-     *                         </li>
-     *                         <li>
-     *                             {@link #getJSONErrorResponse()}
-     *                         </li>
-     *                         <li>
-     *                             {@link #printErrorResponse()}
-     *                         </li>
-     *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
-     * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Funding/operation/getStatusRecentWithdrawals">
-     *     Get Status of Recent Withdrawals</a>
+    /**
+     * Request to retrieve information about recently requests withdrawals <br>
+     * No-any params required
+     *
      * @return information about recently requests withdrawals as {@link ArrayList} of {@link OperationStatus} custom object
-     * **/
+     * @throws Exception when request has been go wrong -> you can use these methods to get more details about error:
+     *                   <ul>
+     *                       <li>
+     *                           {@link #getErrorResponse()}
+     *                       </li>
+     *                       <li>
+     *                           {@link #getJSONErrorResponse()}
+     *                       </li>
+     *                       <li>
+     *                           {@link #printErrorResponse()}
+     *                       </li>
+     *                   </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
+     * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Funding/operation/getStatusRecentWithdrawals">
+     * Get Status of Recent Withdrawals</a>
+     **/
     @Wrapper
     @RequestPath(method = POST, path = "https://api.kraken.com/0/private/WithdrawStatus")
-    public ArrayList<OperationStatus> getRecentWithdrawalsStatus(String asset) throws Exception {
-        return getRecentWithdrawalsStatus(asset, LIBRARY_OBJECT);
+    public ArrayList<OperationStatus> getRecentWithdrawalsStatus() throws Exception {
+        return getRecentWithdrawalsStatus(LIBRARY_OBJECT);
     }
 
     /** Request to retrieve information about recently requests withdrawals
-     * @param asset: asset being withdrawn
+     *
      * @param format:              return type formatter -> {@link ReturnFormat}
      * @throws Exception when request has been go wrong -> you can use these methods to get more details about error:
      *                     <ul>
@@ -511,14 +528,21 @@ public class KrakenUserFundingManager extends KrakenPrivateManager {
      * @return information about recently requests withdrawals as {"format"} defines
      * **/
     @RequestPath(method = POST, path = "https://api.kraken.com/0/private/WithdrawStatus")
-    public <T> T getRecentWithdrawalsStatus(String asset, ReturnFormat format) throws Exception {
-        Params params = new Params();
-        params.addParam("asset", asset);
-        return returnOperationsList(sendPostRequest(WITHDRAW_STATUS_ENDPOINT, params), format);
+    public <T> T getRecentWithdrawalsStatus(ReturnFormat format) throws Exception {
+        return returnOperationsList(sendPostRequest(WITHDRAW_STATUS_ENDPOINT, null), format);
     }
 
     /** Request to retrieve information about recently requests withdrawals
-     * @param asset: asset being withdrawn
+     *
+     * @param params: extra order details, keys accepted are:
+     *                      <ul>
+     *                          <li>
+     *                              {@code "asset"} -> filter for specific asset being withdrawn - [string]
+     *                          </li>
+     *                          <li>
+     *                              {@code "method"} -> filter for specific name of withdrawal  method - [string]
+     *                          </li>
+     *                      </ul>
      * @param method: name of the withdrawal method
      * @throws Exception when request has been go wrong -> you can use these methods to get more details about error:
      *                     <ul>
@@ -538,13 +562,21 @@ public class KrakenUserFundingManager extends KrakenPrivateManager {
      * **/
     @Wrapper
     @RequestPath(method = POST, path = "https://api.kraken.com/0/private/WithdrawStatus")
-    public ArrayList<OperationStatus> getRecentWithdrawalsStatus(String asset, String method) throws Exception {
-        return getRecentWithdrawalsStatus(asset, method, LIBRARY_OBJECT);
+    public ArrayList<OperationStatus> getRecentWithdrawalsStatus(Params params, String method) throws Exception {
+        return getRecentWithdrawalsStatus(params, LIBRARY_OBJECT);
     }
 
     /** Request to retrieve information about recently requests withdrawals
-     * @param asset: asset being withdrawn
-     * @param method: name of the withdrawal method
+     *
+     * @param params: extra order details, keys accepted are:
+     *                      <ul>
+     *                          <li>
+     *                              {@code "asset"} -> filter for specific asset being withdrawn - [string]
+     *                          </li>
+     *                          <li>
+     *                              {@code "method"} -> filter for specific name of withdrawal  method - [string]
+     *                          </li>
+     *                      </ul>
      * @param format:              return type formatter -> {@link ReturnFormat}
      * @throws Exception when request has been go wrong -> you can use these methods to get more details about error:
      *                     <ul>
@@ -563,10 +595,7 @@ public class KrakenUserFundingManager extends KrakenPrivateManager {
      * @return information about recently requests withdrawals as {"format"} defines
      * **/
     @RequestPath(method = POST, path = "https://api.kraken.com/0/private/WithdrawStatus")
-    public <T> T getRecentWithdrawalsStatus(String asset, String method, ReturnFormat format) throws Exception {
-        Params params = new Params();
-        params.addParam("asset", asset);
-        params.addParam("method", method);
+    public <T> T getRecentWithdrawalsStatus(Params params, ReturnFormat format) throws Exception {
         return returnOperationsList(sendPostRequest(WITHDRAW_STATUS_ENDPOINT, params), format);
     }
 

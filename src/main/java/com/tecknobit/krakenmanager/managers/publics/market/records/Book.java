@@ -77,7 +77,7 @@ public class Book extends KrakenManager.KrakenResponse {
 
     /**
      * Method to get {@link #symbol} instance <br>
-     * Any params required
+     * No-any params required
      *
      * @return {@link #symbol} instance as {@link String}
      **/
@@ -87,7 +87,7 @@ public class Book extends KrakenManager.KrakenResponse {
 
     /**
      * Method to get {@link #asks} instance <br>
-     * Any params required
+     * No-any params required
      *
      * @return {@link #asks} instance as {@link ArrayList} of {@link BookElement}
      **/
@@ -97,7 +97,7 @@ public class Book extends KrakenManager.KrakenResponse {
 
     /**
      * Method to get {@link #bids} instance <br>
-     * Any params required
+     * No-any params required
      *
      * @return {@link #bids} instance as {@link ArrayList} of {@link BookElement}
      **/
@@ -139,7 +139,7 @@ public class Book extends KrakenManager.KrakenResponse {
 
         /**
          * Method to get {@link #price} instance <br>
-         * Any params required
+         * No-any params required
          *
          * @return {@link #price} instance as double
          **/
@@ -160,7 +160,7 @@ public class Book extends KrakenManager.KrakenResponse {
 
         /**
          * Method to get {@link #volume} instance <br>
-         * Any params required
+         * No-any params required
          *
          * @return {@link #volume} instance as double
          **/
@@ -181,7 +181,7 @@ public class Book extends KrakenManager.KrakenResponse {
 
         /**
          * Method to get {@link #timestamp} instance <br>
-         * Any params required
+         * No-any params required
          *
          * @return {@link #timestamp} instance as long
          **/
@@ -191,7 +191,7 @@ public class Book extends KrakenManager.KrakenResponse {
 
         /**
          * Returns a string representation of the object <br>
-         * Any params required
+         * No-any params required
          *
          * @return a string representation of the object as {@link String}
          */

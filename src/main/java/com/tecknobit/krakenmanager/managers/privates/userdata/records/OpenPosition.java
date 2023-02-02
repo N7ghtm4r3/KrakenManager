@@ -175,7 +175,7 @@ public class OpenPosition extends KrakenManager.KrakenResponse {
 
     /**
      * Method to get {@link #positionId} instance <br>
-     * Any params required
+     * No-any params required
      *
      * @return {@link #positionId} instance as {@link String}
      **/
@@ -185,7 +185,7 @@ public class OpenPosition extends KrakenManager.KrakenResponse {
 
     /**
      * Method to get {@link #orderTransactionId} instance <br>
-     * Any params required
+     * No-any params required
      *
      * @return {@link #orderTransactionId} instance as {@link String}
      **/
@@ -195,7 +195,7 @@ public class OpenPosition extends KrakenManager.KrakenResponse {
 
     /**
      * Method to get {@link #pair} instance <br>
-     * Any params required
+     * No-any params required
      *
      * @return {@link #pair} instance as {@link String}
      **/
@@ -205,7 +205,7 @@ public class OpenPosition extends KrakenManager.KrakenResponse {
 
     /**
      * Method to get {@link #time} instance <br>
-     * Any params required
+     * No-any params required
      *
      * @return {@link #time} instance as long
      **/
@@ -215,7 +215,7 @@ public class OpenPosition extends KrakenManager.KrakenResponse {
 
     /**
      * Method to get {@link #type} instance <br>
-     * Any params required
+     * No-any params required
      *
      * @return {@link #type} instance as {@link String}
      **/
@@ -225,7 +225,7 @@ public class OpenPosition extends KrakenManager.KrakenResponse {
 
     /**
      * Method to get {@link #orderType} instance <br>
-     * Any params required
+     * No-any params required
      *
      * @return {@link #orderType} instance as {@link String}
      **/
@@ -235,7 +235,7 @@ public class OpenPosition extends KrakenManager.KrakenResponse {
 
     /**
      * Method to get {@link #cost} instance <br>
-     * Any params required
+     * No-any params required
      *
      * @return {@link #cost} instance as double
      **/
@@ -256,7 +256,7 @@ public class OpenPosition extends KrakenManager.KrakenResponse {
 
     /**
      * Method to get {@link #fee} instance <br>
-     * Any params required
+     * No-any params required
      *
      * @return {@link #fee} instance as double
      **/
@@ -277,7 +277,7 @@ public class OpenPosition extends KrakenManager.KrakenResponse {
 
     /**
      * Method to get {@link #vol} instance <br>
-     * Any params required
+     * No-any params required
      *
      * @return {@link #vol} instance as double
      **/
@@ -298,7 +298,7 @@ public class OpenPosition extends KrakenManager.KrakenResponse {
 
     /**
      * Method to get {@link #volClosed} instance <br>
-     * Any params required
+     * No-any params required
      *
      * @return {@link #volClosed} instance as double
      **/
@@ -319,7 +319,7 @@ public class OpenPosition extends KrakenManager.KrakenResponse {
 
     /**
      * Method to get {@link #margin} instance <br>
-     * Any params required
+     * No-any params required
      *
      * @return {@link #margin} instance as double
      **/
@@ -340,7 +340,7 @@ public class OpenPosition extends KrakenManager.KrakenResponse {
 
     /**
      * Method to get {@link #value} instance <br>
-     * Any params required
+     * No-any params required
      *
      * @return {@link #value} instance as double
      **/
@@ -361,7 +361,7 @@ public class OpenPosition extends KrakenManager.KrakenResponse {
 
     /**
      * Method to get {@link #net} instance <br>
-     * Any params required
+     * No-any params required
      *
      * @return {@link #net} instance as double
      **/
@@ -382,7 +382,7 @@ public class OpenPosition extends KrakenManager.KrakenResponse {
 
     /**
      * Method to get {@link #terms} instance <br>
-     * Any params required
+     * No-any params required
      *
      * @return {@link #terms} instance as {@link String}
      **/
@@ -392,7 +392,7 @@ public class OpenPosition extends KrakenManager.KrakenResponse {
 
     /**
      * Method to get {@link #rolloverTerm} instance <br>
-     * Any params required
+     * No-any params required
      *
      * @return {@link #rolloverTerm} instance as long
      **/
@@ -402,7 +402,7 @@ public class OpenPosition extends KrakenManager.KrakenResponse {
 
     /**
      * Method to get {@link #misc} instance <br>
-     * Any params required
+     * No-any params required
      *
      * @return {@link #misc} instance as {@link String}
      **/
@@ -412,7 +412,7 @@ public class OpenPosition extends KrakenManager.KrakenResponse {
 
     /**
      * Method to get {@link #oFlags} instance <br>
-     * Any params required
+     * No-any params required
      *
      * @return {@link #oFlags} instance as {@link String}
      **/
@@ -422,7 +422,7 @@ public class OpenPosition extends KrakenManager.KrakenResponse {
 
     /**
      * Returns a string representation of the object <br>
-     * Any params required
+     * No-any params required
      *
      * @return a string representation of the object as {@link String}
      */

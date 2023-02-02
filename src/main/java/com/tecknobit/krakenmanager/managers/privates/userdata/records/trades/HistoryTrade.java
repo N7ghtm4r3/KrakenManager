@@ -17,13 +17,18 @@ import static com.tecknobit.apimanager.trading.TradingTools.roundValue;
 public class HistoryTrade extends Trade {
 
     /**
+     * {@code tradeId} unique identifier of trade executed
+     **/
+    private final long tradeId;
+
+    /**
      * {@code postStatus} is instance that memorizes post status value
-     * **/
+     **/
     private final String postStatus;
 
     /**
      * {@code cPrice} is instance that memorizes average price of closed portion of position (quote currency)
-     * **/
+     **/
     private final double cPrice;
 
     /**
@@ -48,42 +53,45 @@ public class HistoryTrade extends Trade {
 
     /**
      * {@code net} is instance that memorizes net profit/loss of closed portion of position (quote currency, quote currency scale)
-     * **/
+     **/
     private final double net;
 
     /**
      * {@code trades} is instance that memorizes list of closing trades for position (if available)
-     * **/
+     **/
     private final ArrayList<Long> trades;
 
-    /** Constructor to init a {@link HistoryTrade} object
+    /**
+     * Constructor to init a {@link HistoryTrade} object
      *
-     * @param tradeId: trade identifier value
-     * @param orderTransactionId: order transaction identifier value
-     * @param pair: pair value
-     * @param time: time value
-     * @param type: type value
-     * @param orderType: order type value
-     * @param price: price value
-     * @param cost: cost value
-     * @param fee: fee value
-     * @param vol: vol value
-     * @param margin: margin value
-     * @param misc: misc value
-     * @param postStatus: post status value
-     * @param cPrice: average price of closed portion of position (quote currency)
-     * @param cCost: total cost of closed portion of position (quote currency)
-     * @param cFee: total fee of closed portion of position (quote currency)
-     * @param cVol: total fee of closed portion of position (quote currency)
-     * @param cMargin: total margin freed in closed portion of position (quote currency)
-     * @param net: net profit/loss of closed portion of position (quote currency, quote currency scale)
-     * @param trades: list of closing trades for position (if available)
+     * @param tradeSymbol        : trade identifier value
+     * @param orderTransactionId : order transaction identifier value
+     * @param pair               : pair value
+     * @param time               : time value
+     * @param type               : type value
+     * @param orderType          : order type value
+     * @param price              : price value
+     * @param cost               : cost value
+     * @param fee                : fee value
+     * @param vol                : vol value
+     * @param margin             : margin value
+     * @param misc               : misc value
+     * @param tradeId:           unique identifier of trade executed
+     * @param postStatus         : post status value
+     * @param cPrice             : average price of closed portion of position (quote currency)
+     * @param cCost              : total cost of closed portion of position (quote currency)
+     * @param cFee               : total fee of closed portion of position (quote currency)
+     * @param cVol               : total fee of closed portion of position (quote currency)
+     * @param cMargin            : total margin freed in closed portion of position (quote currency)
+     * @param net                : net profit/loss of closed portion of position (quote currency, quote currency scale)
+     * @param trades             : list of closing trades for position (if available)
      **/
-    public HistoryTrade(String tradeId, String orderTransactionId, String pair, long time, String type, String orderType,
-                        double price, double cost, double fee, double vol, double margin, String misc, String postStatus,
-                        double cPrice, double cCost, double cFee, double cVol, double cMargin, double net,
-                        ArrayList<Long> trades) {
-        super(tradeId, orderTransactionId, pair, time, type, orderType, price, cost, fee, vol, margin, misc);
+    public HistoryTrade(String tradeSymbol, String orderTransactionId, String pair, long time, String type, String orderType,
+                        double price, double cost, double fee, double vol, double margin, String misc, long tradeId,
+                        String postStatus, double cPrice, double cCost, double cFee, double cVol, double cMargin,
+                        double net, ArrayList<Long> trades) {
+        super(tradeSymbol, orderTransactionId, pair, time, type, orderType, price, cost, fee, vol, margin, misc);
+        this.tradeId = tradeId;
         this.postStatus = postStatus;
         this.cPrice = cPrice;
         this.cCost = cCost;
@@ -97,10 +105,11 @@ public class HistoryTrade extends Trade {
     /**
      * Constructor to init a {@link HistoryTrade} object
      *
-     * @param jsonResponse: base json response
+     * @param jHistoryTrade: base json response
      **/
-    public HistoryTrade(JSONObject jsonResponse) {
-        super(jsonResponse);
+    public HistoryTrade(JSONObject jHistoryTrade) {
+        super(jHistoryTrade);
+        tradeId = result.getLong("trade_id", 0);
         postStatus = result.getString("posstatus");
         cPrice = result.getDouble("cprice", 0);
         cCost = result.getDouble("ccost", 0);
@@ -115,8 +124,18 @@ public class HistoryTrade extends Trade {
     }
 
     /**
+     * Method to get {@link #tradeId} instance <br>
+     * No-any params required
+     *
+     * @return {@link #tradeId} instance as long
+     **/
+    public long getTradeId() {
+        return tradeId;
+    }
+
+    /**
      * Method to get {@link #postStatus} instance <br>
-     * Any params required
+     * No-any params required
      *
      * @return {@link #postStatus} instance as {@link String}
      **/
@@ -126,7 +145,7 @@ public class HistoryTrade extends Trade {
 
     /**
      * Method to get {@link #cPrice} instance <br>
-     * Any params required
+     * No-any params required
      *
      * @return {@link #cPrice} instance as double
      **/
@@ -147,7 +166,7 @@ public class HistoryTrade extends Trade {
 
     /**
      * Method to get {@link #cCost} instance <br>
-     * Any params required
+     * No-any params required
      *
      * @return {@link #cCost} instance as double
      **/
@@ -168,7 +187,7 @@ public class HistoryTrade extends Trade {
 
     /**
      * Method to get {@link #cFee} instance <br>
-     * Any params required
+     * No-any params required
      *
      * @return {@link #cFee} instance as double
      **/
@@ -189,7 +208,7 @@ public class HistoryTrade extends Trade {
 
     /**
      * Method to get {@link #cVol} instance <br>
-     * Any params required
+     * No-any params required
      *
      * @return {@link #cVol} instance as double
      **/
@@ -210,7 +229,7 @@ public class HistoryTrade extends Trade {
 
     /**
      * Method to get {@link #cMargin} instance <br>
-     * Any params required
+     * No-any params required
      *
      * @return {@link #cMargin} instance as double
      **/
@@ -231,7 +250,7 @@ public class HistoryTrade extends Trade {
 
     /**
      * Method to get {@link #net} instance <br>
-     * Any params required
+     * No-any params required
      *
      * @return {@link #net} instance as double
      **/
@@ -252,7 +271,7 @@ public class HistoryTrade extends Trade {
 
     /**
      * Method to get {@link #trades} instance <br>
-     * Any params required
+     * No-any params required
      *
      * @return {@link #trades} instance as {@link ArrayList} of {@link Long}
      **/

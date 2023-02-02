@@ -39,7 +39,7 @@ public class OrderCancelledStatus extends OrderCancelled {
 
     /**
      * Method to get {@link #pending} instance <br>
-     * Any params required
+     * No-any params required
      *
      * @return {@link #pending} instance as boolean
      **/

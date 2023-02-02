@@ -144,7 +144,7 @@ public class TradeBalance extends KrakenManager.KrakenResponse {
 
     /**
      * Method to get {@link #equivalentBalance} instance <br>
-     * Any params required
+     * No-any params required
      *
      * @return {@link #equivalentBalance} instance as double
      **/
@@ -177,7 +177,7 @@ public class TradeBalance extends KrakenManager.KrakenResponse {
 
     /**
      * Method to get {@link #tradeBalance} instance <br>
-     * Any params required
+     * No-any params required
      *
      * @return {@link #tradeBalance} instance as double
      **/
@@ -210,7 +210,7 @@ public class TradeBalance extends KrakenManager.KrakenResponse {
 
     /**
      * Method to get {@link #marginAmount} instance <br>
-     * Any params required
+     * No-any params required
      *
      * @return {@link #marginAmount} instance as double
      **/
@@ -243,7 +243,7 @@ public class TradeBalance extends KrakenManager.KrakenResponse {
 
     /**
      * Method to get {@link #unrealizeIncome} instance <br>
-     * Any params required
+     * No-any params required
      *
      * @return {@link #unrealizeIncome} instance as double
      **/
@@ -276,7 +276,7 @@ public class TradeBalance extends KrakenManager.KrakenResponse {
 
     /**
      * Method to get {@link #costBasis} instance <br>
-     * Any params required
+     * No-any params required
      *
      * @return {@link #costBasis} instance as double
      **/
@@ -309,7 +309,7 @@ public class TradeBalance extends KrakenManager.KrakenResponse {
 
     /**
      * Method to get {@link #floatingValuation} instance <br>
-     * Any params required
+     * No-any params required
      *
      * @return {@link #floatingValuation} instance as double
      **/
@@ -342,7 +342,7 @@ public class TradeBalance extends KrakenManager.KrakenResponse {
 
     /**
      * Method to get {@link #equity} instance <br>
-     * Any params required
+     * No-any params required
      *
      * @return {@link #equity} instance as double
      **/
@@ -375,7 +375,7 @@ public class TradeBalance extends KrakenManager.KrakenResponse {
 
     /**
      * Method to get {@link #freeMargin} instance <br>
-     * Any params required
+     * No-any params required
      *
      * @return {@link #freeMargin} instance as double
      **/
@@ -408,7 +408,7 @@ public class TradeBalance extends KrakenManager.KrakenResponse {
 
     /**
      * Method to get {@link #marginLevel} instance <br>
-     * Any params required
+     * No-any params required
      *
      * @return {@link #marginLevel} instance as {@link String}
      **/
@@ -431,7 +431,7 @@ public class TradeBalance extends KrakenManager.KrakenResponse {
 
     /**
      * Method to get {@link #unexecutedValue} instance <br>
-     * Any params required
+     * No-any params required
      *
      * @return {@link #unexecutedValue} instance as double
      **/

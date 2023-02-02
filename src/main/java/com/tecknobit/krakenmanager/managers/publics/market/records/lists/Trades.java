@@ -58,7 +58,7 @@ public class Trades extends MarketList {
 
     /**
      * Method to get {@link #recentTrades} instance <br>
-     * Any params required
+     * No-any params required
      *
      * @return {@link #recentTrades} instance as {@link ArrayList} of {@link RecentTrade}
      **/
@@ -141,7 +141,7 @@ public class Trades extends MarketList {
 
         /**
          * Method to get {@link #price} instance <br>
-         * Any params required
+         * No-any params required
          *
          * @return {@link #price} instance as double
          **/
@@ -162,7 +162,7 @@ public class Trades extends MarketList {
 
         /**
          * Method to get {@link #volume} instance <br>
-         * Any params required
+         * No-any params required
          *
          * @return {@link #volume} instance as double
          **/
@@ -183,7 +183,7 @@ public class Trades extends MarketList {
 
         /**
          * Method to get {@link #time} instance <br>
-         * Any params required
+         * No-any params required
          *
          * @return {@link #time} instance as long
          **/
@@ -193,7 +193,7 @@ public class Trades extends MarketList {
 
         /**
          * Method to get {@link #side} instance <br>
-         * Any params required
+         * No-any params required
          *
          * @return {@link #side} instance as {@link String}
          **/
@@ -203,7 +203,7 @@ public class Trades extends MarketList {
 
         /**
          * Method to get {@link #type} instance <br>
-         * Any params required
+         * No-any params required
          *
          * @return {@link #type} instance as {@link String}
          **/
@@ -213,7 +213,7 @@ public class Trades extends MarketList {
 
         /**
          * Method to get {@link #miscellaneous} instance <br>
-         * Any params required
+         * No-any params required
          *
          * @return {@link #miscellaneous} instance as {@link String}
          **/
@@ -223,7 +223,7 @@ public class Trades extends MarketList {
 
         /**
          * Returns a string representation of the object <br>
-         * Any params required
+         * No-any params required
          *
          * @return a string representation of the object as {@link String}
          */

@@ -78,7 +78,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
 
     /**
      * Constructor to init a {@link KrakenUserTradingManager} <br>
-     * Any params required
+     * No-any params required
      *
      * @throws IllegalArgumentException when a parameterized constructor has not been called before this constructor
      * @apiNote this constructor is useful to instantiate a new {@link KrakenPrivateManager}'s manager without re-insert
@@ -225,6 +225,10 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      *                              {@code "leverage"} -> amount of leverage desired (default: none) - [string, default none]
      *                          </li>
      *                          <li>
+     *                              {@code "reduce_only"} -> if true, order will only reduce a currently open position, not
+     *                              increase it or open a new position - [boolean, default false]
+     *                          </li>
+     *                          <li>
      *                              {@code "stptype"} -> self trade prevention behavior definition, constants available at
      *                              {@link StpType} - [string, default cancel-newest]
      *                          </li>
@@ -319,6 +323,10 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      *                    </li>
      *                    <li>
      *                        {@code "leverage"} -> amount of leverage desired (default: none) - [string, default none]
+     *                    </li>
+     *                   <li>
+     *                       {@code "reduce_only"} -> if true, order will only reduce a currently open position, not
+     *                       increase it or open a new position - [boolean, default false]
      *                    </li>
      *                    <li>
      *                        {@code "stptype"} -> self trade prevention behavior definition, constants available at
@@ -417,6 +425,10 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      *                    <li>
      *                        {@code "leverage"} -> amount of leverage desired (default: none) - [string, default none]
      *                    </li>
+     *                   <li>
+     *                       {@code "reduce_only"} -> if true, order will only reduce a currently open position, not
+     *                       increase it or open a new position - [boolean, default false]
+     *                    </li>
      *                    <li>
      *                        {@code "stptype"} -> self trade prevention behavior definition, constants available at
      *                        {@link StpType} - [string, default cancel-newest]
@@ -513,6 +525,10 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      *                    </li>
      *                    <li>
      *                        {@code "leverage"} -> amount of leverage desired (default: none) - [string, default none]
+     *                    </li>
+     *                   <li>
+     *                       {@code "reduce_only"} -> if true, order will only reduce a currently open position, not
+     *                       increase it or open a new position - [boolean, default false]
      *                    </li>
      *                    <li>
      *                        {@code "stptype"} -> self trade prevention behavior definition, constants available at
@@ -724,6 +740,10 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      *                              {@code "leverage"} -> amount of leverage desired (default: none) - [string, default none]
      *                          </li>
      *                          <li>
+     *                              {@code "reduce_only"} -> if true, order will only reduce a currently open position, not
+     *                              increase it or open a new position - [boolean, default false]
+     *                          </li>
+     *                          <li>
      *                              {@code "stptype"} -> self trade prevention behavior definition, constants available at
      *                              {@link StpType} - [string, default cancel-newest]
      *                          </li>
@@ -817,6 +837,10 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      *                          </li>
      *                          <li>
      *                              {@code "leverage"} -> amount of leverage desired (default: none) - [string, default none]
+     *                          </li>
+     *                          <li>
+     *                              {@code "reduce_only"} -> if true, order will only reduce a currently open position, not
+     *                              increase it or open a new position - [boolean, default false]
      *                          </li>
      *                          <li>
      *                              {@code "stptype"} -> self trade prevention behavior definition, constants available at
@@ -917,6 +941,10 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      *                        {@code "leverage"} -> amount of leverage desired (default: none) - [string, default none]
      *                    </li>
      *                    <li>
+     *                         {@code "reduce_only"} -> if true, order will only reduce a currently open position, not
+     *                            increase it or open a new position - [boolean, default false]
+     *                    </li>
+     *                    <li>
      *                        {@code "stptype"} -> self trade prevention behavior definition, constants available at
      *                        {@link StpType} - [string, default cancel-newest]
      *                    </li>
@@ -1011,6 +1039,10 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      *                    </li>
      *                    <li>
      *                        {@code "leverage"} -> amount of leverage desired (default: none) - [string, default none]
+     *                    </li>
+     *                    <li>
+     *                         {@code "reduce_only"} -> if true, order will only reduce a currently open position, not
+     *                            increase it or open a new position - [boolean, default false]
      *                    </li>
      *                    <li>
      *                        {@code "stptype"} -> self trade prevention behavior definition, constants available at
@@ -1233,6 +1265,10 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      *                              {@code "leverage"} -> amount of leverage desired (default: none) - [string, default none]
      *                          </li>
      *                          <li>
+     *                              {@code "reduce_only"} -> if true, order will only reduce a currently open position, not
+     *                                  increase it or open a new position - [boolean, default false]
+     *                          </li>
+     *                          <li>
      *                              {@code "stptype"} -> self trade prevention behavior definition, constants available at
      *                              {@link StpType} - [string, default cancel-newest]
      *                          </li>
@@ -1331,6 +1367,10 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      *                     <li>
      *                         {@code "leverage"} -> amount of leverage desired (default: none) - [string, default none]
      *                     </li>
+     *                          <li>
+     *                              {@code "reduce_only"} -> if true, order will only reduce a currently open position, not
+     *                                  increase it or open a new position - [boolean, default false]
+     *                          </li>
      *                     <li>
      *                         {@code "stptype"} -> self trade prevention behavior definition, constants available at
      *                         {@link StpType} - [string, default cancel-newest]
@@ -1429,6 +1469,10 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      *                              {@code "leverage"} -> amount of leverage desired (default: none) - [string, default none]
      *                          </li>
      *                          <li>
+     *                              {@code "reduce_only"} -> if true, order will only reduce a currently open position, not
+     *                                  increase it or open a new position - [boolean, default false]
+     *                          </li>
+     *                          <li>
      *                              {@code "stptype"} -> self trade prevention behavior definition, constants available at
      *                              {@link StpType} - [string, default cancel-newest]
      *                          </li>
@@ -1523,6 +1567,10 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      *                          </li>
      *                          <li>
      *                              {@code "leverage"} -> amount of leverage desired (default: none) - [string, default none]
+     *                          </li>
+     *                          <li>
+     *                              {@code "reduce_only"} -> if true, order will only reduce a currently open position, not
+     *                                  increase it or open a new position - [boolean, default false]
      *                          </li>
      *                          <li>
      *                              {@code "stptype"} -> self trade prevention behavior definition, constants available at
@@ -1756,6 +1804,10 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      *                        <li>
      *                            {@code "leverage"} -> amount of leverage desired (default: none) - [string, default none]
      *                        </li>
+     *                          <li>
+     *                              {@code "reduce_only"} -> if true, order will only reduce a currently open position, not
+     *                                  increase it or open a new position - [boolean, default false]
+     *                          </li>
      *                        <li>
      *                            {@code "stptype"} -> self trade prevention behavior definition, constants available at
      *                            {@link StpType} - [string, default cancel-newest]
@@ -1855,6 +1907,10 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      *                          </li>
      *                          <li>
      *                              {@code "leverage"} -> amount of leverage desired (default: none) - [string, default none]
+     *                          </li>
+     *                          <li>
+     *                              {@code "reduce_only"} -> if true, order will only reduce a currently open position, not
+     *                                  increase it or open a new position - [boolean, default false]
      *                          </li>
      *                          <li>
      *                              {@code "stptype"} -> self trade prevention behavior definition, constants available at
@@ -1958,6 +2014,10 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      *                              {@code "leverage"} -> amount of leverage desired (default: none) - [string, default none]
      *                          </li>
      *                          <li>
+     *                              {@code "reduce_only"} -> if true, order will only reduce a currently open position, not
+     *                                  increase it or open a new position - [boolean, default false]
+     *                          </li>
+     *                          <li>
      *                              {@code "stptype"} -> self trade prevention behavior definition, constants available at
      *                              {@link StpType} - [string, default cancel-newest]
      *                          </li>
@@ -2058,6 +2118,10 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      *                        <li>
      *                            {@code "leverage"} -> amount of leverage desired (default: none) - [string, default none]
      *                        </li>
+     *                          <li>
+     *                              {@code "reduce_only"} -> if true, order will only reduce a currently open position, not
+     *                                  increase it or open a new position - [boolean, default false]
+     *                          </li>
      *                        <li>
      *                            {@code "stptype"} -> self trade prevention behavior definition, constants available at
      *                            {@link StpType} - [string, default cancel-newest]
@@ -2280,6 +2344,10 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      *                     <li>
      *                         {@code "leverage"} -> amount of leverage desired (default: none) - [string, default none]
      *                     </li>
+     *                          <li>
+     *                              {@code "reduce_only"} -> if true, order will only reduce a currently open position, not
+     *                                  increase it or open a new position - [boolean, default false]
+     *                          </li>
      *                     <li>
      *                         {@code "stptype"} -> self trade prevention behavior definition, constants available at
      *                         {@link StpType} - [string, default cancel-newest]
@@ -2379,6 +2447,10 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      *                     <li>
      *                         {@code "leverage"} -> amount of leverage desired (default: none) - [string, default none]
      *                     </li>
+     *                          <li>
+     *                              {@code "reduce_only"} -> if true, order will only reduce a currently open position, not
+     *                                  increase it or open a new position - [boolean, default false]
+     *                          </li>
      *                     <li>
      *                         {@code "stptype"} -> self trade prevention behavior definition, constants available at
      *                         {@link StpType} - [string, default cancel-newest]
@@ -2477,6 +2549,10 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      *                              {@code "leverage"} -> amount of leverage desired (default: none) - [string, default none]
      *                          </li>
      *                          <li>
+     *                              {@code "reduce_only"} -> if true, order will only reduce a currently open position, not
+     *                                  increase it or open a new position - [boolean, default false]
+     *                          </li>
+     *                          <li>
      *                              {@code "stptype"} -> self trade prevention behavior definition, constants available at
      *                              {@link StpType} - [string, default cancel-newest]
      *                          </li>
@@ -2571,6 +2647,14 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      *                          </li>
      *                          <li>
      *                              {@code "leverage"} -> amount of leverage desired (default: none) - [string, default none]
+     *                          </li>
+     *                          <li>
+     *                              {@code "reduce_only"} -> if true, order will only reduce a currently open position, not
+     *                                  increase it or open a new position - [boolean, default false]
+     *                          </li>
+     *                          <li>
+     *                              {@code "reduce_only"} -> if true, order will only reduce a currently open position, not
+     *                              increase it or open a new position - [boolean, default false]
      *                          </li>
      *                          <li>
      *                              {@code "stptype"} -> self trade prevention behavior definition, constants available at
@@ -2807,6 +2891,10 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      *                              {@code "leverage"} -> amount of leverage desired (default: none) - [string, default none]
      *                          </li>
      *                          <li>
+     *                              {@code "reduce_only"} -> if true, order will only reduce a currently open position, not
+     *                                  increase it or open a new position - [boolean, default false]
+     *                          </li>
+     *                          <li>
      *                              {@code "stptype"} -> self trade prevention behavior definition, constants available at
      *                              {@link StpType} - [string, default cancel-newest]
      *                          </li>
@@ -2904,6 +2992,10 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      *                          </li>
      *                          <li>
      *                              {@code "leverage"} -> amount of leverage desired (default: none) - [string, default none]
+     *                          </li>
+     *                          <li>
+     *                              {@code "reduce_only"} -> if true, order will only reduce a currently open position, not
+     *                                  increase it or open a new position - [boolean, default false]
      *                          </li>
      *                          <li>
      *                              {@code "stptype"} -> self trade prevention behavior definition, constants available at
@@ -3006,6 +3098,10 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      *                              {@code "leverage"} -> amount of leverage desired (default: none) - [string, default none]
      *                          </li>
      *                          <li>
+     *                              {@code "reduce_only"} -> if true, order will only reduce a currently open position, not
+     *                                  increase it or open a new position - [boolean, default false]
+     *                          </li>
+     *                          <li>
      *                              {@code "stptype"} -> self trade prevention behavior definition, constants available at
      *                              {@link StpType} - [string, default cancel-newest]
      *                          </li>
@@ -3106,6 +3202,10 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      *                        <li>
      *                            {@code "leverage"} -> amount of leverage desired (default: none) - [string, default none]
      *                        </li>
+     *                          <li>
+     *                              {@code "reduce_only"} -> if true, order will only reduce a currently open position, not
+     *                                  increase it or open a new position - [boolean, default false]
+     *                          </li>
      *                        <li>
      *                            {@code "stptype"} -> self trade prevention behavior definition, constants available at
      *                            {@link StpType} - [string, default cancel-newest]
@@ -3205,6 +3305,10 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      *                       <li>
      *                           {@code "leverage"} -> amount of leverage desired (default: none) - [string, default none]
      *                       </li>
+     *                          <li>
+     *                              {@code "reduce_only"} -> if true, order will only reduce a currently open position, not
+     *                                  increase it or open a new position - [boolean, default false]
+     *                          </li>
      *                       <li>
      *                           {@code "stptype"} -> self trade prevention behavior definition, constants available at
      *                           {@link StpType} - [string, default cancel-newest]
@@ -3294,6 +3398,10 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      *                              {@code "leverage"} -> amount of leverage desired (default: none) - [string, default none]
      *                          </li>
      *                          <li>
+     *                              {@code "reduce_only"} -> if true, order will only reduce a currently open position, not
+     *                                  increase it or open a new position - [boolean, default false]
+     *                          </li>
+     *                          <li>
      *                              {@code "stptype"} -> self trade prevention behavior definition, constants available at
      *                              {@link StpType} - [string, default cancel-newest]
      *                          </li>
@@ -3379,6 +3487,10 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      *                          </li>
      *                          <li>
      *                              {@code "leverage"} -> amount of leverage desired (default: none) - [string, default none]
+     *                          </li>
+     *                          <li>
+     *                              {@code "reduce_only"} -> if true, order will only reduce a currently open position, not
+     *                                  increase it or open a new position - [boolean, default false]
      *                          </li>
      *                          <li>
      *                              {@code "stptype"} -> self trade prevention behavior definition, constants available at
@@ -3673,6 +3785,10 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      *                              {@code "leverage"} -> amount of leverage desired (default: none) - [string, default none]
      *                          </li>
      *                          <li>
+     *                              {@code "reduce_only"} -> if true, order will only reduce a currently open position, not
+     *                                  increase it or open a new position - [boolean, default false]
+     *                          </li>
+     *                          <li>
      *                              {@code "stptype"} -> self trade prevention behavior definition, constants available at
      *                              {@link StpType} - [string, default cancel-newest]
      *                          </li>
@@ -3765,6 +3881,10 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      *                          </li>
      *                          <li>
      *                              {@code "leverage"} -> amount of leverage desired (default: none) - [string, default none]
+     *                          </li>
+     *                          <li>
+     *                              {@code "reduce_only"} -> if true, order will only reduce a currently open position, not
+     *                                  increase it or open a new position - [boolean, default false]
      *                          </li>
      *                          <li>
      *                              {@code "stptype"} -> self trade prevention behavior definition, constants available at
@@ -3862,6 +3982,10 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      *                              {@code "leverage"} -> amount of leverage desired (default: none) - [string, default none]
      *                          </li>
      *                          <li>
+     *                              {@code "reduce_only"} -> if true, order will only reduce a currently open position, not
+     *                                  increase it or open a new position - [boolean, default false]
+     *                          </li>
+     *                          <li>
      *                              {@code "stptype"} -> self trade prevention behavior definition, constants available at
      *                              {@link StpType} - [string, default cancel-newest]
      *                          </li>
@@ -3953,6 +4077,10 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      *                          </li>
      *                          <li>
      *                              {@code "leverage"} -> amount of leverage desired (default: none) - [string, default none]
+     *                          </li>
+     *                          <li>
+     *                              {@code "reduce_only"} -> if true, order will only reduce a currently open position, not
+     *                                  increase it or open a new position - [boolean, default false]
      *                          </li>
      *                          <li>
      *                              {@code "stptype"} -> self trade prevention behavior definition, constants available at
@@ -4168,6 +4296,10 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      *                              {@code "leverage"} -> amount of leverage desired (default: none) - [string, default none]
      *                          </li>
      *                          <li>
+     *                              {@code "reduce_only"} -> if true, order will only reduce a currently open position, not
+     *                                  increase it or open a new position - [boolean, default false]
+     *                          </li>
+     *                          <li>
      *                              {@code "stptype"} -> self trade prevention behavior definition, constants available at
      *                              {@link StpType} - [string, default cancel-newest]
      *                          </li>
@@ -4261,6 +4393,10 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      *                          </li>
      *                          <li>
      *                              {@code "leverage"} -> amount of leverage desired (default: none) - [string, default none]
+     *                          </li>
+     *                          <li>
+     *                              {@code "reduce_only"} -> if true, order will only reduce a currently open position, not
+     *                                  increase it or open a new position - [boolean, default false]
      *                          </li>
      *                          <li>
      *                              {@code "stptype"} -> self trade prevention behavior definition, constants available at
@@ -4358,6 +4494,10 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      *                              {@code "leverage"} -> amount of leverage desired (default: none) - [string, default none]
      *                          </li>
      *                          <li>
+     *                              {@code "reduce_only"} -> if true, order will only reduce a currently open position, not
+     *                                  increase it or open a new position - [boolean, default false]
+     *                          </li>
+     *                          <li>
      *                              {@code "stptype"} -> self trade prevention behavior definition, constants available at
      *                              {@link StpType} - [string, default cancel-newest]
      *                          </li>
@@ -4451,6 +4591,10 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      *                          </li>
      *                          <li>
      *                              {@code "leverage"} -> amount of leverage desired (default: none) - [string, default none]
+     *                          </li>
+     *                          <li>
+     *                              {@code "reduce_only"} -> if true, order will only reduce a currently open position, not
+     *                                  increase it or open a new position - [boolean, default false]
      *                          </li>
      *                          <li>
      *                              {@code "stptype"} -> self trade prevention behavior definition, constants available at
@@ -4664,6 +4808,10 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      *                              {@code "leverage"} -> amount of leverage desired (default: none) - [string, default none]
      *                          </li>
      *                          <li>
+     *                              {@code "reduce_only"} -> if true, order will only reduce a currently open position, not
+     *                                  increase it or open a new position - [boolean, default false]
+     *                          </li>
+     *                          <li>
      *                              {@code "stptype"} -> self trade prevention behavior definition, constants available at
      *                              {@link StpType} - [string, default cancel-newest]
      *                          </li>
@@ -4758,6 +4906,10 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      *                          </li>
      *                          <li>
      *                              {@code "leverage"} -> amount of leverage desired (default: none) - [string, default none]
+     *                          </li>
+     *                          <li>
+     *                              {@code "reduce_only"} -> if true, order will only reduce a currently open position, not
+     *                                  increase it or open a new position - [boolean, default false]
      *                          </li>
      *                          <li>
      *                              {@code "stptype"} -> self trade prevention behavior definition, constants available at
@@ -4856,6 +5008,10 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      *                              {@code "leverage"} -> amount of leverage desired (default: none) - [string, default none]
      *                          </li>
      *                          <li>
+     *                              {@code "reduce_only"} -> if true, order will only reduce a currently open position, not
+     *                                  increase it or open a new position - [boolean, default false]
+     *                          </li>
+     *                          <li>
      *                              {@code "stptype"} -> self trade prevention behavior definition, constants available at
      *                              {@link StpType} - [string, default cancel-newest]
      *                          </li>
@@ -4952,6 +5108,10 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      *                     <li>
      *                         {@code "leverage"} -> amount of leverage desired (default: none) - [string, default none]
      *                     </li>
+     *                          <li>
+     *                              {@code "reduce_only"} -> if true, order will only reduce a currently open position, not
+     *                                  increase it or open a new position - [boolean, default false]
+     *                          </li>
      *                     <li>
      *                         {@code "stptype"} -> self trade prevention behavior definition, constants available at
      *                         {@link StpType} - [string, default cancel-newest]
@@ -5180,6 +5340,10 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      *                              {@code "leverage"} -> amount of leverage desired (default: none) - [string, default none]
      *                          </li>
      *                          <li>
+     *                              {@code "reduce_only"} -> if true, order will only reduce a currently open position, not
+     *                                  increase it or open a new position - [boolean, default false]
+     *                          </li>
+     *                          <li>
      *                              {@code "stptype"} -> self trade prevention behavior definition, constants available at
      *                              {@link StpType} - [string, default cancel-newest]
      *                          </li>
@@ -5280,6 +5444,10 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      *                        <li>
      *                            {@code "leverage"} -> amount of leverage desired (default: none) - [string, default none]
      *                        </li>
+     *                          <li>
+     *                              {@code "reduce_only"} -> if true, order will only reduce a currently open position, not
+     *                                  increase it or open a new position - [boolean, default false]
+     *                          </li>
      *                        <li>
      *                            {@code "stptype"} -> self trade prevention behavior definition, constants available at
      *                            {@link StpType} - [string, default cancel-newest]
@@ -5380,6 +5548,10 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      *                        <li>
      *                            {@code "leverage"} -> amount of leverage desired (default: none) - [string, default none]
      *                        </li>
+     *                          <li>
+     *                              {@code "reduce_only"} -> if true, order will only reduce a currently open position, not
+     *                                  increase it or open a new position - [boolean, default false]
+     *                          </li>
      *                        <li>
      *                            {@code "stptype"} -> self trade prevention behavior definition, constants available at
      *                            {@link StpType} - [string, default cancel-newest]
@@ -5479,6 +5651,10 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      *                        <li>
      *                            {@code "leverage"} -> amount of leverage desired (default: none) - [string, default none]
      *                        </li>
+     *                          <li>
+     *                              {@code "reduce_only"} -> if true, order will only reduce a currently open position, not
+     *                                  increase it or open a new position - [boolean, default false]
+     *                          </li>
      *                        <li>
      *                            {@code "stptype"} -> self trade prevention behavior definition, constants available at
      *                            {@link StpType} - [string, default cancel-newest]
@@ -5694,6 +5870,10 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      *                              {@code "leverage"} -> amount of leverage desired (default: none) - [string, default none]
      *                          </li>
      *                          <li>
+     *                              {@code "reduce_only"} -> if true, order will only reduce a currently open position, not
+     *                                  increase it or open a new position - [boolean, default false]
+     *                          </li>
+     *                          <li>
      *                              {@code "stptype"} -> self trade prevention behavior definition, constants available at
      *                              {@link StpType} - [string, default cancel-newest]
      *                          </li>
@@ -5788,6 +5968,10 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      *                          </li>
      *                          <li>
      *                              {@code "leverage"} -> amount of leverage desired (default: none) - [string, default none]
+     *                          </li>
+     *                          <li>
+     *                              {@code "reduce_only"} -> if true, order will only reduce a currently open position, not
+     *                                  increase it or open a new position - [boolean, default false]
      *                          </li>
      *                          <li>
      *                              {@code "stptype"} -> self trade prevention behavior definition, constants available at
@@ -5886,6 +6070,10 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      *                              {@code "leverage"} -> amount of leverage desired (default: none) - [string, default none]
      *                          </li>
      *                          <li>
+     *                              {@code "reduce_only"} -> if true, order will only reduce a currently open position, not
+     *                                  increase it or open a new position - [boolean, default false]
+     *                          </li>
+     *                          <li>
      *                              {@code "stptype"} -> self trade prevention behavior definition, constants available at
      *                              {@link StpType} - [string, default cancel-newest]
      *                          </li>
@@ -5979,6 +6167,10 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      *                          </li>
      *                          <li>
      *                              {@code "leverage"} -> amount of leverage desired (default: none) - [string, default none]
+     *                          </li>
+     *                          <li>
+     *                              {@code "reduce_only"} -> if true, order will only reduce a currently open position, not
+     *                                  increase it or open a new position - [boolean, default false]
      *                          </li>
      *                          <li>
      *                              {@code "stptype"} -> self trade prevention behavior definition, constants available at
@@ -6211,6 +6403,10 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      *                        <li>
      *                            {@code "leverage"} -> amount of leverage desired (default: none) - [string, default none]
      *                        </li>
+     *                          <li>
+     *                              {@code "reduce_only"} -> if true, order will only reduce a currently open position, not
+     *                                  increase it or open a new position - [boolean, default false]
+     *                          </li>
      *                        <li>
      *                            {@code "stptype"} -> self trade prevention behavior definition, constants available at
      *                            {@link StpType} - [string, default cancel-newest]
@@ -6311,6 +6507,10 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      *                              {@code "leverage"} -> amount of leverage desired (default: none) - [string, default none]
      *                          </li>
      *                          <li>
+     *                              {@code "reduce_only"} -> if true, order will only reduce a currently open position, not
+     *                                  increase it or open a new position - [boolean, default false]
+     *                          </li>
+     *                          <li>
      *                              {@code "stptype"} -> self trade prevention behavior definition, constants available at
      *                              {@link StpType} - [string, default cancel-newest]
      *                          </li>
@@ -6407,6 +6607,10 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      *                          </li>
      *                          <li>
      *                              {@code "leverage"} -> amount of leverage desired (default: none) - [string, default none]
+     *                          </li>
+     *                          <li>
+     *                              {@code "reduce_only"} -> if true, order will only reduce a currently open position, not
+     *                                  increase it or open a new position - [boolean, default false]
      *                          </li>
      *                          <li>
      *                              {@code "stptype"} -> self trade prevention behavior definition, constants available at
@@ -6506,6 +6710,10 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      *                              {@code "leverage"} -> amount of leverage desired (default: none) - [string, default none]
      *                          </li>
      *                          <li>
+     *                              {@code "reduce_only"} -> if true, order will only reduce a currently open position, not
+     *                                  increase it or open a new position - [boolean, default false]
+     *                          </li>
+     *                          <li>
      *                              {@code "stptype"} -> self trade prevention behavior definition, constants available at
      *                              {@link StpType} - [string, default cancel-newest]
      *                          </li>
@@ -6602,6 +6810,10 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      *                     <li>
      *                         {@code "leverage"} -> amount of leverage desired (default: none) - [string, default none]
      *                     </li>
+     *                          <li>
+     *                              {@code "reduce_only"} -> if true, order will only reduce a currently open position, not
+     *                                  increase it or open a new position - [boolean, default false]
+     *                          </li>
      *                     <li>
      *                         {@code "stptype"} -> self trade prevention behavior definition, constants available at
      *                         {@link StpType} - [string, default cancel-newest]
@@ -6706,6 +6918,10 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      *                          </li>
      *                          <li>
      *                              {@code "leverage"} -> amount of leverage desired (default: none) - [string, default none]
+     *                          </li>
+     *                          <li>
+     *                              {@code "reduce_only"} -> if true, order will only reduce a currently open position, not
+     *                                  increase it or open a new position - [boolean, default false]
      *                          </li>
      *                          <li>
      *                              {@code "stptype"} -> self trade prevention behavior definition, constants available at
@@ -6845,7 +7061,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
 
     /**
      * Request to cancel all orders <br>
-     * Any params required
+     * No-any params required
      *
      * @return result of all orders cancellation as {@link OrderCancelled} custom object
      * @throws Exception when request has been go wrong -> you can use these methods to get more details about error:

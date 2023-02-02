@@ -82,7 +82,7 @@ public class TradeVolume extends KrakenManager.KrakenResponse {
 
     /**
      * Method to get {@link #currency} instance <br>
-     * Any params required
+     * No-any params required
      *
      * @return {@link #currency} instance as {@link String}
      **/
@@ -92,7 +92,7 @@ public class TradeVolume extends KrakenManager.KrakenResponse {
 
     /**
      * Method to get {@link #volume} instance <br>
-     * Any params required
+     * No-any params required
      *
      * @return {@link #volume} instance as double
      **/
@@ -113,7 +113,7 @@ public class TradeVolume extends KrakenManager.KrakenResponse {
 
     /**
      * Method to get {@link #fees} instance <br>
-     * Any params required
+     * No-any params required
      *
      * @return {@link #fees} instance as {@link ArrayList} of {@link TradeFee}
      **/
@@ -123,7 +123,7 @@ public class TradeVolume extends KrakenManager.KrakenResponse {
 
     /**
      * Method to get {@link #makerFees} instance <br>
-     * Any params required
+     * No-any params required
      *
      * @return {@link #makerFees} instance as {@link ArrayList} of {@link TradeFee}
      **/
@@ -223,7 +223,7 @@ public class TradeVolume extends KrakenManager.KrakenResponse {
 
         /**
          * Method to get {@link #pair} instance <br>
-         * Any params required
+         * No-any params required
          *
          * @return {@link #pair} instance as {@link String}
          **/
@@ -233,7 +233,7 @@ public class TradeVolume extends KrakenManager.KrakenResponse {
 
         /**
          * Method to get {@link #fee} instance <br>
-         * Any params required
+         * No-any params required
          *
          * @return {@link #fee} instance as double
          **/
@@ -254,7 +254,7 @@ public class TradeVolume extends KrakenManager.KrakenResponse {
 
         /**
          * Method to get {@link #minFee} instance <br>
-         * Any params required
+         * No-any params required
          *
          * @return {@link #minFee} instance as double
          **/
@@ -275,7 +275,7 @@ public class TradeVolume extends KrakenManager.KrakenResponse {
 
         /**
          * Method to get {@link #maxFee} instance <br>
-         * Any params required
+         * No-any params required
          *
          * @return {@link #maxFee} instance as double
          **/
@@ -296,7 +296,7 @@ public class TradeVolume extends KrakenManager.KrakenResponse {
 
         /**
          * Method to get {@link #nextFee} instance <br>
-         * Any params required
+         * No-any params required
          *
          * @return {@link #nextFee} instance as double
          **/
@@ -317,7 +317,7 @@ public class TradeVolume extends KrakenManager.KrakenResponse {
 
         /**
          * Method to get {@link #tierVolume} instance <br>
-         * Any params required
+         * No-any params required
          *
          * @return {@link #tierVolume} instance as double
          **/
@@ -338,7 +338,7 @@ public class TradeVolume extends KrakenManager.KrakenResponse {
 
         /**
          * Method to get {@link #nextVolume} instance <br>
-         * Any params required
+         * No-any params required
          *
          * @return {@link #nextVolume} instance as double
          **/
@@ -359,7 +359,7 @@ public class TradeVolume extends KrakenManager.KrakenResponse {
 
         /**
          * Returns a string representation of the object <br>
-         * Any params required
+         * No-any params required
          *
          * @return a string representation of the object as {@link String}
          */

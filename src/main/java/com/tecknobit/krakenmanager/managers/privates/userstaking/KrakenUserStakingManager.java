@@ -71,7 +71,7 @@ public class KrakenUserStakingManager extends KrakenPrivateManager {
 
     /**
      * Constructor to init a {@link KrakenUserStakingManager} <br>
-     * Any params required
+     * No-any params required
      *
      * @throws IllegalArgumentException when a parameterized constructor has not been called before this constructor
      * @apiNote this constructor is useful to instantiate a new {@link KrakenPrivateManager}'s manager without re-insert
@@ -228,7 +228,7 @@ public class KrakenUserStakingManager extends KrakenPrivateManager {
 
     /** Request to return the list of assets that the user is able to stake. This operation requires an API key with
      * both Withdraw funds and Query funds permission<br>
-     * Any params required
+     * No-any params required
      * @throws Exception when request has been go wrong -> you can use these methods to get more details about error:
      *                     <ul>
      *                         <li>
@@ -292,7 +292,7 @@ public class KrakenUserStakingManager extends KrakenPrivateManager {
 
     /** Request to return the list of pending staking transactions. Once resolved, these transactions will appear on the
      * List of Staking Transactions endpoint. <br>
-     * Any params required
+     * No-any params required
      * @throws Exception when request has been go wrong -> you can use these methods to get more details about error:
      *                     <ul>
      *                         <li>
@@ -342,7 +342,7 @@ public class KrakenUserStakingManager extends KrakenPrivateManager {
     }
 
     /** Request to return the list of 1000 recent staking transactions from past 90 days <br>
-     * Any params required
+     * No-any params required
      * @throws Exception when request has been go wrong -> you can use these methods to get more details about error:
      *                     <ul>
      *                         <li>

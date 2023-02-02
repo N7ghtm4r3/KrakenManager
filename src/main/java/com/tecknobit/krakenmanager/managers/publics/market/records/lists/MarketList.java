@@ -66,7 +66,7 @@ public class MarketList extends KrakenManager.KrakenResponse {
 
     /**
      * Method to get {@link #last} instance <br>
-     * Any params required
+     * No-any params required
      *
      * @return {@link #last} instance as long
      **/
@@ -76,7 +76,7 @@ public class MarketList extends KrakenManager.KrakenResponse {
 
     /**
      * Method to get {@link #symbol} instance <br>
-     * Any params required
+     * No-any params required
      *
      * @return {@link #symbol} instance as {@link String}
      **/

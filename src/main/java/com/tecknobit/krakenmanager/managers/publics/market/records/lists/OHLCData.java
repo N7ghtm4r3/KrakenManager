@@ -92,7 +92,7 @@ public class OHLCData extends MarketList {
 
     /**
      * Method to get {@link #ticksData} instance <br>
-     * Any params required
+     * No-any params required
      *
      * @return {@link #ticksData} instance as {@link ArrayList} of {@link TickData}
      **/
@@ -195,7 +195,7 @@ public class OHLCData extends MarketList {
 
         /**
          * Method to get {@link #time} instance <br>
-         * Any params required
+         * No-any params required
          *
          * @return {@link #time} instance as long
          **/
@@ -205,7 +205,7 @@ public class OHLCData extends MarketList {
 
         /**
          * Method to get {@link #open} instance <br>
-         * Any params required
+         * No-any params required
          *
          * @return {@link #open} instance as double
          **/
@@ -226,7 +226,7 @@ public class OHLCData extends MarketList {
 
         /**
          * Method to get {@link #high} instance <br>
-         * Any params required
+         * No-any params required
          *
          * @return {@link #high} instance as double
          **/
@@ -247,7 +247,7 @@ public class OHLCData extends MarketList {
 
         /**
          * Method to get {@link #low} instance <br>
-         * Any params required
+         * No-any params required
          *
          * @return {@link #low} instance as double
          **/
@@ -268,7 +268,7 @@ public class OHLCData extends MarketList {
 
         /**
          * Method to get {@link #close} instance <br>
-         * Any params required
+         * No-any params required
          *
          * @return {@link #close} instance as double
          **/
@@ -289,7 +289,7 @@ public class OHLCData extends MarketList {
 
         /**
          * Method to get {@link #vWap} instance <br>
-         * Any params required
+         * No-any params required
          *
          * @return {@link #vWap} instance as double
          **/
@@ -310,7 +310,7 @@ public class OHLCData extends MarketList {
 
         /**
          * Method to get {@link #volume} instance <br>
-         * Any params required
+         * No-any params required
          *
          * @return {@link #volume} instance as double
          **/
@@ -331,7 +331,7 @@ public class OHLCData extends MarketList {
 
         /**
          * Method to get {@link #count} instance <br>
-         * Any params required
+         * No-any params required
          *
          * @return {@link #count} instance as int
          **/
@@ -341,7 +341,7 @@ public class OHLCData extends MarketList {
 
         /**
          * Returns a string representation of the object <br>
-         * Any params required
+         * No-any params required
          *
          * @return a string representation of the object as {@link String}
          */

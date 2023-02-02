@@ -162,7 +162,7 @@ public class StakingTransaction extends KrakenManager.KrakenResponse {
 
     /**
      * Method to get {@link #method} instance <br>
-     * Any params required
+     * No-any params required
      *
      * @return {@link #method} instance as {@link String}
      **/
@@ -172,7 +172,7 @@ public class StakingTransaction extends KrakenManager.KrakenResponse {
 
     /**
      * Method to get {@link #aClass} instance <br>
-     * Any params required
+     * No-any params required
      *
      * @return {@link #aClass} instance as {@link String}
      **/
@@ -182,7 +182,7 @@ public class StakingTransaction extends KrakenManager.KrakenResponse {
 
     /**
      * Method to get {@link #asset} instance <br>
-     * Any params required
+     * No-any params required
      *
      * @return {@link #asset} instance as {@link String}
      **/
@@ -192,7 +192,7 @@ public class StakingTransaction extends KrakenManager.KrakenResponse {
 
     /**
      * Method to get {@link #refId} instance <br>
-     * Any params required
+     * No-any params required
      *
      * @return {@link #refId} instance as {@link String}
      **/
@@ -202,7 +202,7 @@ public class StakingTransaction extends KrakenManager.KrakenResponse {
 
     /**
      * Method to get {@link #amount} instance <br>
-     * Any params required
+     * No-any params required
      *
      * @return {@link #amount} instance as double
      **/
@@ -223,7 +223,7 @@ public class StakingTransaction extends KrakenManager.KrakenResponse {
 
     /**
      * Method to get {@link #fee} instance <br>
-     * Any params required
+     * No-any params required
      *
      * @return {@link #fee} instance as double
      **/
@@ -244,7 +244,7 @@ public class StakingTransaction extends KrakenManager.KrakenResponse {
 
     /**
      * Method to get {@link #time} instance <br>
-     * Any params required
+     * No-any params required
      *
      * @return {@link #time} instance as long
      **/
@@ -254,7 +254,7 @@ public class StakingTransaction extends KrakenManager.KrakenResponse {
 
     /**
      * Method to get {@link #status} instance <br>
-     * Any params required
+     * No-any params required
      *
      * @return {@link #status} instance as {@link String}
      **/
@@ -264,7 +264,7 @@ public class StakingTransaction extends KrakenManager.KrakenResponse {
 
     /**
      * Method to get {@link #type} instance <br>
-     * Any params required
+     * No-any params required
      *
      * @return {@link #type} instance as {@link String}
      **/
@@ -274,7 +274,7 @@ public class StakingTransaction extends KrakenManager.KrakenResponse {
 
     /**
      * Method to get {@link #bondStart} instance <br>
-     * Any params required
+     * No-any params required
      *
      * @return {@link #bondStart} instance as long
      **/
@@ -284,7 +284,7 @@ public class StakingTransaction extends KrakenManager.KrakenResponse {
 
     /**
      * Method to get {@link #bondEnd} instance <br>
-     * Any params required
+     * No-any params required
      *
      * @return {@link #bondEnd} instance as long
      **/

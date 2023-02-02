@@ -89,7 +89,7 @@ public class KrakenUserDataManager extends KrakenPrivateManager {
 
     /**
      * Constructor to init a {@link KrakenUserDataManager} <br>
-     * Any params required
+     * No-any params required
      *
      * @throws IllegalArgumentException when a parameterized constructor has not been called before this constructur
      * @apiNote this constructor is useful to instantiate a new {@link KrakenPrivateManager}'s manager without re-insert
@@ -108,7 +108,7 @@ public class KrakenUserDataManager extends KrakenPrivateManager {
     }
 
     /** Request to get account balance<br>
-     * Any params required
+     * No-any params required
      * @throws Exception when request has been go wrong -> you can use these methods to get more details about error:
      *                     <ul>
      *                         <li>
@@ -166,7 +166,7 @@ public class KrakenUserDataManager extends KrakenPrivateManager {
     }
 
     /** Request to get trade balance<br>
-     * Any params required
+     * No-any params required
      * @throws Exception when request has been go wrong -> you can use these methods to get more details about error:
      *                     <ul>
      *                         <li>
@@ -895,6 +895,10 @@ public class KrakenUserDataManager extends KrakenPrivateManager {
      *                    <li>
      *                        {@code "ofs"} -> result offset for pagination - [integer]
      *                    </li>
+     *                    <li>
+     *                        {@code "consolidate_taker"} -> whether or not to consolidate trades by individual taker
+     *                        trades - [boolean, default true]
+     *                    </li>
      *                </ul>
      * @return trades history list as {@link ArrayList} of {@link HistoryTrade} custom object
      * @throws Exception when request has been go wrong -> you can use these methods to get more details about error:
@@ -939,6 +943,10 @@ public class KrakenUserDataManager extends KrakenPrivateManager {
      *                    <li>
      *                        {@code "ofs"} -> result offset for pagination - [integer]
      *                    </li>
+     *                    <li>
+     *                        {@code "consolidate_taker"} -> whether or not to consolidate trades by individual taker
+     *                        trades - [boolean, default true]
+     *                    </li>
      *                </ul>
      * @param format: return type formatter -> {@link ReturnFormat}
      * @return history trades list as {"format"} defines
@@ -980,7 +988,7 @@ public class KrakenUserDataManager extends KrakenPrivateManager {
                 JSONObject jTrades = new JSONObject(tradesListResponse).getJSONObject("result")
                         .getJSONObject("trades");
                 for (String trade : jTrades.keySet())
-                    trades.add(new HistoryTrade(jTrades.getJSONObject(trade).put("tradeId", trade)));
+                    trades.add(new HistoryTrade(jTrades.getJSONObject(trade).put("tradeSymbol", trade)));
                 return (T) trades;
             default:
                 return (T) tradesListResponse;
@@ -1162,7 +1170,7 @@ public class KrakenUserDataManager extends KrakenPrivateManager {
                 ArrayList<QueryTrade> trades = new ArrayList<>();
                 JSONObject jTrades = new JSONObject(tradesListResponse).getJSONObject("result");
                 for (String trade : jTrades.keySet())
-                    trades.add(new QueryTrade(jTrades.getJSONObject(trade).put("tradeId", trade)));
+                    trades.add(new QueryTrade(jTrades.getJSONObject(trade).put("tradeSymbol", trade)));
                 return (T) trades;
             default:
                 return (T) tradesListResponse;

@@ -111,7 +111,7 @@ public class Ledger extends KrakenManager.KrakenResponse {
 
     /**
      * Method to get {@link #type} instance <br>
-     * Any params required
+     * No-any params required
      *
      * @return {@link #type} instance as {@link String}
      **/
@@ -121,7 +121,7 @@ public class Ledger extends KrakenManager.KrakenResponse {
 
     /**
      * Method to get {@link #ledgerId} instance <br>
-     * Any params required
+     * No-any params required
      *
      * @return {@link #ledgerId} instance as {@link String}
      **/
@@ -131,7 +131,7 @@ public class Ledger extends KrakenManager.KrakenResponse {
 
     /**
      * Method to get {@link #refId} instance <br>
-     * Any params required
+     * No-any params required
      *
      * @return {@link #refId} instance as {@link String}
      **/
@@ -141,7 +141,7 @@ public class Ledger extends KrakenManager.KrakenResponse {
 
     /**
      * Method to get {@link #time} instance <br>
-     * Any params required
+     * No-any params required
      *
      * @return {@link #time} instance as long
      **/
@@ -213,7 +213,7 @@ public class Ledger extends KrakenManager.KrakenResponse {
 
     /**
      * Method to get {@link #subType} instance <br>
-     * Any params required
+     * No-any params required
      *
      * @return {@link #subType} instance as {@link String}
      **/
@@ -223,7 +223,7 @@ public class Ledger extends KrakenManager.KrakenResponse {
 
     /**
      * Method to get {@link #aClass} instance <br>
-     * Any params required
+     * No-any params required
      *
      * @return {@link #aClass} instance as {@link String}
      **/
@@ -233,7 +233,7 @@ public class Ledger extends KrakenManager.KrakenResponse {
 
     /**
      * Method to get {@link #asset} instance <br>
-     * Any params required
+     * No-any params required
      *
      * @return {@link #asset} instance as {@link String}
      **/
@@ -243,7 +243,7 @@ public class Ledger extends KrakenManager.KrakenResponse {
 
     /**
      * Method to get {@link #amount} instance <br>
-     * Any params required
+     * No-any params required
      *
      * @return {@link #amount} instance as double
      **/
@@ -264,7 +264,7 @@ public class Ledger extends KrakenManager.KrakenResponse {
 
     /**
      * Method to get {@link #fee} instance <br>
-     * Any params required
+     * No-any params required
      *
      * @return {@link #fee} instance as double
      **/
@@ -285,7 +285,7 @@ public class Ledger extends KrakenManager.KrakenResponse {
 
     /**
      * Method to get {@link #balance} instance <br>
-     * Any params required
+     * No-any params required
      *
      * @return {@link #balance} instance as double
      **/

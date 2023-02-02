@@ -119,7 +119,7 @@ public class TickerInformation extends KrakenManager.KrakenResponse {
 
     /**
      * Method to get {@link #symbol} instance <br>
-     * Any params required
+     * No-any params required
      *
      * @return {@link #symbol} instance as {@link String}
      **/
@@ -129,7 +129,7 @@ public class TickerInformation extends KrakenManager.KrakenResponse {
 
     /**
      * Method to get {@link #ask} instance <br>
-     * Any params required
+     * No-any params required
      *
      * @return {@link #ask} instance as {@link MarketAction}
      **/
@@ -139,7 +139,7 @@ public class TickerInformation extends KrakenManager.KrakenResponse {
 
     /**
      * Method to get {@link #bid} instance <br>
-     * Any params required
+     * No-any params required
      *
      * @return {@link #bid} instance as {@link MarketAction}
      **/
@@ -149,7 +149,7 @@ public class TickerInformation extends KrakenManager.KrakenResponse {
 
     /**
      * Method to get {@link #close} instance <br>
-     * Any params required
+     * No-any params required
      *
      * @return {@link #close} instance as {@link Trade}
      **/
@@ -159,7 +159,7 @@ public class TickerInformation extends KrakenManager.KrakenResponse {
 
     /**
      * Method to get {@link #volume} instance <br>
-     * Any params required
+     * No-any params required
      *
      * @return {@link #volume} instance as {@link MarketParam}
      **/
@@ -169,7 +169,7 @@ public class TickerInformation extends KrakenManager.KrakenResponse {
 
     /**
      * Method to get {@link #volumeWeightedAvgPrice} instance <br>
-     * Any params required
+     * No-any params required
      *
      * @return {@link #volumeWeightedAvgPrice} instance as {@link MarketParam}
      **/
@@ -179,7 +179,7 @@ public class TickerInformation extends KrakenManager.KrakenResponse {
 
     /**
      * Method to get {@link #trades} instance <br>
-     * Any params required
+     * No-any params required
      *
      * @return {@link #trades} instance as {@link MarketParam}
      **/
@@ -189,7 +189,7 @@ public class TickerInformation extends KrakenManager.KrakenResponse {
 
     /**
      * Method to get {@link #low} instance <br>
-     * Any params required
+     * No-any params required
      *
      * @return {@link #low} instance as {@link MarketParam}
      **/
@@ -199,7 +199,7 @@ public class TickerInformation extends KrakenManager.KrakenResponse {
 
     /**
      * Method to get {@link #high} instance <br>
-     * Any params required
+     * No-any params required
      *
      * @return {@link #high} instance as {@link MarketParam}
      **/
@@ -209,7 +209,7 @@ public class TickerInformation extends KrakenManager.KrakenResponse {
 
     /**
      * Method to get {@link #openPrice} instance <br>
-     * Any params required
+     * No-any params required
      *
      * @return {@link #openPrice} instance as double
      **/
@@ -256,7 +256,7 @@ public class TickerInformation extends KrakenManager.KrakenResponse {
 
         /**
          * Method to get {@link #price} instance <br>
-         * Any params required
+         * No-any params required
          *
          * @return {@link #price} instance as double
          **/
@@ -277,7 +277,7 @@ public class TickerInformation extends KrakenManager.KrakenResponse {
 
         /**
          * Method to get {@link #lotVolume} instance <br>
-         * Any params required
+         * No-any params required
          *
          * @return {@link #lotVolume} instance as double
          **/
@@ -312,7 +312,7 @@ public class TickerInformation extends KrakenManager.KrakenResponse {
 
         /**
          * Returns a string representation of the object <br>
-         * Any params required
+         * No-any params required
          *
          * @return a string representation of the object as {@link String}
          */
@@ -348,7 +348,7 @@ public class TickerInformation extends KrakenManager.KrakenResponse {
 
         /**
          * Method to get {@link #wholeLotVolume} instance <br>
-         * Any params required
+         * No-any params required
          *
          * @return {@link #wholeLotVolume} instance as double
          **/
@@ -384,7 +384,7 @@ public class TickerInformation extends KrakenManager.KrakenResponse {
 
         /**
          * Returns a string representation of the object <br>
-         * Any params required
+         * No-any params required
          *
          * @return a string representation of the object as {@link String}
          */
@@ -423,7 +423,7 @@ public class TickerInformation extends KrakenManager.KrakenResponse {
 
         /**
          * Method to get {@link #today} instance <br>
-         * Any params required
+         * No-any params required
          *
          * @return {@link #today} instance as double
          **/
@@ -444,7 +444,7 @@ public class TickerInformation extends KrakenManager.KrakenResponse {
 
         /**
          * Method to get {@link #last24Hours} instance <br>
-         * Any params required
+         * No-any params required
          *
          * @return {@link #last24Hours} instance as double
          **/
@@ -480,7 +480,7 @@ public class TickerInformation extends KrakenManager.KrakenResponse {
 
         /**
          * Returns a string representation of the object <br>
-         * Any params required
+         * No-any params required
          *
          * @return a string representation of the object as {@link String}
          */

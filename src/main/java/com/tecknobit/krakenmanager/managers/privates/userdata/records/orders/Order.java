@@ -106,7 +106,7 @@ public class Order extends KrakenManager.KrakenResponse {
 
     /**
      * Method to get {@link #status} instance <br>
-     * Any params required
+     * No-any params required
      *
      * @return {@link #status} instance as {@link String}
      **/
@@ -187,7 +187,7 @@ public class Order extends KrakenManager.KrakenResponse {
 
         /**
          * Method to get {@link #type} instance <br>
-         * Any params required
+         * No-any params required
          *
          * @return {@link #type} instance as {@link String}
          **/
@@ -361,7 +361,7 @@ public class Order extends KrakenManager.KrakenResponse {
 
     /**
      * Method to get {@link #refId} instance <br>
-     * Any params required
+     * No-any params required
      *
      * @return {@link #refId} instance as long
      **/
@@ -371,7 +371,7 @@ public class Order extends KrakenManager.KrakenResponse {
 
     /**
      * Method to get {@link #userRef} instance <br>
-     * Any params required
+     * No-any params required
      *
      * @return {@link #userRef} instance as long
      **/
@@ -413,7 +413,7 @@ public class Order extends KrakenManager.KrakenResponse {
 
     /**
      * Method to get {@link #openTime} instance <br>
-     * Any params required
+     * No-any params required
      *
      * @return {@link #openTime} instance as long
      **/
@@ -423,7 +423,7 @@ public class Order extends KrakenManager.KrakenResponse {
 
     /**
      * Method to get {@link #startTime} instance <br>
-     * Any params required
+     * No-any params required
      *
      * @return {@link #startTime} instance as long
      **/
@@ -433,7 +433,7 @@ public class Order extends KrakenManager.KrakenResponse {
 
     /**
      * Method to get {@link #expireTime} instance <br>
-     * Any params required
+     * No-any params required
      *
      * @return {@link #expireTime} instance as long
      **/
@@ -443,7 +443,7 @@ public class Order extends KrakenManager.KrakenResponse {
 
     /**
      * Method to get {@link #orderDescription} instance <br>
-     * Any params required
+     * No-any params required
      *
      * @return {@link #orderDescription} instance as {@link OrderDescription}
      **/
@@ -453,7 +453,7 @@ public class Order extends KrakenManager.KrakenResponse {
 
     /**
      * Method to get {@link #volume} instance <br>
-     * Any params required
+     * No-any params required
      *
      * @return {@link #volume} instance as double
      **/
@@ -474,7 +474,7 @@ public class Order extends KrakenManager.KrakenResponse {
 
     /**
      * Method to get {@link #executedVolume} instance <br>
-     * Any params required
+     * No-any params required
      *
      * @return {@link #executedVolume} instance as double
      **/
@@ -495,7 +495,7 @@ public class Order extends KrakenManager.KrakenResponse {
 
     /**
      * Method to get {@link #cost} instance <br>
-     * Any params required
+     * No-any params required
      *
      * @return {@link #cost} instance as double
      **/
@@ -516,7 +516,7 @@ public class Order extends KrakenManager.KrakenResponse {
 
     /**
      * Method to get {@link #fee} instance <br>
-     * Any params required
+     * No-any params required
      *
      * @return {@link #fee} instance as double
      **/
@@ -526,7 +526,7 @@ public class Order extends KrakenManager.KrakenResponse {
 
     /**
      * Method to get {@link #fee} instance <br>
-     * Any params required
+     * No-any params required
      *
      * @return {@link #fee} instance as double
      **/
@@ -536,7 +536,7 @@ public class Order extends KrakenManager.KrakenResponse {
 
     /**
      * Method to get {@link #stopPrice} instance <br>
-     * Any params required
+     * No-any params required
      *
      * @return {@link #stopPrice} instance as double
      **/
@@ -557,7 +557,7 @@ public class Order extends KrakenManager.KrakenResponse {
 
     /**
      * Method to get {@link #limitPrice} instance <br>
-     * Any params required
+     * No-any params required
      *
      * @return {@link #limitPrice} instance as double
      **/
@@ -578,7 +578,7 @@ public class Order extends KrakenManager.KrakenResponse {
 
     /**
      * Method to get {@link #trigger} instance <br>
-     * Any params required
+     * No-any params required
      *
      * @return {@link #trigger} instance as {@link String}
      **/
@@ -588,7 +588,7 @@ public class Order extends KrakenManager.KrakenResponse {
 
     /**
      * Method to get {@link #misc} instance <br>
-     * Any params required
+     * No-any params required
      *
      * @return {@link #misc} instance as {@link String}
      **/
@@ -598,7 +598,7 @@ public class Order extends KrakenManager.KrakenResponse {
 
     /**
      * Method to get {@link #oFlags} instance <br>
-     * Any params required
+     * No-any params required
      *
      * @return {@link #oFlags} instance as {@link String}
      **/
@@ -608,7 +608,7 @@ public class Order extends KrakenManager.KrakenResponse {
 
     /**
      * Method to get {@link #trades} instance <br>
-     * Any params required
+     * No-any params required
      *
      * @return {@link #trades} instance as {@link ArrayList} of {@link Long}
      **/
@@ -704,7 +704,7 @@ public class Order extends KrakenManager.KrakenResponse {
 
         /**
          * Method to get {@link #pair} instance <br>
-         * Any params required
+         * No-any params required
          *
          * @return {@link #pair} instance as {@link String}
          **/
@@ -714,7 +714,7 @@ public class Order extends KrakenManager.KrakenResponse {
 
         /**
          * Method to get {@link #type} instance <br>
-         * Any params required
+         * No-any params required
          *
          * @return {@link #type} instance as {@link String}
          **/
@@ -724,7 +724,7 @@ public class Order extends KrakenManager.KrakenResponse {
 
         /**
          * Method to get {@link #orderType} instance <br>
-         * Any params required
+         * No-any params required
          *
          * @return {@link #orderType} instance as {@link OrderType}
          **/
@@ -734,7 +734,7 @@ public class Order extends KrakenManager.KrakenResponse {
 
         /**
          * Method to get {@link #price} instance <br>
-         * Any params required
+         * No-any params required
          *
          * @return {@link #price} instance as double
          **/
@@ -755,7 +755,7 @@ public class Order extends KrakenManager.KrakenResponse {
 
         /**
          * Method to get {@link #secondPrice} instance <br>
-         * Any params required
+         * No-any params required
          *
          * @return {@link #secondPrice} instance as double
          **/
@@ -776,7 +776,7 @@ public class Order extends KrakenManager.KrakenResponse {
 
         /**
          * Method to get {@link #leverage} instance <br>
-         * Any params required
+         * No-any params required
          *
          * @return {@link #leverage} instance as {@link String}
          **/
@@ -786,7 +786,7 @@ public class Order extends KrakenManager.KrakenResponse {
 
         /**
          * Method to get {@link #order} instance <br>
-         * Any params required
+         * No-any params required
          *
          * @return {@link #order} instance as {@link String}
          **/
@@ -796,7 +796,7 @@ public class Order extends KrakenManager.KrakenResponse {
 
         /**
          * Method to get {@link #close} instance <br>
-         * Any params required
+         * No-any params required
          *
          * @return {@link #close} instance as {@link String}
          **/
@@ -806,7 +806,7 @@ public class Order extends KrakenManager.KrakenResponse {
 
         /**
          * Returns a string representation of the object <br>
-         * Any params required
+         * No-any params required
          *
          * @return a string representation of the object as {@link String}
          */
