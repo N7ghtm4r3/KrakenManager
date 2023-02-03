@@ -76,15 +76,16 @@ public class StakeableAsset extends KrakenManager.KrakenResponse {
 
     /**
      * {@code staking} is flag that memorizes list of {@link Lock} as staking list
-     * **/
+     **/
     private final ArrayList<Lock> staking;
 
     /**
      * {@code lockup} is flag that memorizes list of {@link Lock} as lockup list
-     * **/
+     **/
     private final ArrayList<Lock> lockup;
 
-    /** Constructor to init a {@link StakeableAsset} object
+    /**
+     * Constructor to init a {@link StakeableAsset} object
      * @param method: unique ID of the staking option (used in Stake/Unstake operations)
      * @param asset: asset code/name
      * @param stakingAsset: staking asset code/name
@@ -478,17 +479,6 @@ public class StakeableAsset extends KrakenManager.KrakenResponse {
      **/
     public ArrayList<Lock> getLockup() {
         return lockup;
-    }
-
-    /**
-     * Returns a string representation of the object <br>
-     * No-any params required
-     *
-     * @return a string representation of the object as {@link String}
-     */
-    @Override
-    public String toString() {
-        return new JSONObject(this).toString();
     }
 
     /**

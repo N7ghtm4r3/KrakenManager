@@ -196,22 +196,32 @@ public class EndpointsList {
 
     /**
      * {@code CANCEL_WITHDRAW_ENDPOINT} is constant for CANCEL_WITHDRAW_ENDPOINT's endpoint
-     * **/
+     **/
     public static final String CANCEL_WITHDRAW_ENDPOINT = "WithdrawCancel";
 
     /**
      * {@code WALLET_TRANSFER_ENDPOINT} is constant for WALLET_TRANSFER_ENDPOINT's endpoint
-     * **/
+     **/
     public static final String WALLET_TRANSFER_ENDPOINT = "WalletTransfer";
 
     /**
+     * {@code CREATE_SUBACCOUNT_ENDPOINT} is constant for CREATE_SUBACCOUNT_ENDPOINT's endpoint
+     **/
+    public static final String CREATE_SUBACCOUNT_ENDPOINT = "CreateSubaccount";
+
+    /**
+     * {@code ACCOUNT_TRANSFER_ENDPOINT} is constant for ACCOUNT_TRANSFER_ENDPOINT's endpoint
+     **/
+    public static final String ACCOUNT_TRANSFER_ENDPOINT = "AccountTransfer";
+
+    /**
      * {@code STAKE_ENDPOINT} is constant for STAKE_ENDPOINT's endpoint
-     * **/
+     **/
     public static final String STAKE_ENDPOINT = "Stake";
 
     /**
      * {@code UNSTAKE_ENDPOINT} is constant for UNSTAKE_ENDPOINT's endpoint
-     * **/
+     **/
     public static final String UNSTAKE_ENDPOINT = "Unstake";
 
     /**

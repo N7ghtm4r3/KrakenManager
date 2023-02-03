@@ -91,7 +91,7 @@ public class KrakenUserDataManager extends KrakenPrivateManager {
      * Constructor to init a {@link KrakenUserDataManager} <br>
      * No-any params required
      *
-     * @throws IllegalArgumentException when a parameterized constructor has not been called before this constructur
+     * @throws IllegalArgumentException when a parameterized constructor has not been called before this constructor
      * @apiNote this constructor is useful to instantiate a new {@link KrakenPrivateManager}'s manager without re-insert
      * the credentials and is useful in those cases if you need to use different manager at the same time:
      * <pre>

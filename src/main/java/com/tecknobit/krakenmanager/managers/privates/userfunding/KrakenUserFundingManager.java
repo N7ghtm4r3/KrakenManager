@@ -627,7 +627,7 @@ public class KrakenUserFundingManager extends KrakenPrivateManager {
      *
      * @param asset: asset being withdrawn
      * @param refId: withdrawal reference identifier
-     * @return withdrawal cancellation result as {@link String}
+     * @return withdrawal cancellation result as boolean
      * @throws Exception when request has been go wrong -> you can use these methods to get more details about error:
      *                   <ul>
      *                       <li>
@@ -653,6 +653,7 @@ public class KrakenUserFundingManager extends KrakenPrivateManager {
      * @param asset: asset being withdrawn
      * @param refId: withdrawal reference identifier
      * @param format:              return type formatter -> {@link ReturnFormat}
+     * @return withdrawal cancellation result as {"format"} defines
      * @throws Exception when request has been go wrong -> you can use these methods to get more details about error:
      *                     <ul>
      *                         <li>
@@ -667,7 +668,6 @@ public class KrakenUserFundingManager extends KrakenPrivateManager {
      *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Funding/operation/cancelWithdrawal">
      *    Request Withdrawal Cancellation</a>
-     * @return withdrawal cancellation result as {"format"} defines
      * @implSpec the {@link ReturnFormat#LIBRARY_OBJECT} format type in this case will return whether cancellation has
      * been successful as boolean
      * **/

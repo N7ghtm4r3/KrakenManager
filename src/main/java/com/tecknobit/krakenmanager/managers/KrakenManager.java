@@ -258,14 +258,14 @@ public class KrakenManager {
         /**
          * Constructor to init a {@link KrakenResponse} object
          *
-         * @param hResponse: base json response
+         * @param jResponse: base json response
          **/
-        public KrakenResponse(JSONObject hResponse) {
+        public KrakenResponse(JSONObject jResponse) {
             boolean jsonArrayList = false;
-            if (hResponse == null)
-                hResponse = new JSONObject();
-            this.hResponse = new JsonHelper(hResponse);
-            result = new JsonHelper(this.hResponse.get("result", hResponse));
+            if (jResponse == null)
+                jResponse = new JSONObject();
+            hResponse = new JsonHelper(jResponse);
+            result = new JsonHelper(this.hResponse.get("result", jResponse));
             JSONArray jsonErrors = this.hResponse.getJSONArray("error", new JSONArray());
             int errorsLength = jsonErrors.length();
             errors = new String[errorsLength];

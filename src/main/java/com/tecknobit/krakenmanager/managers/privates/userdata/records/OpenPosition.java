@@ -420,15 +420,4 @@ public class OpenPosition extends KrakenManager.KrakenResponse {
         return oFlags;
     }
 
-    /**
-     * Returns a string representation of the object <br>
-     * No-any params required
-     *
-     * @return a string representation of the object as {@link String}
-     */
-    @Override
-    public String toString() {
-        return new JSONObject(this).toString();
-    }
-
 }

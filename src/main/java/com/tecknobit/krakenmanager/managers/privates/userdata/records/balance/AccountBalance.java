@@ -139,17 +139,6 @@ public class AccountBalance extends KrakenManager.KrakenResponse {
         }
 
         /**
-         * Returns a string representation of the object <br>
-         * No-any params required
-         *
-         * @return a string representation of the object as {@link String}
-         */
-        @Override
-        public String toString() {
-            return new JSONObject(this).toString();
-        }
-
-        /**
          * {@code BalanceAsset} is class useful to format balance asset details as custom object
          **/
         public static class BalanceAsset {

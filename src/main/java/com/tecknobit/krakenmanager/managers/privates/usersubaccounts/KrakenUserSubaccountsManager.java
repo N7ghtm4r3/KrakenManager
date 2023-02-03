@@ -1,6 +1,16 @@
 package com.tecknobit.krakenmanager.managers.privates.usersubaccounts;
 
+import com.tecknobit.apimanager.annotations.RequestPath;
+import com.tecknobit.apimanager.annotations.Returner;
+import com.tecknobit.apimanager.annotations.Wrapper;
 import com.tecknobit.krakenmanager.managers.privates.KrakenPrivateManager;
+import com.tecknobit.krakenmanager.managers.privates.usersubaccounts.records.AccountTransfer;
+import org.json.JSONObject;
+
+import static com.tecknobit.apimanager.apis.APIRequest.RequestMethod.POST;
+import static com.tecknobit.krakenmanager.constants.EndpointsList.ACCOUNT_TRANSFER_ENDPOINT;
+import static com.tecknobit.krakenmanager.constants.EndpointsList.CREATE_SUBACCOUNT_ENDPOINT;
+import static com.tecknobit.krakenmanager.managers.KrakenManager.ReturnFormat.LIBRARY_OBJECT;
 
 /**
  * The {@code KrakenUserSubaccountsManager} class is useful to manage all user subaccounts endpoints
@@ -59,7 +69,7 @@ public class KrakenUserSubaccountsManager extends KrakenPrivateManager {
      * Constructor to init a {@link KrakenUserSubaccountsManager} <br>
      * No-any params required
      *
-     * @throws IllegalArgumentException when a parameterized constructor has not been called before this constructur
+     * @throws IllegalArgumentException when a parameterized constructor has not been called before this constructor
      * @apiNote this constructor is useful to instantiate a new {@link KrakenPrivateManager}'s manager without re-insert
      * the credentials and is useful in those cases if you need to use different manager at the same time:
      * <pre>
@@ -73,6 +83,144 @@ public class KrakenUserSubaccountsManager extends KrakenPrivateManager {
      **/
     public KrakenUserSubaccountsManager() {
         super();
+    }
+
+    /**
+     * Request to create a trading subaccount
+     *
+     * @param username: username for the subaccount
+     * @param email:    email address for the subaccount
+     * @return creation of a trading subaccount result as boolean
+     * @throws Exception when request has been go wrong -> you can use these methods to get more details about error:
+     *                   <ul>
+     *                       <li>
+     *                           {@link #getErrorResponse()}
+     *                       </li>
+     *                       <li>
+     *                           {@link #getJSONErrorResponse()}
+     *                       </li>
+     *                       <li>
+     *                           {@link #printErrorResponse()}
+     *                       </li>
+     *                   </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
+     * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Subaccounts/operation/createSubaccount">
+     * Create Subaccount</a>
+     **/
+    @Wrapper
+    @RequestPath(method = POST, path = "https://api.kraken.com/0/private/CreateSubaccount")
+    public boolean createSubaccount(String username, String email) throws Exception {
+        return Boolean.parseBoolean(createSubaccount(username, email, LIBRARY_OBJECT));
+    }
+
+    /**
+     * Request to create a trading subaccount
+     *
+     * @param username: username for the subaccount
+     * @param email:    email address for the subaccount
+     * @param format:   return type formatter -> {@link ReturnFormat}
+     * @return creation of a trading subaccount result as {"format"} defines
+     * @throws Exception when request has been go wrong -> you can use these methods to get more details about error:
+     *                   <ul>
+     *                       <li>
+     *                           {@link #getErrorResponse()}
+     *                       </li>
+     *                       <li>
+     *                           {@link #getJSONErrorResponse()}
+     *                       </li>
+     *                       <li>
+     *                           {@link #printErrorResponse()}
+     *                       </li>
+     *                   </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
+     * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Subaccounts/operation/createSubaccount">
+     * Create Subaccount</a>
+     **/
+    @Returner
+    @RequestPath(method = POST, path = "https://api.kraken.com/0/private/CreateSubaccount")
+    public <T> T createSubaccount(String username, String email, ReturnFormat format) throws Exception {
+        Params payload = new Params();
+        payload.addParam("username", username);
+        payload.addParam("email", email);
+        String createResponse = sendPostRequest(CREATE_SUBACCOUNT_ENDPOINT, payload);
+        switch (format) {
+            case JSON:
+                return (T) new JSONObject(createResponse);
+            case LIBRARY_OBJECT:
+                return (T) String.valueOf(new JSONObject(createResponse).getBoolean("result"));
+            default:
+                return (T) createResponse;
+        }
+    }
+
+    /**
+     * Request to transfer funds to and from master and subaccounts
+     *
+     * @param asset:  asset being transferred
+     * @param amount: amount of asset to transfer
+     * @param from:   IBAN of the source account
+     * @param to:     IBAN of the destination account
+     * @return transfer result as {@link AccountTransfer} custom object
+     * @throws Exception when request has been go wrong -> you can use these methods to get more details about error:
+     *                   <ul>
+     *                       <li>
+     *                           {@link #getErrorResponse()}
+     *                       </li>
+     *                       <li>
+     *                           {@link #getJSONErrorResponse()}
+     *                       </li>
+     *                       <li>
+     *                           {@link #printErrorResponse()}
+     *                       </li>
+     *                   </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
+     * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Subaccounts/operation/accountTransfer">
+     * Account Transfer</a>
+     **/
+    @Wrapper
+    @RequestPath(method = POST, path = "https://api.kraken.com/0/private/AccountTransfer")
+    public AccountTransfer execAccountTransfer(String asset, double amount, String from, String to) throws Exception {
+        return execAccountTransfer(asset, amount, from, to, LIBRARY_OBJECT);
+    }
+
+    /**
+     * Request to transfer funds to and from master and subaccounts
+     *
+     * @param asset:  asset being transferred
+     * @param amount: amount of asset to transfer
+     * @param from:   IBAN of the source account
+     * @param to:     IBAN of the destination account
+     * @param format: return type formatter -> {@link ReturnFormat}
+     * @return transfer result as {"format"} defines
+     * @throws Exception when request has been go wrong -> you can use these methods to get more details about error:
+     *                   <ul>
+     *                       <li>
+     *                           {@link #getErrorResponse()}
+     *                       </li>
+     *                       <li>
+     *                           {@link #getJSONErrorResponse()}
+     *                       </li>
+     *                       <li>
+     *                           {@link #printErrorResponse()}
+     *                       </li>
+     *                   </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
+     * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Subaccounts/operation/accountTransfer">
+     * Account Transfer</a>
+     **/
+    @Returner
+    @RequestPath(method = POST, path = "https://api.kraken.com/0/private/AccountTransfer")
+    public <T> T execAccountTransfer(String asset, double amount, String from, String to, ReturnFormat format) throws Exception {
+        Params payload = new Params();
+        payload.addParam("asset", asset);
+        payload.addParam("amount", amount);
+        payload.addParam("from", from);
+        payload.addParam("to", to);
+        String transferResponse = sendPostRequest(ACCOUNT_TRANSFER_ENDPOINT, payload);
+        switch (format) {
+            case JSON:
+                return (T) new JSONObject(transferResponse);
+            case LIBRARY_OBJECT:
+                return (T) new AccountTransfer(new JSONObject(transferResponse));
+            default:
+                return (T) transferResponse;
+        }
     }
 
 }
