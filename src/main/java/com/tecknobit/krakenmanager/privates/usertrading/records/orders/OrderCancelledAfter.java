@@ -12,17 +12,17 @@ import java.util.Date;
  * @author N7ghtm4r3 - Tecknobit
  * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/cancelAllOrdersAfter">
  * Cancel All Orders After X</a>
- **/
+ */
 public class OrderCancelledAfter extends KrakenManager.KrakenResponse {
 
     /**
      * {@code currentTime} is instance that memorizes current time value
-     * **/
+     */
     private final long currentTime;
 
     /**
      * {@code triggerTime} is instance that memorizes trigger time value, so when all orders will be canceled
-     * **/
+     */
     private final long triggerTime;
 
     /**
@@ -30,7 +30,7 @@ public class OrderCancelledAfter extends KrakenManager.KrakenResponse {
      *
      * @param currentTime: current time value
      * @param triggerTime: trigger time value, so when all orders will be canceled
-     **/
+     */
     public OrderCancelledAfter(long currentTime, long triggerTime) {
         super(null);
         this.currentTime = currentTime;
@@ -40,7 +40,7 @@ public class OrderCancelledAfter extends KrakenManager.KrakenResponse {
     /**
      * Constructor to init a {@link OrderCancelledAfter} object
      * @param jsonResponse: base json response
-     **/
+     */
     public OrderCancelledAfter(JSONObject jsonResponse) {
         super(jsonResponse);
         TimeFormatter.changeDefaultPattern("yyyy-MM-dd'T'HH:mm:ss'Z'");
@@ -53,7 +53,7 @@ public class OrderCancelledAfter extends KrakenManager.KrakenResponse {
      * No-any params required
      *
      * @return {@link #currentTime} instance as long
-     **/
+     */
     public long getCurrentTime() {
         return currentTime;
     }
@@ -63,7 +63,7 @@ public class OrderCancelledAfter extends KrakenManager.KrakenResponse {
      * No-any params required
      *
      * @return {@link #triggerTime} instance as long
-     **/
+     */
     public long getTriggerTime() {
         return triggerTime;
     }
@@ -73,7 +73,7 @@ public class OrderCancelledAfter extends KrakenManager.KrakenResponse {
      * No-any params required
      *
      * @return {@link #currentTime} as {@link Date}
-     **/
+     */
     public Date getCurrentTimeDate() {
         return TimeFormatter.getDate(currentTime);
     }
@@ -83,7 +83,7 @@ public class OrderCancelledAfter extends KrakenManager.KrakenResponse {
      * No-any params required
      *
      * @return {@link #triggerTime} as {@link Date}
-     **/
+     */
     public Date getTriggerTimeDate() {
         return TimeFormatter.getDate(triggerTime);
     }

@@ -23,57 +23,57 @@ import static com.tecknobit.krakenmanager.KrakenManager.ReturnFormat.LIBRARY_OBJ
  * @author N7ghtm4r3 - Tecknobit
  * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Funding">
  * User Funding</a>
- **/
+ */
 public class KrakenUserFundingManager extends KrakenPrivateManager {
 
     /**
      * {@code DEPOSIT_METHODS_ENDPOINT} is constant for DEPOSIT_METHODS_ENDPOINT's endpoint
-     **/
+     */
     public static final String DEPOSIT_METHODS_ENDPOINT = "DepositMethods";
 
     /**
      * {@code DEPOSIT_ADDRESSES_ENDPOINT} is constant for DEPOSIT_ADDRESSES_ENDPOINT's endpoint
-     **/
+     */
     public static final String DEPOSIT_ADDRESSES_ENDPOINT = "DepositAddresses";
 
     /**
      * {@code DEPOSIT_STATUS_ENDPOINT} is constant for DEPOSIT_STATUS_ENDPOINT's endpoint
-     **/
+     */
     public static final String DEPOSIT_STATUS_ENDPOINT = "DepositStatus";
 
     /**
      * {@code GET_WITHDRAWAL_INFORMATION_ENDPOINT} is constant for GET_WITHDRAWAL_INFORMATION_ENDPOINT's endpoint
-     **/
+     */
     public static final String GET_WITHDRAWAL_INFORMATION_ENDPOINT = "WithdrawInfo";
 
     /**
      * {@code MAKE_WITHDRAW_ENDPOINT} is constant for MAKE_WITHDRAW_ENDPOINT's endpoint
-     **/
+     */
     public static final String MAKE_WITHDRAW_ENDPOINT = "Withdraw";
 
     /**
      * {@code WITHDRAW_STATUS_ENDPOINT} is constant for WITHDRAW_STATUS_ENDPOINT's endpoint
-     **/
+     */
     public static final String WITHDRAW_STATUS_ENDPOINT = "WithdrawStatus";
 
     /**
      * {@code CANCEL_WITHDRAW_ENDPOINT} is constant for CANCEL_WITHDRAW_ENDPOINT's endpoint
-     **/
+     */
     public static final String CANCEL_WITHDRAW_ENDPOINT = "WithdrawCancel";
 
     /**
      * {@code WALLET_TRANSFER_ENDPOINT} is constant for WALLET_TRANSFER_ENDPOINT's endpoint
-     **/
+     */
     public static final String WALLET_TRANSFER_ENDPOINT = "WalletTransfer";
 
     /**
      * {@code SPOT_WALLET_SOURCE} is constant for spot wallet source
-     **/
+     */
     public static final String SPOT_WALLET_SOURCE = "Spot Wallet";
 
     /**
      * {@code FUTURES_WALLET_SOURCE} is constant for futures wallet source
-     **/
+     */
     public static final String FUTURES_WALLET_SOURCE = "Futures Wallet";
 
     /** Constructor to init a {@link KrakenUserFundingManager}
@@ -81,7 +81,7 @@ public class KrakenUserFundingManager extends KrakenPrivateManager {
      * @param requestTimeout: custom timeout for request
      * @param apiKey: api key of Kraken's platform
      * @param apiSign: api sign of Kraken's platform
-     **/
+     */
     public KrakenUserFundingManager(String defaultErrorMessage, int requestTimeout, String apiKey, String apiSign) {
         super(defaultErrorMessage, requestTimeout, apiKey, apiSign);
     }
@@ -90,7 +90,7 @@ public class KrakenUserFundingManager extends KrakenPrivateManager {
      * @param defaultErrorMessage: custom error to show when is not a request error
      * @param apiKey: api key of Kraken's platform
      * @param apiSign: api sign of Kraken's platform
-     **/
+     */
     public KrakenUserFundingManager(String defaultErrorMessage, String apiKey, String apiSign) {
         super(defaultErrorMessage, apiKey, apiSign);
     }
@@ -101,7 +101,7 @@ public class KrakenUserFundingManager extends KrakenPrivateManager {
      * @param requestTimeout: custom timeout for request
      * @param apiKey:         api key of Kraken's platform
      * @param apiSign:        api sign of Kraken's platform
-     **/
+     */
     public KrakenUserFundingManager(int requestTimeout, String apiKey, String apiSign) {
         super(requestTimeout, apiKey, apiSign);
     }
@@ -111,7 +111,7 @@ public class KrakenUserFundingManager extends KrakenPrivateManager {
      *
      * @param apiKey:  api key of Kraken's platform
      * @param apiSign: api sign of Kraken's platform
-     **/
+     */
     public KrakenUserFundingManager(String apiKey, String apiSign) {
         super(apiKey, apiSign);
     }
@@ -131,7 +131,7 @@ public class KrakenUserFundingManager extends KrakenPrivateManager {
      *        KrakenPrivateManager secondManager = new KrakenPrivateManager(); //same credentials used
      *     }
      * </pre>
-     **/
+     */
     public KrakenUserFundingManager() {
         super();
     }
@@ -153,7 +153,7 @@ public class KrakenUserFundingManager extends KrakenPrivateManager {
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Funding/operation/getDepositMethods">
      *     Get Deposit Methods</a>
      * @return methods available as {@link ArrayList} of {@link DepositMethod} custom object
-     * **/
+     */
     @Wrapper
     @RequestPath(method = POST, path = "https://api.kraken.com/0/private/DepositMethods")
     public ArrayList<DepositMethod> getDepositMethods(String asset) throws Exception {
@@ -180,7 +180,7 @@ public class KrakenUserFundingManager extends KrakenPrivateManager {
      *                   </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Funding/operation/getDepositMethods">
      * Get Deposit Methods</a>
-     **/
+     */
     @Returner
     @RequestPath(method = POST, path = "https://api.kraken.com/0/private/DepositMethods")
     public <T> T getDepositMethods(String asset, ReturnFormat format) throws Exception {
@@ -201,10 +201,10 @@ public class KrakenUserFundingManager extends KrakenPrivateManager {
         }
     }
 
-    /** Request to retrieve (or generate a new) deposit addresses for a particular asset and method
+    /**
+     * Request to retrieve (or generate a new) deposit addresses for a particular asset and method
      * @param asset: asset being deposited
      * @param method: name of the deposit method
-     * @param newAddress: whether to generate a new address
      * @throws Exception when request has been go wrong -> you can use these methods to get more details about error:
      *                     <ul>
      *                         <li>
@@ -220,42 +220,116 @@ public class KrakenUserFundingManager extends KrakenPrivateManager {
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Funding/operation/getDepositAddresses">
      *     Get Deposit Addresses</a>
      * @return deposit addresses as {@link ArrayList} of {@link DepositAddress} custom object
-     * **/
+     */
     @Wrapper
     @RequestPath(method = POST, path = "https://api.kraken.com/0/private/DepositAddresses")
-    public ArrayList<DepositAddress> getDepositAddresses(String asset, String method, boolean newAddress) throws Exception {
-        return getDepositAddresses(asset, method, newAddress, LIBRARY_OBJECT);
+    public ArrayList<DepositAddress> getDepositAddresses(String asset, String method) throws Exception {
+        return getDepositAddresses(asset, method, LIBRARY_OBJECT);
     }
 
-    /** Request to retrieve (or generate a new) deposit addresses for a particular asset and method
-     * @param asset: asset being deposited
+    /**
+     * Request to retrieve (or generate a new) deposit addresses for a particular asset and method
+     *
+     * @param asset:  asset being deposited
      * @param method: name of the deposit method
-     * @param newAddress: whether to generate a new address
      * @param format: return type formatter -> {@link ReturnFormat}
-     * @throws Exception when request has been go wrong -> you can use these methods to get more details about error:
-     *                     <ul>
-     *                         <li>
-     *                             {@link #getErrorResponse()}
-     *                         </li>
-     *                         <li>
-     *                             {@link #getJSONErrorResponse()}
-     *                         </li>
-     *                         <li>
-     *                             {@link #printErrorResponse()}
-     *                         </li>
-     *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
-     * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Funding/operation/getDepositAddresses">
-     *     Get Deposit Addresses</a>
      * @return deposit addresses as {@code "format"} defines
-     * **/
+     * @throws Exception when request has been go wrong -> you can use these methods to get more details about error:
+     *                   <ul>
+     *                       <li>
+     *                           {@link #getErrorResponse()}
+     *                       </li>
+     *                       <li>
+     *                           {@link #getJSONErrorResponse()}
+     *                       </li>
+     *                       <li>
+     *                           {@link #printErrorResponse()}
+     *                       </li>
+     *                   </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
+     * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Funding/operation/getDepositAddresses">
+     * Get Deposit Addresses</a>
+     */
+    @RequestPath(method = POST, path = "https://api.kraken.com/0/private/DepositAddresses")
+    public <T> T getDepositAddresses(String asset, String method, ReturnFormat format) throws Exception {
+        return getDepositAddresses(asset, method, null, format);
+    }
+
+    /**
+     * Request to retrieve (or generate a new) deposit addresses for a particular asset and method
+     *
+     * @param asset:  asset being deposited
+     * @param method: name of the deposit method
+     * @param params: extra order details, keys accepted are:
+     *                <ul>
+     *                    <li>
+     *                        {@code "new"} -> whether or not to generate a new address - [boolean, default false]
+     *                    </li>
+     *                    <li>
+     *                        {@code "amount "} -> amount you wish to deposit (only required for method=Bitcoin Lightning)
+     *                        - [string or number]
+     *                    </li>
+     *                </ul>
+     * @return deposit addresses as {@link ArrayList} of {@link DepositAddress} custom object
+     * @throws Exception when request has been go wrong -> you can use these methods to get more details about error:
+     *                   <ul>
+     *                       <li>
+     *                           {@link #getErrorResponse()}
+     *                       </li>
+     *                       <li>
+     *                           {@link #getJSONErrorResponse()}
+     *                       </li>
+     *                       <li>
+     *                           {@link #printErrorResponse()}
+     *                       </li>
+     *                   </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
+     * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Funding/operation/getDepositAddresses">
+     * Get Deposit Addresses</a>
+     */
+    @Wrapper
+    @RequestPath(method = POST, path = "https://api.kraken.com/0/private/DepositAddresses")
+    public ArrayList<DepositAddress> getDepositAddresses(String asset, String method, Params params) throws Exception {
+        return getDepositAddresses(asset, method, params, LIBRARY_OBJECT);
+    }
+
+    /**
+     * Request to retrieve (or generate a new) deposit addresses for a particular asset and method
+     *
+     * @param asset:  asset being deposited
+     * @param method: name of the deposit method
+     * @param params: extra order details, keys accepted are:
+     *                <ul>
+     *                    <li>
+     *                        {@code "new"} -> whether or not to generate a new address - [boolean, default false]
+     *                    </li>
+     *                    <li>
+     *                        {@code "amount "} -> amount you wish to deposit (only required for method=Bitcoin Lightning)
+     *                        - [string or number]
+     *                    </li>
+     *                </ul>
+     * @param format: return type formatter -> {@link ReturnFormat}
+     * @return deposit addresses as {@code "format"} defines
+     * @throws Exception when request has been go wrong -> you can use these methods to get more details about error:
+     *                   <ul>
+     *                       <li>
+     *                           {@link #getErrorResponse()}
+     *                       </li>
+     *                       <li>
+     *                           {@link #getJSONErrorResponse()}
+     *                       </li>
+     *                       <li>
+     *                           {@link #printErrorResponse()}
+     *                       </li>
+     *                   </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
+     * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Funding/operation/getDepositAddresses">
+     * Get Deposit Addresses</a>
+     */
     @Returner
     @RequestPath(method = POST, path = "https://api.kraken.com/0/private/DepositAddresses")
-    public <T> T getDepositAddresses(String asset, String method, boolean newAddress, ReturnFormat format) throws Exception {
-        Params params = new Params();
+    public <T> T getDepositAddresses(String asset, String method, Params params, ReturnFormat format) throws Exception {
+        if (params == null)
+            params = new Params();
         params.addParam("asset", asset);
         params.addParam("method", method);
-        if (newAddress)
-            params.addParam("new", true);
         JSONObject jDepositAddresses = new JSONObject(sendPostRequest(DEPOSIT_ADDRESSES_ENDPOINT, params));
         switch (format) {
             case JSON:
@@ -290,7 +364,7 @@ public class KrakenUserFundingManager extends KrakenPrivateManager {
      *                   </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Funding/operation/getStatusRecentDeposits">
      * Get Status of Recent Deposits</a>
-     **/
+     */
     @Wrapper
     @RequestPath(method = POST, path = "https://api.kraken.com/0/private/DepositStatus")
     public ArrayList<OperationStatus> getRecentDepositsStatus() throws Exception {
@@ -315,7 +389,7 @@ public class KrakenUserFundingManager extends KrakenPrivateManager {
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Funding/operation/getStatusRecentDeposits">
      *    Get Status of Recent Deposits</a>
      * @return recent deposits as {"format"} defines
-     * **/
+     */
     @RequestPath(method = POST, path = "https://api.kraken.com/0/private/DepositStatus")
     public <T> T getRecentDepositsStatus(ReturnFormat format) throws Exception {
         return returnOperationsList(sendPostRequest(DEPOSIT_STATUS_ENDPOINT, null), format);
@@ -348,7 +422,7 @@ public class KrakenUserFundingManager extends KrakenPrivateManager {
      *                   </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Funding/operation/getStatusRecentDeposits">
      * Get Status of Recent Deposits</a>
-     **/
+     */
     @Wrapper
     @RequestPath(method = POST, path = "https://api.kraken.com/0/private/DepositStatus")
     public ArrayList<OperationStatus> getRecentDepositsStatus(Params params) throws Exception {
@@ -383,7 +457,7 @@ public class KrakenUserFundingManager extends KrakenPrivateManager {
      *                   </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Funding/operation/getStatusRecentDeposits">
      * Get Status of Recent Deposits</a>
-     **/
+     */
     @RequestPath(method = POST, path = "https://api.kraken.com/0/private/DepositStatus")
     public <T> T getRecentDepositsStatus(Params params, ReturnFormat format) throws Exception {
         return returnOperationsList(sendPostRequest(DEPOSIT_STATUS_ENDPOINT, params), format);
@@ -408,7 +482,7 @@ public class KrakenUserFundingManager extends KrakenPrivateManager {
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Funding/operation/getWithdrawalInformation">
      *     Get Withdrawal Information</a>
      * @return potential withdrawals for a particular asset, key and amount as {@link WithdrawInformation} custom object
-     * **/
+     */
     @Wrapper
     @RequestPath(method = POST, path = "https://api.kraken.com/0/private/WithdrawInfo")
     public WithdrawInformation getWithdrawalInformation(String asset, String key, double amount) throws Exception {
@@ -435,7 +509,7 @@ public class KrakenUserFundingManager extends KrakenPrivateManager {
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Funding/operation/getWithdrawalInformation">
      *     Get Withdrawal Information</a>
      * @return potential withdrawals for a particular asset, key and amount as {"format"} defines
-     * **/
+     */
     @Returner
     @RequestPath(method = POST, path = "https://api.kraken.com/0/private/WithdrawInfo")
     public <T> T getWithdrawalInformation(String asset, String key, double amount, ReturnFormat format) throws Exception {
@@ -473,7 +547,7 @@ public class KrakenUserFundingManager extends KrakenPrivateManager {
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Funding/operation/withdrawFunds">
      *    Withdraw Funds</a>
      * @return withdrawal request result as {@link String}
-     * **/
+     */
     @Wrapper
     @RequestPath(method = POST, path = "https://api.kraken.com/0/private/Withdraw")
     public String sendWithdraw(String asset, String key, double amount) throws Exception {
@@ -502,7 +576,7 @@ public class KrakenUserFundingManager extends KrakenPrivateManager {
      * @return withdrawal request result as {"format"} defines
      * @implSpec in this case {@link ReturnFormat#LIBRARY_OBJECT} will return the {@code "refid"} associated with the
      * withdrawal made
-     * **/
+     */
     @Returner
     @RequestPath(method = POST, path = "https://api.kraken.com/0/private/Withdraw")
     public <T> T sendWithdraw(String asset, String key, double amount, ReturnFormat format) throws Exception {
@@ -540,7 +614,7 @@ public class KrakenUserFundingManager extends KrakenPrivateManager {
      *                   </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Funding/operation/getStatusRecentWithdrawals">
      * Get Status of Recent Withdrawals</a>
-     **/
+     */
     @Wrapper
     @RequestPath(method = POST, path = "https://api.kraken.com/0/private/WithdrawStatus")
     public ArrayList<OperationStatus> getRecentWithdrawalsStatus() throws Exception {
@@ -565,7 +639,7 @@ public class KrakenUserFundingManager extends KrakenPrivateManager {
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Funding/operation/getStatusRecentWithdrawals">
      *     Get Status of Recent Withdrawals</a>
      * @return information about recently requests withdrawals as {"format"} defines
-     * **/
+     */
     @RequestPath(method = POST, path = "https://api.kraken.com/0/private/WithdrawStatus")
     public <T> T getRecentWithdrawalsStatus(ReturnFormat format) throws Exception {
         return returnOperationsList(sendPostRequest(WITHDRAW_STATUS_ENDPOINT, null), format);
@@ -598,7 +672,7 @@ public class KrakenUserFundingManager extends KrakenPrivateManager {
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Funding/operation/getStatusRecentWithdrawals">
      *     Get Status of Recent Withdrawals</a>
      * @return information about recently requests withdrawals as {@link ArrayList} of {@link OperationStatus} custom object
-     * **/
+     */
     @Wrapper
     @RequestPath(method = POST, path = "https://api.kraken.com/0/private/WithdrawStatus")
     public ArrayList<OperationStatus> getRecentWithdrawalsStatus(Params params, String method) throws Exception {
@@ -632,7 +706,7 @@ public class KrakenUserFundingManager extends KrakenPrivateManager {
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Funding/operation/getStatusRecentWithdrawals">
      *     Get Status of Recent Withdrawals</a>
      * @return information about recently requests withdrawals as {"format"} defines
-     * **/
+     */
     @RequestPath(method = POST, path = "https://api.kraken.com/0/private/WithdrawStatus")
     public <T> T getRecentWithdrawalsStatus(Params params, ReturnFormat format) throws Exception {
         return returnOperationsList(sendPostRequest(WITHDRAW_STATUS_ENDPOINT, params), format);
@@ -644,7 +718,7 @@ public class KrakenUserFundingManager extends KrakenPrivateManager {
      * @param statusListResponse: operations status list to format
      * @param format:             return type formatter -> {@link ReturnFormat}
      * @return operations status list as {"format"} defines
-     **/
+     */
     @Returner
     private <T> T returnOperationsList(String statusListResponse, ReturnFormat format) {
         switch (format) {
@@ -681,7 +755,7 @@ public class KrakenUserFundingManager extends KrakenPrivateManager {
      *                   </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Funding/operation/cancelWithdrawal">
      * Request Withdrawal Cancellation</a>
-     **/
+     */
     @Wrapper
     @RequestPath(method = POST, path = "https://api.kraken.com/0/private/WithdrawCancel")
     public boolean cancelWithdrawal(String asset, String refId) throws Exception {
@@ -709,7 +783,7 @@ public class KrakenUserFundingManager extends KrakenPrivateManager {
      *    Request Withdrawal Cancellation</a>
      * @implSpec the {@link ReturnFormat#LIBRARY_OBJECT} format type in this case will return whether cancellation has
      * been successful as boolean
-     * **/
+     */
     @Returner
     @RequestPath(method = POST, path = "https://api.kraken.com/0/private/WithdrawCancel")
     public <T> T cancelWithdrawal(String asset, String refId, ReturnFormat format) throws Exception {
@@ -748,7 +822,7 @@ public class KrakenUserFundingManager extends KrakenPrivateManager {
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Funding/operation/walletTransfer">
      *    Request Wallet Transfer</a>
      * @return transfer result as {@link String}
-     * **/
+     */
     @Wrapper
     @RequestPath(method = POST, path = "https://api.kraken.com/0/private/WalletTransfer")
     public String requestWalletTransfer(String asset, String from, String to, double amount) throws Exception {
@@ -779,7 +853,7 @@ public class KrakenUserFundingManager extends KrakenPrivateManager {
      * @implSpec in this case {@link ReturnFormat#LIBRARY_OBJECT} will return the {@code "refid"} associated with the
      * transfer made
      * @return transfer result as {"format"} defines
-     * **/
+     */
     @Returner
     @RequestPath(method = POST, path = "https://api.kraken.com/0/private/WalletTransfer")
     public <T> T requestWalletTransfer(String asset, String from, String to, double amount,

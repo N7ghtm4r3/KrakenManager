@@ -11,27 +11,27 @@ import static com.tecknobit.apimanager.trading.TradingTools.roundValue;
  * @author N7ghtm4r3 - Tecknobit
  * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Funding/operation/getDepositMethods">
  * Get Deposit Methods</a>
- **/
+ */
 public class DepositMethod extends KrakenManager.KrakenResponse {
 
     /**
      * {@code method} is instance that memorizes name of deposit method
-     * **/
+     */
     private final String method;
 
     /**
      * {@code fee} is instance that memorizes amount of fees that will be paid
-     * **/
+     */
     private final double fee;
 
     /**
      * {@code addressSetupFee} is instance that memorizes whether method has an address setup fee
-     **/
+     */
     private final String addressSetupFee;
 
     /**
      * {@code genAddress} is flag that memorizes whether new addresses can be generated for this method
-     **/
+     */
     private final boolean genAddress;
 
     /**
@@ -41,7 +41,7 @@ public class DepositMethod extends KrakenManager.KrakenResponse {
      * @param fee:             amount of fees that will be paid
      * @param addressSetupFee: whether method has an address setup fee
      * @param genAddress:      whether new addresses can be generated for this method
-     **/
+     */
     public DepositMethod(String method, double fee, String addressSetupFee, boolean genAddress) {
         super(null);
         this.method = method;
@@ -53,7 +53,7 @@ public class DepositMethod extends KrakenManager.KrakenResponse {
     /**
      * Constructor to init a {@link DepositMethod} object
      * @param jsonResponse: base json response
-     **/
+     */
     public DepositMethod(JSONObject jsonResponse) {
         super(jsonResponse);
         method = result.getString("method");
@@ -67,7 +67,7 @@ public class DepositMethod extends KrakenManager.KrakenResponse {
      * No-any params required
      *
      * @return {@link #method} instance as {@link String}
-     **/
+     */
     public String getMethod() {
         return method;
     }
@@ -77,7 +77,7 @@ public class DepositMethod extends KrakenManager.KrakenResponse {
      * No-any params required
      *
      * @return {@link #fee} instance as double
-     **/
+     */
     public double getFee() {
         return fee;
     }
@@ -88,7 +88,7 @@ public class DepositMethod extends KrakenManager.KrakenResponse {
      * @param decimals: number of digits to round final value
      * @return {@link #fee} instance rounded with decimal digits inserted
      * @throws IllegalArgumentException if decimalDigits is negative
-     **/
+     */
     public double getFee(int decimals) {
         return roundValue(fee, decimals);
     }
@@ -98,7 +98,7 @@ public class DepositMethod extends KrakenManager.KrakenResponse {
      * No-any params required
      *
      * @return {@link #addressSetupFee} instance as {@link String}
-     **/
+     */
     public String getAddressSetupFee() {
         return addressSetupFee;
     }
@@ -108,7 +108,7 @@ public class DepositMethod extends KrakenManager.KrakenResponse {
      * No-any params required
      *
      * @return {@link #genAddress} instance as boolean
-     **/
+     */
     public boolean getGenAddress() {
         return genAddress;
     }

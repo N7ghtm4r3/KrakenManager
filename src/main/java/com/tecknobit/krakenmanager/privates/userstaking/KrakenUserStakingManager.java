@@ -21,32 +21,32 @@ import static com.tecknobit.krakenmanager.KrakenManager.ReturnFormat.LIBRARY_OBJ
  * @author N7ghtm4r3 - Tecknobit
  * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Staking">
  * User Staking</a>
- **/
+ */
 public class KrakenUserStakingManager extends KrakenPrivateManager {
 
     /**
      * {@code STAKE_ENDPOINT} is constant for STAKE_ENDPOINT's endpoint
-     **/
+     */
     public static final String STAKE_ENDPOINT = "Stake";
 
     /**
      * {@code UNSTAKE_ENDPOINT} is constant for UNSTAKE_ENDPOINT's endpoint
-     **/
+     */
     public static final String UNSTAKE_ENDPOINT = "Unstake";
 
     /**
      * {@code ASSETS_STAKEABLE_ENDPOINT} is constant for ASSETS_STAKEABLE_ENDPOINT's endpoint
-     **/
+     */
     public static final String ASSETS_STAKEABLE_ENDPOINT = "Staking/Assets";
 
     /**
      * {@code PENDING_STAKING_TRANSACTIONS_ENDPOINT} is constant for PENDING_STAKING_TRANSACTIONS_ENDPOINT's endpoint
-     **/
+     */
     public static final String PENDING_STAKING_TRANSACTIONS_ENDPOINT = "Staking/Pending";
 
     /**
      * {@code STAKING_TRANSACTIONS_ENDPOINT} is constant for STAKING_TRANSACTIONS_ENDPOINT's endpoint
-     **/
+     */
     public static final String STAKING_TRANSACTIONS_ENDPOINT = "Staking/Transactions";
 
     /**
@@ -56,7 +56,7 @@ public class KrakenUserStakingManager extends KrakenPrivateManager {
      * @param requestTimeout:      custom timeout for request
      * @param apiKey:              api key of Kraken's platform
      * @param apiSign:             api sign of Kraken's platform
-     **/
+     */
     public KrakenUserStakingManager(String defaultErrorMessage, int requestTimeout, String apiKey, String apiSign) {
         super(defaultErrorMessage, requestTimeout, apiKey, apiSign);
     }
@@ -67,7 +67,7 @@ public class KrakenUserStakingManager extends KrakenPrivateManager {
      * @param defaultErrorMessage: custom error to show when is not a request error
      * @param apiKey:              api key of Kraken's platform
      * @param apiSign:             api sign of Kraken's platform
-     **/
+     */
     public KrakenUserStakingManager(String defaultErrorMessage, String apiKey, String apiSign) {
         super(defaultErrorMessage, apiKey, apiSign);
     }
@@ -78,7 +78,7 @@ public class KrakenUserStakingManager extends KrakenPrivateManager {
      * @param requestTimeout: custom timeout for request
      * @param apiKey:         api key of Kraken's platform
      * @param apiSign:        api sign of Kraken's platform
-     **/
+     */
     public KrakenUserStakingManager(int requestTimeout, String apiKey, String apiSign) {
         super(requestTimeout, apiKey, apiSign);
     }
@@ -88,7 +88,7 @@ public class KrakenUserStakingManager extends KrakenPrivateManager {
      *
      * @param apiKey:  api key of Kraken's platform
      * @param apiSign: api sign of Kraken's platform
-     **/
+     */
     public KrakenUserStakingManager(String apiKey, String apiSign) {
         super(apiKey, apiSign);
     }
@@ -108,7 +108,7 @@ public class KrakenUserStakingManager extends KrakenPrivateManager {
      *        KrakenPrivateManager secondManager = new KrakenPrivateManager(); //same credentials used
      *     }
      * </pre>
-     **/
+     */
     public KrakenUserStakingManager() {
         super();
     }
@@ -134,7 +134,7 @@ public class KrakenUserStakingManager extends KrakenPrivateManager {
      *                   </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Staking/operation/stake">
      *    Stake Asset</a>
-     **/
+     */
     @Wrapper
     @RequestPath(method = POST, path = "https://api.kraken.com/0/private/Stake")
     public String stakeAsset(String asset, double amount, String method) throws Exception {
@@ -165,7 +165,7 @@ public class KrakenUserStakingManager extends KrakenPrivateManager {
      * Stake Asset</a>
      * @implSpec in this case {@link ReturnFormat#LIBRARY_OBJECT} will return the {@code "refid"} associated with the
      * stake made
-     **/
+     */
     @Returner
     @RequestPath(method = POST, path = "https://api.kraken.com/0/private/Stake")
     public <T> T stakeAsset(String asset, double amount, String method, ReturnFormat format) throws Exception {
@@ -202,7 +202,7 @@ public class KrakenUserStakingManager extends KrakenPrivateManager {
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Staking/operation/unstake">
      *     Unstake Asset</a>
      * @return unstake result as {@link String}
-     * **/
+     */
     @Wrapper
     @RequestPath(method = POST, path = "https://api.kraken.com/0/private/Unstake")
     public String unstakeAsset(String asset, double amount) throws Exception {
@@ -232,7 +232,7 @@ public class KrakenUserStakingManager extends KrakenPrivateManager {
      * Unstake Asset</a>
      * @implSpec in this case {@link ReturnFormat#LIBRARY_OBJECT} will return the {@code "refid"} associated with the
      * stake made
-     **/
+     */
     @Returner
     @RequestPath(method = POST, path = "https://api.kraken.com/0/private/Unstake")
     public <T> T unstakeAsset(String asset, double amount, ReturnFormat format) throws Exception {
@@ -268,7 +268,7 @@ public class KrakenUserStakingManager extends KrakenPrivateManager {
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Staking/operation/getStakingAssetInfo">
      *     List of Stakeable Assets</a>
      * @return stakeable assets list as {@link ArrayList} of {@link StakeableAsset} custom object
-     * **/
+     */
     @Wrapper
     @RequestPath(method = POST, path = "https://api.kraken.com/0/private/Staking/Assets")
     public ArrayList<StakeableAsset> getStakeableAssets() throws Exception {
@@ -295,7 +295,7 @@ public class KrakenUserStakingManager extends KrakenPrivateManager {
      *                   </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Staking/operation/getStakingAssetInfo">
      * List of Stakeable Assets</a>
-     **/
+     */
     @Returner
     @RequestPath(method = POST, path = "https://api.kraken.com/0/private/Staking/Assets")
     public <T> T getStakeableAssets(ReturnFormat format) throws Exception {
@@ -332,7 +332,7 @@ public class KrakenUserStakingManager extends KrakenPrivateManager {
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Staking/operation/getStakingPendingDeposits">
      *     Get Pending Staking Transactions</a>
      * @return list of pending staking transactions as {@link ArrayList} of {@link StakingTransaction} custom object
-     * **/
+     */
     @Wrapper
     @RequestPath(method = POST, path = "https://api.kraken.com/0/private/Staking/Pending")
     public ArrayList<StakingTransaction> getPendingStakingTransactions() throws Exception {
@@ -359,7 +359,7 @@ public class KrakenUserStakingManager extends KrakenPrivateManager {
      *                   </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Staking/operation/getStakingPendingDeposits">
      * Get Pending Staking Transactions</a>
-     **/
+     */
     @RequestPath(method = POST, path = "https://api.kraken.com/0/private/Staking/Pending")
     public <T> T getPendingStakingTransactions(ReturnFormat format) throws Exception {
         return returnTransactionsList(sendPostRequest(PENDING_STAKING_TRANSACTIONS_ENDPOINT, null), format);
@@ -382,7 +382,7 @@ public class KrakenUserStakingManager extends KrakenPrivateManager {
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Staking/operation/getStakingTransactions">
      *     List of Staking Transactions</a>
      * @return list staking transactions as {@link ArrayList} of {@link StakingTransaction} custom object
-     * **/
+     */
     @Wrapper
     @RequestPath(method = POST, path = "https://api.kraken.com/0/private/Staking/Transactions")
     public ArrayList<StakingTransaction> getStakingTransactions() throws Exception {
@@ -408,7 +408,7 @@ public class KrakenUserStakingManager extends KrakenPrivateManager {
      *                   </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Staking/operation/getStakingTransactions">
      * List of Staking Transactions</a>
-     **/
+     */
     @RequestPath(method = POST, path = "https://api.kraken.com/0/private/Staking/Transactions")
     public <T> T getStakingTransactions(ReturnFormat format) throws Exception {
         return returnTransactionsList(sendPostRequest(STAKING_TRANSACTIONS_ENDPOINT, null), format);
@@ -420,7 +420,7 @@ public class KrakenUserStakingManager extends KrakenPrivateManager {
      * @param transactionsListResponse: transactions list to format
      * @param format:                   return type formatter -> {@link ReturnFormat}
      * @return transactions list as {"format"} defines
-     **/
+     */
     @Returner
     private <T> T returnTransactionsList(String transactionsListResponse, ReturnFormat format) {
         switch (format) {

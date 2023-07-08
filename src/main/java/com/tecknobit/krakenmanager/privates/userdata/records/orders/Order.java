@@ -23,12 +23,12 @@ import static com.tecknobit.apimanager.trading.TradingTools.roundValue;
  *    </li>
  * </ul>
  * @author N7ghtm4r3 - Tecknobit
- * **/
+ */
 public class Order extends KrakenManager.KrakenResponse {
 
     /**
      * {@code status} is instance that memorizes status value
-     **/
+     */
     protected final OrderStatus status;
 
     /** Constructor to init a {@link Order} object
@@ -50,7 +50,7 @@ public class Order extends KrakenManager.KrakenResponse {
      * @param misc: misc value
      * @param oFlags: order flags value
      * @param trades: list of trades id
-     **/
+     */
     public Order(long refId, long userRef, OrderStatus status, long openTime, long startTime, long expireTime,
                  OrderDescription orderDescription, double volume, double executedVolume, double cost, double fee,
                  double price, double stopPrice, double limitPrice, String trigger, String misc, String oFlags,
@@ -78,7 +78,7 @@ public class Order extends KrakenManager.KrakenResponse {
 
     /** Constructor to init a {@link Order}
      * @param jsonResponse: base json response
-     **/
+     */
     public Order(JSONObject jsonResponse) {
         super(jsonResponse);
         refId = result.getLong("refid", 0);
@@ -109,78 +109,78 @@ public class Order extends KrakenManager.KrakenResponse {
      * No-any params required
      *
      * @return {@link #status} instance as {@link String}
-     **/
+     */
     public OrderStatus getStatus() {
         return status;
     }
 
     /**
      * {@code Side} sides for an order
-     **/
+     */
     public enum Side {
 
         /**
          * {@code "buy"} side
-         **/
+         */
         buy,
 
         /**
          * {@code "sell"} side
-         **/
+         */
         sell
 
     }
 
     /**
      * {@code OrderType} list of order types
-     **/
+     */
     public enum OrderType {
 
         /**
          * {@code "market"} order type
-         **/
+         */
         market("market"),
 
         /**
          * {@code "limit"} order type
-         **/
+         */
         limit("limit"),
 
         /**
          * {@code "stop_loss"} order type
-         **/
+         */
         stop_loss("stop-loss"),
 
         /**
          * {@code "take_profit"} order type
-         **/
+         */
         take_profit("take-profit"),
 
         /**
          * {@code "stop_loss_limit"} order type
-         **/
+         */
         stop_loss_limit("stop-loss-limit"),
 
         /**
          * {@code "take_profit_limit"} order type
-         **/
+         */
         take_profit_limit("take-profit-limit"),
 
         /**
          * {@code "settle_position"} order type
-         **/
+         */
         settle_position("settle-position");
 
         /**
          * {@code type} type of the order
-         **/
+         */
         private final String type;
 
         /**
          * Constructor to init a {@link OrderType} object
          *
          * @param type: type of the order
-         **/
+         */
         OrderType(String type) {
             this.type = type;
         }
@@ -190,7 +190,7 @@ public class Order extends KrakenManager.KrakenResponse {
          * No-any params required
          *
          * @return {@link #type} instance as {@link String}
-         **/
+         */
         @Override
         public String toString() {
             return type;
@@ -200,161 +200,161 @@ public class Order extends KrakenManager.KrakenResponse {
 
     /**
      * {@code refId} is instance that memorizes referral order transaction id
-     **/
+     */
     protected final long refId;
 
     /**
      * {@code userRef} is instance that memorizes user reference id
-     **/
+     */
     protected final long userRef;
 
     /**
      * {@code OrderStatus} statuses list for an order
-     **/
+     */
     public enum OrderStatus {
 
         /**
          * {@code "pending"} status
-         **/
+         */
         pending,
 
         /**
          * {@code "open"} status
-         **/
+         */
         open,
 
         /**
          * {@code "closed"} status
-         **/
+         */
         closed,
 
         /**
          * {@code "canceled"} status
-         **/
+         */
         canceled,
 
         /**
          * {@code "expired"} status
-         **/
+         */
         expired,
 
     }
 
     /**
      * {@code openTime} is instance that memorizes open time value
-     **/
+     */
     protected final long openTime;
 
     /**
      * {@code startTime} is instance that memorizes start time value
-     **/
+     */
     protected final long startTime;
 
     /**
      * {@code expireTime} is instance that memorizes expire time value
-     **/
+     */
     protected final long expireTime;
 
     /**
      * {@code orderDescription} is instance that memorizes order description value
-     **/
+     */
     protected final OrderDescription orderDescription;
 
     /**
      * {@code volume} is instance that memorizes volume value
-     **/
+     */
     protected final double volume;
 
     /**
      * {@code executedVolume} is instance that memorizes executed volume value
-     **/
+     */
     protected final double executedVolume;
 
     /**
      * {@code cost} is instance that memorizes cost value
-     **/
+     */
     protected final double cost;
 
     /**
      * {@code fee} is instance that memorizes fee value
-     **/
+     */
     private final double fee;
 
     /**
      * {@code price} is instance that memorizes price value
-     **/
+     */
     protected final double price;
 
     /**
      * {@code stopPrice} is instance that memorizes stop price value
-     **/
+     */
     protected final double stopPrice;
 
     /**
      * {@code limitPrice} is instance that memorizes limit price value
-     **/
+     */
     protected final double limitPrice;
 
     /**
      * {@code trigger} is instance that memorizes trigger value
-     **/
+     */
     protected final String trigger;
 
     /**
      * {@code misc} is instance that memorizes misc value
-     **/
+     */
     protected final String misc;
 
     /**
      * {@code oFlags} is instance that memorizes order flags value
-     **/
+     */
     protected final String oFlags;
 
     /**
      * {@code trades} is instance that memorizes list of trades id
-     **/
+     */
     protected final ArrayList<Long> trades;
 
     /**
      * {@code Trigger} triggers list for an order
-     **/
+     */
     public enum Trigger {
 
         /**
          * {@code "last"} trigger
-         **/
+         */
         last,
 
         /**
          * {@code "index"} trigger
-         **/
+         */
         index
 
     }
 
     /**
      * {@code Misc} misc list for an order
-     **/
+     */
     public enum Misc {
 
         /**
          * {@code "stopped"} misc
-         **/
+         */
         stopped,
 
         /**
          * {@code "touched"} trigger
-         **/
+         */
         touched,
 
         /**
          * {@code "liquidated"} misc
-         **/
+         */
         liquidated,
 
         /**
          * {@code "partial"} misc
-         **/
+         */
         partial
 
     }
@@ -364,7 +364,7 @@ public class Order extends KrakenManager.KrakenResponse {
      * No-any params required
      *
      * @return {@link #refId} instance as long
-     **/
+     */
     public long getRefId() {
         return refId;
     }
@@ -374,39 +374,39 @@ public class Order extends KrakenManager.KrakenResponse {
      * No-any params required
      *
      * @return {@link #userRef} instance as long
-     **/
+     */
     public long getUserRef() {
         return userRef;
     }
 
     /**
      * {@code OFlag} oflags list for an order
-     * **/
+     */
     public enum OFlag {
 
         /**
          * {@code "post"} post-only order (available when ordertype = limit)
-         **/
+         */
         post,
 
         /**
          * {@code "fcib"} prefer fee in base currency (default if selling)
-         **/
+         */
         fcib,
 
         /**
          * {@code "fciq"} prefer fee in quote currency (default if buying, mutually exclusive with {@code "fcib"})
-         **/
+         */
         fciq,
 
         /**
          * {@code "nompp"} disable market price protection for market orders
-         **/
+         */
         nompp,
 
         /**
          * {@code "viqc"} order volume expressed in quote currency. This is supported only for market orders
-         **/
+         */
         viqc
 
     }
@@ -416,7 +416,7 @@ public class Order extends KrakenManager.KrakenResponse {
      * No-any params required
      *
      * @return {@link #openTime} instance as long
-     **/
+     */
     public long getOpenTime() {
         return openTime;
     }
@@ -426,7 +426,7 @@ public class Order extends KrakenManager.KrakenResponse {
      * No-any params required
      *
      * @return {@link #startTime} instance as long
-     **/
+     */
     public long getStartTime() {
         return startTime;
     }
@@ -436,7 +436,7 @@ public class Order extends KrakenManager.KrakenResponse {
      * No-any params required
      *
      * @return {@link #expireTime} instance as long
-     **/
+     */
     public long getExpireTime() {
         return expireTime;
     }
@@ -446,7 +446,7 @@ public class Order extends KrakenManager.KrakenResponse {
      * No-any params required
      *
      * @return {@link #orderDescription} instance as {@link OrderDescription}
-     **/
+     */
     public OrderDescription getOrderDescription() {
         return orderDescription;
     }
@@ -456,7 +456,7 @@ public class Order extends KrakenManager.KrakenResponse {
      * No-any params required
      *
      * @return {@link #volume} instance as double
-     **/
+     */
     public double getVolume() {
         return volume;
     }
@@ -467,7 +467,7 @@ public class Order extends KrakenManager.KrakenResponse {
      * @param decimals: number of digits to round final value
      * @return {@link #volume} instance rounded with decimal digits inserted
      * @throws IllegalArgumentException if decimalDigits is negative
-     **/
+     */
     public double getVolume(int decimals) {
         return roundValue(volume, decimals);
     }
@@ -477,7 +477,7 @@ public class Order extends KrakenManager.KrakenResponse {
      * No-any params required
      *
      * @return {@link #executedVolume} instance as double
-     **/
+     */
     public double getExecutedVolume() {
         return executedVolume;
     }
@@ -488,7 +488,7 @@ public class Order extends KrakenManager.KrakenResponse {
      * @param decimals: number of digits to round final value
      * @return {@link #executedVolume} instance rounded with decimal digits inserted
      * @throws IllegalArgumentException if decimalDigits is negative
-     **/
+     */
     public double getExecutedVolume(int decimals) {
         return roundValue(executedVolume, decimals);
     }
@@ -498,7 +498,7 @@ public class Order extends KrakenManager.KrakenResponse {
      * No-any params required
      *
      * @return {@link #cost} instance as double
-     **/
+     */
     public double getCost() {
         return cost;
     }
@@ -509,7 +509,7 @@ public class Order extends KrakenManager.KrakenResponse {
      * @param decimals: number of digits to round final value
      * @return {@link #cost} instance rounded with decimal digits inserted
      * @throws IllegalArgumentException if decimalDigits is negative
-     **/
+     */
     public double getCost(int decimals) {
         return roundValue(cost, decimals);
     }
@@ -519,7 +519,7 @@ public class Order extends KrakenManager.KrakenResponse {
      * No-any params required
      *
      * @return {@link #fee} instance as double
-     **/
+     */
     public double getFee() {
         return fee;
     }
@@ -529,7 +529,7 @@ public class Order extends KrakenManager.KrakenResponse {
      * No-any params required
      *
      * @return {@link #fee} instance as double
-     **/
+     */
     public double getFee(int decimals) {
         return roundValue(fee, decimals);
     }
@@ -539,7 +539,7 @@ public class Order extends KrakenManager.KrakenResponse {
      * No-any params required
      *
      * @return {@link #stopPrice} instance as double
-     **/
+     */
     public double getStopPrice() {
         return stopPrice;
     }
@@ -550,7 +550,7 @@ public class Order extends KrakenManager.KrakenResponse {
      * @param decimals: number of digits to round final value
      * @return {@link #stopPrice} instance rounded with decimal digits inserted
      * @throws IllegalArgumentException if decimalDigits is negative
-     **/
+     */
     public double getStopPrice(int decimals) {
         return roundValue(stopPrice, decimals);
     }
@@ -560,7 +560,7 @@ public class Order extends KrakenManager.KrakenResponse {
      * No-any params required
      *
      * @return {@link #limitPrice} instance as double
-     **/
+     */
     public double getLimitPrice() {
         return limitPrice;
     }
@@ -571,7 +571,7 @@ public class Order extends KrakenManager.KrakenResponse {
      * @param decimals: number of digits to round final value
      * @return {@link #limitPrice} instance rounded with decimal digits inserted
      * @throws IllegalArgumentException if decimalDigits is negative
-     **/
+     */
     public double getLimitPrice(int decimals) {
         return roundValue(limitPrice, decimals);
     }
@@ -581,7 +581,7 @@ public class Order extends KrakenManager.KrakenResponse {
      * No-any params required
      *
      * @return {@link #trigger} instance as {@link String}
-     **/
+     */
     public String getTrigger() {
         return trigger;
     }
@@ -591,7 +591,7 @@ public class Order extends KrakenManager.KrakenResponse {
      * No-any params required
      *
      * @return {@link #misc} instance as {@link String}
-     **/
+     */
     public String getMisc() {
         return misc;
     }
@@ -601,7 +601,7 @@ public class Order extends KrakenManager.KrakenResponse {
      * No-any params required
      *
      * @return {@link #oFlags} instance as {@link String}
-     **/
+     */
     public String getoFlags() {
         return oFlags;
     }
@@ -611,7 +611,7 @@ public class Order extends KrakenManager.KrakenResponse {
      * No-any params required
      *
      * @return {@link #trades} instance as {@link ArrayList} of {@link Long}
-     **/
+     */
     public ArrayList<Long> getTrades() {
         return trades;
     }
@@ -619,47 +619,47 @@ public class Order extends KrakenManager.KrakenResponse {
     /**
      * The {@code OrderDescription} class is useful to give description of an {@link Order}
      * with a custom object
-     **/
+     */
     public static class OrderDescription {
 
         /**
          * {@code pair} is instance that memorizes pair value
-         * **/
+         */
         private final String pair;
 
         /**
          * {@code type} is instance that memorizes type value
-         * **/
+         */
         private final String type;
 
         /**
          * {@code orderType} is instance that memorizes order type value
-         * **/
+         */
         private final OrderType orderType;
 
         /**
          * {@code price} is instance that memorizes price value
-         * **/
+         */
         private final double price;
 
         /**
          * {@code secondPrice} is instance that memorizes second price value
-         * **/
+         */
         private final double secondPrice;
 
         /**
          * {@code leverage} is instance that memorizes leverage value
-         * **/
+         */
         private final String leverage;
 
         /**
          * {@code order} is instance that memorizes order value
-         * **/
+         */
         private final String order;
 
         /**
          * {@code order} is instance that memorizes close value
-         * **/
+         */
         private final String close;
 
         /**
@@ -672,7 +672,7 @@ public class Order extends KrakenManager.KrakenResponse {
          * @param leverage: leverage value
          * @param order: order value
          * @param close: close value
-         **/
+         */
         public OrderDescription(String pair, String type, OrderType orderType, double price, double secondPrice,
                                 String leverage, String order, String close) {
             this.pair = pair;
@@ -689,7 +689,7 @@ public class Order extends KrakenManager.KrakenResponse {
          * Constructor to init a {@link OrderDescription} object
          *
          * @param jsonOrder: order description details in {@code "JSON"} format
-         **/
+         */
         public OrderDescription(JSONObject jsonOrder){
             JsonHelper orderDescription = new JsonHelper(jsonOrder);
             pair = orderDescription.getString("pair");
@@ -707,7 +707,7 @@ public class Order extends KrakenManager.KrakenResponse {
          * No-any params required
          *
          * @return {@link #pair} instance as {@link String}
-         **/
+         */
         public String getPair() {
             return pair;
         }
@@ -717,7 +717,7 @@ public class Order extends KrakenManager.KrakenResponse {
          * No-any params required
          *
          * @return {@link #type} instance as {@link String}
-         **/
+         */
         public String getType() {
             return type;
         }
@@ -727,7 +727,7 @@ public class Order extends KrakenManager.KrakenResponse {
          * No-any params required
          *
          * @return {@link #orderType} instance as {@link OrderType}
-         **/
+         */
         public OrderType getOrderType() {
             return orderType;
         }
@@ -737,7 +737,7 @@ public class Order extends KrakenManager.KrakenResponse {
          * No-any params required
          *
          * @return {@link #price} instance as double
-         **/
+         */
         public double getPrice() {
             return price;
         }
@@ -748,7 +748,7 @@ public class Order extends KrakenManager.KrakenResponse {
          * @param decimals: number of digits to round final value
          * @return {@link #price} instance rounded with decimal digits inserted
          * @throws IllegalArgumentException if decimalDigits is negative
-         **/
+         */
         public double getPrice(int decimals) {
             return roundValue(price, decimals);
         }
@@ -758,7 +758,7 @@ public class Order extends KrakenManager.KrakenResponse {
          * No-any params required
          *
          * @return {@link #secondPrice} instance as double
-         **/
+         */
         public double getSecondPrice() {
             return secondPrice;
         }
@@ -769,7 +769,7 @@ public class Order extends KrakenManager.KrakenResponse {
          * @param decimals: number of digits to round final value
          * @return {@link #secondPrice} instance rounded with decimal digits inserted
          * @throws IllegalArgumentException if decimalDigits is negative
-         **/
+         */
         public double getSecondPrice(int decimals) {
             return roundValue(secondPrice, decimals);
         }
@@ -779,7 +779,7 @@ public class Order extends KrakenManager.KrakenResponse {
          * No-any params required
          *
          * @return {@link #leverage} instance as {@link String}
-         **/
+         */
         public String getLeverage() {
             return leverage;
         }
@@ -789,7 +789,7 @@ public class Order extends KrakenManager.KrakenResponse {
          * No-any params required
          *
          * @return {@link #order} instance as {@link String}
-         **/
+         */
         public String getOrder() {
             return order;
         }
@@ -799,7 +799,7 @@ public class Order extends KrakenManager.KrakenResponse {
          * No-any params required
          *
          * @return {@link #close} instance as {@link String}
-         **/
+         */
         public String getClose() {
             return close;
         }

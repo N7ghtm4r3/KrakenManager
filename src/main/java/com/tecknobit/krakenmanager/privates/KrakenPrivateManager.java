@@ -19,42 +19,42 @@ import static com.tecknobit.apimanager.formatters.JsonHelper.getJSONObject;
  * @author N7ghtm4r3 - Tecknobit
  * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#section/General-Usage">
  * General-Usage</a>
- **/
+ */
 public class KrakenPrivateManager extends KrakenManager {
 
     /**
      * {@code API_KEY_HEADER} is constant for API-Key header
-     * **/
+     */
     public static final String API_KEY_HEADER = "API-Key";
 
     /**
      * {@code API_SIGN_HEADER} is constant for API-Sign header
-     * **/
+     */
     public static final String API_SIGN_HEADER = "API-Sign";
 
     /**
      * {@code CONTENT_TYPE_HEADER} is constant for Content-Type header
-     * **/
+     */
     public static final String CONTENT_TYPE_HEADER = "Content-Type";
 
     /**
      * {@code USER_AGENT_HEADER} is constant for User-Agent header
-     * **/
+     */
     public static final String USER_AGENT_HEADER = "User-Agent";
 
     /**
      * {@code apiKey} is the instance that contains api key of Kraken's platform
-     * **/
+     */
     protected final String apiKey;
 
     /**
      * {@code apiSign} is the instance that contains api sign of Kraken's platform
-     * **/
+     */
     protected final String apiSign;
 
     /**
      * {@code headers} is the instance that contains headers for private api requests
-     * **/
+     */
     private final Headers headers;
 
     /** Constructor to init a {@link KrakenPrivateManager}
@@ -62,7 +62,7 @@ public class KrakenPrivateManager extends KrakenManager {
      * @param requestTimeout: custom timeout for request
      * @param apiKey: api key of Kraken's platform
      * @param apiSign: api sign of Kraken's platform
-     **/
+     */
     public KrakenPrivateManager(String defaultErrorMessage, int requestTimeout, String apiKey, String apiSign) {
         super(defaultErrorMessage, requestTimeout);
         this.apiKey = apiKey;
@@ -75,7 +75,7 @@ public class KrakenPrivateManager extends KrakenManager {
      * @param defaultErrorMessage : custom error to show when is not a request error
      * @param apiKey: api key of Kraken's platform
      * @param apiSign: api sign of Kraken's platform
-     **/
+     */
     public KrakenPrivateManager(String defaultErrorMessage, String apiKey, String apiSign) {
         super(defaultErrorMessage);
         this.apiKey = apiKey;
@@ -88,7 +88,7 @@ public class KrakenPrivateManager extends KrakenManager {
      * @param requestTimeout : custom timeout for request
      * @param apiKey: api key of Kraken's platform
      * @param apiSign: api sign of Kraken's platform
-     **/
+     */
     public KrakenPrivateManager(int requestTimeout, String apiKey, String apiSign) {
         super(requestTimeout);
         this.apiKey = apiKey;
@@ -102,7 +102,7 @@ public class KrakenPrivateManager extends KrakenManager {
      *
      * @param apiKey:  api key of Kraken's platform
      * @param apiSign: api sign of Kraken's platform
-     **/
+     */
     public KrakenPrivateManager(String apiKey, String apiSign) {
         super();
         this.apiKey = apiKey;
@@ -126,7 +126,7 @@ public class KrakenPrivateManager extends KrakenManager {
      *        KrakenPrivateManager secondManager = new KrakenPrivateManager(); //same credentials used
      *     }
      * </pre>
-     **/
+     */
     public KrakenPrivateManager() {
         super();
         apiKey = properties.getProperty("apiKey");
@@ -144,7 +144,7 @@ public class KrakenPrivateManager extends KrakenManager {
      * @param requestTimeout:      custom timeout for request
      * @param apiKey:              api key of Kraken's platform
      * @param apiSign:             api sign of Kraken's platform
-     **/
+     */
     protected void storeProperties(String defaultErrorMessage, int requestTimeout, String apiKey, String apiSign) {
         storeProperties(defaultErrorMessage, requestTimeout);
         properties.setProperty("apiKey", apiKey);
@@ -155,7 +155,7 @@ public class KrakenPrivateManager extends KrakenManager {
     /**
      * Method to set base headers for request<br>
      * No-any params required
-     **/
+     */
     private void setHeaders() {
         headers.addHeader(API_KEY_HEADER, apiKey);
         headers.addHeader(CONTENT_TYPE_HEADER, "application/x-www-form-urlencoded; charset=utf-8'");
@@ -166,7 +166,7 @@ public class KrakenPrivateManager extends KrakenManager {
      * @param endpoint: endpoint of API request
      * @param bodyParams: body params of the HTTP api request
      * @return response as {@link String}
-     * **/
+     */
     public String sendPostRequest(String endpoint, Params bodyParams) throws Exception {
         if (bodyParams == null)
             bodyParams = new Params();
@@ -185,7 +185,7 @@ public class KrakenPrivateManager extends KrakenManager {
      * @param path: endpoint of the request es. Balance
      * @param data: payload of the request
      * @return signature value as {@link String} es. 4/dpxb3iT4tp/ZCVEwSnEsLxx0bqyhLpdfOpc6fn7OR8+UClSV5n9E6aSS8MPtnRfp32bAb0nmbRn6H8ndwLUQ==
-     * **/
+     */
     private String getSignature(String path, Params data) {
         try {
             Mac mac = Mac.getInstance(HMAC_SHA512_ALGORITHM);
@@ -203,7 +203,7 @@ public class KrakenPrivateManager extends KrakenManager {
      * No-any params required
      *
      * @return api key as {@link String}
-     **/
+     */
     public String getApiKey() {
         return apiKey;
     }
@@ -213,7 +213,7 @@ public class KrakenPrivateManager extends KrakenManager {
      * No-any params required
      *
      * @return api sign as {@link String}
-     **/
+     */
     public String getApiSign() {
         return apiSign;
     }

@@ -17,57 +17,57 @@ import static com.tecknobit.krakenmanager.publics.market.records.TickerInformati
  * @author N7ghtm4r3 - Tecknobit
  * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getTickerInformation">
  * Get Ticker Information</a>
- **/
+ */
 public class TickerInformation extends KrakenManager.KrakenResponse {
 
     /**
      * {@code symbol} is instance that memorizes symbol value
-     * **/
+     */
     private final String symbol;
 
     /**
      * {@code ask} is instance that memorizes ask value
-     * **/
+     */
     private final MarketAction ask;
 
     /**
      * {@code bid} is instance that memorizes bid value
-     * **/
+     */
     private final MarketAction bid;
 
     /**
      * {@code close} is instance that memorizes close value
-     * **/
+     */
     private final Trade close;
 
     /**
      * {@code volume} is instance that memorizes volume value
-     * **/
+     */
     private final MarketParam volume;
 
     /**
      * {@code volumeWeightedAvgPrice} is instance that memorizes weighted volume average price value
-     * **/
+     */
     private final MarketParam volumeWeightedAvgPrice;
 
     /**
      * {@code trades} is instance that memorizes trades value
-     * **/
+     */
     private final MarketParam trades;
 
     /**
      * {@code low} is instance that memorizes low value
-     * **/
+     */
     private final MarketParam low;
 
     /**
      * {@code high} is instance that memorizes high value
-     * **/
+     */
     private final MarketParam high;
 
     /**
      * {@code openPrice} is instance that memorizes open price value
-     * **/
+     */
     private final double openPrice;
 
     /** Constructor to init a {@link TickerInformation} object
@@ -82,7 +82,7 @@ public class TickerInformation extends KrakenManager.KrakenResponse {
      * @param low: low value
      * @param high: high value
      * @param openPrice: open price value
-     * **/
+     */
     public TickerInformation(String symbol, MarketAction ask, MarketAction bid, Trade close,
                              MarketParam volume, MarketParam volumeWeightedAvgPrice, MarketParam trades, MarketParam low,
                              MarketParam high, double openPrice) {
@@ -101,7 +101,7 @@ public class TickerInformation extends KrakenManager.KrakenResponse {
 
     /** Constructor to init a {@link TickerInformation} object
      * @param jsonTicker: base json response
-     * **/
+     */
     public TickerInformation(JSONObject jsonTicker) {
         super(jsonTicker);
         this.symbol = result.getJSONObjectSource().keys().next();
@@ -122,7 +122,7 @@ public class TickerInformation extends KrakenManager.KrakenResponse {
      * No-any params required
      *
      * @return {@link #symbol} instance as {@link String}
-     **/
+     */
     public String getSymbol() {
         return symbol;
     }
@@ -132,7 +132,7 @@ public class TickerInformation extends KrakenManager.KrakenResponse {
      * No-any params required
      *
      * @return {@link #ask} instance as {@link MarketAction}
-     **/
+     */
     public MarketAction getAsk() {
         return ask;
     }
@@ -142,7 +142,7 @@ public class TickerInformation extends KrakenManager.KrakenResponse {
      * No-any params required
      *
      * @return {@link #bid} instance as {@link MarketAction}
-     **/
+     */
     public MarketAction getBid() {
         return bid;
     }
@@ -152,7 +152,7 @@ public class TickerInformation extends KrakenManager.KrakenResponse {
      * No-any params required
      *
      * @return {@link #close} instance as {@link Trade}
-     **/
+     */
     public Trade getClose() {
         return close;
     }
@@ -162,7 +162,7 @@ public class TickerInformation extends KrakenManager.KrakenResponse {
      * No-any params required
      *
      * @return {@link #volume} instance as {@link MarketParam}
-     **/
+     */
     public MarketParam getVolume() {
         return volume;
     }
@@ -172,7 +172,7 @@ public class TickerInformation extends KrakenManager.KrakenResponse {
      * No-any params required
      *
      * @return {@link #volumeWeightedAvgPrice} instance as {@link MarketParam}
-     **/
+     */
     public MarketParam getVolumeWeightedAvgPrice() {
         return volumeWeightedAvgPrice;
     }
@@ -182,7 +182,7 @@ public class TickerInformation extends KrakenManager.KrakenResponse {
      * No-any params required
      *
      * @return {@link #trades} instance as {@link MarketParam}
-     **/
+     */
     public MarketParam getTrades() {
         return trades;
     }
@@ -192,7 +192,7 @@ public class TickerInformation extends KrakenManager.KrakenResponse {
      * No-any params required
      *
      * @return {@link #low} instance as {@link MarketParam}
-     **/
+     */
     public MarketParam getLow() {
         return low;
     }
@@ -202,7 +202,7 @@ public class TickerInformation extends KrakenManager.KrakenResponse {
      * No-any params required
      *
      * @return {@link #high} instance as {@link MarketParam}
-     **/
+     */
     public MarketParam getHigh() {
         return high;
     }
@@ -212,7 +212,7 @@ public class TickerInformation extends KrakenManager.KrakenResponse {
      * No-any params required
      *
      * @return {@link #openPrice} instance as double
-     **/
+     */
     public double getOpenPrice() {
         return openPrice;
     }
@@ -223,24 +223,24 @@ public class TickerInformation extends KrakenManager.KrakenResponse {
      * @param decimals: number of digits to round final value
      * @return {@link #openPrice} instance rounded with decimal digits inserted
      * @throws IllegalArgumentException if decimalDigits is negative
-     **/
+     */
     public double getOpenPrice(int decimals) {
         return roundValue(openPrice, decimals);
     }
 
     /**
      * The {@code Trade} class is useful to format a trade object
-     **/
+     */
     public static class Trade {
 
         /**
          * {@code price} is instance that memorizes price value
-         **/
+         */
         protected final double price;
 
         /**
          * {@code lotVolume} is instance that memorizes lot volume value
-         **/
+         */
         protected final double lotVolume;
 
         /**
@@ -248,7 +248,7 @@ public class TickerInformation extends KrakenManager.KrakenResponse {
          *
          * @param price:     price value
          * @param lotVolume: lot volume value
-         **/
+         */
         public Trade(double price, double lotVolume) {
             this.price = price;
             this.lotVolume = lotVolume;
@@ -259,7 +259,7 @@ public class TickerInformation extends KrakenManager.KrakenResponse {
          * No-any params required
          *
          * @return {@link #price} instance as double
-         **/
+         */
         public double getPrice() {
             return price;
         }
@@ -270,7 +270,7 @@ public class TickerInformation extends KrakenManager.KrakenResponse {
          * @param decimals: number of digits to round final value
          * @return {@link #price} instance rounded with decimal digits inserted
          * @throws IllegalArgumentException if decimalDigits is negative
-         **/
+         */
         public double getPrice(int decimals) {
             return roundValue(price, decimals);
         }
@@ -280,7 +280,7 @@ public class TickerInformation extends KrakenManager.KrakenResponse {
          * No-any params required
          *
          * @return {@link #lotVolume} instance as double
-         **/
+         */
         public double getLotVolume() {
             return lotVolume;
         }
@@ -291,7 +291,7 @@ public class TickerInformation extends KrakenManager.KrakenResponse {
          * @param decimals: number of digits to round final value
          * @return {@link #lotVolume} instance rounded with decimal digits inserted
          * @throws IllegalArgumentException if decimalDigits is negative
-         **/
+         */
         public double getLotVolume(int decimals) {
             return roundValue(lotVolume, decimals);
         }
@@ -301,7 +301,7 @@ public class TickerInformation extends KrakenManager.KrakenResponse {
          *
          * @param jsonTrade: obtained by response request
          * @return trade object as {@link Trade}
-         **/
+         */
         public static Trade assembleTrade(JSONArray jsonTrade) {
             int valuesLength = jsonTrade.length();
             final double[] values = new double[valuesLength];
@@ -326,12 +326,12 @@ public class TickerInformation extends KrakenManager.KrakenResponse {
     /**
      * The {@code MarketAction} class is useful to format a market action object <br>
      * This class represents ask and bid.
-     * **/
+     */
     public static class MarketAction extends Trade {
 
         /**
          * {@code wholeLotVolume} is instance that memorizes lot whole volume value
-         **/
+         */
         private final double wholeLotVolume;
 
         /**
@@ -340,7 +340,7 @@ public class TickerInformation extends KrakenManager.KrakenResponse {
          * @param price:          price value
          * @param lotVolume:      lot volume value
          * @param wholeLotVolume: lot whole volume value
-         **/
+         */
         public MarketAction(double price, double lotVolume, double wholeLotVolume) {
             super(price, lotVolume);
             this.wholeLotVolume = wholeLotVolume;
@@ -351,7 +351,7 @@ public class TickerInformation extends KrakenManager.KrakenResponse {
          * No-any params required
          *
          * @return {@link #wholeLotVolume} instance as double
-         **/
+         */
         public double getWholeLotVolume() {
             return wholeLotVolume;
         }
@@ -362,7 +362,7 @@ public class TickerInformation extends KrakenManager.KrakenResponse {
          * @param decimals: number of digits to round final value
          * @return {@link #wholeLotVolume} instance rounded with decimal digits inserted
          * @throws IllegalArgumentException if decimalDigits is negative
-         **/
+         */
         public double getWholeLotVolume(int decimals) {
             return roundValue(wholeLotVolume, decimals);
         }
@@ -372,7 +372,7 @@ public class TickerInformation extends KrakenManager.KrakenResponse {
          *
          * @param jsonMarket: obtained by response request
          * @return market action object as {@link MarketAction}
-         **/
+         */
         @Returner
         protected static MarketAction assembleMarketAction(JSONArray jsonMarket) {
             int valuesLength = jsonMarket.length();
@@ -382,32 +382,21 @@ public class TickerInformation extends KrakenManager.KrakenResponse {
             return new MarketAction(values[0], values[1], values[2]);
         }
 
-        /**
-         * Returns a string representation of the object <br>
-         * No-any params required
-         *
-         * @return a string representation of the object as {@link String}
-         */
-        @Override
-        public String toString() {
-            return new JSONObject(this).toString();
-        }
-
     }
 
     /**
      * The {@code MarketParam} class is useful to format a market param object
-     * **/
+     */
     public static class MarketParam {
 
         /**
          * {@code today} is instance that memorizes today value
-         **/
+         */
         private final double today;
 
         /**
          * {@code last24Hours} is instance that memorizes last 24 Hours value
-         **/
+         */
         private final double last24Hours;
 
         /**
@@ -415,7 +404,7 @@ public class TickerInformation extends KrakenManager.KrakenResponse {
          *
          * @param today:       today value
          * @param last24Hours: last 24 Hours value
-         **/
+         */
         public MarketParam(double today, double last24Hours) {
             this.today = today;
             this.last24Hours = last24Hours;
@@ -426,7 +415,7 @@ public class TickerInformation extends KrakenManager.KrakenResponse {
          * No-any params required
          *
          * @return {@link #today} instance as double
-         **/
+         */
         public double getToday() {
             return today;
         }
@@ -437,7 +426,7 @@ public class TickerInformation extends KrakenManager.KrakenResponse {
          * @param decimals: number of digits to round final value
          * @return {@link #today} instance rounded with decimal digits inserted
          * @throws IllegalArgumentException if decimalDigits is negative
-         **/
+         */
         public double getToday(int decimals) {
             return roundValue(today, decimals);
         }
@@ -447,7 +436,7 @@ public class TickerInformation extends KrakenManager.KrakenResponse {
          * No-any params required
          *
          * @return {@link #last24Hours} instance as double
-         **/
+         */
         public double getLast24Hours() {
             return last24Hours;
         }
@@ -458,7 +447,7 @@ public class TickerInformation extends KrakenManager.KrakenResponse {
          * @param decimals: number of digits to round final value
          * @return {@link #last24Hours} instance rounded with decimal digits inserted
          * @throws IllegalArgumentException if decimalDigits is negative
-         **/
+         */
         public double getLast24Hours(int decimals) {
             return roundValue(last24Hours, decimals);
         }
@@ -468,7 +457,7 @@ public class TickerInformation extends KrakenManager.KrakenResponse {
          *
          * @param jsonParam: obtained by response request
          * @return market param object as {@link MarketParam}
-         **/
+         */
         @Returner
         protected static MarketParam assembleMarketParam(JSONArray jsonParam) {
             int valuesLength = jsonParam.length();

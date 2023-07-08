@@ -11,22 +11,22 @@ import static java.lang.Long.parseLong;
  * @author N7ghtm4r3 - Tecknobit
  * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Funding/operation/getDepositAddresses">
  * Get Deposit Addresses</a>
- **/
+ */
 public class DepositAddress extends KrakenManager.KrakenResponse {
 
     /**
      * {@code address} is instance that memorizes deposit address
-     * **/
+     */
     private final String address;
 
     /**
      * {@code expireTime} is instance that memorizes expiration time in unix timestamp, or 0 if not expiring
-     **/
+     */
     private final long expireTime;
 
     /**
      * {@code newAddress} is flag that memorizes whether address has ever been used
-     **/
+     */
     private final boolean newAddress;
 
     /**
@@ -35,7 +35,7 @@ public class DepositAddress extends KrakenManager.KrakenResponse {
      * @param address:    deposit address
      * @param expireTime: expiration time in unix timestamp, or 0 if not expiring
      * @param newAddress: whether address has ever been used
-     **/
+     */
     public DepositAddress(String address, long expireTime, boolean newAddress) {
         super(null);
         this.address = address;
@@ -46,7 +46,7 @@ public class DepositAddress extends KrakenManager.KrakenResponse {
     /**
      * Constructor to init a {@link DepositAddress} object
      * @param jsonResponse: base json response
-     **/
+     */
     public DepositAddress(JSONObject jsonResponse) {
         super(jsonResponse);
         address = result.getString("address");
@@ -59,7 +59,7 @@ public class DepositAddress extends KrakenManager.KrakenResponse {
      * No-any params required
      *
      * @return {@link #address} instance as {@link String}
-     **/
+     */
     public String getAddress() {
         return address;
     }
@@ -69,7 +69,7 @@ public class DepositAddress extends KrakenManager.KrakenResponse {
      * No-any params required
      *
      * @return {@link #expireTime} instance as long
-     **/
+     */
     public long getExpireTime() {
         return expireTime;
     }
@@ -79,7 +79,7 @@ public class DepositAddress extends KrakenManager.KrakenResponse {
      * No-any params required
      *
      * @return {@link #newAddress} instance as boolean
-     **/
+     */
     public boolean getNewAddress() {
         return newAddress;
     }

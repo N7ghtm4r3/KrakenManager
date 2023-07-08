@@ -11,97 +11,97 @@ import static com.tecknobit.apimanager.trading.TradingTools.roundValue;
  * @author N7ghtm4r3 - Tecknobit
  * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Data/operation/getOpenPositions">
  * Get Open Positions</a>
- **/
+ */
 public class OpenPosition extends KrakenManager.KrakenResponse {
 
     /**
      * {@code positionId} is instance that memorizes position identifier value
-     * **/
+     */
     private final String positionId;
 
     /**
      * {@code orderTransactionId} is instance that memorizes order id responsible for the position
-     * **/
+     */
     private final String orderTransactionId;
 
     /**
      * {@code postStatus} is instance that memorizes position status
-     * **/
+     */
     private final String postStatus;
 
     /**
      * {@code pair} is instance that memorizes asset pair value
-     * **/
+     */
     private final String pair;
 
     /**
      * {@code time} is instance that memorizes {@code "UNIX"} timestamp of trade
-     **/
+     */
     private final long time;
 
     /**
      * {@code type} is instance that memorizes direction (buy/sell) of position
-     * **/
+     */
     private final String type;
 
     /**
      * {@code orderType} is instance that memorizes order type used to open position
-     * **/
+     */
     private final String orderType;
 
     /**
      * {@code cost} is instance that memorizes opening cost of position (in quote currency)
-     * **/
+     */
     private final double cost;
 
     /**
      * {@code fee} is instance that memorizes opening fee of position (in quote currency)
-     * **/
+     */
     private final double fee;
 
     /**
      * {@code vol} is instance that memorizes position opening size (in base currency)
-     * **/
+     */
     private final double vol;
 
     /**
      * {@code volClosed} is instance that memorizes quantity closed (in base currency)
-     * **/
+     */
     private final double volClosed;
 
     /**
      * {@code margin} is instance that memorizes initial margin consumed (in quote currency)
-     * **/
+     */
     private final double margin;
 
     /**
      * {@code value} is instance that memorizes current value of remaining position (if docalcs requested)
-     * **/
+     */
     private final double value;
 
     /**
      * {@code net} is instance that memorizes unrealised {@code "{@code "P&L"}"} of remaining position (if docalcs requested)
-     * **/
+     */
     private final double net;
 
     /**
      * {@code terms} is instance that memorizes funding cost and term of position
-     * **/
+     */
     private final String terms;
 
     /**
      * {@code rolloverTerm} is instance that memorizes timestamp of next margin rollover fee
-     * **/
+     */
     private final long rolloverTerm;
 
     /**
      * {@code misc} is instance that memorizes comma delimited list of add'l info
-     * **/
+     */
     private final String misc;
 
     /**
      * {@code oFlags} is instance that memorizes comma delimited list of opening order flags
-     * **/
+     */
     private final String oFlags;
 
     /** Constructor to init a {@link OpenPosition} object
@@ -123,7 +123,7 @@ public class OpenPosition extends KrakenManager.KrakenResponse {
      * @param rolloverTerm: timestamp of next margin rollover fee
      * @param misc: comma delimited list of add'l info
      * @param oFlags: comma delimited list of opening order flags
-     **/
+     */
     public OpenPosition(String positionId, String orderTransactionId, String postStatus, String pair, long time,
                         String type, String orderType, double cost, double fee, double vol, double volClosed, double margin,
                         double value, double net, String terms, long rolloverTerm, String misc, String oFlags) {
@@ -150,7 +150,7 @@ public class OpenPosition extends KrakenManager.KrakenResponse {
 
     /** Constructor to init a {@link OpenPosition} object
      * @param jsonResponse: base json response
-     **/
+     */
     public OpenPosition(JSONObject jsonResponse) {
         super(jsonResponse);
         positionId = result.getString("positionId");
@@ -178,7 +178,7 @@ public class OpenPosition extends KrakenManager.KrakenResponse {
      * No-any params required
      *
      * @return {@link #positionId} instance as {@link String}
-     **/
+     */
     public String getPositionId() {
         return positionId;
     }
@@ -188,7 +188,7 @@ public class OpenPosition extends KrakenManager.KrakenResponse {
      * No-any params required
      *
      * @return {@link #orderTransactionId} instance as {@link String}
-     **/
+     */
     public String getOrderTransactionId() {
         return orderTransactionId;
     }
@@ -198,7 +198,7 @@ public class OpenPosition extends KrakenManager.KrakenResponse {
      * No-any params required
      *
      * @return {@link #pair} instance as {@link String}
-     **/
+     */
     public String getPair() {
         return pair;
     }
@@ -208,7 +208,7 @@ public class OpenPosition extends KrakenManager.KrakenResponse {
      * No-any params required
      *
      * @return {@link #time} instance as long
-     **/
+     */
     public long getTime() {
         return time;
     }
@@ -218,7 +218,7 @@ public class OpenPosition extends KrakenManager.KrakenResponse {
      * No-any params required
      *
      * @return {@link #type} instance as {@link String}
-     **/
+     */
     public String getType() {
         return type;
     }
@@ -228,7 +228,7 @@ public class OpenPosition extends KrakenManager.KrakenResponse {
      * No-any params required
      *
      * @return {@link #orderType} instance as {@link String}
-     **/
+     */
     public String getOrderType() {
         return orderType;
     }
@@ -238,7 +238,7 @@ public class OpenPosition extends KrakenManager.KrakenResponse {
      * No-any params required
      *
      * @return {@link #cost} instance as double
-     **/
+     */
     public double getCost() {
         return cost;
     }
@@ -249,7 +249,7 @@ public class OpenPosition extends KrakenManager.KrakenResponse {
      * @param decimals: number of digits to round final value
      * @return {@link #cost} instance rounded with decimal digits inserted
      * @throws IllegalArgumentException if decimalDigits is negative
-     **/
+     */
     public double getCost(int decimals) {
         return roundValue(cost, decimals);
     }
@@ -259,7 +259,7 @@ public class OpenPosition extends KrakenManager.KrakenResponse {
      * No-any params required
      *
      * @return {@link #fee} instance as double
-     **/
+     */
     public double getFee() {
         return fee;
     }
@@ -270,7 +270,7 @@ public class OpenPosition extends KrakenManager.KrakenResponse {
      * @param decimals: number of digits to round final value
      * @return {@link #fee} instance rounded with decimal digits inserted
      * @throws IllegalArgumentException if decimalDigits is negative
-     **/
+     */
     public double getFee(int decimals) {
         return roundValue(fee, decimals);
     }
@@ -280,7 +280,7 @@ public class OpenPosition extends KrakenManager.KrakenResponse {
      * No-any params required
      *
      * @return {@link #vol} instance as double
-     **/
+     */
     public double getVol() {
         return vol;
     }
@@ -291,7 +291,7 @@ public class OpenPosition extends KrakenManager.KrakenResponse {
      * @param decimals: number of digits to round final value
      * @return {@link #vol} instance rounded with decimal digits inserted
      * @throws IllegalArgumentException if decimalDigits is negative
-     **/
+     */
     public double getVol(int decimals) {
         return roundValue(vol, decimals);
     }
@@ -301,7 +301,7 @@ public class OpenPosition extends KrakenManager.KrakenResponse {
      * No-any params required
      *
      * @return {@link #volClosed} instance as double
-     **/
+     */
     public double getVolClosed() {
         return volClosed;
     }
@@ -312,7 +312,7 @@ public class OpenPosition extends KrakenManager.KrakenResponse {
      * @param decimals: number of digits to round final value
      * @return {@link #volClosed} instance rounded with decimal digits inserted
      * @throws IllegalArgumentException if decimalDigits is negative
-     **/
+     */
     public double getVolClosed(int decimals) {
         return roundValue(volClosed, decimals);
     }
@@ -322,7 +322,7 @@ public class OpenPosition extends KrakenManager.KrakenResponse {
      * No-any params required
      *
      * @return {@link #margin} instance as double
-     **/
+     */
     public double getMargin() {
         return margin;
     }
@@ -333,7 +333,7 @@ public class OpenPosition extends KrakenManager.KrakenResponse {
      * @param decimals: number of digits to round final value
      * @return {@link #margin} instance rounded with decimal digits inserted
      * @throws IllegalArgumentException if decimalDigits is negative
-     **/
+     */
     public double getMargin(int decimals) {
         return roundValue(margin, decimals);
     }
@@ -343,7 +343,7 @@ public class OpenPosition extends KrakenManager.KrakenResponse {
      * No-any params required
      *
      * @return {@link #value} instance as double
-     **/
+     */
     public double getValue() {
         return value;
     }
@@ -354,7 +354,7 @@ public class OpenPosition extends KrakenManager.KrakenResponse {
      * @param decimals: number of digits to round final value
      * @return {@link #value} instance rounded with decimal digits inserted
      * @throws IllegalArgumentException if decimalDigits is negative
-     **/
+     */
     public double getValue(int decimals) {
         return roundValue(value, decimals);
     }
@@ -364,7 +364,7 @@ public class OpenPosition extends KrakenManager.KrakenResponse {
      * No-any params required
      *
      * @return {@link #net} instance as double
-     **/
+     */
     public double getNet() {
         return net;
     }
@@ -375,7 +375,7 @@ public class OpenPosition extends KrakenManager.KrakenResponse {
      * @param decimals: number of digits to round final value
      * @return {@link #net} instance rounded with decimal digits inserted
      * @throws IllegalArgumentException if decimalDigits is negative
-     **/
+     */
     public double getNet(int decimals) {
         return roundValue(net, decimals);
     }
@@ -385,7 +385,7 @@ public class OpenPosition extends KrakenManager.KrakenResponse {
      * No-any params required
      *
      * @return {@link #terms} instance as {@link String}
-     **/
+     */
     public String getTerms() {
         return terms;
     }
@@ -395,7 +395,7 @@ public class OpenPosition extends KrakenManager.KrakenResponse {
      * No-any params required
      *
      * @return {@link #rolloverTerm} instance as long
-     **/
+     */
     public long getRolloverTerm() {
         return rolloverTerm;
     }
@@ -405,7 +405,7 @@ public class OpenPosition extends KrakenManager.KrakenResponse {
      * No-any params required
      *
      * @return {@link #misc} instance as {@link String}
-     **/
+     */
     public String getMisc() {
         return misc;
     }
@@ -415,7 +415,7 @@ public class OpenPosition extends KrakenManager.KrakenResponse {
      * No-any params required
      *
      * @return {@link #oFlags} instance as {@link String}
-     **/
+     */
     public String getoFlags() {
         return oFlags;
     }

@@ -9,23 +9,23 @@ import org.json.JSONObject;
  * @author N7ghtm4r3 - Tecknobit
  * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/Websockets-Authentication/operation/getWebsocketsToken">
  * Get Websockets Token</a>
- **/
+ */
 public class WebsocketsToken extends KrakenManager.KrakenResponse {
 
     /**
      * {@code token} is instance that memorizes websockets token
-     * **/
+     */
     private final String token;
 
     /**
      * {@code expires} is instance that memorizes time (in seconds) after which the token expires
-     * **/
+     */
     private final int expires;
 
     /** Constructor to init a {@link WebsocketsToken} object
      * @param token: memorizes websockets token
      * @param expires: time (in seconds) after which the token expires
-     **/
+     */
     public WebsocketsToken(String token, int expires) {
         super(null);
         this.token = token;
@@ -35,7 +35,7 @@ public class WebsocketsToken extends KrakenManager.KrakenResponse {
     /**
      * Constructor to init a {@link WebsocketsToken} object
      * @param jsonResponse : base json response
-     **/
+     */
     public WebsocketsToken(JSONObject jsonResponse) {
         super(jsonResponse);
         token = result.getString("token");
@@ -47,7 +47,7 @@ public class WebsocketsToken extends KrakenManager.KrakenResponse {
      * No-any params required
      *
      * @return {@link #token} instance as {@link String}
-     **/
+     */
     public String getToken() {
         return token;
     }
@@ -57,7 +57,7 @@ public class WebsocketsToken extends KrakenManager.KrakenResponse {
      * No-any params required
      *
      * @return {@link #expires} instance as int
-     **/
+     */
     public int getExpires() {
         return expires;
     }

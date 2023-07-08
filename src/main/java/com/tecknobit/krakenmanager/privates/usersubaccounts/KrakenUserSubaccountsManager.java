@@ -16,17 +16,17 @@ import static com.tecknobit.krakenmanager.KrakenManager.ReturnFormat.LIBRARY_OBJ
  * @author N7ghtm4r3 - Tecknobit
  * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Subaccounts">
  * User Subaccounts</a>
- **/
+ */
 public class KrakenUserSubaccountsManager extends KrakenPrivateManager {
 
     /**
      * {@code CREATE_SUBACCOUNT_ENDPOINT} is constant for CREATE_SUBACCOUNT_ENDPOINT's endpoint
-     **/
+     */
     public static final String CREATE_SUBACCOUNT_ENDPOINT = "CreateSubaccount";
 
     /**
      * {@code ACCOUNT_TRANSFER_ENDPOINT} is constant for ACCOUNT_TRANSFER_ENDPOINT's endpoint
-     **/
+     */
     public static final String ACCOUNT_TRANSFER_ENDPOINT = "AccountTransfer";
 
     /**
@@ -36,7 +36,7 @@ public class KrakenUserSubaccountsManager extends KrakenPrivateManager {
      * @param requestTimeout      : custom timeout for request
      * @param apiKey              : api key of Kraken's platform
      * @param apiSign             : api sign of Kraken's platform
-     **/
+     */
     public KrakenUserSubaccountsManager(String defaultErrorMessage, int requestTimeout, String apiKey, String apiSign) {
         super(defaultErrorMessage, requestTimeout, apiKey, apiSign);
     }
@@ -47,7 +47,7 @@ public class KrakenUserSubaccountsManager extends KrakenPrivateManager {
      * @param defaultErrorMessage : custom error to show when is not a request error
      * @param apiKey              : api key of Kraken's platform
      * @param apiSign             : api sign of Kraken's platform
-     **/
+     */
     public KrakenUserSubaccountsManager(String defaultErrorMessage, String apiKey, String apiSign) {
         super(defaultErrorMessage, apiKey, apiSign);
     }
@@ -58,7 +58,7 @@ public class KrakenUserSubaccountsManager extends KrakenPrivateManager {
      * @param requestTimeout : custom timeout for request
      * @param apiKey         : api key of Kraken's platform
      * @param apiSign        : api sign of Kraken's platform
-     **/
+     */
     public KrakenUserSubaccountsManager(int requestTimeout, String apiKey, String apiSign) {
         super(requestTimeout, apiKey, apiSign);
     }
@@ -68,7 +68,7 @@ public class KrakenUserSubaccountsManager extends KrakenPrivateManager {
      *
      * @param apiKey  :  api key of Kraken's platform
      * @param apiSign : api sign of Kraken's platform
-     **/
+     */
     public KrakenUserSubaccountsManager(String apiKey, String apiSign) {
         super(apiKey, apiSign);
     }
@@ -88,7 +88,7 @@ public class KrakenUserSubaccountsManager extends KrakenPrivateManager {
      *        KrakenPrivateManager secondManager = new KrakenPrivateManager(); //same credentials used
      *     }
      * </pre>
-     **/
+     */
     public KrakenUserSubaccountsManager() {
         super();
     }
@@ -113,7 +113,7 @@ public class KrakenUserSubaccountsManager extends KrakenPrivateManager {
      *                   </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Subaccounts/operation/createSubaccount">
      * Create Subaccount</a>
-     **/
+     */
     @Wrapper
     @RequestPath(method = POST, path = "https://api.kraken.com/0/private/CreateSubaccount")
     public boolean createSubaccount(String username, String email) throws Exception {
@@ -141,7 +141,7 @@ public class KrakenUserSubaccountsManager extends KrakenPrivateManager {
      *                   </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Subaccounts/operation/createSubaccount">
      * Create Subaccount</a>
-     **/
+     */
     @Returner
     @RequestPath(method = POST, path = "https://api.kraken.com/0/private/CreateSubaccount")
     public <T> T createSubaccount(String username, String email, ReturnFormat format) throws Exception {
@@ -181,7 +181,7 @@ public class KrakenUserSubaccountsManager extends KrakenPrivateManager {
      *                   </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Subaccounts/operation/accountTransfer">
      * Account Transfer</a>
-     **/
+     */
     @Wrapper
     @RequestPath(method = POST, path = "https://api.kraken.com/0/private/AccountTransfer")
     public AccountTransfer execAccountTransfer(String asset, double amount, String from, String to) throws Exception {
@@ -211,7 +211,7 @@ public class KrakenUserSubaccountsManager extends KrakenPrivateManager {
      *                   </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Subaccounts/operation/accountTransfer">
      * Account Transfer</a>
-     **/
+     */
     @Returner
     @RequestPath(method = POST, path = "https://api.kraken.com/0/private/AccountTransfer")
     public <T> T execAccountTransfer(String asset, double amount, String from, String to, ReturnFormat format) throws Exception {

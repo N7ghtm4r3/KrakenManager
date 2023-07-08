@@ -18,19 +18,19 @@ import org.json.JSONObject;
  *           Cancel Order Batch</a>
  *    </li>
  * </ul>
- **/
+ */
 public class OrderCancelled extends KrakenManager.KrakenResponse {
 
     /**
      * {@code count} is instance that memorizes count of the orders cancelled
-     * **/
+     */
     protected final int count;
 
     /**
      * Constructor to init a {@link OrderCancelled} object
      *
      * @param count: count value
-     **/
+     */
     public OrderCancelled(int count) {
         super(null);
         this.count = count;
@@ -40,7 +40,7 @@ public class OrderCancelled extends KrakenManager.KrakenResponse {
      * Constructor to init a {@link OrderCancelled} object
      *
      * @param jsonResponse: base json response
-     **/
+     */
     public OrderCancelled(JSONObject jsonResponse) {
         super(jsonResponse);
         count = result.getInt("count", 0);
@@ -51,7 +51,7 @@ public class OrderCancelled extends KrakenManager.KrakenResponse {
      * No-any params required
      *
      * @return {@link #count} instance as int
-     **/
+     */
     public int getCount() {
         return count;
     }

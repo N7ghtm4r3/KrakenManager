@@ -8,12 +8,12 @@ import org.json.JSONObject;
  * @author N7ghtm4r3 - Tecknobit
  * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/cancelOrder">
  * Cancel Order</a>
- **/
+ */
 public class OrderCancelledStatus extends OrderCancelled {
 
     /**
      * {@code pending} is flag that memorizes if order cancelation is pending or not
-     * **/
+     */
     private final boolean pending;
 
     /**
@@ -21,7 +21,7 @@ public class OrderCancelledStatus extends OrderCancelled {
      *
      * @param count:   count of the orders cancelled
      * @param pending: flag that memorizes if order cancelation is pending or not
-     **/
+     */
     public OrderCancelledStatus(int count, boolean pending) {
         super(count);
         this.pending = pending;
@@ -31,7 +31,7 @@ public class OrderCancelledStatus extends OrderCancelled {
      * Constructor to init a {@link OrderCancelledStatus} object
      *
      * @param jsonResponse: base json response
-     **/
+     */
     public OrderCancelledStatus(JSONObject jsonResponse) {
         super(jsonResponse);
         pending = result.getBoolean("pending");
@@ -42,7 +42,7 @@ public class OrderCancelledStatus extends OrderCancelled {
      * No-any params required
      *
      * @return {@link #pending} instance as boolean
-     **/
+     */
     public boolean isPending() {
         return pending;
     }

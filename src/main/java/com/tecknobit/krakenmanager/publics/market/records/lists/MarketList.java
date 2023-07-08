@@ -24,17 +24,17 @@ import java.util.ArrayList;
  *    </li>
  * </ul>
  * @author N7ghtm4r3 - Tecknobit
- * **/
+ */
 public class MarketList extends KrakenManager.KrakenResponse {
 
     /**
      * {@code last} is instance that memorizes last timestamp value
-     * **/
+     */
     protected long last;
 
     /**
      * {@code symbol} is instance that memorizes symbol value
-     * **/
+     */
     protected String symbol;
 
     /**
@@ -42,7 +42,7 @@ public class MarketList extends KrakenManager.KrakenResponse {
      *
      * @param last:   last timestamp value
      * @param symbol: symbol value
-     **/
+     */
     public MarketList(long last, String symbol) {
         super(null);
         this.last = last;
@@ -51,7 +51,7 @@ public class MarketList extends KrakenManager.KrakenResponse {
 
     /** Constructor to init a {@link MarketList} object
      * @param jsonResponse: base json response
-     * **/
+     */
     public MarketList(JSONObject jsonResponse) {
         super(jsonResponse);
         ArrayList<String> keys = new ArrayList<>(result.getJSONObjectSource().keySet());
@@ -69,7 +69,7 @@ public class MarketList extends KrakenManager.KrakenResponse {
      * No-any params required
      *
      * @return {@link #last} instance as long
-     **/
+     */
     public long getLast() {
         return last;
     }
@@ -79,7 +79,7 @@ public class MarketList extends KrakenManager.KrakenResponse {
      * No-any params required
      *
      * @return {@link #symbol} instance as {@link String}
-     **/
+     */
     public String getSymbol() {
         return symbol;
     }

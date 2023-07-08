@@ -9,22 +9,22 @@ import org.json.JSONObject;
  * @author N7ghtm4r3 - Tecknobit
  * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/addOrderBatch">
  * Add Order Batch</a>
- **/
+ */
 public class OrderBatch extends KrakenManager.KrakenResponse {
 
     /**
      * {@code order} is instance that memorizes order value
-     * **/
+     */
     private final String order;
 
     /**
      * {@code txId} is instance that memorizes transaction identifier for order
-     **/
+     */
     private final String txId;
 
     /**
      * {@code close} is instance that memorizes close value
-     **/
+     */
     private final String close;
 
     /**
@@ -33,7 +33,7 @@ public class OrderBatch extends KrakenManager.KrakenResponse {
      * @param order: order value
      * @param txId:  transaction identifier for order
      * @param close: close value
-     **/
+     */
     public OrderBatch(String order, String txId, String close) {
         super(null);
         this.order = order;
@@ -44,7 +44,7 @@ public class OrderBatch extends KrakenManager.KrakenResponse {
     /**
      * Constructor to init a {@link OrderBatch} object
      * @param jsonResponse: base json response
-     **/
+     */
     public OrderBatch(JSONObject jsonResponse) {
         super(jsonResponse);
         order = result.getString("order");
@@ -57,7 +57,7 @@ public class OrderBatch extends KrakenManager.KrakenResponse {
      * No-any params required
      *
      * @return {@link #order} instance as {@link String}
-     **/
+     */
     public String getOrder() {
         return order;
     }
@@ -67,7 +67,7 @@ public class OrderBatch extends KrakenManager.KrakenResponse {
      * No-any params required
      *
      * @return {@link #txId} instance as {@link String}
-     **/
+     */
     public String getTxId() {
         return txId;
     }
@@ -77,7 +77,7 @@ public class OrderBatch extends KrakenManager.KrakenResponse {
      * No-any params required
      *
      * @return {@link #close} instance as {@link String}
-     **/
+     */
     public String getClose() {
         return close;
     }

@@ -10,39 +10,39 @@ import java.util.ArrayList;
  * @author N7ghtm4r3 - Tecknobit
  * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Data/operation/getClosedOrders">
  * Get Closed Orders</a>
- **/
+ */
 public class ClosedOrder extends Order {
 
     /**
      * {@code "CloseTime"} close-time list of types
-     * **/
+     */
     public enum CloseTime {
 
         /**
          * {@code "open"} close-time type
-         **/
+         */
         open,
 
         /**
          * {@code "close"} time type
-         **/
+         */
         close,
 
         /**
          * {@code "both"} close-time type
-         **/
+         */
         both
 
     }
 
     /**
      * {@code closeTime} is instance that memorizes close time value
-     * **/
+     */
     private final long closeTime;
 
     /**
      * {@code closeTime} is instance that memorizes reason value
-     * **/
+     */
     private final String reason;
 
     /** Constructor to init a {@link ClosedOrder} object
@@ -67,7 +67,7 @@ public class ClosedOrder extends Order {
      * @param trades: list of trades id
      * @param closeTime: close time value
      * @param reason: reason value
-     **/
+     */
     public ClosedOrder(long refId, long userRef, OrderStatus status, long openTime, long startTime, long expireTime,
                        OrderDescription orderDescription, double volume, double executedVolume, double cost, double fee,
                        double price, double stopPrice, double limitPrice, String trigger, String misc, String oFlags,
@@ -82,7 +82,7 @@ public class ClosedOrder extends Order {
      * Constructor to init a {@link ClosedOrder}
      *
      * @param jsonResponse: base json response
-     **/
+     */
     public ClosedOrder(JSONObject jsonResponse) {
         super(jsonResponse);
         closeTime = result.getLong("closetm", 0);
@@ -94,7 +94,7 @@ public class ClosedOrder extends Order {
      * No-any params required
      *
      * @return {@link #closeTime} instance as long
-     **/
+     */
     public long getCloseTime() {
         return closeTime;
     }
@@ -104,7 +104,7 @@ public class ClosedOrder extends Order {
      * No-any params required
      *
      * @return {@link #reason} instance as {@link String}
-     **/
+     */
     public String getReason() {
         return reason;
     }

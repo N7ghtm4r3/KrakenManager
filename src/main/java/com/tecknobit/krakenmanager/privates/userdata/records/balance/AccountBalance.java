@@ -14,19 +14,19 @@ import static com.tecknobit.apimanager.trading.TradingTools.roundValue;
  * @author N7ghtm4r3 - Tecknobit
  * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Data/operation/getAccountBalance">
  * Get Account Balance</a>
- **/
+ */
 public class AccountBalance extends KrakenManager.KrakenResponse {
 
     /**
      * {@code wallet} is instance that memorizes wallet
-     **/
+     */
     private final Wallet wallet;
 
     /**
      * Constructor to init an {@link AccountBalance} object
      *
      * @param jsonResponse: base json response
-     **/
+     */
     public AccountBalance(JSONObject jsonResponse) {
         super(jsonResponse);
         this.wallet = new Wallet(getResult());
@@ -37,26 +37,26 @@ public class AccountBalance extends KrakenManager.KrakenResponse {
      * No-any params required
      *
      * @return {@link #wallet} instance as {@link Wallet}
-     **/
+     */
     public Wallet getWallet() {
         return wallet;
     }
 
     /**
      * {@code Wallet} is class useful to format wallet details as custom object
-     **/
+     */
     public static class Wallet {
 
         /**
          * {@code wallet} is instance that memorizes assets as keys and their balances as values
-         **/
+         */
         private final HashMap<String, BalanceAsset> wallet;
 
         /**
          * Constructor to init a {@link Wallet} object
          *
          * @param jsonWallet : wallet data in {@code "JSON"} format
-         **/
+         */
         public Wallet(JSONObject jsonWallet) {
             wallet = new HashMap<>();
             for (String asset : jsonWallet.keySet())
@@ -67,7 +67,7 @@ public class AccountBalance extends KrakenManager.KrakenResponse {
          * @param asset: asset name es. ZUSD
          * @param balance: balance value of asset's address
          * @throws IllegalArgumentException when balance value is a negative value
-         * **/
+         */
         public void insertAsset(String asset, double balance){
             wallet.put(asset, new BalanceAsset(asset, balance));
         }
@@ -78,7 +78,7 @@ public class AccountBalance extends KrakenManager.KrakenResponse {
          * @param asset:            asset name es. ZUSD
          * @param balanceRefreshed: new balance value of asset's address
          * @throws IllegalArgumentException when balance value is a negative value
-         **/
+         */
         public void refreshAssetBalance(String asset, double balanceRefreshed) {
             wallet.replace(asset, new BalanceAsset(asset, balanceRefreshed));
         }
@@ -87,7 +87,7 @@ public class AccountBalance extends KrakenManager.KrakenResponse {
          * Method to remove a {@link BalanceAsset} from list
          *
          * @param assetToRemove: asset name to remove from assets list es ZUSD
-         **/
+         */
         public void removeAsset(String assetToRemove) {
             wallet.remove(assetToRemove);
         }
@@ -97,7 +97,7 @@ public class AccountBalance extends KrakenManager.KrakenResponse {
          * No-any params required
          *
          * @return balances of assets as {@link ArrayList} of {@link BalanceAsset} custom object
-         **/
+         */
         public ArrayList<BalanceAsset> getAssets() {
             ArrayList<BalanceAsset> balanceAssets = new ArrayList<>();
             for (String asset : wallet.keySet())
@@ -108,7 +108,7 @@ public class AccountBalance extends KrakenManager.KrakenResponse {
         /** Method to get single {@link BalanceAsset} from list
          * @param asset: asset name es. ZUSD
          * @return balance of asset as {@link BalanceAsset} custom object
-         * **/
+         */
         public BalanceAsset getAsset(String asset){
             BalanceAsset balanceAssetCoin = wallet.get(asset);
             if(balanceAssetCoin == null)
@@ -119,7 +119,7 @@ public class AccountBalance extends KrakenManager.KrakenResponse {
         /** Method to total balance of user's account <br>
          * No-any params required
          * @return total balance as double
-         * **/
+         */
         public double getTotalBalance() {
             double walletBalance = 0;
             for (BalanceAsset asset : wallet.values())
@@ -133,24 +133,24 @@ public class AccountBalance extends KrakenManager.KrakenResponse {
          * @param decimals: number of digits to round final value
          * @return total balance instance rounded with decimal digits inserted
          * @throws IllegalArgumentException if decimalDigits is negative
-         **/
+         */
         public double getPrice(int decimals) {
             return roundValue(getTotalBalance(), decimals);
         }
 
         /**
          * {@code BalanceAsset} is class useful to format balance asset details as custom object
-         **/
+         */
         public static class BalanceAsset {
 
             /**
              * {@code asset} is instance that memorizes asset value
-             * **/
+             */
             private final String asset;
 
             /**
              * {@code balance} is instance that memorizes balance value
-             * **/
+             */
             private double balance;
 
             /**
@@ -158,7 +158,7 @@ public class AccountBalance extends KrakenManager.KrakenResponse {
              * @param asset: asset name es. ZUSD
              * @param balance: balance value of asset's address
              * @throws IllegalArgumentException when balance value is a negative value
-             **/
+             */
             public BalanceAsset(String asset, double balance) {
                 this.asset = asset;
                 if (balance < 0)
@@ -172,7 +172,7 @@ public class AccountBalance extends KrakenManager.KrakenResponse {
              * No-any params required
              *
              * @return {@link #asset} instance as {@link String}
-             **/
+             */
             public String getAsset() {
                 return asset;
             }
@@ -182,7 +182,7 @@ public class AccountBalance extends KrakenManager.KrakenResponse {
              * No-any params required
              *
              * @return {@link #balance} instance as double
-             **/
+             */
             public double getBalance() {
                 return balance;
             }
@@ -193,7 +193,7 @@ public class AccountBalance extends KrakenManager.KrakenResponse {
              * @param decimals: number of digits to round final value
              * @return {@link #balance} instance rounded with decimal digits inserted
              * @throws IllegalArgumentException if decimalDigits is negative
-             **/
+             */
             public double getBalance(int decimals) {
                 return roundValue(balance, decimals);
             }
@@ -203,7 +203,7 @@ public class AccountBalance extends KrakenManager.KrakenResponse {
              *
              * @param refreshedBalance: new balance value of asset's address
              * @throws IllegalArgumentException when balance value is a negative value
-             **/
+             */
             public void refreshBalance(double refreshedBalance) {
                 if (refreshedBalance < 0)
                     throw new IllegalArgumentException("Balance value cannot be lesser than 0");

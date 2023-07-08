@@ -25,87 +25,87 @@ import org.json.JSONObject;
  *    </li>
  * </ul>
  * @author N7ghtm4r3 - Tecknobit
- * **/
+ */
 public class ReportStatus extends KrakenManager.KrakenResponse {
 
     /**
      * {@code TRADES_REPORT} is constant for trades report type
-     * **/
+     */
     public static final String TRADES_REPORT = "trades";
 
     /**
      * {@code LEDGERS_REPORT} is constant for ledgers report type
-     * **/
+     */
     public static final String LEDGERS_REPORT = "ledgers";
 
     /**
      * {@code ALL_FIELDS} is constant for all fields type
-     * **/
+     */
     public static final String ALL_FIELDS = "all";
 
     /**
      * {@code TRADES_FIELDS} is constant for trades fields type
-     * **/
+     */
     public static final String TRADES_FIELDS = TRADES_REPORT;
 
     /**
      * {@code LEDGERS_FIELDS} is constant for ledgers fields type
-     * **/
+     */
     public static final String LEDGERS_FIELDS = LEDGERS_REPORT;
 
     /**
      * {@code format} is instance that memorizes format value
-     **/
+     */
     private final ReportFormat format;
     /**
      * {@code createTimestamp} is instance that memorizes {@code "UNIX"} timestamp of report request
-     **/
+     */
     private final long createTimestamp;
     /**
      * {@code startTimestamp} is instance that memorizes {@code "UNIX"} timestamp report processing began
-     **/
+     */
     private final long startTimestamp;
 
     /**
      * {@code reportId} is instance that memorizes report identifier value
-     **/
+     */
     private final String reportId;
 
     /**
      * {@code description} is instance that memorizes description value
-     **/
+     */
     private final String description;
     /**
      * {@code completedTimestamp} is instance that memorizes {@code "UNIX"} timestamp report processing finished
-     **/
+     */
     private final long completedTimestamp;
 
     /**
      * {@code report} is instance that memorizes report value
-     * **/
+     */
     private final String report;
 
     /**
      * {@code subtype} is instance that memorizes subtype value
-     * **/
+     */
     private final String subtype;
 
     /**
      * {@code status} is instance that memorizes status of the report
-     * **/
+     */
     private final String status;
 
     /**
      * {@code fields} is instance that memorizes fields value
-     * **/
+     */
     private final String fields;
     /**
      * {@code dataStartTimestamp} is instance that memorizes {@code "UNIX"} timestamp of the report data start time
-     * **/
+     */
     private final long dataStartTimestamp;
     /**
      * {@code dataEndTimestamp} is instance that memorizes {@code "UNIX"} timestamp of the report data end time
-     * **/
+     */
     private final long dataEndTimestamp;
 
     /** Constructor to init a {@link ReportStatus} object
@@ -122,7 +122,7 @@ public class ReportStatus extends KrakenManager.KrakenResponse {
      * @param dataStartTimestamp: {@code "UNIX"} timestamp of the report data start time
      * @param dataEndTimestamp: {@code "UNIX"} timestamp of the report data end time
      * @param asset: asset value
-     **/
+     */
     public ReportStatus(String reportId, String description, ReportFormat format, String report, String subtype,
                         String status, String fields, long createTimestamp, long startTimestamp, long completedTimestamp,
                         long dataStartTimestamp, long dataEndTimestamp, String asset) {
@@ -144,7 +144,7 @@ public class ReportStatus extends KrakenManager.KrakenResponse {
 
     /** Constructor to init a {@link ReportStatus} object
      * @param jsonResponse: base json response
-     **/
+     */
     public ReportStatus(JSONObject jsonResponse) {
         super(jsonResponse);
         reportId = result.getString("id");
@@ -167,46 +167,46 @@ public class ReportStatus extends KrakenManager.KrakenResponse {
      * No-any params required
      *
      * @return {@link #format} instance as {@link String}
-     **/
+     */
     public ReportFormat getFormat() {
         return format;
     }
 
     /**
      * {@code asset} is instance that memorizes asset value
-     **/
+     */
     private final String asset;
 
     /**
      * {@code "DeletionType"} list of deletion type for a report
-     **/
+     */
     public enum DeletionType {
 
         /**
          * {@code "cancel"} can only be used for queued or processing reports
-         **/
+         */
         cancel,
 
         /**
          * {@code "delete"} can only be used for reports that have already been processed
-         **/
+         */
         delete
 
     }
 
     /**
      * {@code ReportType} list for report types
-     **/
+     */
     public enum ReportType {
 
         /**
          * {@code "trades"} report type
-         **/
+         */
         trades,
 
         /**
          * {@code "ledgers"} report type
-         **/
+         */
         ledgers
 
     }
@@ -216,7 +216,7 @@ public class ReportStatus extends KrakenManager.KrakenResponse {
      * No-any params required
      *
      * @return {@link #reportId} instance as {@link String}
-     **/
+     */
     public String getReportId() {
         return reportId;
     }
@@ -226,24 +226,24 @@ public class ReportStatus extends KrakenManager.KrakenResponse {
      * No-any params required
      *
      * @return {@link #description} instance as {@link String}
-     **/
+     */
     public String getDescription() {
         return description;
     }
 
     /**
      * {@code ReportFormat} list for format types
-     * **/
+     */
     public enum ReportFormat {
 
         /**
          * {@code "CSV"} format type
-         **/
+         */
         CSV,
 
         /**
          * {@code "TSV"} format type
-         **/
+         */
         TSV
 
     }
@@ -253,7 +253,7 @@ public class ReportStatus extends KrakenManager.KrakenResponse {
      * No-any params required
      *
      * @return {@link #report} instance as {@link String}
-     **/
+     */
     public String getReport() {
         return report;
     }
@@ -263,7 +263,7 @@ public class ReportStatus extends KrakenManager.KrakenResponse {
      * No-any params required
      *
      * @return {@link #subtype} instance as {@link String}
-     **/
+     */
     public String getSubtype() {
         return subtype;
     }
@@ -273,7 +273,7 @@ public class ReportStatus extends KrakenManager.KrakenResponse {
      * No-any params required
      *
      * @return {@link #status} instance as {@link String}
-     **/
+     */
     public String getStatus() {
         return status;
     }
@@ -283,7 +283,7 @@ public class ReportStatus extends KrakenManager.KrakenResponse {
      * No-any params required
      *
      * @return {@link #fields} instance as {@link String}
-     **/
+     */
     public String getFields() {
         return fields;
     }
@@ -293,7 +293,7 @@ public class ReportStatus extends KrakenManager.KrakenResponse {
      * No-any params required
      *
      * @return {@link #createTimestamp} instance as long
-     **/
+     */
     public long getCreateTimestamp() {
         return createTimestamp;
     }
@@ -303,7 +303,7 @@ public class ReportStatus extends KrakenManager.KrakenResponse {
      * No-any params required
      *
      * @return {@link #startTimestamp} instance as long
-     **/
+     */
     public long getStartTimestamp() {
         return startTimestamp;
     }
@@ -313,7 +313,7 @@ public class ReportStatus extends KrakenManager.KrakenResponse {
      * No-any params required
      *
      * @return {@link #completedTimestamp} instance as long
-     **/
+     */
     public long getCompletedTimestamp() {
         return completedTimestamp;
     }
@@ -323,7 +323,7 @@ public class ReportStatus extends KrakenManager.KrakenResponse {
      * No-any params required
      *
      * @return {@link #dataStartTimestamp} instance as long
-     **/
+     */
     public long getDataStartTimestamp() {
         return dataStartTimestamp;
     }
@@ -333,7 +333,7 @@ public class ReportStatus extends KrakenManager.KrakenResponse {
      * No-any params required
      *
      * @return {@link #dataEndTimestamp} instance as long
-     **/
+     */
     public long getDataEndTimestamp() {
         return dataEndTimestamp;
     }
@@ -343,7 +343,7 @@ public class ReportStatus extends KrakenManager.KrakenResponse {
      * No-any params required
      *
      * @return {@link #asset} instance as {@link String}
-     **/
+     */
     public String getAsset() {
         return asset;
     }

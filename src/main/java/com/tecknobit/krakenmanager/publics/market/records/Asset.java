@@ -9,37 +9,37 @@ import org.json.JSONObject;
  * @author N7ghtm4r3 - Tecknobit
  * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getAssetInfo">
  * Get Asset Info</a>
- **/
+ */
 public class Asset extends KrakenManager.KrakenResponse {
 
     /**
      * {@code CURRENCY_ASSET_CLASS} is constant for currency asset class type
-     * **/
+     */
     public static final String CURRENCY_ASSET_CLASS = "currency";
 
     /**
      * {@code FOREX_ASSET_CLASS} is constant for forex asset class type
-     * **/
+     */
     public static final String FOREX_ASSET_CLASS = "forex";
 
     /**
      * {@code aClass} is instance that memorizes asset class
-     * **/
+     */
     private final String aClass;
 
     /**
      * {@code altName} is instance that memorizes alt name of the asset
-     * **/
+     */
     private final String altName;
 
     /**
      * {@code decimals} is instance that memorizes number of decimals digits
-     **/
+     */
     private final int decimals;
 
     /**
      * {@code displayDecimals} is instance that memorizes number of decimals digits displayed
-     **/
+     */
     private final int displayDecimals;
 
     /**
@@ -49,7 +49,7 @@ public class Asset extends KrakenManager.KrakenResponse {
      * @param altName:         alt name of the asset
      * @param decimals:        number of decimals digits
      * @param displayDecimals: number of decimals digits displayed
-     **/
+     */
     public Asset(String aClass, String altName, int decimals, int displayDecimals) {
         super(null);
         this.aClass = aClass;
@@ -60,7 +60,7 @@ public class Asset extends KrakenManager.KrakenResponse {
 
     /** Constructor to init an {@link Asset} object
      * @param asset: asset data in {@code "JSON"} format
-     * **/
+     */
     public Asset(JSONObject asset) {
         super(asset);
         aClass = hResponse.getString("aclass");
@@ -74,7 +74,7 @@ public class Asset extends KrakenManager.KrakenResponse {
      * No-any params required
      *
      * @return {@link #aClass} instance as {@link String}
-     **/
+     */
     public String getaClass() {
         return aClass;
     }
@@ -84,7 +84,7 @@ public class Asset extends KrakenManager.KrakenResponse {
      * No-any params required
      *
      * @return {@link #altName} instance as {@link String}
-     **/
+     */
     public String getAltName() {
         return altName;
     }
@@ -94,7 +94,7 @@ public class Asset extends KrakenManager.KrakenResponse {
      * No-any params required
      *
      * @return {@link #decimals} instance as int
-     **/
+     */
     public int getDecimals() {
         return decimals;
     }
@@ -104,7 +104,7 @@ public class Asset extends KrakenManager.KrakenResponse {
      * No-any params required
      *
      * @return {@link #displayDecimals} instance as int
-     **/
+     */
     public int getDisplayDecimals() {
         return displayDecimals;
     }

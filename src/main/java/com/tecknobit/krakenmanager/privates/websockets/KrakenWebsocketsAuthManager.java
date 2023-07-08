@@ -16,12 +16,12 @@ import static com.tecknobit.krakenmanager.KrakenManager.ReturnFormat.LIBRARY_OBJ
  * @author N7ghtm4r3 - Tecknobit
  * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/Websockets-Authentication">
  * Websockets Authentication</a>
- **/
+ */
 public class KrakenWebsocketsAuthManager extends KrakenPrivateManager {
 
     /**
      * {@code GET_WEBSOCKETS_TOKEN_ENDPOINT} is constant for GET_WEBSOCKETS_TOKEN_ENDPOINT's endpoint
-     **/
+     */
     public static final String GET_WEBSOCKETS_TOKEN_ENDPOINT = "GetWebSocketsToken";
 
     /**
@@ -31,7 +31,7 @@ public class KrakenWebsocketsAuthManager extends KrakenPrivateManager {
      * @param requestTimeout:      custom timeout for request
      * @param apiKey:              api key of Kraken's platform
      * @param apiSign:             api sign of Kraken's platform
-     **/
+     */
     public KrakenWebsocketsAuthManager(String defaultErrorMessage, int requestTimeout, String apiKey, String apiSign) {
         super(defaultErrorMessage, requestTimeout, apiKey, apiSign);
     }
@@ -40,7 +40,7 @@ public class KrakenWebsocketsAuthManager extends KrakenPrivateManager {
      * @param defaultErrorMessage: custom error to show when is not a request error
      * @param apiKey: api key of Kraken's platform
      * @param apiSign: api sign of Kraken's platform
-     **/
+     */
     public KrakenWebsocketsAuthManager(String defaultErrorMessage, String apiKey, String apiSign) {
         super(defaultErrorMessage, apiKey, apiSign);
     }
@@ -51,7 +51,7 @@ public class KrakenWebsocketsAuthManager extends KrakenPrivateManager {
      * @param requestTimeout: custom timeout for request
      * @param apiKey:         api key of Kraken's platform
      * @param apiSign:        api sign of Kraken's platform
-     **/
+     */
     public KrakenWebsocketsAuthManager(int requestTimeout, String apiKey, String apiSign) {
         super(requestTimeout, apiKey, apiSign);
     }
@@ -61,7 +61,7 @@ public class KrakenWebsocketsAuthManager extends KrakenPrivateManager {
      *
      * @param apiKey:  api key of Kraken's platform
      * @param apiSign: api sign of Kraken's platform
-     **/
+     */
     public KrakenWebsocketsAuthManager(String apiKey, String apiSign) {
         super(apiKey, apiSign);
     }
@@ -81,7 +81,7 @@ public class KrakenWebsocketsAuthManager extends KrakenPrivateManager {
      *        KrakenPrivateManager secondManager = new KrakenPrivateManager(); //same credentials used
      *     }
      * </pre>
-     **/
+     */
     public KrakenWebsocketsAuthManager() {
         super();
     }
@@ -109,7 +109,7 @@ public class KrakenWebsocketsAuthManager extends KrakenPrivateManager {
      * with Kraken's Websockets API. The token should be used within 15 minutes of creation, but it does not expire once a successful
      * Websockets connection and private subscription has been made and is maintained
      * @implSpec the 'Access WebSockets API' permission must be enabled for the API key in order to generate the authentication token.
-     **/
+     */
     @Wrapper
     @RequestPath(method = POST, path = "https://api.kraken.com/0/private/GetWebSocketsToken")
     public WebsocketsToken getWebsocketsToken() throws Exception {
@@ -139,7 +139,7 @@ public class KrakenWebsocketsAuthManager extends KrakenPrivateManager {
      * with Kraken's Websockets API. The token should be used within 15 minutes of creation, but it does not expire once a successful
      * Websockets connection and private subscription has been made and is maintained
      * @implSpec the 'Access WebSockets API' permission must be enabled for the API key in order to generate the authentication token.
-     **/
+     */
     @Returner
     @RequestPath(method = POST, path = "https://api.kraken.com/0/private/GetWebSocketsToken")
     public <T> T getWebsocketsToken(ReturnFormat format) throws Exception {

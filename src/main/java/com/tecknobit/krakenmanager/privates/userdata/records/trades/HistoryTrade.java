@@ -13,52 +13,52 @@ import static com.tecknobit.apimanager.trading.TradingTools.roundValue;
  * @author N7ghtm4r3 - Tecknobit
  * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Data/operation/getTradeHistory">
  * Get Trade History</a>
- **/
+ */
 public class HistoryTrade extends Trade {
 
     /**
      * {@code tradeId} unique identifier of trade executed
-     **/
+     */
     private final long tradeId;
 
     /**
      * {@code postStatus} is instance that memorizes post status value
-     **/
+     */
     private final String postStatus;
 
     /**
      * {@code cPrice} is instance that memorizes average price of closed portion of position (quote currency)
-     **/
+     */
     private final double cPrice;
 
     /**
      * {@code cCost} is instance that memorizes total cost of closed portion of position (quote currency)
-     * **/
+     */
     private final double cCost;
 
     /**
      * {@code cFee} is instance that memorizes total fee of closed portion of position (quote currency)
-     * **/
+     */
     private final double cFee;
 
     /**
      * {@code cVol} is instance that memorizes total fee of closed portion of position (quote currency)
-     * **/
+     */
     private final double cVol;
 
     /**
      * {@code cMargin} is instance that memorizes total margin freed in closed portion of position (quote currency)
-     * **/
+     */
     private final double cMargin;
 
     /**
      * {@code net} is instance that memorizes net profit/loss of closed portion of position (quote currency, quote currency scale)
-     **/
+     */
     private final double net;
 
     /**
      * {@code trades} is instance that memorizes list of closing trades for position (if available)
-     **/
+     */
     private final ArrayList<Long> trades;
 
     /**
@@ -85,7 +85,7 @@ public class HistoryTrade extends Trade {
      * @param cMargin            : total margin freed in closed portion of position (quote currency)
      * @param net                : net profit/loss of closed portion of position (quote currency, quote currency scale)
      * @param trades             : list of closing trades for position (if available)
-     **/
+     */
     public HistoryTrade(String tradeSymbol, String orderTransactionId, String pair, long time, String type, String orderType,
                         double price, double cost, double fee, double vol, double margin, String misc, long tradeId,
                         String postStatus, double cPrice, double cCost, double cFee, double cVol, double cMargin,
@@ -106,7 +106,7 @@ public class HistoryTrade extends Trade {
      * Constructor to init a {@link HistoryTrade} object
      *
      * @param jHistoryTrade: base json response
-     **/
+     */
     public HistoryTrade(JSONObject jHistoryTrade) {
         super(jHistoryTrade);
         tradeId = result.getLong("trade_id", 0);
@@ -128,7 +128,7 @@ public class HistoryTrade extends Trade {
      * No-any params required
      *
      * @return {@link #tradeId} instance as long
-     **/
+     */
     public long getTradeId() {
         return tradeId;
     }
@@ -138,7 +138,7 @@ public class HistoryTrade extends Trade {
      * No-any params required
      *
      * @return {@link #postStatus} instance as {@link String}
-     **/
+     */
     public String getPostStatus() {
         return postStatus;
     }
@@ -148,7 +148,7 @@ public class HistoryTrade extends Trade {
      * No-any params required
      *
      * @return {@link #cPrice} instance as double
-     **/
+     */
     public double getcPrice() {
         return cPrice;
     }
@@ -159,7 +159,7 @@ public class HistoryTrade extends Trade {
      * @param decimals: number of digits to round final value
      * @return {@link #cPrice} instance rounded with decimal digits inserted
      * @throws IllegalArgumentException if decimalDigits is negative
-     **/
+     */
     public double getcPrice(int decimals) {
         return roundValue(cPrice, decimals);
     }
@@ -169,7 +169,7 @@ public class HistoryTrade extends Trade {
      * No-any params required
      *
      * @return {@link #cCost} instance as double
-     **/
+     */
     public double getcCost() {
         return cCost;
     }
@@ -180,7 +180,7 @@ public class HistoryTrade extends Trade {
      * @param decimals: number of digits to round final value
      * @return {@link #cCost} instance rounded with decimal digits inserted
      * @throws IllegalArgumentException if decimalDigits is negative
-     **/
+     */
     public double getcCost(int decimals) {
         return roundValue(cCost, decimals);
     }
@@ -190,7 +190,7 @@ public class HistoryTrade extends Trade {
      * No-any params required
      *
      * @return {@link #cFee} instance as double
-     **/
+     */
     public double getcFee() {
         return cFee;
     }
@@ -201,7 +201,7 @@ public class HistoryTrade extends Trade {
      * @param decimals: number of digits to round final value
      * @return {@link #cFee} instance rounded with decimal digits inserted
      * @throws IllegalArgumentException if decimalDigits is negative
-     **/
+     */
     public double getcFee(int decimals) {
         return roundValue(cCost, decimals);
     }
@@ -211,7 +211,7 @@ public class HistoryTrade extends Trade {
      * No-any params required
      *
      * @return {@link #cVol} instance as double
-     **/
+     */
     public double getcVol() {
         return cVol;
     }
@@ -222,7 +222,7 @@ public class HistoryTrade extends Trade {
      * @param decimals: number of digits to round final value
      * @return {@link #cVol} instance rounded with decimal digits inserted
      * @throws IllegalArgumentException if decimalDigits is negative
-     **/
+     */
     public double getcVol(int decimals) {
         return roundValue(cVol, decimals);
     }
@@ -232,7 +232,7 @@ public class HistoryTrade extends Trade {
      * No-any params required
      *
      * @return {@link #cMargin} instance as double
-     **/
+     */
     public double getcMargin() {
         return cMargin;
     }
@@ -243,7 +243,7 @@ public class HistoryTrade extends Trade {
      * @param decimals: number of digits to round final value
      * @return {@link #cMargin} instance rounded with decimal digits inserted
      * @throws IllegalArgumentException if decimalDigits is negative
-     **/
+     */
     public double getcMargin(int decimals) {
         return roundValue(cMargin, decimals);
     }
@@ -253,7 +253,7 @@ public class HistoryTrade extends Trade {
      * No-any params required
      *
      * @return {@link #net} instance as double
-     **/
+     */
     public double getNet() {
         return net;
     }
@@ -264,7 +264,7 @@ public class HistoryTrade extends Trade {
      * @param decimals: number of digits to round final value
      * @return {@link #net} instance rounded with decimal digits inserted
      * @throws IllegalArgumentException if decimalDigits is negative
-     **/
+     */
     public double getNet(int decimals) {
         return roundValue(net, decimals);
     }
@@ -274,7 +274,7 @@ public class HistoryTrade extends Trade {
      * No-any params required
      *
      * @return {@link #trades} instance as {@link ArrayList} of {@link Long}
-     **/
+     */
     public ArrayList<Long> getTrades() {
         return trades;
     }

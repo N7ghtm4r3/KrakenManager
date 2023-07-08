@@ -20,67 +20,67 @@ import static com.tecknobit.apimanager.trading.TradingTools.roundValue;
  *   Get Trades Info</a>
  * </li>
  * </ul>
- **/
+ */
 public abstract class Trade extends KrakenManager.KrakenResponse {
 
     /**
      * {@code tradeSymbol} is instance that memorizes trade identifier value
-     **/
+     */
     protected final String tradeSymbol;
 
     /**
      * {@code orderTransactionId} is instance that memorizes order transaction identifier value
-     **/
+     */
     protected final String orderTransactionId;
 
     /**
      * {@code pair} is instance that memorizes pair value
-     * **/
+     */
     protected final String pair;
 
     /**
      * {@code time} is instance that memorizes time value
-     * **/
+     */
     protected final long time;
 
     /**
      * {@code type} is instance that memorizes type of order value -> (buy or sell)
-     * **/
+     */
     protected final String type;
 
     /**
      * {@code orderType} is instance that memorizes order type value
-     * **/
+     */
     protected final String orderType;
 
     /**
      * {@code price} is instance that memorizes price value
-     * **/
+     */
     protected final double price;
 
     /**
      * {@code cost} is instance that memorizes cost value
-     * **/
+     */
     protected final double cost;
 
     /**
      * {@code fee} is instance that memorizes fee value
-     * **/
+     */
     protected final double fee;
 
     /**
      * {@code vol} is instance that memorizes vol value
-     * **/
+     */
     protected final double vol;
 
     /**
      * {@code margin} is instance that memorizes margin value
-     **/
+     */
     protected final double margin;
 
     /**
      * {@code misc} is instance that memorizes misc value
-     **/
+     */
     protected final String misc;
 
     /**
@@ -98,7 +98,7 @@ public abstract class Trade extends KrakenManager.KrakenResponse {
      * @param vol:                vol value
      * @param margin:             margin value
      * @param misc:               misc value
-     **/
+     */
     public Trade(String tradeSymbol, String orderTransactionId, String pair, long time, String type, String orderType,
                  double price, double cost, double fee, double vol, double margin, String misc) {
         super(null);
@@ -120,7 +120,7 @@ public abstract class Trade extends KrakenManager.KrakenResponse {
      * Constructor to init a {@link Trade} object
      *
      * @param jsonResponse: base json response
-     **/
+     */
     public Trade(JSONObject jsonResponse) {
         super(jsonResponse);
         tradeSymbol = result.getString("tradeSymbol");
@@ -142,7 +142,7 @@ public abstract class Trade extends KrakenManager.KrakenResponse {
      * No-any params required
      *
      * @return {@link #tradeSymbol} instance as {@link String}
-     **/
+     */
     public String getTradeSymbol() {
         return tradeSymbol;
     }
@@ -152,7 +152,7 @@ public abstract class Trade extends KrakenManager.KrakenResponse {
      * No-any params required
      *
      * @return {@link #orderTransactionId} instance as {@link String}
-     **/
+     */
     public String getOrderTransactionId() {
         return orderTransactionId;
     }
@@ -162,7 +162,7 @@ public abstract class Trade extends KrakenManager.KrakenResponse {
      * No-any params required
      *
      * @return {@link #pair} instance as {@link String}
-     **/
+     */
     public String getPair() {
         return pair;
     }
@@ -172,7 +172,7 @@ public abstract class Trade extends KrakenManager.KrakenResponse {
      * No-any params required
      *
      * @return {@link #time} instance as long
-     **/
+     */
     public long getTime() {
         return time;
     }
@@ -182,7 +182,7 @@ public abstract class Trade extends KrakenManager.KrakenResponse {
      * No-any params required
      *
      * @return {@link #type} instance as {@link String}
-     **/
+     */
     public String getType() {
         return type;
     }
@@ -192,7 +192,7 @@ public abstract class Trade extends KrakenManager.KrakenResponse {
      * No-any params required
      *
      * @return {@link #orderType} instance as {@link String}
-     **/
+     */
     public String getOrderType() {
         return orderType;
     }
@@ -202,7 +202,7 @@ public abstract class Trade extends KrakenManager.KrakenResponse {
      * No-any params required
      *
      * @return {@link #price} instance as double
-     **/
+     */
     public double getPrice() {
         return price;
     }
@@ -213,7 +213,7 @@ public abstract class Trade extends KrakenManager.KrakenResponse {
      * @param decimals: number of digits to round final value
      * @return {@link #price} instance rounded with decimal digits inserted
      * @throws IllegalArgumentException if decimalDigits is negative
-     **/
+     */
     public double getPrice(int decimals) {
         return roundValue(price, decimals);
     }
@@ -223,7 +223,7 @@ public abstract class Trade extends KrakenManager.KrakenResponse {
      * No-any params required
      *
      * @return {@link #cost} instance as double
-     **/
+     */
     public double getCost() {
         return cost;
     }
@@ -234,7 +234,7 @@ public abstract class Trade extends KrakenManager.KrakenResponse {
      * @param decimals: number of digits to round final value
      * @return {@link #cost} instance rounded with decimal digits inserted
      * @throws IllegalArgumentException if decimalDigits is negative
-     **/
+     */
     public double getCost(int decimals) {
         return roundValue(cost, decimals);
     }
@@ -244,7 +244,7 @@ public abstract class Trade extends KrakenManager.KrakenResponse {
      * No-any params required
      *
      * @return {@link #fee} instance as double
-     **/
+     */
     public double getFee() {
         return fee;
     }
@@ -255,7 +255,7 @@ public abstract class Trade extends KrakenManager.KrakenResponse {
      * @param decimals: number of digits to round final value
      * @return {@link #fee} instance rounded with decimal digits inserted
      * @throws IllegalArgumentException if decimalDigits is negative
-     **/
+     */
     public double getFee(int decimals) {
         return roundValue(fee, decimals);
     }
@@ -265,7 +265,7 @@ public abstract class Trade extends KrakenManager.KrakenResponse {
      * No-any params required
      *
      * @return {@link #vol} instance as double
-     **/
+     */
     public double getVol() {
         return vol;
     }
@@ -276,7 +276,7 @@ public abstract class Trade extends KrakenManager.KrakenResponse {
      * @param decimals: number of digits to round final value
      * @return {@link #vol} instance rounded with decimal digits inserted
      * @throws IllegalArgumentException if decimalDigits is negative
-     **/
+     */
     public double getVol(int decimals) {
         return roundValue(fee, decimals);
     }
@@ -286,7 +286,7 @@ public abstract class Trade extends KrakenManager.KrakenResponse {
      * No-any params required
      *
      * @return {@link #margin} instance as double
-     **/
+     */
     public double getMargin() {
         return margin;
     }
@@ -297,7 +297,7 @@ public abstract class Trade extends KrakenManager.KrakenResponse {
      * @param decimals: number of digits to round final value
      * @return {@link #margin} instance rounded with decimal digits inserted
      * @throws IllegalArgumentException if decimalDigits is negative
-     **/
+     */
     public double getMargin(int decimals) {
         return roundValue(margin, decimals);
     }
@@ -307,51 +307,51 @@ public abstract class Trade extends KrakenManager.KrakenResponse {
      * No-any params required
      *
      * @return {@link #misc} instance as {@link String}
-     **/
+     */
     public String getMisc() {
         return misc;
     }
 
     /**
      * {@code "TradeType"} list of types for trade
-     **/
+     */
     public enum TradeType {
 
         /**
          * {@code "all"} trade type
-         **/
+         */
         all("all"),
 
         /**
          * {@code "any_position"} trade type
-         **/
+         */
         any_position("any position"),
 
         /**
          * {@code "closed_position"} trade type
-         **/
+         */
         closed_position("closed position"),
 
         /**
          * {@code "closing_position"} trade type
-         **/
+         */
         closing_position("closing position"),
 
         /**
          * {@code "no_position"} trade type
-         **/
+         */
         no_position("no position");
 
         /**
          * {@code "type"} trade type
-         **/
+         */
         private final String type;
 
         /**
          * Constructor to init a {@link TradeType}
          *
          * @param type: trade type value
-         **/
+         */
         TradeType(String type) {
             this.type = type;
         }
@@ -361,7 +361,7 @@ public abstract class Trade extends KrakenManager.KrakenResponse {
          * No-any params required
          *
          * @return {@link #type} instance as {@link String}
-         **/
+         */
         @Override
         public String toString() {
             return type;

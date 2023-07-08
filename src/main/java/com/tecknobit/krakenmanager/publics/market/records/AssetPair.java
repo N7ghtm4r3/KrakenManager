@@ -16,122 +16,122 @@ import static com.tecknobit.apimanager.trading.TradingTools.roundValue;
  * @author N7ghtm4r3 - Tecknobit
  * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getTradableAssetPairs">
  * Get Tradable Asset Pairs</a>
- **/
+ */
 public class AssetPair extends KrakenManager.KrakenResponse {
 
     /**
      * {@code INFO} is constant for info
-     * **/
+     */
     public static final String INFO = "info";
 
     /**
      * {@code INFO_LEVERAGE} is constant for info leverage
-     * **/
+     */
     public static final String INFO_LEVERAGE = "leverage";
 
     /**
      * {@code INFO_FEES} is constant for info fees
-     * **/
+     */
     public static final String INFO_FEES = "fees";
 
     /**
      * {@code INFO_MARGIN} is constant for info margin
-     * **/
+     */
     public static final String INFO_MARGIN = "margin";
 
     /**
      * {@code altName} is instance that memorizes alt name value
-     * **/
+     */
     private final String altName;
 
     /**
      * {@code wsName} is instance that memorizes ws name value
-     * **/
+     */
     private final String wsName;
 
     /**
      * {@code aClassBase} is instance that memorizes asset class base value
-     * **/
+     */
     private final String aClassBase;
 
     /**
      * {@code base} is instance that memorizes base value
-     * **/
+     */
     private final String base;
 
     /**
      * {@code aClassQuote} is instance that memorizes asset class quote value
-     * **/
+     */
     private final String aClassQuote;
 
     /**
      * {@code quote} is instance that memorizes quote value
-     * **/
+     */
     private final String quote;
 
     /**
      * {@code pairDecimals} is instance that memorizes pair decimals value
-     * **/
+     */
     private final int pairDecimals;
 
     /**
      * {@code lotDecimals} is instance that memorizes lot decimals value
-     * **/
+     */
     private final int lotDecimals;
 
     /**
      * {@code lotMultiplier} is instance that memorizes lot multiplier value
-     * **/
+     */
     private final int lotMultiplier;
 
     /**
      * {@code leverageBuy} is instance that memorizes list of leverage buy
-     * **/
+     */
     private final int[] leverageBuy;
 
     /**
      * {@code leverageSell} is instance that memorizes list of leverage sell
-     * **/
+     */
     private final int[] leverageSell;
 
     /**
      * {@code fees} is instance that memorizes list of {@link Fee}
-     * **/
+     */
     private final ArrayList<Fee> fees;
 
     /**
      * {@code makerFees} is instance that memorizes list of maker {@link Fee}
-     * **/
+     */
     private final ArrayList<Fee> makerFees;
 
     /**
      * {@code feeVolumeCurrency} is instance that memorizes fee volume currency value
-     * **/
+     */
     private final String feeVolumeCurrency;
 
     /**
      * {@code marginCall} is instance that memorizes margin call value
-     * **/
+     */
     private final double marginCall;
 
     /**
      * {@code marginStop} is instance that memorizes margin stop value
-     **/
+     */
     private final double marginStop;
 
     /**
      * {@code minOrder} is instance that memorizes minimum order value
-     **/
+     */
     private final double minOrder;
 
     /**
      * {@code minCost} minimum order cost (in terms of quote currency)
-     **/
+     */
     private final double minCost;
 
     /**
      * {@code tickSize} minimum increment between valid price levels
-     **/
+     */
     private final double tickSize;
 
     /**
@@ -153,7 +153,7 @@ public class AssetPair extends KrakenManager.KrakenResponse {
      * @param pairIndex         : symbol of pairs es. BTCEUR
      * @param minCost           :          minimum order cost (in terms of quote currency)
      * @param tickSize:         minimum increment between valid price levels
-     **/
+     */
     public AssetPair(String altName, String wsName, String aClassBase, String base, String aClassQuote, String quote,
                      int pairDecimals, int lotDecimals, int lotMultiplier, String feeVolumeCurrency, double marginCall,
                      double marginStop, double minOrder, String pairIndex, double minCost, double tickSize) {
@@ -211,7 +211,7 @@ public class AssetPair extends KrakenManager.KrakenResponse {
      * @param minOrder          : minimum order value
      * @param minCost           :          minimum order cost (in terms of quote currency)
      * @param tickSize: minimum increment between valid price levels
-     **/
+     */
     public AssetPair(String altName, String wsName, String aClassBase, String base, String aClassQuote, String quote,
                      int pairDecimals, int lotDecimals, int lotMultiplier, int[] leverageBuy, int[] leverageSell,
                      ArrayList<Fee> fees, ArrayList<Fee> makerFees, String feeVolumeCurrency, double marginCall,
@@ -242,7 +242,7 @@ public class AssetPair extends KrakenManager.KrakenResponse {
      * Constructor to init an {@link AssetPair} object
      *
      * @param jsonAsset: asset pair value in {@code "JSON"} format
-     **/
+     */
     public AssetPair(JSONObject jsonAsset) {
         super(jsonAsset);
         altName = result.getString("altname");
@@ -271,7 +271,7 @@ public class AssetPair extends KrakenManager.KrakenResponse {
      *
      * @param jsonList: obtained by response request
      * @return leverage list as int array
-     **/
+     */
     private int[] loadLeverageList(JSONArray jsonList){
         if(jsonList != null){
             int elements = jsonList.length();
@@ -288,7 +288,7 @@ public class AssetPair extends KrakenManager.KrakenResponse {
      *
      * @param jsonList: obtained by response request
      * @return fees list as {@link ArrayList} of {@link Fee}
-     **/
+     */
     @Returner
     private ArrayList<Fee> loadFeesList(JSONArray jsonList) {
         ArrayList<Fee> feesList = new ArrayList<>();
@@ -303,7 +303,7 @@ public class AssetPair extends KrakenManager.KrakenResponse {
      * No-any params required
      *
      * @return {@link #altName} instance as {@link String}
-     **/
+     */
     public String getAltName() {
         return altName;
     }
@@ -313,7 +313,7 @@ public class AssetPair extends KrakenManager.KrakenResponse {
      * No-any params required
      *
      * @return {@link #wsName} instance as {@link String}
-     **/
+     */
     public String getWsName() {
         return wsName;
     }
@@ -323,7 +323,7 @@ public class AssetPair extends KrakenManager.KrakenResponse {
      * No-any params required
      *
      * @return {@link #aClassBase} instance as {@link String}
-     **/
+     */
     public String getaClassBase() {
         return aClassBase;
     }
@@ -333,7 +333,7 @@ public class AssetPair extends KrakenManager.KrakenResponse {
      * No-any params required
      *
      * @return {@link #base} instance as {@link String}
-     **/
+     */
     public String getBase() {
         return base;
     }
@@ -343,7 +343,7 @@ public class AssetPair extends KrakenManager.KrakenResponse {
      * No-any params required
      *
      * @return {@link #aClassQuote} instance as {@link String}
-     **/
+     */
     public String getaClassQuote() {
         return aClassQuote;
     }
@@ -353,7 +353,7 @@ public class AssetPair extends KrakenManager.KrakenResponse {
      * No-any params required
      *
      * @return {@link #quote} instance as {@link String}
-     **/
+     */
     public String getQuote() {
         return quote;
     }
@@ -363,7 +363,7 @@ public class AssetPair extends KrakenManager.KrakenResponse {
      * No-any params required
      *
      * @return {@link #pairDecimals} instance as int
-     **/
+     */
     public int getPairDecimals() {
         return pairDecimals;
     }
@@ -373,7 +373,7 @@ public class AssetPair extends KrakenManager.KrakenResponse {
      * No-any params required
      *
      * @return {@link #lotDecimals} instance as int
-     **/
+     */
     public int getLotDecimals() {
         return lotDecimals;
     }
@@ -383,7 +383,7 @@ public class AssetPair extends KrakenManager.KrakenResponse {
      * No-any params required
      *
      * @return {@link #lotMultiplier} instance as int
-     **/
+     */
     public int getLotMultiplier() {
         return lotMultiplier;
     }
@@ -393,7 +393,7 @@ public class AssetPair extends KrakenManager.KrakenResponse {
      * No-any params required
      *
      * @return {@link #leverageBuy} instance as array of int
-     **/
+     */
     public int[] getLeverageBuy() {
         return leverageBuy;
     }
@@ -403,7 +403,7 @@ public class AssetPair extends KrakenManager.KrakenResponse {
      * No-any params required
      *
      * @return {@link #leverageSell} instance as array of int
-     **/
+     */
     public int[] getLeverageSell() {
         return leverageSell;
     }
@@ -413,7 +413,7 @@ public class AssetPair extends KrakenManager.KrakenResponse {
      * No-any params required
      *
      * @return {@link #fees} instance as {@link ArrayList} of {@link Fee}
-     **/
+     */
     public ArrayList<Fee> getFees() {
         return fees;
     }
@@ -423,7 +423,7 @@ public class AssetPair extends KrakenManager.KrakenResponse {
      * No-any params required
      *
      * @return {@link #makerFees} instance as {@link ArrayList} of {@link Fee}
-     **/
+     */
     public ArrayList<Fee> getMakerFees() {
         return makerFees;
     }
@@ -433,7 +433,7 @@ public class AssetPair extends KrakenManager.KrakenResponse {
      * No-any params required
      *
      * @return {@link #feeVolumeCurrency} instance as {@link String}
-     **/
+     */
     public String getFeeVolumeCurrency() {
         return feeVolumeCurrency;
     }
@@ -443,7 +443,7 @@ public class AssetPair extends KrakenManager.KrakenResponse {
      * No-any params required
      *
      * @return {@link #marginCall} instance as double
-     **/
+     */
     public double getMarginCall() {
         return marginCall;
     }
@@ -454,7 +454,7 @@ public class AssetPair extends KrakenManager.KrakenResponse {
      * @param decimals: number of digits to round final value
      * @return {@link #marginCall} instance rounded with decimal digits inserted
      * @throws IllegalArgumentException if decimalDigits is negative
-     **/
+     */
     public double getMarginCall(int decimals) {
         return roundValue(marginCall, decimals);
     }
@@ -464,7 +464,7 @@ public class AssetPair extends KrakenManager.KrakenResponse {
      * No-any params required
      *
      * @return {@link #marginStop} instance as double
-     **/
+     */
     public double getMarginStop() {
         return marginStop;
     }
@@ -475,7 +475,7 @@ public class AssetPair extends KrakenManager.KrakenResponse {
      * @param decimals: number of digits to round final value
      * @return {@link #marginStop} instance rounded with decimal digits inserted
      * @throws IllegalArgumentException if decimalDigits is negative
-     **/
+     */
     public double getMarginStop(int decimals) {
         return roundValue(marginStop, decimals);
     }
@@ -485,7 +485,7 @@ public class AssetPair extends KrakenManager.KrakenResponse {
      * No-any params required
      *
      * @return {@link #minOrder} instance as double
-     **/
+     */
     public double getMinOrder() {
         return minOrder;
     }
@@ -496,7 +496,7 @@ public class AssetPair extends KrakenManager.KrakenResponse {
      * @param decimals: number of digits to round final value
      * @return {@link #minOrder} instance rounded with decimal digits inserted
      * @throws IllegalArgumentException if decimalDigits is negative
-     **/
+     */
     public double getMinOrder(int decimals) {
         return roundValue(minOrder, decimals);
     }
@@ -506,7 +506,7 @@ public class AssetPair extends KrakenManager.KrakenResponse {
      * No-any params required
      *
      * @return {@link #minCost} instance as double
-     **/
+     */
     public double getMinCost() {
         return minCost;
     }
@@ -517,7 +517,7 @@ public class AssetPair extends KrakenManager.KrakenResponse {
      * @param decimals: number of digits to round final value
      * @return {@link #minCost} instance rounded with decimal digits inserted
      * @throws IllegalArgumentException if decimalDigits is negative
-     **/
+     */
     public double getMinCost(int decimals) {
         return roundValue(minCost, decimals);
     }
@@ -527,7 +527,7 @@ public class AssetPair extends KrakenManager.KrakenResponse {
      * No-any params required
      *
      * @return {@link #tickSize} instance as double
-     **/
+     */
     public double getTickSize() {
         return tickSize;
     }
@@ -538,26 +538,26 @@ public class AssetPair extends KrakenManager.KrakenResponse {
      * @param decimals: number of digits to round final value
      * @return {@link #tickSize} instance rounded with decimal digits inserted
      * @throws IllegalArgumentException if decimalDigits is negative
-     **/
+     */
     public double getTickSize(int decimals) {
         return roundValue(tickSize, decimals);
     }
 
     /**
      * The {@code Fee} class is useful to format a fee object
-     **/
+     */
     public static class Fee {
 
         /**
          * {@code fees} is instance that memorizes list of fees
-         **/
+         */
         private final int[] fees;
 
         /**
          * Constructor to init a {@link Fee}
          *
          * @param jsonFees: fees data in {@code "JSON"} format
-         **/
+         */
         public Fee(JSONArray jsonFees) {
             int feesNumber = jsonFees.length();
             fees = new int[feesNumber];
@@ -570,7 +570,7 @@ public class AssetPair extends KrakenManager.KrakenResponse {
          * No-any params required
          *
          * @return {@link #fees} instance as array of int
-         **/
+         */
         public int[] getFees() {
             return fees;
         }

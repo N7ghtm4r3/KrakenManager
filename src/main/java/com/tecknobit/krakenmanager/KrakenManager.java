@@ -22,7 +22,7 @@ import static com.tecknobit.apimanager.trading.TradingTools.textualizeAssetPerce
  * @author N7ghtm4r3 - Tecknobit
  * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#section/General-Usage">
  * General-Usage</a>
- **/
+ */
 public class KrakenManager {
 
     /**
@@ -41,7 +41,7 @@ public class KrakenManager {
      * {@link Returner.ReturnFormat#LIBRARY_OBJECT} -> returns the response formatted as custom object offered by library that uses this list
      * </li>
      * </ul>
-     **/
+     */
     public enum ReturnFormat {
 
         STRING,
@@ -53,28 +53,28 @@ public class KrakenManager {
     /**
      * {@code properties} is a local instance used to instantiate a new {@link KrakenPrivateManager}'s manager without
      * re-insert credentials
-     **/
+     */
     protected static final Properties properties = new Properties();
 
     /**
      * {@code BASE_ENDPOINT} is Kraken's base API endpoint
-     **/
+     */
     public static final String BASE_ENDPOINT = "https://api.kraken.com/0";
 
     /**
      * {@code apiRequest} is instance to make the API requests
-     **/
+     */
     protected APIRequest apiRequest;
 
     /**
      * {@code errorResponse} is instance for responses error
-     * **/
+     */
     protected String errorResponse;
 
     /** Constructor to init a {@link KrakenManager}
      * @param defaultErrorMessage: custom error to show when is not a request error
      * @param requestTimeout: custom timeout for request
-     * **/
+     */
     public KrakenManager(String defaultErrorMessage, int requestTimeout) {
         apiRequest = new APIRequest(defaultErrorMessage, requestTimeout);
         storeProperties(defaultErrorMessage, requestTimeout);
@@ -82,7 +82,7 @@ public class KrakenManager {
 
     /** Constructor to init a {@link KrakenManager}
      * @param defaultErrorMessage: custom error to show when is not a request error
-     * **/
+     */
     public KrakenManager(String defaultErrorMessage) {
         apiRequest = new APIRequest(defaultErrorMessage);
         storeProperties(defaultErrorMessage, -1);
@@ -92,7 +92,7 @@ public class KrakenManager {
      * Constructor to init a {@link KrakenManager}
      *
      * @param requestTimeout: custom timeout for request
-     **/
+     */
     public KrakenManager(int requestTimeout) {
         apiRequest = new APIRequest(requestTimeout);
         storeProperties(null, requestTimeout);
@@ -101,7 +101,7 @@ public class KrakenManager {
     /**
      * Constructor to init a {@link KrakenManager} <br>
      * No-any params required
-     **/
+     */
     public KrakenManager() {
         String defaultErrorMessage = properties.getProperty("defaultErrorMessage");
         int requestTimeout;
@@ -125,7 +125,7 @@ public class KrakenManager {
      *
      * @param defaultErrorMessage: custom error to show when is not a request error
      * @param requestTimeout:      custom timeout for request
-     **/
+     */
     protected void storeProperties(String defaultErrorMessage, int requestTimeout) {
         properties.clear();
         if (defaultErrorMessage != null)
@@ -139,7 +139,7 @@ public class KrakenManager {
      * No-any params required
      *
      * @return status code of request response
-     **/
+     */
     public int getStatusResponse() {
         return apiRequest.getResponseStatusCode();
     }
@@ -149,7 +149,7 @@ public class KrakenManager {
      * No-any params required
      *
      * @return error of the response as {@link String}
-     **/
+     */
     public String getErrorResponse() {
         if (errorResponse == null)
             return DEFAULT_ERROR_RESPONSE;
@@ -161,7 +161,7 @@ public class KrakenManager {
      * No-any params required
      *
      * @return error response of the request formatted as {@code "JSON"}
-     **/
+     */
     public String getJSONErrorResponse() {
         return apiRequest.getJSONErrorResponse();
     }
@@ -169,7 +169,7 @@ public class KrakenManager {
     /**
      * Method to print error response of request <br>
      * No-any params required
-     **/
+     */
     public void printErrorResponse() {
         System.out.println(getErrorResponse());
     }
@@ -181,7 +181,7 @@ public class KrakenManager {
      * @param decimalDigits: number of digits to round final value
      * @return value rounded with decimalDigits inserted
      * @throws IllegalArgumentException if decimalDigits is negative
-     **/
+     */
     public double roundValue(double value, int decimalDigits) {
         return TradingTools.roundValue(value, decimalDigits);
     }
@@ -191,7 +191,7 @@ public class KrakenManager {
      * @param finalValue: last value to compare and get percent by first value
      * @return percent value as double es. 8 or -8
      * @throws IllegalArgumentException if startValue or lastValue are negative
-     * **/
+     */
     public double getTrendPercent(double startValue, double finalValue){
         return computeAssetPercent(startValue, finalValue);
     }
@@ -202,7 +202,7 @@ public class KrakenManager {
      * @param decimalDigits: number of digits to round final percent value
      * @return percent value as double es. 8 or -8
      * @throws IllegalArgumentException if startValue or lastValue are negative
-     * **/
+     */
     public double getTrendPercent(double startValue, double finalValue, int decimalDigits){
         return computeAssetPercent(startValue, finalValue, decimalDigits);
     }
@@ -210,7 +210,7 @@ public class KrakenManager {
     /** Method to format percent between two values and textualize it
      * @param percent: value to format
      * @return percent value formatted es. +8% or -8% as {@link String}
-     * **/
+     */
     public String getTextTrendPercent(double percent){
         return textualizeAssetPercent(percent);
     }
@@ -219,7 +219,7 @@ public class KrakenManager {
      * @param startValue: first value to make compare
      * @param finalValue: last value to compare and get percent by first value
      * @return percent value es. +8% or -8% as {@link String}
-     * **/
+     */
     public String getTextTrendPercent(double startValue, double finalValue){
         return textualizeAssetPercent(startValue, finalValue);
     }
@@ -229,7 +229,7 @@ public class KrakenManager {
      * @param finalValue: last value to compare and get percent by first value
      * @param decimalDigits: number of digits to round final percent value
      * @return percent value es. +8% or -8% as {@link String}
-     * **/
+     */
     public String getTextTrendPercent(double startValue, double finalValue, int decimalDigits){
         return textualizeAssetPercent(startValue, finalValue, decimalDigits);
     }
@@ -237,29 +237,29 @@ public class KrakenManager {
     /**
      * The {@code KrakenResponse} class is useful to format all responses and give base details for
      * others custom records given by library
-     **/
+     */
     public static class KrakenResponse {
 
         /**
          * {@code hResponse} is instance that memorizes base json response
-         **/
+         */
         protected final JsonHelper hResponse;
 
         /**
          * {@code result} is instance useful to work on {@code "JSON"}
-         **/
+         */
         protected final JsonHelper result;
 
         /**
          * {@code errors} is instance that memorizes list of the errors
-         **/
+         */
         protected final String[] errors;
 
         /**
          * Constructor to init a {@link KrakenResponse} object
          *
          * @param jResponse: base json response
-         **/
+         */
         public KrakenResponse(JSONObject jResponse) {
             boolean jsonArrayList = false;
             if (jResponse == null)
@@ -292,7 +292,7 @@ public class KrakenManager {
          * No-any params required
          *
          * @return result response as {@link T}
-         **/
+         */
         public <T> T getResult() {
             return (T) hResponse.get("result");
         }
@@ -302,7 +302,7 @@ public class KrakenManager {
          * No-any params required
          *
          * @return {@link #errors} instance as array of {@link String}
-         **/
+         */
         public String[] getErrors() {
             return errors;
         }
@@ -325,7 +325,7 @@ public class KrakenManager {
      * @implNote this class can be used to assemble body payload or query request params
      * @implSpec look this library <a href="https://github.com/N7ghtm4r3/APIManager">here</a>
      * @see com.tecknobit.apimanager.apis.APIRequest.Params
-     * **/
+     */
     public static class Params extends APIRequest.Params {}
 
 }

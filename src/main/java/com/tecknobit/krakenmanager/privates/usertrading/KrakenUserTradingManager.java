@@ -32,42 +32,42 @@ import static com.tecknobit.krakenmanager.privates.usertrading.records.orders.Or
  * @author N7ghtm4r3 - Tecknobit
  * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading">
  * User Trading</a>
- **/
+ */
 public class KrakenUserTradingManager extends KrakenPrivateManager {
 
     /**
      * {@code ADD_ORDER_ENDPOINT} is constant for ADD_ORDER_ENDPOINT's endpoint
-     **/
+     */
     public static final String ADD_ORDER_ENDPOINT = "AddOrder";
 
     /**
      * {@code ADD_ORDER_BATCH_ENDPOINT} is constant for ADD_ORDER_BATCH_ENDPOINT's endpoint
-     **/
+     */
     public static final String ADD_ORDER_BATCH_ENDPOINT = "AddOrderBatch";
 
     /**
      * {@code EDIT_ORDER_ENDPOINT} is constant for EDIT_ORDER_ENDPOINT's endpoint
-     **/
+     */
     public static final String EDIT_ORDER_ENDPOINT = "EditOrder";
 
     /**
      * {@code CANCEL_ORDER_ENDPOINT} is constant for CANCEL_ORDER_ENDPOINT's endpoint
-     **/
+     */
     public static final String CANCEL_ORDER_ENDPOINT = "CancelOrder";
 
     /**
      * {@code CANCEL_ALL_ORDERS_ENDPOINT} is constant for CANCEL_ALL_ORDERS_ENDPOINT's endpoint
-     **/
+     */
     public static final String CANCEL_ALL_ORDERS_ENDPOINT = "CancelAll";
 
     /**
      * {@code CANCEL_ALL_ORDERS_AFTER_ENDPOINT} is constant for CANCEL_ALL_ORDERS_AFTER_ENDPOINT's endpoint
-     **/
+     */
     public static final String CANCEL_ALL_ORDERS_AFTER_ENDPOINT = "CancelAllOrdersAfter";
 
     /**
      * {@code CANCEL_ORDER_BATCH_ENDPOINT} is constant for CANCEL_ORDER_BATCH_ENDPOINT's endpoint
-     **/
+     */
     public static final String CANCEL_ORDER_BATCH_ENDPOINT = "CancelOrderBatch";
 
     /**
@@ -77,7 +77,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      * @param requestTimeout:      custom timeout for request
      * @param apiKey:              api key of Kraken's platform
      * @param apiSign:             api sign of Kraken's platform
-     **/
+     */
     public KrakenUserTradingManager(String defaultErrorMessage, int requestTimeout, String apiKey, String apiSign) {
         super(defaultErrorMessage, requestTimeout, apiKey, apiSign);
     }
@@ -86,7 +86,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      * @param defaultErrorMessage: custom error to show when is not a request error
      * @param apiKey: api key of Kraken's platform
      * @param apiSign: api sign of Kraken's platform
-     **/
+     */
     public KrakenUserTradingManager(String defaultErrorMessage, String apiKey, String apiSign) {
         super(defaultErrorMessage, apiKey, apiSign);
     }
@@ -97,7 +97,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      * @param requestTimeout: custom timeout for request
      * @param apiKey:         api key of Kraken's platform
      * @param apiSign:        api sign of Kraken's platform
-     **/
+     */
     public KrakenUserTradingManager(int requestTimeout, String apiKey, String apiSign) {
         super(requestTimeout, apiKey, apiSign);
     }
@@ -107,7 +107,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      *
      * @param apiKey:  api key of Kraken's platform
      * @param apiSign: api sign of Kraken's platform
-     **/
+     */
     public KrakenUserTradingManager(String apiKey, String apiSign) {
         super(apiKey, apiSign);
     }
@@ -127,7 +127,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      *        KrakenPrivateManager secondManager = new KrakenPrivateManager(); //same credentials used
      *     }
      * </pre>
-     **/
+     */
     public KrakenUserTradingManager() {
         super();
     }
@@ -153,7 +153,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      *                   </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/addOrder">
      * Add Order</a>
-     **/
+     */
     @Wrapper
     @WrappedRequest
     @RequestPath(method = POST, path = "https://api.kraken.com/0/private/AddOrder")
@@ -183,7 +183,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      *                   </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/addOrder">
      * Add Order</a>
-     **/
+     */
     @WrappedRequest
     @RequestPath(method = POST, path = "https://api.kraken.com/0/private/AddOrder")
     public <T> T addMarketOrder(Side type, double volume, AssetPair pair, ReturnFormat format) throws Exception {
@@ -209,7 +209,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/addOrder">
      *    Add Order</a>
      * @return market order result as {@link OrderAdded} custom object
-     * **/
+     */
     @Wrapper
     @RequestPath(method = POST, path = "https://api.kraken.com/0/private/AddOrder")
     public OrderAdded addMarketOrder(Side type, double volume, String pair) throws Exception {
@@ -236,7 +236,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/addOrder">
      *    Add Order</a>
      * @return market order result as {@code "format"} defines
-     * **/
+     */
     @RequestPath(method = POST, path = "https://api.kraken.com/0/private/AddOrder")
     public <T> T addMarketOrder(Side type, double volume, String pair, ReturnFormat format) throws Exception {
         return addOrder(market, type, volume, pair, null, format);
@@ -332,7 +332,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/addOrder">
      *    Add Order</a>
      * @return market order result as {@link OrderAdded} custom object
-     * **/
+     */
     @Wrapper
     @WrappedRequest
     @RequestPath(method = POST, path = "https://api.kraken.com/0/private/AddOrder")
@@ -433,7 +433,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      *                   </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/addOrder">
      * Add Order</a>
-     **/
+     */
     @WrappedRequest
     @RequestPath(method = POST, path = "https://api.kraken.com/0/private/AddOrder")
     public <T> T addMarketOrder(Side type, double volume, AssetPair pair, Params params,
@@ -535,7 +535,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      * Add Order</a>
      * @implNote keys for params accepted are: userref,leverage,stp_type,oflags,timeinforce,starttm,expiretm,close[ordertype],
      * close[price],close[price2],deadline or validate
-     **/
+     */
     @Wrapper
     @RequestPath(method = POST, path = "https://api.kraken.com/0/private/AddOrder")
     public OrderAdded addMarketOrder(Side type, double volume, String pair, Params params) throws Exception {
@@ -635,7 +635,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      *                   </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/addOrder">
      * Add Order</a>
-     **/
+     */
     @RequestPath(method = POST, path = "https://api.kraken.com/0/private/AddOrder")
     public <T> T addMarketOrder(Side type, double volume, String pair, Params params,
                                 ReturnFormat format) throws Exception {
@@ -662,7 +662,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/addOrder">
      *    Add Order</a>
      * @return limit order result as {@link OrderAdded} custom object
-     * **/
+     */
     @Wrapper
     @WrappedRequest
     @RequestPath(method = POST, path = "https://api.kraken.com/0/private/AddOrder")
@@ -691,7 +691,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/addOrder">
      *    Add Order</a>
      * @return limit order result as {@code "format"} defines
-     * **/
+     */
     @WrappedRequest
     @RequestPath(method = POST, path = "https://api.kraken.com/0/private/AddOrder")
     public <T> T addLimitOrder(Side type, double volume, AssetPair pair, double price, ReturnFormat format) throws Exception {
@@ -720,7 +720,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      *                   </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/addOrder">
      * Add Order</a>
-     **/
+     */
     @Wrapper
     @RequestPath(method = POST, path = "https://api.kraken.com/0/private/AddOrder")
     public OrderAdded addLimitOrder(Side type, double volume, String pair, double price) throws Exception {
@@ -748,7 +748,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/addOrder">
      *    Add Order</a>
      * @return limit order result as {@code "format"} defines
-     * **/
+     */
     @RequestPath(method = POST, path = "https://api.kraken.com/0/private/AddOrder")
     public <T> T addLimitOrder(Side type, double volume, String pair, double price, ReturnFormat format) throws Exception {
         Params params = new Params();
@@ -847,7 +847,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/addOrder">
      *    Add Order</a>
      * @return limit order result as {@link OrderAdded} custom object
-     * **/
+     */
     @Wrapper
     @WrappedRequest
     @RequestPath(method = POST, path = "https://api.kraken.com/0/private/AddOrder")
@@ -947,7 +947,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/addOrder">
      *    Add Order</a>
      * @return limit order result as {@code "format"} defines
-     * **/
+     */
     @WrappedRequest
     @RequestPath(method = POST, path = "https://api.kraken.com/0/private/AddOrder")
     public <T> T addLimitOrder(Side type, double volume, AssetPair pair, double price, Params params,
@@ -1048,7 +1048,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      *                   </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/addOrder">
      * Add Order</a>
-     **/
+     */
     @Wrapper
     @RequestPath(method = POST, path = "https://api.kraken.com/0/private/AddOrder")
     public OrderAdded addLimitOrder(Side type, double volume, String pair, double price, Params params) throws Exception {
@@ -1149,7 +1149,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      *                   </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/addOrder">
      * Add Order</a>
-     **/
+     */
     @RequestPath(method = POST, path = "https://api.kraken.com/0/private/AddOrder")
     public <T> T addLimitOrder(Side type, double volume, String pair, double price, Params params,
                                ReturnFormat format) throws Exception {
@@ -1182,7 +1182,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      *                   </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/addOrder">
      * Add Order</a>
-     **/
+     */
     @Wrapper
     @WrappedRequest
     @RequestPath(method = POST, path = "https://api.kraken.com/0/private/AddOrder")
@@ -1213,7 +1213,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/addOrder">
      *    Add Order</a>
      * @return limit stop loss result as {@code "format"} defines
-     * **/
+     */
     @WrappedRequest
     @RequestPath(method = POST, path = "https://api.kraken.com/0/private/AddOrder")
     public <T> T addStopLossOrder(Side type, double volume, AssetPair pair, double price, Trigger trigger,
@@ -1244,7 +1244,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      *                   </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/addOrder">
      * Add Order</a>
-     **/
+     */
     @Wrapper
     @RequestPath(method = POST, path = "https://api.kraken.com/0/private/AddOrder")
     public OrderAdded addStopLossOrder(Side type, double volume, String pair, double price, Trigger trigger) throws Exception {
@@ -1273,7 +1273,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/addOrder">
      *    Add Order</a>
      * @return limit stop loss result as {@code "format"} defines
-     * **/
+     */
     @RequestPath(method = POST, path = "https://api.kraken.com/0/private/AddOrder")
     public <T> T addStopLossOrder(Side type, double volume, String pair, double price, Trigger trigger,
                                   ReturnFormat format) throws Exception {
@@ -1372,7 +1372,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/addOrder">
      *    Add Order</a>
      * @return limit stop loss result as {@link OrderAdded} custom object
-     * **/
+     */
     @Wrapper
     @WrappedRequest
     @RequestPath(method = POST, path = "https://api.kraken.com/0/private/AddOrder")
@@ -1476,7 +1476,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      *                   </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/addOrder">
      * Add Order</a>
-     **/
+     */
     @WrappedRequest
     @RequestPath(method = POST, path = "https://api.kraken.com/0/private/AddOrder")
     public <T> T addStopLossOrder(Side type, double volume, AssetPair pair, double price, Trigger trigger,
@@ -1576,7 +1576,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/addOrder">
      *    Add Order</a>
      * @return limit stop loss result as {@link OrderAdded} custom object
-     * **/
+     */
     @Wrapper
     @RequestPath(method = POST, path = "https://api.kraken.com/0/private/AddOrder")
     public OrderAdded addStopLossOrder(Side type, double volume, String pair, double price, Trigger trigger,
@@ -1677,7 +1677,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/addOrder">
      *    Add Order</a>
      * @return limit stop loss result as {@code "format"} defines
-     * **/
+     */
     @RequestPath(method = POST, path = "https://api.kraken.com/0/private/AddOrder")
     public <T> T addStopLossOrder(Side type, double volume, String pair, double price, Trigger trigger,
                                   Params params, ReturnFormat format) throws Exception {
@@ -1709,7 +1709,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      *                   </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/addOrder">
      * Add Order</a>
-     **/
+     */
     @Wrapper
     @WrappedRequest
     @RequestPath(method = POST, path = "https://api.kraken.com/0/private/AddOrder")
@@ -1743,7 +1743,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/addOrder">
      *    Add Order</a>
      * @return stop loss limit result as {@code "format"} defines
-     * **/
+     */
     @WrappedRequest
     @RequestPath(method = POST, path = "https://api.kraken.com/0/private/AddOrder")
     public <T> T addStopLossLimitOrder(Side type, double volume, AssetPair pair, double price, double price2,
@@ -1775,7 +1775,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/addOrder">
      *    Add Order</a>
      * @return stop loss limit result as {@link OrderAdded} custom object
-     * **/
+     */
     @Wrapper
     @RequestPath(method = POST, path = "https://api.kraken.com/0/private/AddOrder")
     public OrderAdded addStopLossLimitOrder(Side type, double volume, String pair, double price, double price2,
@@ -1808,7 +1808,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/addOrder">
      *    Add Order</a>
      * @return stop loss limit result as {@code "format"} defines
-     * **/
+     */
     @RequestPath(method = POST, path = "https://api.kraken.com/0/private/AddOrder")
     public <T> T addStopLossLimitOrder(Side type, double volume, String pair, double price, double price2,
                                        Trigger trigger, String offsetType, ReturnFormat format) throws Exception {
@@ -1912,7 +1912,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      *                   </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/addOrder">
      * Add Order</a>
-     **/
+     */
     @Wrapper
     @WrappedRequest
     @RequestPath(method = POST, path = "https://api.kraken.com/0/private/AddOrder")
@@ -2017,7 +2017,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/addOrder">
      *    Add Order</a>
      * @return stop loss limit result as {@code "format"} defines
-     * **/
+     */
     @WrappedRequest
     @RequestPath(method = POST, path = "https://api.kraken.com/0/private/AddOrder")
     public <T> T addStopLossLimitOrder(Side type, double volume, AssetPair pair, double price, double price2,
@@ -2121,7 +2121,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/addOrder">
      *    Add Order</a>
      * @return stop loss limit result as {@link OrderAdded} custom object
-     * **/
+     */
     @Wrapper
     @RequestPath(method = POST, path = "https://api.kraken.com/0/private/AddOrder")
     public OrderAdded addStopLossLimitOrder(Side type, double volume, String pair, double price, double price2,
@@ -2227,7 +2227,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      *                   </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/addOrder">
      * Add Order</a>
-     **/
+     */
     @RequestPath(method = POST, path = "https://api.kraken.com/0/private/AddOrder")
     public <T> T addStopLossLimitOrder(Side type, double volume, String pair, double price, double price2,
                                        Trigger trigger, String offsetType, Params params,
@@ -2259,7 +2259,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      *                   </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/addOrder">
      * Add Order</a>
-     **/
+     */
     @Wrapper
     @WrappedRequest
     @RequestPath(method = POST, path = "https://api.kraken.com/0/private/AddOrder")
@@ -2292,7 +2292,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      *                   </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/addOrder">
      * Add Order</a>
-     **/
+     */
     @WrappedRequest
     @RequestPath(method = POST, path = "https://api.kraken.com/0/private/AddOrder")
     public <T> T addTakeProfitOrder(Side type, double volume, AssetPair pair, double price, Trigger trigger,
@@ -2321,7 +2321,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/addOrder">
      *    Add Order</a>
      * @return take profit order result as {@link OrderAdded} custom object
-     * **/
+     */
     @Wrapper
     @RequestPath(method = POST, path = "https://api.kraken.com/0/private/AddOrder")
     public OrderAdded addTakeProfitOrder(Side type, double volume, String pair, double price,
@@ -2351,7 +2351,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/addOrder">
      *    Add Order</a>
      * @return take profit order result as {@code "format"} defines
-     * **/
+     */
     @RequestPath(method = POST, path = "https://api.kraken.com/0/private/AddOrder")
     public <T> T addTakeProfitOrder(Side type, double volume, String pair, double price, Trigger trigger,
                                     ReturnFormat format) throws Exception {
@@ -2452,7 +2452,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      *                   </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/addOrder">
      * Add Order</a>
-     **/
+     */
     @Wrapper
     @WrappedRequest
     @RequestPath(method = POST, path = "https://api.kraken.com/0/private/AddOrder")
@@ -2556,7 +2556,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      *                   </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/addOrder">
      * Add Order</a>
-     **/
+     */
     @WrappedRequest
     @RequestPath(method = POST, path = "https://api.kraken.com/0/private/AddOrder")
     public <T> T addTakeProfitOrder(Side type, double volume, AssetPair pair, double price, Trigger trigger,
@@ -2656,7 +2656,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/addOrder">
      *    Add Order</a>
      * @return take profit order result as {@code "format"} defines
-     * **/
+     */
     @Wrapper
     @RequestPath(method = POST, path = "https://api.kraken.com/0/private/AddOrder")
     public OrderAdded addTakeProfitOrder(Side type, double volume, String pair, double price, Trigger trigger,
@@ -2761,7 +2761,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/addOrder">
      *    Add Order</a>
      * @return take profit order result as {@code "format"} defines
-     * **/
+     */
     @RequestPath(method = POST, path = "https://api.kraken.com/0/private/AddOrder")
     public <T> T addTakeProfitOrder(Side type, double volume, String pair, double price, Trigger trigger,
                                     Params params, ReturnFormat format) throws Exception {
@@ -2793,7 +2793,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      *                   </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/addOrder">
      * Add Order</a>
-     **/
+     */
     @Wrapper
     @WrappedRequest
     @RequestPath(method = POST, path = "https://api.kraken.com/0/private/AddOrder")
@@ -2829,7 +2829,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      *                   </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/addOrder">
      * Add Order</a>
-     **/
+     */
     @WrappedRequest
     @RequestPath(method = POST, path = "https://api.kraken.com/0/private/AddOrder")
     public <T> T addTakeProfitLimitOrder(Side type, double volume, AssetPair pair, double price, double price2,
@@ -2861,7 +2861,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/addOrder">
      *    Add Order</a>
      * @return take profit limit order result as {@link OrderAdded} custom object
-     * **/
+     */
     @Wrapper
     @RequestPath(method = POST, path = "https://api.kraken.com/0/private/AddOrder")
     public OrderAdded addTakeProfitLimitOrder(Side type, double volume, String pair, double price, double price2,
@@ -2896,7 +2896,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      *                   </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/addOrder">
      * Add Order</a>
-     **/
+     */
     @RequestPath(method = POST, path = "https://api.kraken.com/0/private/AddOrder")
     public <T> T addTakeProfitLimitOrder(Side type, double volume, String pair, double price, double price2,
                                          Trigger trigger, String offsetType, ReturnFormat format) throws Exception {
@@ -2998,7 +2998,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/addOrder">
      *    Add Order</a>
      * @return take profit limit order result as {@link OrderAdded} custom object
-     * **/
+     */
     @Wrapper
     @RequestPath(method = POST, path = "https://api.kraken.com/0/private/AddOrder")
     public OrderAdded addTakeProfitLimitOrder(Side type, double volume, AssetPair pair, double price, double price2,
@@ -3102,7 +3102,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/addOrder">
      *    Add Order</a>
      * @return take profit limit order result as {@code "format"} defines
-     * **/
+     */
     @RequestPath(method = POST, path = "https://api.kraken.com/0/private/AddOrder")
     public <T> T addTakeProfitLimitOrder(Side type, double volume, AssetPair pair, double price, double price2,
                                          Trigger trigger, String offsetType, Params params,
@@ -3205,7 +3205,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/addOrder">
      *    Add Order</a>
      * @return take profit limit order result as {@link OrderAdded} custom object
-     * **/
+     */
     @Wrapper
     @RequestPath(method = POST, path = "https://api.kraken.com/0/private/AddOrder")
     public OrderAdded addTakeProfitLimitOrder(Side type, double volume, String pair, double price, double price2,
@@ -3311,7 +3311,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      *                   </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/addOrder">
      * Add Order</a>
-     **/
+     */
     @RequestPath(method = POST, path = "https://api.kraken.com/0/private/AddOrder")
     public <T> T addTakeProfitLimitOrder(Side type, double volume, String pair, double price, double price2,
                                          Trigger trigger, String offsetType, Params params,
@@ -3400,7 +3400,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      *                   </ul>
      * @param format:    return type formatter -> {@link ReturnFormat}
      * @return result of the order as {@code "format"} defines
-     **/
+     */
     @Returner
     private <T> T addLevelOrder(OrderType orderType, Side type, double volume, String pair, double price,
                                 Trigger trigger, Params params, ReturnFormat format) throws Exception {
@@ -3492,7 +3492,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      *                      </ul> 
      * @param format:              return type formatter -> {@link ReturnFormat}
      * @return result of the order as {@code "format"} defines
-     * **/
+     */
     @Returner
     private <T> T addLevelLimitOrder(OrderType orderType, Side type, double volume, String pair, double price,
                                      double price2, Trigger trigger, String offsetType, Params params,
@@ -3583,7 +3583,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      *                      </ul> 
      * @param format:              return type formatter -> {@link ReturnFormat}
      * @return result of the order as {@code "format"} defines
-     * **/
+     */
     @Returner
     private <T> T addOrder(OrderType orderType, Side type, double volume, String pair, Params params,
                            ReturnFormat format) throws Exception {
@@ -3620,7 +3620,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/addOrderBatch">
      * Add Order Batch</a>
      * @implNote keys for params accepted are: deadline or validate
-     **/
+     */
     @Wrapper
     @WrappedRequest
     @RequestPath(method = POST, path = "https://api.kraken.com/0/private/AddOrderBatch")
@@ -3661,7 +3661,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      * Add Order Batch</a>
      * @implNote keys for params accepted are: deadline or validate
      * @implSpec return type change by Kraken's response given
-     **/
+     */
     @Returner
     @WrappedRequest
     @RequestPath(method = POST, path = "https://api.kraken.com/0/private/AddOrderBatch")
@@ -3709,7 +3709,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/editOrder">
      *     Edit Order</a>
      * @return edit market order result as {@link OrderEdited} custom object
-     * **/
+     */
     @Wrapper
     @WrappedRequest
     @RequestPath(method = POST, path = "https://api.kraken.com/0/private/EditOrder")
@@ -3739,7 +3739,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      *                   </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/editOrder">
      * Edit Order</a>
-     **/
+     */
     @WrappedRequest
     @RequestPath(method = POST, path = "https://api.kraken.com/0/private/EditOrder")
     public <T> T editMarketOrder(T orderId, AssetPair pair, double volume, ReturnFormat format) throws Exception {
@@ -3767,7 +3767,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      *                   </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/editOrder">
      * Edit Order</a>
-     **/
+     */
     @Wrapper
     @RequestPath(method = POST, path = "https://api.kraken.com/0/private/EditOrder")
     public <T> OrderEdited editMarketOrder(T orderId, String pair, double volume) throws Exception {
@@ -3796,7 +3796,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      *                   </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/editOrder">
      * Edit Order</a>
-     **/
+     */
     @RequestPath(method = POST, path = "https://api.kraken.com/0/private/EditOrder")
     public <T> T editMarketOrder(T orderId, String pair, double volume, ReturnFormat format) throws Exception {
         return editOrder(orderId, pair, volume, null, format);
@@ -3892,7 +3892,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/editOrder">
      *     Edit Order</a>
      * @return edit market order result as {@link OrderEdited} custom object
-     * **/
+     */
     @Wrapper
     @WrappedRequest
     @RequestPath(method = POST, path = "https://api.kraken.com/0/private/EditOrder")
@@ -3991,7 +3991,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/editOrder">
      *     Edit Order</a>
      * @return edit market order result as {@code "format"} defines
-     * **/
+     */
     @WrappedRequest
     @RequestPath(method = POST, path = "https://api.kraken.com/0/private/EditOrder")
     public <T> T editMarketOrder(T orderId, AssetPair pair, double volume, Params params,
@@ -4089,7 +4089,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/editOrder">
      *     Edit Order</a>
      * @return edit market order result as {@link OrderEdited} custom object
-     * **/
+     */
     @Wrapper
     @RequestPath(method = POST, path = "https://api.kraken.com/0/private/EditOrder")
     public <T> OrderEdited editMarketOrder(T orderId, String pair, double volume, Params params) throws Exception {
@@ -4187,7 +4187,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/editOrder">
      *     Edit Order</a>
      * @return edit market order result as {@code "format"} defines
-     * **/
+     */
     @RequestPath(method = POST, path = "https://api.kraken.com/0/private/EditOrder")
     public <T> T editMarketOrder(T orderId, String pair, double volume, Params params, ReturnFormat format) throws Exception {
         return editOrder(orderId, pair, volume, params, format);
@@ -4215,7 +4215,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      *                   </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/editOrder">
      * Edit Order</a>
-     **/
+     */
     @Wrapper
     @WrappedRequest
     @RequestPath(method = POST, path = "https://api.kraken.com/0/private/EditOrder")
@@ -4246,7 +4246,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      *                   </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/editOrder">
      * Edit Order</a>
-     **/
+     */
     @WrappedRequest
     @RequestPath(method = POST, path = "https://api.kraken.com/0/private/EditOrder")
     public <T> T editLimitOrder(T orderId, AssetPair pair, double volume, double price,
@@ -4276,7 +4276,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      *                   </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/editOrder">
      * Edit Order</a>
-     **/
+     */
     @Wrapper
     @RequestPath(method = POST, path = "https://api.kraken.com/0/private/EditOrder")
     public <T> OrderEdited editLimitOrder(T orderId, String pair, double volume, double price) throws Exception {
@@ -4306,7 +4306,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      *                   </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/editOrder">
      * Edit Order</a>
-     **/
+     */
     @RequestPath(method = POST, path = "https://api.kraken.com/0/private/EditOrder")
     public <T> T editLimitOrder(T orderId, String pair, double volume, double price, ReturnFormat format) throws Exception {
         return editPriceOrder(orderId, pair, volume, price, null, format);
@@ -4403,7 +4403,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/editOrder">
      *     Edit Order</a>
      * @return edit limit order result as {@link OrderEdited} custom object
-     * **/
+     */
     @Wrapper
     @RequestPath(method = POST, path = "https://api.kraken.com/0/private/EditOrder")
     public <T> OrderEdited editLimitOrder(T orderId, AssetPair pair, double volume, double price,
@@ -4503,7 +4503,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/editOrder">
      *     Edit Order</a>
      * @return edit limit order result as {@code "format"} defines
-     * **/
+     */
     @RequestPath(method = POST, path = "https://api.kraken.com/0/private/EditOrder")
     public <T> T editLimitOrder(T orderId, AssetPair pair, double volume, double price, Params params,
                                 ReturnFormat format) throws Exception {
@@ -4601,7 +4601,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/editOrder">
      *     Edit Order</a>
      * @return edit limit order result as {@code "format"} defines
-     * **/
+     */
     @Wrapper
     @RequestPath(method = POST, path = "https://api.kraken.com/0/private/EditOrder")
     public <T> OrderEdited editLimitOrder(T orderId, String pair, double volume, double price,
@@ -4701,7 +4701,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/editOrder">
      *     Edit Order</a>
      * @return edit limit order result as {@link OrderEdited} custom object
-     * **/
+     */
     @RequestPath(method = POST, path = "https://api.kraken.com/0/private/EditOrder")
     public <T> T editLimitOrder(T orderId, String pair, double volume, double price, Params params,
                                 ReturnFormat format) throws Exception {
@@ -4730,7 +4730,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      *                   </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/editOrder">
      * Edit Order</a>
-     **/
+     */
     @Wrapper
     @WrappedRequest
     @RequestPath(method = POST, path = "https://api.kraken.com/0/private/EditOrder")
@@ -4761,7 +4761,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      *                   </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/editOrder">
      * Edit Order</a>
-     **/
+     */
     @WrappedRequest
     @RequestPath(method = POST, path = "https://api.kraken.com/0/private/EditOrder")
     public <T> T editStopLossOrder(T orderId, AssetPair pair, double volume, double price,
@@ -4789,7 +4789,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/editOrder">
      *     Edit Order</a>
      * @return edit stop loss order result as {@link OrderEdited} custom object
-     * **/
+     */
     @Wrapper
     @RequestPath(method = POST, path = "https://api.kraken.com/0/private/EditOrder")
     public <T> OrderEdited editStopLossOrderObject(T orderId, String pair, double volume, double price) throws Exception {
@@ -4817,7 +4817,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/editOrder">
      *     Edit Order</a>
      * @return edit stop loss order result as {@code "format"} defines
-     * **/
+     */
     @RequestPath(method = POST, path = "https://api.kraken.com/0/private/EditOrder")
     public <T> T editStopLossOrderObject(T orderId, String pair, double volume, double price,
                                          ReturnFormat format) throws Exception {
@@ -4915,7 +4915,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/editOrder">
      *     Edit Order</a>
      * @return edit stop loss order result as {@link OrderEdited} custom object
-     * **/
+     */
     @Wrapper
     @WrappedRequest
     @RequestPath(method = POST, path = "https://api.kraken.com/0/private/EditOrder")
@@ -5016,7 +5016,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/editOrder">
      *     Edit Order</a>
      * @return edit stop loss order result as {@code "format"} defines
-     * **/
+     */
     @WrappedRequest
     @RequestPath(method = POST, path = "https://api.kraken.com/0/private/EditOrder")
     public <T> T editStopLossOrder(T orderId, AssetPair pair, double volume, double price, Params params,
@@ -5115,7 +5115,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/editOrder">
      *     Edit Order</a>
      * @return edit stop loss order result as {@link OrderEdited} custom object
-     * **/
+     */
     @Wrapper
     @RequestPath(method = POST, path = "https://api.kraken.com/0/private/EditOrder")
     public <T> OrderEdited editStopLossOrder(T orderId, String pair, double volume, double price,
@@ -5217,7 +5217,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      *                   </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/editOrder">
      * Edit Order</a>
-     **/
+     */
     @RequestPath(method = POST, path = "https://api.kraken.com/0/private/EditOrder")
     public <T> T editStopLossOrder(T orderId, String pair, double volume, double price, Params params,
                                    ReturnFormat format) throws Exception {
@@ -5248,7 +5248,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      *                   </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/editOrder">
      * Edit Order</a>
-     **/
+     */
     @Wrapper
     @WrappedRequest
     @RequestPath(method = POST, path = "https://api.kraken.com/0/private/EditOrder")
@@ -5283,7 +5283,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      *                   </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/editOrder">
      * Edit Order</a>
-     **/
+     */
     @WrappedRequest
     @RequestPath(method = POST, path = "https://api.kraken.com/0/private/EditOrder")
     public <T> T editStopLossLimitOrder(T orderId, AssetPair pair, double volume, double price, double price2,
@@ -5315,7 +5315,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      *                   </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/editOrder">
      * Edit Order</a>
-     **/
+     */
     @Wrapper
     @RequestPath(method = POST, path = "https://api.kraken.com/0/private/EditOrder")
     public <T> OrderEdited editStopLossLimitOrder(T orderId, String pair, double volume, double price, double price2,
@@ -5347,7 +5347,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/editOrder">
      *     Edit Order</a>
      * @return edit stop loss limit order result as {@code "format"} defines
-     * **/
+     */
     @RequestPath(method = POST, path = "https://api.kraken.com/0/private/EditOrder")
     public <T> T editStopLossLimitOrder(T orderId, String pair, double volume, double price, double price2,
                                         String offsetType, ReturnFormat format) throws Exception {
@@ -5447,7 +5447,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/editOrder">
      *     Edit Order</a>
      * @return edit stop loss limit order result as {@link OrderEdited} custom object
-     * **/
+     */
     @Wrapper
     @WrappedRequest
     @RequestPath(method = POST, path = "https://api.kraken.com/0/private/EditOrder")
@@ -5553,7 +5553,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      *                   </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/editOrder">
      * Edit Order</a>
-     **/
+     */
     @WrappedRequest
     @RequestPath(method = POST, path = "https://api.kraken.com/0/private/EditOrder")
     public <T> T editStopLossLimitOrder(T orderId, AssetPair pair, double volume, double price, double price2,
@@ -5656,7 +5656,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      *                   </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/editOrder">
      * Edit Order</a>
-     **/
+     */
     @Wrapper
     @RequestPath(method = POST, path = "https://api.kraken.com/0/private/EditOrder")
     public <T> OrderEdited editStopLossLimitOrder(T orderId, String pair, double volume, double price, double price2,
@@ -5760,7 +5760,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      *                   </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/editOrder">
      * Edit Order</a>
-     **/
+     */
     @RequestPath(method = POST, path = "https://api.kraken.com/0/private/EditOrder")
     public <T> T editStopLossLimitOrder(T orderId, String pair, double volume, double price, double price2,
                                         String offsetType, Params params, ReturnFormat format) throws Exception {
@@ -5789,7 +5789,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      *                   </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/editOrder">
      * Edit Order</a>
-     **/
+     */
     @Wrapper
     @RequestPath(method = POST, path = "https://api.kraken.com/0/private/EditOrder")
     public <T> OrderEdited editTakeProfitOrder(T orderId, AssetPair pair, double volume, double price) throws Exception {
@@ -5819,7 +5819,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      *                   </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/editOrder">
      * Edit Order</a>
-     **/
+     */
     @WrappedRequest
     @RequestPath(method = POST, path = "https://api.kraken.com/0/private/EditOrder")
     public <T> T editTakeProfitOrder(T orderId, AssetPair pair, double volume, double price,
@@ -5849,7 +5849,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      *                   </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/editOrder">
      * Edit Order</a>
-     **/
+     */
     @Wrapper
     @RequestPath(method = POST, path = "https://api.kraken.com/0/private/EditOrder")
     public <T> OrderEdited editTakeProfitOrder(T orderId, String pair, double volume, double price) throws Exception {
@@ -5879,7 +5879,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      *                   </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/editOrder">
      * Edit Order</a>
-     **/
+     */
     @RequestPath(method = POST, path = "https://api.kraken.com/0/private/EditOrder")
     public <T> T editTakeProfitOrder(T orderId, String pair, double volume, double price,
                                      ReturnFormat format) throws Exception {
@@ -5977,7 +5977,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/editOrder">
      *     Edit Order</a>
      * @return edit take profit order result as {@link OrderEdited} custom object
-     * **/
+     */
     @Wrapper
     @WrappedRequest
     @RequestPath(method = POST, path = "https://api.kraken.com/0/private/EditOrder")
@@ -6078,7 +6078,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/editOrder">
      *     Edit Order</a>
      * @return edit take profit order result as {@code "format"} defines
-     * **/
+     */
     @WrappedRequest
     @RequestPath(method = POST, path = "https://api.kraken.com/0/private/EditOrder")
     public <T> T editTakeProfitOrder(T orderId, AssetPair pair, double volume, double price, Params params,
@@ -6177,7 +6177,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/editOrder">
      *     Edit Order</a>
      * @return edit take profit order result as {@link OrderEdited} custom object
-     * **/
+     */
     @Wrapper
     @RequestPath(method = POST, path = "https://api.kraken.com/0/private/EditOrder")
     public <T> OrderEdited editTakeProfitOrder(T orderId, String pair, double volume, double price,
@@ -6277,7 +6277,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/editOrder">
      *     Edit Order</a>
      * @return edit take profit order result as {@code "format"} defines
-     * **/
+     */
     @RequestPath(method = POST, path = "https://api.kraken.com/0/private/EditOrder")
     public <T> T editTakeProfitOrder(T orderId, String pair, double volume, double price, Params params,
                                      ReturnFormat format) throws Exception {
@@ -6308,7 +6308,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      *                   </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/editOrder">
      * Edit Order</a>
-     **/
+     */
     @Wrapper
     @WrappedRequest
     @RequestPath(method = POST, path = "https://api.kraken.com/0/private/EditOrder")
@@ -6343,7 +6343,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      *                   </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/editOrder">
      * Edit Order</a>
-     **/
+     */
     @WrappedRequest
     @RequestPath(method = POST, path = "https://api.kraken.com/0/private/EditOrder")
     public <T> T editTakeProfitLimitOrder(T orderId, AssetPair pair, double volume, double price, double price2,
@@ -6375,7 +6375,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      *                   </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/editOrder">
      * Edit Order</a>
-     **/
+     */
     @Wrapper
     @RequestPath(method = POST, path = "https://api.kraken.com/0/private/EditOrder")
     public <T> OrderEdited editTakeProfitLimitOrder(T orderId, String pair, double volume, double price, double price2,
@@ -6409,7 +6409,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      *                   </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/editOrder">
      * Edit Order</a>
-     **/
+     */
     @RequestPath(method = POST, path = "https://api.kraken.com/0/private/EditOrder")
     public <T> T editTakeProfitLimitOrder(T orderId, String pair, double volume, double price, double price2,
                                           String offsetType, ReturnFormat format) throws Exception {
@@ -6511,7 +6511,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      *                   </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/editOrder">
      * Edit Order</a>
-     **/
+     */
     @Wrapper
     @WrappedRequest
     @RequestPath(method = POST, path = "https://api.kraken.com/0/private/EditOrder")
@@ -6615,7 +6615,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/editOrder">
      *     Edit Order</a>
      * @return edit take profit limit order result as {@code "format"} defines
-     * **/
+     */
     @WrappedRequest
     @RequestPath(method = POST, path = "https://api.kraken.com/0/private/EditOrder")
     public <T> T editTakeProfitLimitOrder(T orderId, AssetPair pair, double volume, double price, double price2,
@@ -6716,7 +6716,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/editOrder">
      *     Edit Order</a>
      * @return edit take profit limit order result as {@link OrderEdited} custom object
-     * **/
+     */
     @Wrapper
     @RequestPath(method = POST, path = "https://api.kraken.com/0/private/EditOrder")
     public <T> OrderEdited editTakeProfitLimitOrder(T orderId, String pair, double volume, double price, double price2,
@@ -6818,7 +6818,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/editOrder">
      *     Edit Order</a>
      * @return edit take profit limit order result as {@code "format"} defines
-     * **/
+     */
     @RequestPath(method = POST, path = "https://api.kraken.com/0/private/EditOrder")
     public <T> T editTakeProfitLimitOrder(T orderId, String pair, double volume, double price, double price2,
                                           String offsetType, Params params, ReturnFormat format) throws Exception {
@@ -6905,7 +6905,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      *                 </ul>
      * @param format:  return type formatter -> {@link ReturnFormat}
      * @return result of edit order as {@code "format"} defines
-     **/
+     */
     @Returner
     private <T> T editPriceOrder(T orderId, String pair, double volume, double price, Params params,
                                  ReturnFormat format) throws Exception {
@@ -6926,7 +6926,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      * @param offsetType: +, - , # or % -> constants in {@link OrderAdded} class
      * @param format:     return type formatter -> {@link ReturnFormat}
      * @return result of edit order as {@code "format"} defines
-     **/
+     */
     @Returner
     private <T> T editPriceLimitOrder(T orderId, String pair, double volume, double price, double price2,
                                       String offsetType, Params params, ReturnFormat format) throws Exception {
@@ -7014,7 +7014,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      *                      </ul> 
      * @param format:              return type formatter -> {@link ReturnFormat}
      * @return result of edit order as {@code "format"} defines
-     * **/
+     */
     @Returner
     private <T> T editOrder(T orderId, String pair, double volume, Params params, ReturnFormat format) throws Exception {
         addBaseEditParameters(orderId, pair, volume, params);
@@ -7048,7 +7048,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      *                   </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/cancelOrder">
      * Cancel Order</a>
-     **/
+     */
     @Wrapper
     @RequestPath(method = POST, path = "https://api.kraken.com/0/private/CancelOrder")
     public <T> OrderCancelledStatus cancelOrder(T orderId) throws Exception {
@@ -7075,7 +7075,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      *                   </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/cancelOrder">
      * Cancel Order</a>
-     **/
+     */
     @Returner
     @RequestPath(method = POST, path = "https://api.kraken.com/0/private/CancelOrder")
     public <T> T cancelOrder(T orderId, ReturnFormat format) throws Exception {
@@ -7114,7 +7114,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      *                   </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/cancelAllOrders">
      * Cancel All Orders</a>
-     **/
+     */
     @Wrapper
     @RequestPath(method = POST, path = "https://api.kraken.com/0/private/CancelAll")
     public OrderCancelled cancelAllOrders() throws Exception {
@@ -7140,7 +7140,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      *                   </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/cancelAllOrders">
      * Cancel All Orders</a>
-     **/
+     */
     @RequestPath(method = POST, path = "https://api.kraken.com/0/private/CancelAll")
     public <T> T cancelAllOrders(ReturnFormat format) throws Exception {
         return returnOrderCancelled(sendPostRequest(CANCEL_ALL_ORDERS_ENDPOINT, null), format);
@@ -7165,7 +7165,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      *                   </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/cancelAllOrdersAfter">
      * Cancel All Orders After X</a>
-     **/
+     */
     @Wrapper
     @RequestPath(method = POST, path = "https://api.kraken.com/0/private/CancelAllOrdersAfter")
     public OrderCancelledAfter cancelAllOrdersAfter(int timeout) throws Exception {
@@ -7190,7 +7190,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/cancelAllOrdersAfter">
      *     Cancel All Orders After X</a>
      * @return result of orders cancellation as {@code "format"} defines
-     * **/
+     */
     @RequestPath(method = POST, path = "https://api.kraken.com/0/private/CancelAllOrdersAfter")
     public <T> T cancelAllOrdersAfter(int timeout, ReturnFormat format) throws Exception {
         Params params = new Params();
@@ -7218,7 +7218,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      *                   </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/cancelOrderBatch">
      * Cancel Order Batch</a>
-     **/
+     */
     @Wrapper
     @WrappedRequest
     @RequestPath(method = POST, path = "https://api.kraken.com/0/private/CancelOrderBatch")
@@ -7245,7 +7245,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/cancelOrderBatch">
      *     Cancel Order Batch</a>
      * @return result of batch order cancellation as {"format"} defines
-     * **/
+     */
     @WrappedRequest
     @RequestPath(method = POST, path = "https://api.kraken.com/0/private/CancelOrderBatch")
     public <T> T cancelOrderBatch(ArrayList<T> orderBatchIds, ReturnFormat format) throws Exception {
@@ -7270,7 +7270,7 @@ public class KrakenUserTradingManager extends KrakenPrivateManager {
      * @param orderCancelledResponse: cancelled response to format
      * @param format:                 return type formatter -> {@link ReturnFormat}
      * @return order cancelled response as {"format"} defines
-     **/
+     */
     @Returner
     private <T> T returnOrderCancelled(String orderCancelledResponse, ReturnFormat format) {
         switch (format) {

@@ -8,12 +8,12 @@ import org.json.JSONObject;
  * @author N7ghtm4r3 - Tecknobit
  * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Data/operation/getTradesInfo">
  * Get Trades Info</a>
- **/
+ */
 public class QueryTrade extends Trade {
 
     /**
      * {@code postTradeId} is instance that memorizes post trade identifier
-     **/
+     */
     private final String postTradeId;
 
     /**
@@ -32,7 +32,7 @@ public class QueryTrade extends Trade {
      * @param margin:             margin value
      * @param misc:               misc value
      * @param postTradeId:        post trade identifier
-     **/
+     */
     public QueryTrade(String tradeSymbol, String orderTransactionId, String pair, long time, String type, String orderType,
                       double price, double cost, double fee, double vol, double margin, String misc, String postTradeId) {
         super(tradeSymbol, orderTransactionId, pair, time, type, orderType, price, cost, fee, vol, margin, misc);
@@ -43,7 +43,7 @@ public class QueryTrade extends Trade {
      * Constructor to init a {@link QueryTrade} object
      *
      * @param jsonResponse: base json response
-     **/
+     */
     public QueryTrade(JSONObject jsonResponse) {
         super(jsonResponse);
         postTradeId = result.getString("postxid");
@@ -54,7 +54,7 @@ public class QueryTrade extends Trade {
      * No-any params required
      *
      * @return {@link #postTradeId} instance as {@link String}
-     **/
+     */
     public String getPostTradeId() {
         return postTradeId;
     }

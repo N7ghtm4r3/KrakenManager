@@ -13,12 +13,12 @@ import static com.tecknobit.apimanager.trading.TradingTools.roundValue;
  * @author N7ghtm4r3 - Tecknobit
  * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getRecentSpreads">
  * Get Recent Spreads</a>
- **/
+ */
 public class Spreads extends MarketList {
 
     /**
      * {@code recentSpreads} is instance that memorizes list of {@link Spread}
-     * **/
+     */
     private final ArrayList<Spread> recentSpreads;
 
     /**
@@ -27,7 +27,7 @@ public class Spreads extends MarketList {
      * @param last:          last timestamp value
      * @param symbol:        symbol value
      * @param recentSpreads: list of {@link Spread}
-     **/
+     */
     public Spreads(long last, String symbol, ArrayList<Spread> recentSpreads) {
         super(last, symbol);
         this.recentSpreads = recentSpreads;
@@ -37,7 +37,7 @@ public class Spreads extends MarketList {
      * Constructor to init a {@link Spreads} object
      *
      * @param recentSpreads: list of {@link Spread}
-     **/
+     */
     public Spreads(ArrayList<Spread> recentSpreads) {
         super(null);
         this.recentSpreads = recentSpreads;
@@ -45,7 +45,7 @@ public class Spreads extends MarketList {
 
     /** Constructor to init a {@link Spreads} object
      * @param jsonResponse: base json response
-     * **/
+     */
     public Spreads(JSONObject jsonResponse) {
         super(jsonResponse);
         recentSpreads = new ArrayList<>();
@@ -59,36 +59,36 @@ public class Spreads extends MarketList {
      * No-any params required
      *
      * @return {@link #recentSpreads} instance as {@link ArrayList} of {@link Spread}
-     **/
+     */
     public ArrayList<Spread> getRecentSpreads() {
         return recentSpreads;
     }
 
     /**
      * The {@code Spread} class is useful to format a spread object
-     **/
+     */
     public static class Spread {
 
         /**
          * {@code timestamp} is instance that memorizes timestamp value
-         * **/
+         */
         private final long timestamp;
 
         /**
          * {@code doubleOne} is instance that memorizes doubleOne value
-         * **/
+         */
         private final double doubleOne;
 
         /**
          * {@code doubleTwo} is instance that memorizes doubleTwo value
-         * **/
+         */
         private final double doubleTwo;
 
         /** Constructor to init a {@link Spread} object
          * @param timestamp: timestamp value
          * @param doubleOne: doubleOne value
          * @param doubleTwo: doubleTwo value
-         * **/
+         */
         public Spread(long timestamp, double doubleOne, double doubleTwo) {
             this.timestamp = timestamp;
             this.doubleOne = doubleOne;
@@ -97,7 +97,7 @@ public class Spreads extends MarketList {
 
         /** Constructor to init a {@link Spread} object
          * @param jsonSpread: spread data in {@code "JSON"} format
-         * **/
+         */
         public Spread(JSONArray jsonSpread) {
             if (jsonSpread != null) {
                 timestamp = jsonSpread.getLong(2);
@@ -115,7 +115,7 @@ public class Spreads extends MarketList {
          * No-any params required
          *
          * @return {@link #timestamp} instance as long
-         **/
+         */
         public long getTimestamp() {
             return timestamp;
         }
@@ -125,7 +125,7 @@ public class Spreads extends MarketList {
          * No-any params required
          *
          * @return {@link #doubleOne} instance as double
-         **/
+         */
         public double getDoubleOne() {
             return doubleOne;
         }
@@ -136,7 +136,7 @@ public class Spreads extends MarketList {
          * @param decimals: number of digits to round final value
          * @return {@link #doubleOne} instance rounded with decimal digits inserted
          * @throws IllegalArgumentException if decimalDigits is negative
-         **/
+         */
         public double getDoubleOne(int decimals) {
             return roundValue(doubleOne, decimals);
         }
@@ -146,7 +146,7 @@ public class Spreads extends MarketList {
          * No-any params required
          *
          * @return {@link #doubleTwo} instance as double
-         **/
+         */
         public double getDoubleTwo() {
             return doubleTwo;
         }
@@ -157,7 +157,7 @@ public class Spreads extends MarketList {
          * @param decimals: number of digits to round final value
          * @return {@link #doubleTwo} instance rounded with decimal digits inserted
          * @throws IllegalArgumentException if decimalDigits is negative
-         **/
+         */
         public double getDoubleTwo(int decimals) {
             return roundValue(doubleTwo, decimals);
         }

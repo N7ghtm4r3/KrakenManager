@@ -26,57 +26,57 @@ import static com.tecknobit.krakenmanager.KrakenManager.ReturnFormat.STRING;
  * @author N7ghtm4r3 - Tecknobit
  * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data">
  * Market Data</a>
- **/
+ */
 public class KrakenMarketManager extends KrakenPublicManager {
 
     /**
      * {@code GET_SERVER_TIME_ENDPOINT} is constant for GET_SERVER_TIME_ENDPOINT's endpoint
-     **/
+     */
     public static final String GET_SERVER_TIME_ENDPOINT = "Time";
 
     /**
      * {@code GET_SYSTEM_STATUS_ENDPOINT} is constant for GET_SYSTEM_STATUS_ENDPOINT's endpoint
-     **/
+     */
     public static final String GET_SYSTEM_STATUS_ENDPOINT = "SystemStatus";
 
     /**
      * {@code GET_ASSETS_ENDPOINT} is constant for GET_ASSETS_ENDPOINT's endpoint
-     **/
+     */
     public static final String GET_ASSETS_ENDPOINT = "Assets";
 
     /**
      * {@code GET_ASSET_PAIRS_ENDPOINT} is constant for GET_ASSET_PAIRS_ENDPOINT's endpoint
-     **/
+     */
     public static final String GET_ASSET_PAIRS_ENDPOINT = "AssetPairs";
 
     /**
      * {@code GET_TICKER_ENDPOINT} is constant for GET_TICKER_ENDPOINT's endpoint
-     **/
+     */
     public static final String GET_TICKER_ENDPOINT = "Ticker";
 
     /**
      * {@code GET_OHLC_ENDPOINT} is constant for GET_OHLC_ENDPOINT's endpoint
-     **/
+     */
     public static final String GET_OHLC_ENDPOINT = "OHLC";
 
     /**
      * {@code GET_ORDER_BOOK_ENDPOINT} is constant for GET_ORDER_BOOK_ENDPOINT's endpoint
-     **/
+     */
     public static final String GET_ORDER_BOOK_ENDPOINT = "Depth";
 
     /**
      * {@code GET_RECENT_TRADES_ENDPOINT} is constant for GET_RECENT_TRADES_ENDPOINT's endpoint
-     **/
+     */
     public static final String GET_RECENT_TRADES_ENDPOINT = "Trades";
 
     /**
      * {@code GET_RECENT_SPREADS_ENDPOINT} is constant for GET_RECENT_SPREADS_ENDPOINT's endpoint
-     **/
+     */
     public static final String GET_RECENT_SPREADS_ENDPOINT = "Spread";
 
     /**
      * {@code symbols} is instance that memorizes symbols list set
-     **/
+     */
     private Set<String> symbols;
 
     /**
@@ -84,21 +84,21 @@ public class KrakenMarketManager extends KrakenPublicManager {
      *
      * @param defaultErrorMessage: custom error to show when is not a request error
      * @param requestTimeout:      custom timeout for request
-     **/
+     */
     public KrakenMarketManager(String defaultErrorMessage, int requestTimeout) {
         super(defaultErrorMessage, requestTimeout);
     }
 
     /** Constructor to init a {@link KrakenMarketManager}
      * @param defaultErrorMessage: custom error to show when is not a request error
-     * **/
+     */
     public KrakenMarketManager(String defaultErrorMessage) {
         super(defaultErrorMessage);
     }
 
     /** Constructor to init a {@link KrakenMarketManager}
      * @param requestTimeout: custom timeout for request
-     * **/
+     */
     public KrakenMarketManager(int requestTimeout) {
         super(requestTimeout);
     }
@@ -106,7 +106,7 @@ public class KrakenMarketManager extends KrakenPublicManager {
     /**
      * Constructor to init a {@link KrakenMarketManager} <br>
      * No-any params required
-     **/
+     */
     public KrakenMarketManager() {
         super();
     }
@@ -130,7 +130,7 @@ public class KrakenMarketManager extends KrakenPublicManager {
      *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getServerTime">
      * Get Server Time</a>
-     **/
+     */
     @Wrapper
     @RequestPath(method = GET, path = "https://api.kraken.com/0/public/Time")
     public ServerTime getServerTime() throws IOException {
@@ -156,7 +156,7 @@ public class KrakenMarketManager extends KrakenPublicManager {
      *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getServerTime">
      * Get Server Time</a>
-     **/
+     */
     @Wrapper
     @WrappedRequest
     @RequestPath(method = GET, path = "https://api.kraken.com/0/public/Time")
@@ -195,7 +195,7 @@ public class KrakenMarketManager extends KrakenPublicManager {
      *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getServerTime">
      * Get Server Time</a>
-     **/
+     */
     @Returner
     @RequestPath(method = GET, path = "https://api.kraken.com/0/public/Time")
     public <T> T getServerTime(ReturnFormat format) throws IOException {
@@ -229,7 +229,7 @@ public class KrakenMarketManager extends KrakenPublicManager {
      *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getSystemStatus">
      * Get System Status</a>
-     **/
+     */
     @Wrapper
     @RequestPath(method = GET, path = "https://api.kraken.com/0/public/SystemStatus")
     public SystemStatus getSystemStatus() throws IOException {
@@ -255,7 +255,7 @@ public class KrakenMarketManager extends KrakenPublicManager {
      *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getSystemStatus">
      * Get System Status</a>
-     **/
+     */
     @Wrapper
     @WrappedRequest
     @RequestPath(method = GET, path = "https://api.kraken.com/0/public/SystemStatus")
@@ -294,7 +294,7 @@ public class KrakenMarketManager extends KrakenPublicManager {
      *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getSystemStatus">
      * Get System Status</a>
-     **/
+     */
     @Returner
     @RequestPath(method = GET, path = "https://api.kraken.com/0/public/SystemStatus")
     public <T> T getSystemStatus(ReturnFormat format) throws IOException {
@@ -328,7 +328,7 @@ public class KrakenMarketManager extends KrakenPublicManager {
      *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getAssetInfo">
      * Get Asset Info</a>
-     **/
+     */
     @Wrapper
     @RequestPath(method = GET, path = "https://api.kraken.com/0/public/Assets")
     public ArrayList<Asset> getAssetsList() throws IOException {
@@ -354,7 +354,7 @@ public class KrakenMarketManager extends KrakenPublicManager {
      *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getAssetInfo">
      * Get Asset Info</a>
-     **/
+     */
     @RequestPath(method = GET, path = "https://api.kraken.com/0/public/Assets")
     public <T> T getAssetsList(ReturnFormat format) throws IOException {
         return returnAssetsList(GET_ASSETS_ENDPOINT, format);
@@ -379,7 +379,7 @@ public class KrakenMarketManager extends KrakenPublicManager {
      *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getAssetInfo">
      * Get Asset Info</a>
-     **/
+     */
     @Wrapper
     @RequestPath(method = GET, path = "https://api.kraken.com/0/public/Assets")
     public ArrayList<Asset> getAssetsList(String[] assets) throws IOException {
@@ -406,7 +406,7 @@ public class KrakenMarketManager extends KrakenPublicManager {
      *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getAssetInfo">
      * Get Asset Info</a>
-     **/
+     */
     @RequestPath(method = GET, path = "https://api.kraken.com/0/public/Assets")
     public <T> T getAssetsList(String[] assets, ReturnFormat format) throws IOException {
         return returnAssetsList(GET_ASSETS_ENDPOINT + "?asset=" + apiRequest.assembleParamsList(",",
@@ -432,7 +432,7 @@ public class KrakenMarketManager extends KrakenPublicManager {
      *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getAssetInfo">
      * Get Asset Info</a>
-     **/
+     */
     @Wrapper
     @RequestPath(method = GET, path = "https://api.kraken.com/0/public/Assets")
     public ArrayList<Asset> getAssetsList(ArrayList<String> assets) throws IOException {
@@ -459,7 +459,7 @@ public class KrakenMarketManager extends KrakenPublicManager {
      *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getAssetInfo">
      * Get Asset Info</a>
-     **/
+     */
     @RequestPath(method = GET, path = "https://api.kraken.com/0/public/Assets")
     public <T> T getAssetsList(ArrayList<String> assets, ReturnFormat format) throws IOException {
         return returnAssetsList(GET_ASSETS_ENDPOINT + "?asset=" + apiRequest.assembleParamsList(",",
@@ -485,7 +485,7 @@ public class KrakenMarketManager extends KrakenPublicManager {
      *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getAssetInfo">
      * Get Asset Info</a>
-     **/
+     */
     @Wrapper
     @RequestPath(method = GET, path = "https://api.kraken.com/0/public/Assets")
     public ArrayList<Asset> getAssetsList(String aClass) throws IOException {
@@ -512,7 +512,7 @@ public class KrakenMarketManager extends KrakenPublicManager {
      *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getAssetInfo">
      * Get Asset Info</a>
-     **/
+     */
     @RequestPath(method = GET, path = "https://api.kraken.com/0/public/Assets")
     public <T> T getAssetsList(String aClass, ReturnFormat format) throws IOException {
         return returnAssetsList(GET_ASSETS_ENDPOINT + "?aclass=" + aClass, format);
@@ -538,7 +538,7 @@ public class KrakenMarketManager extends KrakenPublicManager {
      *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getAssetInfo">
      * Get Asset Info</a>
-     **/
+     */
     @Wrapper
     @RequestPath(method = GET, path = "https://api.kraken.com/0/public/Assets")
     public ArrayList<Asset> getAssetsList(String[] assets, String aClass) throws IOException {
@@ -566,7 +566,7 @@ public class KrakenMarketManager extends KrakenPublicManager {
      *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getAssetInfo">
      * Get Asset Info</a>
-     **/
+     */
     @RequestPath(method = GET, path = "https://api.kraken.com/0/public/Assets")
     public <T> T getAssetsList(String[] assets, String aClass, ReturnFormat format) throws IOException {
         return returnAssetsList(GET_ASSETS_ENDPOINT + "?asset=" + apiRequest.assembleParamsList(",",
@@ -593,7 +593,7 @@ public class KrakenMarketManager extends KrakenPublicManager {
      *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getAssetInfo">
      * Get Asset Info</a>
-     **/
+     */
     @Wrapper
     @RequestPath(method = GET, path = "https://api.kraken.com/0/public/Assets")
     public ArrayList<Asset> getAssetsList(ArrayList<String> assets, String aClass) throws IOException {
@@ -621,7 +621,7 @@ public class KrakenMarketManager extends KrakenPublicManager {
      *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getAssetInfo">
      * Get Asset Info</a>
-     **/
+     */
     @RequestPath(method = GET, path = "https://api.kraken.com/0/public/Assets")
     public <T> T getAssetsList(ArrayList<String> assets, String aClass, ReturnFormat format) throws IOException {
         return returnAssetsList(GET_ASSETS_ENDPOINT + "?asset=" + apiRequest.assembleParamsList(",",
@@ -634,7 +634,7 @@ public class KrakenMarketManager extends KrakenPublicManager {
      * @param endpoint: endpoint to do the request
      * @param format:   return type formatter -> {@link ReturnFormat}
      * @return assets list as {"format"} defines
-     **/
+     */
     @Returner
     private <T> T returnAssetsList(String endpoint, ReturnFormat format) throws IOException {
         String assetsListResponse = sendGetRequest(endpoint);
@@ -669,7 +669,7 @@ public class KrakenMarketManager extends KrakenPublicManager {
      *                             {@link #printErrorResponse()}
      *                         </li>
      *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
-     **/
+     */
     @Wrapper
     @WrappedRequest
     public Asset getSingleAsset(String symbol) throws IOException {
@@ -694,7 +694,7 @@ public class KrakenMarketManager extends KrakenPublicManager {
      *                             {@link #printErrorResponse()}
      *                         </li>
      *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
-     **/
+     */
     @WrappedRequest
     public <T> T getSingleAsset(String symbol, ReturnFormat format) throws IOException {
         return returnAsset(getAssetsList(new String[]{symbol}, STRING), format);
@@ -718,7 +718,7 @@ public class KrakenMarketManager extends KrakenPublicManager {
      *                             {@link #printErrorResponse()}
      *                         </li>
      *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
-     **/
+     */
     @Wrapper
     @WrappedRequest
     public Asset getSingleAsset(String symbol, String aClass) throws IOException {
@@ -744,7 +744,7 @@ public class KrakenMarketManager extends KrakenPublicManager {
      *                             {@link #printErrorResponse()}
      *                         </li>
      *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
-     **/
+     */
     @WrappedRequest
     public <T> T getSingleAsset(String symbol, String aClass, ReturnFormat format) throws IOException {
         return returnAsset(getAssetsList(new String[]{symbol}, aClass, STRING), format);
@@ -756,7 +756,7 @@ public class KrakenMarketManager extends KrakenPublicManager {
      * @param assetResponse: asset to format
      * @param format:        return type formatter -> {@link ReturnFormat}
      * @return asset as {"format"} defines
-     **/
+     */
     @Returner
     private <T> T returnAsset(String assetResponse, ReturnFormat format) {
         switch (format) {
@@ -788,7 +788,7 @@ public class KrakenMarketManager extends KrakenPublicManager {
      *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getTradableAssetPairs">
      * Get Tradable Asset Pairs</a>
-     **/
+     */
     @Wrapper
     @RequestPath(method = GET, path = "https://api.kraken.com/0/public/AssetPairs")
     public ArrayList<AssetPair> getAssetPairsList() throws IOException {
@@ -814,7 +814,7 @@ public class KrakenMarketManager extends KrakenPublicManager {
      *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getTradableAssetPairs">
      * Get Tradable Asset Pairs</a>
-     **/
+     */
     @RequestPath(method = GET, path = "https://api.kraken.com/0/public/AssetPairs")
     public <T> T getAssetPairsList(ReturnFormat format) throws IOException {
         return returnAssetPairsList(GET_ASSET_PAIRS_ENDPOINT, format);
@@ -839,7 +839,7 @@ public class KrakenMarketManager extends KrakenPublicManager {
      *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getTradableAssetPairs">
      * Get Tradable Asset Pairs</a>
-     **/
+     */
     @Wrapper
     @RequestPath(method = GET, path = "https://api.kraken.com/0/public/AssetPairs")
     public ArrayList<AssetPair> getAssetPairsList(String[] pairs) throws IOException {
@@ -866,7 +866,7 @@ public class KrakenMarketManager extends KrakenPublicManager {
      *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getTradableAssetPairs">
      * Get Tradable Asset Pairs</a>
-     **/
+     */
     @RequestPath(method = GET, path = "https://api.kraken.com/0/public/AssetPairs")
     public <T> T getAssetPairsList(String[] pairs, ReturnFormat format) throws IOException {
         return returnAssetPairsList(GET_ASSET_PAIRS_ENDPOINT + "?pair=" + apiRequest.assembleParamsList(",",
@@ -892,7 +892,7 @@ public class KrakenMarketManager extends KrakenPublicManager {
      *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getTradableAssetPairs">
      * Get Tradable Asset Pairs</a>
-     **/
+     */
     @Wrapper
     @RequestPath(method = GET, path = "https://api.kraken.com/0/public/AssetPairs")
     public ArrayList<AssetPair> getAssetPairsList(ArrayList<String> pairs) throws IOException {
@@ -919,7 +919,7 @@ public class KrakenMarketManager extends KrakenPublicManager {
      *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getTradableAssetPairs">
      * Get Tradable Asset Pairs</a>
-     **/
+     */
     @RequestPath(method = GET, path = "https://api.kraken.com/0/public/AssetPairs")
     public <T> T getAssetPairsList(ArrayList<String> pairs, ReturnFormat format) throws IOException {
         return returnAssetPairsList(GET_ASSET_PAIRS_ENDPOINT + "?pair=" + apiRequest.assembleParamsList(",",
@@ -945,7 +945,7 @@ public class KrakenMarketManager extends KrakenPublicManager {
      *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getTradableAssetPairs">
      * Get Tradable Asset Pairs</a>
-     **/
+     */
     @Wrapper
     @RequestPath(method = GET, path = "https://api.kraken.com/0/public/AssetPairs")
     public ArrayList<AssetPair> getAssetPairsList(String info) throws IOException {
@@ -972,7 +972,7 @@ public class KrakenMarketManager extends KrakenPublicManager {
      *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getTradableAssetPairs">
      * Get Tradable Asset Pairs</a>
-     **/
+     */
     @RequestPath(method = GET, path = "https://api.kraken.com/0/public/AssetPairs")
     public <T> T getAssetPairsList(String info, ReturnFormat format) throws IOException {
         return returnAssetPairsList(GET_ASSET_PAIRS_ENDPOINT + "?info=" + info, format);
@@ -998,7 +998,7 @@ public class KrakenMarketManager extends KrakenPublicManager {
      *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getTradableAssetPairs">
      * Get Tradable Asset Pairs</a>
-     **/
+     */
     @Wrapper
     @RequestPath(method = GET, path = "https://api.kraken.com/0/public/AssetPairs")
     public ArrayList<AssetPair> getAssetPairsList(String[] pairs, String info) throws IOException {
@@ -1026,7 +1026,7 @@ public class KrakenMarketManager extends KrakenPublicManager {
      *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getTradableAssetPairs">
      * Get Tradable Asset Pairs</a>
-     **/
+     */
     @RequestPath(method = GET, path = "https://api.kraken.com/0/public/AssetPairs")
     public <T> T getAssetPairsList(String[] pairs, String info, ReturnFormat format) throws IOException {
         return returnAssetPairsList(GET_ASSET_PAIRS_ENDPOINT + "?pair=" + apiRequest.assembleParamsList(",",
@@ -1053,7 +1053,7 @@ public class KrakenMarketManager extends KrakenPublicManager {
      *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getTradableAssetPairs">
      * Get Tradable Asset Pairs</a>
-     **/
+     */
     @Wrapper
     @RequestPath(method = GET, path = "https://api.kraken.com/0/public/AssetPairs")
     public ArrayList<AssetPair> getAssetPairsList(ArrayList<String> pairs, String info) throws IOException {
@@ -1081,7 +1081,7 @@ public class KrakenMarketManager extends KrakenPublicManager {
      *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getTradableAssetPairs">
      * Get Tradable Asset Pairs</a>
-     **/
+     */
     @RequestPath(method = GET, path = "https://api.kraken.com/0/public/AssetPairs")
     public <T> T getAssetPairsList(ArrayList<String> pairs, String info, ReturnFormat format) throws IOException {
         return returnAssetPairsList(GET_ASSET_PAIRS_ENDPOINT + "?pair=" + apiRequest.assembleParamsList(",",
@@ -1094,7 +1094,7 @@ public class KrakenMarketManager extends KrakenPublicManager {
      * @param endpoint: endpoint to do the request
      * @param format:   return type formatter -> {@link ReturnFormat}
      * @return assets pairs list as {"format"} defines
-     **/
+     */
     @Returner
     private <T> T returnAssetPairsList(String endpoint, ReturnFormat format) throws IOException {
         String assetsPairsListResponse = sendGetRequest(endpoint);
@@ -1129,7 +1129,7 @@ public class KrakenMarketManager extends KrakenPublicManager {
      *                             {@link #printErrorResponse()}
      *                         </li>
      *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
-     **/
+     */
     @Wrapper
     @WrappedRequest
     public AssetPair getAssetPair(String pair) throws IOException {
@@ -1154,7 +1154,7 @@ public class KrakenMarketManager extends KrakenPublicManager {
      *                             {@link #printErrorResponse()}
      *                         </li>
      *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
-     **/
+     */
     @WrappedRequest
     public <T> T getAssetPair(String pair, ReturnFormat format) throws IOException {
         return returnAssetPair(getAssetPairsList(new String[]{pair}, STRING), format);
@@ -1178,7 +1178,7 @@ public class KrakenMarketManager extends KrakenPublicManager {
      *                             {@link #printErrorResponse()}
      *                         </li>
      *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
-     **/
+     */
     @Wrapper
     @WrappedRequest
     public AssetPair getAssetPair(String pair, String info) throws IOException {
@@ -1204,7 +1204,7 @@ public class KrakenMarketManager extends KrakenPublicManager {
      *                             {@link #printErrorResponse()}
      *                         </li>
      *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
-     **/
+     */
     @WrappedRequest
     public <T> T getAssetPair(String pair, String info, ReturnFormat format) throws IOException {
         return returnAssetPair(getAssetPairsList(new String[]{pair}, info, STRING), format);
@@ -1216,7 +1216,7 @@ public class KrakenMarketManager extends KrakenPublicManager {
      * @param assetPairResponse: asset pair to format
      * @param format:            return type formatter -> {@link ReturnFormat}
      * @return asset pair as {"format"} defines
-     **/
+     */
     @Returner
     private <T> T returnAssetPair(String assetPairResponse, ReturnFormat format) {
         switch (format) {
@@ -1248,7 +1248,7 @@ public class KrakenMarketManager extends KrakenPublicManager {
      *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getTickerInformation">
      * Get Ticker Information</a>
-     **/
+     */
     @Wrapper
     @RequestPath(method = GET, path = "https://api.kraken.com/0/public/Ticker?pair={pair}")
     public TickerInformation getTickerInformation(String pair) throws IOException {
@@ -1275,7 +1275,7 @@ public class KrakenMarketManager extends KrakenPublicManager {
      *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getTickerInformation">
      * Get Ticker Information</a>
-     **/
+     */
     @Returner
     @RequestPath(method = GET, path = "https://api.kraken.com/0/public/Ticker?pair={pair}")
     public <T> T getTickerInformation(String pair, ReturnFormat format) throws IOException {
@@ -1309,7 +1309,7 @@ public class KrakenMarketManager extends KrakenPublicManager {
      *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getOHLCData">
      * Get OHLC Data</a>
-     **/
+     */
     @Wrapper
     @WrappedRequest
     @RequestPath(method = GET, path = "https://api.kraken.com/0/public/OHLC?pair={pair}")
@@ -1337,7 +1337,7 @@ public class KrakenMarketManager extends KrakenPublicManager {
      *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getOHLCData">
      * Get OHLC Data</a>
-     **/
+     */
     @WrappedRequest
     @RequestPath(method = GET, path = "https://api.kraken.com/0/public/OHLC?pair={pair}")
     public <T> T getOHLCData(AssetPair pair, ReturnFormat format) throws IOException {
@@ -1363,7 +1363,7 @@ public class KrakenMarketManager extends KrakenPublicManager {
      *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getOHLCData">
      * Get OHLC Data</a>
-     **/
+     */
     @Wrapper
     @RequestPath(method = GET, path = "https://api.kraken.com/0/public/OHLC?pair={pair}")
     public OHLCData getOHLCData(String pair) throws IOException {
@@ -1390,7 +1390,7 @@ public class KrakenMarketManager extends KrakenPublicManager {
      *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getOHLCData">
      * Get OHLC Data</a>
-     **/
+     */
     @RequestPath(method = GET, path = "https://api.kraken.com/0/public/OHLC?pair={pair}")
     public <T> T getOHLCData(String pair, ReturnFormat format) throws IOException {
         return returnOHLCData(sendGetRequest(GET_OHLC_ENDPOINT + "?pair=" + pair), format);
@@ -1416,7 +1416,7 @@ public class KrakenMarketManager extends KrakenPublicManager {
      *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getOHLCData">
      * Get OHLC Data</a>
-     **/
+     */
     @Wrapper
     @WrappedRequest
     @RequestPath(method = GET, path = "https://api.kraken.com/0/public/OHLC?pair={pair}&interval={interval}")
@@ -1445,7 +1445,7 @@ public class KrakenMarketManager extends KrakenPublicManager {
      *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getOHLCData">
      * Get OHLC Data</a>
-     **/
+     */
     @Wrapper
     @WrappedRequest
     @RequestPath(method = GET, path = "https://api.kraken.com/0/public/OHLC?pair={pair}&interval={interval}")
@@ -1474,7 +1474,7 @@ public class KrakenMarketManager extends KrakenPublicManager {
      *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getOHLCData">
      * Get OHLC Data</a>
-     **/
+     */
     @Wrapper
     @RequestPath(method = GET, path = "https://api.kraken.com/0/public/OHLC?pair={pair}&interval={interval}")
     public OHLCData getOHLCData(String pair, int interval) throws IOException {
@@ -1502,7 +1502,7 @@ public class KrakenMarketManager extends KrakenPublicManager {
      *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getOHLCData">
      * Get OHLC Data</a>
-     **/
+     */
     @RequestPath(method = GET, path = "https://api.kraken.com/0/public/OHLC?pair={pair}&interval={interval}")
     public <T> T getOHLCData(String pair, int interval, ReturnFormat format) throws IOException {
         return returnOHLCData(sendGetRequest(GET_OHLC_ENDPOINT + "?pair=" + pair + "&interval=" + interval),
@@ -1529,7 +1529,7 @@ public class KrakenMarketManager extends KrakenPublicManager {
      *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getOHLCData">
      * Get OHLC Data</a>
-     **/
+     */
     @Wrapper
     @WrappedRequest
     @RequestPath(method = GET, path = "https://api.kraken.com/0/public/OHLC?pair={pair}&since={since}")
@@ -1558,7 +1558,7 @@ public class KrakenMarketManager extends KrakenPublicManager {
      *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getOHLCData">
      * Get OHLC Data</a>
-     **/
+     */
     @WrappedRequest
     @RequestPath(method = GET, path = "https://api.kraken.com/0/public/OHLC?pair={pair}&since={since}")
     public <T> T getOHLCData(AssetPair pair, long since, ReturnFormat format) throws IOException {
@@ -1586,7 +1586,7 @@ public class KrakenMarketManager extends KrakenPublicManager {
      *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getOHLCData">
      * Get OHLC Data</a>
-     **/
+     */
     @Wrapper
     @RequestPath(method = GET, path = "https://api.kraken.com/0/public/OHLC?pair={pair}&since={since}")
     public OHLCData getOHLCData(String pair, long since) throws IOException {
@@ -1614,7 +1614,7 @@ public class KrakenMarketManager extends KrakenPublicManager {
      *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getOHLCData">
      * Get OHLC Data</a>
-     **/
+     */
     @RequestPath(method = GET, path = "https://api.kraken.com/0/public/OHLC?pair={pair}&since={since}")
     public <T> T getOHLCData(String pair, long since, ReturnFormat format) throws IOException {
         return returnOHLCData(sendGetRequest(GET_OHLC_ENDPOINT + "?pair=" + pair + "&since=" + since), format);
@@ -1641,7 +1641,7 @@ public class KrakenMarketManager extends KrakenPublicManager {
      *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getOHLCData">
      * Get OHLC Data</a>
-     **/
+     */
     @Wrapper
     @WrappedRequest
     @RequestPath(method = GET, path = "https://api.kraken.com/0/public/OHLC?pair={pair}&interval={interval}&since={since}")
@@ -1671,7 +1671,7 @@ public class KrakenMarketManager extends KrakenPublicManager {
      *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getOHLCData">
      * Get OHLC Data</a>
-     **/
+     */
     @WrappedRequest
     @RequestPath(method = GET, path = "https://api.kraken.com/0/public/OHLC?pair={pair}&interval={interval}&since={since}")
     public <T> T getOHLCData(AssetPair pair, int interval, long since, ReturnFormat format) throws IOException {
@@ -1700,7 +1700,7 @@ public class KrakenMarketManager extends KrakenPublicManager {
      *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getOHLCData">
      * Get OHLC Data</a>
-     **/
+     */
     @Wrapper
     @RequestPath(method = GET, path = "https://api.kraken.com/0/public/OHLC?pair={pair}&interval={interval}&since={since}")
     public OHLCData getOHLCData(String pair, int interval, long since) throws IOException {
@@ -1729,7 +1729,7 @@ public class KrakenMarketManager extends KrakenPublicManager {
      *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getOHLCData">
      * Get OHLC Data</a>
-     **/
+     */
     @RequestPath(method = GET, path = "https://api.kraken.com/0/public/OHLC?pair={pair}&interval={interval}&since={since}")
     public <T> T getOHLCData(String pair, int interval, long since, ReturnFormat format) throws IOException {
         return returnOHLCData(sendGetRequest(GET_OHLC_ENDPOINT + "?pair=" + pair + "&interval=" + interval +
@@ -1742,7 +1742,7 @@ public class KrakenMarketManager extends KrakenPublicManager {
      * @param OHLCDataResponse: OHLC data to format
      * @param format:           return type formatter -> {@link ReturnFormat}
      * @return OHLC data as {"format"} defines
-     **/
+     */
     @Returner
     private <T> T returnOHLCData(String OHLCDataResponse, ReturnFormat format) {
         switch (format) {
@@ -1774,7 +1774,7 @@ public class KrakenMarketManager extends KrakenPublicManager {
      *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getOrderBook">
      * Get Order Book</a>
-     **/
+     */
     @Wrapper
     @WrappedRequest
     @RequestPath(method = GET, path = "https://api.kraken.com/0/public/Depth?pair={pair}")
@@ -1801,7 +1801,7 @@ public class KrakenMarketManager extends KrakenPublicManager {
      *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getOrderBook">
      * Get Order Book</a>
-     **/
+     */
     @WrappedRequest
     @RequestPath(method = GET, path = "https://api.kraken.com/0/public/Depth?pair={pair}")
     public <T> T getOrderBook(AssetPair pair, ReturnFormat format) throws IOException {
@@ -1827,7 +1827,7 @@ public class KrakenMarketManager extends KrakenPublicManager {
      *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getOrderBook">
      * Get Order Book</a>
-     **/
+     */
     @Wrapper
     @RequestPath(method = GET, path = "https://api.kraken.com/0/public/Depth?pair={pair}")
     public Book getOrderBook(String pair) throws IOException {
@@ -1853,7 +1853,7 @@ public class KrakenMarketManager extends KrakenPublicManager {
      *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getOrderBook">
      * Get Order Book</a>
-     **/
+     */
     @RequestPath(method = GET, path = "https://api.kraken.com/0/public/Depth?pair={pair}")
     public <T> T getOrderBook(String pair, ReturnFormat format) throws IOException {
         return returnBook(sendGetRequest(GET_ORDER_BOOK_ENDPOINT + "?pair=" + pair), format);
@@ -1879,7 +1879,7 @@ public class KrakenMarketManager extends KrakenPublicManager {
      *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getOrderBook">
      * Get Order Book</a>
-     **/
+     */
     @Wrapper
     @WrappedRequest
     @RequestPath(method = GET, path = "https://api.kraken.com/0/public/Depth?pair={pair}&count={count}")
@@ -1907,7 +1907,7 @@ public class KrakenMarketManager extends KrakenPublicManager {
      *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getOrderBook">
      * Get Order Book</a>
-     **/
+     */
     @WrappedRequest
     @RequestPath(method = GET, path = "https://api.kraken.com/0/public/Depth?pair={pair}&count={count}")
     public <T> T getOrderBook(AssetPair pair, int count, ReturnFormat format) throws IOException {
@@ -1935,7 +1935,7 @@ public class KrakenMarketManager extends KrakenPublicManager {
      *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getOrderBook">
      * Get Order Book</a>
-     **/
+     */
     @Wrapper
     @RequestPath(method = GET, path = "https://api.kraken.com/0/public/Depth?pair={pair}&count={count}")
     public Book getOrderBook(String pair, int count) throws IOException {
@@ -1962,7 +1962,7 @@ public class KrakenMarketManager extends KrakenPublicManager {
      *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getOrderBook">
      * Get Order Book</a>
-     **/
+     */
     @RequestPath(method = GET, path = "https://api.kraken.com/0/public/Depth?pair={pair}&count={count}")
     public <T> T getOrderBook(String pair, int count, ReturnFormat format) throws IOException {
         return returnBook(sendGetRequest(GET_ORDER_BOOK_ENDPOINT + "?pair=" + pair + "&count=" + count), format);
@@ -1974,7 +1974,7 @@ public class KrakenMarketManager extends KrakenPublicManager {
      * @param bookResponse: book to format
      * @param format:       return type formatter -> {@link ReturnFormat}
      * @return book as {"format"} defines
-     **/
+     */
     @Returner
     private <T> T returnBook(String bookResponse, ReturnFormat format) {
         switch (format) {
@@ -2006,12 +2006,12 @@ public class KrakenMarketManager extends KrakenPublicManager {
      *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getRecentTrades">
      * Get Recent Trades</a>
-     **/
+     */
     @Wrapper
     @WrappedRequest
     @RequestPath(method = GET, path = "https://api.kraken.com/0/public/Trades?pair={pair}")
     public Trades getRecentTrades(AssetPair pair) throws IOException {
-        return getRecentTrades(pair, LIBRARY_OBJECT);
+        return getRecentTrades(pair.getAltName(), LIBRARY_OBJECT);
     }
 
     /**
@@ -2034,12 +2034,11 @@ public class KrakenMarketManager extends KrakenPublicManager {
      *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getRecentTrades">
      * Get Recent Trades</a>
-     **/
+     */
     @WrappedRequest
     @RequestPath(method = GET, path = "https://api.kraken.com/0/public/Trades?pair={pair}")
     public <T> T getRecentTrades(AssetPair pair, ReturnFormat format) throws IOException {
-        return returnRecentTrades(sendGetRequest(GET_RECENT_TRADES_ENDPOINT + "?pair=" + pair.getAltName()),
-                format);
+        return getRecentTrades(pair.getAltName(), format);
     }
 
     /**
@@ -2061,7 +2060,7 @@ public class KrakenMarketManager extends KrakenPublicManager {
      *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getRecentTrades">
      * Get Recent Trades</a>
-     **/
+     */
     @Wrapper
     @RequestPath(method = GET, path = "https://api.kraken.com/0/public/Trades?pair={pair}")
     public Trades getRecentTrades(String pair) throws IOException {
@@ -2088,17 +2087,25 @@ public class KrakenMarketManager extends KrakenPublicManager {
      *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getRecentTrades">
      * Get Recent Trades</a>
-     **/
+     */
     @RequestPath(method = GET, path = "https://api.kraken.com/0/public/Trades?pair={pair}")
     public <T> T getRecentTrades(String pair, ReturnFormat format) throws IOException {
-        return returnRecentTrades(sendGetRequest(GET_RECENT_TRADES_ENDPOINT + "?pair=" + pair), format);
+        return getRecentTrades(pair, null, format);
     }
 
     /**
      * Request to get recent trades details<br>
      *
-     * @param pair:  pair from fetch details es. BTCEUR
-     * @param since: since timestamp from fetch data
+     * @param pair:   pair from fetch details es. BTCEUR
+     * @param params: extra order details, keys accepted are:
+     *                <ul>
+     *                    <li>
+     *                        {@code "since"} -> return trade data since given timestamp - [long]
+     *                    </li>
+     *                    <li>
+     *                        {@code "count "} -> return specific number of trades, up to 1000 - [integer, default 1000]
+     *                    </li>
+     *                </ul>
      * @return recent trades details as {@link Trades} custom object
      * @throws IOException when request has been go wrong -> you can use these methods to get more details about error:
      *                     <ul>
@@ -2114,19 +2121,28 @@ public class KrakenMarketManager extends KrakenPublicManager {
      *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getRecentTrades">
      * Get Recent Trades</a>
-     **/
+     */
     @Wrapper
     @WrappedRequest
-    @RequestPath(method = GET, path = "https://api.kraken.com/0/public/Trades?pair={pair}&since={since}")
-    public Trades getRecentTrades(AssetPair pair, long since) throws IOException {
-        return getRecentTrades(pair, since, LIBRARY_OBJECT);
+    @RequestPath(method = GET, path = "https://api.kraken.com/0/public/Trades?pair={pair}")
+    public Trades getRecentTrades(AssetPair pair, Params params) throws IOException {
+        return getRecentTrades(pair.getAltName(), params, LIBRARY_OBJECT);
     }
 
     /**
      * Request to get recent trades details<br>
      *
-     * @param pair:  pair from fetch details es. BTCEUR
-     * @param since: since timestamp from fetch data
+     * @param pair:   pair from fetch details es. BTCEUR
+     * @param params: extra order details, keys accepted are:
+     *                <ul>
+     *                    <li>
+     *                        {@code "since"} -> return trade data since given timestamp - [long]
+     *                    </li>
+     *                    <li>
+     *                        {@code "count "} -> return specific number of trades, up to 1000 - [integer, default 1000]
+     *                    </li>
+     *                </ul>
+     * @param format: return type formatter -> {@link ReturnFormat}
      * @return trades as {"format"} defines
      * @throws IOException when request has been go wrong -> you can use these methods to get more details about error:
      *                     <ul>
@@ -2142,19 +2158,26 @@ public class KrakenMarketManager extends KrakenPublicManager {
      *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getRecentTrades">
      * Get Recent Trades</a>
-     **/
+     */
     @WrappedRequest
-    @RequestPath(method = GET, path = "https://api.kraken.com/0/public/Trades?pair={pair}&since={since}")
-    public <T> T getRecentTrades(AssetPair pair, long since, ReturnFormat format) throws IOException {
-        return returnRecentTrades(sendGetRequest(GET_RECENT_TRADES_ENDPOINT + "?pair=" + pair.getAltName() +
-                "&since=" + since), format);
+    @RequestPath(method = GET, path = "https://api.kraken.com/0/public/Trades?pair={pair}")
+    public <T> T getRecentTrades(AssetPair pair, Params params, ReturnFormat format) throws IOException {
+        return getRecentTrades(pair.getAltName(), params, format);
     }
 
     /**
      * Request to get recent trades details<br>
      *
-     * @param pair:  pair from fetch details es. BTCEUR
-     * @param since: since timestamp from fetch data
+     * @param pair:   pair from fetch details es. BTCEUR
+     * @param params: extra order details, keys accepted are:
+     *                <ul>
+     *                    <li>
+     *                        {@code "since"} -> return trade data since given timestamp - [long]
+     *                    </li>
+     *                    <li>
+     *                        {@code "count "} -> return specific number of trades, up to 1000 - [integer, default 1000]
+     *                    </li>
+     *                </ul>
      * @return recent trades details as {@link Trades} custom object
      * @throws IOException when request has been go wrong -> you can use these methods to get more details about error:
      *                     <ul>
@@ -2170,18 +2193,27 @@ public class KrakenMarketManager extends KrakenPublicManager {
      *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getRecentTrades">
      * Get Recent Trades</a>
-     **/
+     */
     @Wrapper
-    @RequestPath(method = GET, path = "https://api.kraken.com/0/public/Trades?pair={pair}&since={since}")
-    public Trades getRecentTrades(String pair, long since) throws IOException {
-        return getRecentTrades(pair, since, LIBRARY_OBJECT);
+    @RequestPath(method = GET, path = "https://api.kraken.com/0/public/Trades?pair={pair}")
+    public Trades getRecentTrades(String pair, Params params) throws IOException {
+        return getRecentTrades(pair, params, LIBRARY_OBJECT);
     }
 
     /**
      * Request to get recent trades details<br>
      *
-     * @param pair:  pair from fetch details es. BTCEUR
-     * @param since: since timestamp from fetch data
+     * @param pair:   pair from fetch details es. BTCEUR
+     * @param params: extra order details, keys accepted are:
+     *                <ul>
+     *                    <li>
+     *                        {@code "since"} -> return trade data since given timestamp - [long]
+     *                    </li>
+     *                    <li>
+     *                        {@code "count "} -> return specific number of trades, up to 1000 - [integer, default 1000]
+     *                    </li>
+     *                </ul>
+     * @param format: return type formatter -> {@link ReturnFormat}
      * @return trades as {"format"} defines
      * @throws IOException when request has been go wrong -> you can use these methods to get more details about error:
      *                     <ul>
@@ -2197,30 +2229,18 @@ public class KrakenMarketManager extends KrakenPublicManager {
      *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getRecentTrades">
      * Get Recent Trades</a>
-     **/
-    @RequestPath(method = GET, path = "https://api.kraken.com/0/public/Trades?pair={pair}&since={since}")
-    public <T> T getRecentTrades(String pair, long since, ReturnFormat format) throws IOException {
-        return returnRecentTrades(sendGetRequest(GET_RECENT_TRADES_ENDPOINT + "?pair=" + pair + "&since=" +
-                since), format);
-    }
-
-    /**
-     * Method to assemble a trades object
-     *
-     * @param recentTradesResponse: trades to format
-     * @param format:               return type formatter -> {@link ReturnFormat}
-     * @return trades as {"format"} defines
-     **/
-    @Returner
-    private <T> T returnRecentTrades(String recentTradesResponse, ReturnFormat format) {
-        switch (format) {
-            case JSON:
-                return (T) new JSONObject(recentTradesResponse);
-            case LIBRARY_OBJECT:
-                return (T) new Trades(new JSONObject(recentTradesResponse));
-            default:
-                return (T) recentTradesResponse;
-        }
+     */
+    @RequestPath(method = GET, path = "https://api.kraken.com/0/public/Trades?pair={pair}")
+    public <T> T getRecentTrades(String pair, Params params, ReturnFormat format) throws IOException {
+        if (params == null)
+            params = new Params();
+        params.addParam("pair", pair);
+        String recentTradesResponse = sendGetRequest(GET_RECENT_TRADES_ENDPOINT + params.createQueryString());
+        return switch (format) {
+            case JSON -> (T) new JSONObject(recentTradesResponse);
+            case LIBRARY_OBJECT -> (T) new Trades(new JSONObject(recentTradesResponse));
+            default -> (T) recentTradesResponse;
+        };
     }
 
     /**
@@ -2242,7 +2262,7 @@ public class KrakenMarketManager extends KrakenPublicManager {
      *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getRecentSpreads">
      * Get Recent Spreads</a>
-     **/
+     */
     @Wrapper
     @WrappedRequest
     @RequestPath(method = GET, path = "https://api.kraken.com/0/public/Spread?pair={pair}")
@@ -2270,7 +2290,7 @@ public class KrakenMarketManager extends KrakenPublicManager {
      *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getRecentSpreads">
      * Get Recent Spreads</a>
-     **/
+     */
     @WrappedRequest
     @RequestPath(method = GET, path = "https://api.kraken.com/0/public/Spread?pair={pair}")
     public <T> T getRecentSpreads(AssetPair pair, ReturnFormat format) throws IOException {
@@ -2297,7 +2317,7 @@ public class KrakenMarketManager extends KrakenPublicManager {
      *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getRecentSpreads">
      * Get Recent Spreads</a>
-     **/
+     */
     @Wrapper
     @RequestPath(method = GET, path = "https://api.kraken.com/0/public/Spread?pair={pair}")
     public Spreads getRecentSpreads(String pair) throws IOException {
@@ -2324,7 +2344,7 @@ public class KrakenMarketManager extends KrakenPublicManager {
      *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getRecentSpreads">
      * Get Recent Spreads</a>
-     **/
+     */
     @RequestPath(method = GET, path = "https://api.kraken.com/0/public/Spread?pair={pair}")
     public <T> T getRecentSpreads(String pair, ReturnFormat format) throws IOException {
         return returnRecentSpreads(sendGetRequest(GET_RECENT_SPREADS_ENDPOINT + "?pair=" + pair), format);
@@ -2350,7 +2370,7 @@ public class KrakenMarketManager extends KrakenPublicManager {
      *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getRecentSpreads">
      * Get Recent Spreads</a>
-     **/
+     */
     @Wrapper
     @WrappedRequest
     @RequestPath(method = GET, path = "https://api.kraken.com/0/public/Spread?pair={pair}&since={since}")
@@ -2379,7 +2399,7 @@ public class KrakenMarketManager extends KrakenPublicManager {
      *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getRecentSpreads">
      * Get Recent Spreads</a>
-     **/
+     */
     @WrappedRequest
     @RequestPath(method = GET, path = "https://api.kraken.com/0/public/Spread?pair={pair}&since={since}")
     public <T> T getRecentSpreads(AssetPair pair, long since, ReturnFormat format) throws IOException {
@@ -2407,7 +2427,7 @@ public class KrakenMarketManager extends KrakenPublicManager {
      *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getRecentSpreads">
      * Get Recent Spreads</a>
-     **/
+     */
     @Wrapper
     @RequestPath(method = GET, path = "https://api.kraken.com/0/public/Spread?pair={pair}&since={since}")
     public Spreads getRecentSpreads(String pair, long since) throws IOException {
@@ -2435,7 +2455,7 @@ public class KrakenMarketManager extends KrakenPublicManager {
      *                     </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getRecentSpreads">
      * Get Recent Spreads</a>
-     **/
+     */
     @RequestPath(method = GET, path = "https://api.kraken.com/0/public/Spread?pair={pair}&since={since}")
     public <T> T getRecentSpreads(String pair, long since, ReturnFormat format) throws IOException {
         return returnRecentSpreads(sendGetRequest(GET_RECENT_SPREADS_ENDPOINT + "?pair=" + pair + "&since="
@@ -2448,7 +2468,7 @@ public class KrakenMarketManager extends KrakenPublicManager {
      * @param recentSpreadsResponse: spreads to format
      * @param format:                return type formatter -> {@link ReturnFormat}
      * @return spreads as {"format"} defines
-     **/
+     */
     @Returner
     private <T> T returnRecentSpreads(String recentSpreadsResponse, ReturnFormat format) {
         switch (format) {
@@ -2471,7 +2491,7 @@ public class KrakenMarketManager extends KrakenPublicManager {
      * @param decimalDigits:  number of digits to round final forecast value
      * @return forecast value as a double es. 8 or -8
      * @throws IllegalArgumentException if lastValue is negative or intervalDays are less or equal to 0
-     **/
+     */
     public double getSymbolForecast(String symbol, int OHCLInterval, int intervalDays, int toleranceValue,
                                     int decimalDigits) throws IOException {
         return roundValue(getSymbolForecast(symbol, OHCLInterval, intervalDays, toleranceValue), decimalDigits);
@@ -2486,7 +2506,7 @@ public class KrakenMarketManager extends KrakenPublicManager {
      * @param toleranceValue: tolerance for select similar value compared to lastValue inserted
      * @return prevision value as a double es. 8 or -8
      * @throws IllegalArgumentException if lastValue is negative or intervalDays are less or equal to 0
-     **/
+     */
     public double getSymbolForecast(String symbol, int OHCLInterval, int intervalDays, int toleranceValue) throws IOException {
         ArrayList<Double> historicalValues = new ArrayList<>();
         for (OHLCData.TickData tickData : getOHLCData(symbol, OHCLInterval).getTicksData())

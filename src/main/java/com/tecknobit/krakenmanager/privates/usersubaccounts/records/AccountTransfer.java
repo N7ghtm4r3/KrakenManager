@@ -10,17 +10,17 @@ import org.json.JSONObject;
  * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Subaccounts/operation/accountTransfer">
  * Account Transfer</a>
  * @see KrakenResponse
- **/
+ */
 public class AccountTransfer extends KrakenResponse {
 
     /**
      * {@code transferId} transfer ID
-     **/
+     */
     private final String transferId;
 
     /**
      * {@code status} transfer status
-     **/
+     */
     private final String status;
 
     /**
@@ -28,7 +28,7 @@ public class AccountTransfer extends KrakenResponse {
      *
      * @param transferId: transfer ID
      * @param status:     transfer status
-     **/
+     */
     public AccountTransfer(String transferId, String status) {
         super(null);
         this.transferId = transferId;
@@ -39,7 +39,7 @@ public class AccountTransfer extends KrakenResponse {
      * Constructor to init a {@link AccountTransfer} object
      *
      * @param jAccountTransfer: account transfer details as {@link JSONObject}
-     **/
+     */
     public AccountTransfer(JSONObject jAccountTransfer) {
         super(jAccountTransfer);
         transferId = hResponse.getString("transfer_id");
@@ -51,7 +51,7 @@ public class AccountTransfer extends KrakenResponse {
      * No-any params required
      *
      * @return {@link #transferId} instance as {@link String}
-     **/
+     */
     public String getTransferId() {
         return transferId;
     }
@@ -61,7 +61,7 @@ public class AccountTransfer extends KrakenResponse {
      * No-any params required
      *
      * @return {@link #status} instance as {@link String}
-     **/
+     */
     public String getStatus() {
         return status;
     }

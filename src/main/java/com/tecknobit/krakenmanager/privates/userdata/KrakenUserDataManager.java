@@ -13,6 +13,7 @@ import com.tecknobit.krakenmanager.privates.userdata.records.ReportStatus.Deleti
 import com.tecknobit.krakenmanager.privates.userdata.records.ReportStatus.ReportFormat;
 import com.tecknobit.krakenmanager.privates.userdata.records.ReportStatus.ReportType;
 import com.tecknobit.krakenmanager.privates.userdata.records.balance.AccountBalance;
+import com.tecknobit.krakenmanager.privates.userdata.records.balance.ExtendedBalance;
 import com.tecknobit.krakenmanager.privates.userdata.records.balance.TradeBalance;
 import com.tecknobit.krakenmanager.privates.userdata.records.orders.ClosedOrder;
 import com.tecknobit.krakenmanager.privates.userdata.records.orders.ClosedOrder.CloseTime;
@@ -43,82 +44,87 @@ import static com.tecknobit.krakenmanager.KrakenManager.ReturnFormat.LIBRARY_OBJ
  * @author N7ghtm4r3 - Tecknobit
  * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Data">
  * User Data</a>
- **/
+ */
 public class KrakenUserDataManager extends KrakenPrivateManager {
 
     /**
      * {@code GET_ACCOUNT_BALANCE_ENDPOINT} is constant for GET_ACCOUNT_BALANCE_ENDPOINT's endpoint
-     **/
+     */
     public static final String GET_ACCOUNT_BALANCE_ENDPOINT = "Balance";
 
     /**
+     * {@code GET_EXTENDED_BALANCE_ENDPOINT} is constant for GET_EXTENDED_BALANCE_ENDPOINT's endpoint
+     */
+    public static final String GET_EXTENDED_BALANCE_ENDPOINT = "BalanceEx";
+
+    /**
      * {@code GET_TRADE_BALANCE_ENDPOINT} is constant for GET_TRADE_BALANCE_ENDPOINT's endpoint
-     **/
+     */
     public static final String GET_TRADE_BALANCE_ENDPOINT = "TradeBalance";
 
     /**
      * {@code GET_OPEN_ORDERS_ENDPOINT} is constant for GET_OPEN_ORDERS_ENDPOINT's endpoint
-     **/
+     */
     public static final String GET_OPEN_ORDERS_ENDPOINT = "OpenOrders";
 
     /**
      * {@code GET_CLOSED_ORDERS_ENDPOINT} is constant for GET_CLOSED_ORDERS_ENDPOINT's endpoint
-     **/
+     */
     public static final String GET_CLOSED_ORDERS_ENDPOINT = "ClosedOrders";
 
     /**
      * {@code QUERY_ORDERS_ENDPOINT} is constant for QUERY_ORDERS_ENDPOINT's endpoint
-     **/
+     */
     public static final String QUERY_ORDERS_ENDPOINT = "QueryOrders";
 
     /**
      * {@code GET_TRADES_HISTORY_ENDPOINT} is constant for GET_TRADES_HISTORY_ENDPOINT's endpoint
-     **/
+     */
     public static final String GET_TRADES_HISTORY_ENDPOINT = "TradesHistory";
 
     /**
      * {@code QUERY_TRADES_ENDPOINT} is constant for QUERY_TRADES_ENDPOINT's endpoint
-     **/
+     */
     public static final String QUERY_TRADES_ENDPOINT = "QueryTrades";
 
     /**
      * {@code GET_OPEN_POSITIONS_ENDPOINT} is constant for GET_OPEN_POSITIONS_ENDPOINT's endpoint
-     **/
+     */
     public static final String GET_OPEN_POSITIONS_ENDPOINT = "OpenPositions";
 
     /**
      * {@code GET_LEDGERS_ENDPOINT} is constant for GET_LEDGERS_ENDPOINT's endpoint
-     **/
+     */
     public static final String GET_LEDGERS_ENDPOINT = "Ledgers";
 
     /**
      * {@code QUERY_LEDGERS_ENDPOINT} is constant for QUERY_LEDGERS_ENDPOINT's endpoint
-     **/
+     */
     public static final String QUERY_LEDGERS_ENDPOINT = "QueryLedgers";
 
     /**
      * {@code GET_TRADE_VOLUME_ENDPOINT} is constant for GET_TRADE_VOLUME_ENDPOINT's endpoint
-     **/
+     */
     public static final String GET_TRADE_VOLUME_ENDPOINT = "TradeVolume";
 
     /**
      * {@code ADD_EXPORT_ENDPOINT} is constant for ADD_EXPORT_ENDPOINT's endpoint
-     **/
+     */
     public static final String ADD_EXPORT_ENDPOINT = "AddExport";
 
     /**
      * {@code GET_EXPORT_STATUS_ENDPOINT} is constant for GET_EXPORT_STATUS_ENDPOINT's endpoint
-     **/
+     */
     public static final String GET_EXPORT_STATUS_ENDPOINT = "ExportStatus";
 
     /**
      * {@code RETRIEVE_EXPORT_ENDPOINT} is constant for RETRIEVE_EXPORT_ENDPOINT's endpoint
-     **/
+     */
     public static final String RETRIEVE_EXPORT_ENDPOINT = "RetrieveExport";
 
     /**
      * {@code DELETE_EXPORT_ENDPOINT} is constant for DELETE_EXPORT_ENDPOINT's endpoint
-     **/
+     */
     public static final String DELETE_EXPORT_ENDPOINT = "RemoveExport";
 
     /**
@@ -128,7 +134,7 @@ public class KrakenUserDataManager extends KrakenPrivateManager {
      * @param requestTimeout:      custom timeout for request
      * @param apiKey:              api key of Kraken's platform
      * @param apiSign:             api sign of Kraken's platform
-     **/
+     */
     public KrakenUserDataManager(String defaultErrorMessage, int requestTimeout, String apiKey, String apiSign) {
         super(defaultErrorMessage, requestTimeout, apiKey, apiSign);
     }
@@ -137,7 +143,7 @@ public class KrakenUserDataManager extends KrakenPrivateManager {
      * @param defaultErrorMessage: custom error to show when is not a request error
      * @param apiKey: api key of Kraken's platform
      * @param apiSign: api sign of Kraken's platform
-     **/
+     */
     public KrakenUserDataManager(String defaultErrorMessage, String apiKey, String apiSign) {
         super(defaultErrorMessage, apiKey, apiSign);
     }
@@ -148,7 +154,7 @@ public class KrakenUserDataManager extends KrakenPrivateManager {
      * @param requestTimeout: custom timeout for request
      * @param apiKey:         api key of Kraken's platform
      * @param apiSign:        api sign of Kraken's platform
-     **/
+     */
     public KrakenUserDataManager(int requestTimeout, String apiKey, String apiSign) {
         super(requestTimeout, apiKey, apiSign);
     }
@@ -158,7 +164,7 @@ public class KrakenUserDataManager extends KrakenPrivateManager {
      *
      * @param apiKey:  api key of Kraken's platform
      * @param apiSign: api sign of Kraken's platform
-     **/
+     */
     public KrakenUserDataManager(String apiKey, String apiSign) {
         super(apiKey, apiSign);
     }
@@ -178,7 +184,7 @@ public class KrakenUserDataManager extends KrakenPrivateManager {
      *        KrakenPrivateManager secondManager = new KrakenPrivateManager(); //same credentials used
      *     }
      * </pre>
-     **/
+     */
     public KrakenUserDataManager() {
         super();
     }
@@ -200,7 +206,7 @@ public class KrakenUserDataManager extends KrakenPrivateManager {
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Data/operation/getAccountBalance">
      *     Get Account Balance</a>
      * @return account balance as {@link AccountBalance} custom object
-     * **/
+     */
     @Wrapper
     @RequestPath(method = POST, path = "https://api.kraken.com/0/private/Balance")
     public AccountBalance getAccountBalance() throws Exception {
@@ -226,7 +232,7 @@ public class KrakenUserDataManager extends KrakenPrivateManager {
      *                   </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Data/operation/getAccountBalance">
      * Get Account Balance</a>
-     **/
+     */
     @Returner
     @RequestPath(method = POST, path = "https://api.kraken.com/0/private/Balance")
     public <T> T getAccountBalance(ReturnFormat format) throws Exception {
@@ -239,6 +245,65 @@ public class KrakenUserDataManager extends KrakenPrivateManager {
             default:
                 return (T) accountBalanceResponse;
         }
+    }
+
+    /**
+     * Request to retrieve all extended account balances, including credits and held amounts. Balance available for
+     * trading is calculated as: available balance = balance + credit - credit_used - hold_trade <br>
+     * No-any params required
+     *
+     * @return extended balance as {@link ExtendedBalance} custom object
+     * @throws Exception when request has been go wrong -> you can use these methods to get more details about error:
+     *                   <ul>
+     *                       <li>
+     *                           {@link #getErrorResponse()}
+     *                       </li>
+     *                       <li>
+     *                           {@link #getJSONErrorResponse()}
+     *                       </li>
+     *                       <li>
+     *                           {@link #printErrorResponse()}
+     *                       </li>
+     *                   </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
+     * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Data/operation/getExtendedBalance">
+     * Get Extended Balance</a>
+     */
+    @Wrapper
+    @RequestPath(method = POST, path = "https://api.kraken.com/0/private/BalanceEx")
+    public ExtendedBalance getExtendedBalance() throws Exception {
+        return getExtendedBalance(LIBRARY_OBJECT);
+    }
+
+    /**
+     * Request to retrieve all extended account balances, including credits and held amounts. Balance available for
+     * trading is calculated as: available balance = balance + credit - credit_used - hold_trade
+     *
+     * @param format: return type formatter -> {@link ReturnFormat}
+     * @return extended balance as {@code "format"} defines
+     * @throws Exception when request has been go wrong -> you can use these methods to get more details about error:
+     *                   <ul>
+     *                       <li>
+     *                           {@link #getErrorResponse()}
+     *                       </li>
+     *                       <li>
+     *                           {@link #getJSONErrorResponse()}
+     *                       </li>
+     *                       <li>
+     *                           {@link #printErrorResponse()}
+     *                       </li>
+     *                   </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
+     * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Data/operation/getExtendedBalance">
+     * Get Extended Balance</a>
+     */
+    @Returner
+    @RequestPath(method = POST, path = "https://api.kraken.com/0/private/BalanceEx")
+    public <T> T getExtendedBalance(ReturnFormat format) throws Exception {
+        JSONObject extendedBalanceResponse = new JSONObject(sendPostRequest(GET_EXTENDED_BALANCE_ENDPOINT, null));
+        return switch (format) {
+            case JSON -> (T) extendedBalanceResponse;
+            case LIBRARY_OBJECT -> (T) new ExtendedBalance(extendedBalanceResponse);
+            default -> (T) extendedBalanceResponse.toString();
+        };
     }
 
     /** Request to get trade balance<br>
@@ -258,7 +323,7 @@ public class KrakenUserDataManager extends KrakenPrivateManager {
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Data/operation/getTradeBalance">
      *     Get Trade Balance</a>
      * @return trade balance as {@link TradeBalance} custom object
-     * **/
+     */
     @Wrapper
     @RequestPath(method = POST, path = "https://api.kraken.com/0/private/TradeBalance")
     public TradeBalance getTradeBalance() throws Exception {
@@ -282,7 +347,7 @@ public class KrakenUserDataManager extends KrakenPrivateManager {
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Data/operation/getTradeBalance">
      *     Get Trade Balance</a>
      * @return trade balance as {"format"} defines
-     * **/
+     */
     @RequestPath(method = POST, path = "https://api.kraken.com/0/private/TradeBalance")
     public <T> T getTradeBalance(ReturnFormat format) throws Exception {
         return returnTradeBalance(sendPostRequest(GET_TRADE_BALANCE_ENDPOINT, null), format);
@@ -305,7 +370,7 @@ public class KrakenUserDataManager extends KrakenPrivateManager {
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Data/operation/getTradeBalance">
      *     Get Trade Balance</a>
      * @return trade balance as {@link TradeBalance} custom object
-     * **/
+     */
     @Wrapper
     @RequestPath(method = POST, path = "https://api.kraken.com/0/private/TradeBalance")
     public TradeBalance getTradeBalance(String asset) throws Exception {
@@ -330,7 +395,7 @@ public class KrakenUserDataManager extends KrakenPrivateManager {
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Data/operation/getTradeBalance">
      *     Get Trade Balance</a>
      * @return trade balance as {"format"} defines
-     * **/
+     */
     @RequestPath(method = POST, path = "https://api.kraken.com/0/private/TradeBalance")
     public <T> T getTradeBalance(String asset, ReturnFormat format) throws Exception {
         Params params = new Params();
@@ -344,7 +409,7 @@ public class KrakenUserDataManager extends KrakenPrivateManager {
      * @param tradeBalanceResponse: trade balance to format
      * @param format:               return type formatter -> {@link ReturnFormat}
      * @return trade balance as {"format"} defines
-     **/
+     */
     @Returner
     private <T> T returnTradeBalance(String tradeBalanceResponse, ReturnFormat format) {
         switch (format) {
@@ -376,7 +441,7 @@ public class KrakenUserDataManager extends KrakenPrivateManager {
      *                   </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Data/operation/getOpenOrders">
      * Get Open Orders</a>
-     **/
+     */
     @Wrapper
     @RequestPath(method = POST, path = "https://api.kraken.com/0/private/OpenOrders")
     public ArrayList<Order> getOpenOrdersList(boolean insertTrades) throws Exception {
@@ -403,7 +468,7 @@ public class KrakenUserDataManager extends KrakenPrivateManager {
      *                   </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Data/operation/getOpenOrders">
      * Get Open Orders</a>
-     **/
+     */
     @RequestPath(method = POST, path = "https://api.kraken.com/0/private/OpenOrders")
     public <T> T getOpenOrdersList(boolean insertTrades, ReturnFormat format) throws Exception {
         Params params = new Params();
@@ -430,7 +495,7 @@ public class KrakenUserDataManager extends KrakenPrivateManager {
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Data/operation/getOpenOrders">
      *     Get Open Orders</a>
      * @return open orders as {@link ArrayList} of {@link Order} custom object
-     * **/
+     */
     @Wrapper
     @RequestPath(method = POST, path = "https://api.kraken.com/0/private/OpenOrders")
     public ArrayList<Order> getOpenOrdersList(boolean insertTrades, long userRef) throws Exception {
@@ -457,7 +522,7 @@ public class KrakenUserDataManager extends KrakenPrivateManager {
      *                   </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Data/operation/getOpenOrders">
      * Get Open Orders</a>
-     **/
+     */
     @RequestPath(method = POST, path = "https://api.kraken.com/0/private/OpenOrders")
     public <T> T getOpenOrdersList(boolean insertTrades, long userRef, ReturnFormat format) throws Exception {
         Params params = new Params();
@@ -487,7 +552,7 @@ public class KrakenUserDataManager extends KrakenPrivateManager {
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Data/operation/getClosedOrders">
      * Get Closed Orders</a>
      * @implSpec count value is retrievable with size() method of {@link ArrayList} value returned
-     **/
+     */
     @Wrapper
     @RequestPath(method = POST, path = "https://api.kraken.com/0/private/ClosedOrders")
     public ArrayList<ClosedOrder> getClosedOrdersList(boolean insertTrades) throws Exception {
@@ -513,7 +578,7 @@ public class KrakenUserDataManager extends KrakenPrivateManager {
      *     Get Closed Orders</a>
      * @implSpec count value is retrievable with size() method of {@link ArrayList} value returned
      * @return closed orders list as {"format"} defines
-     * **/
+     */
     @RequestPath(method = POST, path = "https://api.kraken.com/0/private/ClosedOrders")
     public <T> T getClosedOrdersList(boolean insertTrades, ReturnFormat format) throws Exception {
         Params params = new Params();
@@ -563,7 +628,7 @@ public class KrakenUserDataManager extends KrakenPrivateManager {
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Data/operation/getClosedOrders">
      * Get Closed Orders</a>
      * @implSpec count value is retrievable with size() method of {@link ArrayList} value returned
-     **/
+     */
     @Wrapper
     @RequestPath(method = POST, path = "https://api.kraken.com/0/private/ClosedOrders")
     public ArrayList<ClosedOrder> getClosedOrdersList(Params params) throws Exception {
@@ -612,7 +677,7 @@ public class KrakenUserDataManager extends KrakenPrivateManager {
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Data/operation/getClosedOrders">
      * Get Closed Orders</a>
      * @implSpec count value is retrievable with size() method of {@link ArrayList} value returned
-     **/
+     */
     @RequestPath(method = POST, path = "https://api.kraken.com/0/private/ClosedOrders")
     public <T> T getClosedOrdersList(Params params, ReturnFormat format) throws Exception {
         return returnClosedOrders(sendPostRequest(GET_CLOSED_ORDERS_ENDPOINT, params), format);
@@ -624,7 +689,7 @@ public class KrakenUserDataManager extends KrakenPrivateManager {
      * @param closedOrdersResponse: closed orders list to format
      * @param format:               return type formatter -> {@link ReturnFormat}
      * @return closed orders list as {"format"} defines
-     **/
+     */
     @Returner
     private <T> T returnClosedOrders(String closedOrdersResponse, ReturnFormat format) {
         switch (format) {
@@ -663,7 +728,7 @@ public class KrakenUserDataManager extends KrakenPrivateManager {
      *                   </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Data/operation/getOrdersInfo">
      * Query Orders Info</a>
-     **/
+     */
     @Wrapper
     @RequestPath(method = POST, path = "https://api.kraken.com/0/private/QueryOrders")
     public ArrayList<Order> queryOrdersInfoList(boolean insertTrades, ArrayList<Long> txId) throws Exception {
@@ -692,7 +757,7 @@ public class KrakenUserDataManager extends KrakenPrivateManager {
      *                   </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Data/operation/getOrdersInfo">
      * Query Orders Info</a>
-     **/
+     */
     @RequestPath(method = POST, path = "https://api.kraken.com/0/private/QueryOrders")
     public <T> T queryOrdersInfoList(boolean insertTrades, ArrayList<Long> txId, ReturnFormat format) throws Exception {
         return queryOrdersInfoList(insertTrades, txId.toArray(txId.toArray(new Long[0])), format);
@@ -718,7 +783,7 @@ public class KrakenUserDataManager extends KrakenPrivateManager {
      *                   </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Data/operation/getOrdersInfo">
      * Query Orders Info</a>
-     **/
+     */
     @Wrapper
     @RequestPath(method = POST, path = "https://api.kraken.com/0/private/QueryOrders")
     public ArrayList<Order> queryOrdersInfoList(boolean insertTrades, Long[] txId) throws Exception {
@@ -746,7 +811,7 @@ public class KrakenUserDataManager extends KrakenPrivateManager {
      *                   </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Data/operation/getOrdersInfo">
      * Query Orders Info</a>
-     **/
+     */
     @RequestPath(method = POST, path = "https://api.kraken.com/0/private/QueryOrders")
     public <T> T queryOrdersInfoList(boolean insertTrades, Long[] txId, ReturnFormat format) throws Exception {
         Params params = new Params();
@@ -776,7 +841,7 @@ public class KrakenUserDataManager extends KrakenPrivateManager {
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Data/operation/getOrdersInfo">
      * Query Orders Info</a>
      * @return query orders info list as {@link ArrayList} of {@link Order} custom object
-     * **/
+     */
     @RequestPath(method = POST, path = "https://api.kraken.com/0/private/QueryOrders")
     public ArrayList<Order> queryOrdersInfoList(boolean insertTrades, long userRef, ArrayList<Long> txId) throws Exception {
         return queryOrdersInfoList(insertTrades, userRef, txId.toArray(new Long[0]), LIBRARY_OBJECT);
@@ -803,7 +868,7 @@ public class KrakenUserDataManager extends KrakenPrivateManager {
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Data/operation/getOrdersInfo">
      * Query Orders Info</a>
      * @return orders list as {"format"} defines
-     * **/
+     */
     @RequestPath(method = POST, path = "https://api.kraken.com/0/private/QueryOrders")
     public <T> T queryOrdersInfoList(boolean insertTrades, long userRef, ArrayList<Long> txId,
                                      ReturnFormat format) throws Exception {
@@ -831,7 +896,7 @@ public class KrakenUserDataManager extends KrakenPrivateManager {
      *                   </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Data/operation/getOrdersInfo">
      * Query Orders Info</a>
-     **/
+     */
     @Wrapper
     @RequestPath(method = POST, path = "https://api.kraken.com/0/private/QueryOrders")
     public ArrayList<Order> queryOrdersInfoList(boolean insertTrades, long userRef, Long[] txId) throws Exception {
@@ -858,7 +923,7 @@ public class KrakenUserDataManager extends KrakenPrivateManager {
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Data/operation/getOrdersInfo">
      * Query Orders Info</a>
      * @return orders list as {"format"} defines
-     * **/
+     */
     @RequestPath(method = POST, path = "https://api.kraken.com/0/private/QueryOrders")
     public <T> T queryOrdersInfoList(boolean insertTrades, long userRef, Long[] txId, ReturnFormat format) throws Exception {
         Params params = new Params();
@@ -875,7 +940,7 @@ public class KrakenUserDataManager extends KrakenPrivateManager {
      * @param ordersResponse: orders list to format
      * @param format:         return type formatter -> {@link ReturnFormat}
      * @return orders list as {"format"} defines
-     **/
+     */
     @Returner
     private <T> T returnOrders(String ordersResponse, ReturnFormat format) {
         switch (format) {
@@ -914,7 +979,7 @@ public class KrakenUserDataManager extends KrakenPrivateManager {
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Data/operation/getTradeHistory">
      * Get Trades History</a>
      * @implSpec count value is retrievable with size() method of {@link ArrayList} value returned
-     **/
+     */
     @Wrapper
     @RequestPath(method = POST, path = "https://api.kraken.com/0/private/TradesHistory")
     public ArrayList<HistoryTrade> getTradesHistory(boolean insertTrades) throws Exception {
@@ -942,7 +1007,7 @@ public class KrakenUserDataManager extends KrakenPrivateManager {
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Data/operation/getTradeHistory">
      * Get Trades History</a>
      * @implSpec count value is retrievable with size() method of {@link ArrayList} value returned
-     **/
+     */
     @RequestPath(method = POST, path = "https://api.kraken.com/0/private/TradesHistory")
     public <T> T getTradesHistory(boolean insertTrades, ReturnFormat format) throws Exception {
         Params params = new Params();
@@ -992,7 +1057,7 @@ public class KrakenUserDataManager extends KrakenPrivateManager {
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Data/operation/getTradeHistory">
      * Get Trades History</a>
      * @implSpec count value is retrievable with size() method of {@link ArrayList} value returned
-     **/
+     */
     @Wrapper
     @RequestPath(method = POST, path = "https://api.kraken.com/0/private/TradesHistory")
     public ArrayList<HistoryTrade> getTradesHistory(Params params) throws Exception {
@@ -1041,7 +1106,7 @@ public class KrakenUserDataManager extends KrakenPrivateManager {
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Data/operation/getTradeHistory">
      * Get Trades History</a>
      * @implSpec count value is retrievable with size() method of {@link ArrayList} value returned
-     **/
+     */
     @RequestPath(method = POST, path = "https://api.kraken.com/0/private/TradesHistory")
     public <T> T getTradesHistory(Params params, ReturnFormat format) throws Exception {
         return returnHistoryTrades(sendPostRequest(GET_TRADES_HISTORY_ENDPOINT, params), format);
@@ -1053,7 +1118,7 @@ public class KrakenUserDataManager extends KrakenPrivateManager {
      * @param tradesListResponse: history trades list to format
      * @param format:             return type formatter -> {@link ReturnFormat}
      * @return history trades list as {"format"} defines
-     **/
+     */
     @Returner
     private <T> T returnHistoryTrades(String tradesListResponse, ReturnFormat format) {
         switch (format) {
@@ -1090,7 +1155,7 @@ public class KrakenUserDataManager extends KrakenPrivateManager {
      *                   </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Data/operation/getTradesInfo">
      * Query Trades Info</a>
-     **/
+     */
     @Wrapper
     @RequestPath(method = POST, path = "https://api.kraken.com/0/private/QueryTrades")
     public ArrayList<QueryTrade> getQueryTradesInfo(boolean insertTrades) throws Exception {
@@ -1115,7 +1180,7 @@ public class KrakenUserDataManager extends KrakenPrivateManager {
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Data/operation/getTradesInfo">
      *     Query Trades Info</a>
      * @return query trades list as {"format"} defines
-     * **/
+     */
     @RequestPath(method = POST, path = "https://api.kraken.com/0/private/QueryTrades")
     public <T> T getQueryTradesInfo(boolean insertTrades, ReturnFormat format) throws Exception {
         Params params = new Params();
@@ -1143,7 +1208,7 @@ public class KrakenUserDataManager extends KrakenPrivateManager {
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Data/operation/getTradesInfo">
      *     Query Trades Info</a>
      * @return query trades info list as {@link ArrayList} of {@link QueryTrade} custom object
-     * **/
+     */
     @Wrapper
     @RequestPath(method = POST, path = "https://api.kraken.com/0/private/QueryTrades")
     public ArrayList<QueryTrade> getQueryTradesInfo(boolean insertTrades, ArrayList<String> txId) throws Exception {
@@ -1170,7 +1235,7 @@ public class KrakenUserDataManager extends KrakenPrivateManager {
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Data/operation/getTradesInfo">
      *     Query Trades Info</a>
      * @return query trades list as {"format"} defines
-     * **/
+     */
     @RequestPath(method = POST, path = "https://api.kraken.com/0/private/QueryTrades")
     public <T> T getQueryTradesInfo(boolean insertTrades, ArrayList<String> txId, ReturnFormat format) throws Exception {
         return getQueryTradesInfo(insertTrades, txId.toArray(new String[0]), format);
@@ -1194,7 +1259,7 @@ public class KrakenUserDataManager extends KrakenPrivateManager {
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Data/operation/getTradesInfo">
      *     Query Trades Info</a>
      * @return query trades info list as {@link ArrayList} of {@link QueryTrade} custom object
-     * **/
+     */
     @Wrapper
     @RequestPath(method = POST, path = "https://api.kraken.com/0/private/QueryTrades")
     public ArrayList<QueryTrade> getQueryTradesInfo(boolean insertTrades, String[] txId) throws Exception {
@@ -1220,7 +1285,7 @@ public class KrakenUserDataManager extends KrakenPrivateManager {
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Data/operation/getTradesInfo">
      *     Query Trades Info</a>
      * @return query trades list as {"format"} defines
-     * **/
+     */
     @RequestPath(method = POST, path = "https://api.kraken.com/0/private/QueryTrades")
     public <T> T getQueryTradesInfo(boolean insertTrades, String[] txId, ReturnFormat format) throws Exception {
         Params params = new Params();
@@ -1236,7 +1301,7 @@ public class KrakenUserDataManager extends KrakenPrivateManager {
      * @param tradesListResponse: query trades list to format
      * @param format:             return type formatter -> {@link ReturnFormat}
      * @return query trades list as {"format"} defines
-     **/
+     */
     @Returner
     private <T> T returnQueryTrades(String tradesListResponse, ReturnFormat format) {
         switch (format) {
@@ -1272,7 +1337,7 @@ public class KrakenUserDataManager extends KrakenPrivateManager {
      *                   </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Data/operation/getOpenPositions">
      * Get Open Positions</a>
-     **/
+     */
     @Wrapper
     @RequestPath(method = POST, path = "https://api.kraken.com/0/private/OpenPositions")
     public ArrayList<OpenPosition> getOpenPositions(boolean doCalcs) throws Exception {
@@ -1299,7 +1364,7 @@ public class KrakenUserDataManager extends KrakenPrivateManager {
      *                   </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Data/operation/getOpenPositions">
      * Get Open Positions</a>
-     **/
+     */
     @RequestPath(method = POST, path = "https://api.kraken.com/0/private/OpenPositions")
     public <T> T getOpenPositions(boolean doCalcs, ReturnFormat format) throws Exception {
         Params params = new Params();
@@ -1326,7 +1391,7 @@ public class KrakenUserDataManager extends KrakenPrivateManager {
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Data/operation/getOpenPositions">
      *     Get Open Positions</a>
      * @return open positions list as {@link ArrayList} of {@link OpenPosition} custom object
-     * **/
+     */
     @Wrapper
     @RequestPath(method = POST, path = "https://api.kraken.com/0/private/OpenPositions")
     public ArrayList<OpenPosition> getOpenPositions(boolean doCalcs, ArrayList<String> txId) throws Exception {
@@ -1352,7 +1417,7 @@ public class KrakenUserDataManager extends KrakenPrivateManager {
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Data/operation/getOpenPositions">
      *     Get Open Positions</a>
      * @return open positions list as {"format"} defines
-     * **/
+     */
     @RequestPath(method = POST, path = "https://api.kraken.com/0/private/OpenPositions")
     public <T> T getOpenPositions(boolean doCalcs, ArrayList<String> txId, ReturnFormat format) throws Exception {
         return getOpenPositions(doCalcs, txId.toArray(new String[0]), format);
@@ -1378,7 +1443,7 @@ public class KrakenUserDataManager extends KrakenPrivateManager {
      *                   </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Data/operation/getOpenPositions">
      * Get Open Positions</a>
-     **/
+     */
     @Wrapper
     @RequestPath(method = POST, path = "https://api.kraken.com/0/private/OpenPositions")
     public ArrayList<OpenPosition> getOpenPositions(boolean doCalcs, String[] txId) throws Exception {
@@ -1404,7 +1469,7 @@ public class KrakenUserDataManager extends KrakenPrivateManager {
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Data/operation/getOpenPositions">
      *     Get Open Positions</a>
      * @return open positions list as {"format"} defines
-     * **/
+     */
     @RequestPath(method = POST, path = "https://api.kraken.com/0/private/OpenPositions")
     public <T> T getOpenPositions(boolean doCalcs, String[] txId, ReturnFormat format) throws Exception {
         Params params = new Params();
@@ -1420,7 +1485,7 @@ public class KrakenUserDataManager extends KrakenPrivateManager {
      * @param openPositionsResponse: open positions list to format
      * @param format:                return type formatter -> {@link ReturnFormat}
      * @return open positions list as {"format"} defines
-     **/
+     */
     @Returner
     private <T> T returnOpenPositions(String openPositionsResponse, ReturnFormat format) {
         switch (format) {
@@ -1457,7 +1522,7 @@ public class KrakenUserDataManager extends KrakenPrivateManager {
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Data/operation/getLedgers">
      * Query Ledgers</a>
      * @implSpec count value is retrievable with size() method of {@link ArrayList} value returned
-     **/
+     */
     @Wrapper
     @RequestPath(method = POST, path = "https://api.kraken.com/0/private/QueryLedgers")
     public ArrayList<Ledger> getLedgersInfo(boolean insertTrades) throws Exception {
@@ -1485,7 +1550,7 @@ public class KrakenUserDataManager extends KrakenPrivateManager {
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Data/operation/getLedgers">
      * Query Ledgers</a>
      * @implSpec count value is retrievable with size() method of {@link ArrayList} value returned
-     **/
+     */
     @RequestPath(method = POST, path = "https://api.kraken.com/0/private/QueryLedgers")
     public <T> T getLedgersInfo(boolean insertTrades, ReturnFormat format) throws Exception {
         Params params = new Params();
@@ -1535,7 +1600,7 @@ public class KrakenUserDataManager extends KrakenPrivateManager {
      * Query Ledgers</a>
      * @implSpec count value is retrievable with size() method of {@link ArrayList} value returned
      * @implNote keys for params accepted are: asset,aclass,type,start,end and ofs
-     **/
+     */
     @Wrapper
     @RequestPath(method = POST, path = "https://api.kraken.com/0/private/QueryLedgers")
     public ArrayList<Ledger> getLedgersInfo(Params params) throws Exception {
@@ -1584,7 +1649,7 @@ public class KrakenUserDataManager extends KrakenPrivateManager {
      * Query Ledgers</a>
      * @implSpec count value is retrievable with size() method of {@link ArrayList} value returned
      * @implNote keys for params accepted are: asset,aclass,type,start,end and ofs
-     **/
+     */
     @RequestPath(method = POST, path = "https://api.kraken.com/0/private/QueryLedgers")
     public <T> T getLedgersInfo(Params params, ReturnFormat format) throws Exception {
         return returnLedgers(sendPostRequest(GET_LEDGERS_ENDPOINT, params), format);
@@ -1611,7 +1676,7 @@ public class KrakenUserDataManager extends KrakenPrivateManager {
      *                   </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Data/operation/getLedgersInfo">
      * https://docs.kraken.com/rest/#tag/User-Data/operation/getLedgersInfo</a>
-     **/
+     */
     @Wrapper
     @RequestPath(method = POST, path = "https://api.kraken.com/0/private/QueryLedgers")
     public ArrayList<Ledger> getLedgersInfo(boolean insertTrades, ArrayList<String> ids) throws Exception {
@@ -1640,7 +1705,7 @@ public class KrakenUserDataManager extends KrakenPrivateManager {
      *                   </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Data/operation/getLedgersInfo">
      * https://docs.kraken.com/rest/#tag/User-Data/operation/getLedgersInfo</a>
-     **/
+     */
     @RequestPath(method = POST, path = "https://api.kraken.com/0/private/QueryLedgers")
     public <T> T getLedgersInfo(boolean insertTrades, ArrayList<String> ids, ReturnFormat format) throws Exception {
         return getLedgersInfo(insertTrades, format, ids.toArray(new String[0]));
@@ -1666,7 +1731,7 @@ public class KrakenUserDataManager extends KrakenPrivateManager {
      *                   </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Data/operation/getLedgersInfo">
      * https://docs.kraken.com/rest/#tag/User-Data/operation/getLedgersInfo</a>
-     **/
+     */
     @Wrapper
     @RequestPath(method = POST, path = "https://api.kraken.com/0/private/QueryLedgers")
     public ArrayList<Ledger> getLedgersInfo(boolean insertTrades, String... ids) throws Exception {
@@ -1694,7 +1759,7 @@ public class KrakenUserDataManager extends KrakenPrivateManager {
      *                   </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Data/operation/getLedgersInfo">
      * https://docs.kraken.com/rest/#tag/User-Data/operation/getLedgersInfo</a>
-     **/
+     */
     @RequestPath(method = POST, path = "https://api.kraken.com/0/private/QueryLedgers")
     public <T> T getLedgersInfo(boolean insertTrades, ReturnFormat format, String... ids) throws Exception {
         Params params = new Params();
@@ -1744,7 +1809,7 @@ public class KrakenUserDataManager extends KrakenPrivateManager {
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Data/operation/getLedgersInfo">
      *     https://docs.kraken.com/rest/#tag/User-Data/operation/getLedgersInfo</a>
      * @return query ledgers list as {@link ArrayList} of {@link Ledger} custom object
-     * **/
+     */
     @Wrapper
     @RequestPath(method = POST, path = "https://api.kraken.com/0/private/QueryLedgers")
     public ArrayList<Ledger> getLedgersInfo(boolean insertTrades, ArrayList<String> ids, Params params) throws Exception {
@@ -1792,7 +1857,7 @@ public class KrakenUserDataManager extends KrakenPrivateManager {
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Data/operation/getLedgersInfo">
      *     https://docs.kraken.com/rest/#tag/User-Data/operation/getLedgersInfo</a>
      * @return ledgers list as {"format"} defines
-     * **/
+     */
     @RequestPath(method = POST, path = "https://api.kraken.com/0/private/QueryLedgers")
     public <T> T getLedgersInfo(boolean insertTrades, ArrayList<String> ids, Params params,
                                 ReturnFormat format) throws Exception {
@@ -1840,7 +1905,7 @@ public class KrakenUserDataManager extends KrakenPrivateManager {
      *                   </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Data/operation/getLedgersInfo">
      * https://docs.kraken.com/rest/#tag/User-Data/operation/getLedgersInfo</a>
-     **/
+     */
     @Wrapper
     @RequestPath(method = POST, path = "https://api.kraken.com/0/private/QueryLedgers")
     public ArrayList<Ledger> getLedgersInfo(boolean insertTrades, Params params, String... ids) throws Exception {
@@ -1889,7 +1954,7 @@ public class KrakenUserDataManager extends KrakenPrivateManager {
      *                   </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Data/operation/getLedgersInfo">
      * https://docs.kraken.com/rest/#tag/User-Data/operation/getLedgersInfo</a>
-     **/
+     */
     @RequestPath(method = POST, path = "https://api.kraken.com/0/private/QueryLedgers")
     public <T> T getLedgersInfo(boolean insertTrades, Params params, ReturnFormat format, String... ids) throws Exception {
         if (insertTrades)
@@ -1904,7 +1969,7 @@ public class KrakenUserDataManager extends KrakenPrivateManager {
      * @param openPositionsResponse: ledgers list to format
      * @param format:                return type formatter -> {@link ReturnFormat}
      * @return ledgers list as {"format"} defines
-     **/
+     */
     @Returner
     private <T> T returnLedgers(String openPositionsResponse, ReturnFormat format) {
         switch (format) {
@@ -1941,7 +2006,7 @@ public class KrakenUserDataManager extends KrakenPrivateManager {
      *                   </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Data/operation/getTradeVolume">
      * Get Trade Volume</a>
-     **/
+     */
     @Wrapper
     @WrappedRequest
     @RequestPath(method = POST, path = "https://api.kraken.com/0/private/TradeVolume?pair={pair}")
@@ -1968,7 +2033,7 @@ public class KrakenUserDataManager extends KrakenPrivateManager {
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Data/operation/getTradeVolume">
      *     Get Trade Volume</a>
      * @return trade volume as {"format"} defines
-     * **/
+     */
     @WrappedRequest
     @RequestPath(method = POST, path = "https://api.kraken.com/0/private/TradeVolume?pair={pair}")
     public <T> T getTradeVolume(AssetPair pair, boolean insertFeeInfo, ReturnFormat format) throws Exception {
@@ -1993,7 +2058,7 @@ public class KrakenUserDataManager extends KrakenPrivateManager {
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Data/operation/getTradeVolume">
      *     Get Trade Volume</a>
      * @return trade volume as {@link TradeVolume} custom object
-     * **/
+     */
     @Wrapper
     @RequestPath(method = POST, path = "https://api.kraken.com/0/private/TradeVolume?pair={pair}")
     public TradeVolume getTradeVolume(String pair, boolean insertFeeInfo) throws Exception {
@@ -2021,7 +2086,7 @@ public class KrakenUserDataManager extends KrakenPrivateManager {
      *                   </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Data/operation/getTradeVolume">
      * Get Trade Volume</a>
-     **/
+     */
     @RequestPath(method = POST, path = "https://api.kraken.com/0/private/TradeVolume?pair={pair}")
     public <T> T getTradeVolume(String pair, boolean insertFeeInfo, ReturnFormat format) throws Exception {
         Params params = new Params();
@@ -2049,7 +2114,7 @@ public class KrakenUserDataManager extends KrakenPrivateManager {
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Data/operation/getTradeVolume">
      *     Get Trade Volume</a>
      * @return trade volume as {@link TradeVolume} custom object
-     * **/
+     */
     @Wrapper
     @WrappedRequest
     @RequestPath(method = POST, path = "https://api.kraken.com/0/private/TradeVolume?pair={pair}")
@@ -2079,7 +2144,7 @@ public class KrakenUserDataManager extends KrakenPrivateManager {
      *                   </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Data/operation/getTradeVolume">
      * Get Trade Volume</a>
-     **/
+     */
     @WrappedRequest
     @RequestPath(method = POST, path = "https://api.kraken.com/0/private/TradeVolume?pair={pair}")
     public <T> T getTradeVolume(AssetPair pair, boolean insertFeeInfo, ReturnFormat format,
@@ -2107,7 +2172,7 @@ public class KrakenUserDataManager extends KrakenPrivateManager {
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Data/operation/getTradeVolume">
      *     Get Trade Volume</a>
      * @return trade volume as {@link TradeVolume} custom object
-     * **/
+     */
     @Wrapper
     @WrappedRequest
     @RequestPath(method = POST, path = "https://api.kraken.com/0/private/TradeVolume?pair={pair}")
@@ -2138,7 +2203,7 @@ public class KrakenUserDataManager extends KrakenPrivateManager {
      *                   </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Data/operation/getTradeVolume">
      * Get Trade Volume</a>
-     **/
+     */
     @WrappedRequest
     @RequestPath(method = POST, path = "https://api.kraken.com/0/private/TradeVolume?pair={pair}")
     public <T> T getTradeVolume(AssetPair pair, boolean insertFeeInfo, ArrayList<String> pairs,
@@ -2166,7 +2231,7 @@ public class KrakenUserDataManager extends KrakenPrivateManager {
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Data/operation/getTradeVolume">
      *     Get Trade Volume</a>
      * @return trade volume as {@link TradeVolume} custom object
-     * **/
+     */
     @Wrapper
     @RequestPath(method = POST, path = "https://api.kraken.com/0/private/TradeVolume?pair={pair}")
     public TradeVolume getTradeVolume(String pair, boolean insertFeeInfo, ArrayList<String> pairs) throws Exception {
@@ -2196,7 +2261,7 @@ public class KrakenUserDataManager extends KrakenPrivateManager {
      *                   </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Data/operation/getTradeVolume">
      * Get Trade Volume</a>
-     **/
+     */
     @RequestPath(method = POST, path = "https://api.kraken.com/0/private/TradeVolume?pair={pair}")
     public <T> T getTradeVolume(String pair, boolean insertFeeInfo, ArrayList<String> pairs,
                                 ReturnFormat format) throws Exception {
@@ -2224,7 +2289,7 @@ public class KrakenUserDataManager extends KrakenPrivateManager {
      *                   </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Data/operation/getTradeVolume">
      * Get Trade Volume</a>
-     **/
+     */
     @Wrapper
     @RequestPath(method = POST, path = "https://api.kraken.com/0/private/TradeVolume?pair={pair}")
     public TradeVolume getTradeVolume(String pair, boolean insertFeeInfo, String... pairs) throws Exception {
@@ -2253,7 +2318,7 @@ public class KrakenUserDataManager extends KrakenPrivateManager {
      *                   </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Data/operation/getTradeVolume">
      * Get Trade Volume</a>
-     **/
+     */
     @RequestPath(method = POST, path = "https://api.kraken.com/0/private/TradeVolume?pair={pair}")
     public <T> T getTradeVolume(String pair, boolean insertFeeInfo, ReturnFormat format, String... pairs) throws Exception {
         Params params = new Params();
@@ -2269,7 +2334,7 @@ public class KrakenUserDataManager extends KrakenPrivateManager {
      * @param tradeVolumeResponse: trade volume to format
      * @param format:              return type formatter -> {@link ReturnFormat}
      * @return trade volume as {"format"} defines
-     **/
+     */
     @Returner
     private <T> T returnTradeVolume(String tradeVolumeResponse, ReturnFormat format) {
         switch (format) {
@@ -2300,7 +2365,7 @@ public class KrakenUserDataManager extends KrakenPrivateManager {
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Data/operation/addExport">
      *     Request Export Report</a>
      * @return export as {@link String}
-     * **/
+     */
     @Wrapper
     @RequestPath(method = POST, path = "https://api.kraken.com/0/private/AddExport")
     public String addExport(ReportType report, String description) throws Exception {
@@ -2328,7 +2393,7 @@ public class KrakenUserDataManager extends KrakenPrivateManager {
      *                   </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Data/operation/addExport">
      * Request Export Report</a>
-     **/
+     */
     @RequestPath(method = POST, path = "https://api.kraken.com/0/private/AddExport")
     public <T> T addExport(ReportType report, String description, ReturnFormat format) throws Exception {
         Params params = new Params();
@@ -2378,7 +2443,7 @@ public class KrakenUserDataManager extends KrakenPrivateManager {
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Data/operation/addExport">
      *     Request Export Report</a>
      * @return export as {@link String}
-     * **/
+     */
     @Wrapper
     @RequestPath(method = POST, path = "https://api.kraken.com/0/private/AddExport")
     public String addExport(ReportType report, String description, Params params) throws Exception {
@@ -2429,7 +2494,7 @@ public class KrakenUserDataManager extends KrakenPrivateManager {
      *                   </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Data/operation/addExport">
      * Request Export Report</a>
-     **/
+     */
     @RequestPath(method = POST, path = "https://api.kraken.com/0/private/AddExport")
     public <T> T addExport(ReportType report, String description, Params params, ReturnFormat format) throws Exception {
         params.addParam("report", report);
@@ -2445,7 +2510,7 @@ public class KrakenUserDataManager extends KrakenPrivateManager {
      * @return export added as {"format"} defines
      * @apiNote the {@link ReturnFormat#LIBRARY_OBJECT} format type in this case will return the {@code "id"} value
      * as {@link String}
-     **/
+     */
     @Returner
     private <T> T returnExportAdded(String exportAddedResponse, ReturnFormat format) {
         switch (format) {
@@ -2475,7 +2540,7 @@ public class KrakenUserDataManager extends KrakenPrivateManager {
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Data/operation/exportStatus">
      *     Get Export Report Status</a>
      * @return export status as {@link String}
-     * **/
+     */
     @Wrapper
     @RequestPath(method = POST, path = "https://api.kraken.com/0/private/ExportStatus")
     public ArrayList<ReportStatus> getExportStatus(ReportType report) throws Exception {
@@ -2502,7 +2567,7 @@ public class KrakenUserDataManager extends KrakenPrivateManager {
      *                   </ul> using a {@code "try and catch statement"} during runtime, see how to do in {@code "README"} file
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Data/operation/exportStatus">
      * Get Export Report Status</a>
-     **/
+     */
     @Returner
     @RequestPath(method = POST, path = "https://api.kraken.com/0/private/ExportStatus")
     public <T> T getExportStatus(ReportType report, ReturnFormat format) throws Exception {
@@ -2552,7 +2617,7 @@ public class KrakenUserDataManager extends KrakenPrivateManager {
      * }
      * </pre></code> hide personal data, and write about error that has been thrown. Thank you for help!
      * @return an export report as zipped {@link File}
-     * **/
+     */
     @Wrapper
     @RequestPath(method = POST, path = "https://api.kraken.com/0/private/RetrieveExport")
     public File retrieveDataExport(String id, String reportName) throws Exception {
@@ -2598,7 +2663,7 @@ public class KrakenUserDataManager extends KrakenPrivateManager {
      * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Data/operation/removeExport">
      *     Delete Export Report</a>
      * @return result of the operation as {@link String}
-     * **/
+     */
     @Wrapper
     @RequestPath(method = POST, path = "https://api.kraken.com/0/private/RemoveExport")
     public boolean deleteExportReport(String id, DeletionType type) throws Exception {
@@ -2626,7 +2691,7 @@ public class KrakenUserDataManager extends KrakenPrivateManager {
      * Delete Export Report</a>
      * @implSpec the {@link ReturnFormat#LIBRARY_OBJECT} format type in this case will return whether deletion has been successful
      * as boolean
-     **/
+     */
     @Returner
     @RequestPath(method = POST, path = "https://api.kraken.com/0/private/RemoveExport")
     public <T> T deleteExportReport(String id, DeletionType type, ReturnFormat format) throws Exception {

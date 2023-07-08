@@ -13,12 +13,12 @@ import static com.tecknobit.apimanager.trading.TradingTools.roundValue;
  * @author N7ghtm4r3 - Tecknobit
  * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/Market-Data/operation/getRecentTrades">
  * Get Recent Trades</a>
- **/
+ */
 public class Trades extends MarketList {
 
     /**
      * {@code recentTrades} is instance that memorizes list of {@link RecentTrade}
-     **/
+     */
     private final ArrayList<RecentTrade> recentTrades;
 
     /**
@@ -27,7 +27,7 @@ public class Trades extends MarketList {
      * @param last:         last timestamp value
      * @param symbol:       symbol value
      * @param recentTrades: list of {@link RecentTrade}
-     **/
+     */
     public Trades(long last, String symbol, ArrayList<RecentTrade> recentTrades) {
         super(last, symbol);
         this.recentTrades = recentTrades;
@@ -37,7 +37,7 @@ public class Trades extends MarketList {
      * Constructor to init a {@link Trades} object
      *
      * @param recentTrades: list of {@link RecentTrade}
-     **/
+     */
     public Trades(ArrayList<RecentTrade> recentTrades) {
         super(null);
         this.recentTrades = recentTrades;
@@ -47,7 +47,7 @@ public class Trades extends MarketList {
      * Constructor to init a {@link Trades} object
      *
      * @param jsonResponse: base json response
-     **/
+     */
     public Trades(JSONObject jsonResponse) {
         super(jsonResponse);
         recentTrades = new ArrayList<>();
@@ -61,44 +61,44 @@ public class Trades extends MarketList {
      * No-any params required
      *
      * @return {@link #recentTrades} instance as {@link ArrayList} of {@link RecentTrade}
-     **/
+     */
     public ArrayList<RecentTrade> getRecentTrades() {
         return recentTrades;
     }
 
     /**
      * The {@code RecentTrade} class is useful to format a recent trade object
-     **/
+     */
     public static class RecentTrade {
 
         /**
          * {@code price} is instance that memorizes price value
-         * **/
+         */
         private final double price;
 
         /**
          * {@code volume} is instance that memorizes volume value
-         * **/
+         */
         private final double volume;
 
         /**
          * {@code time} is instance that memorizes time value
-         * **/
+         */
         private final long time;
 
         /**
          * {@code side} is instance that memorizes side value (b/l -> buy or sell)
-         * **/
+         */
         private final String side;
 
         /**
          * {@code type} is instance that memorizes type value
-         * **/
+         */
         private final String type;
 
         /**
          * {@code miscellaneous} is instance that memorizes miscellaneous value
-         * **/
+         */
         private final String miscellaneous;
 
         /** Constructor to init a {@link RecentTrade} object
@@ -108,7 +108,7 @@ public class Trades extends MarketList {
          * @param side: side value (b/l -> buy or sell)
          * @param type: type value
          * @param miscellaneous: miscellaneous value
-         * **/
+         */
         public RecentTrade(double price, double volume, long time, String side, String type, String miscellaneous) {
             this.price = price;
             this.volume = volume;
@@ -120,7 +120,7 @@ public class Trades extends MarketList {
 
         /** Constructor to init a {@link RecentTrade} object
          * @param jsonTrade: recent trade data in {@code "JSON"} format
-         * **/
+         */
         public RecentTrade(JSONArray jsonTrade) {
             if (jsonTrade != null) {
                 price = jsonTrade.getDouble(0);
@@ -144,7 +144,7 @@ public class Trades extends MarketList {
          * No-any params required
          *
          * @return {@link #price} instance as double
-         **/
+         */
         public double getPrice() {
             return price;
         }
@@ -155,7 +155,7 @@ public class Trades extends MarketList {
          * @param decimals: number of digits to round final value
          * @return {@link #price} instance rounded with decimal digits inserted
          * @throws IllegalArgumentException if decimalDigits is negative
-         **/
+         */
         public double getPrice(int decimals) {
             return roundValue(price, decimals);
         }
@@ -165,7 +165,7 @@ public class Trades extends MarketList {
          * No-any params required
          *
          * @return {@link #volume} instance as double
-         **/
+         */
         public double getVolume() {
             return volume;
         }
@@ -176,7 +176,7 @@ public class Trades extends MarketList {
          * @param decimals: number of digits to round final value
          * @return {@link #volume} instance rounded with decimal digits inserted
          * @throws IllegalArgumentException if decimalDigits is negative
-         **/
+         */
         public double getVolume(int decimals) {
             return roundValue(volume, decimals);
         }
@@ -186,7 +186,7 @@ public class Trades extends MarketList {
          * No-any params required
          *
          * @return {@link #time} instance as long
-         **/
+         */
         public long getTime() {
             return time;
         }
@@ -196,7 +196,7 @@ public class Trades extends MarketList {
          * No-any params required
          *
          * @return {@link #side} instance as {@link String}
-         **/
+         */
         public String getSide() {
             return side;
         }
@@ -206,7 +206,7 @@ public class Trades extends MarketList {
          * No-any params required
          *
          * @return {@link #type} instance as {@link String}
-         **/
+         */
         public String getType() {
             return type;
         }
@@ -216,7 +216,7 @@ public class Trades extends MarketList {
          * No-any params required
          *
          * @return {@link #miscellaneous} instance as {@link String}
-         **/
+         */
         public String getMiscellaneous() {
             return miscellaneous;
         }

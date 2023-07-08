@@ -14,47 +14,47 @@ import static com.tecknobit.apimanager.trading.TradingTools.roundValue;
  * @author N7ghtm4r3 - Tecknobit
  * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/editOrder">
  * Edit Order</a>
- **/
+ */
 public class OrderEdited extends KrakenManager.KrakenResponse{
 
     /**
      * {@code status} is instance that memorizes status value
-     * **/
+     */
     private final String status;
 
     /**
      * {@code status} is instance that memorizes new order identifier value
-     * **/
+     */
     private final String txId;
 
     /**
      * {@code status} is instance that memorizes original order identifier value
-     * **/
+     */
     private final String originalTxId;
 
     /**
      * {@code volume} is instance that memorizes volume value
-     * **/
+     */
     private final double volume;
 
     /**
      * {@code price} is instance that memorizes price value
-     * **/
+     */
     private final double price;
 
     /**
      * {@code price2} is instance that memorizes secondary price value
-     * **/
+     */
     private final double price2;
 
     /**
      * {@code ordersCancelled} is instance that memorizes orders cancelled value
-     * **/
+     */
     private final int ordersCancelled;
 
     /**
      * {@code orderDescription} is instance that memorizes order description value
-     * **/
+     */
     private final OrderDescription orderDescription;
 
     /** Constructor to init a {@link OrderEdited} object
@@ -67,7 +67,7 @@ public class OrderEdited extends KrakenManager.KrakenResponse{
      * @param price2: secondary price value
      * @param ordersCancelled: orders cancelled value
      * @param orderDescription: order description value
-     **/
+     */
     public OrderEdited(String status, String txId, String originalTxId, double volume, double price, double price2,
                        int ordersCancelled, OrderDescription orderDescription) {
         super(null);
@@ -84,7 +84,7 @@ public class OrderEdited extends KrakenManager.KrakenResponse{
     /**
      * Constructor to init a {@link OrderEdited} object
      * @param jsonResponse: base json response
-     **/
+     */
     public OrderEdited(JSONObject jsonResponse) {
         super(jsonResponse);
         status = result.getString("status");
@@ -105,7 +105,7 @@ public class OrderEdited extends KrakenManager.KrakenResponse{
      * @param volume:  volume value
      * @param params:  extra order details
      * @implSpec key for orderId will automatically choose
-     **/
+     */
     public static <T> void addBaseEditParameters(T orderId, String pair, double volume, Params params) {
         String idKey = "txid";
         if (orderId instanceof Number)
@@ -122,7 +122,7 @@ public class OrderEdited extends KrakenManager.KrakenResponse{
      * No-any params required
      *
      * @return {@link #status} instance as {@link String}
-     **/
+     */
     public String getStatus() {
         return status;
     }
@@ -132,7 +132,7 @@ public class OrderEdited extends KrakenManager.KrakenResponse{
      * No-any params required
      *
      * @return {@link #txId} instance as {@link String}
-     **/
+     */
     public String getTxId() {
         return txId;
     }
@@ -142,7 +142,7 @@ public class OrderEdited extends KrakenManager.KrakenResponse{
      * No-any params required
      *
      * @return {@link #originalTxId} instance as {@link String}
-     **/
+     */
     public String getOriginalTxId() {
         return originalTxId;
     }
@@ -153,7 +153,7 @@ public class OrderEdited extends KrakenManager.KrakenResponse{
      * @param decimals: number of digits to round final value
      * @return {@link #volume} instance rounded with decimal digits inserted
      * @throws IllegalArgumentException if decimalDigits is negative
-     **/
+     */
     public double getVolume(int decimals) {
         return roundValue(volume, decimals);
     }
@@ -163,7 +163,7 @@ public class OrderEdited extends KrakenManager.KrakenResponse{
      * No-any params required
      *
      * @return {@link #volume} instance as double
-     **/
+     */
     public double getVolume() {
         return volume;
     }
@@ -174,7 +174,7 @@ public class OrderEdited extends KrakenManager.KrakenResponse{
      * @param decimals: number of digits to round final value
      * @return {@link #price} instance rounded with decimal digits inserted
      * @throws IllegalArgumentException if decimalDigits is negative
-     **/
+     */
     public double getPrice(int decimals) {
         return roundValue(price, decimals);
     }
@@ -184,7 +184,7 @@ public class OrderEdited extends KrakenManager.KrakenResponse{
      * No-any params required
      *
      * @return {@link #price} instance as double
-     **/
+     */
     public double getPrice() {
         return price;
     }
@@ -195,7 +195,7 @@ public class OrderEdited extends KrakenManager.KrakenResponse{
      * @param decimals: number of digits to round final value
      * @return {@link #price2} instance rounded with decimal digits inserted
      * @throws IllegalArgumentException if decimalDigits is negative
-     **/
+     */
     public double getPrice2(int decimals) {
         return roundValue(price2, decimals);
     }
@@ -205,7 +205,7 @@ public class OrderEdited extends KrakenManager.KrakenResponse{
      * No-any params required
      *
      * @return {@link #price2} instance as double
-     **/
+     */
     public double getPrice2() {
         return price2;
     }
@@ -215,7 +215,7 @@ public class OrderEdited extends KrakenManager.KrakenResponse{
      * No-any params required
      *
      * @return {@link #ordersCancelled} instance as int
-     **/
+     */
     public int getOrdersCancelled() {
         return ordersCancelled;
     }
@@ -225,7 +225,7 @@ public class OrderEdited extends KrakenManager.KrakenResponse{
      * No-any params required
      *
      * @return {@link #orderDescription} instance as {@link OrderDescription}
-     **/
+     */
     public OrderDescription getOrderDescription() {
         return orderDescription;
     }

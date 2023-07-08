@@ -16,27 +16,27 @@ import static com.tecknobit.krakenmanager.privates.usertrading.records.orders.Or
  * @author N7ghtm4r3 - Tecknobit
  * @apiNote see the official documentation at: <a href="https://docs.kraken.com/rest/#tag/User-Trading/operation/addOrderBatch">
  * Add Order Batch</a>
- **/
+ */
 public class OrderBatchList {
 
     /**
      * {@code orders} is instance that memorizes all orders added
-     * **/
+     */
     private final JSONArray orders;
 
     /**
      * {@code pair} is instance that memorizes pair value
-     * **/
+     */
     private final String pair;
 
     /**
      * {@code params} is instance that memorizes {@link Params} object to insert details in list
-     * **/
+     */
     private final Params params;
 
     /** Constructor to init a {@link OrderBatchList} object
      * @param pair: pair value
-     **/
+     */
     public OrderBatchList(String pair) {
         orders = new JSONArray();
         params = new Params();
@@ -48,7 +48,7 @@ public class OrderBatchList {
      *
      * @param type:   order direction -> buy or sell
      * @param volume: order quantity in terms of the base asset
-     **/
+     */
     public void addMarketOrder(Side type, double volume) {
         addMarketOrder(type, volume, params);
     }
@@ -60,7 +60,7 @@ public class OrderBatchList {
      * @param volume: order quantity in terms of the base asset
      * @param params: extra order details
      * @implNote keys for params accepted are: userref,leverage,stp_type,oflags,timeinforce,starttm,expiretm,deadline or validate
-     **/
+     */
     public void addMarketOrder(Side type, double volume, Params params) {
         orders.put(createBaseOrder(market, type, volume, params));
     }
@@ -71,7 +71,7 @@ public class OrderBatchList {
      * @param type:   order direction -> buy or sell
      * @param volume: order quantity in terms of the base asset
      * @param price:  price value
-     **/
+     */
     public void addLimitOrder(Side type, double volume, double price) {
         addLimitOrder(type, volume, price, params);
     }
@@ -85,7 +85,7 @@ public class OrderBatchList {
      * @param params: extra order details
      * @implNote keys for params accepted are: userref,leverage,stp_type,oflags,timeinforce,starttm,expiretm,deadline,validate
      * and close
-     **/
+     */
     public void addLimitOrder(Side type, double volume, double price, Params params) {
         JSONObject limitOrder = createBaseOrder(limit, type, volume, params);
         if (price < 0)
@@ -102,7 +102,7 @@ public class OrderBatchList {
      * @param volume:  order quantity in terms of the base asset
      * @param price:   price value
      * @param trigger: price signal used to trigger
-     **/
+     */
     public void addStopLossOrder(Side type, double volume, double price, Trigger trigger) {
         addStopLossOrder(type, volume, price, trigger, params);
     }
@@ -117,7 +117,7 @@ public class OrderBatchList {
      * @param params:  extra order details
      * @implNote keys for params accepted are: userref,leverage,stp_type,oflags,timeinforce,starttm,expiretm,deadline,validate
      * and close
-     **/
+     */
     public void addStopLossOrder(Side type, double volume, double price, Trigger trigger, Params params) {
         addLevelOrder(stop_loss, type, volume, price, trigger, params);
     }
@@ -131,7 +131,7 @@ public class OrderBatchList {
      * @param price2:     secondary price value
      * @param trigger:    price signal used to trigger
      * @param offsetType: +, - , # or % -> constants in {@link OrderAdded} class
-     **/
+     */
     public void addStopLossLimitOrder(Side type, double volume, double price, double price2, Trigger trigger,
                                       String offsetType) {
         addStopLossLimitOrder(type, volume, price, price2, trigger, offsetType, params);
@@ -149,7 +149,7 @@ public class OrderBatchList {
      * @param params:     extra order details
      * @implNote keys for params accepted are: userref,leverage,stp_type,oflags,timeinforce,starttm,expiretm,deadline,validate
      * and close
-     **/
+     */
     public void addStopLossLimitOrder(Side type, double volume, double price, double price2, Trigger trigger,
                                       String offsetType, Params params) {
         addLevelLimitOrder(stop_loss_limit, type, volume, price, price2, trigger, offsetType, params);
@@ -160,7 +160,7 @@ public class OrderBatchList {
      * @param volume: order quantity in terms of the base asset
      * @param price: price value
      * @param trigger: price signal used to trigger
-     * **/
+     */
     public void addTakeProfitOrder(Side type, double volume, double price, Trigger trigger) {
         addTakeProfitOrder(type, volume, price, trigger, params);
     }
@@ -175,7 +175,7 @@ public class OrderBatchList {
      * @param params:  extra order details
      * @implNote keys for params accepted are: userref,leverage,stp_type,oflags,timeinforce,starttm,expiretm,deadline,validate
      * and close
-     **/
+     */
     public void addTakeProfitOrder(Side type, double volume, double price, Trigger trigger, Params params) {
         addLevelOrder(take_profit, type, volume, price, trigger, params);
     }
@@ -189,7 +189,7 @@ public class OrderBatchList {
      * @param price2:     secondary price value
      * @param trigger:    price signal used to trigger
      * @param offsetType: +, - , # or % -> constants in {@link OrderAdded} class
-     **/
+     */
     public void addTakeProfitLimitOrder(Side type, double volume, double price, double price2, Trigger trigger,
                                         String offsetType) {
         addTakeProfitLimitOrder(type, volume, price, price2, trigger, offsetType, params);
@@ -207,7 +207,7 @@ public class OrderBatchList {
      * @param params:     extra order details
      * @implNote keys for params accepted are: userref,leverage,stp_type,oflags,timeinforce,starttm,expiretm,deadline,validate
      * and close
-     **/
+     */
     public void addTakeProfitLimitOrder(Side type, double volume, double price, double price2, Trigger trigger,
                                         String offsetType, Params params) {
         addLevelLimitOrder(take_profit_limit, type, volume, price, price2, trigger, offsetType, params);
@@ -224,7 +224,7 @@ public class OrderBatchList {
      * @param params:    extra order details
      * @implNote keys for params accepted are: userref,leverage,stp_type,oflags,timeinforce,starttm,expiretm,deadline,validate
      * and close
-     **/
+     */
     private void addLevelOrder(OrderType orderType, Side type, double volume, double price, Trigger trigger,
                                Params params) {
         JSONObject levelOrder = createBaseOrder(orderType, type, volume, params);
@@ -249,7 +249,7 @@ public class OrderBatchList {
      * @param params:     extra order details
      * @implNote keys for params accepted are: userref,leverage,stp_type,oflags,timeinforce,starttm,expiretm,deadline,validate
      * and close
-     **/
+     */
     private void addLevelLimitOrder(OrderType orderType, Side type, double volume, double price, double price2,
                                     Trigger trigger, String offsetType, Params params) {
         JSONObject levelLimitOrder = createBaseOrder(orderType, type, volume, params);
@@ -280,7 +280,7 @@ public class OrderBatchList {
      * @return base order details as {@link JSONObject}
      * @implNote keys for params accepted are: userref,leverage,stp_type,oflags,timeinforce,starttm,expiretm,deadline,validate
      * and close
-     **/
+     */
     private JSONObject createBaseOrder(OrderType orderType, Side type, double volume, Params params) {
         if (volume < 0)
             throw new IllegalArgumentException("Volume value cannot be smaller than 0");
@@ -296,7 +296,7 @@ public class OrderBatchList {
      * No-any params required
      *
      * @return {@link #pair} instance as {@link String}
-     **/
+     */
     public String getPair() {
         return pair;
     }
@@ -306,7 +306,7 @@ public class OrderBatchList {
      * No-any params required
      *
      * @return {@link #orders} instance as {@link JSONArray}
-     **/
+     */
     public JSONArray getOrders() {
         return orders;
     }
